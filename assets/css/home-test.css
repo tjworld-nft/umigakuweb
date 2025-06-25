@@ -173,6 +173,17 @@ body {
     font-size: 18px;
 }
 
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+}
+
 .hero-content {
     position: relative;
     z-index: 2;
@@ -231,6 +242,15 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.why-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
 .why-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -270,6 +290,14 @@ body {
 .activity-card .ph {
     width: 100%;
     height: 200px;
+    border-radius: 0;
+}
+
+.activity-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
     border-radius: 0;
 }
 
@@ -334,6 +362,45 @@ body {
 
 .course-path .section-title {
     color: white;
+}
+
+.course-subtitle {
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    margin: 0 auto 3rem;
+    text-align: center;
+    width: fit-content;
+}
+
+.course-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.course-details-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.course-details-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
 }
 
 .timeline {
@@ -517,6 +584,50 @@ body {
 .bio-image .ph {
     width: 100%;
     height: 400px;
+}
+
+.instructor img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+}
+
+.inst-name {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.inst-title {
+    color: #3498db;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.inst-text {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.inst-badges {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.inst-badges li {
+    background: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .bio-text h3 {

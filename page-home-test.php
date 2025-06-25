@@ -9,7 +9,7 @@ get_header(); ?>
 <main class="home-test" role="main">
     <!-- Hero Section -->
     <section class="hero" role="banner" aria-labelledby="hero-title">
-        <figure class="ph hero" aria-label="Hero 画像のダミー (1920×1080)"></figure>
+        <img src="<?php echo get_template_directory_uri(); ?>/image/umigaku-hero.png" alt="三浦海の学校 - 美しい三浦半島の海でダイビング" class="hero-image" width="1920" height="1080">
         <div class="hero-content">
             <h1 id="hero-title" class="hero-title">三浦 海の学校｜PADI 5スター IDC ダイビングセンター</h1>
             <p class="hero-subtitle">
@@ -17,9 +17,9 @@ get_header(); ?>
                 都心から60分、三浦半島の美しい海で本格ダイビング<br>
                 初心者から上級者まで安心・安全の指導体制
             </p>
-            <a href="#cta" class="btn-cta" aria-describedby="hero-cta-desc">
-                体験ダイビングを予約する
-                <span id="hero-cta-desc" class="sr-only">初心者歓迎・予約はこちらから</span>
+            <a href="https://lin.ee/kK3d5p2" class="btn-cta" aria-describedby="hero-cta-desc">
+                LINEで問い合わせ
+                <span id="hero-cta-desc" class="sr-only">初心者歓迎・お気軽にご相談ください</span>
             </a>
         </div>
     </section>
@@ -30,17 +30,17 @@ get_header(); ?>
             <h2 id="why-title" class="section-title">なぜ三浦海の学校なのか</h2>
             <div class="why-grid" role="list">
                 <article class="why-card" role="listitem">
-                    <figure class="ph why-1" aria-label="都心から60分のダミー画像"></figure>
+                    <img src="<?php echo get_template_directory_uri(); ?>/image/misakiguchi.png" alt="三崎口駅からの無料送迎" class="why-image" width="350" height="200">
                     <h3>都心から60分のアクセス</h3>
-                    <p><strong>一般の方でも気軽に通える</strong>立地。平日・土日問わず、お仕事帰りや休日に手軽にダイビングを楽しめます。</p>
+                    <p><strong>一般の方でも気軽に通える</strong>立地。平日・土日問わず、お仕事帰りや休日に手軽にダイビングを楽しめます。<strong>駅まで無料送迎付き</strong>でさらに便利！</p>
                 </article>
                 <article class="why-card" role="listitem">
-                    <figure class="ph why-2" aria-label="専用プールのダミー画像"></figure>
+                    <img src="<?php echo get_template_directory_uri(); ?>/image/pool-practice.png" alt="専用プールでの練習風景" class="why-image" width="350" height="200">
                     <h3>専用プール完備</h3>
                     <p><strong>誰でも安心して始められる</strong>環境。海に入る前にプールでしっかり練習できるので、泳ぎが苦手な方も安心です。</p>
                 </article>
                 <article class="why-card" role="listitem">
-                    <figure class="ph why-3" aria-label="初心者歓迎のダミー画像"></figure>
+                    <img src="<?php echo get_template_directory_uri(); ?>/image/owd-equipmetn.png" alt="初心者向けダイビング器材" class="why-image" width="350" height="200">
                     <h3>初心者大歓迎</h3>
                     <p><strong>年齢・経験問わず誰でも参加OK</strong>。10歳から70歳まで幅広い年齢層の方が楽しくダイビングを学んでいます。</p>
                 </article>
@@ -54,19 +54,19 @@ get_header(); ?>
             <h2 id="activities-title" class="section-title">マリンアクティビティ</h2>
             <div class="activities-slider" role="region" aria-label="マリンアクティビティスライダー" tabindex="0">
                 <article class="activity-card">
-                    <figure class="ph act sup" aria-label="SUP のダミー写真"></figure>
+                    <img src="<?php echo get_template_directory_uri(); ?>/image/sup.png" alt="SUP（スタンドアップパドル）体験" class="activity-image" width="350" height="200">
                     <h3>SUP（スタンドアップパドル）</h3>
                     <p><strong>誰でも簡単に始められる</strong>人気のマリンスポーツ。年齢・体力に関係なく、穏やかな海でリラックスしながら楽しめます。</p>
                     <a href="#cta" class="btn-secondary" aria-label="SUP体験の詳細・予約">詳細を見る</a>
                 </article>
                 <article class="activity-card">
-                    <figure class="ph act snk" aria-label="シュノーケリングのダミー写真"></figure>
+                    <img src="<?php echo get_template_directory_uri(); ?>/image/snorkel.png" alt="シュノーケリング体験" class="activity-image" width="350" height="200">
                     <h3>シュノーケリング</h3>
                     <p><strong>泳げない方でも参加OK</strong>。海面から水中の美しい世界を覗き見る、ダイビングの入門に最適なアクティビティです。</p>
                     <a href="#cta" class="btn-secondary" aria-label="シュノーケリング体験の詳細・予約">詳細を見る</a>
                 </article>
                 <article class="activity-card">
-                    <figure class="ph act kayak" aria-label="カヤックのダミー写真"></figure>
+                    <img src="<?php echo get_template_directory_uri(); ?>/image/seakayac.png" alt="シーカヤック体験" class="activity-image" width="350" height="200">
                     <h3>シーカヤック</h3>
                     <p><strong>初心者から楽しめる</strong>三浦半島の美しい海岸線ツアー。経験豊富なガイドが同行するので安心です。</p>
                     <a href="#cta" class="btn-secondary" aria-label="カヤック体験の詳細・予約">詳細を見る</a>
@@ -79,37 +79,47 @@ get_header(); ?>
     <section class="course-path" aria-labelledby="course-title">
         <div class="container">
             <h2 id="course-title" class="section-title">ダイビングコースの流れ</h2>
-            <p class="section-subtitle"><strong>一般の方でもステップアップできる</strong>安心のコース設計</p>
+            <p class="section-subtitle course-subtitle"><strong>一般の方でもステップアップできる</strong>安心のコース設計</p>
             <ol class="timeline" role="list">
                 <li class="timeline-item" role="listitem">
                     <div class="timeline-number" aria-hidden="true">1</div>
                     <div class="timeline-content">
-                        <h3>体験ダイビング</h3>
-                        <p><strong>初めての方・泳げない方も安心</strong>。プールや浅瀬でダイビングの基本を体験します。</p>
+                        <h3>オープンウォーターダイバーコース</h3>
+                        <p><strong>誰でも取得可能</strong>なライセンス取得の第一歩。18mまでの深度でダイビングができるようになります。</p>
                     </div>
                 </li>
                 <li class="timeline-item" role="listitem">
                     <div class="timeline-number" aria-hidden="true">2</div>
                     <div class="timeline-content">
-                        <h3>オープンウォーター</h3>
-                        <p><strong>誰でも取得可能</strong>なライセンス取得の第一歩。18mまでの深度でダイビングができるようになります。</p>
+                        <h3>アドバンスドオープンウォーターダイバーコース</h3>
+                        <p><strong>一般ダイバーも無理なく挑戦</strong>。30mまでの深度でより多様な海洋環境を体験します。</p>
                     </div>
                 </li>
                 <li class="timeline-item" role="listitem">
                     <div class="timeline-number" aria-hidden="true">3</div>
                     <div class="timeline-content">
-                        <h3>アドバンス</h3>
-                        <p><strong>一般ダイバーも無理なく挑戦</strong>。30mまでの深度でより多様な海洋環境を体験します。</p>
+                        <h3>スペシャルティダイバーコース</h3>
+                        <p><strong>趣味に応じて選択</strong>。ナビゲーション、ナイトダイビング、ディープなど様々な専門技術を習得。</p>
                     </div>
                 </li>
                 <li class="timeline-item" role="listitem">
                     <div class="timeline-number" aria-hidden="true">4</div>
                     <div class="timeline-content">
-                        <h3>レスキューダイバー</h3>
+                        <h3>レスキューダイバーコース</h3>
                         <p><strong>経験を積んだ一般ダイバーの目標</strong>。他のダイバーの安全をサポートする技術を身につけます。</p>
                     </div>
                 </li>
+                <li class="timeline-item" role="listitem">
+                    <div class="timeline-number" aria-hidden="true">5</div>
+                    <div class="timeline-content">
+                        <h3>プロコース</h3>
+                        <p><strong>プロダイバーへの道</strong>。ダイブマスター、インストラクターなど、プロフェッショナルなダイバーを目指します。</p>
+                    </div>
+                </li>
             </ol>
+            <div class="course-cta">
+                <a href="#" class="btn-primary course-details-btn">各種講習の詳細をみる</a>
+            </div>
         </div>
     </section>
 
@@ -136,17 +146,18 @@ get_header(); ?>
                         <div class="course-details">
                             <div class="course-price">
                                 <span class="price-label">料金</span>
-                                <span class="price-value">¥65,000</span>
-                                <small>分割払い可能</small>
+                                <span class="price-value">¥53,900</span>
+                                <small>レンタル器材：1日5,500円</small>
                             </div>
                             <div class="course-features">
                                 <h3>特徴</h3>
                                 <ul>
                                     <li><strong>初心者向け</strong> - 泳げない方もOK</li>
+                                    <li>3日間の講習</li>
                                     <li>最大深度18m</li>
                                     <li>学科講習 + 実技講習</li>
                                     <li>認定証発行</li>
-                                    <li>器材レンタル込み</li>
+                                    <li>レンタル器材：1日5,500円（別途）</li>
                                 </ul>
                             </div>
                             <a href="#cta" class="btn-primary" id="owd-desc">OWDコースを申し込む</a>
@@ -156,17 +167,18 @@ get_header(); ?>
                         <div class="course-details">
                             <div class="course-price">
                                 <span class="price-label">料金</span>
-                                <span class="price-value">¥45,000</span>
-                                <small>分割払い可能</small>
+                                <span class="price-value">¥53,900</span>
+                                <small>レンタル器材：1日5,500円</small>
                             </div>
                             <div class="course-features">
                                 <h3>特徴</h3>
                                 <ul>
                                     <li><strong>一般ダイバー向け</strong> - OWD取得者対象</li>
+                                    <li>2日間の講習</li>
                                     <li>最大深度30m</li>
                                     <li>5つのアドベンチャーダイブ</li>
                                     <li>ナビゲーション・深度ダイブ必須</li>
-                                    <li>スペシャルティ選択可能</li>
+                                    <li>レンタル器材：1日5,500円（別途）</li>
                                 </ul>
                             </div>
                             <a href="#cta" class="btn-primary" id="aow-desc">AOWコースを申し込む</a>
@@ -183,21 +195,26 @@ get_header(); ?>
             <h2 id="instructor-title" class="section-title">インストラクター紹介</h2>
             <div class="bio-content">
                 <div class="bio-image">
-                    <figure class="ph instructor" aria-label="インストラクターのダミー写真 (600×600)"></figure>
+                    <figure class="instructor">
+                        <img src="<?php echo get_template_directory_uri(); ?>/image/instructor.png"
+                             width="600" height="600" loading="lazy"
+                             alt="PADIコースディレクター 吉田哲司">
+                    </figure>
                 </div>
                 <div class="bio-text">
-                    <h3>田中 海太郎</h3>
-                    <p class="bio-title">チーフインストラクター / PADI IDCスタッフインストラクター</p>
-                    <p class="bio-description">
-                        <strong>一般の方でも安心して学べる指導</strong>を心がけています。三浦半島の海で20年以上のダイビング指導経験を持つベテランインストラクター。
-                        これまでに1000名以上の一般の方をダイバーに育成し、安全で楽しいダイビングの普及に努めています。
-                        海洋生物に関する豊富な知識と、分かりやすい指導で多くの方から信頼されています。
+                    <h3 class="inst-name">吉田 哲司</h3>
+                    <p class="inst-title">PADIコースディレクター / AquaBit LAB代表</p>
+                    
+                    <p class="inst-text">
+                        1997年からダイビングプロフェッショナルとして活動を続け、<strong>延べ1,500名以上</strong>の一般ダイバーを育成してきたベテランインストラクター。<br>
+                        安全管理とわかりやすい指導に定評があり、PADI最高位資格であるコースディレクターとして多くのインストラクター候補生も直接指導しています。<br>
+                        海洋生物の知識と最新テクノロジーを融合した独自メソッドで、初心者からプロを目指す方まで幅広くサポートします。
                     </p>
-                    <div class="bio-credentials">
-                        <span class="credential">PADI IDCスタッフインストラクター</span>
-                        <span class="credential">EFRインストラクター</span>
-                        <span class="credential">DAN酸素プロバイダー</span>
-                    </div>
+                    
+                    <ul class="inst-badges">
+                        <li>PADIコースディレクター</li>
+                        <li>Tec Trimix インストラクタートレーナー</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -216,8 +233,8 @@ get_header(); ?>
                             <rect x="25" y="35" width="50" height="30" fill="#357ABD" opacity="0.6"/>
                         </svg>
                     </div>
-                    <h3>VR海洋体験</h3>
-                    <p><strong>誰でも手軽に体験</strong>。バーチャルリアリティで事前に海中環境を体験できます。</p>
+                    <h3>NFT技術の活用</h3>
+                    <p><strong>誰でも参加できる</strong>ダイビング体験をNFTで記録・認証。デジタル証明書として永続保存。</p>
                 </article>
                 <article class="lab-card" role="listitem">
                     <div class="lab-icon" aria-hidden="true">
@@ -226,8 +243,8 @@ get_header(); ?>
                             <circle cx="50" cy="50" r="15" fill="#228B22" opacity="0.6"/>
                         </svg>
                     </div>
-                    <h3>水中ナビゲーション</h3>
-                    <p><strong>初心者も安心</strong>。GPSと連携した水中ナビゲーションシステムで安全性を向上。</p>
+                    <h3>WEB3体験</h3>
+                    <p><strong>一般の方でも簡単に</strong>。ブロックチェーン技術でダイビングコミュニティに参加。</p>
                 </article>
                 <article class="lab-card" role="listitem">
                     <div class="lab-icon" aria-hidden="true">
@@ -236,8 +253,8 @@ get_header(); ?>
                             <polygon points="50,30 70,60 30,60" fill="#CC5555" opacity="0.6"/>
                         </svg>
                     </div>
-                    <h3>AI生物識別</h3>
-                    <p><strong>一般ダイバーでも使える</strong>AIを活用した海洋生物の自動識別・記録システム。</p>
+                    <h3>AI活用システム</h3>
+                    <p><strong>一般ダイバーでも使える</strong>AI技術で海洋生物識別、安全管理、学習サポートを自動化。</p>
                 </article>
                 <article class="lab-card" role="listitem">
                     <div class="lab-icon" aria-hidden="true">
