@@ -1,4 +1,5 @@
 <?php
+// ★Hero+Wow
 /**
  * Template Name: Home Test Page v2
  * Test homepage for Miura Diving - Enhanced SEO & Accessibility
@@ -9,18 +10,16 @@ get_header(); ?>
 <main class="home-test" role="main">
     <!-- Hero Section -->
     <section class="hero" role="banner" aria-labelledby="hero-title">
-        <img src="<?php echo get_template_directory_uri(); ?>/image/umigaku-hero.png" alt="三浦海の学校 - 美しい三浦半島の海でダイビング" class="hero-image" width="1920" height="1080">
-        <div class="hero-content">
-            <h1 id="hero-title" class="hero-title">三浦 海の学校｜PADI 5スター IDC ダイビングセンター</h1>
-            <p class="hero-subtitle">
-                <strong>一般の方なら誰でも利用できる</strong>ダイビングスクール<br>
-                都心から60分、三浦半島の美しい海で本格ダイビング<br>
-                初心者から上級者まで安心・安全の指導体制
-            </p>
-            <a href="https://lin.ee/kK3d5p2" class="btn-cta" aria-describedby="hero-cta-desc">
-                LINEで問い合わせ
-                <span id="hero-cta-desc" class="sr-only">初心者歓迎・お気軽にご相談ください</span>
-            </a>
+        <ul class="hero-slides">
+            <li><img src="<?php echo get_stylesheet_directory_uri(); ?>/image/umigaku-hero.png" alt="施設俯瞰"></li>
+            <li><img src="<?php echo get_stylesheet_directory_uri(); ?>/image/owd-hero.png" alt="OWD講習"></li>
+            <li><img src="<?php echo get_stylesheet_directory_uri(); ?>/image/boat-hero.png" alt="ボートダイブ"></li>
+        </ul>
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+            <h1 id="hero-title">三浦 海の学校｜PADI5⭐IDC</h1>
+            <p class="hero-lead">一般の方なら誰でも参加OK！<br>都心から60分、美しい三浦の海で本格ダイビング体験</p>
+            <a class="btn-cta ripple" href="#cta">LINEで問い合わせ</a>
         </div>
     </section>
 
@@ -29,20 +28,60 @@ get_header(); ?>
         <div class="container">
             <h2 id="why-title" class="section-title">なぜ三浦海の学校なのか</h2>
             <div class="why-grid" role="list">
-                <article class="why-card" role="listitem">
-                    <img src="<?php echo get_template_directory_uri(); ?>/image/misakiguchi.png" alt="三崎口駅からの無料送迎" class="why-image" width="350" height="200">
+                <!-- 都心60分 -->
+                <article class="why-card parallax wait" role="listitem">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/misakiguchi.png" alt="">
                     <h3>都心から60分のアクセス</h3>
-                    <p><strong>一般の方でも気軽に通える</strong>立地。平日・土日問わず、お仕事帰りや休日に手軽にダイビングを楽しめます。<strong>駅まで無料送迎付き</strong>でさらに便利！</p>
+                    <p><strong>一般の方でも気軽に通える</strong>立地。平日・土日問わず、お仕事帰りや休日に手軽にダイビングを楽しめます。</p>
                 </article>
-                <article class="why-card" role="listitem">
-                    <img src="<?php echo get_template_directory_uri(); ?>/image/pool-practice.png" alt="専用プールでの練習風景" class="why-image" width="350" height="200">
+                
+                <!-- 専用プール完備 -->
+                <article class="why-card parallax wait" role="listitem">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/pool-practice.png" alt="">
                     <h3>専用プール完備</h3>
                     <p><strong>誰でも安心して始められる</strong>環境。海に入る前にプールでしっかり練習できるので、泳ぎが苦手な方も安心です。</p>
                 </article>
-                <article class="why-card" role="listitem">
-                    <img src="<?php echo get_template_directory_uri(); ?>/image/owd-equipmetn.png" alt="初心者向けダイビング器材" class="why-image" width="350" height="200">
+                
+                <!-- 初心者歓迎 -->
+                <article class="why-card parallax wait" role="listitem">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/owd-equipmetn.png" alt="">
                     <h3>初心者大歓迎</h3>
-                    <p><strong>年齢・経験問わず誰でも参加OK</strong>。10歳から70歳まで幅広い年齢層の方が楽しくダイビングを学んでいます。</p>
+                    <p><strong>年齢・経験問わず誰でも参加OK</strong>。<span data-countup="1500">0</span>名以上の受講実績で安心サポート。</p>
+                </article>
+                
+                <!-- 新カード① 少人数制 1:4 -->
+                <article class="why-card parallax wait" role="listitem">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/pool.png" alt="">
+                    <h3>少人数レッスン</h3>
+                    <p>最大<strong>1 : 4</strong> の少人数制。経験豊富なインストラクターが、丁寧できめ細かなサポートを行います。</p>
+                </article>
+                
+                <!-- 新カード② 多彩なプログラム -->
+                <article class="why-card parallax wait" role="listitem">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/boat.png" alt="">
+                    <h3>多彩なプログラム</h3>
+                    <p>ファンダイブから <span lang="en">OWD</span> 初心者コース、プロ講習まで幅広く開催。目的に合ったコースを選べます。</p>
+                </article>
+                
+                <!-- 新カード③ 海は目の前 -->
+                <article class="why-card parallax wait" role="listitem">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/surface.png" alt="">
+                    <h3>海は目の前</h3>
+                    <p>専用プールから海までわずか数歩。器材を背負ったまま海洋実習へ直行できる絶好の導線です。</p>
+                </article>
+                
+                <!-- 新カード④ 安全第一の指導体制 -->
+                <article class="why-card parallax wait" role="listitem">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/padi.png" alt="">
+                    <h3>安全第一の指導体制</h3>
+                    <p>PADI安全基準を順守し、酸素キット・AEDを完備。万一に備えた安心サポート体制です。</p>
+                </article>
+                
+                <!-- 新カード⑤ メンテナンスされたレンタル器材 -->
+                <article class="why-card parallax wait" role="listitem">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/image/equipment.png" alt="メンテナンスされたレンタル器材">
+                    <h3>メンテナンスされたレンタル器材</h3>
+                    <p>定期点検済みの高品質レンタル器材を完備。いつでも安心してご利用いただけます。</p>
                 </article>
             </div>
         </div>
@@ -247,24 +286,20 @@ get_header(); ?>
                     <p><strong>一般の方でも簡単に</strong>。ブロックチェーン技術でダイビングコミュニティに参加。</p>
                 </article>
                 <article class="lab-card" role="listitem">
-                    <div class="lab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 100 100" class="lab-svg">
-                            <polygon points="50,20 80,70 20,70" fill="#FF6B6B" opacity="0.8"/>
-                            <polygon points="50,30 70,60 30,60" fill="#CC5555" opacity="0.6"/>
-                        </svg>
-                    </div>
-                    <h3>AI活用システム</h3>
-                    <p><strong>一般ダイバーでも使える</strong>AI技術で海洋生物識別、安全管理、学習サポートを自動化。</p>
+                    <figure class="lab-icon">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svg/icon-ai.svg"
+                             width="72" height="72" alt="">
+                    </figure>
+                    <h3>AI活用サポート</h3>
+                    <p>最新AIツールの“使える”実践術を提案。仕事・学習・趣味に応用。</p>
                 </article>
                 <article class="lab-card" role="listitem">
-                    <div class="lab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 100 100" class="lab-svg">
-                            <rect x="30" y="20" width="40" height="60" fill="#9B59B6" opacity="0.8"/>
-                            <rect x="35" y="25" width="30" height="50" fill="#7D3C98" opacity="0.6"/>
-                        </svg>
-                    </div>
-                    <h3>デジタルログブック</h3>
-                    <p><strong>スマホで簡単管理</strong>。クラウド連携でダイビングログを自動記録・管理。</p>
+                    <figure class="lab-icon">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svg/icon-learning.svg"
+                             width="72" height="72" alt="">
+                    </figure>
+                    <h3>Udemy講座 &amp; 書籍</h3>
+                    <p>海×テクノロジーを学べる動画講座と専門書籍を継続リリース。</p>
                 </article>
             </div>
             <div class="lab-cta">
@@ -327,18 +362,26 @@ get_header(); ?>
                 <h2 id="cta-title">海の世界への第一歩を踏み出そう</h2>
                 <p><strong>一般の方なら誰でも参加OK！</strong><br>三浦海の学校で、あなたの海洋体験を始めませんか？</p>
                 <div class="cta-buttons">
-                    <a href="tel:046-123-4567" class="btn-cta" aria-label="電話で問い合わせ">
-                        <span aria-hidden="true">📞</span> 046-123-4567
+                    <a href="tel:046-880-0835" class="btn-cta" aria-label="電話で問い合わせ">
+                        <span aria-hidden="true">📞</span> 046-880-0835
                     </a>
                     <a href="mailto:info@miura-diving.com" class="btn-cta" aria-label="メールで問い合わせ">
                         <span aria-hidden="true">✉️</span> お問い合わせ
                     </a>
-                    <a href="https://line.me/ti/p/example" class="btn-cta btn-cta-line" aria-label="LINEで問い合わせ">
+                    <a href="https://lin.ee/kK3d5p2" class="btn-cta btn-cta-line" aria-label="LINEで問い合わせ">
                         <span aria-hidden="true">💬</span> LINE相談
                     </a>
                 </div>
+                
+                <ul class="cta-info">
+                    <li>〒238-0224 神奈川県三浦市三崎町諸磯1621</li>
+                    <li>有料駐車場完備</li>
+                    <li>電車：京急三崎口駅 → <ruby>屋敷倉<rt>やしきくら</rt></ruby>行バス「屋敷倉」下車 徒歩1分</li>
+                    <li><a href="https://aquabit-lab.com" target="_blank" rel="noopener">🔗 AquaBit LAB</a></li>
+                    <li><a href="https://tj-music.com" target="_blank" rel="noopener">🎵 TJ Music</a></li>
+                </ul>
                 <p class="cta-note">
-                    <small>初回相談無料 | 平日9:00-18:00 | 土日祝対応可</small>
+                    <small>営業時間：9:00〜16:00｜不定休</small>
                 </p>
             </div>
         </div>
