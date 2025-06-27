@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Book -->
+  <rect x="12" y="16" width="36" height="40" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+  <path d="M12 20 L48 20" stroke="currentColor" stroke-width="2"/>
+  <path d="M18 28 L42 28" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+  <path d="M18 34 L38 34" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+  <path d="M18 40 L42 40" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+  <path d="M18 46 L35 46" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+  
+  <!-- Play button -->
+  <circle cx="54" cy="28" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+  <path d="M50 24 L50 32 L58 28 Z" fill="currentColor"/>
+</svg>

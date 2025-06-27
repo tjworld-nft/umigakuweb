@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三浦 海の学校｜マリンアクティビティのご案内</title>
+    
+    <!-- SEO & OGP -->
+    <meta name="description" content="三浦の海を楽しむマリンアクティビティ。シーカヤック、SUP、スノーケリングを開催。初心者からお楽しみいただけます。">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="三浦 海の学校">
+    <meta property="og:title" content="マリンアクティビティ | 三浦 海の学校">
+    <meta property="og:description" content="三浦の海を楽しむマリンアクティビティ。シーカヤック、SUP、スノーケリングを開催。初心者からお楽しみいただけます。">
+    <meta property="og:url" content="https://miura-diving.com/marine-activity/">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-blue: #3498db;
+            --brand-blue-dark: #2980b9;
+            --brand-blue-light: #5dace4;
+            --text-dark: #2c3e50;
+            --text-gray: #666;
+            --bg-light: #f8f9fa;
+            --shadow-light: 0 4px 16px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .back-link {
+            color: var(--brand-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--brand-blue-dark);
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../image/marine-activity-hero.png') center/cover no-repeat;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.7), rgba(41, 128, 185, 0.8));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 4rem 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .section-lead {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Activity Cards */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            border: 1px solid #e9ecef;
+            position: relative;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .activity-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--brand-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .activity-price::before {
+            content: "¥";
+            font-size: 1.2rem;
+            margin-right: 0.2rem;
+        }
+
+        .activity-price::after {
+            content: "/人";
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            margin-left: 0.3rem;
+        }
+
+        .activity-desc {
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-bullets {
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-bullets h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .activity-bullets h4::before {
+            content: "●";
+            color: var(--brand-blue);
+            font-size: 0.8rem;
+        }
+
+        .activity-included {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--brand-blue);
+        }
+
+        .activity-included h5 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .activity-included p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        /* About Miura Section */
+        .about-miura {
+            background: var(--bg-light);
+            padding: 4rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .feature-item::before {
+            content: "✓";
+            color: var(--brand-blue);
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .line-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: #00c300;
+            color: white;
+            text-decoration: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 195, 0, 0.3);
+        }
+
+        .line-button:hover {
+            background: #00a800;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 195, 0, 0.4);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--brand-blue-light);
+        }
+
+        .footer a::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                min-height: 50vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .activity-card {
+                padding: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .main-content {
+                padding: 2rem 0;
+            }
+
+            .section {
+                margin-bottom: 3rem;
+            }
+
+            .line-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .activity-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="header-nav">
+                <a href="../home-test-preview.html" class="back-link">ホームへ戻る</a>
+                <ul class="nav-links">
+                    <li><a href="../license-preview.html">ライセンス</a></li>
+                    <li><a href="../fun-diving/index.html">ファンダイビング</a></li>
+                    <li><a href="index.html" class="active">マリンアクティビティ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>楽しみ方いろいろ！三浦のマリンアクティビティ</h1>
+                <p>三浦の海を存分に楽しめる、多彩なアクティビティをご用意しています。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Activities Section -->
+            <section class="section">
+                <h2 class="section-title">マリンアクティビティ一覧</h2>
+                <div class="activities-grid">
+                    <!-- シーカヤック -->
+                    <div class="activity-card">
+                        <h3 class="activity-title">シーカヤック</h3>
+                        <div class="activity-price">7,700</div>
+                        <p class="activity-desc">岩場や入江を巡るシーカヤック。1人/2人乗りあり。</p>
+                        <div class="activity-bullets">
+                            <h4>所要2h／最少2名／初心者OK／8歳以上可</h4>
+                        </div>
+                        <div class="activity-included">
+                            <h5>含まれるもの</h5>
+                            <p>ガイド・艇・パドル・ライジャケ・保険・シャワー更衣室</p>
+                        </div>
+                    </div>
+
+                    <!-- SUP -->
+                    <div class="activity-card">
+                        <h3 class="activity-title">SUP（スタンドアップパドルボード）</h3>
+                        <div class="activity-price">7,700</div>
+                        <p class="activity-desc">立ったまま漕ぐ人気アクティビティ。</p>
+                        <div class="activity-bullets">
+                            <h4>所要2h／最少2名／初心者OK／10歳以上可</h4>
+                        </div>
+                        <div class="activity-included">
+                            <h5>含まれるもの</h5>
+                            <p>ガイド・SUPボード・パドル・ライジャケ・保険・シャワー更衣室</p>
+                        </div>
+                    </div>
+
+                    <!-- スノーケリング -->
+                    <div class="activity-card">
+                        <h3 class="activity-title">スノーケリング</h3>
+                        <div class="activity-price">7,700</div>
+                        <p class="activity-desc">透明度抜群の海で水中世界を観察。</p>
+                        <div class="activity-bullets">
+                            <h4>所要2h／最少2名／初心者OK／8歳以上可</h4>
+                        </div>
+                        <div class="activity-included">
+                            <h5>含まれるもの</h5>
+                            <p>ガイド・器材一式・ライジャケ・保険・シャワー更衣室</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Miura Section -->
+        <section class="about-miura">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="../image/seakayac.png" alt="三浦半島の美しい海" width="600" height="400">
+                    </div>
+                    <div class="about-text">
+                        <h3>東京から日帰りで楽しむ三浦半島の海</h3>
+                        <p>三浦半島は都心から約1時間のアクセスで、美しい海と豊かな自然を楽しめる絶好のロケーションです。透明度の高い海と穏やかな波は、マリンアクティビティに最適な環境を提供します。</p>
+                        <div class="about-features">
+                            <div class="feature-item">都心から約1時間</div>
+                            <div class="feature-item">初心者歓迎</div>
+                            <div class="feature-item">レンタル器材完備</div>
+                            <div class="feature-item">シャワー・更衣室完備</div>
+                            <div class="feature-item">経験豊富ガイド</div>
+                            <div class="feature-item">安全管理徹底</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">お気軽にお問い合わせください</h2>
+            <a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener" class="line-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="24" height="24">
+                    <path fill="#fff" d="M18 2C9.2 2 2 8.4 2 16.2c0 4.5 2.2 8.4 5.8 11-.2.8-.9 3.2-1 3.6 0 0-.1.3.1.4s.4.1.4.1c.5 0 3.6-1.2 4.2-1.5 1.2.3 2.6.4 4 .4 8.8 0 16-6.4 16-14.2S26.8 2 18 2zM18 26c-1.3 0-2.5-.1-3.7-.4l-1.2-.3-.9.5c-.8.4-1.7.7-2.6.9.3-.9.5-1.7.6-2.3l.2-.8-.6-.6c-2.9-2.3-4.6-5.5-4.6-9C4.3 9.6 10.4 4 18 4s13.7 5.6 13.7 12.2S25.6 26 18 26z"/>
+                </svg>
+                LINEで問い合わせる
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <nav class="footer-nav">
+                <a href="../home-test-preview.html">トップページへ戻る</a>
+                <ul class="footer-links">
+                    <li><a href="../license-preview.html">ライセンスへ</a></li>
+                    <li><a href="../fun-diving/index.html">ファンダイビングへ</a></li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                <p>© 2025 三浦 海の学校</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Card hover animation enhancement
+        document.querySelectorAll('.activity-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

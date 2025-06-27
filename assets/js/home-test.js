@@ -523,3 +523,55 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+
+// ★TOP polish v3 - ヘッダーフェード
+const header = document.querySelector('header.site-header');
+if (header) {
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('is-scrolled', window.scrollY > 80);
+    });
+}
+
+// ★WHY 6cards fix - IntersectionObserver & アニメーション
+
+// Intersection Observer for parallax
+const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.remove('wait');
+            e.target.classList.add('in-view');
+        }
+    });
+}, { threshold: .4 });
+
+document.querySelectorAll('.parallax').forEach(el => {
+    el.classList.add('wait'); // 初期状態
+    io.observe(el);
+});
+
+// Count-up numbers
+document.querySelectorAll('[data-countup]').forEach(el => {
+    const target = +el.dataset.countup;
+    const step = target / 60;
+    let cur = 0;
+    
+    const countObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting && !el.dataset.done) {
+                el.dataset.done = 1;
+                const timer = setInterval(() => {
+                    cur += step;
+                    if (cur >= target) {
+                        cur = target;
+                        clearInterval(timer);
+                    }
+                    el.textContent = Math.round(cur);
+                }, 30);
+            }
+        });
+    }, { threshold: .4 });
+    
+    countObserver.observe(el);
+});
+
+console.log('Hero+Wow effects initialized');

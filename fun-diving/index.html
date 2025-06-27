@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三浦 海の学校｜ファンダイビング・リフレッシュダイビングのご案内</title>
+    
+    <!-- SEO & OGP -->
+    <meta name="description" content="三浦の海を楽しむファンダイビングコース。ビーチダイビング、ボートダイビング、リフレッシュダイビングをご用意。初心者からブランクダイバーまで安心サポート。">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="三浦 海の学校">
+    <meta property="og:title" content="ファンダイビング・リフレッシュダイビング | 三浦 海の学校">
+    <meta property="og:description" content="三浦の海を楽しむファンダイビングコース。ビーチダイビング、ボートダイビング、リフレッシュダイビングをご用意。">
+    <meta property="og:url" content="https://miura-diving.com/fun-diving/">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-blue: #3498db;
+            --brand-blue-dark: #2980b9;
+            --text-dark: #2c3e50;
+            --text-gray: #666;
+            --bg-light: #f8f9fa;
+            --shadow-light: 0 4px 16px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .back-link {
+            color: var(--brand-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--brand-blue-dark);
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .section-lead {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../image/fun-diving-hero.png') center/cover no-repeat;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.7), rgba(41, 128, 185, 0.8));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 4rem 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Course Cards */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            border: 1px solid #e9ecef;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brand-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .course-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .course-price::before {
+            content: "¥";
+            font-size: 1.2rem;
+            margin-right: 0.2rem;
+        }
+
+        .course-desc {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Rental Table */
+        .rental-table {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .rental-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .rental-table th,
+        .rental-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .rental-table th {
+            background: var(--brand-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        .rental-table tr:nth-child(even) {
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .rental-table tr:hover {
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        .faq-question:hover {
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .faq-question::after {
+            content: "+";
+            float: right;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.open {
+            max-height: 200px;
+        }
+
+        .faq-answer-content {
+            padding: 1.5rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-light);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .line-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: #00c300;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 195, 0, 0.3);
+        }
+
+        .line-button:hover {
+            background: #00a800;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 195, 0, 0.4);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--brand-blue);
+        }
+
+        .footer a::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                min-height: 50vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .course-card {
+                padding: 1.5rem;
+            }
+
+            .rental-table th,
+            .rental-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .main-content {
+                padding: 2rem 0;
+            }
+
+            .section {
+                margin-bottom: 3rem;
+            }
+
+            .line-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="header-nav">
+                <a href="../home-test-preview.html" class="back-link">ホームへ戻る</a>
+                <ul class="nav-links">
+                    <li><a href="../home-test-preview.html">ホーム</a></li>
+                    <li><a href="../license-preview.html">ライセンス</a></li>
+                    <li><a href="index.html" class="active">ファンダイビング</a></li>
+                    <li><a href="../marine-activity/index.html">マリンアクティビティ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>ファンダイビング・リフレッシュダイビング</h1>
+                <p>三浦の海を楽しむダイビング体験をサポートします</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Section 1: About Fun Diving -->
+            <section class="section">
+                <h2 class="section-title">ファンダイビングについて</h2>
+                <p class="section-lead">
+                    三浦の海を楽しむためのファンダイビングコースをご用意しています。<br>
+                    初心者からブランクダイバーまで、安心して楽しめるダイビング体験をサポートします。
+                </p>
+            </section>
+
+            <!-- Section 2: Courses -->
+            <section class="section">
+                <h2 class="section-title">コースと料金（税込）</h2>
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <h3 class="course-title">ビーチダイビング</h3>
+                        <div class="course-price">13,200</div>
+                        <p class="course-desc">穏やかな三浦のビーチでの2ダイブ。初めての方にもおすすめ。</p>
+                    </div>
+                    <div class="course-card">
+                        <h3 class="course-title">ボートダイビング</h3>
+                        <div class="course-price">19,800</div>
+                        <p class="course-desc">ボートでしか行けないダイナミックなポイントへ。2ボートダイブ。</p>
+                    </div>
+                    <div class="course-card">
+                        <h3 class="course-title">リフレッシュダイビング</h3>
+                        <div class="course-price">14,800</div>
+                        <p class="course-desc">久しぶりの方にぴったり！器材の使い方や基本スキルを丁寧に復習してから1ダイブ。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Rental Equipment -->
+            <section class="section">
+                <h2 class="section-title">レンタル器材のご案内</h2>
+                <div class="rental-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>レンタル内容</th>
+                                <th>料金（税込）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>フルセット（ウェットスーツ付き）</td>
+                                <td>¥5,500</td>
+                            </tr>
+                            <tr>
+                                <td>フルセット（ドライスーツ付き）</td>
+                                <td>¥8,800</td>
+                            </tr>
+                            <tr>
+                                <td>ウェットスーツ</td>
+                                <td>¥2,200</td>
+                            </tr>
+                            <tr>
+                                <td>ドライスーツ</td>
+                                <td>¥5,500</td>
+                            </tr>
+                            <tr>
+                                <td>BCD</td>
+                                <td>¥2,750</td>
+                            </tr>
+                            <tr>
+                                <td>レギュレーター</td>
+                                <td>¥2,750</td>
+                            </tr>
+                            <tr>
+                                <td>ダイブコンピューター</td>
+                                <td>¥1,650</td>
+                            </tr>
+                            <tr>
+                                <td>水中ライト</td>
+                                <td>¥1,650</td>
+                            </tr>
+                            <tr>
+                                <td>マスク・スノーケル・フィン・ブーツ・グローブ・フード・フードベスト・コンパス・フロート</td>
+                                <td>各種¥550</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 4: FAQ -->
+            <section class="section">
+                <h2 class="section-title">よくあるご質問</h2>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        ブランクがあっても参加できますか？
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            はい、リフレッシュダイビングがおすすめです。器材の使い方や基本スキルを丁寧に復習してから海に入りますので、安心してご参加いただけます。
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        器材レンタルは当日でも大丈夫？
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            事前予約が確実ですが、当日も在庫があれば対応可能です。サイズやご希望の器材を確保するため、事前にご連絡いただくことをおすすめします。
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">お気軽にお問い合わせください</h2>
+            <a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener" class="line-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="24" height="24">
+                    <path fill="#fff" d="M18 2C9.2 2 2 8.4 2 16.2c0 4.5 2.2 8.4 5.8 11-.2.8-.9 3.2-1 3.6 0 0-.1.3.1.4s.4.1.4.1c.5 0 3.6-1.2 4.2-1.5 1.2.3 2.6.4 4 .4 8.8 0 16-6.4 16-14.2S26.8 2 18 2zM18 26c-1.3 0-2.5-.1-3.7-.4l-1.2-.3-.9.5c-.8.4-1.7.7-2.6.9.3-.9.5-1.7.6-2.3l.2-.8-.6-.6c-2.9-2.3-4.6-5.5-4.6-9C4.3 9.6 10.4 4 18 4s13.7 5.6 13.7 12.2S25.6 26 18 26z"/>
+                </svg>
+                LINEで問い合わせる
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <a href="../home-test-preview.html">トップページに戻る</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const isOpen = answer.classList.contains('open');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                item.classList.remove('open');
+            });
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current FAQ
+            if (!isOpen) {
+                answer.classList.add('open');
+                button.classList.add('active');
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

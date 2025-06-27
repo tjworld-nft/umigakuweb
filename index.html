@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三浦 海の学校 | トップページ</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-blue: #3498db;
+            --brand-blue-dark: #2980b9;
+            --text-dark: #2c3e50;
+            --text-gray: #666;
+            --bg-light: #f8f9fa;
+            --shadow-light: 0 4px 16px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: var(--bg-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--brand-blue);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn.secondary:hover {
+            background: white;
+            color: var(--brand-blue);
+        }
+
+        .main-content {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">ホーム</a></li>
+                    <li><a href="license-preview.html">ライセンス</a></li>
+                    <li><a href="fun-diving/index.html">ファンダイビング</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>三浦 海の学校</h1>
+            <p>神奈川県三浦市で本格的なダイビングライセンス講習とファンダイビングを提供</p>
+            <div class="cta-buttons">
+                <a href="license-preview.html" class="btn">ライセンス講習</a>
+                <a href="fun-diving/index.html" class="btn secondary">ファンダイビング</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h2 class="section-title">三浦の海でダイビングを始めませんか？</h2>
+            <p class="section-desc">
+                三浦海の学校では、PADI認定の本格的なダイビング講習から、
+                気軽に楽しめるファンダイビングまで幅広くご用意しています。<br>
+                初心者の方からブランクがある方まで、安心してお楽しみいただけます。
+            </p>
+        </div>
+    </main>
+</body>
+</html>

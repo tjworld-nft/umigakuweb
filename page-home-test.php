@@ -157,7 +157,7 @@ get_header(); ?>
                 </li>
             </ol>
             <div class="course-cta">
-                <a href="#" class="btn-primary course-details-btn">各種講習の詳細をみる</a>
+                <a href="/diving-license/" class="btn-primary course-details-btn">ライセンス講習の詳細をみる</a>
             </div>
         </div>
     </section>

@@ -1,0 +1,712 @@
+/* ★License 5 fixed - 5コース固定ライセンスページ専用CSS (mini) */
+
+/* =============================================
+   PAGE HEADER NAVIGATION
+   ============================================= */
+.page-header {
+    background: var(--bg-light);
+    padding: 1rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.page-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.back-link {
+    color: var(--brand-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    color: var(--brand-blue-dark);
+}
+
+.back-link::before {
+    content: "← ";
+    margin-right: 0.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: var(--brand-blue);
+    color: white;
+}
+
+/* =============================================
+   LICENSE 5 COURSES PAGE STYLES
+   ============================================= */
+
+/* CSS変数 */
+:root {
+    --brand-blue: #3498db;
+    --brand-blue-dark: #2980b9;
+    --cta-orange: #FF9350;
+    --cta-orange-dark: #FF6B00;
+    --text-dark: #2c3e50;
+    --text-gray: #666;
+    --bg-light: #f8f9fa;
+    --shadow-light: 0 10px 30px rgba(0,0,0,0.1);
+    --border-radius: 15px;
+    --border-radius-small: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* =============================================
+   LICENSE HERO SECTION
+   ============================================= */
+.license-hero {
+    position: relative;
+    min-height: calc(min(100vh, 720px));
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.license-hero .hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.license-hero .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.license-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.1) 60%, rgba(0,0,0,.55));
+    z-index: 2;
+}
+
+.license-hero .hero-inner {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    max-width: 700px;
+    padding: 0 20px;
+}
+
+.license-hero .hero-inner h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.license-hero .hero-lead {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* =============================================
+   COURSES SECTION
+   ============================================= */
+.courses-section {
+    padding: 100px 0;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.course-card {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(255, 255, 255, 0.9));
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+    position: relative;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.course-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.course-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.course-icon::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/></svg>') center/contain no-repeat;
+}
+
+.course-info {
+    flex: 1;
+}
+
+.course-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.course-duration {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.course-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin: 0;
+}
+
+.course-desc {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.btn-outline {
+    width: 100%;
+    background: transparent;
+    color: var(--brand-blue);
+    border: 2px solid var(--brand-blue);
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--brand-blue);
+    border-radius: 50%;
+    transition: all 0.6s ease;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.btn-outline:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+.btn-outline:hover {
+    color: white;
+    border-color: var(--brand-blue);
+}
+
+/* =============================================
+   COURSE DETAIL ACCORDION
+   ============================================= */
+.course-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin-top: 1rem;
+}
+
+.course-detail.open {
+    max-height: 800px; /* 高さを拡張 */
+    overflow-y: auto; /* 内容が多い場合はスクロール可能に */
+}
+
+.detail-content {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.detail-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-left p,
+.detail-right p {
+    margin: 0.5rem 0;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+.detail-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.detail-actions .btn-primary,
+.detail-actions .btn-secondary {
+    flex: 1;
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.detail-actions .btn-primary {
+    background: var(--brand-blue);
+    color: white;
+}
+
+.detail-actions .btn-primary:hover {
+    background: var(--brand-blue-dark);
+}
+
+.detail-actions .btn-secondary {
+    background: transparent;
+    color: var(--brand-blue);
+    border: 2px solid var(--brand-blue);
+}
+
+.detail-actions .btn-secondary:hover {
+    background: var(--brand-blue);
+    color: white;
+}
+
+/* LINE button styles */
+.line-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line-button svg {
+    flex-shrink: 0;
+}
+
+/* SP Contact Section */
+.sp-contact {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 147, 80, 0.2);
+}
+
+.sp-contact-text {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.btn-line-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.6rem 1rem;
+    background: #00c300;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 195, 0, 0.2);
+}
+
+.btn-line-contact:hover {
+    background: #00a800;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 195, 0, 0.3);
+    color: white;
+}
+
+.btn-line-contact svg {
+    flex-shrink: 0;
+}
+
+/* =============================================
+   SPECIALTY COURSES STYLES
+   ============================================= */
+.course-card.sp-card {
+    background: linear-gradient(135deg, rgba(255, 147, 80, 0.1), rgba(255, 255, 255, 0.9));
+    border: 1px solid rgba(255, 147, 80, 0.2);
+}
+
+.course-card.sp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 147, 80, 0.15);
+}
+
+.course-icon.sp {
+    background: linear-gradient(135deg, var(--cta-orange), var(--cta-orange-dark));
+    /* ダイビングタンク形状をSVGマスクで描画 */
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><rect x="7" y="2" width="10" height="20" rx="3"/><rect x="9" y="0" width="6" height="4" rx="1"/></svg>') center/80% no-repeat;
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><rect x="7" y="2" width="10" height="20" rx="3"/><rect x="9" y="0" width="6" height="4" rx="1"/></svg>') center/80% no-repeat;
+}
+
+.section-lead {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* =============================================
+   MSD SECTION STYLES
+   ============================================= */
+.msd-section {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.msd-banner {
+    background: #fff;
+    border-radius: 24px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.msd-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--brand-blue), var(--cta-orange));
+}
+
+.msd-banner h2 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.msd-banner p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.msd-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
+    color: #fff;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* =============================================
+   PROFESSIONAL COURSES STYLES
+   ============================================= */
+.course-card.pro-card {
+    background: linear-gradient(135deg, rgba(255, 149, 0, 0.1), rgba(255, 255, 255, 0.9));
+    border: 1px solid rgba(255, 149, 0, 0.2);
+}
+
+.course-card.pro-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 149, 0, 0.15);
+}
+
+.course-icon.pro {
+    background: linear-gradient(135deg, #ff9500, #ff7700);
+}
+
+.course-icon.pro::before {
+    content: '';
+    width: 28px;
+    height: 28px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12,3L1,9L12,15L21,9V16H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/></svg>') center/contain no-repeat;
+}
+
+.pro-feature {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0 3rem;
+}
+
+.pro-feature .feat {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.pro-feature .feat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff9500, #ff7700);
+}
+
+/* =============================================
+   LICENSE CTA SECTION
+   ============================================= */
+.license-cta {
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
+    color: white;
+    text-align: center;
+}
+
+.license-cta .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.license-cta .cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.license-cta .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.license-cta .cta-buttons .btn-cta {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.license-cta .cta-buttons .btn-cta:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.license-cta .cta-buttons .btn-cta-line {
+    background: rgba(0, 185, 0, 0.2);
+    border: 2px solid rgba(0, 185, 0, 0.3);
+}
+
+.license-cta .cta-buttons .btn-cta-line:hover {
+    background: rgba(0, 185, 0, 0.3);
+}
+
+.license-cta .cta-info {
+    list-style: none;
+    margin: 2rem 0;
+    padding: 0;
+    text-align: center;
+}
+
+.license-cta .cta-info li {
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+@media (max-width: 768px) {
+    /* Navigation responsive */
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .license-hero .hero-inner h1 {
+        font-size: 2.5rem;
+    }
+    
+    .license-hero .hero-lead {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .course-card {
+        padding: 1.5rem;
+    }
+    
+    .detail-columns {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .detail-actions {
+        flex-direction: column;
+    }
+    
+    .license-cta .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .license-cta .cta-buttons .btn-cta {
+        width: 250px;
+    }
+    
+    /* SP Contact responsive */
+    .sp-contact-text {
+        font-size: 0.8rem;
+    }
+    
+    .btn-line-contact {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+    }
+    
+    .course-detail.open {
+        max-height: 1000px; /* モバイルで高さを更に拡張 */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .license-hero .hero-inner h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .course-card {
+        margin: 0 15px;
+    }
+}
+
+/* =============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================= */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .course-card,
+    .btn-outline,
+    .course-detail {
+        transition: none;
+    }
+    
+    .btn-outline::before {
+        transition: none;
+    }
+}
+
+/* Focus styles */
+.btn-outline:focus,
+.btn-primary:focus,
+.btn-secondary:focus {
+    outline: 2px solid var(--brand-blue);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .license-cta {
+        background: none !important;
+        color: black !important;
+    }
+    
+    .course-card {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+    
+    .course-detail {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
