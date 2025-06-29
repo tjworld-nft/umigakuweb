@@ -1121,15 +1121,21 @@ header.site-header.is-scrolled {
 }
 
 /* Parallax cards */
-.parallax.wait {
+.hero .parallax.wait {
     opacity: .2;
     transform: translateY(40px);
 }
 
-.parallax.in-view {
+.hero .parallax.in-view {
     opacity: 1;
     transform: none;
     transition: .6s ease-out;
+}
+
+/* Ensure WHY section cards are fully opaque */
+#why-cards .why-card,
+.why-miura .why-card {
+    opacity: 1 !important;
 }
 
 /* 数字カウンター */

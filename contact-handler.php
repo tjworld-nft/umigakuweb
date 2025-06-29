@@ -1,130 +1,89 @@
 <?php
-/**
- * Contact Form Handler
- * 三浦 海の学校 お問い合わせフォーム処理
- */
+// エラー表示設定（デバッグ用）
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// WordPressの読み込み
-require_once dirname(__FILE__) . '/../../../wp-load.php';
+// 文字エンコーディング設定
+mb_language("japanese");
+mb_internal_encoding("UTF-8");
 
-// セキュリティチェック
-if (!wp_verify_nonce($_POST['_wpnonce'], 'umigaku_contact')) {
-    wp_die('不正なアクセスです。');
-}
-
-// POSTメソッドのみ許可
+// POSTメソッドチェック
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    wp_die('不正なアクセス方法です。');
+    header('Location: contact.html');
+    exit;
 }
 
-// エラーメッセージ配列
-$errors = array();
-
-// 入力値の取得とサニタイズ
-$name_kanji = sanitize_text_field($_POST['name_kanji'] ?? '');
-$name_romaji = sanitize_text_field($_POST['name_romaji'] ?? '');
-$email = sanitize_email($_POST['email'] ?? '');
-$preferred_date = sanitize_text_field($_POST['preferred_date'] ?? '');
-$message = sanitize_textarea_field($_POST['message'] ?? '');
+// 入力データ取得
+$name_kanji = isset($_POST['name_kanji']) ? trim($_POST['name_kanji']) : '';
+$name_romaji = isset($_POST['name_romaji']) ? trim($_POST['name_romaji']) : '';
+$email = isset($_POST['email']) ? trim($_POST['email']) : '';
+$preferred_date = isset($_POST['preferred_date']) ? trim($_POST['preferred_date']) : '';
+$message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
 // バリデーション
+$errors = array();
+
 if (empty($name_kanji)) {
     $errors[] = '氏名（漢字）は必須です。';
 }
-
 if (empty($name_romaji)) {
     $errors[] = '氏名（ローマ字）は必須です。';
 }
-
-if (empty($email)) {
-    $errors[] = 'メールアドレスは必須です。';
-} elseif (!is_email($email)) {
+if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors[] = '正しいメールアドレスを入力してください。';
 }
-
 if (empty($message)) {
     $errors[] = 'お問い合わせ内容は必須です。';
 }
 
-// エラーがある場合はセッションに保存してリダイレクト
+// エラーがある場合はリダイレクト
 if (!empty($errors)) {
-    session_start();
-    $_SESSION['contact_errors'] = $errors;
-    $_SESSION['contact_data'] = $_POST;
-    wp_safe_redirect(site_url('/contact/'));
+    header('Location: contact.html?error=1');
     exit;
 }
 
-// メール送信準備
+// データサニタイズ
+$name_kanji = htmlspecialchars($name_kanji, ENT_QUOTES, 'UTF-8');
+$name_romaji = htmlspecialchars($name_romaji, ENT_QUOTES, 'UTF-8');
+$email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+$preferred_date = htmlspecialchars($preferred_date, ENT_QUOTES, 'UTF-8');
+$message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+
+// メール設定
 $to = 'info@miura-diving.com';
-$subject = '【三浦 海の学校】お問い合わせフォームより';
+$subject = mb_encode_mimeheader('【三浦 海の学校】お問い合わせ', 'UTF-8');
 
-// メール本文作成
-$mail_body = "三浦 海の学校へお問い合わせをいただき、ありがとうございます。\n\n";
-$mail_body .= "■ お問い合わせ内容\n";
-$mail_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-$mail_body .= "氏名（漢字）: " . $name_kanji . "\n";
-$mail_body .= "氏名（ローマ字）: " . $name_romaji . "\n";
-$mail_body .= "メールアドレス: " . $email . "\n";
-if (!empty($preferred_date)) {
-    $mail_body .= "ご希望日: " . $preferred_date . "\n";
-}
-$mail_body .= "お問い合わせ内容:\n" . $message . "\n";
-$mail_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
-$mail_body .= "送信日時: " . current_time('Y年n月j日 H:i') . "\n";
-$mail_body .= "送信者IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
+// メール本文
+$body = "三浦 海の学校へお問い合わせをいただきました。\n\n";
+$body .= "氏名（漢字）: " . $name_kanji . "\n";
+$body .= "氏名（ローマ字）: " . $name_romaji . "\n";
+$body .= "メールアドレス: " . $email . "\n";
+$body .= "ご希望日: " . ($preferred_date ? $preferred_date : '指定なし') . "\n\n";
+$body .= "お問い合わせ内容:\n" . $message . "\n\n";
+$body .= "送信日時: " . date('Y年m月d日 H:i:s') . "\n";
+$body .= "送信者IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
 
-// 自動返信メール本文
-$reply_subject = '【三浦 海の学校】お問い合わせありがとうございます';
-$reply_body = $name_kanji . " 様\n\n";
-$reply_body .= "この度は三浦 海の学校へお問い合わせいただき、誠にありがとうございます。\n\n";
-$reply_body .= "以下の内容でお問い合わせを承りました。\n";
-$reply_body .= "2営業日以内にご返信いたしますので、今しばらくお待ちください。\n\n";
-$reply_body .= "■ お問い合わせ内容\n";
-$reply_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-$reply_body .= "氏名（漢字）: " . $name_kanji . "\n";
-$reply_body .= "氏名（ローマ字）: " . $name_romaji . "\n";
-$reply_body .= "メールアドレス: " . $email . "\n";
-if (!empty($preferred_date)) {
-    $reply_body .= "ご希望日: " . $preferred_date . "\n";
-}
-$reply_body .= "お問い合わせ内容:\n" . $message . "\n";
-$reply_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
-$reply_body .= "■ 三浦 海の学校\n";
-$reply_body .= "〒238-0224 神奈川県三浦市三崎町諸磯1621\n";
-$reply_body .= "TEL: 046-880-0835\n";
-$reply_body .= "Email: info@miura-diving.com\n";
-$reply_body .= "Website: https://miura-diving.com/\n\n";
-$reply_body .= "※このメールは自動送信です。直接返信いただいても対応できませんのでご了承ください。";
+// X-Server対応ヘッダー
+$headers = "From: info@miura-diving.com\r\n";
+$headers .= "Return-Path: info@miura-diving.com\r\n";
+$headers .= "Reply-To: " . $email . "\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$headers .= "Content-Transfer-Encoding: 8bit\r\n";
 
-// メールヘッダー設定
-$headers = array(
-    'Content-Type: text/plain; charset=UTF-8',
-    'From: 三浦 海の学校 <info@miura-diving.com>',
-    'Reply-To: info@miura-diving.com'
-);
+// メール送信
+$mail_sent = mb_send_mail($to, $subject, $body, $headers);
 
-$reply_headers = array(
-    'Content-Type: text/plain; charset=UTF-8',
-    'From: 三浦 海の学校 <info@miura-diving.com>',
-    'Reply-To: info@miura-diving.com'
-);
-
-// メール送信実行
-$mail_sent = wp_mail($to, $subject, $mail_body, $headers);
-$reply_sent = wp_mail($email, $reply_subject, $reply_body, $reply_headers);
-
-// 送信結果の確認
+// 結果処理
 if ($mail_sent) {
-    // 成功時はサンクスページにリダイレクト
-    wp_safe_redirect(site_url('/contact-thanks/'));
+    header('Location: contact-thanks.html');
     exit;
 } else {
-    // 失敗時はエラーメッセージをセッションに保存
-    session_start();
-    $_SESSION['contact_errors'] = array('メールの送信に失敗しました。しばらく時間をおいて再度お試しください。');
-    $_SESSION['contact_data'] = $_POST;
-    wp_safe_redirect(site_url('/contact/'));
+    // デバッグ情報
+    echo "メール送信に失敗しました。<br>";
+    echo "送信先: " . $to . "<br>";
+    echo "件名: " . $subject . "<br>";
+    echo "本文の長さ: " . strlen($body) . " bytes<br>";
+    echo "<br><a href='contact.html'>戻る</a>";
     exit;
 }
 ?>

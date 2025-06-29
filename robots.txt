@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# 重要なページの優先クロール指定
+Allow: /index.html
+Allow: /diving-license/
+Allow: /fun-diving/
+Allow: /marine-activity/
+Allow: /contact.html
+
+# 管理・技術ファイルの除外
+Disallow: /assets/
+Disallow: /*.css$
+Disallow: /*.js$
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+
+# サイトマップの場所
+Sitemap: https://miura-diving.com/sitemap.xml
+
+# クロール頻度の調整（推奨）
+Crawl-delay: 1
