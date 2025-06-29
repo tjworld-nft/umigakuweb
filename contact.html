@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | 三浦 海の学校</title>
+    
+    <!-- SEO & OGP -->
+    <meta name="description" content="三浦 海の学校へのお問い合わせフォーム。ダイビングライセンス講習、体験ダイビング、ファンダイビングについてお気軽にご相談ください。">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="三浦 海の学校">
+    <meta property="og:title" content="お問い合わせ | 三浦 海の学校">
+    <meta property="og:description" content="三浦 海の学校へのお問い合わせフォーム。ダイビングライセンス講習、体験ダイビング、ファンダイビングについてお気軽にご相談ください。">
+    <meta property="og:url" content="https://miura-diving.com/contact.html">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-blue: #3498db;
+            --brand-blue-dark: #2980b9;
+            --text-dark: #2c3e50;
+            --text-gray: #666;
+            --bg-light: #f8f9fa;
+            --shadow-light: 0 4px 16px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .back-link {
+            color: var(--brand-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--brand-blue-dark);
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        /* Contact Form Styles */
+        .contact {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .contact__title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact__lead {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .contact__errors {
+            background: #fee;
+            border: 1px solid #f88;
+            color: #c33;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .contact__errors.show {
+            display: block;
+        }
+
+        .contact__errors ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .contact__form {
+            background: #fff;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group--required .form-label::after {
+            content: ' *';
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--brand-blue);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            background: var(--brand-blue);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            margin: 2rem auto 0;
+            min-width: 200px;
+        }
+
+        .form-submit:hover {
+            background: var(--brand-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .form-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .form-note {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .contact-info {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contact-info__title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-info__item {
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        .contact-info__item strong {
+            color: var(--text-dark);
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--brand-blue);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .contact {
+                margin: 1rem auto;
+                padding: 0 0.5rem;
+            }
+            
+            .contact__title {
+                font-size: 1.6rem;
+            }
+            
+            .contact__form {
+                padding: 1.5rem;
+            }
+            
+            .form-submit {
+                width: 100%;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="header-nav">
+                <a href="home-test-preview.html" class="back-link">ホームへ戻る</a>
+                <ul class="nav-links">
+                    <li><a href="home-test-preview.html">ホーム</a></li>
+                    <li><a href="license-preview.html">ライセンス</a></li>
+                    <li><a href="fun-diving/index.html">ファンダイビング</a></li>
+                    <li><a href="marine-activity/index.html">マリンアクティビティ</a></li>
+                    <li><a href="contact.html" class="active">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contact" role="main">
+        <h1 class="contact__title">お問い合わせ</h1>
+        
+        <p class="contact__lead">
+            三浦 海の学校へのお問い合わせは、下記フォームよりお送りください。<br>
+            2営業日以内にご返信いたします。お急ぎの場合はお電話でもお受けしております。
+        </p>
+
+        <div class="contact__errors" id="errorMessages" role="alert">
+            <ul id="errorList"></ul>
+        </div>
+
+        <form class="contact__form" method="POST" action="contact-handler-standalone.php" novalidate id="contactForm">
+            <input type="hidden" name="csrf_token" id="csrfToken">
+            
+            <div class="form-group form-group--required">
+                <label class="form-label" for="name_kanji">氏名（漢字）</label>
+                <input 
+                    type="text" 
+                    id="name_kanji" 
+                    name="name_kanji" 
+                    class="form-input" 
+                    required
+                    maxlength="50"
+                    aria-describedby="name_kanji_help"
+                >
+            </div>
+
+            <div class="form-group form-group--required">
+                <label class="form-label" for="name_romaji">氏名（ローマ字）</label>
+                <input 
+                    type="text" 
+                    id="name_romaji" 
+                    name="name_romaji" 
+                    class="form-input" 
+                    required
+                    maxlength="100"
+                    placeholder="Taro Yamada"
+                    aria-describedby="name_romaji_help"
+                >
+            </div>
+
+            <div class="form-group form-group--required">
+                <label class="form-label" for="email">メールアドレス</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="form-input" 
+                    required
+                    placeholder="example@example.com"
+                    aria-describedby="email_help"
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="preferred_date">ご希望日</label>
+                <input 
+                    type="date" 
+                    id="preferred_date" 
+                    name="preferred_date" 
+                    class="form-input" 
+                    aria-describedby="preferred_date_help"
+                >
+            </div>
+
+            <div class="form-group form-group--required">
+                <label class="form-label" for="message">お問い合わせ内容</label>
+                <textarea 
+                    id="message" 
+                    name="message" 
+                    class="form-textarea" 
+                    required
+                    maxlength="2000"
+                    placeholder="お問い合わせ内容をご記入ください。ダイビングコースや体験ダイビングについてなど、お気軽にご相談ください。"
+                    aria-describedby="message_help"
+                ></textarea>
+            </div>
+
+            <button type="submit" class="form-submit" id="submitBtn">
+                送信する
+            </button>
+
+            <p class="form-note">
+                <small>* 印は必須項目です。送信いただいた個人情報は、お問い合わせ対応以外の目的では使用いたしません。</small>
+            </p>
+        </form>
+
+        <div class="contact-info">
+            <h2 class="contact-info__title">その他のお問い合わせ方法</h2>
+            <ul class="contact-info__list">
+                <li class="contact-info__item"><strong>電話:</strong> 046-880-0835</li>
+                <li class="contact-info__item"><strong>営業時間:</strong> 9:00〜16:00（不定休）</li>
+                <li class="contact-info__item"><strong>所在地:</strong> 〒238-0224 神奈川県三浦市三崎町諸磯1621</li>
+                <li class="contact-info__item">
+                    <a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener" style="color: #00c300; text-decoration: none; font-weight: 600;">
+                        LINE でのお問い合わせも受け付けております
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 三浦 海の学校</p>
+        </div>
+    </footer>
+
+    <script>
+        // CSRF トークン生成
+        function generateCSRFToken() {
+            return Math.random().toString(36).substr(2) + Date.now().toString(36);
+        }
+
+        // ページ読み込み時の処理
+        document.addEventListener('DOMContentLoaded', function() {
+            // CSRF トークン設定
+            document.getElementById('csrfToken').value = generateCSRFToken();
+            
+            // エラーメッセージ表示（PHPからのセッションデータがある場合）
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('error')) {
+                showErrors(['送信に失敗しました。もう一度お試しください。']);
+            }
+
+            // フォーム送信処理
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+
+            form.addEventListener('submit', function(e) {
+                const errors = validateForm();
+                
+                if (errors.length > 0) {
+                    e.preventDefault();
+                    showErrors(errors);
+                    return false;
+                }
+
+                // 送信ボタンを無効化
+                submitBtn.disabled = true;
+                submitBtn.textContent = '送信中...';
+            });
+
+            // リアルタイムバリデーション
+            const inputs = form.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    hideErrors();
+                });
+            });
+        });
+
+        // フォームバリデーション
+        function validateForm() {
+            const errors = [];
+            
+            const nameKanji = document.getElementById('name_kanji').value.trim();
+            const nameRomaji = document.getElementById('name_romaji').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!nameKanji) {
+                errors.push('氏名（漢字）は必須です。');
+            } else if (nameKanji.length > 50) {
+                errors.push('氏名（漢字）は50文字以内で入力してください。');
+            }
+
+            if (!nameRomaji) {
+                errors.push('氏名（ローマ字）は必須です。');
+            } else if (nameRomaji.length > 100) {
+                errors.push('氏名（ローマ字）は100文字以内で入力してください。');
+            }
+
+            if (!email) {
+                errors.push('メールアドレスは必須です。');
+            } else if (!isValidEmail(email)) {
+                errors.push('正しいメールアドレスを入力してください。');
+            }
+
+            if (!message) {
+                errors.push('お問い合わせ内容は必須です。');
+            } else if (message.length > 2000) {
+                errors.push('お問い合わせ内容は2000文字以内で入力してください。');
+            }
+
+            return errors;
+        }
+
+        // メールアドレス形式チェック
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // エラーメッセージ表示
+        function showErrors(errors) {
+            const errorContainer = document.getElementById('errorMessages');
+            const errorList = document.getElementById('errorList');
+            
+            errorList.innerHTML = '';
+            errors.forEach(error => {
+                const li = document.createElement('li');
+                li.textContent = error;
+                errorList.appendChild(li);
+            });
+            
+            errorContainer.classList.add('show');
+            errorContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // エラーメッセージ非表示
+        function hideErrors() {
+            const errorContainer = document.getElementById('errorMessages');
+            errorContainer.classList.remove('show');
+        }
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

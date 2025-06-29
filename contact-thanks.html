@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせありがとうございます | 三浦 海の学校</title>
+    
+    <!-- SEO & OGP -->
+    <meta name="description" content="三浦 海の学校へのお問い合わせありがとうございます。2営業日以内にご返信いたします。">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="三浦 海の学校">
+    <meta property="og:title" content="お問い合わせありがとうございます | 三浦 海の学校">
+    <meta property="og:description" content="三浦 海の学校へのお問い合わせありがとうございます。2営業日以内にご返信いたします。">
+    <meta property="og:url" content="https://miura-diving.com/contact-thanks.html">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-blue: #3498db;
+            --brand-blue-dark: #2980b9;
+            --text-dark: #2c3e50;
+            --text-gray: #666;
+            --bg-light: #f8f9fa;
+            --shadow-light: 0 4px 16px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .back-link {
+            color: var(--brand-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--brand-blue-dark);
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        /* Thanks Styles */
+        .thanks {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .thanks__icon {
+            font-size: 4rem;
+            color: #27ae60;
+            margin-bottom: 1.5rem;
+            animation: checkAnimation 0.6s ease-in-out;
+        }
+
+        @keyframes checkAnimation {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .thanks__title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .thanks__message {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .thanks__info {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--brand-blue);
+        }
+
+        .thanks__info h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .thanks__info p {
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .thanks__info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .thanks__buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            min-width: 180px;
+        }
+
+        .btn--primary {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        .btn--primary:hover {
+            background: var(--brand-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+            color: white;
+        }
+
+        .btn--secondary {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn--secondary:hover {
+            background: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
+            color: white;
+        }
+
+        .contact-urgency {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .contact-urgency h4 {
+            margin-bottom: 0.5rem;
+            color: #856404;
+        }
+
+        .contact-urgency a {
+            color: #856404;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-urgency a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--brand-blue);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .thanks {
+                margin: 2rem auto;
+                padding: 0 0.5rem;
+            }
+            
+            .thanks__title {
+                font-size: 1.6rem;
+            }
+            
+            .thanks__icon {
+                font-size: 3rem;
+            }
+            
+            .thanks__buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .thanks__info {
+                padding: 1.5rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="header-nav">
+                <a href="home-test-preview.html" class="back-link">ホームへ戻る</a>
+                <ul class="nav-links">
+                    <li><a href="home-test-preview.html">ホーム</a></li>
+                    <li><a href="license-preview.html">ライセンス</a></li>
+                    <li><a href="fun-diving/index.html">ファンダイビング</a></li>
+                    <li><a href="marine-activity/index.html">マリンアクティビティ</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="thanks" role="main">
+        <div class="thanks__icon" aria-hidden="true">✓</div>
+        
+        <h1 class="thanks__title">お問い合わせありがとうございます</h1>
+        
+        <p class="thanks__message">
+            この度は三浦 海の学校へお問い合わせいただき、誠にありがとうございます。<br>
+            お送りいただいた内容を確認の上、2営業日以内にご返信いたします。
+        </p>
+
+        <div class="thanks__info">
+            <h3>今後の流れ</h3>
+            <p><strong>1.</strong> 自動返信メールをお送りしました（迷惑メールフォルダもご確認ください）</p>
+            <p><strong>2.</strong> スタッフが内容を確認いたします</p>
+            <p><strong>3.</strong> 2営業日以内に詳細なご回答をお送りします</p>
+        </div>
+
+        <div class="thanks__buttons">
+            <a href="home-test-preview.html" class="btn btn--primary">
+                トップページに戻る
+            </a>
+            <a href="license-preview.html" class="btn btn--secondary">
+                ライセンス講習を見る
+            </a>
+        </div>
+
+        <div class="contact-urgency">
+            <h4>お急ぎの場合</h4>
+            <p>
+                緊急のお問い合わせや当日のご予約については、<br>
+                お電話 <a href="tel:046-880-0835">046-880-0835</a> または 
+                <a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener">LINE</a> でお気軽にご連絡ください。
+            </p>
+            <p><small>営業時間: 9:00〜16:00（不定休）</small></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 三浦 海の学校</p>
+        </div>
+    </footer>
+
+    <script>
+        // ページ読み込み時にスクロール位置をトップに
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+
+        // 戻るボタンで直接アクセスされた場合の処理
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+
+        // 感謝のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            // チェックマークアニメーション後に要素を順次表示
+            setTimeout(function() {
+                const elements = document.querySelectorAll('.thanks__title, .thanks__message, .thanks__info, .thanks__buttons');
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(20px)';
+                        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        
+                        setTimeout(() => {
+                            el.style.opacity = '1';
+                            el.style.transform = 'translateY(0)';
+                        }, 100);
+                    }, index * 200);
+                });
+            }, 600);
+        });
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
