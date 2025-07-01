@@ -1,18 +1,66 @@
-SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
-SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode
-# BEGIN WordPress
-# "BEGIN WordPress" から "END WordPress" までのディレクティブ (行) は
-# 動的に生成され、WordPress フィルターによってのみ修正が可能です。
-# これらのマーカー間にあるディレクティブへのいかなる変更も上書きされてしまいます。
-<IfModule mod_rewrite.c>
+# Directory index configuration
+DirectoryIndex index.html
+
+# RewriteEngine On
 RewriteEngine On
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
+
+# Make /blog unaffected by WP rules (if any)
+RewriteRule ^blog($|/) - [L]
+
+# Canonical redirects to new clean URLs - using RewriteRule to avoid conflicts
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+license-preview\.html[\s?] [NC]
+RewriteRule ^license-preview\.html$ /license/ [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+fun-diving/index\.html[\s?] [NC]
+RewriteRule ^fun-diving/index\.html$ /fun-diving/ [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+marine-activity/index\.html[\s?] [NC]
+RewriteRule ^marine-activity/index\.html$ /marine-activity/ [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+contact\.html[\s?] [NC]
+RewriteRule ^contact\.html$ /contact [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+privacy\.html[\s?] [NC]
+RewriteRule ^privacy\.html$ /privacy [R=301,L]
+
+# Internal rewrites for clean URLs (no redirect, just serve the file)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
-</IfModule>
+RewriteRule ^contact/?$ contact.html [L]
 
-# END WordPress
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^privacy/?$ privacy.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^license/?$ license/index.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^fun-diving/?$ fun-diving/index.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^marine-activity/?$ marine-activity/index.html [L]
+
+SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
+SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode
 SetEnvIf Request_URI ".*" AllowRestApi
+
+# Disable all rewrite rules to isolate the source of the redirect loop
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteRule ^wp/ - [L]
+#   RewriteRule ^wp-login\.php$ /wp/wp-login.php [R=301,L]
+#   RewriteRule ^wp-admin/?$ /wp/wp-admin/ [R=301,L]
+#   RewriteCond %{REQUEST_FILENAME} !-f
+#   RewriteCond %{REQUEST_FILENAME} !-d
+#   RewriteCond %{REQUEST_URI} !^/wp/
+#   RewriteRule . /wp/index.php [L]
+# </IfModule>
+
+# Custom URL redirects

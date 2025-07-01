@@ -26,13 +26,14 @@
     <header class="page-header">
         <div class="container">
             <nav class="page-nav">
-                <a href="index.html" class="back-link">ホームへ戻る</a>
+                <a href="/" class="back-link">ホームへ戻る</a>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">ホーム</a></li>
-                    <li><a href="license-preview.html">ライセンス</a></li>
-                    <li><a href="fun-diving/index.html">ファンダイビング</a></li>
-                    <li><a href="marine-activity/index.html">マリンアクティビティ</a></li>
-                    <li><a href="contact.html">お問い合わせ</a></li>
+                    <li><a href="/" class="active">ホーム</a></li>
+                    <li><a href="/license/">ライセンス</a></li>
+                    <li><a href="/fun-diving/">ファンダイビング</a></li>
+                    <li><a href="/marine-activity/">マリンアクティビティ</a></li>
+                    <li><a href="/contact">お問い合わせ</a></li>
+                    <li><a href="/blog/">ブログ</a></li>
                 </ul>
             </nav>
         </div>
@@ -188,7 +189,7 @@
                     </li>
                 </ol>
                 <div class="course-cta">
-                    <a href="license-preview.html" class="btn-primary course-details-btn">ライセンス講習の詳細をみる</a>
+                    <a href="/license/" class="btn-primary course-details-btn">ライセンス講習の詳細をみる</a>
                 </div>
             </div>
         </section>
@@ -343,40 +344,16 @@
         <section class="latest-blog" aria-labelledby="blog-title">
             <div class="container">
                 <h2 id="blog-title" class="section-title">最新ブログ</h2>
-                <div class="blog-grid" role="list">
-                    <!-- Placeholder articles -->
+                <div id="latest-blog" class="blog-grid" role="list">
+                    <!-- 動的に生成されるブログカード -->
                     <article class="blog-card" role="listitem">
-                        <figure class="ph blog-thumb" aria-label="ブログ記事のダミーサムネイル"></figure>
-                        <div class="blog-content">
-                            <h3>一般の方向けダイビング情報 1</h3>
-                            <p class="blog-excerpt">初心者でも安心してダイビングを始められる情報をお届けします。基本的な器材の使い方から安全対策まで...</p>
-                            <div class="blog-meta">
-                                <time datetime="2024-01-01">2024.01.01</time>
+                        <a href="/blog/" class="blog-link">
+                            <div class="blog-content">
+                                <h3 class="blog-title">ブログを見る</h3>
+                                <p class="blog-excerpt">最新の海の情報やダイビング体験談をお届けします。</p>
+                                <time class="blog-date">2025-07-01</time>
                             </div>
-                            <a href="#cta" class="blog-link">続きを読む</a>
-                        </div>
-                    </article>
-                    <article class="blog-card" role="listitem">
-                        <figure class="ph blog-thumb" aria-label="ブログ記事のダミーサムネイル"></figure>
-                        <div class="blog-content">
-                            <h3>一般の方向けダイビング情報 2</h3>
-                            <p class="blog-excerpt">初心者でも安心してダイビングを始められる情報をお届けします。基本的な器材の使い方から安全対策まで...</p>
-                            <div class="blog-meta">
-                                <time datetime="2024-01-02">2024.01.02</time>
-                            </div>
-                            <a href="#cta" class="blog-link">続きを読む</a>
-                        </div>
-                    </article>
-                    <article class="blog-card" role="listitem">
-                        <figure class="ph blog-thumb" aria-label="ブログ記事のダミーサムネイル"></figure>
-                        <div class="blog-content">
-                            <h3>一般の方向けダイビング情報 3</h3>
-                            <p class="blog-excerpt">初心者でも安心してダイビングを始められる情報をお届けします。基本的な器材の使い方から安全対策まで...</p>
-                            <div class="blog-meta">
-                                <time datetime="2024-01-03">2024.01.03</time>
-                            </div>
-                            <a href="#cta" class="blog-link">続きを読む</a>
-                        </div>
+                        </a>
                     </article>
                 </div>
             </div>
@@ -490,6 +467,16 @@
       </div>
     </section>
 
+    <!-- Footer -->
+    <footer style="background: #2c3e50; color: white; padding: 2rem 0; text-align: center;">
+        <div class="container">
+            <p style="margin-bottom: 0.5rem;">
+                <a href="/privacy" style="color: white; text-decoration: none;">プライバシーポリシー</a> | 
+                © 2025 三浦 海の学校
+            </p>
+        </div>
+    </footer>
+
     <!-- SNS Scripts -->
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v18.0&appId=YOUR_APP_ID" nonce="YOUR_NONCE"></script>
@@ -544,5 +531,46 @@
     </style>
 
     <script src="assets/js/home-test.js"></script>
+    
+    <!-- Blog Loading Script -->
+    <script>
+    async function loadLatestBlogs() {
+      try {
+        const response = await fetch('/blog/api/latest.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const blogs = await response.json();
+        
+        const blogContainer = document.getElementById('latest-blog');
+        if (!blogContainer) return;
+        
+        if (blogs.length === 0) {
+          // フォールバック表示を維持
+          return;
+        }
+        
+        blogContainer.innerHTML = blogs.map(blog => `
+          <article class="blog-card" role="listitem">
+            <a href="/blog/${blog.slug}/" class="blog-link">
+              ${blog.image ? `<img src="${blog.image}" alt="${blog.title}" class="blog-image">` : ''}
+              <div class="blog-content">
+                <h3 class="blog-title">${blog.title}</h3>
+                <p class="blog-excerpt">${blog.excerpt}</p>
+                <time class="blog-date">${blog.date}</time>
+              </div>
+            </a>
+          </article>
+        `).join('');
+        
+      } catch (error) {
+        console.error('ブログの読み込みに失敗しました:', error);
+        // エラー時はフォールバック表示を維持
+      }
+    }
+    
+    // DOM読み込み完了後に実行
+    document.addEventListener('DOMContentLoaded', loadLatestBlogs);
+    </script>
 </body>
 </html>

@@ -801,13 +801,34 @@ body {
 }
 
 .blog-link {
-    color: #3498db;
+    color: inherit;
     text-decoration: none;
-    font-weight: 600;
+    display: block;
+    height: 100%;
 }
 
 .blog-link:hover {
-    text-decoration: underline;
+    color: inherit;
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.blog-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.blog-date {
+    color: #999;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    display: block;
 }
 
 /* =============================================
