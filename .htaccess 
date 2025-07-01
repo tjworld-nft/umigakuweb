@@ -1,0 +1,15 @@
+SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
+SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode
+SetEnvIf Request_URI ".*" AllowRestApi
+
+# Disable all rewrite rules to isolate the source of the redirect loop
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteRule ^wp/ - [L]
+#   RewriteRule ^wp-login\.php$ /wp/wp-login.php [R=301,L]
+#   RewriteRule ^wp-admin/?$ /wp/wp-admin/ [R=301,L]
+#   RewriteCond %{REQUEST_FILENAME} !-f
+#   RewriteCond %{REQUEST_FILENAME} !-d
+#   RewriteCond %{REQUEST_URI} !^/wp/
+#   RewriteRule . /wp/index.php [L]
+# </IfModule>
