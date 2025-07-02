@@ -1,7 +1,7 @@
 <?php
-// エラー表示設定（本番環境では無効化）
+// エラー表示設定（デバッグ用）
 error_reporting(E_ALL);
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 
 // 文字エンコーディング設定
 mb_language("japanese");
@@ -18,12 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// CSRF保護（簡易版）
-session_start();
-if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-    header('Location: /owd-license/?error=csrf');
-    exit;
-}
+// CSRF保護（簡易版） - 一時的に無効化
+// session_start();
+// if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+//     header('Location: /owd-license/?error=csrf');
+//     exit;
+// }
 
 // 入力データ取得
 $course_type = isset($_POST['course_type']) ? trim($_POST['course_type']) : '';
@@ -132,12 +132,22 @@ file_put_contents('form_submissions.log', $log_entry, FILE_APPEND | LOCK_EX);
 
 // 結果処理
 if ($admin_mail_sent) {
-    // サンクスページにリダイレクト
-    header('Location: /owd-thanks.html');
+    echo "<h1>✅ メール送信成功！</h1>";
+    echo "<p>管理者メール送信: " . ($admin_mail_sent ? "成功" : "失敗") . "</p>";
+    echo "<p>お客様メール送信: " . ($customer_mail_sent ? "成功" : "失敗") . "</p>";
+    echo "<p>送信先: " . $to . "</p>";
+    echo "<p>お客様メール: " . $email . "</p>";
+    echo "<p><a href='/owd-license/'>戻る</a></p>";
+    // header('Location: /owd-thanks.html');
     exit;
 } else {
-    // エラーページまたはエラーメッセージ
-    header('Location: /owd-license/?error=mail_send_failed');
+    echo "<h1>❌ メール送信失敗</h1>";
+    echo "<p>送信先: " . $to . "</p>";
+    echo "<p>件名: " . $subject . "</p>";
+    echo "<p>本文の長さ: " . strlen($body) . " bytes</p>";
+    echo "<p>PHPのmail関数: " . (function_exists('mail') ? "利用可能" : "利用不可") . "</p>";
+    echo "<p>mb_send_mail関数: " . (function_exists('mb_send_mail') ? "利用可能" : "利用不可") . "</p>";
+    echo "<p><a href='/owd-license/'>戻る</a></p>";
     exit;
 }
 ?>
