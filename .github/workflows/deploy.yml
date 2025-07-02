@@ -48,9 +48,3 @@ jobs:
           **/.github/**
           **/wp-config.php
           **/.env*
-          
-        # デバッグモード（最初のテスト時のみtrue）
-        log-level: verbose
-        
-        # タイムアウト設定（秒）
-        timeout: 600000
