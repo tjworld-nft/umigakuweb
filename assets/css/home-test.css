@@ -1542,3 +1542,127 @@ header.site-header.is-scrolled {
     font-weight: 700;
     color: #333;
 }
+
+/* =============================================
+   LATEST BLOG SECTION
+   ============================================= */
+.latest-blog {
+    padding: 100px 0;
+    background: linear-gradient(135deg, rgba(0,50,120,0.1), rgba(0,80,160,0.15));
+}
+
+.latest-blog .section-title {
+    color: white;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(173,216,230,0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+    border-color: rgba(173,216,230,0.5);
+}
+
+.blog-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-image img {
+    transform: scale(1.05);
+}
+
+.blog-content {
+    padding: 1.5rem;
+}
+
+.blog-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.blog-excerpt {
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.blog-date {
+    color: rgba(173,216,230,0.8);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.blog-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .latest-blog {
+        padding: 80px 0;
+    }
+    
+    .latest-blog .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .blog-content {
+        padding: 1.25rem;
+    }
+    
+    .blog-title {
+        font-size: 1.2rem;
+    }
+}

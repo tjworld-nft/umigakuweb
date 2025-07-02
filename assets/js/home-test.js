@@ -575,3 +575,69 @@ document.querySelectorAll('[data-countup]').forEach(el => {
 });
 
 console.log('Hero+Wow effects initialized');
+
+// =========================================
+// ブログ自動更新機能
+// =========================================
+
+async function loadLatestBlog() {
+    const blogContainer = document.getElementById('latest-blog');
+    
+    try {
+        const response = await fetch('/api/latest-blog.php');
+        const data = await response.json();
+        
+        if (data.success && data.posts && data.posts.length > 0) {
+            // ブログ記事HTMLを生成
+            const blogHTML = data.posts.map(post => `
+                <article class="blog-card" role="listitem">
+                    <a href="${post.url}" class="blog-link">
+                        ${post.image ? `<div class="blog-image">
+                            <img src="${post.image}" alt="${post.title}" loading="lazy">
+                        </div>` : ''}
+                        <div class="blog-content">
+                            <h3 class="blog-title">${post.title}</h3>
+                            <p class="blog-excerpt">${post.excerpt}</p>
+                            <time class="blog-date">${new Date(post.date).toLocaleDateString('ja-JP')}</time>
+                        </div>
+                    </a>
+                </article>
+            `).join('');
+            
+            blogContainer.innerHTML = blogHTML;
+        } else {
+            // フォールバック表示
+            blogContainer.innerHTML = `
+                <article class="blog-card" role="listitem">
+                    <a href="/blog/" class="blog-link">
+                        <div class="blog-content">
+                            <h3 class="blog-title">ブログを見る</h3>
+                            <p class="blog-excerpt">最新の海の情報やダイビング体験談をお届けします。</p>
+                            <time class="blog-date">${new Date().toLocaleDateString('ja-JP')}</time>
+                        </div>
+                    </a>
+                </article>
+            `;
+        }
+    } catch (error) {
+        console.warn('ブログの読み込みに失敗しました:', error);
+        // エラー時のフォールバック表示
+        blogContainer.innerHTML = `
+            <article class="blog-card" role="listitem">
+                <a href="/blog/" class="blog-link">
+                    <div class="blog-content">
+                        <h3 class="blog-title">ブログを見る</h3>
+                        <p class="blog-excerpt">最新の海の情報やダイビング体験談をお届けします。</p>
+                        <time class="blog-date">${new Date().toLocaleDateString('ja-JP')}</time>
+                    </div>
+                </a>
+            </article>
+        `;
+    }
+}
+
+// ページ読み込み時にブログを読み込み
+document.addEventListener('DOMContentLoaded', loadLatestBlog);
+
+// 5分ごとに自動更新（オプション）
+setInterval(loadLatestBlog, 5 * 60 * 1000);
