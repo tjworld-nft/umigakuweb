@@ -52,7 +52,7 @@ RewriteRule ^marine-activity/?$ marine-activity/index.html [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^owd-license/?$ owd-lp.html [L]
+RewriteRule ^owd-license/?$ owd-lp.php [L]
 
 SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
 SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode

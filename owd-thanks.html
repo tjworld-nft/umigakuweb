@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お申し込み完了 - PADIダイビングライセンス講習 | 三浦海の学校</title>
+    <meta name="description" content="OWDライセンス講習のお申し込みが完了しました。担当者より24時間以内にご連絡いたします。">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .thanks-card {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thanks-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
+        }
+
+        .thanks-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .thanks-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0c2d48;
+            margin-bottom: 20px;
+        }
+
+        .thanks-message {
+            font-size: 1.1rem;
+            color: #495057;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .thanks-details {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .thanks-details h3 {
+            color: #0c2d48;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .thanks-details ul {
+            list-style: none;
+            color: #495057;
+        }
+
+        .thanks-details li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .thanks-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #45b7d1;
+            border: 2px solid #45b7d1;
+        }
+
+        .btn-secondary:hover {
+            background: #45b7d1;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .thanks-card {
+                padding: 40px 20px;
+            }
+
+            .thanks-title {
+                font-size: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="thanks-card floating">
+            <div class="thanks-icon">🌊✨</div>
+            
+            <h1 class="thanks-title">お申し込みありがとうございます！</h1>
+            
+            <p class="thanks-message">
+                PADIダイビングライセンス講習のお申し込みが正常に完了しました。<br>
+                担当者より<strong>24時間以内</strong>にご連絡いたします。
+            </p>
+            
+            <div class="thanks-details">
+                <h3>📋 次のステップ</h3>
+                <ul>
+                    <li>お申し込み内容の確認メールをお送りしました</li>
+                    <li>担当者から詳細なご案内をご連絡します</li>
+                    <li>講習日程の調整を行います</li>
+                    <li>必要な書類や持ち物をご案内します</li>
+                </ul>
+            </div>
+            
+            <div class="contact-info">
+                <h3>📞 お急ぎの場合は直接お電話ください</h3>
+                <p><strong>電話:</strong> 046-888-0099</p>
+                <p><strong>営業時間:</strong> 8:00-18:00（年中無休）</p>
+                <p><strong>メール:</strong> info@miura-diving.com</p>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="/owd-license/" class="btn btn-secondary">コース詳細に戻る</a>
+                <a href="/" class="btn btn-primary">トップページへ</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ページ読み込み時のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.thanks-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

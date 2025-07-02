@@ -3158,6 +3158,47 @@
                     button.style.animation = '';
                 });
             });
+
+            // Form validation and submission handling
+            const form = document.querySelector('form[action="/owd-form-handler.php"]');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    // Basic validation
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const plan = document.getElementById('plan').value;
+
+                    if (!name || !email || !phone || !plan) {
+                        e.preventDefault();
+                        alert('必須項目をすべて入力してください。');
+                        return;
+                    }
+
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        e.preventDefault();
+                        alert('正しいメールアドレスを入力してください。');
+                        return;
+                    }
+
+                    // Show loading state
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    const originalText = submitButton.textContent;
+                    submitButton.textContent = '送信中...';
+                    submitButton.disabled = true;
+                    submitButton.style.opacity = '0.7';
+
+                    // If validation passes, form will submit normally
+                    // Restore button state after 5 seconds (fallback)
+                    setTimeout(() => {
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                        submitButton.style.opacity = '1';
+                    }, 5000);
+                });
+            }
         });
     </script>
 </body>
