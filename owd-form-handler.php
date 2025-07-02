@@ -94,7 +94,7 @@ $body .= "送信者IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
 $body .= "User Agent: " . $_SERVER['HTTP_USER_AGENT'] . "\n";
 
 // メールヘッダー
-$headers = "From: info@miura-diving.com\r\n";
+$headers = "From: " . mb_encode_mimeheader("三浦海の学校", "UTF-8") . " <info@miura-diving.com>\r\n";
 $headers .= "Return-Path: info@miura-diving.com\r\n";
 $headers .= "Reply-To: " . $email . "\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
@@ -119,8 +119,10 @@ $customer_body .= "Email: info@miura-diving.com\n";
 $customer_body .= "Website: https://miura-diving.com/\n";
 $customer_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
 
-$customer_headers = "From: info@miura-diving.com\r\n";
+$customer_headers = "From: " . mb_encode_mimeheader("三浦海の学校", "UTF-8") . " <info@miura-diving.com>\r\n";
+$customer_headers .= "Return-Path: info@miura-diving.com\r\n";
 $customer_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$customer_headers .= "Content-Transfer-Encoding: 8bit\r\n";
 
 // メール送信
 $admin_mail_sent = mb_send_mail($to, $subject, $body, $headers);
