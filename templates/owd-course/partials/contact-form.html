@@ -1,0 +1,325 @@
+<!-- Contact Form Section -->
+<section class="contact-form" id="contact-form">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">お申し込み・お問い合わせ</h2>
+            <p class="section-subtitle">OWD講習へのお申し込み、ご質問はこちらから</p>
+        </div>
+        
+        <div class="contact-content">
+            <!-- Contact Options -->
+            <div class="contact-options">
+                <div class="contact-option">
+                    <div class="option-icon">
+                        <span class="icon">📝</span>
+                    </div>
+                    <h3 class="option-title">フォームでお申し込み</h3>
+                    <p class="option-description">24時間受付。詳細なご要望もお書きください</p>
+                </div>
+                
+                <div class="contact-option">
+                    <div class="option-icon">
+                        <span class="icon">📞</span>
+                    </div>
+                    <h3 class="option-title">お電話でご相談</h3>
+                    <p class="option-description">
+                        <a href="tel:0467-12-3456" class="phone-link">0467-12-3456</a><br>
+                        営業時間：9:00-18:00（年中無休）
+                    </p>
+                </div>
+                
+                <div class="contact-option">
+                    <div class="option-icon">
+                        <span class="icon">💬</span>
+                    </div>
+                    <h3 class="option-title">LINEで気軽に相談</h3>
+                    <p class="option-description">
+                        <a href="[LINE_FRIEND_URL]" class="line-link" target="_blank" rel="noopener">
+                            LINE友だち追加
+                        </a><br>
+                        リアルタイムでお答えします
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="form-container">
+                <form class="contact-form-form" id="contact-form-main" method="POST" action="/contact-handler.php">
+                    <input type="hidden" name="course_type" value="OWD講習">
+                    
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">お客様情報</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="last_name" class="form-label">
+                                    お名前（姓）<span class="required">*</span>
+                                </label>
+                                <input type="text" id="last_name" name="last_name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="first_name" class="form-label">
+                                    お名前（名）<span class="required">*</span>
+                                </label>
+                                <input type="text" id="first_name" name="first_name" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="last_name_kana" class="form-label">
+                                    フリガナ（セイ）<span class="required">*</span>
+                                </label>
+                                <input type="text" id="last_name_kana" name="last_name_kana" class="form-input" 
+                                       pattern="[ァ-ヶー]*" title="カタカナで入力してください" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="first_name_kana" class="form-label">
+                                    フリガナ（メイ）<span class="required">*</span>
+                                </label>
+                                <input type="text" id="first_name_kana" name="first_name_kana" class="form-input" 
+                                       pattern="[ァ-ヶー]*" title="カタカナで入力してください" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="form-label">
+                                    メールアドレス<span class="required">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">
+                                    電話番号<span class="required">*</span>
+                                </label>
+                                <input type="tel" id="phone" name="phone" class="form-input" 
+                                       pattern="[0-9-]*" title="数字とハイフンで入力してください" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="age" class="form-label">
+                                    年齢<span class="required">*</span>
+                                </label>
+                                <select id="age" name="age" class="form-select" required>
+                                    <option value="">選択してください</option>
+                                    <option value="10-15">10-15歳</option>
+                                    <option value="16-20">16-20歳</option>
+                                    <option value="21-25">21-25歳</option>
+                                    <option value="26-30">26-30歳</option>
+                                    <option value="31-35">31-35歳</option>
+                                    <option value="36-40">36-40歳</option>
+                                    <option value="41-45">41-45歳</option>
+                                    <option value="46-50">46-50歳</option>
+                                    <option value="51-55">51-55歳</option>
+                                    <option value="56-60">56-60歳</option>
+                                    <option value="61-65">61-65歳</option>
+                                    <option value="66+">66歳以上</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender" class="form-label">
+                                    性別
+                                </label>
+                                <select id="gender" name="gender" class="form-select">
+                                    <option value="">選択してください</option>
+                                    <option value="male">男性</option>
+                                    <option value="female">女性</option>
+                                    <option value="other">その他</option>
+                                    <option value="no-answer">回答しない</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">講習について</h3>
+                        
+                        <div class="form-group">
+                            <label for="inquiry_type" class="form-label">
+                                お問い合わせ種別<span class="required">*</span>
+                            </label>
+                            <select id="inquiry_type" name="inquiry_type" class="form-select" required>
+                                <option value="">選択してください</option>
+                                <option value="apply">OWD講習に申し込みたい</option>
+                                <option value="question">OWD講習について質問したい</option>
+                                <option value="schedule">日程について相談したい</option>
+                                <option value="group">グループでの受講を検討</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="preferred_date" class="form-label">
+                                ご希望日程
+                            </label>
+                            <input type="text" id="preferred_date" name="preferred_date" class="form-input" 
+                                   placeholder="例：3月第2週頃、土日希望など">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="participants" class="form-label">
+                                参加人数
+                            </label>
+                            <select id="participants" name="participants" class="form-select">
+                                <option value="">選択してください</option>
+                                <option value="1">1名</option>
+                                <option value="2">2名</option>
+                                <option value="3">3名</option>
+                                <option value="4">4名</option>
+                                <option value="5+">5名以上</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="diving_experience" class="form-label">
+                                ダイビング経験
+                            </label>
+                            <select id="diving_experience" name="diving_experience" class="form-select">
+                                <option value="">選択してください</option>
+                                <option value="none">全くの初心者</option>
+                                <option value="trial">体験ダイビング経験あり</option>
+                                <option value="pool">プールでの経験あり</option>
+                                <option value="abroad">海外で経験あり</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Health Check -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">健康状態について</h3>
+                        <p class="form-note">安全な講習のため、健康状態についてお聞かせください</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label">以下の項目に該当するものはありますか？</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="health_conditions[]" value="heart_disease">
+                                    <span class="checkbox-text">心臓病・高血圧</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="health_conditions[]" value="asthma">
+                                    <span class="checkbox-text">喘息・呼吸器疾患</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="health_conditions[]" value="diabetes">
+                                    <span class="checkbox-text">糖尿病</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="health_conditions[]" value="ear_nose">
+                                    <span class="checkbox-text">耳鼻科系の疾患</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="health_conditions[]" value="medication">
+                                    <span class="checkbox-text">現在服薬中</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="health_conditions[]" value="none">
+                                    <span class="checkbox-text">該当なし</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="swimming_ability" class="form-label">
+                                泳力について
+                            </label>
+                            <select id="swimming_ability" name="swimming_ability" class="form-select">
+                                <option value="">選択してください</option>
+                                <option value="good">問題なく泳げる（25m以上）</option>
+                                <option value="average">なんとか泳げる</option>
+                                <option value="poor">泳ぎは苦手</option>
+                                <option value="cannot">泳げない</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Message -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">ご質問・ご要望</h3>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">
+                                メッセージ
+                            </label>
+                            <textarea id="message" name="message" class="form-textarea" rows="5"
+                                      placeholder="ご質問、ご要望、心配事など何でもお気軽にお書きください"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Privacy Policy -->
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label class="checkbox-item privacy-checkbox">
+                                <input type="checkbox" name="privacy_agreement" value="agreed" required>
+                                <span class="checkbox-text">
+                                    <a href="/privacy/" target="_blank">プライバシーポリシー</a>に同意します<span class="required">*</span>
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="newsletter_subscribe" value="yes">
+                                <span class="checkbox-text">
+                                    ダイビング情報やキャンペーン情報の配信を希望します
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="form-submit">
+                        <button type="submit" class="cta-button cta-primary cta-large submit-button">
+                            <span class="button-text">送信する</span>
+                            <span class="button-loading" style="display: none;">送信中...</span>
+                        </button>
+                        
+                        <p class="submit-note">
+                            送信後、自動返信メールをお送りします。24時間以内にスタッフよりご連絡いたします。
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Auto Reply Info -->
+        <div class="auto-reply-info">
+            <h3 class="info-title">自動返信メールについて</h3>
+            <div class="info-content">
+                <p>[E-MAIL_AUTOREPLY_TEXT]</p>
+            </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="contact-info-footer">
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4 class="info-title">営業時間</h4>
+                    <p class="info-text">9:00-18:00（年中無休）</p>
+                </div>
+                <div class="info-item">
+                    <h4 class="info-title">お電話</h4>
+                    <p class="info-text">
+                        <a href="tel:0467-12-3456">0467-12-3456</a>
+                    </p>
+                </div>
+                <div class="info-item">
+                    <h4 class="info-title">メール</h4>
+                    <p class="info-text">
+                        <a href="mailto:info@umigaku.jp">info@umigaku.jp</a>
+                    </p>
+                </div>
+                <div class="info-item">
+                    <h4 class="info-title">所在地</h4>
+                    <p class="info-text">神奈川県三浦市南下浦町上宮田123-45</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

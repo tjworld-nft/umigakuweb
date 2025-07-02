@@ -1,0 +1,306 @@
+{
+  "meta": {
+    "title": "OWD講習 - 世界中で通用するライセンス取得 | 湘南の海でダイビング学校",
+    "description": "3日間でオープンウォーターダイバー（OWD）ライセンス取得。eラーニング学科講習＋プール・海洋実習で安全にダイビングスキルを習得。湘南の海で経験豊富なインストラクターが丁寧指導。",
+    "keywords": "OWD,オープンウォーターダイバー,ダイビングライセンス,eラーニング,湘南,三浦海岸",
+    "og_url": "https://umigaku.jp/owd-course/",
+    "canonical_url": "https://umigaku.jp/owd-course/"
+  },
+  
+  "course_info": {
+    "name": "オープンウォーターダイバー（OWD）講習",
+    "price": 53900,
+    "currency": "JPY",
+    "duration": "3日間",
+    "dive_count": "プール＋海洋実習4ダイブ",
+    "age_requirement": "10歳以上",
+    "max_depth": "18m",
+    "certification_body": "PADI"
+  },
+  
+  "schedule": {
+    "day1": {
+      "title": "eラーニング学科講習",
+      "duration": "約2時間",
+      "location": "自宅",
+      "description": "PADI公式eラーニングシステムでダイビングの基礎知識を学習。自分のペースで進められます。",
+      "topics": [
+        "ダイビング物理・生理",
+        "器材の知識",
+        "安全ルール",
+        "海洋環境"
+      ]
+    },
+    "day2": {
+      "title": "プール実習",
+      "duration": "約6時間",
+      "location": "温水プール",
+      "description": "浅いプールから始めて、安全に基本スキルを習得。海に出る前の大切な準備です。",
+      "schedule": [
+        { "time": "9:00-9:30", "activity": "集合・器材セッティング" },
+        { "time": "9:30-11:00", "activity": "浅場での基本スキル" },
+        { "time": "11:00-11:15", "activity": "休憩" },
+        { "time": "11:15-12:30", "activity": "中性浮力・泳法" },
+        { "time": "12:30-13:30", "activity": "昼食休憩" },
+        { "time": "13:30-15:00", "activity": "緊急時スキル" }
+      ]
+    },
+    "day3": {
+      "title": "海洋実習",
+      "duration": "約8時間（4ダイブ）",
+      "location": "三浦海岸",
+      "description": "いよいよ本格的な海洋実習。4回のダイブで海でのダイビングスキルを身につけます。",
+      "schedule": [
+        { "time": "8:00", "activity": "集合・移動" },
+        { "time": "8:30-9:30", "activity": "1本目ダイブ（最大深度12m）" },
+        { "time": "10:30-11:30", "activity": "2本目ダイブ（最大深度15m）" },
+        { "time": "11:30-12:30", "activity": "昼食・休憩" },
+        { "time": "12:30-13:30", "activity": "3本目ダイブ（最大深度18m）" },
+        { "time": "14:30-15:30", "activity": "4本目ダイブ（最大深度18m）" },
+        { "time": "16:00", "activity": "ログ付け・解散" }
+      ]
+    }
+  },
+  
+  "pricing": {
+    "course_fee": {
+      "amount": 53900,
+      "currency": "JPY",
+      "tax_included": true,
+      "includes": [
+        "eラーニング学科講習",
+        "ログブック",
+        "プール実習費",
+        "海洋実習費（4ダイブ）",
+        "ライセンス申請料",
+        "保険料",
+        "インストラクター指導料"
+      ]
+    },
+    "additional_costs": [
+      {
+        "item": "レンタル器材代",
+        "amount": 8000,
+        "unit": "日",
+        "description": "ウェットスーツ、マスク、フィン、BCD、レギュレーター一式"
+      },
+      {
+        "item": "水着・タオル",
+        "amount": "持参",
+        "description": "水着、タオル、着替えをご持参ください"
+      },
+      {
+        "item": "昼食代",
+        "amount": "1000〜",
+        "description": "海の家でのランチ（お弁当持参も可）"
+      },
+      {
+        "item": "交通費",
+        "amount": "実費",
+        "description": "現地集合・現地解散（駐車場あり）"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "学生割引",
+        "discount": "10%",
+        "condition": "学生証提示",
+        "note": "レンタル器材代は対象外"
+      },
+      {
+        "type": "グループ割引",
+        "discount": "5%",
+        "condition": "3名以上の同時申し込み",
+        "note": "友人・カップル・夫婦歓迎"
+      },
+      {
+        "type": "早期申込割引",
+        "discount": "3%",
+        "condition": "受講日の30日前までの申し込み",
+        "note": "お早めのご予約がお得"
+      }
+    ]
+  },
+  
+  "contact_info": {
+    "phone": "0467-12-3456",
+    "email": "info@umigaku.jp",
+    "address": "神奈川県三浦市南下浦町上宮田123-45",
+    "business_hours": "9:00-18:00（年中無休）",
+    "parking": "あり（無料）"
+  },
+  
+  "social_media": {
+    "instagram_url": "{{INSTAGRAM_URL}}",
+    "youtube_url": "{{YOUTUBE_URL}}",
+    "facebook_url": "{{FACEBOOK_URL}}"
+  },
+  
+  "placeholders": {
+    "photos": {
+      "PHOTO_1": "湘南の海でのOWD講習風景",
+      "PHOTO_2": "OWD講習を受講する生徒とインストラクター",
+      "PHOTO_3": "PADI認定ロゴ",
+      "PHOTO_4": "eラーニングで学習する様子",
+      "PHOTO_5": "プール実習での基本スキル練習",
+      "PHOTO_6": "湘南の海での海洋実習",
+      "PHOTO_7": "経験豊富なPADIインストラクター",
+      "PHOTO_8": "清潔で高品質なレンタル器材",
+      "PHOTO_9": "ライセンス取得後のファンダイビング",
+      "PHOTO_10": "eラーニング学科講習の様子",
+      "PHOTO_11": "プール実習でのマスククリア練習",
+      "PHOTO_12": "湘南の海での海洋実習",
+      "PHOTO_13": "世界中の海でダイビングを楽しむ様子",
+      "PHOTO_14": "沖縄の青い海とサンゴ礁",
+      "PHOTO_15": "石垣島のマンタとダイバー",
+      "PHOTO_16": "伊豆半島の豊富な海洋生物",
+      "PHOTO_17": "海外リゾートでのダイビング",
+      "PHOTO_18": "ダイビングを楽しむ様子",
+      "PHOTO_19": "田中さん（20代女性）",
+      "PHOTO_20": "佐藤さん（30代男性）",
+      "PHOTO_21": "山田さん（40代女性）",
+      "PHOTO_22": "鈴木さん（20代男性）",
+      "PHOTO_23": "高橋さん（30代女性）",
+      "PHOTO_24": "伊藤さん（50代男性）",
+      "PHOTO_OG": "OGP用メイン画像",
+      "LOGO_IMAGE": "湘南ダイビング学校ロゴ"
+    },
+    
+    "line_integration": {
+      "LINE_FRIEND_URL": "{{LINE_FRIEND_URL}}",
+      "line_description": "LINEでお気軽にお問い合わせ。リアルタイムで海況情報もお届け！"
+    },
+    
+    "email_integration": {
+      "E-MAIL_AUTOREPLY_TEXT": "{{E-MAIL_AUTOREPLY_TEXT}}",
+      "newsletter_content": "ダイビング講習の最新情報、海況レポート、お得なキャンペーン情報をお届けします。"
+    }
+  },
+  
+  "statistics": {
+    "total_graduates": "1,500+",
+    "satisfaction_rating": "4.9",
+    "success_rate": "98%",
+    "years_of_experience": "15年以上",
+    "instructor_count": "5名"
+  },
+  
+  "features": [
+    {
+      "icon": "💻",
+      "title": "eラーニング学科講習",
+      "description": "自分のペースで学習できるPADI公式eラーニング。基礎知識をしっかり身につけてから実習に臨めます。",
+      "points": [
+        "24時間いつでも学習可能",
+        "理解度に合わせて繰り返し学習",
+        "日本語対応で安心"
+      ]
+    },
+    {
+      "icon": "🏊",
+      "title": "安全なプール実習",
+      "description": "温水プールで基本スキルを習得。海に出る前に確実にスキルを身につけられます。",
+      "points": [
+        "マスククリア・レギュレータークリア",
+        "中性浮力の基本",
+        "緊急時対応スキル"
+      ]
+    },
+    {
+      "icon": "🌊",
+      "title": "湘南の海で海洋実習",
+      "description": "美しい湘南の海で4回のダイブ。実際の海洋環境でスキルを実践して自信をつけます。",
+      "points": [
+        "透明度の高い三浦の海",
+        "豊富な海洋生物",
+        "年間を通じて潜水可能"
+      ]
+    }
+  ],
+  
+  "destinations": [
+    {
+      "name": "沖縄・慶良間諸島",
+      "description": "世界屈指の透明度を誇る美しい海",
+      "features": ["ケラマブルー", "ウミガメ", "サンゴ礁"]
+    },
+    {
+      "name": "石垣島・川平湾",
+      "description": "マンタとの遭遇率が高い人気スポット",
+      "features": ["マンタ", "回遊魚", "ドリフト"]
+    },
+    {
+      "name": "伊豆半島",
+      "description": "関東から近く、生物が豊富な海",
+      "features": ["アクセス良好", "温泉", "季節来遊魚"]
+    },
+    {
+      "name": "海外リゾート",
+      "description": "グアム・サイパン・フィリピンなど",
+      "features": ["リゾート", "大型回遊魚", "国際交流"]
+    }
+  ],
+  
+  "reviews": [
+    {
+      "name": "田中さん（20代女性）",
+      "date": "2024年5月受講",
+      "rating": 5,
+      "title": "初めてでも安心して受講できました",
+      "content": "完全初心者でしたが、eラーニングで事前に知識を身につけてから実習に臨めたので安心でした。インストラクターの方も優しく丁寧に指導してくださり、海が怖かった私でも楽しくダイビングできるようになりました！今では月に1回はファンダイビングに参加しています。",
+      "tags": ["初心者歓迎", "丁寧な指導", "eラーニング"]
+    },
+    {
+      "name": "佐藤さん（30代男性）",
+      "date": "2024年4月受講",
+      "rating": 5,
+      "title": "スケジュールが自分のペースで進められた",
+      "content": "仕事が忙しい中での受講でしたが、eラーニングは自分の都合の良い時間に進められるのが良かったです。プール実習も海洋実習も、少人数制で一人一人しっかり見てもらえました。湘南の海は想像以上に綺麗で、ダイビングの魅力を実感できました。",
+      "tags": ["忙しい方OK", "少人数制", "湘南の海"]
+    }
+  ],
+  
+  "faq_categories": [
+    "course",
+    "schedule", 
+    "equipment",
+    "cost",
+    "safety"
+  ],
+  
+  "analytics": {
+    "google_analytics": "{{ANALYTICS_CODE}}",
+    "conversion_goals": [
+      "form_submission",
+      "phone_call",
+      "line_registration"
+    ]
+  },
+  
+  "seo": {
+    "structured_data": {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "オープンウォーターダイバー（OWD）講習",
+      "description": "3日間でオープンウォーターダイバー（OWD）ライセンス取得。eラーニング学科講習＋プール・海洋実習で安全にダイビングスキルを習得。",
+      "provider": {
+        "@type": "Organization",
+        "name": "湘南ダイビング学校",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "JP",
+          "addressRegion": "神奈川県",
+          "addressLocality": "三浦市",
+          "streetAddress": "南下浦町上宮田123-45"
+        },
+        "telephone": "0467-12-3456"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "53900",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  }
+}
