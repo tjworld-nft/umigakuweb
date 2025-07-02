@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -2760,13 +2766,7 @@
                 <div class="form-container">
                     <form method="POST" action="/owd-form-handler.php">
                         <input type="hidden" name="course_type" value="PADIライセンス講習">
-                        <?php
-                        session_start();
-                        if (!isset($_SESSION['csrf_token'])) {
-                            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-                        }
-                        echo '<input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '">';
-                        ?>
+                        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                         
                         <div class="form-row">
                             <div class="form-group">
