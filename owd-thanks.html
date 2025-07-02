@@ -35,7 +35,8 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            padding: 20px 0;
         }
 
         /* Ocean Background Animation */
@@ -98,22 +99,30 @@
 
         .container {
             max-width: 650px;
+            width: 100%;
             margin: 0 auto;
             padding: 20px;
             z-index: 10;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 40px);
         }
 
         .thanks-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 30px;
-            padding: 60px 40px;
+            padding: 40px 30px;
             text-align: center;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .thanks-card::before {
@@ -375,12 +384,28 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding: 10px 0;
+            }
+            
+            .container {
+                padding: 10px;
+                min-height: calc(100vh - 20px);
+            }
+            
             .thanks-card {
-                padding: 40px 20px;
+                padding: 30px 20px;
+                max-height: 95vh;
+                margin: 10px 0;
             }
 
             .thanks-title {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+            }
+            
+            .thanks-icon {
+                font-size: 3.5rem;
+                margin-bottom: 20px;
             }
 
             .cta-buttons {
@@ -391,6 +416,21 @@
             .btn {
                 width: 100%;
                 max-width: 280px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .thanks-card {
+                padding: 25px 15px;
+                border-radius: 20px;
+            }
+            
+            .thanks-title {
+                font-size: 1.5rem;
+            }
+            
+            .thanks-icon {
+                font-size: 3rem;
             }
         }
 
