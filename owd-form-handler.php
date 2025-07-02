@@ -132,22 +132,13 @@ file_put_contents('form_submissions.log', $log_entry, FILE_APPEND | LOCK_EX);
 
 // 結果処理
 if ($admin_mail_sent) {
-    echo "<h1>✅ メール送信成功！</h1>";
-    echo "<p>管理者メール送信: " . ($admin_mail_sent ? "成功" : "失敗") . "</p>";
-    echo "<p>お客様メール送信: " . ($customer_mail_sent ? "成功" : "失敗") . "</p>";
-    echo "<p>送信先: " . $to . "</p>";
-    echo "<p>お客様メール: " . $email . "</p>";
-    echo "<p><a href='/owd-license/'>戻る</a></p>";
-    // header('Location: /owd-thanks.html');
+    // メール送信成功時はサンクスページにリダイレクト
+    header('Location: /owd-thanks.html');
     exit;
 } else {
-    echo "<h1>❌ メール送信失敗</h1>";
-    echo "<p>送信先: " . $to . "</p>";
-    echo "<p>件名: " . $subject . "</p>";
-    echo "<p>本文の長さ: " . strlen($body) . " bytes</p>";
-    echo "<p>PHPのmail関数: " . (function_exists('mail') ? "利用可能" : "利用不可") . "</p>";
-    echo "<p>mb_send_mail関数: " . (function_exists('mb_send_mail') ? "利用可能" : "利用不可") . "</p>";
-    echo "<p><a href='/owd-license/'>戻る</a></p>";
+    // メール送信失敗時はエラーメッセージと共にフォームページに戻る
+    $error_msg = urlencode('メール送信に失敗しました。お電話でのお問い合わせをお願いいたします。');
+    header('Location: /owd-license/?error=' . $error_msg);
     exit;
 }
 ?>
