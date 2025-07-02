@@ -1,12 +1,22 @@
-/* ★License 5 fixed - 5コース固定ライセンスページ専用CSS (mini) */
+/* ★License Page - Underwater Theme Enhanced */
+
+/* Apply underwater theme to body */
+body {
+    background: linear-gradient(-45deg, #001f3f, #0074D9, #001a2e, #003d5c);
+    background-size: 400% 400%;
+    animation: ocean-gradient 15s ease infinite;
+    position: relative;
+    overflow-x: hidden;
+}
 
 /* =============================================
    PAGE HEADER NAVIGATION
    ============================================= */
 .page-header {
-    background: var(--bg-light);
+    background: rgba(0,50,100,0.9);
     padding: 1rem 0;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid rgba(173,216,230,0.3);
+    backdrop-filter: blur(10px);
 }
 
 .page-nav {
@@ -18,14 +28,14 @@
 }
 
 .back-link {
-    color: var(--brand-blue);
+    color: #87CEEB;
     text-decoration: none;
     font-weight: 600;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .back-link:hover {
-    color: var(--brand-blue-dark);
+    color: white;
 }
 
 .back-link::before {
@@ -42,18 +52,19 @@
 }
 
 .nav-links a {
-    color: var(--text-dark);
+    color: white;
     text-decoration: none;
     font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: 20px;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    background: var(--brand-blue);
+    background: rgba(135,206,235,0.3);
     color: white;
+    box-shadow: 0 0 15px rgba(135,206,235,0.4);
 }
 
 /* =============================================
