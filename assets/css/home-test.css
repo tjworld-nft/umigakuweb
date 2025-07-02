@@ -82,7 +82,7 @@ html {
 body {
     font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
     line-height: 1.6;
-    color: #2c3e50;
+    color: white;
     background: linear-gradient(-45deg, #001f3f, #0074D9, #001a2e, #003d5c);
     background-size: 400% 400%;
     animation: ocean-gradient 15s ease infinite;
@@ -127,9 +127,10 @@ body {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 1.5rem;
-    color: #2c3e50;
+    color: white;
     position: relative;
     font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .section-title::after {
@@ -146,10 +147,11 @@ body {
     text-align: center;
     font-size: 1.1rem;
     margin-bottom: 3rem;
-    color: #666;
+    color: rgba(255,255,255,0.9);
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
 /* Buttons */
@@ -661,6 +663,13 @@ body {
 .timeline-content h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.timeline-content p {
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 /* =============================================
@@ -975,10 +984,81 @@ body {
 .lab-card h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.lab-card p {
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .lab-cta {
     text-align: center;
+}
+
+/* =============================================
+   GLOBAL CTA SECTION
+   ============================================= */
+.global-cta {
+    padding: 100px 0;
+    background: 
+        radial-gradient(ellipse at center, rgba(0,100,200,0.15) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(0,50,120,0.1), rgba(0,80,160,0.15));
+}
+
+.cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2.5rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.cta-info {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.cta-info li {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.cta-info a {
+    color: #87CEEB;
+    text-decoration: none;
+}
+
+.cta-info a:hover {
+    color: white;
+}
+
+.cta-note {
+    color: rgba(255,255,255,0.7);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 /* =============================================
