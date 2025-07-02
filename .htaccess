@@ -26,6 +26,9 @@ RewriteRule ^contact\.html$ /contact [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+privacy\.html[\s?] [NC]
 RewriteRule ^privacy\.html$ /privacy [R=301,L]
 
+RewriteCond %{THE_REQUEST} \s/+owd-lp\.html[\s?] [NC]
+RewriteRule ^owd-lp\.html$ /owd-license/ [R=301,L]
+
 # Internal rewrites for clean URLs (no redirect, just serve the file)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -46,6 +49,10 @@ RewriteRule ^fun-diving/?$ fun-diving/index.html [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^marine-activity/?$ marine-activity/index.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^owd-license/?$ owd-lp.html [L]
 
 SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
 SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode
