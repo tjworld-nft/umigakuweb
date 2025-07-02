@@ -35,8 +35,8 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         
-        # アップロード先のディレクトリ（通常は public_html）
-        server-dir: /public_html/
+        # アップロード先のディレクトリ（Xserverの場合は通常こちら）
+        server-dir: /miura-diving.com/public_html/
         
         # 除外するファイル・フォルダ
         exclude: |
