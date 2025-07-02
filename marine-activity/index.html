@@ -42,7 +42,11 @@
             font-family: 'Noto Sans JP', sans-serif;
             line-height: 1.7;
             color: var(--text-dark);
-            background: #fff;
+            background: linear-gradient(-45deg, #001f3f, #0074D9, #001a2e, #003d5c);
+            background-size: 400% 400%;
+            animation: ocean-gradient 15s ease infinite;
+            position: relative;
+            overflow-x: hidden;
         }
 
         .container {
@@ -53,9 +57,10 @@
 
         /* Header */
         .header {
-            background: var(--bg-light);
+            background: rgba(0,50,100,0.9);
             padding: 1rem 0;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid rgba(173,216,230,0.3);
+            backdrop-filter: blur(10px);
         }
 
         .header-nav {
@@ -497,6 +502,15 @@
     </style>
 </head>
 <body>
+    <!-- Underwater Bubbles Effect -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
     <!-- Header -->
     <header class="header">
         <div class="container">
