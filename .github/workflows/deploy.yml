@@ -1,0 +1,56 @@
+name: Deploy to Server via FTP
+
+# mainブランチにプッシュされたときに実行
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js (if needed)
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    # 必要に応じてビルドステップを追加
+    # - name: Install dependencies
+    #   run: npm install
+    #   
+    # - name: Build project
+    #   run: npm run build
+    
+    - name: Deploy to server via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        # GitHub Secretsから設定値を取得
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        
+        # アップロード先のディレクトリ（通常は public_html）
+        server-dir: /public_html/
+        
+        # 除外するファイル・フォルダ
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.DS_Store
+          **/README.md
+          **/.github/**
+          **/wp-config.php
+          **/.env*
+          
+        # デバッグモード（最初のテスト時のみtrue）
+        log-level: info
+        
+        # タイムアウト設定（秒）
+        timeout: 600000
