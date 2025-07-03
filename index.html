@@ -696,7 +696,7 @@
         const totalBooks = track.children.length;
         const maxSlides = Math.max(0, totalBooks - visibleBooks); // Show 3 books at a time
         
-        console.log('Books slider initialized (CSS Grid):', {
+        console.log('Books slider initialized (Flexbox):', {
             totalBooks,
             visibleBooks,
             maxSlides,
@@ -708,7 +708,7 @@
             const translateX = -currentSlide * slideWidth;
             track.style.transform = `translateX(${translateX}px)`;
             
-            console.log('Grid slider updated:', {
+            console.log('Flexbox slider updated:', {
                 currentSlide,
                 translateX,
                 maxSlides
