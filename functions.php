@@ -45,8 +45,8 @@ function miura_diving_scripts() {
         null
     );
     
-    // Enqueue home test page styles (only on home test page)
-    if (is_page_template('page-home-test.php')) {
+    // Enqueue home test page styles (on home test page or front page)
+    if (is_page_template('page-home-test.php') || is_front_page() || is_home()) {
         wp_enqueue_style(
             'home-test-style',
             get_template_directory_uri() . '/assets/css/home-test.css',
@@ -76,6 +76,15 @@ function miura_diving_scripts() {
             'home-test-script',
             get_template_directory_uri() . '/assets/js/home-test.js',
             array('tiny-slider-js'),
+            $theme_version,
+            true
+        );
+        
+        // Enqueue books slider script
+        wp_enqueue_script(
+            'books-slider-js',
+            get_template_directory_uri() . '/assets/js/books-slider.js',
+            array('jquery'),
             $theme_version,
             true
         );
