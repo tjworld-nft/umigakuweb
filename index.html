@@ -430,32 +430,66 @@
                     ダイビングの知識とマリンライフについて、初心者からプロまで楽しめる電子書籍を出版しています。
                 </p>
                 
-                <div class="books-grid">
-                    <div class="book-item">
-                        <div class="book-cover">
-                            <img src="assets/img/start-diving.png" alt="ダイビングの始め方">
+                <div class="books-slider">
+                    <div class="books-track" id="booksTrack">
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="assets/img/start-diving.png" alt="ダイビングの始め方">
+                            </div>
+                            <h3 class="book-title">ダイビングのはじめ方</h3>
+                            <p class="book-desc">初心者向けダイビング入門ガイド</p>
+                            <a href="https://amzn.to/4nNT9sP" target="_blank" class="book-link">Amazonで見る</a>
                         </div>
-                        <h3 class="book-title">ダイビングのはじめ方</h3>
-                        <p class="book-desc">初心者向けダイビング入門ガイド</p>
-                        <a href="https://amzn.to/4nNT9sP" target="_blank" class="book-link">Amazonで見る</a>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="assets/img/sup.png" alt="はじめてのSUP">
+                            </div>
+                            <h3 class="book-title">はじめてのSUP</h3>
+                            <p class="book-desc">スタンドアップパドルボード入門</p>
+                            <a href="https://amzn.to/4lfBOak" target="_blank" class="book-link">Amazonで見る</a>
+                        </div>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="assets/img/marine.png" alt="マリンアクティビティガイド">
+                            </div>
+                            <h3 class="book-title">マリンアクティビティガイド</h3>
+                            <p class="book-desc">親子で楽しむ海の体験</p>
+                            <a href="https://amzn.to/4kgr61X" target="_blank" class="book-link">Amazonで見る</a>
+                        </div>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="assets/img/brank-diver.png" alt="ブランクダイバー復活ガイド">
+                            </div>
+                            <h3 class="book-title">ブランクダイバー復活ガイド</h3>
+                            <p class="book-desc">半年以上潜っていない人のための復活ロードマップ</p>
+                            <a href="https://amzn.to/3GqhfZA" target="_blank" class="book-link">Amazonで見る</a>
+                        </div>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="assets/img/snorkel.png" alt="シュノーケリング入門">
+                            </div>
+                            <h3 class="book-title">シュノーケリング入門</h3>
+                            <p class="book-desc">ぷかぷか浮かんで水中散歩を楽しもう</p>
+                            <a href="https://amzn.to/4l8jyzr" target="_blank" class="book-link">Amazonで見る</a>
+                        </div>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="assets/img/senior-diver.png" alt="シニアダイビング">
+                            </div>
+                            <h3 class="book-title">60代からのダイビング</h3>
+                            <p class="book-desc">海に一歩、人生にひと花咲かせよう</p>
+                            <a href="https://amzn.to/3TSOg3H" target="_blank" class="book-link">Amazonで見る</a>
+                        </div>
                     </div>
                     
-                    <div class="book-item">
-                        <div class="book-cover">
-                            <img src="assets/img/sup.png" alt="はじめてのSUP">
-                        </div>
-                        <h3 class="book-title">はじめてのSUP</h3>
-                        <p class="book-desc">スタンドアップパドルボード入門</p>
-                        <a href="https://amzn.to/4lfBOak" target="_blank" class="book-link">Amazonで見る</a>
-                    </div>
-                    
-                    <div class="book-item">
-                        <div class="book-cover">
-                            <img src="assets/img/marine.png" alt="マリンアクティビティガイド">
-                        </div>
-                        <h3 class="book-title">マリンアクティビティガイド</h3>
-                        <p class="book-desc">親子で楽しむ海の体験</p>
-                        <a href="https://amzn.to/4kgr61X" target="_blank" class="book-link">Amazonで見る</a>
+                    <div class="slider-nav">
+                        <button class="nav-btn" id="prevBtn">‹</button>
+                        <button class="nav-btn" id="nextBtn">›</button>
                     </div>
                 </div>
             </div>
@@ -647,7 +681,46 @@
 
     <script src="assets/js/home-test.js"></script>
     
-    <!-- Books slider scripts removed with books section -->
+    <!-- Simple Books Slider Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.getElementById('booksTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (!track || !prevBtn || !nextBtn) return;
+        
+        let currentSlide = 0;
+        const slideWidth = 370; // 350px + 20px gap
+        const maxSlides = track.children.length - 3; // Show 3 books at a time
+        
+        function updateSlider() {
+            const translateX = -currentSlide * slideWidth;
+            track.style.transform = `translateX(${translateX}px)`;
+            
+            // Update button states
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide >= maxSlides;
+        }
+        
+        prevBtn.addEventListener('click', function() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            if (currentSlide < maxSlides) {
+                currentSlide++;
+                updateSlider();
+            }
+        });
+        
+        // Initialize
+        updateSlider();
+    });
+    </script>
     
     <!-- Blog Loading Script -->
     <script>
