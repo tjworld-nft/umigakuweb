@@ -949,4 +949,134 @@ function add_license_5_ldjson() {
 }
 add_action('wp_head', 'add_license_5_ldjson');
 
+// Books array for homepage slider
+$BOOKS = [
+    [
+        'title' => '「私にはムリ・・」から「潜りたい」に変わるダイビングのはじめ方',
+        'desc'  => '初心者の不安や疑問をプロが忖度なしで解消。安全ルールや器材選びまで網羅した超実践ガイド。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/start-diving.png',
+        'url'   => 'https://amzn.to/40BBpqn'
+    ],
+    [
+        'title' => 'むずかしく考えなくて大丈夫！ はじめてのセルフダイビング',
+        'desc'  => 'セルフ・バディ・ソロの違いから海外ポイントまで、自由に潜るコツを学べるセルフ派入門書。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/self-diving.png',
+        'url'   => 'https://amzn.to/4003YO7'
+    ],
+    [
+        'title' => 'ぷかぷか浮かんで水中散歩！ 今日から始めるごきげんスノーケリング',
+        'desc'  => '泳ぎが苦手な人でも安心。安全テクニックと国内外おすすめスポットをプロ目線でやさしく案内。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/snorkel.png',
+        'url'   => 'https://amzn.to/44ToUbh'
+    ],
+    [
+        'title' => '海に一歩、人生にひと花: 「年だから」と言わない60代からのダイビング',
+        'desc'  => '60歳からでも遅くない！ 健康維持と生きがいを広げるシニア向けダイビング応援ブック。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/senior-diver.png',
+        'url'   => 'https://amzn.to/40z9qaN'
+    ],
+    [
+        'title' => 'AIは、あなたの「魔法の杖」: 知識ゼロ・パソコン苦手でも大丈夫！',
+        'desc'  => 'ChatGPT ほか最新AIを今日から使いこなす方法を、テック好きダイバーがやさしく解説する超入門。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/ai.png',
+        'url'   => 'https://amzn.to/45TGvBY'
+    ],
+    [
+        'title' => 'はじめてのSUP: ドキドキの初体験からワンちゃんとの水上散歩まで',
+        'desc'  => 'ボード選び・乗り方・安全のコツを写真とQ&Aで解説。愛犬と楽しむSUP情報も満載の初心者ガイド。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/sup.png',
+        'url'   => 'https://amzn.to/3TSlwYL'
+    ],
+    [
+        'title' => '大切な人と、海の上で過ごす時間: 家族・仲間と楽しむシーカヤック入門',
+        'desc'  => 'シーカヤックの魅力と始め方を、必要装備やおすすめスポットと合わせて紹介するやさしい入門書。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/kayac.png',
+        'url'   => 'https://amzn.to/4nxWYCa'
+    ],
+    [
+        'title' => '親子で楽しむ！マリンアクティビティ完全ガイド',
+        'desc'  => 'SUP・カヤック・スノーケリング・体験ダイビングまで、親子で海を満喫する方法を一冊に凝縮。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/marine.png',
+        'url'   => 'https://amzn.to/44LzvpB'
+    ],
+    [
+        'title' => 'ブランクダイバー復活ガイド: "ReActivate" 完全ロードマップ',
+        'desc'  => '半年以上潜っていないダイバーが自信を取り戻すためのリフレッシュ手順と安全チェックを徹底解説。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/brank-diver.png',
+        'url'   => 'https://amzn.to/44eH3kD'
+    ],
+    [
+        'title' => '水中で学ぶマインドフルネス: ダイビングがもたらす心の平穏',
+        'desc'  => '呼吸と意識を整え、海の癒しを体験。ダイビングで実践するマインドフルネスのメソッドを紹介。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/maindfulness.png',
+        'url'   => 'https://amzn.to/3I9PdlI'
+    ],
+    [
+        'title' => 'おかしだいすき みーちゃん: 10歳の女の子が乳幼児に書いた絵本',
+        'desc'  => 'お菓子が大好きなみーちゃんの甘くてかわいい冒険を10歳作者が描いた心温まるストーリー絵本。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/mi-chan.png',
+        'url'   => 'https://amzn.to/3TmIyqI'
+    ],
+    [
+        'title' => 'うみがめになったぜんくんの大冒険: 海を守る小さな勇者の物語',
+        'desc'  => '海ガメに変身したぜんくんがゴミ問題に立ち向かう、友情と環境保護を描いた感動のエコ絵本。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/zenkun.png',
+        'url'   => 'https://amzn.to/4ny1P6k'
+    ],
+];
+
+// Function to display books slider
+function display_books_slider() {
+    global $BOOKS;
+    
+    if (empty($BOOKS)) {
+        return '';
+    }
+    
+    $html = '<section class="books-slider-section" aria-labelledby="books-title">';
+    $html .= '<div class="container">';
+    $html .= '<h2 id="books-title" class="section-title">おすすめ</h2>';
+    $html .= '<div class="books-slider-container">';
+    $html .= '<div class="swiper books-swiper">';
+    $html .= '<div class="swiper-wrapper">';
+    
+    foreach ($BOOKS as $book) {
+        $html .= '<div class="swiper-slide">';
+        $html .= '<div class="book-card">';
+        $html .= '<a href="' . esc_url($book['url']) . '" target="_blank" rel="noopener" class="book-link">';
+        $html .= '<img src="' . esc_url($book['img']) . '" alt="' . esc_attr($book['title']) . '" class="book-image">';
+        $html .= '<div class="book-content">';
+        $html .= '<h3 class="book-title">' . esc_html($book['title']) . '</h3>';
+        $html .= '<p class="book-desc">' . esc_html($book['desc']) . '</p>';
+        $html .= '</div>';
+        $html .= '</a>';
+        $html .= '</div>';
+        $html .= '</div>';
+    }
+    
+    $html .= '</div>';
+    $html .= '<div class="swiper-pagination"></div>';
+    $html .= '<div class="swiper-button-next"></div>';
+    $html .= '<div class="swiper-button-prev"></div>';
+    $html .= '</div>';
+    $html .= '</div>';
+    $html .= '</div>';
+    $html .= '</section>';
+    
+    return $html;
+}
+
+// Function to enqueue Swiper assets
+function enqueue_swiper_assets() {
+    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0');
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true);
+}
+
+// Hook to enqueue Swiper assets on homepage
+add_action('wp_enqueue_scripts', function() {
+    if (is_front_page() || is_home() || is_page_template('page-home-test.php')) {
+        enqueue_swiper_assets();
+    }
+});
+
 ?>
