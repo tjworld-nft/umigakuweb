@@ -70,11 +70,39 @@
     overflow: hidden;
 }
 
+/* FORCE HORIZONTAL LAYOUT - OVERRIDE EVERYTHING */
+.books-section * {
+    box-sizing: border-box !important;
+}
+
 .books-section .books-track {
-    display: table !important;
-    table-layout: fixed !important;
-    width: 2400px !important;
+    display: block !important;
+    white-space: nowrap !important;
+    font-size: 0 !important;
     transition: transform 0.5s ease !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+}
+
+.books-section .book-item {
+    display: inline-block !important;
+    white-space: normal !important;
+    vertical-align: top !important;
+    width: 350px !important;
+    height: auto !important;
+    margin-right: 2rem !important;
+    margin-bottom: 0 !important;
+    font-size: 1rem !important;
+    background: white !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    text-align: center !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    color: #333 !important;
+    float: none !important;
+    position: static !important;
+    clear: none !important;
 }
 
 .slider-nav {
@@ -107,20 +135,6 @@
 
 .nav-btn:disabled:hover {
     background: rgba(255, 255, 255, 0.2);
-}
-
-.books-section .book-item {
-    background: white !important;
-    border-radius: 12px !important;
-    padding: 1.5rem !important;
-    text-align: center !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-    color: #333 !important;
-    width: 350px !important;
-    height: auto !important;
-    display: table-cell !important;
-    vertical-align: top !important;
-    margin-right: 2rem !important;
 }
 
 .books-section .book-item:hover {
