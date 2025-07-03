@@ -71,10 +71,11 @@
 }
 
 .books-section .books-track {
-    display: block !important;
-    white-space: nowrap !important;
-    transition: transform 0.5s ease;
-    font-size: 0; /* Remove space between inline-block elements */
+    display: grid !important;
+    grid-template-columns: repeat(6, 350px) !important;
+    gap: 2rem !important;
+    transition: transform 0.5s ease !important;
+    width: max-content !important;
 }
 
 .slider-nav {
@@ -110,19 +111,15 @@
 }
 
 .books-section .book-item {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #333;
+    background: white !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    text-align: center !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    color: #333 !important;
     width: 350px !important;
-    height: auto;
-    display: inline-block !important;
-    vertical-align: top !important;
-    margin-right: 2rem !important;
-    font-size: 1rem; /* Reset font-size */
-    white-space: normal !important;
+    height: auto !important;
+    display: block !important;
 }
 
 .books-section .book-item:hover {
