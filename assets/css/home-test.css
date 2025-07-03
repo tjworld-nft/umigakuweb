@@ -79,20 +79,26 @@
     border-radius: 15px;
     margin: 40px 0;
     width: 100%;
+    max-width: 100%;
 }
 
 .books-container {
-    display: flex;
-    flex-wrap: nowrap;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     gap: 20px;
     padding: 20px 0;
-    width: calc((320px + 20px) * 12);
+    width: 4080px !important; /* (320px + 20px) * 12 */
     transition: transform 0.5s ease-in-out;
+    transform: translateX(0px);
 }
 
 .book-card {
-    flex: 0 0 320px;
-    min-width: 320px;
+    flex: 0 0 320px !important;
+    min-width: 320px !important;
+    max-width: 320px !important;
+    width: 320px !important;
+    display: block !important;
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
     border-radius: 20px;
     padding: 25px;

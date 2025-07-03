@@ -855,9 +855,14 @@
         
         function updateSlider() {
             const container = document.getElementById('booksContainer');
+            if (!container) return;
+            
             const offset = currentSlide * 340; // 320px + 20px gap
             
-            container.style.transform = `translateX(-${offset}px)`;
+            // 強制的にtransformを適用
+            container.style.setProperty('transform', `translateX(-${offset}px)`, 'important');
+            
+            console.log(`Slider update: slide ${currentSlide}, offset -${offset}px`);
             
             // ドット更新
             document.querySelectorAll('.dot').forEach((dot, index) => {
@@ -865,8 +870,10 @@
             });
             
             // ボタン状態更新
-            document.getElementById('prevBtn').disabled = currentSlide === 0;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            if (prevBtn) prevBtn.disabled = currentSlide === 0;
+            if (nextBtn) nextBtn.disabled = currentSlide === totalSlides - 1;
         }
         
         function nextSlide() {
