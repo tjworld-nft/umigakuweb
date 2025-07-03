@@ -52,3 +52,13 @@
 ::1 - - [02/Jul/2025 22:27:54] code 404, message File not found
 ::1 - - [02/Jul/2025 22:27:54] "GET /assets/img/padi.png HTTP/1.1" 404 -
 ::1 - - [02/Jul/2025 22:27:54] "GET /assets/img/owd2.png HTTP/1.1" 404 -
+::1 - - [03/Jul/2025 10:58:39] code 404, message File not found
+::1 - - [03/Jul/2025 10:58:39] "GET /owd-lp-underwater-test.html HTTP/1.1" 404 -
+::1 - - [03/Jul/2025 10:58:39] code 404, message File not found
+::1 - - [03/Jul/2025 10:58:39] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [03/Jul/2025 11:14:17] code 404, message File not found
+::1 - - [03/Jul/2025 11:14:17] "GET /owd-lp-underwater-test.html HTTP/1.1" 404 -
+::1 - - [03/Jul/2025 11:14:21] code 404, message File not found
+::1 - - [03/Jul/2025 11:14:21] "GET /owd-lp-underwater-test.html HTTP/1.1" 404 -
+::1 - - [03/Jul/2025 11:14:36] code 404, message File not found
+::1 - - [03/Jul/2025 11:14:36] "GET /owd-lp-underwater-test.html HTTP/1.1" 404 -
