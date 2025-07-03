@@ -105,13 +105,231 @@ if (!isset($_SESSION['csrf_token'])) {
             font-family: 'Noto Sans JP', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #fff;
+            background: linear-gradient(180deg, #001a2e 0%, #003d5c 30%, #0066cc 70%, #4ecdc4 100%);
+            background-attachment: fixed;
+            position: relative;
+            overflow-x: hidden;
         }
 
         img {
             max-width: 100%;
             height: auto;
             display: block;
+        }
+
+        /* 水中エフェクト */
+        .underwater-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 水中光線エフェクト */
+        .underwater-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ray {
+            position: absolute;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            animation: ray-move 12s ease-in-out infinite;
+        }
+
+        .ray:nth-child(1) { 
+            width: 150px; 
+            height: 100vh; 
+            left: 15%; 
+            animation-delay: 0s; 
+            transform: rotate(15deg);
+        }
+        .ray:nth-child(2) { 
+            width: 120px; 
+            height: 100vh; 
+            left: 35%; 
+            animation-delay: 3s;
+            transform: rotate(-8deg);
+        }
+        .ray:nth-child(3) { 
+            width: 140px; 
+            height: 100vh; 
+            left: 65%; 
+            animation-delay: 6s;
+            transform: rotate(12deg);
+        }
+        .ray:nth-child(4) { 
+            width: 100px; 
+            height: 100vh; 
+            left: 85%; 
+            animation-delay: 9s;
+            transform: rotate(-10deg);
+        }
+
+        @keyframes ray-move {
+            0%, 100% { opacity: 0.2; transform: translateX(0) rotate(15deg); }
+            50% { opacity: 0.4; transform: translateX(15px) rotate(18deg); }
+        }
+
+        /* 浮遊する泡 */
+        .bubbles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            animation: bubble-float 8s infinite ease-in-out;
+        }
+
+        .bubble:nth-child(1) { width: 15px; height: 15px; left: 10%; animation-delay: 0s; }
+        .bubble:nth-child(2) { width: 12px; height: 12px; left: 25%; animation-delay: 2s; }
+        .bubble:nth-child(3) { width: 18px; height: 18px; left: 40%; animation-delay: 4s; }
+        .bubble:nth-child(4) { width: 10px; height: 10px; left: 60%; animation-delay: 1s; }
+        .bubble:nth-child(5) { width: 14px; height: 14px; left: 75%; animation-delay: 3s; }
+        .bubble:nth-child(6) { width: 16px; height: 16px; left: 90%; animation-delay: 5s; }
+        .bubble:nth-child(7) { width: 13px; height: 13px; left: 5%; animation-delay: 6s; }
+        .bubble:nth-child(8) { width: 17px; height: 17px; left: 50%; animation-delay: 7s; }
+
+        @keyframes bubble-float {
+            0% { 
+                transform: translateY(100vh) scale(0); 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 0.7; 
+                transform: translateY(90vh) scale(1); 
+            }
+            90% { 
+                opacity: 0.7; 
+                transform: translateY(-10vh) scale(1); 
+            }
+            100% { 
+                transform: translateY(-20vh) scale(0); 
+                opacity: 0; 
+            }
+        }
+
+        /* 水中パーティクル */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            animation: particle-float 6s infinite linear;
+        }
+
+        .particle:nth-child(1) { left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 40%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 60%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 80%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 10%; animation-delay: 0.5s; }
+        .particle:nth-child(6) { left: 30%; animation-delay: 1.5s; }
+
+        @keyframes particle-float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-20vh) translateX(8px); opacity: 0; }
+        }
+
+        /* 魚の影 */
+        .fish-shadows {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fish {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.15;
+            animation: fish-swim 20s infinite linear;
+        }
+
+        .fish:nth-child(1) { 
+            top: 25%; 
+            animation-delay: 0s; 
+            animation-duration: 25s;
+        }
+        .fish:nth-child(2) { 
+            top: 45%; 
+            animation-delay: 8s; 
+            animation-duration: 30s;
+        }
+        .fish:nth-child(3) { 
+            top: 65%; 
+            animation-delay: 16s; 
+            animation-duration: 28s;
+        }
+
+        @keyframes fish-swim {
+            0% { transform: translateX(-100px) scaleX(1); }
+            100% { transform: translateX(calc(100vw + 100px)) scaleX(1); }
+        }
+
+        /* 水面の揺らぎ */
+        .water-surface {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 60%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+            animation: water-ripple 8s ease-in-out infinite;
+        }
+
+        @keyframes water-ripple {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+        }
+
+        /* 波紋エフェクト */
+        .ripple {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+            pointer-events: none;
+            z-index: 100;
+            animation: ripple-expand 1.5s ease-out forwards;
+        }
+
+        @keyframes ripple-expand {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+            }
         }
 
         a {
@@ -129,6 +347,9 @@ if (!isset($_SESSION['csrf_token'])) {
         section {
             padding: 80px 0;
             position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         section:nth-child(even) {
@@ -1704,6 +1925,49 @@ if (!isset($_SESSION['csrf_token'])) {
     </style>
 </head>
 <body>
+    <!-- 水中エフェクト -->
+    <div class="underwater-effects">
+        <!-- 水中光線 -->
+        <div class="underwater-rays">
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+        </div>
+
+        <!-- 水面の揺らぎ -->
+        <div class="water-surface"></div>
+
+        <!-- 浮遊する泡 -->
+        <div class="bubbles-container">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+
+        <!-- 水中パーティクル -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <!-- 魚の影 -->
+        <div class="fish-shadows">
+            <div class="fish">🐟</div>
+            <div class="fish">🐠</div>
+            <div class="fish">🐡</div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header" id="header">
         <div class="header-container">
@@ -3199,6 +3463,105 @@ if (!isset($_SESSION['csrf_token'])) {
                     }, 5000);
                 });
             }
+        });
+    </script>
+
+    <!-- 水中エフェクト JavaScript -->
+    <script>
+        // 波紋エフェクト
+        function createRipple(event) {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            
+            ripple.style.left = (event.clientX - 150) + 'px';
+            ripple.style.top = (event.clientY - 150) + 'px';
+            
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                if (document.body.contains(ripple)) {
+                    document.body.removeChild(ripple);
+                }
+            }, 1500);
+        }
+
+        // クリックで波紋エフェクト
+        document.addEventListener('click', function(e) {
+            // フォーム要素やボタンのクリックでは波紋を作らない
+            if (!e.target.closest('form') && !e.target.closest('button') && !e.target.closest('a')) {
+                createRipple(e);
+            }
+        });
+
+        // 動的に泡を追加
+        function addRandomBubble() {
+            const bubblesContainer = document.querySelector('.bubbles-container');
+            if (!bubblesContainer) return;
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            
+            const size = Math.random() * 15 + 8;
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.animationDelay = '0s';
+            bubble.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            
+            bubblesContainer.appendChild(bubble);
+            
+            setTimeout(() => {
+                if (bubblesContainer.contains(bubble)) {
+                    bubblesContainer.removeChild(bubble);
+                }
+            }, 10000);
+        }
+
+        // 定期的に泡を追加
+        setInterval(addRandomBubble, 3000);
+
+        // パララックス効果
+        let ticking = false;
+        
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            const rateParticles = scrolled * -0.5;
+            
+            const rays = document.querySelector('.underwater-rays');
+            const surface = document.querySelector('.water-surface');
+            const particles = document.querySelector('.particles');
+            
+            if (rays) {
+                rays.style.transform = 'translateY(' + rate + 'px)';
+            }
+            if (surface) {
+                surface.style.transform = 'translateY(' + rate * 0.5 + 'px)';
+            }
+            if (particles) {
+                particles.style.transform = 'translateY(' + rateParticles + 'px)';
+            }
+            
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick);
+
+        // ページ読み込み時に初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初期泡を追加
+            setTimeout(() => {
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(addRandomBubble, i * 1000);
+                }
+            }, 1000);
         });
     </script>
 </body>
