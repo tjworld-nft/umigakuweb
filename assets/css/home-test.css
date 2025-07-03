@@ -71,12 +71,10 @@
 }
 
 .books-section .books-track {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
+    display: block !important;
+    white-space: nowrap !important;
     transition: transform 0.5s ease;
-    gap: 2rem;
-    width: auto;
+    font-size: 0; /* Remove space between inline-block elements */
 }
 
 .slider-nav {
@@ -118,15 +116,22 @@
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #333;
-    flex: 0 0 350px !important;
-    min-width: 350px !important;
     width: 350px !important;
+    height: auto;
     display: inline-block !important;
+    vertical-align: top !important;
+    margin-right: 2rem !important;
+    font-size: 1rem; /* Reset font-size */
+    white-space: normal !important;
 }
 
 .books-section .book-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.books-section .book-item:last-child {
+    margin-right: 0 !important;
 }
 
 .books-section .book-cover {
@@ -174,9 +179,8 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .books-section .book-item {
-        flex: 0 0 280px !important;
-        min-width: 280px !important;
         width: 280px !important;
+        margin-right: 1rem !important;
     }
     
     .books-section {
@@ -186,22 +190,9 @@
     .books-section .section-title {
         font-size: 2rem;
     }
-    
-    .books-section .books-track {
-        gap: 1rem;
-    }
 }
 
-/* Force horizontal layout for books slider */
-.books-section .books-track {
-    white-space: nowrap !important;
-}
-
-.books-section .book-item {
-    display: inline-block !important;
-    vertical-align: top !important;
-    white-space: normal !important;
-}
+/* Additional fallback styles removed - handled above */
 
 /* Floating Bubbles */
 .bubbles {
