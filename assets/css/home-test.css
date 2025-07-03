@@ -71,8 +71,9 @@
 }
 
 .books-section .books-track {
-    display: grid !important;
-    grid-template-columns: repeat(6, 350px) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     gap: 2rem !important;
     transition: transform 0.5s ease !important;
     width: max-content !important;
@@ -118,8 +119,9 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
     color: #333 !important;
     width: 350px !important;
+    min-width: 350px !important;
     height: auto !important;
-    display: block !important;
+    flex-shrink: 0 !important;
 }
 
 .books-section .book-item:hover {
