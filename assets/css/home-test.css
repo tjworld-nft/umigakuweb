@@ -71,12 +71,10 @@
 }
 
 .books-section .books-track {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: 2rem !important;
+    display: table !important;
+    table-layout: fixed !important;
+    width: 2400px !important;
     transition: transform 0.5s ease !important;
-    width: max-content !important;
 }
 
 .slider-nav {
@@ -119,9 +117,10 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
     color: #333 !important;
     width: 350px !important;
-    min-width: 350px !important;
     height: auto !important;
-    flex-shrink: 0 !important;
+    display: table-cell !important;
+    vertical-align: top !important;
+    margin-right: 2rem !important;
 }
 
 .books-section .book-item:hover {
