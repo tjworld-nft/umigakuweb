@@ -200,6 +200,40 @@ body {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin-bottom: 10px;
+}
+
+/* Books Section Subtitle */
+.books-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Kindle Unlimited Badge */
+.kindle-unlimited-badge {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+    animation: gentle-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes gentle-glow {
+    0% { box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3); }
+    100% { box-shadow: 0 4px 12px rgba(255, 107, 53, 0.5); }
 }
 
 /* Swiper Navigation */
@@ -278,6 +312,19 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .books-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+        padding: 0 10px;
+    }
+    
+    .kindle-unlimited-badge {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+}
+
 @media (max-width: 480px) {
     .books-slider-section {
         padding: 3rem 0;
@@ -289,6 +336,17 @@ body {
     
     .book-image {
         height: 180px;
+    }
+    
+    .books-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .kindle-unlimited-badge {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        margin-top: 6px;
     }
     
     .book-title {

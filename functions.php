@@ -955,73 +955,88 @@ $BOOKS = [
         'title' => '「私にはムリ・・」から「潜りたい」に変わるダイビングのはじめ方',
         'desc'  => '初心者の不安や疑問をプロが忖度なしで解消。安全ルールや器材選びまで網羅した超実践ガイド。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/start-diving.png',
-        'url'   => 'https://amzn.to/40BBpqn'
+        'url'   => 'https://amzn.to/40BBpqn',
+        'author' => '吉田哲司',
+        'kindle_unlimited' => true
     ],
     [
         'title' => 'むずかしく考えなくて大丈夫！ はじめてのセルフダイビング',
         'desc'  => 'セルフ・バディ・ソロの違いから海外ポイントまで、自由に潜るコツを学べるセルフ派入門書。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/self-diving.png',
-        'url'   => 'https://amzn.to/4003YO7'
+        'url'   => 'https://amzn.to/4003YO7',
+        'author' => '吉田哲司',
+        'kindle_unlimited' => true
     ],
     [
         'title' => 'ぷかぷか浮かんで水中散歩！ 今日から始めるごきげんスノーケリング',
         'desc'  => '泳ぎが苦手な人でも安心。安全テクニックと国内外おすすめスポットをプロ目線でやさしく案内。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/snorkel.png',
-        'url'   => 'https://amzn.to/44ToUbh'
+        'url'   => 'https://amzn.to/44ToUbh',
+        'author' => '吉田哲司'
     ],
     [
         'title' => '海に一歩、人生にひと花: 「年だから」と言わない60代からのダイビング',
         'desc'  => '60歳からでも遅くない！ 健康維持と生きがいを広げるシニア向けダイビング応援ブック。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/senior-diver.png',
-        'url'   => 'https://amzn.to/40z9qaN'
+        'url'   => 'https://amzn.to/40z9qaN',
+        'author' => '吉田哲司'
     ],
     [
         'title' => 'AIは、あなたの「魔法の杖」: 知識ゼロ・パソコン苦手でも大丈夫！',
         'desc'  => 'ChatGPT ほか最新AIを今日から使いこなす方法を、テック好きダイバーがやさしく解説する超入門。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/ai.png',
-        'url'   => 'https://amzn.to/45TGvBY'
+        'url'   => 'https://amzn.to/45TGvBY',
+        'author' => '吉田哲司',
+        'kindle_unlimited' => true
     ],
     [
         'title' => 'はじめてのSUP: ドキドキの初体験からワンちゃんとの水上散歩まで',
         'desc'  => 'ボード選び・乗り方・安全のコツを写真とQ&Aで解説。愛犬と楽しむSUP情報も満載の初心者ガイド。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/sup.png',
-        'url'   => 'https://amzn.to/3TSlwYL'
+        'url'   => 'https://amzn.to/3TSlwYL',
+        'author' => '吉田哲司'
     ],
     [
         'title' => '大切な人と、海の上で過ごす時間: 家族・仲間と楽しむシーカヤック入門',
         'desc'  => 'シーカヤックの魅力と始め方を、必要装備やおすすめスポットと合わせて紹介するやさしい入門書。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/kayac.png',
-        'url'   => 'https://amzn.to/4nxWYCa'
+        'url'   => 'https://amzn.to/4nxWYCa',
+        'author' => '吉田哲司'
     ],
     [
         'title' => '親子で楽しむ！マリンアクティビティ完全ガイド',
         'desc'  => 'SUP・カヤック・スノーケリング・体験ダイビングまで、親子で海を満喫する方法を一冊に凝縮。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/marine.png',
-        'url'   => 'https://amzn.to/44LzvpB'
+        'url'   => 'https://amzn.to/44LzvpB',
+        'author' => '吉田哲司'
     ],
     [
         'title' => 'ブランクダイバー復活ガイド: "ReActivate" 完全ロードマップ',
         'desc'  => '半年以上潜っていないダイバーが自信を取り戻すためのリフレッシュ手順と安全チェックを徹底解説。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/brank-diver.png',
-        'url'   => 'https://amzn.to/44eH3kD'
+        'url'   => 'https://amzn.to/44eH3kD',
+        'author' => '吉田哲司'
     ],
     [
         'title' => '水中で学ぶマインドフルネス: ダイビングがもたらす心の平穏',
         'desc'  => '呼吸と意識を整え、海の癒しを体験。ダイビングで実践するマインドフルネスのメソッドを紹介。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/maindfulness.png',
-        'url'   => 'https://amzn.to/3I9PdlI'
+        'url'   => 'https://amzn.to/3I9PdlI',
+        'author' => '吉田哲司'
     ],
     [
         'title' => 'おかしだいすき みーちゃん: 10歳の女の子が乳幼児に書いた絵本',
         'desc'  => 'お菓子が大好きなみーちゃんの甘くてかわいい冒険を10歳作者が描いた心温まるストーリー絵本。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/mi-chan.png',
-        'url'   => 'https://amzn.to/3TmIyqI'
+        'url'   => 'https://amzn.to/3TmIyqI',
+        'author' => '吉田哲司（編集）'
     ],
     [
         'title' => 'うみがめになったぜんくんの大冒険: 海を守る小さな勇者の物語',
         'desc'  => '海ガメに変身したぜんくんがゴミ問題に立ち向かう、友情と環境保護を描いた感動のエコ絵本。',
         'img'   => get_stylesheet_directory_uri().'/assets/img/books/zenkun.png',
-        'url'   => 'https://amzn.to/4ny1P6k'
+        'url'   => 'https://amzn.to/4ny1P6k',
+        'author' => '吉田哲司（編集）'
     ],
 ];
 
