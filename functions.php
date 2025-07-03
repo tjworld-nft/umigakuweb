@@ -129,7 +129,7 @@ function miura_diving_scripts() {
         wp_deregister_script('jquery-migrate');
     }
 }
-add_action('wp_enqueue_scripts', 'miura_diving_scripts');
+// add_action('wp_enqueue_scripts', 'miura_diving_scripts'); // Replaced by miura_diving_assets
 
 // Register navigation menus
 function miura_diving_menus() {
@@ -846,6 +846,9 @@ function miura_diving_assets() {
         wp_enqueue_style('home-test', get_stylesheet_directory_uri() . '/assets/css/home-test.css', [], '3.0');
         wp_enqueue_script('home-test', get_stylesheet_directory_uri() . '/assets/js/home-test.js', [], '3.0', true);
         wp_script_add_data('home-test', 'defer', true);
+        
+        // Books slider script
+        wp_enqueue_script('books-slider-js', get_stylesheet_directory_uri() . '/assets/js/books-slider.js', array('jquery'), '3.0', true);
     }
     
     // ★License page assets
