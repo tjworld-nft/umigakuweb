@@ -818,8 +818,11 @@
                 this.autoPlayToggle = document.getElementById('autoPlayToggle');
                 
                 if (!this.container || !this.prevBtn || !this.nextBtn || !this.dotsContainer || !this.autoPlayToggle) {
+                    console.error('BooksSlider: Required elements not found');
                     return;
                 }
+                
+                console.log('BooksSlider: Initializing...');
                 
                 this.books = document.querySelectorAll('.book-card');
                 this.totalBooks = this.books.length;
@@ -829,7 +832,13 @@
                 this.autoPlay = true;
                 this.autoPlayInterval = null;
                 
-                this.init();
+                console.log(`Found ${this.totalBooks} books, ${this.booksPerView} per view, ${this.totalSlides} total slides`);
+                
+                if (this.totalBooks > 0) {
+                    this.init();
+                } else {
+                    console.error('No book cards found');
+                }
             }
             
             getBooksPerView() {
@@ -866,10 +875,11 @@
             }
             
             updateSlider() {
-                const cardWidth = 280;
+                const cardWidth = 320;
                 const gap = 20;
                 const offset = -(this.currentSlide * this.booksPerView * (cardWidth + gap));
                 
+                console.log(`Updating slider: slide ${this.currentSlide}, offset ${offset}px`);
                 this.container.style.transform = `translateX(${offset}px)`;
                 
                 document.querySelectorAll('.dot').forEach((dot, index) => {
@@ -983,7 +993,18 @@
         }
         
         document.addEventListener('DOMContentLoaded', () => {
-            new BooksSlider();
+            // 少し遅延を入れて確実に初期化
+            setTimeout(() => {
+                new BooksSlider();
+            }, 100);
+        });
+        
+        // 追加の初期化チェック
+        window.addEventListener('load', () => {
+            if (!window.booksSliderInitialized) {
+                new BooksSlider();
+                window.booksSliderInitialized = true;
+            }
         });
     </script>
     
