@@ -691,12 +691,27 @@
         if (!track || !prevBtn || !nextBtn) return;
         
         let currentSlide = 0;
-        const slideWidth = 370; // 350px + 20px gap
-        const maxSlides = track.children.length - 3; // Show 3 books at a time
+        const slideWidth = 382; // 350px + 32px margin (2rem)
+        const visibleBooks = 3;
+        const totalBooks = track.children.length;
+        const maxSlides = Math.max(0, totalBooks - visibleBooks); // Show 3 books at a time
+        
+        console.log('Books slider initialized:', {
+            totalBooks,
+            visibleBooks,
+            maxSlides,
+            slideWidth
+        });
         
         function updateSlider() {
             const translateX = -currentSlide * slideWidth;
             track.style.transform = `translateX(${translateX}px)`;
+            
+            console.log('Slider updated:', {
+                currentSlide,
+                translateX,
+                maxSlides
+            });
             
             // Update button states
             prevBtn.disabled = currentSlide === 0;
