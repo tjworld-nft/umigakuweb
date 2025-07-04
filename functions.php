@@ -1081,6 +1081,53 @@ function display_books_slider() {
     return $html;
 }
 
+/* ===== AIミュージック $ALBUMS & ショートコード ===== */
+$ALBUMS = [
+    [
+        'title' => 'Dive Drive Collection (1st Album)',
+        'desc'  => '水面から深海へ――海の"レイヤー"を音で巡る全10曲。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/albums/Dive Drive Collection.png',
+        'url'   => 'https://suno.com/playlist/f2ee1531-71ed-41c0-9c1d-5eba31e7fb75'
+    ],
+    [
+        'title' => 'Certification Symphony (2nd Album)',
+        'desc'  => '講習からCカード取得までをサウンドトリップで体験。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/albums/Certification Symphony.png',
+        'url'   => 'https://suno.com/playlist/888888c4-2fab-47dd-ad43-11410c0ea1eb'
+    ],
+];
+
+function tj_music_shortcode(){
+    global $ALBUMS;
+    ob_start(); ?>
+    <section id="tj-music">
+        <!-- HERO -->
+        <div class="music-hero" onclick="window.open('https://tj-music.com','_blank')">
+            <div class="music-hero__inner">
+                <h2 class="music-heading">吉田プロデュース&nbsp;AI&nbsp;ミュージック</h2>
+                <p class="music-sub">潜って聴く？&nbsp;聴いて潜る？ ――全曲"ダイビング"がテーマ</p>
+                <a class="music-cta" href="https://tj-music.com" target="_blank" rel="noopener">LISTEN ▶</a>
+            </div>
+        </div>
+
+        <!-- ALBUM GRID -->
+        <div class="album-grid">
+            <?php foreach($ALBUMS as $a): ?>
+                <a class="album-card" href="<?=esc_url($a['url']);?>" target="_blank" rel="noopener">
+                    <img src="<?=esc_url($a['img']);?>" alt="<?=esc_attr($a['title']);?>" loading="lazy">
+                    <p class="album-title"><?=esc_html($a['title']);?></p>
+                    <p class="album-desc"><?=esc_html($a['desc']);?></p>
+                </a>
+            <?php endforeach; ?>
+        </div>
+
+        <p class="music-copy">海をもっと身近に。音楽で感じるダイビングの鼓動。</p>
+    </section>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('tj_music','tj_music_shortcode');
+
 // Function to enqueue Swiper assets
 function enqueue_swiper_assets() {
     wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0');
