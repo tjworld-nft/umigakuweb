@@ -430,12 +430,13 @@ body {
 }
 */
 
-/* ── AI ミュージック Hero（新版） ── */
+/* ── AI ミュージック Hero（無効化） ── */
+/*
 #tj-music{
     position:relative;
     margin:60px auto 0;
     max-width:1200px;
-    height:400px;                 /* SP は下で上書き */
+    height:400px;
     border-radius:12px;
     overflow:hidden;
     background-size:contain;
@@ -450,7 +451,7 @@ body {
     transform:translateY(-5px);
     box-shadow:0 20px 40px rgba(0,0,0,0.3);
 }
-#tj-music::before{              /* 暗めオーバーレイ */
+#tj-music::before{
     content:'';position:absolute;inset:0;
     background:linear-gradient(135deg, rgba(0,31,63,0.7) 0%, rgba(0,0,0,0.5) 100%);
 }
@@ -478,6 +479,7 @@ body {
     .music-sub{font-size:1rem;margin:0 0 20px}
     .music-cta{padding:12px 36px;font-size:1rem}
 }
+*/
 
 /* Screen Reader Only */
 .sr-only {
