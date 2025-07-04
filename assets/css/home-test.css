@@ -506,9 +506,9 @@ body {
 }
 
 .music-hero {
-    background: url('/assets/img/albums/tj-music-umigaku-hero.png') center/cover no-repeat,
-                url('assets/img/albums/tj-music-umigaku-hero.png') center/cover no-repeat,
-                url('../img/albums/tj-music-umigaku-hero.png') center/cover no-repeat,
+    background: url('/assets/img/albums/tj-music-umigaku-hero2.png') center/cover no-repeat,
+                url('assets/img/albums/tj-music-umigaku-hero2.png') center/cover no-repeat,
+                url('../img/albums/tj-music-umigaku-hero2.png') center/cover no-repeat,
                 linear-gradient(135deg, #001f3f 0%, #0074D9 50%, #001f3f 100%);
     background-size: cover;
     background-position: center center;
