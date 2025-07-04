@@ -614,16 +614,7 @@
         </section>
 
         <!-- AI Music Section -->
-        <section id="tj-music" onclick="window.open('https://tj-music.com','_blank')" role="link" 
-                 style="cursor: pointer;" 
-                 title="吉田プロデュース AI ミュージックを聴く - tj-music.com">
-            <div class="music-hero__inner">
-                <h2 class="music-heading">吉田プロデュース&nbsp;AI&nbsp;ミュージック</h2>
-                <p class="music-sub">潜って聴く？&nbsp;聴いて潜る？ ――全曲"ダイビング"がテーマ</p>
-                <a class="music-cta" href="https://tj-music.com" target="_blank" rel="noopener" 
-                   onclick="event.stopPropagation()">LISTEN</a>
-            </div>
-        </section>
+        <?= do_shortcode('[tj_music]'); ?>
 
         <!-- Latest Blog -->
         <section class="latest-blog" aria-labelledby="blog-title">
