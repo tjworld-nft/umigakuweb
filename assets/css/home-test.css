@@ -483,12 +483,16 @@ body {
 
 /* ── AI ミュージック セクション（新デザイン） ── */
 .ai-music-section {
-    padding: 100px 0 80px;
-    margin-top: 60px;
-    background: linear-gradient(135deg, 
-        rgba(0, 31, 63, 0.95) 0%, 
-        rgba(0, 116, 217, 0.9) 50%, 
-        rgba(0, 31, 63, 0.95) 100%);
+    padding: 120px 0 100px;
+    margin-top: 100px;
+    background: linear-gradient(45deg, 
+        #001122 0%, 
+        #003366 25%, 
+        #0066cc 50%, 
+        #003366 75%, 
+        #001122 100%);
+    background-size: 400% 400%;
+    animation: ocean-gradient 12s ease infinite;
     position: relative;
     overflow: hidden;
 }
@@ -507,20 +511,21 @@ body {
 }
 
 .music-hero {
-    background: url('/assets/img/albums/tj-music-umigaku-hero2.png') center/contain no-repeat,
-                url('assets/img/albums/tj-music-umigaku-hero2.png') center/contain no-repeat,
-                url('../img/albums/tj-music-umigaku-hero2.png') center/contain no-repeat,
-                linear-gradient(135deg, #001f3f 0%, #0074D9 50%, #001f3f 100%);
-    background-size: contain;
-    background-position: center center;
-    background-color: rgba(0, 31, 63, 0.9);
-    border-radius: 20px;
+    background: #001122;
+    border-radius: 25px;
     overflow: hidden;
-    height: 450px;
     position: relative;
     cursor: pointer;
     transition: all 0.4s ease;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(0, 170, 255, 0.3);
+}
+
+.music-hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 23px;
 }
 
 .music-hero:hover {
@@ -528,23 +533,27 @@ body {
     box-shadow: 0 30px 80px rgba(0, 116, 217, 0.4);
 }
 
-.music-hero::before {
+.music-hero::after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, 
-        rgba(0, 31, 63, 0.3) 0%, 
+        rgba(0, 31, 63, 0.4) 0%, 
         rgba(0, 116, 217, 0.2) 30%,
         rgba(0, 31, 63, 0.2) 70%,
-        rgba(0, 0, 0, 0.4) 100%);
-    z-index: 1;
+        rgba(0, 0, 0, 0.5) 100%);
+    z-index: 2;
+    border-radius: 23px;
 }
 
 .music-content {
-    position: relative;
-    z-index: 2;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     padding: 60px 50px;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -710,14 +719,8 @@ body {
 /* モバイル対応 */
 @media (max-width: 768px) {
     .ai-music-section {
-        padding: 80px 0 60px;
-        margin-top: 40px;
-    }
-    
-    .music-hero {
-        height: 320px;
-        background-size: contain;
-        background-position: center center;
+        padding: 100px 0 80px;
+        margin-top: 60px;
     }
     
     .music-content {
@@ -739,11 +742,6 @@ body {
     .music-cta-btn {
         padding: 16px 30px;
         font-size: 1rem;
-    }
-    
-    .music-visual {
-        width: 100%;
-        opacity: 0.3;
     }
 }
 
