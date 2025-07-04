@@ -510,11 +510,12 @@ body {
                 url('assets/img/albums/tj-music-umigaku-hero.png') center/cover no-repeat,
                 url('../img/albums/tj-music-umigaku-hero.png') center/cover no-repeat,
                 linear-gradient(135deg, #001f3f 0%, #0074D9 50%, #001f3f 100%);
-    background-blend-mode: overlay;
-    background-color: rgba(0, 31, 63, 0.7);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
     border-radius: 20px;
     overflow: hidden;
-    min-height: 400px;
+    min-height: 450px;
     position: relative;
     cursor: pointer;
     transition: all 0.4s ease;
@@ -673,6 +674,28 @@ body {
     50% { transform: translateX(-100px) translateY(-10px); }
 }
 
+/* 画像表示の最適化オプション */
+.music-hero.contain-image {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.music-hero.cover-image {
+    background-size: cover !important;
+    background-position: center center !important;
+}
+
+.music-hero.fixed-ratio {
+    aspect-ratio: 16/9;
+    min-height: auto;
+}
+
+.music-hero.square-ratio {
+    aspect-ratio: 1/1;
+    min-height: auto;
+}
+
 /* モバイル対応 */
 @media (max-width: 768px) {
     .ai-music-section {
@@ -681,6 +704,8 @@ body {
     
     .music-hero {
         min-height: 350px;
+        background-size: cover;
+        background-position: center top;
     }
     
     .music-content {
