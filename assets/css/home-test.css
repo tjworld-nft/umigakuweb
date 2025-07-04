@@ -688,7 +688,17 @@ body {
 }
 
 .music-hero.fixed-ratio {
-    aspect-ratio: 16/9;
+    aspect-ratio: 8/3;
+    min-height: auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.music-hero.contain-image.fixed-ratio {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    aspect-ratio: 8/3;
     min-height: auto;
 }
 
@@ -713,6 +723,12 @@ body {
     .music-hero.contain-image {
         background-size: contain !important;
         min-height: 450px;
+    }
+    
+    .music-hero.contain-image.fixed-ratio {
+        aspect-ratio: 8/3;
+        min-height: auto;
+        background-size: contain !important;
     }
     
     .music-content {
