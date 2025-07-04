@@ -507,16 +507,16 @@ body {
 }
 
 .music-hero {
-    background: url('/assets/img/albums/tj-music-umigaku-hero2.png') center/cover no-repeat,
-                url('assets/img/albums/tj-music-umigaku-hero2.png') center/cover no-repeat,
-                url('../img/albums/tj-music-umigaku-hero2.png') center/cover no-repeat,
+    background: url('/assets/img/albums/tj-music-umigaku-hero2.png') center/contain no-repeat,
+                url('assets/img/albums/tj-music-umigaku-hero2.png') center/contain no-repeat,
+                url('../img/albums/tj-music-umigaku-hero2.png') center/contain no-repeat,
                 linear-gradient(135deg, #001f3f 0%, #0074D9 50%, #001f3f 100%);
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
-    background-attachment: scroll;
+    background-color: rgba(0, 31, 63, 0.9);
     border-radius: 20px;
     overflow: hidden;
-    min-height: 550px;
+    height: 450px;
     position: relative;
     cursor: pointer;
     transition: all 0.4s ease;
@@ -533,10 +533,10 @@ body {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, 
-        rgba(0, 31, 63, 0.8) 0%, 
-        rgba(0, 116, 217, 0.6) 30%,
-        rgba(0, 31, 63, 0.4) 70%,
-        rgba(0, 0, 0, 0.6) 100%);
+        rgba(0, 31, 63, 0.3) 0%, 
+        rgba(0, 116, 217, 0.2) 30%,
+        rgba(0, 31, 63, 0.2) 70%,
+        rgba(0, 0, 0, 0.4) 100%);
     z-index: 1;
 }
 
@@ -715,20 +715,9 @@ body {
     }
     
     .music-hero {
-        min-height: 400px;
+        height: 320px;
         background-size: contain;
         background-position: center center;
-    }
-    
-    .music-hero.contain-image {
-        background-size: contain !important;
-        min-height: 450px;
-    }
-    
-    .music-hero.contain-image.fixed-ratio {
-        aspect-ratio: 8/3;
-        min-height: auto;
-        background-size: contain !important;
     }
     
     .music-content {
