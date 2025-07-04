@@ -1081,6 +1081,27 @@ function display_books_slider() {
     return $html;
 }
 
+/* ── AI ミュージック ショートコード ── */
+function tj_music_shortcode(){
+    ob_start(); ?>
+    <section id="tj-music" onclick="window.open('https://tj-music.com','_blank')" role="link">
+        <div class="music-hero__inner">
+            <h2 class="music-heading">吉田プロデュース&nbsp;AI&nbsp;ミュージック</h2>
+            <p class="music-sub">潜って聴く？&nbsp;聴いて潜る？ ――全曲"ダイビング"がテーマ</p>
+            <a class="music-cta" href="https://tj-music.com" target="_blank" rel="noopener">LISTEN</a>
+        </div>
+
+        <!-- アルバムジャケット -->
+        <div class="album-covers">
+            <img src="<?= get_stylesheet_directory_uri(); ?>/assets/img/albums/dive-drive-collection.png" alt="1st Album" class="cover cover-1" loading="lazy">
+            <img src="<?= get_stylesheet_directory_uri(); ?>/assets/img/albums/certification-symphony.png" alt="2nd Album" class="cover cover-2" loading="lazy">
+        </div>
+    </section>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('tj_music','tj_music_shortcode');
+
 
 // Function to enqueue Swiper assets
 function enqueue_swiper_assets() {

@@ -402,6 +402,59 @@ body {
     }
 }
 
+/* ── AI ミュージック Hero ── */
+/* セクション全体 */
+#tj-music{
+    position:relative;
+    margin:60px auto 0;
+    max-width:1200px;
+    height:320px;
+    border-radius:12px;
+    overflow:hidden;
+    cursor:pointer;
+    background:url('/assets/img/albums/tj-music-umigaku-hero.png') center/cover no-repeat;
+}
+@media(max-width:767px){#tj-music{height:260px}}
+
+/* 暗めオーバーレイ */
+#tj-music::before{
+    content:'';position:absolute;inset:0;background:#0006;
+}
+
+/* 左側テキストブロック */
+.music-hero__inner{
+    position:relative;z-index:1;
+    display:flex;flex-direction:column;justify-content:center;
+    height:100%;padding:0 40px;color:#fff;
+}
+.music-heading{font-size:clamp(1.4rem,5vw,2.4rem);margin:0 0 6px}
+.music-sub{margin:0 0 20px;font-size:.95rem;max-width:400px}
+.music-cta{
+    display:inline-block;padding:10px 34px;border:2px solid #0af;border-radius:30px;
+    font-weight:700;color:#fff;text-decoration:none;
+    background:linear-gradient(135deg,#0af 0%,#07f 100%);
+    transition:.2s;
+}
+.music-cta:hover{transform:translateY(-2px);box-shadow:0 6px 12px #0004}
+
+/* ── アルバムジャケット ── */
+.album-covers{
+    position:absolute;bottom:20px;right:30px;display:flex;gap:20px;
+}
+.cover{
+    width:200px;height:200px;border-radius:8px;box-shadow:0 6px 12px #0004;
+    transition:transform .2s;
+}
+.cover-1{transform:rotate(-4deg)}
+.cover-2{transform:rotate(3deg)}
+#tj-music:hover .cover{transform:rotate(0deg) scale(1.05)}
+
+@media(max-width:767px){
+    .album-covers{bottom:12px;right:50%;transform:translateX(50%);gap:12px}
+    .cover{width:120px;height:120px}
+    .music-hero__inner{align-items:center;text-align:center;padding:0 16px}
+    .music-cta{margin-top:8px}
+}
 
 /* Screen Reader Only */
 .sr-only {
