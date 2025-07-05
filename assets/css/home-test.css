@@ -1831,10 +1831,12 @@ body {
     
     .hero-title {
         font-size: 2rem;
+        line-height: 1.2;
     }
     
     .section-title {
         font-size: 1.8rem;
+        margin-bottom: 1rem;
     }
     
     .why-grid,
@@ -1842,6 +1844,7 @@ body {
     .lab-grid,
     .blog-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     .activities-slider {
@@ -1851,6 +1854,242 @@ body {
     
     .activity-card {
         flex: 0 0 260px;
+    }
+    
+    /* Enhanced mobile navigation */
+    .cta-buttons {
+        gap: 0.8rem;
+    }
+    
+    .cta-buttons .btn-cta {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        min-width: 200px;
+        white-space: nowrap;
+    }
+    
+    /* Mobile text optimization */
+    .hero-subtitle {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Mobile card improvements */
+    .why-card,
+    .point-card {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .why-card h3,
+    .point-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    /* Mobile timeline optimization */
+    .timeline-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    /* Footer mobile optimization */
+    .cta-info {
+        text-align: center;
+        font-size: 0.85rem;
+    }
+    
+    .cta-info li {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* =============================================
+   HEADER & NAVIGATION MOBILE OPTIMIZATION
+   ============================================= */
+
+.page-header {
+    background: rgba(0, 31, 63, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.page-nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    background: rgba(0, 170, 255, 0.8);
+    color: white;
+}
+
+/* Mobile navigation optimization */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 0.3rem 0;
+    }
+    
+    .nav-links {
+        gap: 0.5rem;
+        justify-content: center;
+        padding: 0 0.5rem;
+    }
+    
+    .nav-links li a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 0.3rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-links li a {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Main content top spacing for fixed header */
+.home-test {
+    padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+    .home-test {
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-test {
+        padding-top: 60px;
+    }
+}
+
+/* =============================================
+   MOBILE TOUCH & INTERACTION OPTIMIZATION
+   ============================================= */
+
+/* Mobile performance optimization */
+@media (max-width: 768px) {
+    /* Reduce heavy animations on mobile */
+    * {
+        will-change: auto !important;
+    }
+    
+    /* Optimize images for mobile */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    /* Smooth font rendering */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Optimize background gradients */
+    .hero,
+    .books-slider-section,
+    .global-cta {
+        background-attachment: scroll; /* Better mobile performance */
+    }
+}
+
+/* Touch-friendly button sizing */
+@media (max-width: 768px) {
+    .btn-cta,
+    .amazon-btn,
+    .course-details-btn {
+        min-height: 44px; /* iOS recommended touch target size */
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 25px;
+    }
+    
+    /* Improve text readability on mobile */
+    body {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+    
+    /* Better mobile scrolling */
+    .home-test {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Reduce motion for mobile performance */
+    .bubble,
+    .wave-overlay {
+        animation-duration: 12s; /* Slower animations */
+    }
+}
+
+/* Enhanced mobile hero section */
+@media (max-width: 480px) {
+    .hero {
+        min-height: 70vh; /* Reduce height on small screens */
+        padding: 2rem 0;
+    }
+    
+    .hero-inner {
+        padding: 1rem;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    /* Mobile-first CTA layout */
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .hero-cta .btn-cta {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
     }
 }
 
@@ -1863,10 +2102,16 @@ body {
     transition: .5s;
     color: #fff;
     border: none;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
 }
 
 .btn-cta:hover {
     background-position: 100% 0;
+    color: #fff;
+    text-decoration: none;
 }
 
 /* ヘッダー透過 / フェード */
