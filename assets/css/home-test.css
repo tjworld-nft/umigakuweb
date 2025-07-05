@@ -483,8 +483,8 @@ body {
 
 /* ── AI ミュージック セクション（新デザイン） ── */
 .ai-music-section {
-    padding: 120px 0 100px;
-    margin-top: 100px;
+    padding: 80px 0 60px;
+    margin-top: 60px;
     background: linear-gradient(45deg, 
         #001122 0%, 
         #003366 25%, 
@@ -548,7 +548,7 @@ body {
 
 .music-content {
     position: absolute;
-    z-index: 3;
+    z-index: 5;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -720,8 +720,8 @@ body {
 /* モバイル対応 */
 @media (max-width: 768px) {
     .ai-music-section {
-        padding: 60px 0 50px;
-        margin-top: 40px;
+        padding: 40px 0 30px;
+        margin-top: 30px;
     }
     
     .music-hero {
@@ -743,7 +743,7 @@ body {
         padding: 20px 15px;
         width: calc(100% - 30px);
         max-width: none;
-        z-index: 3;
+        z-index: 5;
     }
     
     .music-badge {
@@ -779,8 +779,8 @@ body {
 /* 小さなスマホ対応 */
 @media (max-width: 480px) {
     .ai-music-section {
-        padding: 50px 0 40px;
-        margin-top: 30px;
+        padding: 30px 0 25px;
+        margin-top: 20px;
     }
     
     .music-hero {
