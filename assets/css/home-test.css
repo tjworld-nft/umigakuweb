@@ -2105,45 +2105,17 @@ body {
     }
 }
 
-/* Desktop/Mobile Hero Display Control */
-.desktop-only {
-    display: block;
-}
-
-.mobile-only {
-    display: none;
-}
-
-/* Mobile: Force hide desktop slideshow completely */
-@media (max-width: 768px) {
-    .hero-slides.desktop-only {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        position: absolute !important;
-        left: -9999px !important;
-    }
-    
-    .hero-slides.desktop-only li {
-        display: none !important;
-        visibility: hidden !important;
-    }
-    
-    .hero-slides.desktop-only li img {
-        display: none !important;
-        visibility: hidden !important;
-    }
-}
-
-.hero-mobile {
+/* Simple Hero Background */
+.hero-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
 
-.hero-mobile img {
+.hero-background img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -2153,16 +2125,6 @@ body {
 
 /* Mobile Hero Section */
 @media (max-width: 768px) {
-    /* Hide desktop slideshow on mobile */
-    .desktop-only {
-        display: none !important;
-    }
-    
-    /* Show mobile single image */
-    .mobile-only {
-        display: block !important;
-    }
-    
     .hero {
         min-height: 60vh;
         max-height: 500px;
@@ -2170,21 +2132,13 @@ body {
         overflow: hidden;
     }
     
-    .hero-mobile {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
+    .hero-background {
+        height: 500px;
     }
     
-    .hero-mobile img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        display: block;
+    .hero-background img {
+        height: 500px;
+        max-height: 500px;
     }
     
     .hero-inner {
@@ -2201,12 +2155,13 @@ body {
         height: 400px;
     }
     
-    .hero-mobile {
+    .hero-background {
         height: 400px;
     }
     
-    .hero-mobile img {
+    .hero-background img {
         height: 400px;
+        max-height: 400px;
     }
     
     .hero-inner {
