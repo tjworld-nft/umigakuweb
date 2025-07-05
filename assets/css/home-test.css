@@ -720,32 +720,102 @@ body {
 /* モバイル対応 */
 @media (max-width: 768px) {
     .ai-music-section {
-        padding: 100px 0 80px;
-        margin-top: 60px;
+        padding: 60px 0 50px;
+        margin-top: 40px;
+    }
+    
+    .music-hero {
+        border-radius: 15px;
+        margin: 0 10px;
+    }
+    
+    .music-hero-image {
+        width: 100%;
+        height: auto;
+        border-radius: 13px;
     }
     
     .music-content {
-        padding: 30px 20px;
-        width: calc(100% - 40px);
-        max-width: 90%;
+        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        padding: 20px 15px;
+        width: calc(100% - 30px);
+        max-width: none;
+        z-index: 3;
+    }
+    
+    .music-badge {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+        margin-bottom: 15px;
     }
     
     .music-title {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
-        margin-bottom: 20px;
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+        margin-bottom: 15px;
+        line-height: 1.2;
     }
     
     .music-description {
-        font-size: 1rem;
-        margin-bottom: 30px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 25px;
+        max-width: none;
     }
     
     .music-cta-btn {
-        padding: 16px 30px;
+        padding: 14px 28px;
         font-size: 1rem;
+        gap: 10px;
+    }
+    
+    .music-hero::after {
+        border-radius: 13px;
+    }
+}
+
+/* 小さなスマホ対応 */
+@media (max-width: 480px) {
+    .ai-music-section {
+        padding: 50px 0 40px;
+        margin-top: 30px;
+    }
+    
+    .music-hero {
+        margin: 0 5px;
+        border-radius: 12px;
+    }
+    
+    .music-hero-image {
+        border-radius: 10px;
+    }
+    
+    .music-content {
+        padding: 15px 10px;
+        width: calc(100% - 20px);
+    }
+    
+    .music-title {
+        font-size: clamp(1.3rem, 7vw, 1.8rem);
+        margin-bottom: 12px;
+    }
+    
+    .music-description {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+    
+    .music-cta-btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+        gap: 8px;
+    }
+    
+    .music-hero::after {
+        border-radius: 10px;
     }
 }
 
