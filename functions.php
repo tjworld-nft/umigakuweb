@@ -1081,25 +1081,6 @@ function display_books_slider() {
     return $html;
 }
 
-/* ── 最小版 AI ミュージック Hero ── */
-function tj_music_shortcode(){
-    $hero = get_stylesheet_directory_uri().'/assets/img/albums/tj-music-umigaku-hero.png';
-    ob_start(); ?>
-    <section id="tj-music"
-             style="background-image:url('<?= esc_url($hero); ?>');"
-             onclick="window.open('https://tj-music.com','_blank')" role="link">
-        <div class="music-hero-inner">
-            <h2 class="music-heading">吉田プロデュース&nbsp;AI&nbsp;ミュージック</h2>
-            <p class="music-sub">潜って聴く？ 聴いて潜る？ ――1st &amp; 2nd Album 好評配信中！</p>
-            <a class="music-cta" href="https://tj-music.com" target="_blank" rel="noopener">LISTEN</a>
-        </div>
-    </section>
-    <?php
-    return ob_get_clean();
-}
-add_shortcode('tj_music','tj_music_shortcode');
-
-
 // Function to enqueue Swiper assets
 function enqueue_swiper_assets() {
     wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0');
