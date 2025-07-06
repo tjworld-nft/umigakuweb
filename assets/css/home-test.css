@@ -2156,7 +2156,10 @@ header.site-header.is-scrolled {
   .music-card{
     display:flex;flex-direction:column;align-items:center;
     justify-content:center;text-align:center;
-    padding:0 12px;
+    padding:24px 16px;                          /* パディング増加 */
+    background:rgba(0,0,0,0.3);                 /* 半透明背景で可視性向上 */
+    border-radius:12px;                         /* 角丸 */
+    backdrop-filter:blur(10px);                 /* ぼかし効果 */
   }
 }
 
