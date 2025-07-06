@@ -2148,19 +2148,32 @@ header.site-header.is-scrolled {
 
 /* ─── スマホ幅で縦並び 1カラム ─── */
 @media(max-width:767px){
-  #tj-music{height:auto;padding:32px 16px;}      /* 自動伸縮 */
+  #tj-music{height:auto;padding:32px 16px;min-height:600px;}  /* 最小高さ確保 */
   .music-hero__inner{position:static;}           /* absolute解除 */
-  .music-row{flex-direction:column;gap:24px;}   /* 縦並び */
+  .music-row{flex-direction:column;gap:32px;}   /* 縦並び、gap増加 */
   .music-cover img{
     width:100%;height:auto;max-height:none;     /* 全幅表示 */
   }
   .music-card{
     display:flex;flex-direction:column;align-items:center;
     justify-content:center;text-align:center;
-    padding:24px 16px;                          /* パディング増加 */
-    background:rgba(0,0,0,0.3);                 /* 半透明背景で可視性向上 */
-    border-radius:12px;                         /* 角丸 */
-    backdrop-filter:blur(10px);                 /* ぼかし効果 */
+    padding:40px 24px;                          /* パディング大幅増加 */
+    background:rgba(0,0,0,0.4);                 /* 背景を少し濃く */
+    border-radius:16px;                         /* 角丸増加 */
+    backdrop-filter:blur(15px);                 /* ぼかし効果強化 */
+    min-height:300px;                           /* カードの最小高さ */
+    width:100%;                                 /* 全幅使用 */
+    box-sizing:border-box;                      /* パディング含む */
+  }
+  .music-card h2, .music-card h3 {
+    margin-bottom:16px;                         /* 見出し間隔 */
+  }
+  .music-card p {
+    margin-bottom:20px;                         /* 段落間隔 */
+    line-height:1.6;                            /* 行間調整 */
+  }
+  .tj-music-features {
+    margin:24px 0;                              /* 特徴セクション間隔 */
   }
 }
 
