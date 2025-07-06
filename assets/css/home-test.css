@@ -2166,12 +2166,18 @@ header.site-header.is-scrolled {
 .tj-music-hero {
     position: relative;
     text-align: center;
+    height: 100%;           /* 親の高さいっぱいに広げる */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tj-music-image {
     width: 100%;
+    height: 100%;
     max-width: 400px;
-    height: auto;
+    max-height: 100%;
+    object-fit: contain;      /* 画像全体を表示、縦横比維持 */
     border-radius: 20px;
     animation: music-float 6s ease-in-out infinite;
     filter: drop-shadow(0 10px 30px rgba(52, 152, 219, 0.3));
