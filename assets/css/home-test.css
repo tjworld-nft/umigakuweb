@@ -2105,48 +2105,47 @@ header.site-header.is-scrolled {
    TJ MUSIC SECTION - UNDERWATER THEME
    ============================================= */
 
-/* ─── 最終調整：高さをもう一段拡張 ─── */
+/* ─── Hero 高さ（PC/Tablet）─── */
 #tj-music{
-  height:clamp(300px,55vw,480px);  /* 旧 25→45→**55vw** / 300-480px */
-  position:relative;
-  overflow:hidden;
-  margin-bottom:60px;
+  height:clamp(300px,55vw,480px);
+  position:relative;overflow:hidden;margin-bottom:60px;
+  cursor:pointer; /* クリック可能を示す */
 }
 
-/* ─── ヒーロー全体の高さは前回 55vw/320-480px のまま ─── */
-
 .music-hero__inner{
-  position:absolute;inset:0;       /* 親にフィット */
+  position:absolute;inset:0;
   display:flex;justify-content:center;align-items:center;
 }
 
+/* 中央寄せ 2カラム（PC/Tab） */
 .music-row{
-  display:flex;align-items:stretch;   /* 高さを揃えるポイント */
-  gap:40px;                           /* PC 余白 */
+  display:flex;gap:40px;align-items:center;
 }
-@media(max-width:1023px){.music-row{gap:24px;}}
 
-/* 左側カバー画像 */
+/* 左画像 */
 .music-cover{
-  flex:0 0 auto;                     /* 幅は自動 */
-  height:100%;                       /* Hero 高さと一致 */
+  flex:0 0 auto;
   display:flex;align-items:center;
 }
 .music-cover img{
-  height:100%;                       /* ←カギ：常に同じ高さ */
-  width:auto;
-  object-fit:cover;border-radius:8px;
+  height:90%;max-height:340px;width:auto;object-fit:cover;border-radius:8px;
 }
 
-/* 右側カード */
+/* 右カード */
 .music-card{
-  flex:1 1 0;                        /* 高さ100% 自由伸縮 */
-  display:flex;flex-direction:column;justify-content:center;
-  padding:32px 24px;                 /* 内側余白 */
-  overflow:hidden;                   /* はみ出し防止 */
+  flex:1 1 0;display:flex;flex-direction:column;justify-content:center;
+  padding:32px 24px;overflow:hidden;
 }
+
+/* ─── スマホ幅で縦並び 1カラム ─── */
 @media(max-width:767px){
-  .music-card{padding:24px 16px;}
+  #tj-music{height:auto;padding:32px 16px;}      /* 自動伸縮 */
+  .music-hero__inner{position:static;}           /* absolute解除 */
+  .music-row{flex-direction:column;gap:24px;}   /* 縦並び */
+  .music-cover img{
+    width:100%;height:auto;max-height:none;     /* 全幅表示 */
+  }
+  .music-card{padding:0 4px;text-align:center;} /* 余白調整 */
 }
 
 .tj-music-section {
