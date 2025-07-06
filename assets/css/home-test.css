@@ -2105,14 +2105,12 @@ header.site-header.is-scrolled {
    TJ MUSIC SECTION - UNDERWATER THEME
    ============================================= */
 
-/* ─── TJ Music Hero 高さ調整（再改訂） ─── */
+/* ─── 最終調整：高さをもう一段拡張 ─── */
 #tj-music{
-  height:clamp(260px,45vw,420px);   /* ←旧 25vw→45vw / Max 420px */
+  height:clamp(300px,55vw,480px);  /* 旧 25→45→**55vw** / 300-480px */
   position:relative;
-  overflow:hidden;                  /* 背景画像のはみ出しはカット */
+  overflow:hidden;
   margin-bottom:60px;
-  /* テスト枠が残っていれば必ず削除 ↓ */
-  /* outline:1px solid red; */
 }
 
 /* ② カードを中央＆はみ出さない */
@@ -2123,12 +2121,11 @@ header.site-header.is-scrolled {
   padding:0 16px;
 }
 
-/* ── ② カードのサイズを制限し中央へ ── */
+/* .music-card 制限を外して自然に伸ばす  ── */
 .music-card{
-  max-height:70%;      /* Hero 高さの 70% 以内に抑える */
+  max-height:none;        /* 余裕ができたので解除 */
   max-width:90%;
-  overflow:hidden;     /* テキストのはみ出し防止 */
-  box-sizing:border-box;
+  overflow:hidden;
 }
 
 .tj-music-section {
