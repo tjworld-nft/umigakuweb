@@ -43,6 +43,13 @@
     100% { background-position: 0% 50%; }
 }
 
+@keyframes music-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(1deg); }
+    50% { transform: translateY(-4px) rotate(0deg); }
+    75% { transform: translateY(-12px) rotate(-1deg); }
+}
+
 
 /* Floating Bubbles */
 .bubbles {
@@ -2091,5 +2098,183 @@ header.site-header.is-scrolled {
     
     .blog-title {
         font-size: 1.2rem;
+    }
+}
+
+/* =============================================
+   TJ MUSIC SECTION - UNDERWATER THEME
+   ============================================= */
+
+.tj-music-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, 
+        rgba(52, 152, 219, 0.1) 0%, 
+        rgba(26, 188, 156, 0.1) 50%, 
+        rgba(41, 128, 185, 0.1) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.tj-music-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(26, 188, 156, 0.1) 0%, transparent 50%);
+    animation: ocean-gradient 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.tj-music-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.tj-music-hero {
+    position: relative;
+    text-align: center;
+}
+
+.tj-music-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+    animation: music-float 6s ease-in-out infinite;
+    filter: drop-shadow(0 10px 30px rgba(52, 152, 219, 0.3));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.tj-music-image:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 15px 40px rgba(52, 152, 219, 0.5));
+}
+
+.tj-music-text {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.tj-music-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #1abc9c, #2980b9);
+    background-size: 200% 100%;
+    animation: ocean-gradient 4s ease-in-out infinite;
+}
+
+.tj-music-subtitle {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #3498db, #1abc9c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tj-music-description {
+    color: #34495e;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.tj-music-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.music-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+    transition: all 0.3s ease;
+}
+
+.music-feature:hover {
+    background: rgba(52, 152, 219, 0.2);
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    font-size: 1.2rem;
+}
+
+.tj-music-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #3498db, #1abc9c);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.tj-music-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #2980b9, #16a085);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tj-music-section {
+        padding: 4rem 0;
+    }
+    
+    .tj-music-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .tj-music-image {
+        max-width: 300px;
+    }
+    
+    .tj-music-text {
+        padding: 1.5rem;
+    }
+    
+    .tj-music-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .tj-music-features {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .music-feature {
+        justify-content: center;
     }
 }
