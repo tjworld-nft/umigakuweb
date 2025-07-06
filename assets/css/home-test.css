@@ -2113,19 +2113,40 @@ header.site-header.is-scrolled {
   margin-bottom:60px;
 }
 
-/* ② カードを中央＆はみ出さない */
+/* ─── ヒーロー全体の高さは前回 55vw/320-480px のまま ─── */
+
 .music-hero__inner{
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
-  max-height:100%;                /* 親高さ以上に伸びない */
-  padding:0 16px;
+  position:absolute;inset:0;       /* 親にフィット */
+  display:flex;justify-content:center;align-items:center;
 }
 
-/* .music-card 制限を外して自然に伸ばす  ── */
+.music-row{
+  display:flex;align-items:stretch;   /* 高さを揃えるポイント */
+  gap:40px;                           /* PC 余白 */
+}
+@media(max-width:1023px){.music-row{gap:24px;}}
+
+/* 左側カバー画像 */
+.music-cover{
+  flex:0 0 auto;                     /* 幅は自動 */
+  height:100%;                       /* Hero 高さと一致 */
+  display:flex;align-items:center;
+}
+.music-cover img{
+  height:100%;                       /* ←カギ：常に同じ高さ */
+  width:auto;
+  object-fit:cover;border-radius:8px;
+}
+
+/* 右側カード */
 .music-card{
-  max-height:none;        /* 余裕ができたので解除 */
-  max-width:90%;
-  overflow:hidden;
+  flex:1 1 0;                        /* 高さ100% 自由伸縮 */
+  display:flex;flex-direction:column;justify-content:center;
+  padding:32px 24px;                 /* 内側余白 */
+  overflow:hidden;                   /* はみ出し防止 */
+}
+@media(max-width:767px){
+  .music-card{padding:24px 16px;}
 }
 
 .tj-music-section {
