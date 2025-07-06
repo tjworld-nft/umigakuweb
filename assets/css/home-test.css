@@ -2109,7 +2109,6 @@ header.site-header.is-scrolled {
 #tj-music{
   height:clamp(300px,55vw,480px);
   position:relative;overflow:hidden;margin-bottom:60px;
-  cursor:pointer; /* クリック可能を示す */
 }
 
 .music-hero__inner{
@@ -2137,6 +2136,15 @@ header.site-header.is-scrolled {
   padding:32px 24px;overflow:hidden;
 }
 
+/* 文字色を白く & スマホでも表示 */
+.music-card,
+.music-card h2,
+.music-card p,
+.music-card li{
+  color:#fff;
+  text-shadow:0 1px 2px rgba(0,0,0,.4);
+}
+
 /* ─── スマホ幅で縦並び 1カラム ─── */
 @media(max-width:767px){
   #tj-music{height:auto;padding:32px 16px;}      /* 自動伸縮 */
@@ -2145,7 +2153,11 @@ header.site-header.is-scrolled {
   .music-cover img{
     width:100%;height:auto;max-height:none;     /* 全幅表示 */
   }
-  .music-card{padding:0 4px;text-align:center;} /* 余白調整 */
+  .music-card{
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;
+    padding:0 12px;
+  }
 }
 
 .tj-music-section {
