@@ -2105,14 +2105,14 @@ header.site-header.is-scrolled {
    TJ MUSIC SECTION - UNDERWATER THEME
    ============================================= */
 
-/* ── ① Hero は現状の高さを維持 ── */
+/* ─── TJ Music Hero 高さ調整（再改訂） ─── */
 #tj-music{
-  height:clamp(160px,25vw,280px);
+  height:clamp(260px,45vw,420px);   /* ←旧 25vw→45vw / Max 420px */
   position:relative;
-  overflow:hidden;
+  overflow:hidden;                  /* 背景画像のはみ出しはカット */
   margin-bottom:60px;
-  /* ↙ テスト枠は確認後に削除
-  outline:1px solid red; */
+  /* テスト枠が残っていれば必ず削除 ↓ */
+  /* outline:1px solid red; */
 }
 
 /* ② カードを中央＆はみ出さない */
