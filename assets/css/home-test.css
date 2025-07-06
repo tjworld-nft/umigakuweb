@@ -2105,22 +2105,21 @@ header.site-header.is-scrolled {
    TJ MUSIC SECTION - UNDERWATER THEME
    ============================================= */
 
-/* ───────── ① 背景エリア高さを可変固定 ───────── */
+/* ① Hero の高さをより小さく */
 #tj-music{
-  height:clamp(240px,35vw,320px);   /* 画面幅 35%／最小240, 最大320 */
+  height:clamp(160px,25vw,280px);  /* 旧 35vw→25vw, 最小160px */
   position:relative;
-  overflow:hidden;                  /* 画像のはみ出しをカット */
-  margin-bottom:60px;               /* ③ 次セクションとの余白 */
+  overflow:hidden;                /* 親で切り取る */
+  margin-bottom:60px;
+  outline:1px solid red;          /* ←テスト確認用。後で削除 */
 }
 
-/* ───────── ② カードを上下中央に ───────── */
-#tj-music .music-hero__inner{
-  position:absolute;                /* 基準を #tj-music に */
-  inset:0;                           /* 四辺とも 0 に張り付け */
-  display:flex;
-  align-items:center;               /* 垂直中央 */
-  justify-content:center;           /* 水平中央（左右保持なら flex-start）*/
-  padding:0 20px;
+/* ② カードを中央＆はみ出さない */
+.music-hero__inner{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  max-height:100%;                /* 親高さ以上に伸びない */
+  padding:0 16px;
 }
 
 .tj-music-section {
