@@ -588,8 +588,11 @@ async function loadLatestBlog() {
         const data = await response.json();
         
         if (data.success && data.posts && data.posts.length > 0) {
+            // 最新3記事のみ表示
+            const latestPosts = data.posts.slice(0, 3);
+            
             // ブログ記事HTMLを生成
-            const blogHTML = data.posts.map(post => `
+            const blogHTML = latestPosts.map(post => `
                 <article class="blog-card" role="listitem">
                     <a href="${post.url}" class="blog-link">
                         ${post.image ? `<div class="blog-image">
@@ -602,7 +605,11 @@ async function loadLatestBlog() {
                         </div>
                     </a>
                 </article>
-            `).join('');
+            `).join('') + `
+                <div class="blog-more">
+                    <a href="/blog/" class="btn-secondary blog-more-btn">他の記事を見る</a>
+                </div>
+            `;
             
             blogContainer.innerHTML = blogHTML;
         } else {

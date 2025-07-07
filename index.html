@@ -860,7 +860,10 @@
           return;
         }
         
-        blogContainer.innerHTML = blogs.map(blog => `
+        // 最新3記事のみ表示
+        const latestBlogs = blogs.slice(0, 3);
+        
+        blogContainer.innerHTML = latestBlogs.map(blog => `
           <article class="blog-card" role="listitem">
             <a href="/blog/${blog.slug}/" class="blog-link">
               ${blog.image ? `<img src="${blog.image}" alt="${blog.title}" class="blog-image">` : ''}
@@ -871,7 +874,11 @@
               </div>
             </a>
           </article>
-        `).join('');
+        `).join('') + `
+          <div class="blog-more">
+            <a href="/blog/" class="btn-secondary blog-more-btn">他の記事を見る</a>
+          </div>
+        `;
         
       } catch (error) {
         console.error('ブログの読み込みに失敗しました:', error);
