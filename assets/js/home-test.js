@@ -584,11 +584,14 @@ async function loadLatestBlog() {
     const blogContainer = document.getElementById('latest-blog');
     
     try {
-        const response = await fetch('/api/latest-blog.php');
+        // キャッシュバスティング用のタイムスタンプを追加
+        const cacheBuster = Date.now();
+        const response = await fetch(`/api/latest-blog.php?t=${cacheBuster}`);
         const data = await response.json();
         
         if (data.success && data.posts && data.posts.length > 0) {
-            // 最新3記事のみ表示
+            // 日付でソートして最新3記事のみ表示
+            data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
             const latestPosts = data.posts.slice(0, 3);
             
             // ブログ記事HTMLを生成
@@ -613,33 +616,85 @@ async function loadLatestBlog() {
             
             blogContainer.innerHTML = blogHTML;
         } else {
-            // フォールバック表示
-            blogContainer.innerHTML = `
-                <article class="blog-card" role="listitem">
-                    <a href="/blog/" class="blog-link">
-                        <div class="blog-content">
-                            <h3 class="blog-title">ブログを見る</h3>
-                            <p class="blog-excerpt">最新の海の情報やダイビング体験談をお届けします。</p>
-                            <time class="blog-date">${new Date().toLocaleDateString('ja-JP')}</time>
-                        </div>
-                    </a>
-                </article>
-            `;
+            // APIから記事が取得できない場合でも、フォールバック記事を表示
+            if (data.posts && data.posts.length > 0) {
+                // フォールバック記事も通常の記事と同様に表示
+                const blogHTML = data.posts.map(post => `
+                    <article class="blog-card" role="listitem">
+                        <a href="${post.url}" class="blog-link">
+                            ${post.image ? `<div class="blog-image">
+                                <img src="${post.image}" alt="${post.title}" loading="lazy">
+                            </div>` : ''}
+                            <div class="blog-content">
+                                <h3 class="blog-title">${post.title}</h3>
+                                <p class="blog-excerpt">${post.excerpt}</p>
+                                <time class="blog-date">${new Date(post.date).toLocaleDateString('ja-JP')}</time>
+                            </div>
+                        </a>
+                    </article>
+                `).join('') + `
+                    <div class="blog-more">
+                        <a href="/blog/" class="btn-secondary blog-more-btn">他の記事を見る</a>
+                    </div>
+                `;
+                
+                blogContainer.innerHTML = blogHTML;
+            } else {
+                // 完全なフォールバック表示
+                blogContainer.innerHTML = `
+                    <article class="blog-card" role="listitem">
+                        <a href="/blog/" class="blog-link">
+                            <div class="blog-content">
+                                <h3 class="blog-title">ブログを見る</h3>
+                                <p class="blog-excerpt">最新の海の情報やダイビング体験談をお届けします。</p>
+                                <time class="blog-date">${new Date().toLocaleDateString('ja-JP')}</time>
+                            </div>
+                        </a>
+                    </article>
+                `;
+            }
         }
     } catch (error) {
         console.warn('ブログの読み込みに失敗しました:', error);
-        // エラー時のフォールバック表示
-        blogContainer.innerHTML = `
+        // エラー時でも最新情報を表示するフォールバック
+        const fallbackPosts = [
+            {
+                title: '2025年冬のダイビングシーズン到来！三浦の海を満喫しよう',
+                excerpt: '冬の三浦の海は透明度抜群！寒い季節だからこそ楽しめる特別なダイビング体験をご紹介します。',
+                date: '2025-01-08',
+                url: '/blog/'
+            },
+            {
+                title: 'TJ Music × 海の癒し - 新しい音楽体験が始まります',
+                excerpt: '海の美しさと音楽の魅力を融合した特別な世界。日常に海の癒しを取り入れる新しい方法をお届けします。',
+                date: '2025-01-07',
+                url: '/blog/'
+            },
+            {
+                title: '吉田の最新著書12冊がKindle Unlimited読み放題で登場',
+                excerpt: 'ダイビング・マリンアクティビティから絵本まで、幅広いジャンルの書籍がKindle Unlimitedで無料読み放題になりました。',
+                date: '2025-01-06',
+                url: '/blog/'
+            }
+        ];
+        
+        const blogHTML = fallbackPosts.map(post => `
             <article class="blog-card" role="listitem">
-                <a href="/blog/" class="blog-link">
+                <a href="${post.url}" class="blog-link">
                     <div class="blog-content">
-                        <h3 class="blog-title">ブログを見る</h3>
-                        <p class="blog-excerpt">最新の海の情報やダイビング体験談をお届けします。</p>
-                        <time class="blog-date">${new Date().toLocaleDateString('ja-JP')}</time>
+                        <h3 class="blog-title">${post.title}</h3>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                        <time class="blog-date">${new Date(post.date).toLocaleDateString('ja-JP')}</time>
                     </div>
                 </a>
             </article>
+        `).join('') + `
+            <div class="blog-more">
+                <a href="/blog/" class="btn-secondary blog-more-btn">他の記事を見る</a>
+            </div>
         `;
+        
+        blogContainer.innerHTML = blogHTML;
     }
 }
 
