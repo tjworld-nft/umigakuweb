@@ -19,6 +19,42 @@ Disallow: /wp-content/themes/
 
 # サイトマップの場所
 Sitemap: https://miura-diving.com/sitemap.xml
+Sitemap: https://miura-diving.com/ai-sitemap.xml
 
 # クロール頻度の調整（推奨）
 Crawl-delay: 1
+
+# AI検索エンジン向け設定
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI検索エンジンに重要なコンテンツを明示
+# 最優先クロール対象
+Allow: /index.html
+Allow: /license/
+Allow: /fun-diving/
+Allow: /marine-activity/
+Allow: /contact.html
