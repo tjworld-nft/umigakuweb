@@ -1538,7 +1538,7 @@ body {
 }
 
 .blog-excerpt {
-    color: #666;
+    color: #e8e8e8;
     line-height: 1.6;
     margin-bottom: 1rem;
 }
@@ -1573,7 +1573,7 @@ body {
 .blog-title {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: #ffffff;
 }
 
 .blog-date {
