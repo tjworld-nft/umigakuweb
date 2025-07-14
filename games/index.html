@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ゲームプラットフォーム｜三浦海の学校 特別キャンペーン</title>
+    <title>海学からの挑戦状！｜三浦海の学校 ゲームキャンペーン</title>
     
     <!-- SEO & OGP -->
-    <meta name="description" content="楽しいゲームをクリアして三浦海の学校の特別割引をゲット！パズル、記憶ゲーム、クイズなど様々なゲームで割引特典を獲得しよう。">
-    <meta property="og:title" content="ゲームプラットフォーム｜三浦海の学校 特別キャンペーン">
-    <meta property="og:description" content="楽しいゲームをクリアして三浦海の学校の特別割引をゲット！">
+    <meta name="description" content="海学からの挑戦状に応えよう！楽しいゲームをクリアして三浦海の学校の特別割引をゲット！パズル、記憶ゲーム、クイズなど様々なチャレンジが待っている。">
+    <meta property="og:title" content="海学からの挑戦状！｜三浦海の学校 ゲームキャンペーン">
+    <meta property="og:description" content="海学からの挑戦状に応えよう！ゲームをクリアして特別割引をゲット！">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://miura-diving.com/assets/img/games/platform-hero.jpg">
+    <meta property="og:image" content="https://miura-diving.com/assets/img/game-img/platform-hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
     
     <!-- Google Fonts -->
@@ -184,8 +184,45 @@
             text-align: center;
             padding: 4rem 0;
             color: var(--white);
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.8) 0%, rgba(255, 107, 157, 0.8) 100%), url('../assets/img/game-img/platform-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
             position: relative;
             z-index: 2;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255, 107, 157, 0.1) 0%, 
+                transparent 25%, 
+                rgba(254, 202, 87, 0.1) 50%, 
+                transparent 75%, 
+                rgba(77, 208, 225, 0.1) 100%);
+            background-size: 200% 200%;
+            animation: hero-sparkle 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes hero-sparkle {
+            0%, 100% { 
+                background-position: 0% 0%;
+                opacity: 0.3;
+            }
+            50% { 
+                background-position: 100% 100%;
+                opacity: 0.7;
+            }
         }
         
         .hero-content {
@@ -198,7 +235,7 @@
             max-width: 800px;
             margin: 0 auto;
             position: relative;
-            z-index: 2;
+            z-index: 3;
             animation: hero-float 3s ease-in-out infinite;
         }
         
@@ -375,11 +412,38 @@
         
         /* Footer */
         .footer {
-            background: var(--deep-blue);
+            background: linear-gradient(135deg, rgba(0, 96, 100, 0.95) 0%, rgba(0, 96, 100, 0.98) 100%), url('../assets/img/game-img/shop-exterior.png');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
             color: var(--white);
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
             margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            animation: footer-shine 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes footer-shine {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
         }
         
         /* Responsive */
@@ -428,8 +492,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>🎮 ゲームプラットフォーム</h1>
-                <p>楽しいゲームをクリアして特別割引をゲットしよう！<br>様々なゲームで異なる割引特典を獲得できます</p>
+                <h1>🏆 海学からの挑戦状！</h1>
+                <p>三浦海の学校があなたに挑戦状を叩きつけます！<br>ゲームをクリアして特別な海の恵みを手に入れよう</p>
             </div>
         </div>
     </section>
@@ -506,8 +570,12 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 三浦海の学校. All rights reserved.</p>
-            <p>📞 046-880-0835 | 📧 info@miura-diving.com</p>
+            <div class="footer-content">
+                <h3 style="margin-bottom: 1rem; font-size: 1.3rem;">🏪 三浦海の学校でお待ちしています</h3>
+                <p>&copy; 2025 三浦海の学校. All rights reserved.</p>
+                <p style="margin-top: 1rem; font-size: 1.1rem;">📞 046-880-0835 | 📧 info@miura-diving.com</p>
+                <p style="margin-top: 0.5rem; opacity: 0.9;">PADI 5つ星IDCセンター | 初心者大歓迎</p>
+            </div>
         </div>
     </footer>
 </body>
