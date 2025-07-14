@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海のパズルチャレンジ｜三浦海の学校 特別割引キャンペーン</title>
+    
+    <!-- SEO & OGP -->
+    <meta name="description" content="パズルゲームをクリアして2ビーチダイビングの特別割引をゲット！初級5%OFF、中級8%OFF、上級10%OFF。三浦海の学校の限定キャンペーン。">
+    <meta property="og:title" content="海のパズルチャレンジ｜三浦海の学校 特別割引キャンペーン">
+    <meta property="og:description" content="パズルゲームをクリアして2ビーチダイビングの特別割引をゲット！">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://miura-diving.com/image/puzzle-campaign-ogp.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS will be implemented next */
+        :root {
+            --primary-blue: #3498db;
+            --secondary-blue: #2980b9;
+            --ocean-green: #16a085;
+            --ocean-teal: #1abc9c;
+            --deep-blue: #2c3e50;
+            --light-blue: #ecf0f1;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --game-board-bg: rgba(255, 255, 255, 0.95);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--deep-blue);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-green) 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        .nav-link {
+            color: var(--deep-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--white);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .campaign-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Game Section */
+        .game-section {
+            background: var(--white);
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--shadow);
+            overflow: hidden;
+            max-width: 800px;
+        }
+        
+        .game-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ocean-teal));
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .game-header h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .difficulty-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .difficulty-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .difficulty-btn:hover,
+        .difficulty-btn.active {
+            background: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+        
+        .game-content {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .puzzle-container {
+            background: var(--game-board-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+        
+        .puzzle-board {
+            display: grid;
+            gap: 3px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .puzzle-board.size-3 { grid-template-columns: repeat(3, 1fr); width: 300px; height: 300px; }
+        .puzzle-board.size-4 { grid-template-columns: repeat(4, 1fr); width: 320px; height: 320px; }
+        .puzzle-board.size-5 { grid-template-columns: repeat(5, 1fr); width: 340px; height: 340px; }
+        
+        .puzzle-piece {
+            background: var(--ocean-teal);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        
+        .puzzle-piece:hover {
+            background: var(--primary-blue);
+            transform: scale(1.05);
+        }
+        
+        .puzzle-piece.empty {
+            background: transparent;
+            cursor: default;
+        }
+        
+        .puzzle-piece.empty:hover {
+            transform: none;
+        }
+        
+        .game-controls {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-success {
+            background: var(--ocean-green);
+        }
+        
+        .btn-success:hover {
+            background: #138d75;
+        }
+        
+        /* Success Modal */
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .success-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--ocean-green);
+            margin-bottom: 1rem;
+        }
+        
+        .discount-code {
+            background: linear-gradient(135deg, var(--ocean-green), var(--ocean-teal));
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            letter-spacing: 2px;
+        }
+        
+        /* Special Booking Section */
+        .booking-section {
+            display: none;
+            background: linear-gradient(135deg, var(--ocean-green), var(--ocean-teal));
+            color: var(--white);
+            padding: 3rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-radius: 20px;
+        }
+        
+        .booking-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+        
+        .discount-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--deep-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .difficulty-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .puzzle-board.size-3 { width: 280px; height: 280px; }
+            .puzzle-board.size-4 { width: 280px; height: 280px; }
+            .puzzle-board.size-5 { width: 280px; height: 280px; }
+            
+            .game-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">🌊 三浦海の学校</a>
+                <a href="/" class="nav-link">メインサイトへ戻る</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>🧩 海のパズルチャレンジ</h1>
+            <p>パズルをクリアして2ビーチダイビングの特別割引をゲット！</p>
+            <div class="campaign-badge">🎯 期間限定キャンペーン開催中</div>
+        </div>
+    </section>
+
+    <!-- Main Game Section -->
+    <main class="container">
+        <div class="game-section">
+            <div class="game-header">
+                <h2>🏆 チャレンジレベルを選択</h2>
+                <p>難易度によって割引率が変わります</p>
+                
+                <div class="difficulty-selector">
+                    <button class="difficulty-btn active" data-level="3">
+                        🥉 初級 (3×3)<br>
+                        <small>5% OFF</small>
+                    </button>
+                    <button class="difficulty-btn" data-level="4">
+                        🥈 中級 (4×4)<br>
+                        <small>8% OFF</small>
+                    </button>
+                    <button class="difficulty-btn" data-level="5">
+                        🥇 上級 (5×5)<br>
+                        <small>10% OFF</small>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="game-content">
+                <div class="puzzle-container">
+                    <div id="puzzle-board" class="puzzle-board size-3">
+                        <!-- パズルピースはJavaScriptで生成 -->
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <button id="shuffle-btn" class="btn">🔄 シャッフル</button>
+                    <button id="hint-btn" class="btn">💡 ヒント</button>
+                </div>
+                
+                <p><strong>遊び方：</strong> 数字を順番に並べ替えてパズルを完成させましょう！</p>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="success-modal" class="success-modal">
+            <div class="success-content">
+                <div class="success-icon">🎉</div>
+                <h2>おめでとうございます！</h2>
+                <p id="success-message">パズルをクリアしました！</p>
+                <div id="discount-display" class="discount-code">5% OFF</div>
+                <p>下記の特別申込フォームから予約すると割引が適用されます</p>
+                <button id="show-booking" class="btn btn-success">特別価格で申し込む</button>
+                <button id="close-modal" class="btn">閉じる</button>
+            </div>
+        </div>
+
+        <!-- Special Booking Section -->
+        <div id="booking-section" class="booking-section">
+            <h2>🌊 特別割引申込フォーム</h2>
+            <div id="booking-discount-info" class="discount-info">
+                <h3>🎯 適用割引: <span id="applied-discount">5% OFF</span></h3>
+                <p>2ビーチダイビング通常価格 ¥12,000 → <span id="discounted-price">¥11,400</span></p>
+            </div>
+            
+            <form class="booking-form" id="booking-form">
+                <div class="form-group">
+                    <label class="form-label">お名前 *</label>
+                    <input type="text" class="form-input" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">メールアドレス *</label>
+                    <input type="email" class="form-input" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">電話番号 *</label>
+                    <input type="tel" class="form-input" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">希望日時</label>
+                    <input type="date" class="form-input" name="date">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">メッセージ</label>
+                    <textarea class="form-input" name="message" rows="4" placeholder="ご質問やご要望があればお書きください"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-success" style="width: 100%; font-size: 1.2rem;">
+                    🎯 特別価格で申し込む
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 三浦海の学校. All rights reserved.</p>
+            <p>📞 046-888-0099 | 📧 info@miura-diving.com</p>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Sliding Puzzle Game for Diving Shop Campaign
+         * Features: 3x3, 4x4, 5x5 difficulty levels with discount rewards
+         */
+        
+        class PuzzleGame {
+            constructor() {
+                this.currentLevel = 3;
+                this.board = [];
+                this.emptyPos = { row: 0, col: 0 };
+                this.isCompleted = false;
+                this.moves = 0;
+                
+                this.discounts = {
+                    3: { percent: 5, price: 11400 },
+                    4: { percent: 8, price: 11040 },
+                    5: { percent: 10, price: 10800 }
+                };
+                
+                this.init();
+            }
+            
+            init() {
+                this.bindEvents();
+                this.initPuzzle();
+            }
+            
+            bindEvents() {
+                // Difficulty selection
+                document.querySelectorAll('.difficulty-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.currentLevel = parseInt(e.target.dataset.level);
+                        this.initPuzzle();
+                    });
+                });
+                
+                // Game controls
+                document.getElementById('shuffle-btn').addEventListener('click', () => this.shufflePuzzle());
+                document.getElementById('hint-btn').addEventListener('click', () => this.showHint());
+                
+                // Modal controls
+                document.getElementById('close-modal').addEventListener('click', () => this.closeModal());
+                document.getElementById('show-booking').addEventListener('click', () => this.showBookingForm());
+                
+                // Form submission
+                document.getElementById('booking-form').addEventListener('submit', (e) => this.handleBookingSubmit(e));
+            }
+            
+            initPuzzle() {
+                this.isCompleted = false;
+                this.moves = 0;
+                this.createBoard();
+                this.renderBoard();
+                this.shufflePuzzle();
+            }
+            
+            createBoard() {
+                const size = this.currentLevel;
+                this.board = [];
+                
+                // Create numbered board
+                for (let i = 0; i < size; i++) {
+                    this.board[i] = [];
+                    for (let j = 0; j < size; j++) {
+                        const num = i * size + j + 1;
+                        this.board[i][j] = num <= size * size - 1 ? num : 0;
+                    }
+                }
+                
+                // Set empty position (last cell)
+                this.emptyPos = { row: size - 1, col: size - 1 };
+            }
+            
+            renderBoard() {
+                const boardElement = document.getElementById('puzzle-board');
+                const size = this.currentLevel;
+                
+                // Update board classes
+                boardElement.className = `puzzle-board size-${size}`;
+                boardElement.innerHTML = '';
+                
+                // Create puzzle pieces
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size; j++) {
+                        const piece = document.createElement('div');
+                        piece.className = 'puzzle-piece';
+                        piece.dataset.row = i;
+                        piece.dataset.col = j;
+                        
+                        if (this.board[i][j] === 0) {
+                            piece.classList.add('empty');
+                            piece.textContent = '';
+                        } else {
+                            piece.textContent = this.board[i][j];
+                            piece.addEventListener('click', () => this.movePiece(i, j));
+                        }
+                        
+                        boardElement.appendChild(piece);
+                    }
+                }
+            }
+            
+            movePiece(row, col) {
+                if (this.isCompleted) return;
+                
+                const emptyRow = this.emptyPos.row;
+                const emptyCol = this.emptyPos.col;
+                
+                // Check if the piece is adjacent to empty space
+                const isAdjacent = 
+                    (Math.abs(row - emptyRow) === 1 && col === emptyCol) ||
+                    (Math.abs(col - emptyCol) === 1 && row === emptyRow);
+                
+                if (isAdjacent) {
+                    // Swap pieces
+                    this.board[emptyRow][emptyCol] = this.board[row][col];
+                    this.board[row][col] = 0;
+                    this.emptyPos = { row, col };
+                    this.moves++;
+                    
+                    this.renderBoard();
+                    
+                    // Check for completion
+                    setTimeout(() => {
+                        if (this.checkCompletion()) {
+                            this.handleGameComplete();
+                        }
+                    }, 100);
+                }
+            }
+            
+            checkCompletion() {
+                const size = this.currentLevel;
+                let expectedNum = 1;
+                
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size; j++) {
+                        if (i === size - 1 && j === size - 1) {
+                            // Last cell should be empty (0)
+                            return this.board[i][j] === 0;
+                        }
+                        
+                        if (this.board[i][j] !== expectedNum) {
+                            return false;
+                        }
+                        expectedNum++;
+                    }
+                }
+                return true;
+            }
+            
+            shufflePuzzle() {
+                // Perform random valid moves to shuffle
+                const shuffleMoves = this.currentLevel * this.currentLevel * 10;
+                
+                for (let i = 0; i < shuffleMoves; i++) {
+                    const possibleMoves = this.getPossibleMoves();
+                    if (possibleMoves.length > 0) {
+                        const randomMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+                        this.movePieceQuiet(randomMove.row, randomMove.col);
+                    }
+                }
+                
+                this.moves = 0;
+                this.renderBoard();
+            }
+            
+            movePieceQuiet(row, col) {
+                const emptyRow = this.emptyPos.row;
+                const emptyCol = this.emptyPos.col;
+                
+                // Swap without rendering or checking completion
+                this.board[emptyRow][emptyCol] = this.board[row][col];
+                this.board[row][col] = 0;
+                this.emptyPos = { row, col };
+            }
+            
+            getPossibleMoves() {
+                const moves = [];
+                const { row: emptyRow, col: emptyCol } = this.emptyPos;
+                const size = this.currentLevel;
+                
+                // Check all four directions
+                const directions = [
+                    { row: emptyRow - 1, col: emptyCol }, // Up
+                    { row: emptyRow + 1, col: emptyCol }, // Down
+                    { row: emptyRow, col: emptyCol - 1 }, // Left
+                    { row: emptyRow, col: emptyCol + 1 }  // Right
+                ];
+                
+                directions.forEach(pos => {
+                    if (pos.row >= 0 && pos.row < size && pos.col >= 0 && pos.col < size) {
+                        moves.push(pos);
+                    }
+                });
+                
+                return moves;
+            }
+            
+            showHint() {
+                const possibleMoves = this.getPossibleMoves();
+                if (possibleMoves.length > 0) {
+                    const hint = possibleMoves[0];
+                    const hintElement = document.querySelector(`[data-row="${hint.row}"][data-col="${hint.col}"]`);
+                    
+                    if (hintElement && !hintElement.classList.contains('empty')) {
+                        hintElement.style.background = '#ff6b6b';
+                        hintElement.style.transform = 'scale(1.1)';
+                        
+                        setTimeout(() => {
+                            hintElement.style.background = '';
+                            hintElement.style.transform = '';
+                        }, 1000);
+                    }
+                }
+            }
+            
+            handleGameComplete() {
+                this.isCompleted = true;
+                const discount = this.discounts[this.currentLevel];
+                
+                // Update modal content
+                document.getElementById('success-message').textContent = 
+                    `${this.currentLevel}×${this.currentLevel}パズルを${this.moves}手でクリアしました！`;
+                document.getElementById('discount-display').textContent = `${discount.percent}% OFF`;
+                
+                // Show success modal
+                document.getElementById('success-modal').style.display = 'block';
+                
+                // Add celebration animation
+                this.celebrateCompletion();
+            }
+            
+            celebrateCompletion() {
+                // Create confetti effect
+                const colors = ['#3498db', '#16a085', '#1abc9c', '#ff6b6b', '#feca57'];
+                
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.style.cssText = `
+                            position: fixed;
+                            top: -10px;
+                            left: ${Math.random() * 100}%;
+                            width: 10px;
+                            height: 10px;
+                            background: ${colors[Math.floor(Math.random() * colors.length)]};
+                            z-index: 1001;
+                            animation: confetti-fall 3s linear forwards;
+                            transform: rotate(${Math.random() * 360}deg);
+                        `;
+                        
+                        document.body.appendChild(confetti);
+                        
+                        setTimeout(() => confetti.remove(), 3000);
+                    }, i * 100);
+                }
+                
+                // Add confetti animation CSS
+                if (!document.getElementById('confetti-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'confetti-style';
+                    style.textContent = `
+                        @keyframes confetti-fall {
+                            to {
+                                transform: translateY(100vh) rotate(720deg);
+                                opacity: 0;
+                            }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            }
+            
+            closeModal() {
+                document.getElementById('success-modal').style.display = 'none';
+            }
+            
+            showBookingForm() {
+                this.closeModal();
+                const discount = this.discounts[this.currentLevel];
+                
+                // Update booking section with discount info
+                document.getElementById('applied-discount').textContent = `${discount.percent}% OFF`;
+                document.getElementById('discounted-price').textContent = `¥${discount.price.toLocaleString()}`;
+                
+                // Show booking section with animation
+                const bookingSection = document.getElementById('booking-section');
+                bookingSection.style.display = 'block';
+                bookingSection.classList.add('fade-in');
+                
+                // Scroll to booking form
+                bookingSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            handleBookingSubmit(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(e.target);
+                const bookingData = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    date: formData.get('date'),
+                    message: formData.get('message'),
+                    discount: this.discounts[this.currentLevel],
+                    gameLevel: this.currentLevel,
+                    moves: this.moves,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // In a real implementation, this would be sent to a server
+                console.log('Booking submitted:', bookingData);
+                
+                // Show success message
+                alert(`🎉 申込ありがとうございます！\n\n${bookingData.discount.percent}%割引が適用されました。\n3営業日以内にご連絡いたします。`);
+                
+                // Reset form
+                e.target.reset();
+                
+                // Hide booking section
+                document.getElementById('booking-section').style.display = 'none';
+                
+                // Analytics tracking (if available)
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'booking_submitted', {
+                        'event_category': 'conversion',
+                        'event_label': `${this.currentLevel}x${this.currentLevel}_puzzle`,
+                        'value': bookingData.discount.price
+                    });
+                }
+            }
+        }
+        
+        // Initialize game when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const game = new PuzzleGame();
+            console.log('🌊 Diving Puzzle Game initialized successfully!');
+            
+            // Add some fun console messages
+            console.log('🧩 Ready to challenge yourself?');
+            console.log('🎯 Complete the puzzle to unlock special discounts!');
+        });
+        
+        // Prevent right-click context menu on puzzle pieces (optional)
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.classList.contains('puzzle-piece')) {
+                e.preventDefault();
+            }
+        });
+        
+        // Add keyboard support for accessibility
+        document.addEventListener('keydown', (e) => {
+            if (e.target.classList.contains('puzzle-piece')) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.target.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
