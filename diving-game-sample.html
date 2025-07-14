@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海のパズルチャレンジ｜三浦海の学校 特別割引キャンペーン【サンプル】</title>
+    
+    <!-- SEO & OGP -->
+    <meta name="description" content="パズルゲームをクリアして2ビーチダイビングの特別割引をゲット！初級5%OFF、中級8%OFF、上級10%OFF。三浦海の学校の限定キャンペーン。">
+    <meta property="og:title" content="海のパズルチャレンジ｜三浦海の学校 特別割引キャンペーン">
+    <meta property="og:description" content="パズルゲームをクリアして2ビーチダイビングの特別割引をゲット！">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/img/game-img/game-hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #00bcd4;
+            --secondary-blue: #0097a7;
+            --ocean-green: #26c6da;
+            --ocean-teal: #4dd0e1;
+            --coral-pink: #ff6b9d;
+            --sunset-orange: #ff9f43;
+            --tropical-yellow: #feca57;
+            --deep-blue: #006064;
+            --light-blue: #e0f7fa;
+            --white: #ffffff;
+            --shadow: rgba(0, 188, 212, 0.2);
+            --game-board-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(224, 247, 250, 0.95) 100%);
+            --gradient-primary: linear-gradient(135deg, #00bcd4 0%, #26c6da 50%, #4dd0e1 100%);
+            --gradient-coral: linear-gradient(135deg, #ff6b9d 0%, #ff9f43 100%);
+            --gradient-tropical: linear-gradient(135deg, #feca57 0%, #ff9f43 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--deep-blue);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-teal) 30%, var(--tropical-yellow) 70%, var(--coral-pink) 100%);
+            background-size: 400% 400%;
+            animation: rainbow-gradient 8s ease infinite;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        @keyframes rainbow-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(224, 247, 250, 0.95) 100%);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px rgba(0, 188, 212, 0.3);
+            border-bottom: 2px solid rgba(255, 107, 157, 0.2);
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-coral);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            position: relative;
+            animation: logo-bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes logo-bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        .nav-link {
+            color: var(--deep-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(224, 247, 250, 0.6) 100%);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-coral);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-link:hover {
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+        }
+        
+        .nav-link:hover::before {
+            left: 0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--white);
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.85) 0%, rgba(255, 107, 157, 0.85) 100%), url('assets/img/game-img/game-hero2.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255, 107, 157, 0.1) 0%, 
+                transparent 25%, 
+                rgba(254, 202, 87, 0.1) 50%, 
+                transparent 75%, 
+                rgba(77, 208, 225, 0.1) 100%);
+            background-size: 200% 200%;
+            animation: hero-sparkle 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes hero-sparkle {
+            0%, 100% { 
+                background-position: 0% 0%;
+                opacity: 0.3;
+            }
+            50% { 
+                background-position: 100% 100%;
+                opacity: 0.7;
+            }
+        }
+        
+        .hero-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            padding: 4rem 3rem;
+            border-radius: 25px;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            animation: hero-float 3s ease-in-out infinite;
+        }
+        
+        @keyframes hero-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background: var(--gradient-tropical);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: title-glow 2s ease-in-out infinite alternate;
+            position: relative;
+        }
+        
+        @keyframes title-glow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3) drop-shadow(0 0 10px rgba(254, 202, 87, 0.6)); }
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .hero-features {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .hero-feature {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .hero-feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .hero-feature-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .campaign-badge {
+            display: inline-block;
+            background: var(--gradient-coral);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.5);
+            animation: badge-bounce 2s infinite;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+        }
+        
+        .campaign-badge::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: badge-shine 3s infinite;
+        }
+        
+        @keyframes badge-bounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.05) rotate(1deg); }
+            50% { transform: scale(1.1) rotate(0deg); }
+            75% { transform: scale(1.05) rotate(-1deg); }
+        }
+        
+        @keyframes badge-shine {
+            0% { transform: rotate(0deg) translate(-100%, -100%); }
+            50% { transform: rotate(45deg) translate(0%, 0%); }
+            100% { transform: rotate(90deg) translate(100%, 100%); }
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 8px 30px rgba(255, 107, 107, 0.4);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 12px 40px rgba(255, 107, 107, 0.6);
+            }
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Game Section */
+        .game-section {
+            background: var(--white);
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--shadow);
+            overflow: hidden;
+            max-width: 800px;
+        }
+        
+        /* Game Phases */
+        .game-phase {
+            display: none;
+        }
+        
+        .game-phase.active {
+            display: block;
+        }
+        
+        .fish-selection-phase {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .selected-fish-display {
+            background: var(--light-blue);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .selected-fish-display img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+        
+        .start-puzzle-btn {
+            background: var(--ocean-green);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .start-puzzle-btn:hover {
+            background: #138d75;
+            transform: translateY(-2px);
+        }
+        
+        .start-puzzle-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Timer */
+        .timer-section {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timer-display {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timer-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        
+        .timer-progress {
+            height: 100%;
+            background: white;
+            border-radius: 3px;
+            transition: width 1s linear;
+        }
+        
+        .timer-warning {
+            animation: timerWarning 1s infinite;
+        }
+        
+        @keyframes timerWarning {
+            0%, 100% { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+            50% { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        }
+        
+        .game-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ocean-teal));
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .game-header h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .difficulty-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .difficulty-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .difficulty-btn:hover,
+        .difficulty-btn.active {
+            background: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+        
+        .game-content {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .puzzle-container {
+            background: var(--game-board-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+        
+        .puzzle-board {
+            display: grid;
+            gap: 3px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .puzzle-board.size-3 { grid-template-columns: repeat(3, 1fr); width: 300px; height: 300px; }
+        .puzzle-board.size-4 { grid-template-columns: repeat(4, 1fr); width: 320px; height: 320px; }
+        .puzzle-board.size-5 { grid-template-columns: repeat(5, 1fr); width: 340px; height: 340px; }
+        
+        .puzzle-piece {
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.5);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+            padding: 4px;
+        }
+        
+        .puzzle-piece::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .puzzle-piece span {
+            position: relative;
+            z-index: 2;
+            background: rgba(0,0,0,0.8);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 0.5rem;
+            min-width: 15px;
+            text-align: center;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .puzzle-piece:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-blue);
+        }
+        
+        .puzzle-piece.empty {
+            background: rgba(52, 152, 219, 0.1);
+            border: 2px dashed rgba(52, 152, 219, 0.3);
+            cursor: default;
+        }
+        
+        .puzzle-piece.empty::before {
+            display: none;
+        }
+        
+        .puzzle-piece.empty:hover {
+            transform: none;
+        }
+        
+        .game-controls {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .btn {
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-coral);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.4);
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        .btn-success {
+            background: var(--gradient-tropical);
+        }
+        
+        .btn-success::before {
+            background: var(--gradient-coral);
+        }
+        
+        .btn-success:hover {
+            box-shadow: 0 8px 25px rgba(254, 202, 87, 0.4);
+        }
+        
+        /* Sea Life Gallery */
+        .sea-life-gallery {
+            background: var(--game-board-bg);
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0, 188, 212, 0.3);
+            max-width: 800px;
+            position: relative;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .sea-life-gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 25px 25px 0 0;
+            animation: gallery-glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes gallery-glow {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .sea-life-gallery h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--deep-blue);
+            font-size: 2rem;
+            font-weight: 900;
+            position: relative;
+        }
+        
+        .sea-life-gallery h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--ocean-green), var(--ocean-teal));
+            border-radius: 2px;
+        }
+        
+        /* Difficulty Selector in Gallery */
+        .gallery-difficulty {
+            margin: 1rem 0 2rem 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(224, 247, 250, 0.6) 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 188, 212, 0.2);
+            text-align: center;
+        }
+        
+        .gallery-difficulty h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--deep-blue);
+            font-weight: 700;
+        }
+        
+        .mini-difficulty-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .mini-difficulty-btn {
+            background: var(--white);
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 0.5rem 0.75rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 50px;
+        }
+        
+        .mini-difficulty-btn:hover,
+        .mini-difficulty-btn.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        
+        .mini-difficulty-btn.special {
+            border-color: #ffd700;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mini-difficulty-btn.special::before {
+            content: '✨';
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 0.8rem;
+            animation: sparkle 2s infinite;
+        }
+        
+        .mini-difficulty-btn.special:hover,
+        .mini-difficulty-btn.special.active {
+            background: linear-gradient(135deg, #ffd700, #ffb400);
+            border-color: #ffd700;
+            color: var(--deep-blue);
+            font-weight: 900;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+        
+        .sea-life-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .sea-life-item {
+            text-align: center;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(224, 247, 250, 0.8) 100%);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid rgba(0, 188, 212, 0.3);
+            min-width: 100px;
+            flex: 0 0 auto;
+        }
+        
+        .sea-life-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.4);
+            background: var(--gradient-primary);
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .sea-life-item.selected {
+            background: var(--gradient-coral) !important;
+            color: white !important;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+            border-color: rgba(255, 255, 255, 0.8) !important;
+        }
+        
+        .sea-life-item.selected span {
+            color: white !important;
+            font-weight: 700;
+        }
+        
+        .sea-life-item img {
+            display: none;
+        }
+        
+        .sea-life-item span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--deep-blue);
+        }
+        
+        /* Selection Display */
+        .selection-display {
+            background: linear-gradient(135deg, var(--ocean-green), var(--ocean-teal));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            text-align: center;
+            display: none;
+            box-shadow: 0 10px 40px rgba(22, 160, 133, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .selection-display::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmerSelection 3s infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes shimmerSelection {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .selection-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .selected-fish-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .selected-fish-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .difficulty-info {
+            text-align: right;
+        }
+        
+        .start-game-btn {
+            background: var(--white);
+            color: var(--ocean-green);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .start-game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Success Modal */
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .success-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(224, 247, 250, 0.95) 100%), url('assets/img/game-img/waribiki.png');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 107, 157, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .success-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 107, 157, 0.1), transparent, rgba(254, 202, 87, 0.1), transparent);
+            animation: success-sparkle 3s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes success-sparkle {
+            0%, 100% { transform: rotate(0deg) translate(-50%, -50%); }
+            50% { transform: rotate(180deg) translate(-50%, -50%); }
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--coral-pink);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .discount-code {
+            background: var(--gradient-coral);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Special Booking Section */
+        .booking-section {
+            display: none;
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.9) 0%, rgba(77, 208, 225, 0.9) 100%), url('assets/img/game-img/waribiki.png');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+            color: var(--white);
+            padding: 3rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-radius: 25px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 50px rgba(0, 188, 212, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .booking-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: booking-shine 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes booking-shine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: -100%; }
+        }
+        
+        .booking-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+        
+        .discount-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--deep-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+                min-height: 50vh;
+                padding: 2rem 0;
+                background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/img/game-img/game-hero-mobile2.png');
+            }
+            
+            .hero-content {
+                padding: 2rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-feature {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                text-align: left;
+            }
+            
+            .hero-feature-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0;
+            }
+            
+            .campaign-badge {
+                font-size: 1rem;
+                padding: 0.8rem 2rem;
+            }
+            
+            .difficulty-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .puzzle-board.size-3 { width: 280px; height: 280px; }
+            .puzzle-board.size-4 { width: 280px; height: 280px; }
+            .puzzle-board.size-5 { width: 280px; height: 280px; }
+            
+            .game-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .sea-life-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .sea-life-item {
+                min-width: 200px;
+            }
+            
+            .gallery-difficulty {
+                margin-bottom: 2rem;
+            }
+            
+            .mini-difficulty-btns {
+                justify-content: center;
+            }
+            
+            .selection-info {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* Sample Badge */
+        .sample-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            z-index: 1001;
+            animation: samplePulse 2s infinite;
+        }
+        
+        @keyframes samplePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        /* Floating Bubbles Effect */
+        .floating-bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(77,208,225,0.3) 100%);
+            border-radius: 50%;
+            animation: bubble-float linear infinite;
+            box-shadow: 0 2px 10px rgba(0, 188, 212, 0.3);
+        }
+        
+        @keyframes bubble-float {
+            0% {
+                transform: translateY(0vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .bubble:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+        .bubble:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 2s; width: 15px; height: 15px; }
+        .bubble:nth-child(3) { left: 35%; animation-duration: 6s; animation-delay: 4s; width: 25px; height: 25px; }
+        .bubble:nth-child(4) { left: 50%; animation-duration: 10s; animation-delay: 1s; }
+        .bubble:nth-child(5) { left: 70%; animation-duration: 9s; animation-delay: 3s; width: 18px; height: 18px; }
+        .bubble:nth-child(6) { left: 85%; animation-duration: 7s; animation-delay: 5s; width: 22px; height: 22px; }
+        .bubble:nth-child(7) { left: 25%; animation-duration: 11s; animation-delay: 6s; width: 16px; height: 16px; }
+        .bubble:nth-child(8) { left: 75%; animation-duration: 14s; animation-delay: 8s; width: 30px; height: 30px; }
+    </style>
+</head>
+<body>
+    <!-- Floating Bubbles -->
+    <div class="floating-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    <!-- Sample Badge -->
+    <div class="sample-badge">📱 サンプル版</div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">🌊 三浦海の学校</a>
+                <a href="/" class="nav-link">メインサイトへ戻る</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>🧩 海のパズルチャレンジ</h1>
+                <p>パズルをクリアして2ビーチダイビングの特別割引をゲット！<br>
+                <strong>三浦の美しい海で思い出に残るダイビング体験を</strong></p>
+                
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <span class="hero-feature-icon">🏆</span>
+                        <div class="hero-feature-text">最大10%OFF<br>+器材レンタル無料</div>
+                    </div>
+                    <div class="hero-feature">
+                        <span class="hero-feature-icon">⏱️</span>
+                        <div class="hero-feature-text">制限時間内<br>チャレンジ</div>
+                    </div>
+                    <div class="hero-feature">
+                        <span class="hero-feature-icon">🐠</span>
+                        <div class="hero-feature-text">9種類の<br>海洋生物</div>
+                    </div>
+                    <div class="hero-feature">
+                        <span class="hero-feature-icon">🎮</span>
+                        <div class="hero-feature-text">楽しい<br>パズルゲーム</div>
+                    </div>
+                </div>
+                
+                <div class="campaign-badge">🎯 期間限定キャンペーン開催中</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Sea Life Gallery -->
+        <div class="sea-life-gallery">
+            <h3>🐠 パズルに使う生き物を選択</h3>
+            
+            <!-- Difficulty Selector -->
+            <div class="gallery-difficulty">
+                <h4>🏆 難易度</h4>
+                <div class="mini-difficulty-btns">
+                    <button class="mini-difficulty-btn active" data-level="3" data-time="180">
+                        3×3<br><small>5%</small>
+                    </button>
+                    <button class="mini-difficulty-btn" data-level="4" data-time="300">
+                        4×4<br><small>8%</small>
+                    </button>
+                    <button class="mini-difficulty-btn special" data-level="5" data-time="480">
+                        5×5<br><small>10%+器材無料</small>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="sea-life-grid">
+                <div class="sea-life-item" data-fish="kumanomi">
+                    <img src="assets/img/game-img/kumanomi.png" alt="クマノミ">
+                    <span>クマノミ</span>
+                </div>
+                <div class="sea-life-item" data-fish="nekozame">
+                    <img src="assets/img/game-img/nekozame.png" alt="ネコザメ">
+                    <span>ネコザメ</span>
+                </div>
+                <div class="sea-life-item" data-fish="kasago">
+                    <img src="assets/img/game-img/kasago.png" alt="カサゴ">
+                    <span>カサゴ</span>
+                </div>
+                <div class="sea-life-item" data-fish="hatatatedai">
+                    <img src="assets/img/game-img/hatatatedai.png" alt="ハタタテダイ">
+                    <span>ハタタテダイ</span>
+                </div>
+                <div class="sea-life-item" data-fish="ginpo">
+                    <img src="assets/img/game-img/ginpo.png" alt="ギンポ">
+                    <span>ギンポ</span>
+                </div>
+                <div class="sea-life-item" data-fish="suzumeda">
+                    <img src="assets/img/game-img/suzumeda.png" alt="スズメダイ">
+                    <span>スズメダイ</span>
+                </div>
+                <div class="sea-life-item" data-fish="umiushi">
+                    <img src="assets/img/game-img/umiushi.png" alt="ウミウシ">
+                    <span>ウミウシ</span>
+                </div>
+                <div class="sea-life-item" data-fish="otohieme">
+                    <img src="assets/img/game-img/otohieme.png" alt="オトヒメエビ">
+                    <span>オトヒメエビ</span>
+                </div>
+                <div class="sea-life-item" data-fish="dainan">
+                    <img src="assets/img/game-img/dainan.png" alt="ダイナンウミヘビ">
+                    <span>ダイナンウミヘビ</span>
+                </div>
+            </div>
+            
+            <!-- Selection Display -->
+            <div id="selection-display" class="selection-display">
+                <div class="selection-info">
+                    <div class="selected-fish-info">
+                        <img id="display-fish-img" src="" alt="">
+                        <div>
+                            <h4 id="display-fish-name">選択した生き物</h4>
+                            <p>のパズルで挑戦！</p>
+                        </div>
+                    </div>
+                    <div class="difficulty-info">
+                        <div id="display-difficulty">3×3</div>
+                        <div id="display-discount">5% OFF</div>
+                        <small id="display-time">制限時間: 3分</small>
+                    </div>
+                </div>
+                <button id="start-game-btn" class="start-game-btn">
+                    🎮 パズル開始！
+                </button>
+            </div>
+            
+            <p style="text-align: center; margin-top: 1rem; color: #666;">
+                🎮 生き物を選択して、右上で難易度を選んでゲーム開始！
+            </p>
+        </div>
+
+        <!-- Game Section -->
+        <div id="game-section" class="game-section" style="display: none;">
+            <div id="timer-section" class="timer-section" style="display: none;">
+                <div class="timer-display" id="timer-display">3:00</div>
+                <p>残り時間</p>
+                <div class="timer-bar">
+                    <div id="timer-progress" class="timer-progress" style="width: 100%;"></div>
+                </div>
+            </div>
+            
+            <div class="game-content">
+                <h3 style="text-align: center; margin-bottom: 1rem;">
+                    🧩 <span id="current-fish-name">選択した生き物</span>のパズル
+                </h3>
+                
+                <div class="puzzle-container">
+                    <div id="puzzle-board" class="puzzle-board size-3">
+                        <!-- パズルピースはJavaScriptで生成 -->
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <button id="shuffle-btn" class="btn">🔄 シャッフル</button>
+                    <button id="back-btn" class="btn">🔙 戻る</button>
+                </div>
+                
+                <p style="text-align: center;"><strong>遊び方：</strong> 数字を順番に並べ替えてパズルを完成させましょう！</p>
+                <p style="text-align: center; margin-top: 0.5rem; color: #666;">
+                    手数: <span id="move-counter">0</span>手
+                </p>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="success-modal" class="success-modal">
+            <div class="success-content">
+                <div class="success-icon">🎉</div>
+                <h2>おめでとうございます！</h2>
+                <p id="success-message">パズルをクリアしました！</p>
+                <div id="discount-display" class="discount-code">5% OFF</div>
+                <p>下記の特別申込フォームから予約すると割引が適用されます</p>
+                <button id="show-booking" class="btn btn-success">特別価格で申し込む</button>
+                <button id="close-modal" class="btn">閉じる</button>
+            </div>
+        </div>
+
+        <!-- Special Booking Section -->
+        <div id="booking-section" class="booking-section">
+            <h2>🌊 特別割引申込フォーム</h2>
+            <div id="booking-discount-info" class="discount-info">
+                <h3>🎯 適用割引: <span id="applied-discount">5% OFF</span></h3>
+                <p>2ビーチダイビング通常価格 ¥12,000 → <span id="discounted-price">¥11,400</span></p>
+            </div>
+            
+            <form class="booking-form" id="booking-form" action="mailto:info@miura-diving.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label class="form-label">お名前 *</label>
+                    <input type="text" class="form-input" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">メールアドレス *</label>
+                    <input type="email" class="form-input" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">電話番号 *</label>
+                    <input type="tel" class="form-input" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">希望日時</label>
+                    <input type="date" class="form-input" name="date">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">メッセージ</label>
+                    <textarea class="form-input" name="message" rows="4" placeholder="ご質問やご要望があればお書きください"></textarea>
+                </div>
+                
+                <!-- Hidden fields for game completion data -->
+                <input type="hidden" name="game-fish" id="hidden-fish" value="">
+                <input type="hidden" name="game-level" id="hidden-level" value="">
+                <input type="hidden" name="game-moves" id="hidden-moves" value="">
+                <input type="hidden" name="game-time" id="hidden-time" value="">
+                <input type="hidden" name="discount-percent" id="hidden-discount" value="">
+                <input type="hidden" name="final-price" id="hidden-price" value="">
+                
+                <button type="submit" class="btn btn-success" style="width: 100%; font-size: 1.2rem;">
+                    🎯 特別価格で申し込む
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 三浦海の学校. All rights reserved.</p>
+            <p>📞 046-880-0835 | 📧 info@miura-diving.com</p>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Enhanced Sliding Puzzle Game with Sea Life Images
+         * Sample Version for Development
+         */
+        
+        class PuzzleGameSample {
+            constructor() {
+                this.currentLevel = 3;
+                this.timeLimit = 180; // seconds
+                this.board = [];
+                this.emptyPos = { row: 0, col: 0 };
+                this.isCompleted = false;
+                this.moves = 0;
+                this.currentFish = null;
+                this.gameStarted = false;
+                this.timer = null;
+                this.timeRemaining = 0;
+                this.currentPhase = 'difficulty'; // difficulty, fish, puzzle
+                
+                this.discounts = {
+                    3: { 
+                        percent: 5, 
+                        price: 11400, 
+                        time: 180,
+                        description: "5% OFF"
+                    },
+                    4: { 
+                        percent: 8, 
+                        price: 11040, 
+                        time: 300,
+                        description: "8% OFF"
+                    },
+                    5: { 
+                        percent: 10, 
+                        price: 10800, 
+                        time: 480,
+                        description: "10% OFF + 器材レンタル無料",
+                        equipment: true
+                    }
+                };
+                
+                this.fishImages = {
+                    kumanomi: 'assets/img/game-img/kumanomi.png',
+                    nekozame: 'assets/img/game-img/nekozame.png',
+                    kasago: 'assets/img/game-img/kasago.png',
+                    hatatatedai: 'assets/img/game-img/hatatatedai.png',
+                    ginpo: 'assets/img/game-img/ginpo.png',
+                    suzumeda: 'assets/img/game-img/suzumeda.png',
+                    umiushi: 'assets/img/game-img/umiushi.png',
+                    otohieme: 'assets/img/game-img/otohieme.png',
+                    dainan: 'assets/img/game-img/dainan.png'
+                };
+                
+                this.fishNames = {
+                    kumanomi: 'クマノミ',
+                    nekozame: 'ネコザメ',
+                    kasago: 'カサゴ',
+                    hatatatedai: 'ハタタテダイ',
+                    ginpo: 'ギンポ',
+                    suzumeda: 'スズメダイ',
+                    umiushi: 'ウミウシ',
+                    otohieme: 'オトヒメエビ',
+                    dainan: 'ダイナンウミヘビ'
+                };
+                
+                this.init();
+            }
+            
+            init() {
+                this.bindEvents();
+                // Don't initialize puzzle immediately, wait for user flow
+            }
+            
+            bindEvents() {
+                // Mini difficulty selection
+                document.querySelectorAll('.mini-difficulty-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.mini-difficulty-btn').forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.currentLevel = parseInt(e.target.dataset.level);
+                        this.timeLimit = parseInt(e.target.dataset.time);
+                        this.updateSelectionDisplay();
+                    });
+                });
+                
+                // Sea life selection
+                document.querySelectorAll('.sea-life-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        const fishKey = e.currentTarget.dataset.fish;
+                        this.selectFish(fishKey);
+                    });
+                });
+                
+                // Start game button
+                document.getElementById('start-game-btn').addEventListener('click', () => this.startGame());
+                
+                // Game controls
+                document.getElementById('shuffle-btn').addEventListener('click', () => this.shufflePuzzle());
+                document.getElementById('back-btn').addEventListener('click', () => this.backToSelection());
+                
+                // Modal controls
+                document.getElementById('close-modal').addEventListener('click', () => this.closeModal());
+                document.getElementById('show-booking').addEventListener('click', () => this.showBookingForm());
+                
+                // Form submission
+                document.getElementById('booking-form').addEventListener('submit', (e) => this.handleBookingSubmit(e));
+            }
+            
+            selectFish(fishKey) {
+                this.currentFish = fishKey;
+                
+                // Reset all sea life items
+                document.querySelectorAll('.sea-life-item').forEach(item => {
+                    item.classList.remove('selected');
+                    item.style.background = '';
+                    item.querySelector('span').style.color = '';
+                });
+                
+                // Highlight selected item with class
+                const selectedItem = document.querySelector(`[data-fish="${fishKey}"]`);
+                selectedItem.classList.add('selected');
+                
+                this.updateSelectionDisplay();
+            }
+            
+            updateSelectionDisplay() {
+                if (!this.currentFish) return;
+                
+                const display = document.getElementById('selection-display');
+                const img = document.getElementById('display-fish-img');
+                const name = document.getElementById('display-fish-name');
+                const difficulty = document.getElementById('display-difficulty');
+                const discount = document.getElementById('display-discount');
+                const time = document.getElementById('display-time');
+                
+                display.style.display = 'block';
+                img.src = this.fishImages[this.currentFish];
+                img.alt = this.fishNames[this.currentFish];
+                name.textContent = this.fishNames[this.currentFish];
+                
+                const discountInfo = this.discounts[this.currentLevel];
+                difficulty.textContent = `${this.currentLevel}×${this.currentLevel}`;
+                discount.textContent = discountInfo.description;
+                
+                const minutes = Math.floor(this.timeLimit / 60);
+                time.textContent = `制限時間: ${minutes}分`;
+                
+                // Scroll to show the selection
+                display.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            startGame() {
+                if (!this.currentFish) return;
+                
+                // Hide selection and show game
+                document.querySelector('.sea-life-gallery').style.display = 'none';
+                document.getElementById('game-section').style.display = 'block';
+                
+                this.initPuzzle();
+                this.startTimer();
+                
+                // Scroll to game section
+                document.getElementById('game-section').scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            backToSelection() {
+                // Stop timer
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                }
+                
+                // Reset game state
+                this.isCompleted = false;
+                this.gameStarted = false;
+                this.moves = 0;
+                this.timeRemaining = 0;
+                
+                // Hide game and show selection
+                document.getElementById('game-section').style.display = 'none';
+                document.querySelector('.sea-life-gallery').style.display = 'block';
+                document.getElementById('timer-section').style.display = 'none';
+                document.getElementById('timer-section').classList.remove('timer-warning');
+                
+                // Scroll back to selection
+                document.querySelector('.sea-life-gallery').scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            
+            startTimer() {
+                this.timeRemaining = this.timeLimit;
+                this.gameStarted = true;
+                
+                const timerSection = document.getElementById('timer-section');
+                const timerDisplay = document.getElementById('timer-display');
+                const timerProgress = document.getElementById('timer-progress');
+                
+                timerSection.style.display = 'block';
+                this.updateTimerDisplay();
+                
+                this.timer = setInterval(() => {
+                    if (!this.isCompleted) {
+                        this.timeRemaining--;
+                        this.updateTimerDisplay();
+                        
+                        // Update progress bar
+                        const progress = (this.timeRemaining / this.timeLimit) * 100;
+                        timerProgress.style.width = `${progress}%`;
+                        
+                        // Warning effect when time is low
+                        if (this.timeRemaining <= 30) {
+                            timerSection.classList.add('timer-warning');
+                        }
+                        
+                        // Time's up
+                        if (this.timeRemaining <= 0) {
+                            this.handleTimeUp();
+                        }
+                    }
+                }, 1000);
+            }
+            
+            updateTimerDisplay() {
+                const minutes = Math.floor(this.timeRemaining / 60);
+                const seconds = this.timeRemaining % 60;
+                const display = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                document.getElementById('timer-display').textContent = display;
+            }
+            
+            
+            handleTimeUp() {
+                clearInterval(this.timer);
+                this.gameStarted = false;
+                
+                alert('⏰ 時間切れです！\n\nもう一度チャレンジしてみましょう。');
+                
+                // Reset game
+                this.resetGame();
+            }
+            
+            resetGame() {
+                this.isCompleted = false;
+                this.gameStarted = false;
+                this.moves = 0;
+                this.currentFish = null;
+                this.timeRemaining = 0;
+                
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                }
+                
+                // Hide timer
+                document.getElementById('timer-section').style.display = 'none';
+                document.getElementById('timer-section').classList.remove('timer-warning');
+                
+                // Reset to first phase
+                this.showPhase('difficulty');
+                this.currentPhase = 'difficulty';
+                
+                // Reset difficulty selection
+                document.querySelectorAll('.difficulty-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelector('.difficulty-btn[data-level="3"]').classList.add('active');
+                this.currentLevel = 3;
+                this.timeLimit = 180;
+            }
+            
+            
+            initPuzzle() {
+                this.isCompleted = false;
+                this.moves = 0;
+                this.createBoard();
+                this.renderBoard();
+                this.shufflePuzzle();
+                
+                // Update fish name display
+                if (this.currentFish) {
+                    document.getElementById('current-fish-name').textContent = this.fishNames[this.currentFish];
+                }
+                
+                // Reset move counter
+                document.getElementById('move-counter').textContent = '0';
+            }
+            
+            createBoard() {
+                const size = this.currentLevel;
+                this.board = [];
+                
+                // Create numbered board
+                for (let i = 0; i < size; i++) {
+                    this.board[i] = [];
+                    for (let j = 0; j < size; j++) {
+                        const num = i * size + j + 1;
+                        this.board[i][j] = num <= size * size - 1 ? num : 0;
+                    }
+                }
+                
+                // Set empty position (last cell)
+                this.emptyPos = { row: size - 1, col: size - 1 };
+            }
+            
+            renderBoard() {
+                const boardElement = document.getElementById('puzzle-board');
+                const size = this.currentLevel;
+                
+                // Update board classes
+                boardElement.className = `puzzle-board size-${size}`;
+                boardElement.innerHTML = '';
+                
+                // Create puzzle pieces
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size; j++) {
+                        const piece = document.createElement('div');
+                        piece.className = 'puzzle-piece';
+                        piece.dataset.row = i;
+                        piece.dataset.col = j;
+                        
+                        if (this.board[i][j] === 0) {
+                            piece.classList.add('empty');
+                            piece.innerHTML = '';
+                        } else {
+                            const number = this.board[i][j];
+                            
+                            if (this.currentFish && this.fishImages[this.currentFish]) {
+                                piece.style.backgroundImage = `url(${this.fishImages[this.currentFish]})`;
+                                
+                                // Calculate which part of the image this piece should show
+                                // Number 1 should show top-left, number 2 should show top-center, etc.
+                                const targetRow = Math.floor((number - 1) / size);
+                                const targetCol = (number - 1) % size;
+                                
+                                // Calculate the percentage offset needed
+                                const offsetX = (targetCol / (size - 1)) * 100;
+                                const offsetY = (targetRow / (size - 1)) * 100;
+                                
+                                piece.style.backgroundPosition = `${offsetX}% ${offsetY}%`;
+                                piece.style.backgroundSize = `${size * 100}% ${size * 100}%`;
+                                piece.style.backgroundRepeat = 'no-repeat';
+                            } else {
+                                // Fallback when no fish is selected
+                                piece.style.background = 'var(--ocean-teal)';
+                            }
+                            
+                            piece.innerHTML = `<span>${number}</span>`;
+                            piece.addEventListener('click', () => this.movePiece(i, j));
+                        }
+                        
+                        boardElement.appendChild(piece);
+                    }
+                }
+            }
+            
+            movePiece(row, col) {
+                if (this.isCompleted || !this.gameStarted) return;
+                
+                const emptyRow = this.emptyPos.row;
+                const emptyCol = this.emptyPos.col;
+                
+                // Check if the piece is adjacent to empty space
+                const isAdjacent = 
+                    (Math.abs(row - emptyRow) === 1 && col === emptyCol) ||
+                    (Math.abs(col - emptyCol) === 1 && row === emptyRow);
+                
+                if (isAdjacent) {
+                    // Swap pieces
+                    this.board[emptyRow][emptyCol] = this.board[row][col];
+                    this.board[row][col] = 0;
+                    this.emptyPos = { row, col };
+                    this.moves++;
+                    
+                    // Update move counter
+                    document.getElementById('move-counter').textContent = this.moves;
+                    
+                    this.renderBoard();
+                    
+                    // Check for completion
+                    setTimeout(() => {
+                        if (this.checkCompletion()) {
+                            this.handleGameComplete();
+                        }
+                    }, 100);
+                }
+            }
+            
+            checkCompletion() {
+                const size = this.currentLevel;
+                let expectedNum = 1;
+                
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size; j++) {
+                        if (i === size - 1 && j === size - 1) {
+                            // Last cell should be empty (0)
+                            return this.board[i][j] === 0;
+                        }
+                        
+                        if (this.board[i][j] !== expectedNum) {
+                            return false;
+                        }
+                        expectedNum++;
+                    }
+                }
+                return true;
+            }
+            
+            shufflePuzzle() {
+                // Perform random valid moves to shuffle
+                const shuffleMoves = this.currentLevel * this.currentLevel * 10;
+                
+                for (let i = 0; i < shuffleMoves; i++) {
+                    const possibleMoves = this.getPossibleMoves();
+                    if (possibleMoves.length > 0) {
+                        const randomMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+                        this.movePieceQuiet(randomMove.row, randomMove.col);
+                    }
+                }
+                
+                this.moves = 0;
+                this.renderBoard();
+            }
+            
+            movePieceQuiet(row, col) {
+                const emptyRow = this.emptyPos.row;
+                const emptyCol = this.emptyPos.col;
+                
+                // Swap without rendering or checking completion
+                this.board[emptyRow][emptyCol] = this.board[row][col];
+                this.board[row][col] = 0;
+                this.emptyPos = { row, col };
+            }
+            
+            getPossibleMoves() {
+                const moves = [];
+                const { row: emptyRow, col: emptyCol } = this.emptyPos;
+                const size = this.currentLevel;
+                
+                // Check all four directions
+                const directions = [
+                    { row: emptyRow - 1, col: emptyCol }, // Up
+                    { row: emptyRow + 1, col: emptyCol }, // Down
+                    { row: emptyRow, col: emptyCol - 1 }, // Left
+                    { row: emptyRow, col: emptyCol + 1 }  // Right
+                ];
+                
+                directions.forEach(pos => {
+                    if (pos.row >= 0 && pos.row < size && pos.col >= 0 && pos.col < size) {
+                        moves.push(pos);
+                    }
+                });
+                
+                return moves;
+            }
+            
+            
+            handleGameComplete() {
+                this.isCompleted = true;
+                clearInterval(this.timer);
+                
+                // Show completed puzzle image
+                this.showCompletedPuzzle();
+                
+                const discount = this.discounts[this.currentLevel];
+                
+                // Update modal content
+                const timeUsed = this.timeLimit - this.timeRemaining;
+                const minutes = Math.floor(timeUsed / 60);
+                const seconds = timeUsed % 60;
+                const timeText = `${minutes}分${seconds}秒`;
+                
+                let successMsg = `🎉 ${this.fishNames[this.currentFish]}の${this.currentLevel}×${this.currentLevel}パズルクリア！\n⏱️ ${timeText}で${this.moves}手でした！`;
+                
+                if (discount.equipment) {
+                    successMsg += '\n🎁 上級クリア特典：器材レンタル無料付き！';
+                }
+                
+                document.getElementById('success-message').textContent = successMsg;
+                document.getElementById('discount-display').textContent = discount.description;
+                
+                // Update discount info for booking
+                this.finalDiscount = {
+                    percent: discount.percent,
+                    price: discount.price
+                };
+                
+                // Show success modal after a short delay to see completed puzzle
+                setTimeout(() => {
+                    document.getElementById('success-modal').style.display = 'block';
+                    this.celebrateCompletion();
+                }, 1500);
+            }
+            
+            showCompletedPuzzle() {
+                const boardElement = document.getElementById('puzzle-board');
+                const size = this.currentLevel;
+                
+                // Remove size classes and add completed class
+                boardElement.className = 'puzzle-board completed';
+                
+                // Clear existing pieces
+                boardElement.innerHTML = '';
+                
+                // Create an img element instead of background-image for better reliability
+                const completedImage = document.createElement('img');
+                completedImage.src = this.fishImages[this.currentFish];
+                completedImage.alt = `完成した${this.fishNames[this.currentFish]}のパズル`;
+                completedImage.style.cssText = `
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 12px;
+                `;
+                
+                // Set the board container
+                boardElement.style.cssText = `
+                    display: block;
+                    width: ${size === 3 ? '300px' : size === 4 ? '320px' : '340px'};
+                    height: ${size === 3 ? '300px' : size === 4 ? '320px' : '340px'};
+                    margin: 0 auto;
+                    border-radius: 15px;
+                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+                    position: relative;
+                    overflow: hidden;
+                    border: 3px solid #ffd700;
+                    grid-template-columns: none;
+                    gap: 0;
+                `;
+                
+                // Add the image to the board
+                boardElement.appendChild(completedImage);
+                
+                // Add completion glow effect
+                const glowOverlay = document.createElement('div');
+                glowOverlay.style.cssText = `
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(45deg, 
+                        rgba(255,215,0,0.2) 0%, 
+                        transparent 50%, 
+                        rgba(255,215,0,0.2) 100%);
+                    animation: completionGlow 2s ease-in-out infinite;
+                    pointer-events: none;
+                    z-index: 2;
+                `;
+                
+                // Add success text overlay
+                const successText = document.createElement('div');
+                successText.style.cssText = `
+                    position: absolute;
+                    bottom: 10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0,0,0,0.8);
+                    color: #ffd700;
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                    backdrop-filter: blur(5px);
+                    z-index: 10;
+                `;
+                successText.textContent = `🎉 ${this.fishNames[this.currentFish]}完成！`;
+                
+                boardElement.appendChild(glowOverlay);
+                boardElement.appendChild(successText);
+                
+                // Add completion glow animation if not exists
+                if (!document.getElementById('completion-glow-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'completion-glow-style';
+                    style.textContent = `
+                        @keyframes completionGlow {
+                            0%, 100% { opacity: 0.2; }
+                            50% { opacity: 0.5; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+                
+                // Image load error fallback
+                completedImage.onerror = () => {
+                    console.warn('Failed to load fish image:', this.fishImages[this.currentFish]);
+                    // Fallback to background image method
+                    boardElement.style.backgroundImage = `url(${this.fishImages[this.currentFish]})`;
+                    boardElement.style.backgroundSize = 'cover';
+                    boardElement.style.backgroundPosition = 'center';
+                    completedImage.remove();
+                };
+            }
+            
+            celebrateCompletion() {
+                // Create confetti effect
+                const colors = ['#3498db', '#16a085', '#1abc9c', '#ff6b6b', '#feca57'];
+                
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.style.cssText = `
+                            position: fixed;
+                            top: -10px;
+                            left: ${Math.random() * 100}%;
+                            width: 10px;
+                            height: 10px;
+                            background: ${colors[Math.floor(Math.random() * colors.length)]};
+                            z-index: 1001;
+                            animation: confetti-fall 3s linear forwards;
+                            transform: rotate(${Math.random() * 360}deg);
+                        `;
+                        
+                        document.body.appendChild(confetti);
+                        
+                        setTimeout(() => confetti.remove(), 3000);
+                    }, i * 100);
+                }
+                
+                // Add confetti animation CSS
+                if (!document.getElementById('confetti-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'confetti-style';
+                    style.textContent = `
+                        @keyframes confetti-fall {
+                            to {
+                                transform: translateY(100vh) rotate(720deg);
+                                opacity: 0;
+                            }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            }
+            
+            closeModal() {
+                document.getElementById('success-modal').style.display = 'none';
+            }
+            
+            showBookingForm() {
+                this.closeModal();
+                const discount = this.finalDiscount || this.discounts[this.currentLevel];
+                
+                // Update booking section with discount info
+                document.getElementById('applied-discount').textContent = discount.description;
+                let priceText = `¥${discount.price.toLocaleString()}`;
+                if (discount.equipment) {
+                    priceText += ' (器材レンタル無料)';
+                }
+                document.getElementById('discounted-price').textContent = priceText;
+                
+                // Fill hidden fields with game completion data
+                document.getElementById('hidden-fish').value = this.fishNames[this.currentFish];
+                document.getElementById('hidden-level').value = `${this.currentLevel}×${this.currentLevel}`;
+                document.getElementById('hidden-moves').value = this.moves;
+                
+                const timeUsed = this.timeLimit - this.timeRemaining;
+                const minutes = Math.floor(timeUsed / 60);
+                const seconds = timeUsed % 60;
+                document.getElementById('hidden-time').value = `${minutes}分${seconds}秒`;
+                
+                document.getElementById('hidden-discount').value = discount.description;
+                document.getElementById('hidden-price').value = `¥${discount.price.toLocaleString()}${discount.equipment ? ' (器材レンタル無料)' : ''}`;
+                
+                // Show booking section with animation
+                const bookingSection = document.getElementById('booking-section');
+                bookingSection.style.display = 'block';
+                bookingSection.classList.add('fade-in');
+                
+                // Scroll to booking form
+                bookingSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            handleBookingSubmit(e) {
+                // Don't prevent default - allow form submission to mailto
+                
+                const formData = new FormData(e.target);
+                const bookingData = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    date: formData.get('date'),
+                    message: formData.get('message'),
+                    discount: this.discounts[this.currentLevel],
+                    gameLevel: this.currentLevel,
+                    fish: this.currentFish,
+                    fishName: this.fishNames[this.currentFish],
+                    moves: this.moves,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Allow default form submission to mailto
+                // Don't prevent default - let the form submit to email
+                
+                const discount = this.finalDiscount || this.discounts[this.currentLevel];
+                
+                // Show confirmation message
+                setTimeout(() => {
+                    alert(`📧 メールアプリが開きます！\n\n${this.fishNames[this.currentFish]}パズルクリア記念\n${discount.percent}%割引の申込内容が自動入力されています。\n\nメールを送信してください。\n📞 お急ぎの場合: 046-880-0835`);
+                    
+                    // Hide booking section after submission
+                    document.getElementById('booking-section').style.display = 'none';
+                }, 100);
+                
+                // Log for debugging
+                console.log('Booking form submitted with game data:', {
+                    fish: this.fishNames[this.currentFish],
+                    level: this.currentLevel,
+                    moves: this.moves,
+                    discount: discount
+                });
+            }
+        }
+        
+        // Initialize game when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const game = new PuzzleGameSample();
+            console.log('🌊 Diving Puzzle Game Sample initialized successfully!');
+            
+            // Add some fun console messages
+            console.log('🧩 Sample version with sea life images!');
+            console.log('🎯 Click on sea creatures to change puzzle images!');
+        });
+        
+        // Prevent right-click context menu on puzzle pieces (optional)
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.classList.contains('puzzle-piece')) {
+                e.preventDefault();
+            }
+        });
+        
+        // Add keyboard support for accessibility
+        document.addEventListener('keydown', (e) => {
+            if (e.target.classList.contains('puzzle-piece')) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.target.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
