@@ -343,6 +343,36 @@
             font-weight: 600;
         }
         
+        .game-mystery {
+            background: linear-gradient(135deg, rgba(102, 51, 153, 0.9) 0%, rgba(51, 102, 153, 0.9) 100%);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .game-mystery::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: mystery-sparkle 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes mystery-sparkle {
+            0%, 100% { transform: rotate(0deg) translate(-50%, -50%); }
+            50% { transform: rotate(180deg) translate(-50%, -50%); }
+        }
+        
         .game-status {
             text-align: center;
             font-size: 0.9rem;
@@ -357,6 +387,12 @@
         .status-coming-soon {
             color: var(--sunset-orange);
             font-weight: 600;
+            animation: status-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes status-pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
         }
         
         .btn {
@@ -493,7 +529,10 @@
         <div class="container">
             <div class="hero-content">
                 <h1>🏆 海学からの挑戦状！</h1>
-                <p>三浦海の学校があなたに挑戦状を叩きつけます！<br>ゲームをクリアして特別な海の恵みを手に入れよう</p>
+                <p>勇者よ、海の秘密に挑む覚悟はあるか？<br>数々の試練を乗り越え、海学マスターの称号を手に入れろ！</p>
+                <div style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">
+                    ⚔️ 試練は続々追加予定 ⚔️
+                </div>
             </div>
         </div>
     </section>
@@ -521,46 +560,46 @@
                 <!-- Memory Game -->
                 <div class="game-card">
                     <div class="game-icon">🧠</div>
-                    <h3 class="game-title">海洋記憶ゲーム</h3>
-                    <p class="game-description">海の生き物のペアを記憶して見つけ出そう！記憶力が試される楽しいゲームです。</p>
-                    <div class="game-rewards">
-                        🎁 3% / 5% / 8% / 12% OFF<br>
-                        + 最高難易度クリアでランチ無料
+                    <h3 class="game-title">海洋記憶ゲーム（仮）</h3>
+                    <p class="game-description">海の生き物のペアを記憶して見つけ出そう！君の記憶力が試される時が来た...</p>
+                    <div class="game-mystery">
+                        🌊 神秘的な海の記憶に挑戦<br>
+                        ✨ 特別な報酬が待っている
                     </div>
                     <div class="game-status">
-                        <span class="status-coming-soon">🟡 近日公開</span>
+                        <span class="status-coming-soon">🟡 挑戦状準備中</span>
                     </div>
-                    <button class="btn" disabled>近日公開</button>
+                    <button class="btn" disabled>挑戦状準備中</button>
                 </div>
 
                 <!-- Quiz Game -->
                 <div class="game-card">
                     <div class="game-icon">📝</div>
-                    <h3 class="game-title">海洋知識クイズ</h3>
-                    <p class="game-description">海やダイビングに関するクイズに挑戦！知識を深めながら割引をゲットしよう。</p>
-                    <div class="game-rewards">
-                        🎁 5% / 10% / 15% / 20% / 25% OFF<br>
-                        + 満点クリアで認定証無料
+                    <h3 class="game-title">海洋知識クイズ（仮）</h3>
+                    <p class="game-description">深海の秘密を知っているか？海学マスターの称号を手に入れろ！</p>
+                    <div class="game-mystery">
+                        🔱 海の知識王への道<br>
+                        🏆 伝説の称号が君を待つ
                     </div>
                     <div class="game-status">
-                        <span class="status-coming-soon">🟡 近日公開</span>
+                        <span class="status-coming-soon">🟡 挑戦状準備中</span>
                     </div>
-                    <button class="btn" disabled>近日公開</button>
+                    <button class="btn" disabled>挑戦状準備中</button>
                 </div>
 
                 <!-- Reaction Game -->
                 <div class="game-card">
                     <div class="game-icon">⚡</div>
-                    <h3 class="game-title">海の反射神経ゲーム</h3>
-                    <p class="game-description">画面に現れる海の生き物をすばやくタップ！反射神経を試すスピードゲーム。</p>
-                    <div class="game-rewards">
-                        🎁 スコア連動割引<br>
-                        + ハイスコア達成で写真撮影無料
+                    <h3 class="game-title">海の反射神経ゲーム（仮）</h3>
+                    <p class="game-description">光速の海流に飲まれるな！瞬発力で海の生き物を捕まえろ！</p>
+                    <div class="game-mystery">
+                        ⚡ 電光石火の勝負<br>
+                        🌪️ 嵐の海を制する者に栄光を
                     </div>
                     <div class="game-status">
-                        <span class="status-coming-soon">🟡 近日公開</span>
+                        <span class="status-coming-soon">🟡 挑戦状準備中</span>
                     </div>
-                    <button class="btn" disabled>近日公開</button>
+                    <button class="btn" disabled>挑戦状準備中</button>
                 </div>
 
             </div>
