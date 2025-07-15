@@ -282,7 +282,7 @@
                     <li><a href="/fun-diving/" title="経験者向けファンダイビングツアー">ファンダイビング</a></li>
                     <li><a href="/marine-activity/" title="SUP・カヤック・スノーケリング">マリンアクティビティ</a></li>
                     <li><a href="/contact" title="三浦海の学校へのお問い合わせ">お問い合わせ</a></li>
-                    <li><a href="/games/" title="海学からの挑戦状！ゲームキャンペーン">🎮 ゲーム</a></li>
+                    <li><a href="/games/" title="海学からの挑戦状！ゲームキャンペーン">ゲーム</a></li>
                     <li><a href="/blog/" title="ダイビング情報・海洋ブログ">ブログ</a></li>
                 </ul>
             </nav>
@@ -876,11 +876,22 @@
                         </div>
                         <div class="game-visual">
                             <div class="game-preview">
-                                <span class="preview-icon">🐠</span>
-                                <span class="preview-icon">🐙</span>
-                                <span class="preview-icon">🦈</span>
-                                <span class="preview-text">vs</span>
-                                <span class="preview-you">あなた</span>
+                                <div class="preview-title">パズルに挑戦しよう！</div>
+                                <div class="sea-creatures">
+                                    <div class="creature-card">
+                                        <img src="/assets/img/game-img/kumanomi.png" alt="クマノミ" class="creature-img">
+                                        <span class="creature-name">クマノミ</span>
+                                    </div>
+                                    <div class="creature-card">
+                                        <img src="/assets/img/game-img/nekozame.png" alt="ネコザメ" class="creature-img">
+                                        <span class="creature-name">ネコザメ</span>
+                                    </div>
+                                    <div class="creature-card">
+                                        <img src="/assets/img/game-img/umiushi.png" alt="ウミウシ" class="creature-img">
+                                        <span class="creature-name">ウミウシ</span>
+                                    </div>
+                                </div>
+                                <div class="challenge-text">あなたの挑戦を待っています</div>
                             </div>
                         </div>
                     </div>
@@ -1207,11 +1218,7 @@
         border-radius: 20px;
         padding: 2rem;
         color: white;
-        font-size: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+        text-align: center;
         box-shadow: 0 10px 30px rgba(0, 96, 100, 0.3);
         animation: game-float 3s ease-in-out infinite;
     }
@@ -1221,33 +1228,57 @@
         50% { transform: translateY(-10px); }
     }
     
-    .preview-icon {
-        font-size: 2.5rem;
-        display: inline-block;
-        margin: 0 0.5rem;
-        animation: icon-bounce 2s ease-in-out infinite;
-    }
-    
-    .preview-icon:nth-child(1) { animation-delay: 0s; }
-    .preview-icon:nth-child(2) { animation-delay: 0.3s; }
-    .preview-icon:nth-child(3) { animation-delay: 0.6s; }
-    
-    @keyframes icon-bounce {
-        0%, 100% { transform: scale(1) rotate(0deg); }
-        50% { transform: scale(1.1) rotate(5deg); }
-    }
-    
-    .preview-text {
+    .preview-title {
+        font-size: 1.3rem;
         font-weight: 700;
+        margin-bottom: 1.5rem;
         color: #feca57;
-        font-size: 1.8rem;
     }
     
-    .preview-you {
-        font-weight: 900;
+    .sea-creatures {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .creature-card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.8rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .creature-card:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+    
+    .creature-img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .creature-name {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: white;
+    }
+    
+    .challenge-text {
+        font-size: 1rem;
+        font-weight: 600;
         color: #ff6b9d;
-        font-size: 2rem;
-        text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+        opacity: 0.9;
     }
     
     /* Responsive */
