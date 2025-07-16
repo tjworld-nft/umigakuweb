@@ -688,10 +688,19 @@
             
             .cards-grid {
                 gap: 0.5rem;
+                max-width: 350px;
+            }
+            
+            .cards-grid.easy {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .cards-grid.medium {
+                grid-template-columns: repeat(4, 1fr);
             }
             
             .cards-grid.hard {
-                grid-template-columns: repeat(6, 1fr);
+                grid-template-columns: repeat(4, 1fr);
             }
             
             .game-controls {
@@ -775,7 +784,7 @@
                 <select class="control-btn" id="difficulty-select">
                     <option value="easy">簡単 (4×4, 8ペア)</option>
                     <option value="medium">普通 (5×4, 10ペア)</option>
-                    <option value="hard">難しい (7×4, 14ペア)</option>
+                    <option value="hard" id="hard-option">難しい (7×4, 14ペア)</option>
                 </select>
             </div>
 
@@ -894,13 +903,34 @@
                     { name: 'ムレ', img: 'mure.png' }
                 ];
                 
+                // モバイル判定
+                this.isMobile = window.innerWidth <= 768;
+                
                 this.difficultySettings = {
                     easy: { pairs: 8, grid: 'easy', name: '簡単', timeLimit: 90, moveLimit: 15, discount: '5%' },
                     medium: { pairs: 10, grid: 'medium', name: '普通', timeLimit: 150, moveLimit: 20, discount: '8%' },
-                    hard: { pairs: 14, grid: 'hard', name: '難しい', timeLimit: 240, moveLimit: 30, discount: '10%', bonus: '器材レンタル無料' }
+                    hard: { 
+                        pairs: this.isMobile ? 12 : 14, 
+                        grid: 'hard', 
+                        name: '難しい', 
+                        timeLimit: this.isMobile ? 210 : 240, 
+                        moveLimit: this.isMobile ? 25 : 30, 
+                        discount: '10%', 
+                        bonus: '器材レンタル無料' 
+                    }
                 };
                 
                 this.initializeEventListeners();
+                this.updateMobileOptions();
+            }
+            
+            updateMobileOptions() {
+                if (this.isMobile) {
+                    const hardOption = document.getElementById('hard-option');
+                    if (hardOption) {
+                        hardOption.textContent = '難しい (4×6, 12ペア)';
+                    }
+                }
             }
             
             initializeEventListeners() {
