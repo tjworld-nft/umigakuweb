@@ -680,6 +680,59 @@
             box-shadow: 0 12px 35px rgba(255, 107, 157, 0.4);
         }
         
+        /* SNS Share Buttons */
+        .sns-share {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .sns-share-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .sns-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .sns-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .sns-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sns-btn.twitter {
+            background: linear-gradient(135deg, #1DA1F2 0%, #0d8bd9 100%);
+        }
+        
+        .sns-btn.instagram {
+            background: linear-gradient(135deg, #E4405F 0%, #C13584 50%, #833AB4 100%);
+        }
+        
+        .sns-btn.facebook {
+            background: linear-gradient(135deg, #4267B2 0%, #365899 100%);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .game-title {
@@ -1175,6 +1228,21 @@
                         </div>
                     </div>
                     ${couponSection}
+                    
+                    <div class="sns-share">
+                        <div class="sns-share-title">🌊 成果をシェアしよう！</div>
+                        <div class="sns-buttons">
+                            <button class="sns-btn twitter" onclick="game.shareToTwitter()">
+                                🐦 X でシェア
+                            </button>
+                            <button class="sns-btn instagram" onclick="game.shareToInstagram()">
+                                📷 Instagram
+                            </button>
+                            <button class="sns-btn facebook" onclick="game.shareToFacebook()">
+                                👥 Facebook
+                            </button>
+                        </div>
+                    </div>
                 `;
                 
                 document.getElementById('modal-stats').innerHTML = statsHTML;
@@ -1313,6 +1381,37 @@
                 const statusElement = document.getElementById('game-status');
                 statusElement.textContent = message;
                 statusElement.className = `game-status ${type}`;
+            }
+            
+            shareToTwitter() {
+                const result = this.currentGameResult;
+                if (!result) return;
+                
+                const starText = result.isStarAchieved ? '⭐⭐⭐' : '⭐';
+                const text = `🧠海洋記憶ゲーム ${starText} クリア！\n${result.difficulty}モード ${result.time} / ${result.moves}手\n\n🌊三浦海の学校の神経衰弱ゲームに挑戦！\n#三浦海の学校 #神経衰弱 #ダイビング`;
+                const url = 'https://miura-diving.com/memory-game/';
+                
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+            }
+            
+            shareToInstagram() {
+                // InstagramはWeb版での直接投稿APIがないため、URLをコピーしてユーザーに案内
+                const url = 'https://miura-diving.com/memory-game/';
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('URLをコピーしました！Instagramアプリでストーリーに貼り付けてシェアしてください。\n\n🧠海洋記憶ゲームに挑戦中！\n三浦海の学校の神経衰弱ゲームで記憶力テスト✨');
+                }).catch(() => {
+                    prompt('このURLをコピーしてInstagramでシェアしてください:', url);
+                });
+            }
+            
+            shareToFacebook() {
+                const result = this.currentGameResult;
+                if (!result) return;
+                
+                const url = 'https://miura-diving.com/memory-game/';
+                const quote = `🧠海洋記憶ゲームクリア！${result.difficulty}モード ${result.time} / ${result.moves}手で達成✨ 三浦海の学校の神経衰弱ゲームに挑戦してみませんか？`;
+                
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(quote)}`, '_blank');
             }
         }
         
