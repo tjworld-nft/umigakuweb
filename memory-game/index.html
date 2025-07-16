@@ -733,6 +733,74 @@
             background: linear-gradient(135deg, #4267B2 0%, #365899 100%);
         }
 
+        /* ゲーム画面常時表示SNSシェア */
+        .game-sns-share {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(224, 247, 250, 0.95) 100%);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 15px 50px rgba(0, 188, 212, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .game-sns-content {
+            text-align: center;
+        }
+        
+        .game-sns-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-sns-subtitle {
+            color: var(--deep-blue);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .game-sns-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .game-sns-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .game-sns-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .game-sns-btn.twitter {
+            background: linear-gradient(135deg, #1DA1F2 0%, #0d8bd9 100%);
+        }
+        
+        .game-sns-btn.instagram {
+            background: linear-gradient(135deg, #E4405F 0%, #C13584 50%, #833AB4 100%);
+        }
+        
+        .game-sns-btn.facebook {
+            background: linear-gradient(135deg, #4267B2 0%, #365899 100%);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .game-title {
@@ -858,6 +926,25 @@
             <div class="game-board">
                 <div class="cards-grid easy" id="cards-grid">
                     <!-- カードはJavaScriptで動的生成 -->
+                </div>
+            </div>
+
+            <!-- 常時表示SNSシェアセクション -->
+            <div class="game-sns-share">
+                <div class="game-sns-content">
+                    <div class="game-sns-title">🌊 みんなでゲームを楽しもう！</div>
+                    <div class="game-sns-subtitle">友達にも三浦海の学校の神経衰弱ゲームを教えてあげよう</div>
+                    <div class="game-sns-buttons">
+                        <button class="game-sns-btn twitter" onclick="game.shareGame('twitter')">
+                            🐦 X でシェア
+                        </button>
+                        <button class="game-sns-btn instagram" onclick="game.shareGame('instagram')">
+                            📷 Instagram
+                        </button>
+                        <button class="game-sns-btn facebook" onclick="game.shareGame('facebook')">
+                            👥 Facebook
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1412,6 +1499,30 @@
                 const quote = `🧠海洋記憶ゲームクリア！${result.difficulty}モード ${result.time} / ${result.moves}手で達成✨ 三浦海の学校の神経衰弱ゲームに挑戦してみませんか？`;
                 
                 window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(quote)}`, '_blank');
+            }
+            
+            shareGame(platform) {
+                const url = 'https://miura-diving.com/memory-game/';
+                
+                switch(platform) {
+                    case 'twitter':
+                        const twitterText = `🧠海洋記憶ゲーム🌊\n\n三浦海の学校の神経衰弱ゲームが面白い！\n海洋生物のペアを見つけて記憶力をテスト✨\n\nクリアするとダイビングの割引クーポンもゲット🎁\n\n#三浦海の学校 #神経衰弱 #ダイビング #記憶力ゲーム`;
+                        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}&url=${encodeURIComponent(url)}`, '_blank');
+                        break;
+                        
+                    case 'instagram':
+                        navigator.clipboard.writeText(url).then(() => {
+                            alert('URLをコピーしました！Instagramでストーリーに貼り付けてシェアしてください。\n\n🧠海洋記憶ゲーム🌊\n三浦海の学校の神経衰弱ゲームに挑戦！記憶力をテストして、ダイビングの割引クーポンをゲットしよう✨');
+                        }).catch(() => {
+                            prompt('このURLをコピーしてInstagramでシェアしてください:', url);
+                        });
+                        break;
+                        
+                    case 'facebook':
+                        const facebookQuote = `🧠海洋記憶ゲーム🌊 三浦海の学校の神経衰弱ゲームに挑戦！海洋生物のペアを見つけて記憶力をテスト。クリアするとダイビングの割引クーポンもゲットできます✨`;
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(facebookQuote)}`, '_blank');
+                        break;
+                }
             }
         }
         
