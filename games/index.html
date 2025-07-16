@@ -313,9 +313,38 @@
         }
         
         .game-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-align: center;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .game-icon.puzzle {
+            background-image: url('../assets/img/game-img/pazuru.png');
+        }
+        
+        .game-icon.memory {
+            background-image: url('../assets/img/game-img/sinkei/shinkeisuijaku.png');
+        }
+        
+        .game-icon.quiz {
+            background: linear-gradient(135deg, #6633aa 0%, #3366aa 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .game-icon.reaction {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff9f43 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
         }
         
         .game-title {
@@ -544,7 +573,7 @@
                 
                 <!-- Puzzle Game -->
                 <div class="game-card">
-                    <div class="game-icon">🧩</div>
+                    <div class="game-icon puzzle"></div>
                     <h3 class="game-title">海のパズルチャレンジ</h3>
                     <p class="game-description">海洋生物のスライディングパズルを完成させよう！3つの難易度でチャレンジできます。</p>
                     <div class="game-rewards">
@@ -559,7 +588,7 @@
 
                 <!-- Memory Game -->
                 <div class="game-card">
-                    <div class="game-icon">🧠</div>
+                    <div class="game-icon memory"></div>
                     <h3 class="game-title">海洋記憶ゲーム（神経衰弱）</h3>
                     <p class="game-description">海の生き物のペアを記憶して見つけ出そう！⭐⭐⭐獲得でクーポンゲット！</p>
                     <div class="game-rewards">
@@ -574,7 +603,7 @@
 
                 <!-- Quiz Game -->
                 <div class="game-card">
-                    <div class="game-icon">📝</div>
+                    <div class="game-icon quiz">📝</div>
                     <h3 class="game-title">海洋知識クイズ（仮）</h3>
                     <p class="game-description">深海の秘密を知っているか？海学マスターの称号を手に入れろ！</p>
                     <div class="game-mystery">
@@ -589,7 +618,7 @@
 
                 <!-- Reaction Game -->
                 <div class="game-card">
-                    <div class="game-icon">⚡</div>
+                    <div class="game-icon reaction">⚡</div>
                     <h3 class="game-title">海の反射神経ゲーム（仮）</h3>
                     <p class="game-description">光速の海流に飲まれるな！瞬発力で海の生き物を捕まえろ！</p>
                     <div class="game-mystery">
