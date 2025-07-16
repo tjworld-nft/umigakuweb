@@ -793,6 +793,14 @@
                 難易度を選んでゲームを開始してください
             </div>
 
+            <!-- クリア条件表示 -->
+            <div class="clear-conditions" id="clear-conditions" style="display: none;">
+                <div style="background: linear-gradient(135deg, #feca57 0%, #ff9f43 100%); color: white; padding: 1rem; border-radius: 15px; margin: 1rem 0; text-align: center;">
+                    <div style="font-weight: bold; margin-bottom: 0.5rem;">⭐⭐⭐ クーポン獲得条件</div>
+                    <div id="condition-text">条件が表示されます</div>
+                </div>
+            </div>
+
             <!-- Game Board -->
             <div class="game-board">
                 <div class="cards-grid easy" id="cards-grid">
@@ -922,6 +930,7 @@
                 
                 this.initializeEventListeners();
                 this.updateMobileOptions();
+                this.updateClearConditions();
             }
             
             updateMobileOptions() {
@@ -939,6 +948,7 @@
                 document.getElementById('difficulty-select').addEventListener('change', (e) => {
                     this.difficulty = e.target.value;
                     this.updateDifficultyDisplay();
+                    this.updateClearConditions();
                 });
                 document.getElementById('modal-close').addEventListener('click', () => this.closeModal());
             }
@@ -1286,6 +1296,17 @@
             updateDifficultyDisplay() {
                 document.getElementById('difficulty-display').textContent = 
                     this.difficultySettings[this.difficulty].name;
+            }
+            
+            updateClearConditions() {
+                const settings = this.difficultySettings[this.difficulty];
+                const timeText = `${Math.floor(settings.timeLimit / 60)}分${settings.timeLimit % 60 > 0 ? settings.timeLimit % 60 + '秒' : ''}`;
+                const bonusText = settings.bonus ? ` + ${settings.bonus}` : '';
+                
+                const conditionText = `${timeText}以内 & ${settings.moveLimit}手以内でクリア → ${settings.discount}OFF${bonusText}`;
+                
+                document.getElementById('condition-text').textContent = conditionText;
+                document.getElementById('clear-conditions').style.display = 'block';
             }
             
             updateGameStatus(message, type) {
