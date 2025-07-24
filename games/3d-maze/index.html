@@ -1,0 +1,2836 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D海洋迷路ゲーム｜三浦海の学校 特別割引キャンペーン</title>
+    
+    <!-- SEO & OGP -->
+    <meta name="description" content="10章の3D海洋迷路を攻略して海学マスターになろう！クリアすると2ビーチダイビング5%OFF特典がもらえる！">
+    <meta property="og:title" content="3D海洋迷路ゲーム｜三浦海の学校 特別割引キャンペーン">
+    <meta property="og:description" content="10章の3D海洋迷路を攻略して海学マスターになろう！クリアすると2ビーチダイビング5%OFF特典がもらえる！">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/img/game-img/meiro.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #001122;
+            font-family: Arial, sans-serif;
+            color: white;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .hud {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 999999;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 3px solid #00ffff;
+            min-width: 300px;
+            width: fit-content;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 1.5;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        
+        .hud div {
+            margin-bottom: 4px;
+        }
+        
+        .hud div:last-child {
+            margin-bottom: 0;
+        }
+        
+        .start-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #00ffff;
+            color: black;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 200;
+        }
+        
+        .controls {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            z-index: 999999;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 3px solid #00ffff;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.4;
+            min-width: 220px;
+            width: fit-content;
+            pointer-events: none;
+        }
+        
+        .game-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 999999;
+            display: flex;
+            gap: 10px;
+            pointer-events: auto;
+        }
+        
+        .control-btn {
+            background: rgba(0, 255, 255, 0.9);
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid #00ffff;
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        .control-btn.danger {
+            background: rgba(255, 100, 100, 0.9);
+            border-color: #ff6464;
+            color: white;
+        }
+        
+        .control-btn.danger:hover {
+            background: rgba(255, 50, 50, 0.9);
+            box-shadow: 0 5px 15px rgba(255, 100, 100, 0.5);
+        }
+        
+        .time-warning {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999999;
+            background: rgba(255, 0, 0, 0.95);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 3px solid #ff0000;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
+            animation: pulse 1s ease-in-out infinite;
+            display: none;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+        
+        .mobile-warning {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000000;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .mobile-warning-content {
+            background: linear-gradient(135deg, #ff6b9d, #ff9f43);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .mobile-warning h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .mobile-warning p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .pointer-lock-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999999;
+            background: rgba(0, 255, 255, 0.95);
+            color: black;
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 3px solid #00ffff;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5);
+            animation: notification-pulse 2s ease-in-out infinite;
+            display: none;
+            max-width: 400px;
+        }
+        
+        @keyframes notification-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+            50% { transform: translate(-50%, -50%) scale(1.02); opacity: 1; }
+        }
+        
+        .controls div {
+            margin-bottom: 3px;
+        }
+        
+        .controls div:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 480px) {
+            .hud {
+                font-size: 12px;
+                min-width: 250px;
+                max-width: 300px;
+                padding: 10px 12px;
+                top: 5px;
+                left: 5px;
+            }
+            
+            .controls {
+                font-size: 11px;
+                min-width: 180px;
+                padding: 10px 12px;
+                bottom: 5px;
+                left: 5px;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .hud {
+                font-size: 11px;
+                min-width: 220px;
+                max-width: 280px;
+                padding: 8px 10px;
+            }
+            
+            .controls {
+                font-size: 10px;
+                min-width: 160px;
+                padding: 8px 10px;
+            }
+        }
+        
+        #canvas {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 1 !important;
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            outline: none !important;
+        }
+        
+        /* Header & Footer Styles */
+        .header {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(224, 247, 250, 0.95) 100%);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px rgba(0, 188, 212, 0.3);
+            border-bottom: 2px solid rgba(255, 107, 157, 0.2);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00bcd4 0%, #26c6da 50%, #4dd0e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        .nav-link {
+            color: #006064;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(224, 247, 250, 0.6) 100%);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: white;
+            background: linear-gradient(135deg, #ff6b9d, #ff9f43);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+        }
+        
+        .game-title-overlay {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 99999;
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.9) 0%, rgba(255, 107, 157, 0.9) 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.4);
+            text-align: center;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, rgba(0, 96, 100, 0.95) 0%, rgba(0, 96, 100, 0.98) 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 99999;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* ゲーム開始前は表示、開始後は非表示 */
+        .header.game-started,
+        .footer.game-started,
+        .game-title-overlay.game-started {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Warning -->
+    <div class="mobile-warning" id="mobileWarning">
+        <div class="mobile-warning-content">
+            <h2>💻 PC専用ゲームです</h2>
+            <p>このゲームは<strong>PC（デスクトップ・ノートパソコン）</strong>でのプレイ専用です。</p>
+            <p>📱 スマートフォン・タブレットではプレイできません。</p>
+            <p>🖱️ マウスとキーボードが必要です。</p>
+            <p>PCでアクセスしてお楽しみください！</p>
+            <br>
+            <a href="/games/" style="color: white; text-decoration: none; background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 10px; display: inline-block;">ゲーム一覧に戻る</a>
+        </div>
+    </div>
+    <!-- Header -->
+    <header class="header" id="gameHeader">
+        <div class="header-content">
+            <a href="/" class="logo">🌊 三浦海の学校</a>
+            <a href="/games/" class="nav-link">ゲーム一覧に戻る</a>
+        </div>
+    </header>
+    
+    <!-- Game Title Overlay -->
+    <div class="game-title-overlay" id="gameTitleOverlay">
+        🏴‍☠️ 3D海洋迷路ゲーム - 海学マスターへの道 🏴‍☠️
+    </div>
+    <div class="hud" style="
+        position: absolute !important;
+        top: 120px !important;
+        left: 20px !important;
+        z-index: 999999 !important;
+        background: rgba(0, 0, 0, 0.95) !important;
+        color: white !important;
+        padding: 15px 20px !important;
+        border-radius: 12px !important;
+        border: 3px solid #00ffff !important;
+        font-size: 15px !important;
+        font-weight: bold !important;
+        min-width: 300px !important;
+        width: auto !important;
+        box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5) !important;
+        pointer-events: none !important;
+        display: block !important;
+        visibility: visible !important;
+    ">
+        <div style="margin-bottom: 5px;">🌊 海学の迷宮</div>
+        <div style="margin-bottom: 5px;">章: <span id="currentLevel">1</span> / <span id="maxLevel">10</span></div>
+        <div style="margin-bottom: 5px;">❤️ HP: <span id="playerHP">100</span> / <span id="maxHP">100</span></div>
+        <div style="margin-bottom: 5px;">⭐ Lv: <span id="playerLevel">1</span> (EXP: <span id="experience">0</span>/<span id="experienceToNext">100</span>)</div>
+        <div style="margin-bottom: 5px;">🔮 魔力: <span id="magicPower">20</span> | ⚡ コンボ: <span id="combo">0</span></div>
+        <div style="margin-bottom: 5px;">🏆 スコア: <span id="score">0</span></div>
+        <div style="margin-bottom: 5px;">🧭 方位: <span id="compass">北</span></div>
+        <div style="margin-bottom: 0;">⏰ 残り時間: <span id="remainingTime">5:00</span></div>
+    </div>
+    
+    <!-- ゲームコントロール -->
+    <div class="game-controls" id="gameControls" style="display: none;">
+        <button class="control-btn" onclick="game.returnToWebsite()">🌐 サイトに戻る</button>
+        <button class="control-btn danger" onclick="game.quitGame()">❌ ゲーム終了</button>
+    </div>
+    
+    <!-- 時間警告 -->
+    <div class="time-warning" id="timeWarning">
+        ⚠️ 時間が残り少ないです！ ⚠️<br>
+        急いでゴールを目指してください！
+    </div>
+    
+    <!-- ポインターロック解除通知 -->
+    <div class="pointer-lock-notification" id="pointerLockNotification">
+        🔓 視点ロックが解除されました<br>
+        <small>画面をクリックして再び視点操作を開始</small>
+    </div>
+    
+    <!-- ミニマップ -->
+    <div id="minimap" style="
+        position: fixed !important;
+        top: 20px !important;
+        right: 20px !important;
+        width: 150px !important;
+        height: 150px !important;
+        background: rgba(0, 0, 0, 0.9) !important;
+        border: 3px solid #00ffff !important;
+        border-radius: 8px !important;
+        z-index: 999998 !important;
+        overflow: hidden !important;
+    ">
+        <canvas id="minimapCanvas" width="150" height="150" style="
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
+        "></canvas>
+    </div>
+    
+    <div class="controls" style="
+        position: absolute !important;
+        bottom: 20px !important;
+        left: 20px !important;
+        z-index: 999999 !important;
+        background: rgba(0, 0, 0, 0.95) !important;
+        color: white !important;
+        padding: 12px 18px !important;
+        border-radius: 12px !important;
+        border: 3px solid #00ffff !important;
+        font-size: 14px !important;
+        font-weight: bold !important;
+        min-width: 220px !important;
+        width: auto !important;
+        box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5) !important;
+        pointer-events: none !important;
+        display: block !important;
+        visibility: visible !important;
+    ">
+        <div style="margin-bottom: 3px;">🖱️ マウス: 視点移動</div>
+        <div style="margin-bottom: 3px;">⌨️ WASD: 移動</div>
+        <div style="margin-bottom: 3px;">🔮 スペース: 魔法弾</div>
+        <div style="margin-bottom: 3px;">🔓 ESC: 視点ロック解除</div>
+        <div style="margin-bottom: 0;">🎯 ゴール: 赤いキューブ</div>
+    </div>
+    
+    
+    <canvas id="canvas"></canvas>
+    
+    <!-- Footer -->
+    <footer class="footer" id="gameFooter">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <p>&copy; 2025 三浦海の学校. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">📞 046-880-0835 | 📧 info@miura-diving.com</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.skypack.dev/gsap@3.12.2"></script>
+    <script>
+        class SimpleMaze3D {
+            constructor() {
+                this.scene = null;
+                this.camera = null;
+                this.renderer = null;
+                
+                this.mazeSize = 11;
+                this.cellSize = 4;
+                this.wallHeight = 4;
+                
+                this.maze = [];
+                this.startTime = null;
+                this.gameStarted = false;
+                this.pointerLocked = false;
+                
+                this.keys = {};
+                this.moveSpeed = 0.1;
+                
+                // マウス制御
+                this.mouseX = 0;
+                this.mouseY = 0;
+                this.rotationX = 0;
+                this.rotationY = 0;
+                
+                // レベルシステム
+                this.currentLevel = 1;
+                this.maxLevel = 10;
+                this.levelCompleted = false;
+                
+                // タイムリミットシステム
+                this.timeLimit = 300; // 5分（300秒）
+                this.remainingTime = this.timeLimit;
+                this.isGameOver = false;
+                
+                // ストーリー要素
+                this.storyMessages = this.initStoryMessages();
+                
+                // Player
+                this.playerHP = 100;
+                this.maxHP = 100;
+                this.lastDamageTime = 0;
+                
+                // スキルシステム
+                this.playerLevel = 1;
+                this.experience = 0;
+                this.experienceToNext = 100;
+                this.magicPower = 20;
+                this.criticalChance = 0.1;
+                
+                // パワーアップアイテム
+                this.powerUps = [];
+                this.activePowerUps = {};
+                
+                // スコア
+                this.score = 0;
+                this.combo = 0;
+                this.comboTime = 0;
+                
+                // Combat system
+                this.attackCooldown = 0;
+                this.isAttacking = false;
+                this.magicProjectiles = [];
+                this.hitEffects = [];
+                
+                // Enemies
+                this.enemies = [];
+                
+                // ミニマップとナビゲーション
+                this.exploredMap = [];
+                this.minimapCanvas = null;
+                this.minimapCtx = null;
+                this.playerDirection = 0; // ラジアン
+                
+                // モバイル検出とコントロール
+                this.isMobile = this.detectMobile();
+                
+                this.init();
+            }
+            
+            initStoryMessages() {
+                return {
+                    1: {
+                        title: "第1章：目覚め",
+                        intro: "気がつくと、君は見知らぬ青い迷路に囚われていた...\n手には魔法の力が宿っている。そして、不思議な力を感じる...\n\n🔮 スペース: 魔法弾\n❤️ HP: 100",
+                        complete: "小さな海獣たちを退け、最初の扉が開いた...\nだが、これは始まりに過ぎない。",
+                        enemies: ["シーアネモネ", "小さなクラゲ"]
+                    },
+                    2: {
+                        title: "第2章：深海の入り口", 
+                        intro: "迷路は徐々に複雑になり、より危険な生物が現れ始めた。\n深海の謎が君を待ち受けている。\n\n海流に気をつけろ...敵は君を取り囲もうとしている。",
+                        complete: "海流の音が聞こえてきた...更なる深みへ。\n君の魔法が磨かれてきている。",
+                        enemies: ["電気ウナギ", "毒クラゲ", "小サメ"]
+                    },
+                    3: {
+                        title: "第3章：潮の流れ",
+                        intro: "潮の流れが迷路を複雑にし、敵も巧妙になってきた。\n冷静さを保ち、戦略的に戦おう。\n\n複数の敵が同時に襲いかかってくる...",
+                        complete: "潮流を読み、敵の動きを予測できるようになった。\n君は確実に成長している。",
+                        enemies: ["巨大ヒトデ", "群れサメ", "深海イカ"]
+                    },
+                    4: {
+                        title: "第4章：深海の声",
+                        intro: "深海から謎めいた声が聞こえる。\nそれは君を導くのか、惑わすのか？\n\n声に惑わされてはいけない...真の敵を見極めろ。",
+                        complete: "声の正体に近づいている...そして真の戦いが始まった。\n君の心は揺るがない。",
+                        enemies: ["幽霊クラゲ", "深海の番人", "音波サメ"]
+                    },
+                    5: {
+                        title: "第5章：海底神殿",
+                        intro: "古い海底神殿の遺跡に辿り着いた。\n神秘的な力が迷路を守護し、古代の守護獣が復活した。\n\n神殿の守護者たちは容赦ない...",
+                        complete: "神殿の秘密の一部を解き明かした。\nしかし真の試練はこれからだ。",
+                        enemies: ["石の守護者", "古代クラーケン", "神殿の番兵"]
+                    },
+                    6: {
+                        title: "第6章：海王の試練",
+                        intro: "海王からの試練が始まった。\nこれまでの経験が試される時だ。\n\n海王の眷属たちが君を待ち受けている...",
+                        complete: "海王に認められつつある...だが最終試練はまだ先だ。\n君の力は海王レベルに近づいている。",
+                        enemies: ["海王の騎士", "リヴァイアサン", "トライデント・ガード"]
+                    },
+                    7: {
+                        title: "第7章：嵐の迷宮",
+                        intro: "嵐の海に浮かぶ迷宮。\n激流と雷鳴、そして嵐の精霊たちが君の行く手を阻む。\n\n雷に打たれぬよう注意しろ...敵も電撃を放つ。",
+                        complete: "嵐を乗り越え、雷の精霊たちを鎮めた！\n君の意志は嵐よりも強い。",
+                        enemies: ["雷の精霊", "嵐サメ", "電撃エイ"]
+                    },
+                    8: {
+                        title: "第8章：深淵の境界",
+                        intro: "光も届かぬ深淵の境界線。\nここから先は真の勇者のみが進める。\n\n闇の怪物たちが潜んでいる...光を失うな。",
+                        complete: "深淵を越えた者よ...君は選ばれし者なのか？\n闇の力すら君のものとなった。",
+                        enemies: ["深淵の魔物", "闇クラーケン", "虚無サメ"]
+                    },
+                    9: {
+                        title: "第9章：最後の守護者",
+                        intro: "最後の守護者が立ちはだかる。\n全ての知識と勇気を結集せよ。\n\n伝説の海獣たちとの最終決戦が始まる...",
+                        complete: "守護者を越えた...ついに最終の扉が見えてきた。\n君は伝説の戦士となった。",
+                        enemies: ["最終守護者", "海の龍王", "アビス・リヴァイアサン"]
+                    },
+                    10: {
+                        title: "第10章：海学の真理",
+                        intro: "ついに最終層に到達した。\n海学の真理がここに眠っている。\n\n最後の敵は...君自身の恐怖だ。それを乗り越えろ。\n\n全ての力を結集し、真の海学マスターとなれ！",
+                        complete: "🎉 おめでとう！君は真の海学マスターとなった！ 🎉\n\n深海の全ての秘密を解き明かし、すべての敵を打ち倒し、\n真の勇者として伝説となったのだ。\n\n海の神々も君の勇気を讃えている...",
+                        enemies: ["海学の化身", "深海皇帝", "真理の番人", "海神の使者"]
+                    }
+                };
+            }
+            
+            detectMobile() {
+                const userAgent = navigator.userAgent;
+                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) || 
+                       'ontouchstart' in window ||
+                       window.innerWidth <= 768;
+            }
+            
+            showMobileWarning() {
+                const mobileWarning = document.getElementById('mobileWarning');
+                if (mobileWarning) {
+                    mobileWarning.style.display = 'flex';
+                }
+            }
+            
+            returnToWebsite() {
+                if (confirm('ゲームを終了してサイトに戻りますか？')) {
+                    window.location.href = '/games/';
+                }
+            }
+            
+            quitGame() {
+                if (confirm('ゲームを終了しますか？進行状況は失われます。')) {
+                    this.isGameOver = true;
+                    this.gameStarted = false;
+                    document.exitPointerLock();
+                    window.location.href = '/games/';
+                }
+            }
+            
+
+            init() {
+                console.log('Initializing game...');
+                
+                // モバイル端末の場合は警告表示
+                if (this.isMobile) {
+                    this.showMobileWarning();
+                    return;
+                }
+                
+                this.setupScene();
+                this.generateComplexMaze();
+                this.createMaze3D();
+                this.setupEventListeners();
+                this.initMinimap();
+                
+                // 強制的にcanvasサイズを修正
+                this.forceCanvasResize();
+                
+                this.animate();
+                
+                // ゲーム開始準備完了
+                this.gameStarted = false;
+                this.startTime = Date.now();
+                
+                console.log('Game initialized');
+            }
+            
+            forceCanvasResize() {
+                const canvas = document.getElementById('canvas');
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                
+                // canvasの実際のサイズを設定
+                canvas.width = width;
+                canvas.height = height;
+                
+                // スタイルも強制設定
+                canvas.style.width = width + 'px';
+                canvas.style.height = height + 'px';
+                canvas.style.position = 'fixed';
+                canvas.style.top = '0px';
+                canvas.style.left = '0px';
+                canvas.style.zIndex = '1';
+                
+                // Three.jsレンダラーも更新
+                this.renderer.setSize(width, height, false);
+                this.camera.aspect = width / height;
+                this.camera.updateProjectionMatrix();
+                
+                console.log('Canvas forced to size:', width, 'x', height);
+            }
+            
+            initMinimap() {
+                this.minimapCanvas = document.getElementById('minimapCanvas');
+                this.minimapCtx = this.minimapCanvas.getContext('2d');
+                
+                // 探索マップを初期化（最初は全て未探索）
+                this.exploredMap = [];
+                for (let y = 0; y < this.mazeSize; y++) {
+                    this.exploredMap[y] = [];
+                    for (let x = 0; x < this.mazeSize; x++) {
+                        this.exploredMap[y][x] = false;
+                    }
+                }
+                
+                console.log('Minimap initialized');
+            }
+            
+            updateMinimap() {
+                if (!this.minimapCtx) return;
+                
+                const ctx = this.minimapCtx;
+                const size = 150;
+                const cellSize = size / this.mazeSize;
+                
+                // プレイヤー位置
+                const playerX = Math.floor(this.camera.position.x / this.cellSize);
+                const playerZ = Math.floor(this.camera.position.z / this.cellSize);
+                
+                // 現在位置とその周辺を探索済みにマーク（視線方向を考慮）
+                this.exploredMap[playerZ][playerX] = true; // 現在位置は必ず探索済み
+                
+                // 隣接するセルのみ探索（4方向のみ）
+                const adjacentCells = [
+                    {x: playerX + 1, z: playerZ},     // 右
+                    {x: playerX - 1, z: playerZ},     // 左
+                    {x: playerX, z: playerZ + 1},     // 下
+                    {x: playerX, z: playerZ - 1}      // 上
+                ];
+                
+                for (const cell of adjacentCells) {
+                    if (cell.x >= 0 && cell.x < this.mazeSize && 
+                        cell.z >= 0 && cell.z < this.mazeSize) {
+                        this.exploredMap[cell.z][cell.x] = true;
+                    }
+                }
+                
+                // ミニマップを描画
+                ctx.clearRect(0, 0, size, size);
+                
+                // 迷路を描画
+                for (let y = 0; y < this.mazeSize; y++) {
+                    for (let x = 0; x < this.mazeSize; x++) {
+                        const drawX = x * cellSize;
+                        const drawY = y * cellSize;
+                        
+                        if (this.exploredMap[y][x]) {
+                            if (this.maze[y][x] === 1) {
+                                // 壁（探索済み）
+                                ctx.fillStyle = '#444444';
+                            } else {
+                                // 通路（探索済み）
+                                ctx.fillStyle = '#888888';
+                            }
+                        } else {
+                            // 未探索エリア
+                            ctx.fillStyle = '#000000';
+                        }
+                        
+                        ctx.fillRect(drawX, drawY, cellSize, cellSize);
+                    }
+                }
+                
+                // ゴールを描画（探索済みの場合）
+                const goalX = this.mazeSize - 2;
+                const goalZ = this.mazeSize - 2;
+                if (this.exploredMap[goalZ][goalX]) {
+                    ctx.fillStyle = '#ff0000';
+                    ctx.fillRect(goalX * cellSize, goalZ * cellSize, cellSize, cellSize);
+                }
+                
+                // 敵を描画（視界内の場合）
+                ctx.fillStyle = '#ff6666';
+                for (const enemy of this.enemies) {
+                    if (!enemy.userData.alive) continue;
+                    
+                    const enemyX = Math.floor(enemy.position.x / this.cellSize);
+                    const enemyZ = Math.floor(enemy.position.z / this.cellSize);
+                    
+                    if (enemyX >= 0 && enemyX < this.mazeSize && 
+                        enemyZ >= 0 && enemyZ < this.mazeSize &&
+                        this.exploredMap[enemyZ][enemyX]) {
+                        
+                        const distance = Math.sqrt(
+                            Math.pow(enemyX - playerX, 2) + Math.pow(enemyZ - playerZ, 2)
+                        );
+                        
+                        if (distance <= 2) { // 視界内（縮小）
+                            ctx.beginPath();
+                            ctx.arc(
+                                enemyX * cellSize + cellSize/2, 
+                                enemyZ * cellSize + cellSize/2, 
+                                cellSize/3, 0, Math.PI * 2
+                            );
+                            ctx.fill();
+                        }
+                    }
+                }
+                
+                // プレイヤーを描画（方向付き）
+                if (playerX >= 0 && playerX < this.mazeSize && 
+                    playerZ >= 0 && playerZ < this.mazeSize) {
+                    
+                    const centerX = playerX * cellSize + cellSize/2;
+                    const centerY = playerZ * cellSize + cellSize/2;
+                    
+                    // プレイヤー本体
+                    ctx.fillStyle = '#00ffff';
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, cellSize/3, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // 方向指示線（正しい方向）
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(centerX, centerY);
+                    const dirLength = cellSize/2;
+                    
+                    // Three.jsカメラの向きを正確に取得
+                    const direction = new THREE.Vector3(0, 0, -1);
+                    direction.applyQuaternion(this.camera.quaternion);
+                    
+                    ctx.lineTo(
+                        centerX + direction.x * dirLength,
+                        centerY + direction.z * dirLength  // Zが前後、Yは上下なのでZを使用
+                    );
+                    ctx.stroke();
+                }
+            }
+            
+            updateCompass() {
+                // カメラのクォータニオンから正確な方向を取得
+                const direction = new THREE.Vector3(0, 0, -1);
+                direction.applyQuaternion(this.camera.quaternion);
+                
+                // Y軸周りの回転角度を計算（ラジアン）
+                const angle = Math.atan2(direction.x, -direction.z);
+                this.playerDirection = angle;
+                
+                // 度数に変換して方位を決定
+                const degrees = ((angle * 180 / Math.PI) + 360) % 360;
+                let compassDirection = '';
+                
+                if (degrees >= 337.5 || degrees < 22.5) compassDirection = '北';
+                else if (degrees >= 22.5 && degrees < 67.5) compassDirection = '北東';
+                else if (degrees >= 67.5 && degrees < 112.5) compassDirection = '東';
+                else if (degrees >= 112.5 && degrees < 157.5) compassDirection = '南東';
+                else if (degrees >= 157.5 && degrees < 202.5) compassDirection = '南';
+                else if (degrees >= 202.5 && degrees < 247.5) compassDirection = '南西';
+                else if (degrees >= 247.5 && degrees < 292.5) compassDirection = '西';
+                else if (degrees >= 292.5 && degrees < 337.5) compassDirection = '北西';
+                
+                document.getElementById('compass').textContent = compassDirection;
+            }
+            
+            setupScene() {
+                // Scene
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x001a33); // より深い海の色
+                this.scene.fog = new THREE.Fog(0x001a33, 5, 25); // 海中の霧効果
+                
+                // Camera
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                this.camera.position.set(6, 2, 6); // 迷路内部の確実に通路の位置
+                console.log('Camera start position:', this.camera.position);
+                
+                // Renderer
+                const canvas = document.getElementById('canvas');
+                this.renderer = new THREE.WebGLRenderer({ 
+                    canvas: canvas, 
+                    antialias: true,
+                    powerPreference: "high-performance"
+                });
+                
+                // デバイスピクセル比を考慮したサイズ設定
+                const pixelRatio = Math.min(window.devicePixelRatio, 2);
+                this.renderer.setPixelRatio(pixelRatio);
+                this.renderer.setSize(window.innerWidth, window.innerHeight, false);
+                
+                // canvasのスタイルも明示的に設定
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                canvas.style.display = 'block';
+                
+                // 海中の照明
+                const ambientLight = new THREE.AmbientLight(0x002244, 0.4); // 青っぽい環境光
+                this.scene.add(ambientLight);
+                
+                // プレイヤーのライト（潜水ライト風）
+                const playerLight = new THREE.SpotLight(0xffffff, 1, 20, Math.PI / 6, 0.3);
+                playerLight.position.copy(this.camera.position);
+                playerLight.target.position.set(0, 0, -1);
+                this.scene.add(playerLight);
+                this.scene.add(playerLight.target);
+                this.playerLight = playerLight;
+                
+                // 海中のパーティクル効果
+                this.createOceanParticles();
+                
+                console.log('Ocean scene setup complete');
+            }
+            
+            createOceanParticles() {
+                // 海中の浮遊物（プランクトン、泡など）
+                const particleCount = 200;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                
+                for (let i = 0; i < particleCount * 3; i += 3) {
+                    positions[i] = (Math.random() - 0.5) * 100;     // x
+                    positions[i + 1] = Math.random() * 20;          // y
+                    positions[i + 2] = (Math.random() - 0.5) * 100; // z
+                }
+                
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                
+                const material = new THREE.PointsMaterial({
+                    color: 0x4499ff,
+                    size: 0.1,
+                    transparent: true,
+                    opacity: 0.6,
+                    blending: THREE.AdditiveBlending
+                });
+                
+                this.particles = new THREE.Points(geometry, material);
+                this.scene.add(this.particles);
+            }
+            
+            generateComplexMaze() {
+                // レベルに応じたサイズと難易度
+                this.setLevelDifficulty();
+                
+                // ストーリー紹介を表示
+                this.showStoryIntro();
+                
+                // 迷路生成
+                this.maze = [];
+                
+                // 全て壁で初期化
+                for (let i = 0; i < this.mazeSize; i++) {
+                    this.maze[i] = [];
+                    for (let j = 0; j < this.mazeSize; j++) {
+                        this.maze[i][j] = 1; // 壁
+                    }
+                }
+                
+                // 再帰バックトラック法で迷路生成
+                this.visited = [];
+                for (let i = 0; i < this.mazeSize; i++) {
+                    this.visited[i] = [];
+                    for (let j = 0; j < this.mazeSize; j++) {
+                        this.visited[i][j] = false;
+                    }
+                }
+                
+                // スタート地点から迷路を掘る
+                this.carveMaze(1, 1);
+                
+                // レベルに応じた追加の複雑さ
+                this.addLevelComplexity();
+                
+                // スタートとゴールを確実に通路にする
+                this.maze[1][1] = 0; // スタート
+                this.maze[this.mazeSize - 2][this.mazeSize - 2] = 0; // ゴール
+                
+                console.log(`Level ${this.currentLevel} maze generated (${this.mazeSize}x${this.mazeSize})`);
+            }
+            
+            setLevelDifficulty() {
+                // レベルに応じてサイズと設定を変更
+                if (this.currentLevel <= 2) {
+                    this.mazeSize = 11; // 初級
+                    this.moveSpeed = 0.12;
+                } else if (this.currentLevel <= 4) {
+                    this.mazeSize = 15; // 中級
+                    this.moveSpeed = 0.10;
+                } else if (this.currentLevel <= 6) {
+                    this.mazeSize = 19; // 上級
+                    this.moveSpeed = 0.08;
+                } else if (this.currentLevel <= 8) {
+                    this.mazeSize = 23; // 超級
+                    this.moveSpeed = 0.07;
+                } else {
+                    this.mazeSize = 27; // 神級（最終章）
+                    this.moveSpeed = 0.06;
+                }
+                
+                console.log(`Level ${this.currentLevel} difficulty: maze size ${this.mazeSize}, speed ${this.moveSpeed}`);
+            }
+            
+            addLevelComplexity() {
+                // レベルが高いほど複雑な仕掛けを追加
+                if (this.currentLevel >= 3) {
+                    // デッドエンドを増やす
+                    this.addDeadEnds();
+                }
+                
+                if (this.currentLevel >= 5) {
+                    // ループを作って混乱させる
+                    this.addLoops();
+                }
+                
+                if (this.currentLevel >= 7) {
+                    // 偽のゴールエリアを追加
+                    this.addFakeGoalAreas();
+                }
+            }
+            
+            addDeadEnds() {
+                const deadEndCount = Math.floor(this.currentLevel * 1.5);
+                for (let i = 0; i < deadEndCount; i++) {
+                    const x = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    const y = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    if (this.maze[y][x] === 0) {
+                        // ランダムな方向に短い行き止まりを作る
+                        const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+                        const dir = directions[Math.floor(Math.random() * directions.length)];
+                        const newX = x + dir[0] * 2;
+                        const newY = y + dir[1] * 2;
+                        if (newX > 0 && newX < this.mazeSize - 1 && newY > 0 && newY < this.mazeSize - 1) {
+                            this.maze[y + dir[1]][x + dir[0]] = 0;
+                            this.maze[newY][newX] = 0;
+                        }
+                    }
+                }
+            }
+            
+            addLoops() {
+                const loopCount = Math.floor(this.currentLevel * 0.8);
+                for (let i = 0; i < loopCount; i++) {
+                    const x = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    const y = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    if (this.maze[y][x] === 1) {
+                        // 隣接する通路が2つ以上あれば壁を削除してループを作る
+                        let adjacentPaths = 0;
+                        const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+                        for (const [dx, dy] of directions) {
+                            if (this.maze[y + dy] && this.maze[y + dy][x + dx] === 0) {
+                                adjacentPaths++;
+                            }
+                        }
+                        if (adjacentPaths >= 2) {
+                            this.maze[y][x] = 0;
+                        }
+                    }
+                }
+            }
+            
+            addFakeGoalAreas() {
+                // 偽のゴールエリアを数箇所に配置
+                const fakeGoals = Math.min(3, Math.floor(this.currentLevel * 0.5));
+                for (let i = 0; i < fakeGoals; i++) {
+                    const x = Math.floor(Math.random() * (this.mazeSize - 6)) + 3;
+                    const y = Math.floor(Math.random() * (this.mazeSize - 6)) + 3;
+                    // 3x3の小さなエリアを作る
+                    for (let dy = -1; dy <= 1; dy++) {
+                        for (let dx = -1; dx <= 1; dx++) {
+                            if (x + dx > 0 && x + dx < this.mazeSize - 1 && 
+                                y + dy > 0 && y + dy < this.mazeSize - 1) {
+                                this.maze[y + dy][x + dx] = 0;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            carveMaze(x, y) {
+                this.visited[y][x] = true;
+                this.maze[y][x] = 0; // 通路にする
+                
+                // ランダムな方向順序
+                const directions = [
+                    [0, -2], [2, 0], [0, 2], [-2, 0] // 上、右、下、左
+                ].sort(() => Math.random() - 0.5);
+                
+                for (const [dx, dy] of directions) {
+                    const newX = x + dx;
+                    const newY = y + dy;
+                    
+                    // 境界内かつ未訪問の場合
+                    if (newX > 0 && newX < this.mazeSize - 1 && 
+                        newY > 0 && newY < this.mazeSize - 1 && 
+                        !this.visited[newY][newX]) {
+                        
+                        // 間の壁を削除
+                        this.maze[y + dy/2][x + dx/2] = 0;
+                        this.carveMaze(newX, newY);
+                    }
+                }
+            }
+            
+            createMaze3D() {
+                const CELL = this.cellSize;
+                const wallHeight = this.wallHeight;
+                
+                // 壁線のマテリアル
+                const wallMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
+                
+                // 各セルの壁線を生成
+                for (let cz = 0; cz < this.mazeSize; cz++) {
+                    for (let cx = 0; cx < this.mazeSize; cx++) {
+                        if (this.maze[cz][cx] === 1) {
+                            // セル (cx, cz) が壁の場合、各辺に線を描画
+                            this.createWallLines(cx, cz, CELL, wallHeight, wallMaterial);
+                        }
+                    }
+                }
+                
+                // ゴールを作成（ワイヤーフレーム）
+                this.createGoal();
+                
+                // 敵を配置
+                this.spawnEnemies();
+                
+                console.log('3D maze created with wall lines and enemies');
+            }
+            
+            createWallLines(cx, cz, CELL, wallHeight, material) {
+                const x = cx * CELL;
+                const z = cz * CELL;
+                
+                // 北壁 (z側)
+                this.addWallLine(
+                    [x, 0, z, (x + CELL), 0, z, x, wallHeight, z, (x + CELL), wallHeight, z],
+                    material
+                );
+                
+                // 東壁 (x+1側)  
+                this.addWallLine(
+                    [(x + CELL), 0, z, (x + CELL), 0, (z + CELL), (x + CELL), wallHeight, z, (x + CELL), wallHeight, (z + CELL)],
+                    material
+                );
+                
+                // 南壁 (z+1側)
+                this.addWallLine(
+                    [x, 0, (z + CELL), (x + CELL), 0, (z + CELL), x, wallHeight, (z + CELL), (x + CELL), wallHeight, (z + CELL)],
+                    material
+                );
+                
+                // 西壁 (x側)
+                this.addWallLine(
+                    [x, 0, z, x, 0, (z + CELL), x, wallHeight, z, x, wallHeight, (z + CELL)],
+                    material
+                );
+            }
+            
+            addWallLine(points, material) {
+                const geometry = new THREE.BufferGeometry();
+                const vertices = new Float32Array(points);
+                geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+                
+                // 線の描画順序（底辺→上辺→縦線）
+                const indices = [
+                    0, 1,  // 底辺
+                    2, 3,  // 上辺
+                    0, 2,  // 左縦線
+                    1, 3   // 右縦線
+                ];
+                geometry.setIndex(indices);
+                
+                const line = new THREE.LineSegments(geometry, material);
+                this.scene.add(line);
+            }
+            
+            createGoal() {
+                const goalGeometry = new THREE.BoxGeometry(2, 2, 2);
+                const goalEdges = new THREE.EdgesGeometry(goalGeometry);
+                const goalMaterial = new THREE.LineBasicMaterial({ 
+                    color: 0xff0000
+                });
+                
+                this.goal = new THREE.LineSegments(goalEdges, goalMaterial);
+                this.goal.position.set((this.mazeSize - 2) * this.cellSize, 1, (this.mazeSize - 2) * this.cellSize);
+                this.scene.add(this.goal);
+                
+                // ゴールの光る効果
+                const goalLight = new THREE.PointLight(0xff0000, 1, 10);
+                goalLight.position.copy(this.goal.position);
+                this.scene.add(goalLight);
+            }
+            
+            
+            spawnEnemies() {
+                this.enemies = [];
+                const enemyCount = Math.min(3 + this.currentLevel, 8); // レベルに応じて敵の数を増加
+                
+                for (let i = 0; i < enemyCount; i++) {
+                    this.createEnemy();
+                }
+            }
+            
+            createEnemy() {
+                // 敵の3Dモデル（シンプルな海獣）
+                const enemyGroup = new THREE.Group();
+                
+                // 体（メイン）
+                const bodyGeometry = new THREE.SphereGeometry(0.8, 8, 6);
+                const bodyMaterial = new THREE.MeshBasicMaterial({ 
+                    color: this.getEnemyColor(),
+                    wireframe: true 
+                });
+                const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+                enemyGroup.add(body);
+                
+                // 触手や鰭（装飾）
+                for (let i = 0; i < 4; i++) {
+                    const tentacleGeometry = new THREE.CylinderGeometry(0.1, 0.05, 1);
+                    const tentacleMaterial = new THREE.MeshBasicMaterial({ 
+                        color: this.getEnemyColor(),
+                        wireframe: true 
+                    });
+                    const tentacle = new THREE.Mesh(tentacleGeometry, tentacleMaterial);
+                    tentacle.position.set(
+                        Math.cos(i * Math.PI / 2) * 0.6,
+                        -0.5,
+                        Math.sin(i * Math.PI / 2) * 0.6
+                    );
+                    tentacle.rotation.z = Math.PI / 6;
+                    enemyGroup.add(tentacle);
+                }
+                
+                // ランダムな位置に配置（通路のみ）
+                let placed = false;
+                let attempts = 0;
+                while (!placed && attempts < 50) {
+                    const x = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    const z = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    
+                    if (this.maze[z][x] === 0) { // 通路の場合
+                        enemyGroup.position.set(x * this.cellSize, 1, z * this.cellSize);
+                        placed = true;
+                    }
+                    attempts++;
+                }
+                
+                if (placed) {
+                    // 敵の属性
+                    enemyGroup.userData = {
+                        hp: 20 + this.currentLevel * 5,
+                        maxHP: 20 + this.currentLevel * 5,
+                        damage: 10 + this.currentLevel * 2,
+                        speed: 0.03 + this.currentLevel * 0.008,
+                        lastAttackTime: 0,
+                        attackCooldown: 1500 - this.currentLevel * 100, // レベルが上がると攻撃頻度増加
+                        alive: true,
+                        mode: 'patrol',
+                        alertTime: 0,
+                        animOffset: Math.random() * Math.PI * 2,
+                        patrolTarget: null,
+                        lastPatrolTime: 0,
+                        aggressionLevel: Math.min(1.0, this.currentLevel * 0.1) // 攻撃性
+                    };
+                    
+                    this.scene.add(enemyGroup);
+                    this.enemies.push(enemyGroup);
+                }
+            }
+            
+            getEnemyColor() {
+                const colors = [0xff4444, 0x44ff44, 0x4444ff, 0xffff44, 0xff44ff, 0x44ffff];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+            
+            setupEventListeners() {
+                const canvas = document.getElementById('canvas');
+                
+                // キーボードイベント
+                document.addEventListener('keydown', (event) => {
+                    console.log('Key pressed:', event.code);
+                    this.keys[event.code] = true;
+                    
+                    // スペースキーで攻撃
+                    if (event.code === 'Space' && this.gameStarted) {
+                        event.preventDefault(); // ページスクロールを防ぐ
+                        this.performAttack();
+                    }
+                    
+                });
+                
+                document.addEventListener('keyup', (event) => {
+                    console.log('Key released:', event.code);
+                    this.keys[event.code] = false;
+                });
+                
+                // マウスイベント
+                canvas.addEventListener('click', () => {
+                    if (!this.pointerLocked) {
+                        canvas.requestPointerLock();
+                    }
+                });
+                
+                document.addEventListener('pointerlockchange', () => {
+                    this.pointerLocked = document.pointerLockElement === canvas;
+                    console.log('Pointer lock changed:', this.pointerLocked);
+                    
+                    // ポインターロック解除通知
+                    const notification = document.getElementById('pointerLockNotification');
+                    if (!this.pointerLocked && this.gameStarted && notification) {
+                        notification.style.display = 'block';
+                        // 3秒後に自動で非表示
+                        setTimeout(() => {
+                            notification.style.display = 'none';
+                        }, 3000);
+                    } else if (this.pointerLocked && notification) {
+                        notification.style.display = 'none';
+                    }
+                });
+                
+                document.addEventListener('mousemove', (event) => {
+                    if (this.pointerLocked && this.gameStarted) {
+                        const movementX = event.movementX || 0;
+                        const movementY = event.movementY || 0;
+                        
+                        console.log('Mouse movement:', { x: movementX, y: movementY, locked: this.pointerLocked, started: this.gameStarted });
+                        
+                        this.rotationY -= movementX * 0.002;
+                        this.rotationX -= movementY * 0.002;
+                        this.rotationX = Math.max(-Math.PI/2, Math.min(Math.PI/2, this.rotationX));
+                        
+                        // Euler角での回転設定
+                        const euler = new THREE.Euler(this.rotationX, this.rotationY, 0, 'YXZ');
+                        this.camera.quaternion.setFromEuler(euler);
+                        
+                        console.log('Camera rotation updated:', { x: this.rotationX, y: this.rotationY });
+                    } else {
+                        console.log('Mouse movement ignored - locked:', this.pointerLocked, 'started:', this.gameStarted);
+                    }
+                });
+                
+                // ウィンドウリサイズ
+                window.addEventListener('resize', () => {
+                    const width = window.innerWidth;
+                    const height = window.innerHeight;
+                    
+                    this.camera.aspect = width / height;
+                    this.camera.updateProjectionMatrix();
+                    
+                    this.renderer.setSize(width, height, false);
+                    
+                    // canvasのスタイルも更新
+                    const canvas = document.getElementById('canvas');
+                    canvas.style.width = '100%';
+                    canvas.style.height = '100%';
+                    
+                    console.log('Resized to:', width, 'x', height);
+                });
+                
+                console.log('Event listeners setup complete');
+            }
+            
+            
+            updateMovement() {
+                if (!this.gameStarted) {
+                    console.log('Movement blocked - game not started');
+                    return;
+                }
+                
+                // カメラの向いている方向を取得
+                const direction = new THREE.Vector3(0, 0, -1);
+                direction.applyQuaternion(this.camera.quaternion);
+                
+                // 右方向のベクトルを計算
+                const right = new THREE.Vector3(1, 0, 0);
+                right.applyQuaternion(this.camera.quaternion);
+                
+                // Y成分を0にして水平移動のみにする
+                direction.y = 0;
+                right.y = 0;
+                direction.normalize();
+                right.normalize();
+                
+                // 移動ベクトルを計算
+                let dx = 0;
+                let dz = 0;
+                
+                if (this.keys['KeyW']) {
+                    dx += direction.x * this.moveSpeed;
+                    dz += direction.z * this.moveSpeed;
+                }
+                if (this.keys['KeyS']) {
+                    dx -= direction.x * this.moveSpeed;
+                    dz -= direction.z * this.moveSpeed;
+                }
+                if (this.keys['KeyA']) {
+                    dx -= right.x * this.moveSpeed;
+                    dz -= right.z * this.moveSpeed;
+                }
+                if (this.keys['KeyD']) {
+                    dx += right.x * this.moveSpeed;
+                    dz += right.z * this.moveSpeed;
+                }
+                
+                // プロ仕様の衝突判定付き移動
+                this.movePlayer(dx, dz, 1.0);
+                
+                // プレイヤーライトを追従させる
+                this.playerLight.position.copy(this.camera.position);
+                const lightDirection = new THREE.Vector3(0, 0, -1);
+                lightDirection.applyQuaternion(this.camera.quaternion);
+                this.playerLight.target.position.copy(this.camera.position).add(lightDirection.multiplyScalar(5));
+                
+                this.updateHUD();
+            }
+            
+            movePlayer(dx, dz, delta) {
+                const playerR = 0.3; // 標準的なプレイヤー半径に戻す
+                const CELL = this.cellSize;
+                
+                // 現在位置
+                const pos = this.camera.position;
+                const currentPos = { x: pos.x, z: pos.z };
+                
+                // 移動ベクトルの長さ
+                const moveLen = Math.sqrt(dx * dx + dz * dz);
+                if (moveLen === 0) return;
+                
+                // 段階的移動（小さなステップで安全に）
+                const steps = Math.ceil(moveLen / 0.05); // 0.05単位で移動
+                const stepX = dx / steps;
+                const stepZ = dz / steps;
+                
+                for (let i = 0; i < steps; i++) {
+                    const nextX = pos.x + stepX;
+                    const nextZ = pos.z + stepZ;
+                    const nextPos = { x: nextX, z: nextZ };
+                    
+                    // 移動先が安全かチェック
+                    if (this.isSafePosition(nextPos, playerR, CELL)) {
+                        pos.x = nextX;
+                        pos.z = nextZ;
+                    } else {
+                        // 移動できない場合はここで停止
+                        break;
+                    }
+                }
+            }
+            
+            isSafePosition(p, playerR, CELL) {
+                // より保守的で確実な安全判定
+                
+                // プレイヤーの円形範囲を細かくチェック
+                const checkPoints = [];
+                const numPoints = 12; // 円周上の12点
+                
+                // 中心点
+                checkPoints.push({ x: p.x, z: p.z });
+                
+                // 円周上の点々
+                for (let i = 0; i < numPoints; i++) {
+                    const angle = (i / numPoints) * Math.PI * 2;
+                    checkPoints.push({
+                        x: p.x + Math.cos(angle) * playerR,
+                        z: p.z + Math.sin(angle) * playerR
+                    });
+                }
+                
+                // 各チェックポイントが安全かどうか
+                for (const point of checkPoints) {
+                    const cellX = Math.floor(point.x / CELL);
+                    const cellZ = Math.floor(point.z / CELL);
+                    
+                    // 境界チェック
+                    if (cellX < 0 || cellX >= this.mazeSize || cellZ < 0 || cellZ >= this.mazeSize) {
+                        return false;
+                    }
+                    
+                    // 壁チェック
+                    if (this.maze[cellZ][cellX] === 1) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+            
+            isBlocked(p, playerR, CELL) {
+                return !this.isSafePosition(p, playerR, CELL);
+            }
+            
+            
+            updateHUD() {
+                const gridX = Math.floor(this.camera.position.x / this.cellSize);
+                const gridZ = Math.floor(this.camera.position.z / this.cellSize);
+                
+                document.getElementById('currentLevel').textContent = this.currentLevel;
+                document.getElementById('maxLevel').textContent = this.maxLevel;
+                document.getElementById('playerHP').textContent = this.playerHP;
+                document.getElementById('maxHP').textContent = this.maxHP;
+                
+                // 新しいHUD要素を更新
+                document.getElementById('playerLevel').textContent = this.playerLevel;
+                document.getElementById('experience').textContent = this.experience;
+                document.getElementById('experienceToNext').textContent = this.experienceToNext;
+                document.getElementById('magicPower').textContent = this.magicPower;
+                document.getElementById('combo').textContent = this.combo;
+                document.getElementById('score').textContent = this.score;
+                
+                // HPバーの色変更
+                const hpElement = document.getElementById('playerHP');
+                if (this.playerHP < this.maxHP * 0.3) {
+                    hpElement.style.color = '#ff4444';
+                } else if (this.playerHP < this.maxHP * 0.6) {
+                    hpElement.style.color = '#ffaa44';
+                } else {
+                    hpElement.style.color = '#ffffff';
+                }
+                
+                // コンボタイマー
+                if (this.combo > 0 && Date.now() - this.comboTime > 3000) {
+                    this.combo = 0;
+                }
+                
+                // ゴール判定
+                if (this.goal) {
+                    const distance = this.camera.position.distanceTo(this.goal.position);
+                    if (distance < 3) {
+                        this.gameWin();
+                    }
+                }
+            }
+            
+
+            performAttack() {
+                const currentTime = Date.now();
+                if (currentTime - this.attackCooldown < 500) return; // 攻撃クールダウン
+                
+                this.attackCooldown = currentTime;
+                this.isAttacking = true;
+                
+                this.performMagicAttack();
+            }
+            
+            
+            performMagicAttack() {
+                // 魔法弾を発射
+                const playerPos = this.camera.position.clone();
+                const direction = new THREE.Vector3(0, 0, -1);
+                direction.applyQuaternion(this.camera.quaternion);
+                
+                const projectile = this.createMagicProjectile(playerPos, direction);
+                this.magicProjectiles.push(projectile);
+                this.scene.add(projectile);
+                
+                this.isAttacking = false;
+            }
+            
+            createMagicProjectile(startPos, direction) {
+                // 魔法弾の見た目
+                const geometry = new THREE.SphereGeometry(0.2, 8, 6);
+                const material = new THREE.MeshBasicMaterial({ 
+                    color: 0x00ffff,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const projectile = new THREE.Mesh(geometry, material);
+                
+                // 光る効果
+                const glowGeometry = new THREE.SphereGeometry(0.3, 8, 6);
+                const glowMaterial = new THREE.MeshBasicMaterial({
+                    color: 0x44ffff,
+                    transparent: true,
+                    opacity: 0.3
+                });
+                const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+                projectile.add(glow);
+                
+                projectile.position.copy(startPos);
+                // クリティカルヒット判定
+                const isCritical = Math.random() < this.criticalChance;
+                const baseDamage = this.magicPower + Math.floor(Math.random() * 10);
+                const finalDamage = isCritical ? baseDamage * 2 : baseDamage;
+                
+                projectile.userData = {
+                    direction: direction.clone(),
+                    speed: 0.5,
+                    damage: finalDamage,
+                    isCritical: isCritical,
+                    life: 100 // フレーム数
+                };
+                
+                // クリティカルの場合は見た目を変更
+                if (isCritical) {
+                    projectile.children[0].material.color.setHex(0xffd700); // ゴールド色
+                    projectile.scale.setScalar(1.3);
+                }
+                
+                return projectile;
+            }
+            
+            
+            updateCombat() {
+                // 攻撃クールダウン更新
+                if (this.attackCooldown > 0) {
+                    this.attackCooldown = Math.max(0, this.attackCooldown - 16);
+                }
+                
+                // 魔法弾の更新
+                this.updateMagicProjectiles();
+                
+                // ヒットエフェクトの更新
+                this.updateHitEffects();
+            }
+            
+            updateMagicProjectiles() {
+                for (let i = this.magicProjectiles.length - 1; i >= 0; i--) {
+                    const projectile = this.magicProjectiles[i];
+                    const userData = projectile.userData;
+                    
+                    // 魔法弾を移動
+                    projectile.position.add(userData.direction.clone().multiplyScalar(userData.speed));
+                    
+                    // 魔法弾の回転とパルス効果
+                    projectile.rotation.x += 0.1;
+                    projectile.rotation.y += 0.1;
+                    const scale = 1 + Math.sin(Date.now() * 0.01) * 0.2;
+                    projectile.scale.setScalar(scale);
+                    
+                    // 敵との衝突判定
+                    let hit = false;
+                    for (const enemy of this.enemies) {
+                        if (!enemy.userData.alive) continue;
+                        
+                        const distance = projectile.position.distanceTo(enemy.position);
+                        if (distance < 1.0) {
+                            this.damageEnemy(enemy, userData.damage, 'magic', userData.isCritical);
+                            this.createMagicHitEffect(projectile.position, userData.isCritical);
+                            hit = true;
+                            break;
+                        }
+                    }
+                    
+                    // 壁との衝突判定
+                    if (!hit && this.isBlocked(projectile.position, 0.2, this.cellSize)) {
+                        this.createMagicHitEffect(projectile.position);
+                        hit = true;
+                    }
+                    
+                    // 寿命チェック
+                    userData.life--;
+                    if (hit || userData.life <= 0) {
+                        this.scene.remove(projectile);
+                        this.magicProjectiles.splice(i, 1);
+                    }
+                }
+            }
+            
+            damageEnemy(enemy, damage, attackType, isCritical = false) {
+                enemy.userData.hp -= damage;
+                
+                // 敵が被ダメージを受けた時のリアクション
+                this.createDamageReaction(enemy, attackType);
+                
+                // ダメージエフェクト（クリティカル判定付き）
+                this.showDamageEffect(enemy.position, damage, isCritical);
+                
+                if (enemy.userData.hp <= 0) {
+                    this.defeatEnemy(enemy);
+                }
+            }
+            
+            createDamageReaction(enemy, attackType) {
+                // 敵を後ろに押し出す
+                const pushDirection = new THREE.Vector3()
+                    .subVectors(enemy.position, this.camera.position)
+                    .normalize()
+                    .multiplyScalar(0.5);
+                
+                const newPosition = enemy.position.clone().add(pushDirection);
+                if (this.isSafePosition(newPosition, 0.8, this.cellSize)) {
+                    enemy.position.copy(newPosition);
+                }
+                
+                // 敵の色を一瞬変える（ダメージ表現）
+                const originalMaterial = enemy.children[0].material;
+                const damageMaterial = new THREE.MeshBasicMaterial({ 
+                    color: 0xffff00,
+                    wireframe: true 
+                });
+                
+                enemy.children[0].material = damageMaterial;
+                setTimeout(() => {
+                    enemy.children[0].material = originalMaterial;
+                }, 200);
+                
+                // 敵の振動効果
+                const originalY = enemy.position.y;
+                enemy.userData.shaking = true;
+                setTimeout(() => {
+                    enemy.userData.shaking = false;
+                    enemy.position.y = originalY;
+                }, 300);
+            }
+            
+            createMagicHitEffect(position) {
+                // 魔法弾の爆発エフェクト
+                const explosionCount = 15;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(explosionCount * 3);
+                const colors = new Float32Array(explosionCount * 3);
+                
+                for (let i = 0; i < explosionCount * 3; i += 3) {
+                    positions[i] = position.x + (Math.random() - 0.5) * 3;
+                    positions[i + 1] = position.y + Math.random() * 3;
+                    positions[i + 2] = position.z + (Math.random() - 0.5) * 3;
+                    
+                    colors[i] = 0; // R
+                    colors[i + 1] = 1; // G
+                    colors[i + 2] = 1; // B
+                }
+                
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                
+                const material = new THREE.PointsMaterial({
+                    size: 0.3,
+                    vertexColors: true,
+                    transparent: true,
+                    opacity: 1.0,
+                    blending: THREE.AdditiveBlending
+                });
+                
+                const explosion = new THREE.Points(geometry, material);
+                this.scene.add(explosion);
+                this.hitEffects.push({
+                    effect: explosion,
+                    life: 30,
+                    type: 'magic'
+                });
+            }
+            
+            updateHitEffects() {
+                for (let i = this.hitEffects.length - 1; i >= 0; i--) {
+                    const hitEffect = this.hitEffects[i];
+                    hitEffect.life--;
+                    
+                    // フェードアウト
+                    hitEffect.effect.material.opacity = hitEffect.life / 30;
+                    
+                    if (hitEffect.life <= 0) {
+                        this.scene.remove(hitEffect.effect);
+                        this.hitEffects.splice(i, 1);
+                    }
+                }
+            }
+            
+            updateEnemies() {
+                const currentTime = Date.now();
+                const playerPos = this.camera.position;
+                
+                for (const enemy of this.enemies) {
+                    if (!enemy.userData.alive) continue;
+                    
+                    const distance = playerPos.distanceTo(enemy.position);
+                    
+                    // 敵の改良された迷路内移動AI
+                    if (distance < 12) { // 検知範囲を拡大
+                        if (distance > 2.5) {
+                            // プレイヤーに向かって移動（迷路を考慮した経路探索）
+                            const bestMove = this.findBestEnemyMove(enemy, playerPos);
+                            
+                            if (bestMove) {
+                                const speedMultiplier = Math.max(0.5, (10 - distance) / 10);
+                                const moveSpeed = enemy.userData.speed * speedMultiplier;
+                                
+                                const newPosition = enemy.position.clone()
+                                    .add(bestMove.multiplyScalar(moveSpeed));
+                                
+                                if (this.isSafePosition(newPosition, 0.8, this.cellSize)) {
+                                    enemy.position.copy(newPosition);
+                                }
+                            }
+                        } else {
+                            // 近距離では迷路内で戦術的に移動
+                            const tacticalMove = this.findTacticalMove(enemy, playerPos, currentTime);
+                            if (tacticalMove && this.isSafePosition(tacticalMove, 0.8, this.cellSize)) {
+                                enemy.position.copy(tacticalMove);
+                            }
+                        }
+                        
+                        // 攻撃判定
+                        if (distance < 2.5 && currentTime - enemy.userData.lastAttackTime > enemy.userData.attackCooldown) {
+                            this.enemyAttack(enemy);
+                            enemy.userData.lastAttackTime = currentTime;
+                        }
+                        
+                        // プレイヤーの方を向く
+                        enemy.lookAt(playerPos);
+                        
+                    } else {
+                        // 待機状態：迷路内をパトロール
+                        this.enemyPatrol(enemy, currentTime);
+                    }
+                    
+                    // 敵のアニメーション
+                    const baseY = 1;
+                    const timeOffset = enemy.position.x + enemy.position.z;
+                    
+                    if (enemy.userData.shaking) {
+                        // ダメージ時の振動
+                        enemy.position.y = baseY + Math.sin(currentTime * 0.1) * 0.1 + Math.random() * 0.1;
+                    } else {
+                        // 通常の浮遊効果
+                        enemy.position.y = baseY + Math.sin(currentTime * 0.003 + timeOffset) * 0.3;
+                    }
+                    
+                    // 回転アニメーション
+                    enemy.rotation.y += 0.02;
+                    
+                    // 触手のアニメーション
+                    for (let i = 1; i < enemy.children.length; i++) {
+                        const tentacle = enemy.children[i];
+                        tentacle.rotation.z = Math.sin(currentTime * 0.01 + i) * 0.3;
+                    }
+                }
+            }
+            
+            findBestEnemyMove(enemy, playerPos) {
+                // 敵がプレイヤーに向かうための最適な方向を見つける
+                const directions = [
+                    new THREE.Vector3(1, 0, 0),   // 右
+                    new THREE.Vector3(-1, 0, 0),  // 左
+                    new THREE.Vector3(0, 0, 1),   // 前
+                    new THREE.Vector3(0, 0, -1)   // 後
+                ];
+                
+                let bestDirection = null;
+                let bestScore = -Infinity;
+                
+                for (const direction of directions) {
+                    const testPos = enemy.position.clone().add(direction.clone().multiplyScalar(0.5));
+                    
+                    // 移動可能かチェック
+                    if (this.isSafePosition(testPos, 0.8, this.cellSize)) {
+                        // プレイヤーに近づく方向を評価
+                        const distanceAfterMove = testPos.distanceTo(playerPos);
+                        const currentDistance = enemy.position.distanceTo(playerPos);
+                        const score = currentDistance - distanceAfterMove; // 距離が短くなるほど高スコア
+                        
+                        if (score > bestScore) {
+                            bestScore = score;
+                            bestDirection = direction;
+                        }
+                    }
+                }
+                
+                return bestDirection;
+            }
+            
+            findTacticalMove(enemy, playerPos, currentTime) {
+                // 近距離での戦術的移動（迷路内で円を描くように移動）
+                const angle = currentTime * 0.005 + enemy.position.x;
+                const circleRadius = 2;
+                const circleX = playerPos.x + Math.cos(angle) * circleRadius;
+                const circleZ = playerPos.z + Math.sin(angle) * circleRadius;
+                
+                const circlePosition = new THREE.Vector3(circleX, enemy.position.y, circleZ);
+                
+                // 円運動が不可能な場合は、左右に移動
+                if (!this.isSafePosition(circlePosition, 0.8, this.cellSize)) {
+                    const playerDirection = new THREE.Vector3()
+                        .subVectors(playerPos, enemy.position)
+                        .normalize();
+                    
+                    const sideDirection = new THREE.Vector3(-playerDirection.z, 0, playerDirection.x);
+                    const sidePosition = enemy.position.clone()
+                        .add(sideDirection.multiplyScalar(0.5));
+                    
+                    if (this.isSafePosition(sidePosition, 0.8, this.cellSize)) {
+                        return sidePosition;
+                    }
+                    
+                    // 反対側も試す
+                    const oppositeSidePosition = enemy.position.clone()
+                        .add(sideDirection.multiplyScalar(-0.5));
+                    
+                    if (this.isSafePosition(oppositeSidePosition, 0.8, this.cellSize)) {
+                        return oppositeSidePosition;
+                    }
+                }
+                
+                return circlePosition;
+            }
+            
+            enemyPatrol(enemy, currentTime) {
+                // 敵のパトロール行動（迷路内を歩き回る）
+                if (!enemy.userData.patrolTarget || Math.random() < 0.02) {
+                    // 新しいパトロール目標を設定
+                    const directions = [
+                        new THREE.Vector3(2, 0, 0),
+                        new THREE.Vector3(-2, 0, 0),
+                        new THREE.Vector3(0, 0, 2),
+                        new THREE.Vector3(0, 0, -2)
+                    ];
+                    
+                    const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+                    const targetPos = enemy.position.clone().add(randomDirection);
+                    
+                    if (this.isSafePosition(targetPos, 0.8, this.cellSize)) {
+                        enemy.userData.patrolTarget = targetPos;
+                    }
+                }
+                
+                // パトロール目標に向かって移動
+                if (enemy.userData.patrolTarget) {
+                    const direction = new THREE.Vector3()
+                        .subVectors(enemy.userData.patrolTarget, enemy.position)
+                        .normalize();
+                    
+                    const moveSpeed = enemy.userData.speed * 0.3; // ゆっくり移動
+                    const newPosition = enemy.position.clone()
+                        .add(direction.multiplyScalar(moveSpeed));
+                    
+                    if (this.isSafePosition(newPosition, 0.8, this.cellSize)) {
+                        enemy.position.copy(newPosition);
+                        
+                        // 目標に到達したらクリア
+                        if (enemy.position.distanceTo(enemy.userData.patrolTarget) < 1) {
+                            enemy.userData.patrolTarget = null;
+                        }
+                    } else {
+                        // 移動できない場合は目標をクリア
+                        enemy.userData.patrolTarget = null;
+                    }
+                }
+            }
+            
+            enemyAttack(enemy) {
+                const damage = enemy.userData.damage;
+                this.takeDamage(damage);
+                
+                // 攻撃エフェクト
+                this.showAttackEffect(enemy.position);
+            }
+            
+            takeDamage(damage) {
+                const currentTime = Date.now();
+                if (currentTime - this.lastDamageTime < 1000) return; // 無敵時間
+                
+                this.lastDamageTime = currentTime;
+                this.playerHP = Math.max(0, this.playerHP - damage);
+                
+                // ダメージエフェクト（画面を赤く光らせる）
+                this.showPlayerDamageEffect();
+                
+                if (this.playerHP <= 0) {
+                    this.gameOver();
+                }
+            }
+            
+            defeatEnemy(enemy) {
+                enemy.userData.alive = false;
+                
+                // 経験値とスコアを獲得
+                const expGain = 15 + this.currentLevel * 5;
+                const scoreGain = 100 + this.currentLevel * 20;
+                
+                this.gainExperience(expGain);
+                this.addScore(scoreGain);
+                
+                // コンボ更新
+                this.combo++;
+                this.comboTime = Date.now();
+                
+                // 敵を倒したエフェクト
+                this.showDefeatEffect(enemy.position, expGain, scoreGain);
+                
+                // 敵を削除
+                this.scene.remove(enemy);
+                const index = this.enemies.indexOf(enemy);
+                if (index > -1) {
+                    this.enemies.splice(index, 1);
+                }
+            }
+            
+            gainExperience(amount) {
+                this.experience += amount;
+                
+                // レベルアップチェック
+                while (this.experience >= this.experienceToNext) {
+                    this.experience -= this.experienceToNext;
+                    this.playerLevel++;
+                    
+                    // レベルアップ報酬
+                    this.maxHP += 10;
+                    this.playerHP = this.maxHP; // HPを全回復
+                    this.magicPower += 5;
+                    this.criticalChance += 0.02;
+                    
+                    this.experienceToNext = Math.floor(this.experienceToNext * 1.2);
+                    
+                    this.showLevelUpEffect();
+                }
+            }
+            
+            addScore(amount) {
+                const comboBonus = this.combo > 1 ? Math.floor(amount * (this.combo * 0.1)) : 0;
+                this.score += amount + comboBonus;
+            }
+            
+            showLevelUpEffect() {
+                console.log(`🎉 レベルアップ! Lv.${this.playerLevel} 🎉`);
+                
+                // レベルアップのパーティクルエフェクト
+                const particleCount = 30;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                
+                for (let i = 0; i < particleCount * 3; i += 3) {
+                    const angle = (i / 3) * (Math.PI * 2 / particleCount);
+                    positions[i] = this.camera.position.x + Math.cos(angle) * 2;
+                    positions[i + 1] = this.camera.position.y + Math.random() * 3;
+                    positions[i + 2] = this.camera.position.z + Math.sin(angle) * 2;
+                }
+                
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const material = new THREE.PointsMaterial({
+                    color: 0xffd700,
+                    size: 0.3,
+                    transparent: true,
+                    opacity: 1.0
+                });
+                
+                const particles = new THREE.Points(geometry, material);
+                this.scene.add(particles);
+                
+                setTimeout(() => {
+                    this.scene.remove(particles);
+                }, 2000);
+            }
+            
+            showDamageEffect(position, damage, isCritical = false) {
+                // ダメージ数値を表示（簡単な実装）
+                const message = isCritical ? `🔥 ${damage} クリティカル!` : `${damage} ダメージ!`;
+                console.log(message);
+                
+                // パーティクルエフェクト
+                const particleCount = isCritical ? 20 : 10;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                
+                for (let i = 0; i < particleCount * 3; i += 3) {
+                    positions[i] = position.x + (Math.random() - 0.5) * 2;
+                    positions[i + 1] = position.y + Math.random() * 2;
+                    positions[i + 2] = position.z + (Math.random() - 0.5) * 2;
+                }
+                
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const material = new THREE.PointsMaterial({
+                    color: isCritical ? 0xffd700 : 0xff0000,
+                    size: isCritical ? 0.3 : 0.2,
+                    transparent: true,
+                    opacity: 1.0
+                });
+                
+                const particles = new THREE.Points(geometry, material);
+                this.scene.add(particles);
+                
+                setTimeout(() => {
+                    this.scene.remove(particles);
+                }, isCritical ? 1500 : 1000);
+            }
+            
+            showAttackEffect(position) {
+                console.log('敵の攻撃!');
+            }
+            
+            showPlayerDamageEffect() {
+                // 画面を一瞬赤くする効果
+                document.body.style.background = 'rgba(255,0,0,0.3)';
+                setTimeout(() => {
+                    document.body.style.background = '';
+                }, 200);
+            }
+            
+            showDefeatEffect(position) {
+                console.log('敵を倒した!');
+            }
+            
+            gameOver() {
+                this.gameStarted = false;
+                document.exitPointerLock();
+                
+                const gameOverDiv = document.createElement('div');
+                gameOverDiv.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: linear-gradient(135deg, #ff0000, #aa0000);
+                        color: white;
+                        padding: 40px;
+                        border-radius: 20px;
+                        text-align: center;
+                        font-size: 2rem;
+                        font-weight: bold;
+                        z-index: 1000;
+                    ">
+                        💀 GAME OVER 💀<br>
+                        <div style="font-size: 1.2rem; margin-top: 20px;">
+                            深海の魔物に倒された...<br>
+                            章 ${this.currentLevel} で力尽きた
+                        </div>
+                        <button onclick="location.reload()" style="
+                            background: #ffffff;
+                            color: #ff0000;
+                            border: none;
+                            padding: 15px 30px;
+                            border-radius: 25px;
+                            font-size: 1.1rem;
+                            cursor: pointer;
+                            margin-top: 25px;
+                        ">
+                            最初からやり直す
+                        </button>
+                    </div>
+                `;
+                document.body.appendChild(gameOverDiv);
+            }
+            
+            gameWin() {
+                const endTime = Date.now();
+                const totalTime = Math.floor((endTime - this.startTime) / 1000);
+                
+                this.gameStarted = false;
+                document.exitPointerLock();
+                
+                // 派手なお祝い演出を開始
+                this.startCelebration(totalTime);
+            }
+            
+            startCelebration(totalTime) {
+                // 祝福パーティクルを大量生成
+                this.createCelebrationParticles();
+                
+                // 勝利メッセージを表示
+                this.showVictoryMessage(totalTime);
+                
+                // カメラを自動回転
+                this.celebrationRotation = 0;
+                this.isCelebrating = true;
+                this.levelCompleted = true;
+                
+                // 5秒後にリセット
+                setTimeout(() => {
+                    this.endCelebration();
+                }, 5000);
+            }
+            
+            showStoryIntro() {
+                const story = this.storyMessages[this.currentLevel];
+                if (!story) return;
+                
+                // ストーリー紹介画面を作成
+                const storyDiv = document.createElement('div');
+                storyDiv.id = 'story-intro';
+                storyDiv.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(135deg, rgba(0,20,40,0.95), rgba(0,60,100,0.95));
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 2000;
+                        backdrop-filter: blur(10px);
+                    ">
+                        <div style="
+                            text-align: center;
+                            max-width: 600px;
+                            padding: 40px;
+                            background: linear-gradient(135deg, rgba(0,188,212,0.2), rgba(77,208,225,0.2));
+                            border-radius: 20px;
+                            border: 2px solid rgba(77,208,225,0.5);
+                            animation: storyFadeIn 1s ease-out;
+                        ">
+                            <h2 style="font-size: 2.5rem; margin-bottom: 30px; color: #4dd0e1;">
+                                ${story.title}
+                            </h2>
+                            <p style="font-size: 1.3rem; line-height: 1.6; margin-bottom: 30px; white-space: pre-line;">
+                                ${story.intro}
+                            </p>
+                            <div style="font-size: 1rem; opacity: 0.8; margin-bottom: 30px;">
+                                レベル ${this.currentLevel} / ${this.maxLevel}
+                            </div>
+                            <button id="story-continue" style="
+                                background: linear-gradient(135deg, #00bcd4, #4dd0e1);
+                                color: white;
+                                border: none;
+                                padding: 15px 30px;
+                                border-radius: 25px;
+                                font-size: 1.1rem;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            ">
+                                冒険を始める
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // アニメーション用CSS
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes storyFadeIn {
+                        0% { opacity: 0; transform: translateY(30px); }
+                        100% { opacity: 1; transform: translateY(0); }
+                    }
+                `;
+                document.head.appendChild(style);
+                document.body.appendChild(storyDiv);
+                
+                // ボタンクリックで開始
+                document.getElementById('story-continue').addEventListener('click', () => {
+                    storyDiv.remove();
+                    this.actuallyStartGame();
+                });
+            }
+            
+            createCelebrationParticles() {
+                // 花火のような爆発パーティクル
+                const particleCount = 500;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                const colors = new Float32Array(particleCount * 3);
+                const velocities = [];
+                
+                const goalPos = this.goal.position;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const i3 = i * 3;
+                    
+                    // ゴール位置から放射状に
+                    positions[i3] = goalPos.x;
+                    positions[i3 + 1] = goalPos.y;
+                    positions[i3 + 2] = goalPos.z;
+                    
+                    // ランダムな色（金、青、赤、緑）
+                    const colorChoice = Math.random();
+                    if (colorChoice < 0.25) {
+                        colors[i3] = 1; colors[i3 + 1] = 0.8; colors[i3 + 2] = 0; // 金
+                    } else if (colorChoice < 0.5) {
+                        colors[i3] = 0; colors[i3 + 1] = 0.5; colors[i3 + 2] = 1; // 青
+                    } else if (colorChoice < 0.75) {
+                        colors[i3] = 1; colors[i3 + 1] = 0; colors[i3 + 2] = 0; // 赤
+                    } else {
+                        colors[i3] = 0; colors[i3 + 1] = 1; colors[i3 + 2] = 0; // 緑
+                    }
+                    
+                    // ランダムな速度ベクトル
+                    velocities.push({
+                        x: (Math.random() - 0.5) * 10,
+                        y: Math.random() * 15 + 5,
+                        z: (Math.random() - 0.5) * 10
+                    });
+                }
+                
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                
+                const material = new THREE.PointsMaterial({
+                    size: 0.3,
+                    vertexColors: true,
+                    transparent: true,
+                    opacity: 0.8,
+                    blending: THREE.AdditiveBlending
+                });
+                
+                this.celebrationParticles = new THREE.Points(geometry, material);
+                this.celebrationVelocities = velocities;
+                this.scene.add(this.celebrationParticles);
+            }
+            
+            showVictoryMessage(totalTime) {
+                const story = this.storyMessages[this.currentLevel];
+                const isLastLevel = this.currentLevel >= this.maxLevel;
+                
+                // HTML要素で勝利メッセージを表示
+                const victoryDiv = document.createElement('div');
+                victoryDiv.id = 'victory-message';
+                victoryDiv.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: linear-gradient(135deg, #ff6b9d, #4ecdc4);
+                        color: white;
+                        padding: 40px;
+                        border-radius: 20px;
+                        text-align: center;
+                        font-size: 2rem;
+                        font-weight: bold;
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                        z-index: 1000;
+                        animation: victoryPulse 2s ease-in-out infinite;
+                        max-width: 600px;
+                    ">
+                        🎉 レベル ${this.currentLevel} クリア! 🎉<br>
+                        <div style="font-size: 1.3rem; margin-top: 20px;">
+                            タイム: ${totalTime}秒
+                        </div>
+                        <div style="font-size: 1rem; margin-top: 20px; line-height: 1.4; white-space: pre-line; opacity: 0.95;">
+                            ${story.complete}
+                        </div>
+                        ${!isLastLevel ? `
+                        <button id="next-level-btn" style="
+                            background: linear-gradient(135deg, #feca57, #ff9f43);
+                            color: white;
+                            border: none;
+                            padding: 15px 30px;
+                            border-radius: 25px;
+                            font-size: 1.1rem;
+                            cursor: pointer;
+                            margin-top: 25px;
+                            transition: all 0.3s ease;
+                        ">
+                            次の章へ進む ➤
+                        </button>
+                        ` : `
+                        <div style="font-size: 1.2rem; margin-top: 25px; color: #feca57;">
+                            🏆 全ての章をクリア！君は真の海学マスターだ！ 🏆
+                        </div>
+                        <div style="
+                            background: linear-gradient(135deg, #ff6b9d, #feca57);
+                            color: white;
+                            padding: 20px;
+                            border-radius: 15px;
+                            margin-top: 20px;
+                            font-size: 1.1rem;
+                            font-weight: bold;
+                            text-align: center;
+                            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+                        ">
+                            🎁 特別報酬獲得！ 🎁<br>
+                            <span style="font-size: 1.3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                                2ビーチダイビング 5% OFF
+                            </span>
+                        </div>
+                        <button id="discount-form-btn" style="
+                            background: linear-gradient(135deg, #ff6b9d, #ff9f43);
+                            color: white;
+                            border: none;
+                            padding: 15px 30px;
+                            border-radius: 25px;
+                            font-size: 1.1rem;
+                            cursor: pointer;
+                            margin-top: 15px;
+                            margin-right: 10px;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+                        ">
+                            🌊 5%割引を申し込む
+                        </button>
+                        <button id="restart-game-btn" style="
+                            background: linear-gradient(135deg, #26c6da, #00bcd4);
+                            color: white;
+                            border: none;
+                            padding: 15px 30px;
+                            border-radius: 25px;
+                            font-size: 1.1rem;
+                            cursor: pointer;
+                            margin-top: 15px;
+                            transition: all 0.3s ease;
+                        ">
+                            再度冒険する
+                        </button>
+                        `}
+                    </div>
+                `;
+                
+                // CSSアニメーションを追加
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes victoryPulse {
+                        0%, 100% { transform: translate(-50%, -50%) scale(1); }
+                        50% { transform: translate(-50%, -50%) scale(1.05); }
+                    }
+                `;
+                document.head.appendChild(style);
+                document.body.appendChild(victoryDiv);
+                
+                // ボタンイベントを設定
+                if (!isLastLevel) {
+                    const nextBtn = document.getElementById('next-level-btn');
+                    if (nextBtn) {
+                        nextBtn.addEventListener('click', () => {
+                            this.nextLevel();
+                        });
+                    }
+                } else {
+                    // 10章クリア時の特別フォーム
+                    const discountBtn = document.getElementById('discount-form-btn');
+                    if (discountBtn) {
+                        discountBtn.addEventListener('click', () => {
+                            this.showDiscountForm();
+                        });
+                    }
+                    
+                    const restartBtn = document.getElementById('restart-game-btn');
+                    if (restartBtn) {
+                        restartBtn.addEventListener('click', () => {
+                            this.restartGame();
+                        });
+                    }
+                }
+            }
+            
+            nextLevel() {
+                this.currentLevel++;
+                this.playerHP = Math.min(this.maxHP, this.playerHP + 30); // レベルアップでHP回復
+                this.remainingTime = this.timeLimit; // 時間リセット
+                this.isGameOver = false;
+                this.endCelebration();
+                this.resetPlayerPosition();
+                this.clearMaze();
+                this.generateComplexMaze();
+                this.createMaze3D();
+                this.initMinimap(); // ミニマップをリセット
+                this.updateHUD();
+                
+                // ゲームを一時停止（ストーリーが表示されるため）
+                this.gameStarted = false;
+            }
+            
+            restartGame() {
+                this.currentLevel = 1;
+                this.playerHP = this.maxHP; // HP完全回復
+                this.remainingTime = this.timeLimit; // 時間リセット
+                this.isGameOver = false;
+                this.endCelebration();
+                this.resetPlayerPosition();
+                this.clearMaze();
+                this.generateComplexMaze();
+                this.createMaze3D();
+                this.initMinimap(); // ミニマップをリセット
+                this.updateHUD();
+                
+                // ゲームを一時停止（ストーリーが表示されるため）
+                this.gameStarted = false;
+            }
+            
+            resetPlayerPosition() {
+                // プレイヤーをスタート位置に戻す
+                this.camera.position.set(6, 2, 6);
+                this.camera.rotation.set(0, 0, 0);
+                this.rotationX = 0;
+                this.rotationY = 0;
+            }
+            
+            clearMaze() {
+                // 既存の迷路オブジェクトを削除
+                const objectsToRemove = [];
+                this.scene.traverse((child) => {
+                    if (child.type === 'LineSegments' && child !== this.particles) {
+                        objectsToRemove.push(child);
+                    }
+                });
+                
+                objectsToRemove.forEach(obj => {
+                    this.scene.remove(obj);
+                });
+                
+                // ゴールも削除
+                if (this.goal) {
+                    this.scene.remove(this.goal);
+                    this.goal = null;
+                }
+                
+                // 敵も削除
+                this.enemies.forEach(enemy => {
+                    this.scene.remove(enemy);
+                });
+                this.enemies = [];
+                
+                // 魔法弾も削除
+                this.magicProjectiles.forEach(projectile => {
+                    this.scene.remove(projectile);
+                });
+                this.magicProjectiles = [];
+                
+                // ヒットエフェクトも削除
+                this.hitEffects.forEach(effect => {
+                    this.scene.remove(effect.effect);
+                });
+                this.hitEffects = [];
+            }
+            
+            endCelebration() {
+                this.isCelebrating = false;
+                this.levelCompleted = false;
+                
+                // パーティクルを削除
+                if (this.celebrationParticles) {
+                    this.scene.remove(this.celebrationParticles);
+                    this.celebrationParticles = null;
+                }
+                
+                // 勝利メッセージを削除
+                const victoryMsg = document.getElementById('victory-message');
+                if (victoryMsg) {
+                    victoryMsg.remove();
+                }
+                
+                // 他のモーダルも削除
+                const storyIntro = document.getElementById('story-intro');
+                if (storyIntro) {
+                    storyIntro.remove();
+                }
+                
+            }
+            
+            actuallyStartGame() {
+                console.log('Actually starting game...');
+                this.gameStarted = true;
+                this.startTime = Date.now();
+                this.remainingTime = this.timeLimit; // タイマーリセット
+                this.isGameOver = false;
+                
+                // ヘッダー・フッター・タイトルオーバーレイを非表示
+                document.getElementById('gameHeader').classList.add('game-started');
+                document.getElementById('gameFooter').classList.add('game-started');
+                document.getElementById('gameTitleOverlay').classList.add('game-started');
+                
+                // ゲームコントロールを表示
+                const gameControls = document.getElementById('gameControls');
+                if (gameControls) {
+                    gameControls.style.display = 'flex';
+                }
+                
+                const canvas = document.getElementById('canvas');
+                console.log('Requesting pointer lock...');
+                canvas.requestPointerLock().then(() => {
+                    console.log('Pointer lock request successful');
+                }).catch((err) => {
+                    console.error('Pointer lock request failed:', err);
+                });
+                
+                console.log('Game actually started');
+            }
+            
+            updateTimer() {
+                if (!this.gameStarted || !this.startTime || this.isGameOver) return;
+                
+                const currentTime = Date.now();
+                const elapsedSeconds = Math.floor((currentTime - this.startTime) / 1000);
+                
+                this.remainingTime = Math.max(0, this.timeLimit - elapsedSeconds);
+                
+                const minutes = Math.floor(this.remainingTime / 60);
+                const seconds = this.remainingTime % 60;
+                const timeDisplay = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                
+                document.getElementById('remainingTime').textContent = timeDisplay;
+                
+                // 時間警告表示
+                const timeWarning = document.getElementById('timeWarning');
+                if (this.remainingTime <= 30 && this.remainingTime > 0) {
+                    timeWarning.style.display = 'block';
+                } else {
+                    timeWarning.style.display = 'none';
+                }
+                
+                // タイムアップ
+                if (this.remainingTime <= 0) {
+                    this.gameOver('時間切れ');
+                }
+            }
+            
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                this.updateMovement();
+                this.updateTimer();
+                this.updateCombat();
+                this.updateEnemies();
+                this.updateCompass();
+                this.updateMinimap();
+                
+                // ゴールの回転（お祝い中はより激しく）
+                if (this.goal) {
+                    this.goal.rotation.y += this.isCelebrating ? 0.05 : 0.01;
+                }
+                
+                // お祝いパーティクルのアニメーション
+                if (this.isCelebrating && this.celebrationParticles) {
+                    this.updateCelebrationParticles();
+                    
+                    // カメラの自動回転
+                    this.celebrationRotation += 0.02;
+                    const radius = 8;
+                    const goalPos = this.goal.position;
+                    this.camera.position.x = goalPos.x + Math.cos(this.celebrationRotation) * radius;
+                    this.camera.position.z = goalPos.z + Math.sin(this.celebrationRotation) * radius;
+                    this.camera.lookAt(goalPos);
+                }
+                
+                // 海中パーティクルのアニメーション
+                if (this.particles) {
+                    this.particles.rotation.y += 0.002;
+                    const positions = this.particles.geometry.attributes.position.array;
+                    for (let i = 1; i < positions.length; i += 3) {
+                        positions[i] += 0.01; // ゆっくり上昇
+                        if (positions[i] > 20) {
+                            positions[i] = 0; // 上まで行ったらリセット
+                        }
+                    }
+                    this.particles.geometry.attributes.position.needsUpdate = true;
+                }
+                
+                this.renderer.render(this.scene, this.camera);
+            }
+            
+            updateCelebrationParticles() {
+                const positions = this.celebrationParticles.geometry.attributes.position.array;
+                
+                for (let i = 0; i < this.celebrationVelocities.length; i++) {
+                    const i3 = i * 3;
+                    const velocity = this.celebrationVelocities[i];
+                    
+                    // 位置を更新
+                    positions[i3] += velocity.x * 0.1;
+                    positions[i3 + 1] += velocity.y * 0.1;
+                    positions[i3 + 2] += velocity.z * 0.1;
+                    
+                    // 重力効果
+                    velocity.y -= 0.5;
+                    
+                    // 空気抵抗
+                    velocity.x *= 0.98;
+                    velocity.z *= 0.98;
+                }
+                
+                this.celebrationParticles.geometry.attributes.position.needsUpdate = true;
+            }
+            
+            showDiscountForm() {
+                // 申し込みフォームを作成
+                const formDiv = document.createElement('div');
+                formDiv.id = 'discount-form';
+                formDiv.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.8);
+                        z-index: 10000;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">
+                        <div style="
+                            background: linear-gradient(135deg, #ffffff 0%, #e0f7fa 100%);
+                            color: #006064;
+                            padding: 40px;
+                            border-radius: 20px;
+                            max-width: 500px;
+                            width: 90%;
+                            box-shadow: 0 20px 60px rgba(0, 188, 212, 0.4);
+                            border: 3px solid #00bcd4;
+                            text-align: center;
+                        ">
+                            <h2 style="
+                                color: #00bcd4;
+                                font-size: 2rem;
+                                margin-bottom: 20px;
+                                text-shadow: 2px 2px 4px rgba(0, 188, 212, 0.2);
+                            ">
+                                🌊 2ビーチダイビング 5%OFF 🌊
+                            </h2>
+                            <p style="
+                                font-size: 1.1rem;
+                                margin-bottom: 25px;
+                                line-height: 1.5;
+                            ">
+                                海学マスターの称号を獲得したあなたに<br>
+                                特別割引をご用意いたしました！
+                            </p>
+                            
+                            <form action="mailto:info@miura-diving.com" method="post" enctype="text/plain" id="diving-discount-form" style="text-align: left;">
+                                <div style="margin-bottom: 15px;">
+                                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">お名前 *</label>
+                                    <input type="text" name="name" required style="
+                                        width: 100%;
+                                        padding: 10px;
+                                        border: 2px solid #00bcd4;
+                                        border-radius: 8px;
+                                        font-size: 1rem;
+                                        box-sizing: border-box;
+                                    ">
+                                </div>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">メールアドレス *</label>
+                                    <input type="email" name="email" required style="
+                                        width: 100%;
+                                        padding: 10px;
+                                        border: 2px solid #00bcd4;
+                                        border-radius: 8px;
+                                        font-size: 1rem;
+                                        box-sizing: border-box;
+                                    ">
+                                </div>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">電話番号</label>
+                                    <input type="tel" name="phone" style="
+                                        width: 100%;
+                                        padding: 10px;
+                                        border: 2px solid #00bcd4;
+                                        border-radius: 8px;
+                                        font-size: 1rem;
+                                        box-sizing: border-box;
+                                    ">
+                                </div>
+                                
+                                <div style="margin-bottom: 20px;">
+                                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">希望日程・その他</label>
+                                    <textarea name="message" rows="3" style="
+                                        width: 100%;
+                                        padding: 10px;
+                                        border: 2px solid #00bcd4;
+                                        border-radius: 8px;
+                                        font-size: 1rem;
+                                        box-sizing: border-box;
+                                        resize: vertical;
+                                    " placeholder="ご希望の日程やご質問があればお書きください"></textarea>
+                                </div>
+                                
+                                <div style="text-align: center;">
+                                    <button type="submit" style="
+                                        background: linear-gradient(135deg, #ff6b9d, #ff9f43);
+                                        color: white;
+                                        border: none;
+                                        padding: 15px 30px;
+                                        border-radius: 25px;
+                                        font-size: 1.1rem;
+                                        cursor: pointer;
+                                        margin-right: 10px;
+                                        transition: all 0.3s ease;
+                                        box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+                                    ">
+                                        🌊 申し込む
+                                    </button>
+                                    <button type="button" id="close-form-btn" style="
+                                        background: #666;
+                                        color: white;
+                                        border: none;
+                                        padding: 15px 30px;
+                                        border-radius: 25px;
+                                        font-size: 1.1rem;
+                                        cursor: pointer;
+                                        transition: all 0.3s ease;
+                                    ">
+                                        閉じる
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            <div style="
+                                margin-top: 20px;
+                                font-size: 0.9rem;
+                                color: #666;
+                                line-height: 1.4;
+                            ">
+                                ※ 割引は店舗での予約時に「海学マスター割引」とお伝えください<br>
+                                ※ 他の割引との併用はできません
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(formDiv);
+                
+                // フォーム送信処理
+                const form = document.getElementById('diving-discount-form');
+                form.addEventListener('submit', () => {
+                    setTimeout(() => {
+                        alert('申し込みありがとうございます！\nメールアプリが開きます。\n\n送信後、三浦海の学校から確認のご連絡をいたします。');
+                    }, 100);
+                });
+                
+                // 閉じるボタン
+                const closeBtn = document.getElementById('close-form-btn');
+                closeBtn.addEventListener('click', () => {
+                    document.body.removeChild(formDiv);
+                });
+            }
+            
+        }
+        
+        // ゲーム開始
+        let game; // グローバル変数でゲームインスタンスを保持
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, creating game...');
+            game = new SimpleMaze3D();
+        });
+    </script>
+</body>
+</html>
