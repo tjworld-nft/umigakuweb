@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D海洋迷路ゲーム（テスト版）</title>
+    <style>
+        :root {
+            --primary-blue: #00bcd4;
+            --deep-blue: #006064;
+            --ocean-green: #26c6da;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            overflow: hidden;
+        }
+        
+        .game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .ui-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid var(--ocean-green);
+        }
+        
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid var(--ocean-green);
+        }
+        
+        .maze-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid var(--ocean-green);
+            text-align: center;
+        }
+        
+        #gameCanvas {
+            display: block;
+            cursor: crosshair;
+        }
+        
+        .start-button {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--ocean-green) 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="ui-overlay">
+            <h3>🌊 3D海洋迷路</h3>
+            <div>時間: <span id="timer">00:00</span></div>
+            <div>位置: <span id="position">スタート</span></div>
+            <button class="start-button" id="startBtn">新しい迷路</button>
+        </div>
+        
+        <div class="controls">
+            <h4>操作方法</h4>
+            <div>🖱️ マウス: 視点移動</div>
+            <div>⌨️ WASD: 移動</div>
+            <div>🎯 目標: 赤いゴールを見つけよう！</div>
+        </div>
+        
+        <div class="maze-info">
+            <h4>🏆 チャレンジ</h4>
+            <div>迷路をクリアして</div>
+            <div>海学マスターになろう！</div>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        class Maze3DGame {
+            constructor() {
+                this.scene = null;
+                this.camera = null;
+                this.renderer = null;
+                this.player = null;
+                this.maze = [];
+                this.mazeSize = 11; // 奇数である必要がある
+                this.wallHeight = 3;
+                this.playerSpeed = 0.1;
+                this.gameStartTime = null;
+                this.gameTimer = null;
+                this.isGameActive = false;
+                
+                // プレイヤーの位置
+                this.playerPos = { x: 1, z: 1 };
+                this.goalPos = { x: this.mazeSize - 2, z: this.mazeSize - 2 };
+                
+                this.init();
+            }
+            
+            init() {
+                this.setupScene();
+                this.generateMaze();
+                this.createMaze3D();
+                this.setupPlayer();
+                this.setupLighting();
+                this.setupControls();
+                this.animate();
+                
+                document.getElementById('startBtn').addEventListener('click', () => this.startNewGame());
+            }
+            
+            setupScene() {
+                // シーン作成
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x001122);
+                this.scene.fog = new THREE.Fog(0x001122, 10, 30);
+                
+                // カメラ作成
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                
+                // レンダラー作成
+                this.renderer = new THREE.WebGLRenderer({ 
+                    canvas: document.getElementById('gameCanvas'),
+                    antialias: true 
+                });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.shadowMap.enabled = true;
+                this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            }
+            
+            generateMaze() {
+                // 迷路初期化（全て通路）
+                this.maze = [];
+                for (let i = 0; i < this.mazeSize; i++) {
+                    this.maze[i] = [];
+                    for (let j = 0; j < this.mazeSize; j++) {
+                        this.maze[i][j] = 0; // 0 = 通路, 1 = 壁
+                    }
+                }
+                
+                // シンプルな直線迷路パターンを作成
+                this.generateSimpleMaze();
+            }
+            
+            generateSimpleMaze() {
+                // 外周を壁にする
+                for (let i = 0; i < this.mazeSize; i++) {
+                    this.maze[0][i] = 1; // 上の壁
+                    this.maze[this.mazeSize - 1][i] = 1; // 下の壁
+                    this.maze[i][0] = 1; // 左の壁
+                    this.maze[i][this.mazeSize - 1] = 1; // 右の壁
+                }
+                
+                // 直線的な壁パターンを作成
+                for (let i = 2; i < this.mazeSize - 2; i += 4) {
+                    for (let j = 1; j < this.mazeSize - 1; j++) {
+                        if (j !== 2 && j !== this.mazeSize - 3) { // 通路を残す
+                            this.maze[i][j] = 1;
+                        }
+                    }
+                }
+                
+                // 縦の直線壁
+                for (let j = 2; j < this.mazeSize - 2; j += 4) {
+                    for (let i = 1; i < this.mazeSize - 1; i++) {
+                        if (i !== 2 && i !== this.mazeSize - 3) { // 通路を残す
+                            this.maze[i][j] = 1;
+                        }
+                    }
+                }
+                
+                // スタートとゴール地点を確保
+                this.maze[1][1] = 0; // スタート
+                this.maze[this.mazeSize - 2][this.mazeSize - 2] = 0; // ゴール
+                
+                // スタートとゴール周辺を少し開ける
+                this.maze[1][2] = 0;
+                this.maze[2][1] = 0;
+                this.maze[this.mazeSize - 2][this.mazeSize - 3] = 0;
+                this.maze[this.mazeSize - 3][this.mazeSize - 2] = 0;
+            }
+            
+            
+            createMaze3D() {
+                // 既存の迷路オブジェクトを削除
+                const existingWalls = this.scene.children.filter(child => child.userData.type === 'wall');
+                existingWalls.forEach(wall => this.scene.remove(wall));
+                
+                // 壁のマテリアル（ワイヤーフレーム）
+                const wallMaterial = new THREE.MeshBasicMaterial({ 
+                    color: 0x00ffff,
+                    wireframe: true,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                
+                const wallGeometry = new THREE.BoxGeometry(1, this.wallHeight, 1);
+                
+                // 迷路を3Dで構築
+                for (let x = 0; x < this.mazeSize; x++) {
+                    for (let z = 0; z < this.mazeSize; z++) {
+                        if (this.maze[x][z] === 1) {
+                            const wall = new THREE.Mesh(wallGeometry, wallMaterial);
+                            wall.position.set(x - this.mazeSize/2, this.wallHeight/2, z - this.mazeSize/2);
+                            wall.userData.type = 'wall';
+                            this.scene.add(wall);
+                        }
+                    }
+                }
+                
+                // ゴール作成
+                const goalGeometry = new THREE.CylinderGeometry(0.3, 0.3, 0.5, 8);
+                const goalMaterial = new THREE.MeshBasicMaterial({ 
+                    color: 0xff0000,
+                    wireframe: true 
+                });
+                
+                if (this.goal) {
+                    this.scene.remove(this.goal);
+                }
+                
+                this.goal = new THREE.Mesh(goalGeometry, goalMaterial);
+                this.goal.position.set(
+                    this.goalPos.x - this.mazeSize/2, 
+                    0.25, 
+                    this.goalPos.z - this.mazeSize/2
+                );
+                this.goal.userData.type = 'goal';
+                this.scene.add(this.goal);
+                
+                // ゴールのアニメーション
+                this.goal.rotation.y = 0;
+            }
+            
+            setupPlayer() {
+                // プレイヤー（カメラ）の初期位置
+                this.camera.position.set(
+                    this.playerPos.x - this.mazeSize/2, 
+                    1.6, 
+                    this.playerPos.z - this.mazeSize/2
+                );
+                this.camera.lookAt(0, 1.6, 1);
+            }
+            
+            setupLighting() {
+                // 環境光
+                const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+                this.scene.add(ambientLight);
+                
+                // プレイヤーについてくるライト
+                this.playerLight = new THREE.PointLight(0x00ffff, 1, 10);
+                this.playerLight.position.copy(this.camera.position);
+                this.scene.add(this.playerLight);
+            }
+            
+            setupControls() {
+                this.keys = {};
+                
+                window.addEventListener('keydown', (event) => {
+                    this.keys[event.code] = true;
+                });
+                
+                window.addEventListener('keyup', (event) => {
+                    this.keys[event.code] = false;
+                });
+                
+                // マウス制御
+                let mouseX = 0, mouseY = 0;
+                let isMouseDown = false;
+                
+                document.addEventListener('mousemove', (event) => {
+                    if (isMouseDown) {
+                        const deltaX = event.clientX - mouseX;
+                        const deltaY = event.clientY - mouseY;
+                        
+                        this.camera.rotation.y -= deltaX * 0.002;
+                        this.camera.rotation.x -= deltaY * 0.002;
+                        this.camera.rotation.x = Math.max(-Math.PI/3, Math.min(Math.PI/3, this.camera.rotation.x));
+                    }
+                    mouseX = event.clientX;
+                    mouseY = event.clientY;
+                });
+                
+                document.addEventListener('mousedown', () => isMouseDown = true);
+                document.addEventListener('mouseup', () => isMouseDown = false);
+                
+                // リサイズ対応
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+            }
+            
+            updatePlayerMovement() {
+                if (!this.isGameActive) return;
+                
+                const direction = new THREE.Vector3();
+                const right = new THREE.Vector3();
+                
+                this.camera.getWorldDirection(direction);
+                right.crossVectors(direction, this.camera.up);
+                
+                direction.y = 0;
+                right.y = 0;
+                direction.normalize();
+                right.normalize();
+                
+                let newPosition = this.camera.position.clone();
+                
+                if (this.keys['KeyW']) {
+                    newPosition.add(direction.multiplyScalar(this.playerSpeed));
+                }
+                if (this.keys['KeyS']) {
+                    newPosition.add(direction.multiplyScalar(-this.playerSpeed));
+                }
+                if (this.keys['KeyA']) {
+                    newPosition.add(right.multiplyScalar(-this.playerSpeed));
+                }
+                if (this.keys['KeyD']) {
+                    newPosition.add(right.multiplyScalar(this.playerSpeed));
+                }
+                
+                // 壁との衝突判定
+                if (this.canMoveTo(newPosition)) {
+                    this.camera.position.copy(newPosition);
+                    this.playerLight.position.copy(this.camera.position);
+                    
+                    // 位置更新
+                    const gridX = Math.round(newPosition.x + this.mazeSize/2);
+                    const gridZ = Math.round(newPosition.z + this.mazeSize/2);
+                    document.getElementById('position').textContent = `(${gridX}, ${gridZ})`;
+                    
+                    // ゴール判定
+                    this.checkGoal();
+                }
+            }
+            
+            canMoveTo(position) {
+                const gridX = Math.round(position.x + this.mazeSize/2);
+                const gridZ = Math.round(position.z + this.mazeSize/2);
+                
+                if (gridX < 0 || gridX >= this.mazeSize || gridZ < 0 || gridZ >= this.mazeSize) {
+                    return false;
+                }
+                
+                return this.maze[gridX][gridZ] === 0;
+            }
+            
+            checkGoal() {
+                const distance = this.camera.position.distanceTo(this.goal.position);
+                if (distance < 1) {
+                    this.gameWin();
+                }
+            }
+            
+            gameWin() {
+                this.isGameActive = false;
+                clearInterval(this.gameTimer);
+                
+                const endTime = Date.now();
+                const totalTime = Math.floor((endTime - this.gameStartTime) / 1000);
+                const minutes = Math.floor(totalTime / 60);
+                const seconds = totalTime % 60;
+                
+                alert(`🎉 ゴール到達！\n時間: ${minutes}:${seconds.toString().padStart(2, '0')}\n\n新しい迷路に挑戦しますか？`);
+            }
+            
+            startNewGame() {
+                this.isGameActive = true;
+                this.gameStartTime = Date.now();
+                
+                this.generateMaze();
+                this.createMaze3D();
+                this.setupPlayer();
+                
+                // タイマー開始
+                this.gameTimer = setInterval(() => {
+                    if (this.isGameActive) {
+                        const elapsed = Math.floor((Date.now() - this.gameStartTime) / 1000);
+                        const minutes = Math.floor(elapsed / 60);
+                        const seconds = elapsed % 60;
+                        document.getElementById('timer').textContent = 
+                            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    }
+                }, 1000);
+                
+                document.getElementById('position').textContent = 'スタート';
+            }
+            
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                this.updatePlayerMovement();
+                
+                // ゴールの回転アニメーション
+                if (this.goal) {
+                    this.goal.rotation.y += 0.02;
+                }
+                
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        
+        // ゲーム開始
+        window.addEventListener('DOMContentLoaded', () => {
+            new Maze3DGame();
+        });
+    </script>
+</body>
+</html>

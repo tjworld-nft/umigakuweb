@@ -1,0 +1,2033 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D海洋迷路（シンプル版）</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #001122;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        
+        .hud {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #00ffff;
+        }
+        
+        .start-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #00ffff;
+            color: black;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 200;
+        }
+        
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="hud">
+        <div>🌊 海学の迷宮</div>
+        <div>章: <span id="currentLevel">1</span> / <span id="maxLevel">10</span></div>
+        <div>❤️ HP: <span id="playerHP">100</span> / <span id="maxHP">100</span></div>
+        <div>⚔️ 攻撃: <span id="attackMode">剣</span></div>
+        <div>時間: <span id="timer">0</span>秒</div>
+        <div>座標: (<span id="posX">0</span>, <span id="posY">0</span>)</div>
+    </div>
+    
+    <div class="controls">
+        <div>🖱️ マウス: 視点移動</div>
+        <div>⌨️ WASD: 移動</div>
+        <div>⚔️ スペース: 攻撃</div>
+        <div>🔄 シフト: 剣/魔法切替</div>
+        <div>🎯 ゴール: 赤いキューブ</div>
+    </div>
+    
+    <button class="start-button" id="startButton">クリックしてゲーム開始</button>
+    
+    <canvas id="canvas"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.skypack.dev/gsap@3.12.2"></script>
+    <script>
+        class SimpleMaze3D {
+            constructor() {
+                this.scene = null;
+                this.camera = null;
+                this.renderer = null;
+                
+                this.mazeSize = 11;
+                this.cellSize = 4;
+                this.wallHeight = 4;
+                
+                this.maze = [];
+                this.startTime = null;
+                this.gameStarted = false;
+                this.pointerLocked = false;
+                
+                this.keys = {};
+                this.moveSpeed = 0.1;
+                
+                // マウス制御
+                this.mouseX = 0;
+                this.mouseY = 0;
+                this.rotationX = 0;
+                this.rotationY = 0;
+                
+                // レベルシステム
+                this.currentLevel = 1;
+                this.maxLevel = 10;
+                this.levelCompleted = false;
+                
+                // ストーリー要素
+                this.storyMessages = this.initStoryMessages();
+                
+                // Player
+                this.player = {
+                    hp: 100,
+                    maxHP: 100,
+                    damageFlashTime: 0,
+                    takeDamage: (damage) => {
+                        if (Date.now() - this.player.damageFlashTime > 1000) {
+                            this.player.hp = Math.max(0, this.player.hp - damage);
+                            this.player.damageFlashTime = Date.now();
+                            this.showDamageFlash();
+                            if (this.player.hp <= 0) this.gameOver();
+                        }
+                    }
+                };
+                
+                // Sword
+                this.swordMesh = null;
+                this.swordAttackCooldown = 0;
+                this.swordAttacking = false;
+                
+                // Enemies
+                this.enemies = [];
+                this.enemyManager = new EnemyManager(this);
+                
+                this.init();
+            }
+            
+            initStoryMessages() {
+                return {
+                    1: {
+                        title: "第1章：目覚め",
+                        intro: "気がつくと、君は見知らぬ青い迷路に囚われていた...\n手には古い剣が握られている。そして、不思議な力を感じる...\n\n⚔️ スペース: 攻撃 🔄 シフト: 剣/魔法切替\n❤️ HP: 100",
+                        complete: "小さな海獣たちを退け、最初の扉が開いた...\nだが、これは始まりに過ぎない。",
+                        enemies: ["シーアネモネ", "小さなクラゲ"]
+                    },
+                    2: {
+                        title: "第2章：深海の入り口", 
+                        intro: "迷路は徐々に複雑になり、より危険な生物が現れ始めた。\n深海の謎が君を待ち受けている。\n\n海流に気をつけろ...敵は君を取り囲もうとしている。",
+                        complete: "海流の音が聞こえてきた...更なる深みへ。\n君の剣技が磨かれてきている。",
+                        enemies: ["電気ウナギ", "毒クラゲ", "小サメ"]
+                    },
+                    3: {
+                        title: "第3章：潮の流れ",
+                        intro: "潮の流れが迷路を複雑にし、敵も巧妙になってきた。\n冷静さを保ち、戦略的に戦おう。\n\n複数の敵が同時に襲いかかってくる...",
+                        complete: "潮流を読み、敵の動きを予測できるようになった。\n君は確実に成長している。",
+                        enemies: ["巨大ヒトデ", "群れサメ", "深海イカ"]
+                    },
+                    4: {
+                        title: "第4章：深海の声",
+                        intro: "深海から謎めいた声が聞こえる。\nそれは君を導くのか、惑わすのか？\n\n声に惑わされてはいけない...真の敵を見極めろ。",
+                        complete: "声の正体に近づいている...そして真の戦いが始まった。\n君の心は揺るがない。",
+                        enemies: ["幽霊クラゲ", "深海の番人", "音波サメ"]
+                    },
+                    5: {
+                        title: "第5章：海底神殿",
+                        intro: "古い海底神殿の遺跡に辿り着いた。\n神秘的な力が迷路を守護し、古代の守護獣が復活した。\n\n神殿の守護者たちは容赦ない...",
+                        complete: "神殿の秘密の一部を解き明かした。\nしかし真の試練はこれからだ。",
+                        enemies: ["石の守護者", "古代クラーケン", "神殿の番兵"]
+                    },
+                    6: {
+                        title: "第6章：海王の試練",
+                        intro: "海王からの試練が始まった。\nこれまでの経験が試される時だ。\n\n海王の眷属たちが君を待ち受けている...",
+                        complete: "海王に認められつつある...だが最終試練はまだ先だ。\n君の力は海王レベルに近づいている。",
+                        enemies: ["海王の騎士", "リヴァイアサン", "トライデント・ガード"]
+                    },
+                    7: {
+                        title: "第7章：嵐の迷宮",
+                        intro: "嵐の海に浮かぶ迷宮。\n激流と雷鳴、そして嵐の精霊たちが君の行く手を阻む。\n\n雷に打たれぬよう注意しろ...敵も電撃を放つ。",
+                        complete: "嵐を乗り越え、雷の精霊たちを鎮めた！\n君の意志は嵐よりも強い。",
+                        enemies: ["雷の精霊", "嵐サメ", "電撃エイ"]
+                    },
+                    8: {
+                        title: "第8章：深淵の境界",
+                        intro: "光も届かぬ深淵の境界線。\nここから先は真の勇者のみが進める。\n\n闇の怪物たちが潜んでいる...光を失うな。",
+                        complete: "深淵を越えた者よ...君は選ばれし者なのか？\n闇の力すら君のものとなった。",
+                        enemies: ["深淵の魔物", "闇クラーケン", "虚無サメ"]
+                    },
+                    9: {
+                        title: "第9章：最後の守護者",
+                        intro: "最後の守護者が立ちはだかる。\n全ての知識と勇気を結集せよ。\n\n伝説の海獣たちとの最終決戦が始まる...",
+                        complete: "守護者を越えた...ついに最終の扉が見えてきた。\n君は伝説の戦士となった。",
+                        enemies: ["最終守護者", "海の龍王", "アビス・リヴァイアサン"]
+                    },
+                    10: {
+                        title: "第10章：海学の真理",
+                        intro: "ついに最終層に到達した。\n海学の真理がここに眠っている。\n\n最後の敵は...君自身の恐怖だ。それを乗り越えろ。",
+                        complete: "おめでとう！君は真の海学マスターとなった！\n深海の全ての秘密を解き明かし、すべての敵を打ち倒し、\n真の勇者として伝説となったのだ。",
+                        enemies: ["海学の化身", "深海皇帝", "真理の番人"]
+                    }
+                };
+            }
+            
+            init() {
+                console.log('Initializing game...');
+                this.setupScene();
+                this.generateComplexMaze();
+                this.createMaze3D();
+                this.setupEventListeners();
+                this.animate();
+                
+                console.log('Game initialized');
+            }
+            
+            setupScene() {
+                // Scene
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x001a33); // より深い海の色
+                this.scene.fog = new THREE.Fog(0x001a33, 5, 25); // 海中の霧効果
+                
+                // Camera
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                this.camera.position.set(6, 2, 6); // 迷路内部の確実に通路の位置
+                console.log('Camera start position:', this.camera.position);
+                
+                // Renderer
+                const canvas = document.getElementById('canvas');
+                this.renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                
+                // 海中の照明
+                const ambientLight = new THREE.AmbientLight(0x002244, 0.4); // 青っぽい環境光
+                this.scene.add(ambientLight);
+                
+                // プレイヤーのライト（潜水ライト風）
+                const playerLight = new THREE.SpotLight(0xffffff, 1, 20, Math.PI / 6, 0.3);
+                playerLight.position.copy(this.camera.position);
+                playerLight.target.position.set(0, 0, -1);
+                this.scene.add(playerLight);
+                this.scene.add(playerLight.target);
+                this.playerLight = playerLight;
+                
+                // 海中のパーティクル効果
+                this.createOceanParticles();
+                
+                console.log('Ocean scene setup complete');
+            }
+            
+            createOceanParticles() {
+                // 海中の浮遊物（プランクトン、泡など）
+                const particleCount = 200;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                
+                for (let i = 0; i < particleCount * 3; i += 3) {
+                    positions[i] = (Math.random() - 0.5) * 100;     // x
+                    positions[i + 1] = Math.random() * 20;          // y
+                    positions[i + 2] = (Math.random() - 0.5) * 100; // z
+                }
+                
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                
+                const material = new THREE.PointsMaterial({
+                    color: 0x4499ff,
+                    size: 0.1,
+                    transparent: true,
+                    opacity: 0.6,
+                    blending: THREE.AdditiveBlending
+                });
+                
+                this.particles = new THREE.Points(geometry, material);
+                this.scene.add(this.particles);
+            }
+            
+            generateComplexMaze() {
+                // レベルに応じたサイズと難易度
+                this.setLevelDifficulty();
+                
+                // ストーリー紹介を表示
+                this.showStoryIntro();
+                
+                // 迷路生成
+                this.maze = [];
+                
+                // 全て壁で初期化
+                for (let i = 0; i < this.mazeSize; i++) {
+                    this.maze[i] = [];
+                    for (let j = 0; j < this.mazeSize; j++) {
+                        this.maze[i][j] = 1; // 壁
+                    }
+                }
+                
+                // 再帰バックトラック法で迷路生成
+                this.visited = [];
+                for (let i = 0; i < this.mazeSize; i++) {
+                    this.visited[i] = [];
+                    for (let j = 0; j < this.mazeSize; j++) {
+                        this.visited[i][j] = false;
+                    }
+                }
+                
+                // スタート地点から迷路を掘る
+                this.carveMaze(1, 1);
+                
+                // レベルに応じた追加の複雑さ
+                this.addLevelComplexity();
+                
+                // スタートとゴールを確実に通路にする
+                this.maze[1][1] = 0; // スタート
+                this.maze[this.mazeSize - 2][this.mazeSize - 2] = 0; // ゴール
+                
+                console.log(`Level ${this.currentLevel} maze generated (${this.mazeSize}x${this.mazeSize})`);
+            }
+            
+            setLevelDifficulty() {
+                // レベルに応じてサイズと設定を変更
+                if (this.currentLevel <= 2) {
+                    this.mazeSize = 11; // 初級
+                    this.moveSpeed = 0.12;
+                } else if (this.currentLevel <= 4) {
+                    this.mazeSize = 15; // 中級
+                    this.moveSpeed = 0.10;
+                } else if (this.currentLevel <= 6) {
+                    this.mazeSize = 19; // 上級
+                    this.moveSpeed = 0.08;
+                } else if (this.currentLevel <= 8) {
+                    this.mazeSize = 23; // 超級
+                    this.moveSpeed = 0.07;
+                } else {
+                    this.mazeSize = 27; // 神級
+                    this.moveSpeed = 0.06;
+                }
+            }
+            
+            addLevelComplexity() {
+                // レベルが高いほど複雑な仕掛けを追加
+                if (this.currentLevel >= 3) {
+                    // デッドエンドを増やす
+                    this.addDeadEnds();
+                }
+                
+                if (this.currentLevel >= 5) {
+                    // ループを作って混乱させる
+                    this.addLoops();
+                }
+                
+                if (this.currentLevel >= 7) {
+                    // 偽のゴールエリアを追加
+                    this.addFakeGoalAreas();
+                }
+            }
+            
+            addDeadEnds() {
+                const deadEndCount = Math.floor(this.currentLevel * 1.5);
+                for (let i = 0; i < deadEndCount; i++) {
+                    const x = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    const y = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    if (this.maze[y][x] === 0) {
+                        // ランダムな方向に短い行き止まりを作る
+                        const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+                        const dir = directions[Math.floor(Math.random() * directions.length)];
+                        const newX = x + dir[0] * 2;
+                        const newY = y + dir[1] * 2;
+                        if (newX > 0 && newX < this.mazeSize - 1 && newY > 0 && newY < this.mazeSize - 1) {
+                            this.maze[y + dir[1]][x + dir[0]] = 0;
+                            this.maze[newY][newX] = 0;
+                        }
+                    }
+                }
+            }
+            
+            addLoops() {
+                const loopCount = Math.floor(this.currentLevel * 0.8);
+                for (let i = 0; i < loopCount; i++) {
+                    const x = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    const y = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    if (this.maze[y][x] === 1) {
+                        // 隣接する通路が2つ以上あれば壁を削除してループを作る
+                        let adjacentPaths = 0;
+                        const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+                        for (const [dx, dy] of directions) {
+                            if (this.maze[y + dy] && this.maze[y + dy][x + dx] === 0) {
+                                adjacentPaths++;
+                            }
+                        }
+                        if (adjacentPaths >= 2) {
+                            this.maze[y][x] = 0;
+                        }
+                    }
+                }
+            }
+            
+            addFakeGoalAreas() {
+                // 偽のゴールエリアを数箇所に配置
+                const fakeGoals = Math.min(3, Math.floor(this.currentLevel * 0.5));
+                for (let i = 0; i < fakeGoals; i++) {
+                    const x = Math.floor(Math.random() * (this.mazeSize - 6)) + 3;
+                    const y = Math.floor(Math.random() * (this.mazeSize - 6)) + 3;
+                    // 3x3の小さなエリアを作る
+                    for (let dy = -1; dy <= 1; dy++) {
+                        for (let dx = -1; dx <= 1; dx++) {
+                            if (x + dx > 0 && x + dx < this.mazeSize - 1 && 
+                                y + dy > 0 && y + dy < this.mazeSize - 1) {
+                                this.maze[y + dy][x + dx] = 0;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            carveMaze(x, y) {
+                this.visited[y][x] = true;
+                this.maze[y][x] = 0; // 通路にする
+                
+                // ランダムな方向順序
+                const directions = [
+                    [0, -2], [2, 0], [0, 2], [-2, 0] // 上、右、下、左
+                ].sort(() => Math.random() - 0.5);
+                
+                for (const [dx, dy] of directions) {
+                    const newX = x + dx;
+                    const newY = y + dy;
+                    
+                    // 境界内かつ未訪問の場合
+                    if (newX > 0 && newX < this.mazeSize - 1 && 
+                        newY > 0 && newY < this.mazeSize - 1 && 
+                        !this.visited[newY][newX]) {
+                        
+                        // 間の壁を削除
+                        this.maze[y + dy/2][x + dx/2] = 0;
+                        this.carveMaze(newX, newY);
+                    }
+                }
+            }
+            
+            createMaze3D() {
+                const CELL = this.cellSize;
+                const wallHeight = this.wallHeight;
+                
+                // 壁線のマテリアル
+                const wallMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
+                
+                // 各セルの壁線を生成
+                for (let cz = 0; cz < this.mazeSize; cz++) {
+                    for (let cx = 0; cx < this.mazeSize; cx++) {
+                        if (this.maze[cz][cx] === 1) {
+                            // セル (cx, cz) が壁の場合、各辺に線を描画
+                            this.createWallLines(cx, cz, CELL, wallHeight, wallMaterial);
+                        }
+                    }
+                }
+                
+                // ゴールを作成（ワイヤーフレーム）
+                this.createGoal();
+                
+                // 剣を作成
+                this.createSword();
+                
+                // 敵を配置
+                this.spawnEnemies();
+                
+                console.log('3D maze created with wall lines, sword, and enemies');
+            }
+            
+            createWallLines(cx, cz, CELL, wallHeight, material) {
+                const x = cx * CELL;
+                const z = cz * CELL;
+                
+                // 北壁 (z側)
+                this.addWallLine(
+                    [x, 0, z, (x + CELL), 0, z, x, wallHeight, z, (x + CELL), wallHeight, z],
+                    material
+                );
+                
+                // 東壁 (x+1側)  
+                this.addWallLine(
+                    [(x + CELL), 0, z, (x + CELL), 0, (z + CELL), (x + CELL), wallHeight, z, (x + CELL), wallHeight, (z + CELL)],
+                    material
+                );
+                
+                // 南壁 (z+1側)
+                this.addWallLine(
+                    [x, 0, (z + CELL), (x + CELL), 0, (z + CELL), x, wallHeight, (z + CELL), (x + CELL), wallHeight, (z + CELL)],
+                    material
+                );
+                
+                // 西壁 (x側)
+                this.addWallLine(
+                    [x, 0, z, x, 0, (z + CELL), x, wallHeight, z, x, wallHeight, (z + CELL)],
+                    material
+                );
+            }
+            
+            addWallLine(points, material) {
+                const geometry = new THREE.BufferGeometry();
+                const vertices = new Float32Array(points);
+                geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+                
+                // 線の描画順序（底辺→上辺→縦線）
+                const indices = [
+                    0, 1,  // 底辺
+                    2, 3,  // 上辺
+                    0, 2,  // 左縦線
+                    1, 3   // 右縦線
+                ];
+                geometry.setIndex(indices);
+                
+                const line = new THREE.LineSegments(geometry, material);
+                this.scene.add(line);
+            }
+            
+            createGoal() {
+                const goalGeometry = new THREE.BoxGeometry(2, 2, 2);
+                const goalEdges = new THREE.EdgesGeometry(goalGeometry);
+                const goalMaterial = new THREE.LineBasicMaterial({ 
+                    color: 0xff0000
+                });
+                
+                this.goal = new THREE.LineSegments(goalEdges, goalMaterial);
+                this.goal.position.set((this.mazeSize - 2) * this.cellSize, 1, (this.mazeSize - 2) * this.cellSize);
+                this.scene.add(this.goal);
+                
+                // ゴールの光る効果
+                const goalLight = new THREE.PointLight(0xff0000, 1, 10);
+                goalLight.position.copy(this.goal.position);
+                this.scene.add(goalLight);
+            }
+            
+            createSword() {
+                // 剣のジオメトリ（目立つ形状）
+                const swordGroup = new THREE.Group();
+                
+                // 刀身（大きく、光るように）
+                const bladeGeometry = new THREE.BoxGeometry(0.2, 0.1, 2.0);
+                const bladeMaterial = new THREE.MeshBasicMaterial({ 
+                    color: 0xffffff,
+                    transparent: true,
+                    opacity: 0.9,
+                    emissive: 0x444444
+                });
+                const blade = new THREE.Mesh(bladeGeometry, bladeMaterial);
+                blade.position.z = 1.0;
+                swordGroup.add(blade);
+                
+                // 刀身のエッジ（ワイヤーフレーム）
+                const bladeEdges = new THREE.EdgesGeometry(bladeGeometry);
+                const edgeMaterial = new THREE.LineBasicMaterial({ 
+                    color: 0x00ffff,
+                    linewidth: 2
+                });
+                const bladeOutline = new THREE.LineSegments(bladeEdges, edgeMaterial);
+                bladeOutline.position.z = 1.0;
+                swordGroup.add(bladeOutline);
+                
+                // 柄（大きく、目立つ色）
+                const handleGeometry = new THREE.BoxGeometry(0.15, 0.15, 0.4);
+                const handleMaterial = new THREE.MeshBasicMaterial({ 
+                    color: 0x8B4513,
+                    transparent: true,
+                    opacity: 0.9
+                });
+                const handle = new THREE.Mesh(handleGeometry, handleMaterial);
+                handle.position.z = -0.2;
+                swordGroup.add(handle);
+                
+                // 柄のエッジ
+                const handleEdges = new THREE.EdgesGeometry(handleGeometry);
+                const handleOutline = new THREE.LineSegments(handleEdges, new THREE.LineBasicMaterial({ color: 0xffaa00 }));
+                handleOutline.position.z = -0.2;
+                swordGroup.add(handleOutline);
+                
+                // カメラに装着（右手位置、より手前に）
+                this.sword = swordGroup;
+                this.sword.position.set(0.4, -0.3, -0.6);
+                this.sword.rotation.y = Math.PI / 6;
+                this.sword.rotation.x = -Math.PI / 12;
+                this.camera.add(this.sword);
+                
+                console.log('剣を作成しました:', this.sword);
+            }
+            
+            spawnEnemies() {
+                this.enemies = [];
+                const enemyCount = Math.min(3 + this.currentLevel, 8); // レベルに応じて敵の数を増加
+                
+                for (let i = 0; i < enemyCount; i++) {
+                    this.createEnemy();
+                }
+            }
+            
+            createEnemy() {
+                // 敵の3Dモデル（シンプルな海獣）
+                const enemyGroup = new THREE.Group();
+                
+                // 体（メイン）
+                const bodyGeometry = new THREE.SphereGeometry(0.8, 8, 6);
+                const bodyMaterial = new THREE.MeshBasicMaterial({ 
+                    color: this.getEnemyColor(),
+                    wireframe: true 
+                });
+                const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+                enemyGroup.add(body);
+                
+                // 触手や鰭（装飾）
+                for (let i = 0; i < 4; i++) {
+                    const tentacleGeometry = new THREE.CylinderGeometry(0.1, 0.05, 1);
+                    const tentacleMaterial = new THREE.MeshBasicMaterial({ 
+                        color: this.getEnemyColor(),
+                        wireframe: true 
+                    });
+                    const tentacle = new THREE.Mesh(tentacleGeometry, tentacleMaterial);
+                    tentacle.position.set(
+                        Math.cos(i * Math.PI / 2) * 0.6,
+                        -0.5,
+                        Math.sin(i * Math.PI / 2) * 0.6
+                    );
+                    tentacle.rotation.z = Math.PI / 6;
+                    enemyGroup.add(tentacle);
+                }
+                
+                // ランダムな位置に配置（通路のみ）
+                let placed = false;
+                let attempts = 0;
+                while (!placed && attempts < 50) {
+                    const x = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    const z = Math.floor(Math.random() * (this.mazeSize - 4)) + 2;
+                    
+                    if (this.maze[z][x] === 0) { // 通路の場合
+                        enemyGroup.position.set(x * this.cellSize, 1, z * this.cellSize);
+                        placed = true;
+                    }
+                    attempts++;
+                }
+                
+                if (placed) {
+                    // 敵の属性
+                    enemyGroup.userData = {
+                        hp: 20 + this.currentLevel * 5,
+                        maxHP: 20 + this.currentLevel * 5,
+                        damage: 10 + this.currentLevel * 2,
+                        speed: 0.02 + this.currentLevel * 0.005,
+                        lastAttackTime: 0,
+                        attackCooldown: 2000, // 2秒
+                        alive: true
+                    };
+                    
+                    this.scene.add(enemyGroup);
+                    this.enemies.push(enemyGroup);
+                }
+            }
+            
+            getEnemyColor() {
+                const colors = [0xff4444, 0x44ff44, 0x4444ff, 0xffff44, 0xff44ff, 0x44ffff];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+            
+            setupEventListeners() {
+                const startButton = document.getElementById('startButton');
+                const canvas = document.getElementById('canvas');
+                
+                // スタートボタンクリック
+                startButton.addEventListener('click', () => {
+                    console.log('Start button clicked');
+                    this.startGame();
+                });
+                
+                // キーボードイベント
+                document.addEventListener('keydown', (event) => {
+                    console.log('Key pressed:', event.code);
+                    this.keys[event.code] = true;
+                    
+                    // スペースキーで攻撃
+                    if (event.code === 'Space' && this.gameStarted) {
+                        event.preventDefault(); // ページスクロールを防ぐ
+                        this.performAttack();
+                    }
+                    
+                    // シフトキーで攻撃モード切り替え
+                    if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+                        if (this.gameStarted) {
+                            this.toggleAttackMode();
+                        }
+                    }
+                });
+                
+                document.addEventListener('keyup', (event) => {
+                    console.log('Key released:', event.code);
+                    this.keys[event.code] = false;
+                });
+                
+                // マウスイベント
+                canvas.addEventListener('click', () => {
+                    if (!this.pointerLocked) {
+                        canvas.requestPointerLock();
+                    }
+                });
+                
+                document.addEventListener('pointerlockchange', () => {
+                    this.pointerLocked = document.pointerLockElement === canvas;
+                    console.log('Pointer lock changed:', this.pointerLocked);
+                });
+                
+                document.addEventListener('mousemove', (event) => {
+                    if (this.pointerLocked && this.gameStarted) {
+                        const movementX = event.movementX || 0;
+                        const movementY = event.movementY || 0;
+                        
+                        this.rotationY -= movementX * 0.002;
+                        this.rotationX -= movementY * 0.002;
+                        this.rotationX = Math.max(-Math.PI/2, Math.min(Math.PI/2, this.rotationX));
+                        
+                        // Euler角での回転設定
+                        const euler = new THREE.Euler(this.rotationX, this.rotationY, 0, 'YXZ');
+                        this.camera.quaternion.setFromEuler(euler);
+                        
+                        console.log('Camera rotation:', { x: this.rotationX, y: this.rotationY });
+                    }
+                });
+                
+                // ウィンドウリサイズ
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+                
+                console.log('Event listeners setup complete');
+            }
+            
+            startGame() {
+                console.log('Starting game...');
+                this.gameStarted = true;
+                this.startTime = Date.now();
+                
+                const startButton = document.getElementById('startButton');
+                startButton.style.display = 'none';
+                
+                const canvas = document.getElementById('canvas');
+                canvas.requestPointerLock();
+                
+                console.log('Game started');
+            }
+            
+            updateMovement() {
+                if (!this.gameStarted) {
+                    return;
+                }
+                
+                // カメラの向いている方向を取得
+                const direction = new THREE.Vector3(0, 0, -1);
+                direction.applyQuaternion(this.camera.quaternion);
+                
+                // 右方向のベクトルを計算
+                const right = new THREE.Vector3(1, 0, 0);
+                right.applyQuaternion(this.camera.quaternion);
+                
+                // Y成分を0にして水平移動のみにする
+                direction.y = 0;
+                right.y = 0;
+                direction.normalize();
+                right.normalize();
+                
+                // 移動ベクトルを計算
+                let dx = 0;
+                let dz = 0;
+                
+                if (this.keys['KeyW']) {
+                    dx += direction.x * this.moveSpeed;
+                    dz += direction.z * this.moveSpeed;
+                }
+                if (this.keys['KeyS']) {
+                    dx -= direction.x * this.moveSpeed;
+                    dz -= direction.z * this.moveSpeed;
+                }
+                if (this.keys['KeyA']) {
+                    dx -= right.x * this.moveSpeed;
+                    dz -= right.z * this.moveSpeed;
+                }
+                if (this.keys['KeyD']) {
+                    dx += right.x * this.moveSpeed;
+                    dz += right.z * this.moveSpeed;
+                }
+                
+                // プロ仕様の衝突判定付き移動
+                this.movePlayer(dx, dz, 1.0);
+                
+                // プレイヤーライトを追従させる
+                this.playerLight.position.copy(this.camera.position);
+                const lightDirection = new THREE.Vector3(0, 0, -1);
+                lightDirection.applyQuaternion(this.camera.quaternion);
+                this.playerLight.target.position.copy(this.camera.position).add(lightDirection.multiplyScalar(5));
+                
+                this.updateHUD();
+            }
+            
+            movePlayer(dx, dz, delta) {
+                const playerR = 0.3; // 標準的なプレイヤー半径に戻す
+                const CELL = this.cellSize;
+                
+                // 現在位置
+                const pos = this.camera.position;
+                const currentPos = { x: pos.x, z: pos.z };
+                
+                // 移動ベクトルの長さ
+                const moveLen = Math.sqrt(dx * dx + dz * dz);
+                if (moveLen === 0) return;
+                
+                // 段階的移動（小さなステップで安全に）
+                const steps = Math.ceil(moveLen / 0.05); // 0.05単位で移動
+                const stepX = dx / steps;
+                const stepZ = dz / steps;
+                
+                for (let i = 0; i < steps; i++) {
+                    const nextX = pos.x + stepX;
+                    const nextZ = pos.z + stepZ;
+                    const nextPos = { x: nextX, z: nextZ };
+                    
+                    // 移動先が安全かチェック
+                    if (this.isSafePosition(nextPos, playerR, CELL)) {
+                        pos.x = nextX;
+                        pos.z = nextZ;
+                    } else {
+                        // 移動できない場合はここで停止
+                        break;
+                    }
+                }
+            }
+            
+            isSafePosition(p, playerR, CELL) {
+                // より保守的で確実な安全判定
+                
+                // プレイヤーの円形範囲を細かくチェック
+                const checkPoints = [];
+                const numPoints = 12; // 円周上の12点
+                
+                // 中心点
+                checkPoints.push({ x: p.x, z: p.z });
+                
+                // 円周上の点々
+                for (let i = 0; i < numPoints; i++) {
+                    const angle = (i / numPoints) * Math.PI * 2;
+                    checkPoints.push({
+                        x: p.x + Math.cos(angle) * playerR,
+                        z: p.z + Math.sin(angle) * playerR
+                    });
+                }
+                
+                // 各チェックポイントが安全かどうか
+                for (const point of checkPoints) {
+                    const cellX = Math.floor(point.x / CELL);
+                    const cellZ = Math.floor(point.z / CELL);
+                    
+                    // 境界チェック
+                    if (cellX < 0 || cellX >= this.mazeSize || cellZ < 0 || cellZ >= this.mazeSize) {
+                        return false;
+                    }
+                    
+                    // 壁チェック
+                    if (this.maze[cellZ][cellX] === 1) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+            
+            isBlocked(p, playerR, CELL) {
+                return !this.isSafePosition(p, playerR, CELL);
+            }
+            
+            
+            updateHUD() {
+                const gridX = Math.floor(this.camera.position.x / this.cellSize);
+                const gridZ = Math.floor(this.camera.position.z / this.cellSize);
+                
+                document.getElementById('currentLevel').textContent = this.currentLevel;
+                document.getElementById('maxLevel').textContent = this.maxLevel;
+                document.getElementById('playerHP').textContent = this.playerHP;
+                document.getElementById('maxHP').textContent = this.maxHP;
+                document.getElementById('attackMode').textContent = this.attackMode === 'sword' ? '剣' : '魔法';
+                document.getElementById('posX').textContent = gridX;
+                document.getElementById('posY').textContent = gridZ;
+                
+                // HPバーの色変更
+                const hpElement = document.getElementById('playerHP');
+                if (this.playerHP < this.maxHP * 0.3) {
+                    hpElement.style.color = '#ff4444';
+                } else if (this.playerHP < this.maxHP * 0.6) {
+                    hpElement.style.color = '#ffaa44';
+                } else {
+                    hpElement.style.color = '#ffffff';
+                }
+                
+                // ゴール判定
+                if (this.goal) {
+                    const distance = this.camera.position.distanceTo(this.goal.position);
+                    if (distance < 3) {
+                        this.gameWin();
+                    }
+                }
+            }
+            
+            toggleAttackMode() {
+                this.attackMode = this.attackMode === 'sword' ? 'magic' : 'sword';
+                document.getElementById('attackMode').textContent = this.attackMode === 'sword' ? '剣' : '魔法';
+                console.log(`攻撃モード: ${this.attackMode}`);
+            }
+
+            performAttack() {
+                const currentTime = Date.now();
+                if (currentTime - this.attackCooldown < 500) return; // 攻撃クールダウン
+                
+                this.attackCooldown = currentTime;
+                this.isAttacking = true;
+                
+                if (this.attackMode === 'sword') {
+                    this.performSwordAttack();
+                } else {
+                    this.performMagicAttack();
+                }
+            }
+            
+            performSwordAttack() {
+                // 剣の激しい攻撃アニメーション
+                if (this.sword) {
+                    // 攻撃軌道を描く剣の動き
+                    this.createSwordTrail();
+                    
+                    // 第1フェーズ: 大きく振り上げ（準備動作）
+                    this.animateSwordPhase({
+                        rotation: { x: Math.PI / 2, y: Math.PI / 4, z: -Math.PI / 4 },
+                        position: { x: 0.8, y: 0.3, z: -0.3 },
+                        scale: { x: 1.2, y: 1.2, z: 1.2 }
+                    });
+                    
+                    setTimeout(() => {
+                        if (this.sword) {
+                            // 第2フェーズ: 激しい振り下ろし（最大速度）
+                            this.animateSwordPhase({
+                                rotation: { x: -Math.PI / 2, y: -Math.PI / 6, z: Math.PI / 6 },
+                                position: { x: 0.0, y: -0.8, z: -1.5 },
+                                scale: { x: 1.5, y: 1.5, z: 1.5 }
+                            });
+                            
+                            // 攻撃時の爆発エフェクト
+                            this.createSwordStrike();
+                            
+                            // カメラの揺れ効果
+                            this.createCameraShake();
+                        }
+                    }, 80);
+                    
+                    setTimeout(() => {
+                        if (this.sword) {
+                            // 第3フェーズ: フォロースルー
+                            this.animateSwordPhase({
+                                rotation: { x: -Math.PI / 3, y: 0, z: 0 },
+                                position: { x: 0.2, y: -0.6, z: -1.2 },
+                                scale: { x: 1.2, y: 1.2, z: 1.2 }
+                            });
+                        }
+                    }, 160);
+                    
+                    setTimeout(() => {
+                        if (this.sword) {
+                            // 第4フェーズ: 元の位置に戻る
+                            this.animateSwordPhase({
+                                rotation: { x: -Math.PI / 12, y: Math.PI / 6, z: 0 },
+                                position: { x: 0.4, y: -0.3, z: -0.6 },
+                                scale: { x: 1, y: 1, z: 1 }
+                            });
+                        }
+                        this.isAttacking = false;
+                    }, 300);
+                }
+                
+                // 剣攻撃の範囲判定
+                const attackRange = 3;
+                const playerPos = this.camera.position;
+                
+                // カメラの向いている方向を取得
+                const direction = new THREE.Vector3(0, 0, -1);
+                direction.applyQuaternion(this.camera.quaternion);
+                
+                for (const enemy of this.enemies) {
+                    if (!enemy.userData.alive) continue;
+                    
+                    const distance = playerPos.distanceTo(enemy.position);
+                    
+                    // 距離と方向の両方をチェック
+                    if (distance <= attackRange) {
+                        const enemyDirection = new THREE.Vector3()
+                            .subVectors(enemy.position, playerPos)
+                            .normalize();
+                        
+                        const angle = direction.angleTo(enemyDirection);
+                        
+                        // 前方45度以内の敵を攻撃
+                        if (angle < Math.PI / 4) {
+                            const damage = 30 + Math.floor(Math.random() * 20);
+                            this.damageEnemy(enemy, damage, 'sword');
+                        }
+                    }
+                }
+            }
+            
+            performMagicAttack() {
+                // 魔法弾を発射
+                const playerPos = this.camera.position.clone();
+                const direction = new THREE.Vector3(0, 0, -1);
+                direction.applyQuaternion(this.camera.quaternion);
+                
+                const projectile = this.createMagicProjectile(playerPos, direction);
+                this.magicProjectiles.push(projectile);
+                this.scene.add(projectile);
+                
+                this.isAttacking = false;
+            }
+            
+            createMagicProjectile(startPos, direction) {
+                // 魔法弾の見た目
+                const geometry = new THREE.SphereGeometry(0.2, 8, 6);
+                const material = new THREE.MeshBasicMaterial({ 
+                    color: 0x00ffff,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const projectile = new THREE.Mesh(geometry, material);
+                
+                // 光る効果
+                const glowGeometry = new THREE.SphereGeometry(0.3, 8, 6);
+                const glowMaterial = new THREE.MeshBasicMaterial({
+                    color: 0x44ffff,
+                    transparent: true,
+                    opacity: 0.3
+                });
+                const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+                projectile.add(glow);
+                
+                projectile.position.copy(startPos);
+                projectile.userData = {
+                    direction: direction.clone(),
+                    speed: 0.5,
+                    damage: 20 + Math.floor(Math.random() * 15),
+                    life: 100 // フレーム数
+                };
+                
+                return projectile;
+            }
+            
+            animateSwordPhase(params) {
+                // 剣のスムーズなアニメーション
+                if (this.sword) {
+                    this.sword.rotation.x = params.rotation.x;
+                    this.sword.rotation.y = params.rotation.y;
+                    this.sword.rotation.z = params.rotation.z;
+                    this.sword.position.set(params.position.x, params.position.y, params.position.z);
+                    this.sword.scale.set(params.scale.x, params.scale.y, params.scale.z);
+                }
+            }
+            
+            createSwordStrike() {
+                // 剣の攻撃時の迷力的エフェクト
+                const strikeGeometry = new THREE.RingGeometry(0.5, 2, 8);
+                const strikeMaterial = new THREE.MeshBasicMaterial({
+                    color: 0xffffff,
+                    transparent: true,
+                    opacity: 0.8,
+                    side: THREE.DoubleSide
+                });
+                
+                const strike = new THREE.Mesh(strikeGeometry, strikeMaterial);
+                strike.position.set(0.1, -0.5, -1.2);
+                strike.rotation.x = Math.PI / 2;
+                this.camera.add(strike);
+                
+                // 激しいエフェクトのアニメーション
+                let scale = 0.5;
+                let opacity = 0.8;
+                const animateStrike = () => {
+                    scale += 0.2;
+                    opacity -= 0.1;
+                    
+                    if (strike.material && strike.scale) {
+                        strike.scale.setScalar(scale);
+                        strike.material.opacity = opacity;
+                    }
+                    
+                    if (opacity <= 0) {
+                        this.camera.remove(strike);
+                    } else {
+                        setTimeout(animateStrike, 30);
+                    }
+                };
+                
+                setTimeout(animateStrike, 50);
+            }
+            
+            createSwordTrail() {
+                // 剣の軌跡エフェクト（改良版）
+                const trailPoints = [
+                    new THREE.Vector3(0.5, 0, -0.5),     // 開始点
+                    new THREE.Vector3(0.3, -0.2, -0.8),  // 中間点
+                    new THREE.Vector3(0.1, -0.5, -1.2),  // 終了点
+                    new THREE.Vector3(0.2, -0.4, -1.0)   // 余韻
+                ];
+                
+                const curve = new THREE.CatmullRomCurve3(trailPoints);
+                const trailGeometry = new THREE.TubeGeometry(curve, 20, 0.05, 8, false);
+                
+                const trailMaterial = new THREE.MeshBasicMaterial({
+                    color: 0xffffff,
+                    transparent: true,
+                    opacity: 0.9,
+                    emissive: 0x444444
+                });
+                
+                const trail = new THREE.Mesh(trailGeometry, trailMaterial);
+                this.camera.add(trail);
+                
+                // 軌跡のフェードアウト
+                let opacity = 0.9;
+                const fadeTrail = () => {
+                    opacity -= 0.15;
+                    if (trail.material) {
+                        trail.material.opacity = opacity;
+                    }
+                    
+                    if (opacity <= 0) {
+                        this.camera.remove(trail);
+                    } else {
+                        setTimeout(fadeTrail, 40);
+                    }
+                };
+                
+                setTimeout(fadeTrail, 100);
+            }
+            
+            createCameraShake() {
+                // 攻撃時のカメラの揺れ効果
+                const originalPosition = this.camera.position.clone();
+                let shakeCount = 0;
+                const maxShakes = 8;
+                
+                const shake = () => {
+                    if (shakeCount < maxShakes) {
+                        const intensity = 0.05 * (1 - shakeCount / maxShakes);
+                        this.camera.position.x = originalPosition.x + (Math.random() - 0.5) * intensity;
+                        this.camera.position.y = originalPosition.y + (Math.random() - 0.5) * intensity;
+                        this.camera.position.z = originalPosition.z + (Math.random() - 0.5) * intensity;
+                        
+                        shakeCount++;
+                        setTimeout(shake, 30);
+                    } else {
+                        this.camera.position.copy(originalPosition);
+                    }
+                };
+                
+                shake();
+            }
+            
+            updateCombat() {
+                // 攻撃クールダウン更新
+                if (this.attackCooldown > 0) {
+                    this.attackCooldown = Math.max(0, this.attackCooldown - 16);
+                }
+                
+                // 魔法弾の更新
+                this.updateMagicProjectiles();
+                
+                // ヒットエフェクトの更新
+                this.updateHitEffects();
+            }
+            
+            updateMagicProjectiles() {
+                for (let i = this.magicProjectiles.length - 1; i >= 0; i--) {
+                    const projectile = this.magicProjectiles[i];
+                    const userData = projectile.userData;
+                    
+                    // 魔法弾を移動
+                    projectile.position.add(userData.direction.clone().multiplyScalar(userData.speed));
+                    
+                    // 魔法弾の回転とパルス効果
+                    projectile.rotation.x += 0.1;
+                    projectile.rotation.y += 0.1;
+                    const scale = 1 + Math.sin(Date.now() * 0.01) * 0.2;
+                    projectile.scale.setScalar(scale);
+                    
+                    // 敵との衝突判定
+                    let hit = false;
+                    for (const enemy of this.enemies) {
+                        if (!enemy.userData.alive) continue;
+                        
+                        const distance = projectile.position.distanceTo(enemy.position);
+                        if (distance < 1.0) {
+                            this.damageEnemy(enemy, userData.damage, 'magic');
+                            this.createMagicHitEffect(projectile.position);
+                            hit = true;
+                            break;
+                        }
+                    }
+                    
+                    // 壁との衝突判定
+                    if (!hit && this.isBlocked(projectile.position, 0.2, this.cellSize)) {
+                        this.createMagicHitEffect(projectile.position);
+                        hit = true;
+                    }
+                    
+                    // 寿命チェック
+                    userData.life--;
+                    if (hit || userData.life <= 0) {
+                        this.scene.remove(projectile);
+                        this.magicProjectiles.splice(i, 1);
+                    }
+                }
+            }
+            
+            damageEnemy(enemy, damage, attackType) {
+                enemy.userData.hp -= damage;
+                
+                // 敵が被ダメージを受けた時のリアクション
+                this.createDamageReaction(enemy, attackType);
+                
+                // ダメージエフェクト
+                this.showDamageEffect(enemy.position, damage);
+                
+                if (enemy.userData.hp <= 0) {
+                    this.defeatEnemy(enemy);
+                }
+            }
+            
+            createDamageReaction(enemy, attackType) {
+                // 敵を後ろに押し出す
+                const pushDirection = new THREE.Vector3()
+                    .subVectors(enemy.position, this.camera.position)
+                    .normalize()
+                    .multiplyScalar(0.5);
+                
+                const newPosition = enemy.position.clone().add(pushDirection);
+                if (this.isSafePosition(newPosition, 0.8, this.cellSize)) {
+                    enemy.position.copy(newPosition);
+                }
+                
+                // 敵の色を一瞬変える（ダメージ表現）
+                const originalMaterial = enemy.children[0].material;
+                const damageMaterial = new THREE.MeshBasicMaterial({ 
+                    color: attackType === 'sword' ? 0xff0000 : 0xffff00,
+                    wireframe: true 
+                });
+                
+                enemy.children[0].material = damageMaterial;
+                setTimeout(() => {
+                    enemy.children[0].material = originalMaterial;
+                }, 200);
+                
+                // 敵の振動効果
+                const originalY = enemy.position.y;
+                enemy.userData.shaking = true;
+                setTimeout(() => {
+                    enemy.userData.shaking = false;
+                    enemy.position.y = originalY;
+                }, 300);
+            }
+            
+            createMagicHitEffect(position) {
+                // 魔法弾の爆発エフェクト
+                const explosionCount = 15;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(explosionCount * 3);
+                const colors = new Float32Array(explosionCount * 3);
+                
+                for (let i = 0; i < explosionCount * 3; i += 3) {
+                    positions[i] = position.x + (Math.random() - 0.5) * 3;
+                    positions[i + 1] = position.y + Math.random() * 3;
+                    positions[i + 2] = position.z + (Math.random() - 0.5) * 3;
+                    
+                    colors[i] = 0; // R
+                    colors[i + 1] = 1; // G
+                    colors[i + 2] = 1; // B
+                }
+                
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                
+                const material = new THREE.PointsMaterial({
+                    size: 0.3,
+                    vertexColors: true,
+                    transparent: true,
+                    opacity: 1.0,
+                    blending: THREE.AdditiveBlending
+                });
+                
+                const explosion = new THREE.Points(geometry, material);
+                this.scene.add(explosion);
+                this.hitEffects.push({
+                    effect: explosion,
+                    life: 30,
+                    type: 'magic'
+                });
+            }
+            
+            updateHitEffects() {
+                for (let i = this.hitEffects.length - 1; i >= 0; i--) {
+                    const hitEffect = this.hitEffects[i];
+                    hitEffect.life--;
+                    
+                    // フェードアウト
+                    hitEffect.effect.material.opacity = hitEffect.life / 30;
+                    
+                    if (hitEffect.life <= 0) {
+                        this.scene.remove(hitEffect.effect);
+                        this.hitEffects.splice(i, 1);
+                    }
+                }
+            }
+            
+            updateEnemies() {
+                const currentTime = Date.now();
+                const playerPos = this.camera.position;
+                
+                for (const enemy of this.enemies) {
+                    if (!enemy.userData.alive) continue;
+                    
+                    const distance = playerPos.distanceTo(enemy.position);
+                    
+                    // 敵の改良された迷路内移動AI
+                    if (distance < 12) { // 検知範囲を拡大
+                        if (distance > 2.5) {
+                            // プレイヤーに向かって移動（迷路を考慮した経路探索）
+                            const bestMove = this.findBestEnemyMove(enemy, playerPos);
+                            
+                            if (bestMove) {
+                                const speedMultiplier = Math.max(0.5, (10 - distance) / 10);
+                                const moveSpeed = enemy.userData.speed * speedMultiplier;
+                                
+                                const newPosition = enemy.position.clone()
+                                    .add(bestMove.multiplyScalar(moveSpeed));
+                                
+                                if (this.isSafePosition(newPosition, 0.8, this.cellSize)) {
+                                    enemy.position.copy(newPosition);
+                                }
+                            }
+                        } else {
+                            // 近距離では迷路内で戦術的に移動
+                            const tacticalMove = this.findTacticalMove(enemy, playerPos, currentTime);
+                            if (tacticalMove && this.isSafePosition(tacticalMove, 0.8, this.cellSize)) {
+                                enemy.position.copy(tacticalMove);
+                            }
+                        }
+                        
+                        // 攻撃判定
+                        if (distance < 2.5 && currentTime - enemy.userData.lastAttackTime > enemy.userData.attackCooldown) {
+                            this.enemyAttack(enemy);
+                            enemy.userData.lastAttackTime = currentTime;
+                        }
+                        
+                        // プレイヤーの方を向く
+                        enemy.lookAt(playerPos);
+                        
+                    } else {
+                        // 待機状態：迷路内をパトロール
+                        this.enemyPatrol(enemy, currentTime);
+                    }
+                    
+                    // 敵のアニメーション
+                    const baseY = 1;
+                    const timeOffset = enemy.position.x + enemy.position.z;
+                    
+                    if (enemy.userData.shaking) {
+                        // ダメージ時の振動
+                        enemy.position.y = baseY + Math.sin(currentTime * 0.1) * 0.1 + Math.random() * 0.1;
+                    } else {
+                        // 通常の浮遊効果
+                        enemy.position.y = baseY + Math.sin(currentTime * 0.003 + timeOffset) * 0.3;
+                    }
+                    
+                    // 回転アニメーション
+                    enemy.rotation.y += 0.02;
+                    
+                    // 触手のアニメーション
+                    for (let i = 1; i < enemy.children.length; i++) {
+                        const tentacle = enemy.children[i];
+                        tentacle.rotation.z = Math.sin(currentTime * 0.01 + i) * 0.3;
+                    }
+                }
+            }
+            
+            findBestEnemyMove(enemy, playerPos) {
+                // 敵がプレイヤーに向かうための最適な方向を見つける
+                const directions = [
+                    new THREE.Vector3(1, 0, 0),   // 右
+                    new THREE.Vector3(-1, 0, 0),  // 左
+                    new THREE.Vector3(0, 0, 1),   // 前
+                    new THREE.Vector3(0, 0, -1)   // 後
+                ];
+                
+                let bestDirection = null;
+                let bestScore = -Infinity;
+                
+                for (const direction of directions) {
+                    const testPos = enemy.position.clone().add(direction.clone().multiplyScalar(0.5));
+                    
+                    // 移動可能かチェック
+                    if (this.isSafePosition(testPos, 0.8, this.cellSize)) {
+                        // プレイヤーに近づく方向を評価
+                        const distanceAfterMove = testPos.distanceTo(playerPos);
+                        const currentDistance = enemy.position.distanceTo(playerPos);
+                        const score = currentDistance - distanceAfterMove; // 距離が短くなるほど高スコア
+                        
+                        if (score > bestScore) {
+                            bestScore = score;
+                            bestDirection = direction;
+                        }
+                    }
+                }
+                
+                return bestDirection;
+            }
+            
+            findTacticalMove(enemy, playerPos, currentTime) {
+                // 近距離での戦術的移動（迷路内で円を描くように移動）
+                const angle = currentTime * 0.005 + enemy.position.x;
+                const circleRadius = 2;
+                const circleX = playerPos.x + Math.cos(angle) * circleRadius;
+                const circleZ = playerPos.z + Math.sin(angle) * circleRadius;
+                
+                const circlePosition = new THREE.Vector3(circleX, enemy.position.y, circleZ);
+                
+                // 円運動が不可能な場合は、左右に移動
+                if (!this.isSafePosition(circlePosition, 0.8, this.cellSize)) {
+                    const playerDirection = new THREE.Vector3()
+                        .subVectors(playerPos, enemy.position)
+                        .normalize();
+                    
+                    const sideDirection = new THREE.Vector3(-playerDirection.z, 0, playerDirection.x);
+                    const sidePosition = enemy.position.clone()
+                        .add(sideDirection.multiplyScalar(0.5));
+                    
+                    if (this.isSafePosition(sidePosition, 0.8, this.cellSize)) {
+                        return sidePosition;
+                    }
+                    
+                    // 反対側も試す
+                    const oppositeSidePosition = enemy.position.clone()
+                        .add(sideDirection.multiplyScalar(-0.5));
+                    
+                    if (this.isSafePosition(oppositeSidePosition, 0.8, this.cellSize)) {
+                        return oppositeSidePosition;
+                    }
+                }
+                
+                return circlePosition;
+            }
+            
+            enemyPatrol(enemy, currentTime) {
+                // 敵のパトロール行動（迷路内を歩き回る）
+                if (!enemy.userData.patrolTarget || Math.random() < 0.02) {
+                    // 新しいパトロール目標を設定
+                    const directions = [
+                        new THREE.Vector3(2, 0, 0),
+                        new THREE.Vector3(-2, 0, 0),
+                        new THREE.Vector3(0, 0, 2),
+                        new THREE.Vector3(0, 0, -2)
+                    ];
+                    
+                    const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+                    const targetPos = enemy.position.clone().add(randomDirection);
+                    
+                    if (this.isSafePosition(targetPos, 0.8, this.cellSize)) {
+                        enemy.userData.patrolTarget = targetPos;
+                    }
+                }
+                
+                // パトロール目標に向かって移動
+                if (enemy.userData.patrolTarget) {
+                    const direction = new THREE.Vector3()
+                        .subVectors(enemy.userData.patrolTarget, enemy.position)
+                        .normalize();
+                    
+                    const moveSpeed = enemy.userData.speed * 0.3; // ゆっくり移動
+                    const newPosition = enemy.position.clone()
+                        .add(direction.multiplyScalar(moveSpeed));
+                    
+                    if (this.isSafePosition(newPosition, 0.8, this.cellSize)) {
+                        enemy.position.copy(newPosition);
+                        
+                        // 目標に到達したらクリア
+                        if (enemy.position.distanceTo(enemy.userData.patrolTarget) < 1) {
+                            enemy.userData.patrolTarget = null;
+                        }
+                    } else {
+                        // 移動できない場合は目標をクリア
+                        enemy.userData.patrolTarget = null;
+                    }
+                }
+            }
+            
+            enemyAttack(enemy) {
+                const damage = enemy.userData.damage;
+                this.takeDamage(damage);
+                
+                // 攻撃エフェクト
+                this.showAttackEffect(enemy.position);
+            }
+            
+            takeDamage(damage) {
+                const currentTime = Date.now();
+                if (currentTime - this.lastDamageTime < 1000) return; // 無敵時間
+                
+                this.lastDamageTime = currentTime;
+                this.playerHP = Math.max(0, this.playerHP - damage);
+                
+                // ダメージエフェクト（画面を赤く光らせる）
+                this.showPlayerDamageEffect();
+                
+                if (this.playerHP <= 0) {
+                    this.gameOver();
+                }
+            }
+            
+            defeatEnemy(enemy) {
+                enemy.userData.alive = false;
+                
+                // 敵を倒したエフェクト
+                this.showDefeatEffect(enemy.position);
+                
+                // 敵を削除
+                this.scene.remove(enemy);
+                const index = this.enemies.indexOf(enemy);
+                if (index > -1) {
+                    this.enemies.splice(index, 1);
+                }
+            }
+            
+            showDamageEffect(position, damage) {
+                // ダメージ数値を表示（簡単な実装）
+                console.log(`${damage} ダメージ!`);
+                
+                // パーティクルエフェクト
+                const particleCount = 10;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                
+                for (let i = 0; i < particleCount * 3; i += 3) {
+                    positions[i] = position.x + (Math.random() - 0.5) * 2;
+                    positions[i + 1] = position.y + Math.random() * 2;
+                    positions[i + 2] = position.z + (Math.random() - 0.5) * 2;
+                }
+                
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const material = new THREE.PointsMaterial({
+                    color: 0xff0000,
+                    size: 0.2
+                });
+                
+                const particles = new THREE.Points(geometry, material);
+                this.scene.add(particles);
+                
+                setTimeout(() => {
+                    this.scene.remove(particles);
+                }, 1000);
+            }
+            
+            showAttackEffect(position) {
+                console.log('敵の攻撃!');
+            }
+            
+            showPlayerDamageEffect() {
+                // 画面を一瞬赤くする効果
+                document.body.style.background = 'rgba(255,0,0,0.3)';
+                setTimeout(() => {
+                    document.body.style.background = '';
+                }, 200);
+            }
+            
+            showDefeatEffect(position) {
+                console.log('敵を倒した!');
+            }
+            
+            gameOver() {
+                this.gameStarted = false;
+                document.exitPointerLock();
+                
+                const gameOverDiv = document.createElement('div');
+                gameOverDiv.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: linear-gradient(135deg, #ff0000, #aa0000);
+                        color: white;
+                        padding: 40px;
+                        border-radius: 20px;
+                        text-align: center;
+                        font-size: 2rem;
+                        font-weight: bold;
+                        z-index: 1000;
+                    ">
+                        💀 GAME OVER 💀<br>
+                        <div style="font-size: 1.2rem; margin-top: 20px;">
+                            深海の魔物に倒された...<br>
+                            章 ${this.currentLevel} で力尽きた
+                        </div>
+                        <button onclick="location.reload()" style="
+                            background: #ffffff;
+                            color: #ff0000;
+                            border: none;
+                            padding: 15px 30px;
+                            border-radius: 25px;
+                            font-size: 1.1rem;
+                            cursor: pointer;
+                            margin-top: 25px;
+                        ">
+                            最初からやり直す
+                        </button>
+                    </div>
+                `;
+                document.body.appendChild(gameOverDiv);
+            }
+            
+            gameWin() {
+                const endTime = Date.now();
+                const totalTime = Math.floor((endTime - this.startTime) / 1000);
+                
+                this.gameStarted = false;
+                document.exitPointerLock();
+                
+                // 派手なお祝い演出を開始
+                this.startCelebration(totalTime);
+            }
+            
+            startCelebration(totalTime) {
+                // 祝福パーティクルを大量生成
+                this.createCelebrationParticles();
+                
+                // 勝利メッセージを表示
+                this.showVictoryMessage(totalTime);
+                
+                // カメラを自動回転
+                this.celebrationRotation = 0;
+                this.isCelebrating = true;
+                this.levelCompleted = true;
+                
+                // 5秒後にリセット
+                setTimeout(() => {
+                    this.endCelebration();
+                }, 5000);
+            }
+            
+            showStoryIntro() {
+                const story = this.storyMessages[this.currentLevel];
+                if (!story) return;
+                
+                // ストーリー紹介画面を作成
+                const storyDiv = document.createElement('div');
+                storyDiv.id = 'story-intro';
+                storyDiv.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(135deg, rgba(0,20,40,0.95), rgba(0,60,100,0.95));
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 2000;
+                        backdrop-filter: blur(10px);
+                    ">
+                        <div style="
+                            text-align: center;
+                            max-width: 600px;
+                            padding: 40px;
+                            background: linear-gradient(135deg, rgba(0,188,212,0.2), rgba(77,208,225,0.2));
+                            border-radius: 20px;
+                            border: 2px solid rgba(77,208,225,0.5);
+                            animation: storyFadeIn 1s ease-out;
+                        ">
+                            <h2 style="font-size: 2.5rem; margin-bottom: 30px; color: #4dd0e1;">
+                                ${story.title}
+                            </h2>
+                            <p style="font-size: 1.3rem; line-height: 1.6; margin-bottom: 30px; white-space: pre-line;">
+                                ${story.intro}
+                            </p>
+                            <div style="font-size: 1rem; opacity: 0.8; margin-bottom: 30px;">
+                                レベル ${this.currentLevel} / ${this.maxLevel}
+                            </div>
+                            <button id="story-continue" style="
+                                background: linear-gradient(135deg, #00bcd4, #4dd0e1);
+                                color: white;
+                                border: none;
+                                padding: 15px 30px;
+                                border-radius: 25px;
+                                font-size: 1.1rem;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            ">
+                                冒険を始める
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // アニメーション用CSS
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes storyFadeIn {
+                        0% { opacity: 0; transform: translateY(30px); }
+                        100% { opacity: 1; transform: translateY(0); }
+                    }
+                `;
+                document.head.appendChild(style);
+                document.body.appendChild(storyDiv);
+                
+                // ボタンクリックで開始
+                document.getElementById('story-continue').addEventListener('click', () => {
+                    storyDiv.remove();
+                });
+            }
+            
+            createCelebrationParticles() {
+                // 花火のような爆発パーティクル
+                const particleCount = 500;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                const colors = new Float32Array(particleCount * 3);
+                const velocities = [];
+                
+                const goalPos = this.goal.position;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const i3 = i * 3;
+                    
+                    // ゴール位置から放射状に
+                    positions[i3] = goalPos.x;
+                    positions[i3 + 1] = goalPos.y;
+                    positions[i3 + 2] = goalPos.z;
+                    
+                    // ランダムな色（金、青、赤、緑）
+                    const colorChoice = Math.random();
+                    if (colorChoice < 0.25) {
+                        colors[i3] = 1; colors[i3 + 1] = 0.8; colors[i3 + 2] = 0; // 金
+                    } else if (colorChoice < 0.5) {
+                        colors[i3] = 0; colors[i3 + 1] = 0.5; colors[i3 + 2] = 1; // 青
+                    } else if (colorChoice < 0.75) {
+                        colors[i3] = 1; colors[i3 + 1] = 0; colors[i3 + 2] = 0; // 赤
+                    } else {
+                        colors[i3] = 0; colors[i3 + 1] = 1; colors[i3 + 2] = 0; // 緑
+                    }
+                    
+                    // ランダムな速度ベクトル
+                    velocities.push({
+                        x: (Math.random() - 0.5) * 10,
+                        y: Math.random() * 15 + 5,
+                        z: (Math.random() - 0.5) * 10
+                    });
+                }
+                
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                
+                const material = new THREE.PointsMaterial({
+                    size: 0.3,
+                    vertexColors: true,
+                    transparent: true,
+                    opacity: 0.8,
+                    blending: THREE.AdditiveBlending
+                });
+                
+                this.celebrationParticles = new THREE.Points(geometry, material);
+                this.celebrationVelocities = velocities;
+                this.scene.add(this.celebrationParticles);
+            }
+            
+            showVictoryMessage(totalTime) {
+                const story = this.storyMessages[this.currentLevel];
+                const isLastLevel = this.currentLevel >= this.maxLevel;
+                
+                // HTML要素で勝利メッセージを表示
+                const victoryDiv = document.createElement('div');
+                victoryDiv.id = 'victory-message';
+                victoryDiv.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: linear-gradient(135deg, #ff6b9d, #4ecdc4);
+                        color: white;
+                        padding: 40px;
+                        border-radius: 20px;
+                        text-align: center;
+                        font-size: 2rem;
+                        font-weight: bold;
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                        z-index: 1000;
+                        animation: victoryPulse 2s ease-in-out infinite;
+                        max-width: 600px;
+                    ">
+                        🎉 レベル ${this.currentLevel} クリア! 🎉<br>
+                        <div style="font-size: 1.3rem; margin-top: 20px;">
+                            タイム: ${totalTime}秒
+                        </div>
+                        <div style="font-size: 1rem; margin-top: 20px; line-height: 1.4; white-space: pre-line; opacity: 0.95;">
+                            ${story.complete}
+                        </div>
+                        ${!isLastLevel ? `
+                        <button id="next-level-btn" style="
+                            background: linear-gradient(135deg, #feca57, #ff9f43);
+                            color: white;
+                            border: none;
+                            padding: 15px 30px;
+                            border-radius: 25px;
+                            font-size: 1.1rem;
+                            cursor: pointer;
+                            margin-top: 25px;
+                            transition: all 0.3s ease;
+                        ">
+                            次の章へ進む ➤
+                        </button>
+                        ` : `
+                        <div style="font-size: 1.2rem; margin-top: 25px; color: #feca57;">
+                            🏆 全ての章をクリア！君は真の海学マスターだ！ 🏆
+                        </div>
+                        <button id="restart-game-btn" style="
+                            background: linear-gradient(135deg, #26c6da, #00bcd4);
+                            color: white;
+                            border: none;
+                            padding: 15px 30px;
+                            border-radius: 25px;
+                            font-size: 1.1rem;
+                            cursor: pointer;
+                            margin-top: 15px;
+                            transition: all 0.3s ease;
+                        ">
+                            最初から冒険を始める
+                        </button>
+                        `}
+                    </div>
+                `;
+                
+                // CSSアニメーションを追加
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes victoryPulse {
+                        0%, 100% { transform: translate(-50%, -50%) scale(1); }
+                        50% { transform: translate(-50%, -50%) scale(1.05); }
+                    }
+                `;
+                document.head.appendChild(style);
+                document.body.appendChild(victoryDiv);
+                
+                // ボタンイベントを設定
+                if (!isLastLevel) {
+                    const nextBtn = document.getElementById('next-level-btn');
+                    if (nextBtn) {
+                        nextBtn.addEventListener('click', () => {
+                            this.nextLevel();
+                        });
+                    }
+                } else {
+                    const restartBtn = document.getElementById('restart-game-btn');
+                    if (restartBtn) {
+                        restartBtn.addEventListener('click', () => {
+                            this.restartGame();
+                        });
+                    }
+                }
+            }
+            
+            nextLevel() {
+                this.currentLevel++;
+                this.playerHP = Math.min(this.maxHP, this.playerHP + 30); // レベルアップでHP回復
+                this.endCelebration();
+                this.resetPlayerPosition();
+                this.clearMaze();
+                this.generateComplexMaze();
+                this.createMaze3D();
+                this.updateHUD();
+            }
+            
+            restartGame() {
+                this.currentLevel = 1;
+                this.playerHP = this.maxHP; // HP完全回復
+                this.endCelebration();
+                this.resetPlayerPosition();
+                this.clearMaze();
+                this.generateComplexMaze();
+                this.createMaze3D();
+                this.updateHUD();
+            }
+            
+            resetPlayerPosition() {
+                // プレイヤーをスタート位置に戻す
+                this.camera.position.set(6, 2, 6);
+                this.camera.rotation.set(0, 0, 0);
+                this.rotationX = 0;
+                this.rotationY = 0;
+            }
+            
+            clearMaze() {
+                // 既存の迷路オブジェクトを削除
+                const objectsToRemove = [];
+                this.scene.traverse((child) => {
+                    if (child.type === 'LineSegments' && child !== this.particles) {
+                        objectsToRemove.push(child);
+                    }
+                });
+                
+                objectsToRemove.forEach(obj => {
+                    this.scene.remove(obj);
+                });
+                
+                // ゴールも削除
+                if (this.goal) {
+                    this.scene.remove(this.goal);
+                    this.goal = null;
+                }
+            }
+            
+            endCelebration() {
+                this.isCelebrating = false;
+                this.levelCompleted = false;
+                
+                // パーティクルを削除
+                if (this.celebrationParticles) {
+                    this.scene.remove(this.celebrationParticles);
+                    this.celebrationParticles = null;
+                }
+                
+                // 勝利メッセージを削除
+                const victoryMsg = document.getElementById('victory-message');
+                if (victoryMsg) {
+                    victoryMsg.remove();
+                }
+                
+                // 他のモーダルも削除
+                const storyIntro = document.getElementById('story-intro');
+                if (storyIntro) {
+                    storyIntro.remove();
+                }
+                
+                // レベルが完了していない場合のみスタートボタンを表示
+                if (!this.levelCompleted) {
+                    document.getElementById('startButton').style.display = 'block';
+                }
+            }
+            
+            updateTimer() {
+                if (!this.gameStarted || !this.startTime) return;
+                
+                const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
+                document.getElementById('timer').textContent = elapsed;
+            }
+            
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                this.updateMovement();
+                this.updateTimer();
+                this.updateCombat();
+                this.updateEnemies();
+                
+                // ゴールの回転（お祝い中はより激しく）
+                if (this.goal) {
+                    this.goal.rotation.y += this.isCelebrating ? 0.05 : 0.01;
+                }
+                
+                // お祝いパーティクルのアニメーション
+                if (this.isCelebrating && this.celebrationParticles) {
+                    this.updateCelebrationParticles();
+                    
+                    // カメラの自動回転
+                    this.celebrationRotation += 0.02;
+                    const radius = 8;
+                    const goalPos = this.goal.position;
+                    this.camera.position.x = goalPos.x + Math.cos(this.celebrationRotation) * radius;
+                    this.camera.position.z = goalPos.z + Math.sin(this.celebrationRotation) * radius;
+                    this.camera.lookAt(goalPos);
+                }
+                
+                // 海中パーティクルのアニメーション
+                if (this.particles) {
+                    this.particles.rotation.y += 0.002;
+                    const positions = this.particles.geometry.attributes.position.array;
+                    for (let i = 1; i < positions.length; i += 3) {
+                        positions[i] += 0.01; // ゆっくり上昇
+                        if (positions[i] > 20) {
+                            positions[i] = 0; // 上まで行ったらリセット
+                        }
+                    }
+                    this.particles.geometry.attributes.position.needsUpdate = true;
+                }
+                
+                this.renderer.render(this.scene, this.camera);
+            }
+            
+            updateCelebrationParticles() {
+                const positions = this.celebrationParticles.geometry.attributes.position.array;
+                
+                for (let i = 0; i < this.celebrationVelocities.length; i++) {
+                    const i3 = i * 3;
+                    const velocity = this.celebrationVelocities[i];
+                    
+                    // 位置を更新
+                    positions[i3] += velocity.x * 0.1;
+                    positions[i3 + 1] += velocity.y * 0.1;
+                    positions[i3 + 2] += velocity.z * 0.1;
+                    
+                    // 重力効果
+                    velocity.y -= 0.5;
+                    
+                    // 空気抵抗
+                    velocity.x *= 0.98;
+                    velocity.z *= 0.98;
+                }
+                
+                this.celebrationParticles.geometry.attributes.position.needsUpdate = true;
+            }
+        }
+        
+        // ゲーム開始
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, creating game...');
+            new SimpleMaze3D();
+        });
+    </script>
+</body>
+</html>

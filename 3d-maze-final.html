@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D海洋迷路</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #001122;
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+        
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .hud {
+            position: absolute;
+            z-index: 100;
+            pointer-events: none;
+        }
+        
+        .hud-top-left {
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #00ffff;
+        }
+        
+        .hud-top-right {
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #00ffff;
+            text-align: center;
+            max-width: 300px;
+        }
+        
+        .hud-bottom-left {
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #00ffff;
+        }
+        
+        .game-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00ffff;
+        }
+        
+        .challenge-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ffff00;
+        }
+        
+        .controls {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        #canvas {
+            display: block;
+            cursor: crosshair;
+        }
+        
+        .click-to-start {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 255, 255, 0.9);
+            color: black;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 200;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- HUD Elements -->
+        <div class="hud hud-top-left">
+            <div class="game-title">🌊 3D海洋迷路</div>
+            <div>経過時間: <span id="timer">0</span>秒</div>
+            <div>座標: (<span id="posX">0</span>, <span id="posY">0</span>)</div>
+        </div>
+        
+        <div class="hud hud-top-right">
+            <div class="challenge-title">🗝️ 🏆 チャレンジ</div>
+            <div>迷路をクリアして<br>海学マスターになろう！</div>
+        </div>
+        
+        <div class="hud hud-bottom-left">
+            <div class="controls">
+                <div>🖱️ マウス: 視点移動</div>
+                <div>⌨️ WASD: 移動</div>
+                <div>🎯 ゴール: 赤いキューブ</div>
+            </div>
+        </div>
+        
+        <div class="click-to-start" id="startButton">
+            クリックしてゲーム開始
+        </div>
+        
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r17/Stats.min.js"></script>
+    <script>
+        // PointerLockControls implementation
+        THREE.PointerLockControls = function(camera, domElement) {
+            if (domElement === undefined) {
+                console.warn('THREE.PointerLockControls: The second parameter "domElement" is now mandatory.');
+                domElement = document.body;
+            }
+
+            this.domElement = domElement;
+            this.isLocked = false;
+
+            var scope = this;
+
+            var changeEvent = { type: 'change' };
+            var lockEvent = { type: 'lock' };
+            var unlockEvent = { type: 'unlock' };
+
+            var euler = new THREE.Euler(0, 0, 0, 'YXZ');
+            var PI_2 = Math.PI / 2;
+            var vec = new THREE.Vector3();
+
+            function onMouseMove(event) {
+                if (scope.isLocked === false) return;
+
+                var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+                var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+
+                euler.setFromQuaternion(camera.quaternion);
+                euler.y -= movementX * 0.002;
+                euler.x -= movementY * 0.002;
+                euler.x = Math.max(PI_2 - Math.PI, Math.min(PI_2, euler.x));
+                camera.quaternion.setFromEuler(euler);
+
+                scope.dispatchEvent(changeEvent);
+            }
+
+            function onPointerlockChange() {
+                if (scope.domElement.ownerDocument.pointerLockElement === scope.domElement) {
+                    scope.dispatchEvent(lockEvent);
+                    scope.isLocked = true;
+                } else {
+                    scope.dispatchEvent(unlockEvent);
+                    scope.isLocked = false;
+                }
+            }
+
+            function onPointerlockError() {
+                console.error('THREE.PointerLockControls: Unable to use Pointer Lock API');
+            }
+
+            this.connect = function() {
+                scope.domElement.ownerDocument.addEventListener('mousemove', onMouseMove);
+                scope.domElement.ownerDocument.addEventListener('pointerlockchange', onPointerlockChange);
+                scope.domElement.ownerDocument.addEventListener('pointerlockerror', onPointerlockError);
+            };
+
+            this.disconnect = function() {
+                scope.domElement.ownerDocument.removeEventListener('mousemove', onMouseMove);
+                scope.domElement.ownerDocument.removeEventListener('pointerlockchange', onPointerlockChange);
+                scope.domElement.ownerDocument.removeEventListener('pointerlockerror', onPointerlockError);
+            };
+
+            this.dispose = function() {
+                this.disconnect();
+            };
+
+            this.getObject = function() {
+                return camera;
+            };
+
+            this.getDirection = function() {
+                var direction = new THREE.Vector3(0, 0, -1);
+                return function(v) {
+                    return v.copy(direction).applyQuaternion(camera.quaternion);
+                };
+            }();
+
+            this.moveForward = function(distance) {
+                vec.setFromMatrixColumn(camera.matrix, 0);
+                vec.crossVectors(camera.up, vec);
+                camera.position.addScaledVector(vec, distance);
+            };
+
+            this.moveRight = function(distance) {
+                vec.setFromMatrixColumn(camera.matrix, 0);
+                camera.position.addScaledVector(vec, distance);
+            };
+
+            this.lock = function() {
+                this.domElement.requestPointerLock();
+            };
+
+            this.unlock = function() {
+                scope.domElement.ownerDocument.exitPointerLock();
+            };
+
+            this.connect();
+        };
+
+        THREE.PointerLockControls.prototype = Object.create(THREE.EventDispatcher.prototype);
+        THREE.PointerLockControls.prototype.constructor = THREE.PointerLockControls;
+    </script>
+    <script>
+        class Maze3D {
+            constructor() {
+                this.scene = null;
+                this.camera = null;
+                this.renderer = null;
+                this.controls = null;
+                this.stats = null;
+                
+                this.mazeSize = 15;
+                this.cellSize = 4;
+                this.wallHeight = 4;
+                this.cameraHeight = 2;
+                
+                this.maze = [];
+                this.startTime = null;
+                this.gameStarted = false;
+                
+                this.goalPosition = { x: 14, y: 14 };
+                this.playerGridPos = { x: 0, y: 0 };
+                
+                this.keys = {};
+                this.moveSpeed = 0.1;
+                
+                this.init();
+            }
+            
+            init() {
+                this.setupScene();
+                this.generateMaze();
+                this.createMaze3D();
+                this.setupControls();
+                this.setupEventListeners();
+                this.animate();
+            }
+            
+            setupScene() {
+                // Scene
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x001122);
+                this.scene.fog = new THREE.Fog(0x001122, 20, 80);
+                
+                // Camera
+                this.camera = new THREE.PerspectiveCamera(
+                    75, 
+                    window.innerWidth / window.innerHeight, 
+                    0.1, 
+                    1000
+                );
+                this.camera.position.set(2, this.cameraHeight, 2);
+                
+                // Renderer
+                this.renderer = new THREE.WebGLRenderer({ 
+                    canvas: document.getElementById('canvas'),
+                    antialias: true 
+                });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                
+                // Lighting
+                const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+                this.scene.add(ambientLight);
+                
+                const pointLight = new THREE.PointLight(0x00ffff, 0.8, 30);
+                pointLight.position.copy(this.camera.position);
+                this.scene.add(pointLight);
+                this.playerLight = pointLight;
+                
+                // Stats
+                this.stats = new Stats();
+                this.stats.dom.style.position = 'absolute';
+                this.stats.dom.style.top = '0px';
+                this.stats.dom.style.right = '0px';
+                document.body.appendChild(this.stats.dom);
+            }
+            
+            generateMaze() {
+                // Initialize maze (all walls)
+                this.maze = Array(this.mazeSize).fill().map(() => Array(this.mazeSize).fill(1));
+                
+                // Recursive backtracking
+                this.visited = Array(this.mazeSize).fill().map(() => Array(this.mazeSize).fill(false));
+                this.carvePath(0, 0);
+            }
+            
+            carvePath(x, y) {
+                this.visited[y][x] = true;
+                this.maze[y][x] = 0; // Make it a passage
+                
+                // Get random directions
+                const directions = [
+                    [0, -2], [2, 0], [0, 2], [-2, 0] // up, right, down, left
+                ].sort(() => Math.random() - 0.5);
+                
+                for (const [dx, dy] of directions) {
+                    const newX = x + dx;
+                    const newY = y + dy;
+                    
+                    if (newX >= 0 && newX < this.mazeSize && 
+                        newY >= 0 && newY < this.mazeSize && 
+                        !this.visited[newY][newX]) {
+                        
+                        // Carve wall between current and new position
+                        this.maze[y + dy/2][x + dx/2] = 0;
+                        this.carvePath(newX, newY);
+                    }
+                }
+            }
+            
+            createMaze3D() {
+                // Wall material (wireframe)
+                const wallMaterial = new THREE.LineBasicMaterial({ 
+                    color: 0x00ffff,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                
+                // Create walls
+                for (let y = 0; y < this.mazeSize; y++) {
+                    for (let x = 0; x < this.mazeSize; x++) {
+                        if (this.maze[y][x] === 1) {
+                            this.createWallWireframe(x, y, wallMaterial);
+                        }
+                    }
+                }
+                
+                // Create goal
+                this.createGoal();
+            }
+            
+            createWallWireframe(x, y, material) {
+                const geometry = new THREE.BoxGeometry(this.cellSize, this.wallHeight, this.cellSize);
+                const edges = new THREE.EdgesGeometry(geometry);
+                const wall = new THREE.LineSegments(edges, material);
+                
+                wall.position.set(
+                    x * this.cellSize,
+                    this.wallHeight / 2,
+                    y * this.cellSize
+                );
+                
+                this.scene.add(wall);
+            }
+            
+            createGoal() {
+                const geometry = new THREE.BoxGeometry(this.cellSize * 0.5, this.cellSize * 0.5, this.cellSize * 0.5);
+                const edges = new THREE.EdgesGeometry(geometry);
+                const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
+                
+                this.goal = new THREE.LineSegments(edges, material);
+                this.goal.position.set(
+                    this.goalPosition.x * this.cellSize,
+                    this.cellSize * 0.25,
+                    this.goalPosition.y * this.cellSize
+                );
+                
+                this.scene.add(this.goal);
+            }
+            
+            setupControls() {
+                this.controls = new THREE.PointerLockControls(this.camera, this.renderer.domElement);
+                
+                // Start button click
+                document.getElementById('startButton').addEventListener('click', () => {
+                    this.controls.lock();
+                });
+                
+                this.controls.addEventListener('lock', () => {
+                    document.getElementById('startButton').style.display = 'none';
+                    if (!this.gameStarted) {
+                        this.startGame();
+                    }
+                });
+                
+                this.controls.addEventListener('unlock', () => {
+                    document.getElementById('startButton').style.display = 'block';
+                });
+            }
+            
+            setupEventListeners() {
+                // Keyboard events
+                document.addEventListener('keydown', (event) => {
+                    this.keys[event.code] = true;
+                });
+                
+                document.addEventListener('keyup', (event) => {
+                    this.keys[event.code] = false;
+                });
+                
+                // Window resize
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+            }
+            
+            startGame() {
+                this.gameStarted = true;
+                this.startTime = Date.now();
+            }
+            
+            updateMovement() {
+                if (!this.controls.isLocked) return;
+                
+                const direction = new THREE.Vector3();
+                const right = new THREE.Vector3();
+                
+                this.camera.getWorldDirection(direction);
+                right.crossVectors(direction, this.camera.up);
+                
+                direction.y = 0;
+                right.y = 0;
+                direction.normalize();
+                right.normalize();
+                
+                let movement = new THREE.Vector3();
+                
+                if (this.keys['KeyW']) movement.add(direction);
+                if (this.keys['KeyS']) movement.sub(direction);
+                if (this.keys['KeyA']) movement.sub(right);
+                if (this.keys['KeyD']) movement.add(right);
+                
+                movement.normalize();
+                movement.multiplyScalar(this.moveSpeed);
+                
+                // Check collision and move
+                const newPosition = this.camera.position.clone().add(movement);
+                if (this.canMoveTo(newPosition)) {
+                    this.camera.position.copy(newPosition);
+                    this.playerLight.position.copy(this.camera.position);
+                    this.updatePlayerGridPosition();
+                }
+            }
+            
+            canMoveTo(position) {
+                const gridX = Math.floor(position.x / this.cellSize);
+                const gridZ = Math.floor(position.z / this.cellSize);
+                
+                if (gridX < 0 || gridX >= this.mazeSize || gridZ < 0 || gridZ >= this.mazeSize) {
+                    return false;
+                }
+                
+                return this.maze[gridZ][gridX] === 0;
+            }
+            
+            updatePlayerGridPosition() {
+                const newGridX = Math.floor(this.camera.position.x / this.cellSize);
+                const newGridY = Math.floor(this.camera.position.z / this.cellSize);
+                
+                this.playerGridPos.x = newGridX;
+                this.playerGridPos.y = newGridY;
+                
+                // Update HUD
+                document.getElementById('posX').textContent = newGridX;
+                document.getElementById('posY').textContent = newGridY;
+                
+                // Check goal collision
+                this.checkGoalCollision();
+            }
+            
+            checkGoalCollision() {
+                const distance = this.camera.position.distanceTo(this.goal.position);
+                if (distance < this.cellSize) {
+                    this.gameWin();
+                }
+            }
+            
+            gameWin() {
+                const endTime = Date.now();
+                const totalTime = Math.floor((endTime - this.startTime) / 1000);
+                alert(`🎉 クリア!\n時間: ${totalTime}秒`);
+                
+                // Reset game
+                this.gameStarted = false;
+                this.startTime = null;
+                this.camera.position.set(2, this.cameraHeight, 2);
+                this.controls.unlock();
+            }
+            
+            updateTimer() {
+                if (!this.gameStarted || !this.startTime) return;
+                
+                const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
+                document.getElementById('timer').textContent = elapsed;
+            }
+            
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                this.updateMovement();
+                this.updateTimer();
+                
+                // Rotate goal
+                if (this.goal) {
+                    this.goal.rotation.y += 0.01;
+                }
+                
+                this.renderer.render(this.scene, this.camera);
+                this.stats.update();
+            }
+        }
+        
+        // Start the game
+        window.addEventListener('DOMContentLoaded', () => {
+            new Maze3D();
+        });
+    </script>
+</body>
+</html>
