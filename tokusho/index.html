@@ -21,11 +21,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap">
-    <link rel="stylesheet" href="assets/css/home-test.css?v=underwater2025">
+    <link rel="stylesheet" href="../assets/css/home-test.css?v=underwater2025">
     
     <style>
         .tokusho-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 2rem 1rem;
             background: white;
@@ -33,10 +33,11 @@
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
             margin-top: 2rem;
             margin-bottom: 2rem;
+            line-height: 1.8;
         }
         
         .tokusho-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #006064;
             text-align: center;
             margin-bottom: 2rem;
@@ -46,16 +47,18 @@
         }
         
         .tokusho-section {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
         
         .tokusho-section h2 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #006064;
             font-weight: 600;
-            margin-bottom: 0.8rem;
-            padding-left: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem 1rem;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
             border-left: 5px solid #00bcd4;
+            border-radius: 5px;
         }
         
         .tokusho-table {
@@ -64,6 +67,7 @@
             border-radius: 8px;
             overflow: hidden;
             margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
         
         .tokusho-table tr:nth-child(even) {
@@ -88,12 +92,52 @@
             border-bottom: none;
         }
         
+        .price-list {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .price-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .price-category h3 {
+            color: #006064;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid #00bcd4;
+            padding-bottom: 0.3rem;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .price-item:last-child {
+            border-bottom: none;
+        }
+        
+        .price-name {
+            flex: 1;
+        }
+        
+        .price-value {
+            font-weight: 600;
+            color: #d32f2f;
+        }
+        
         .tokusho-note {
             background: #fff3e0;
             border: 1px solid #ffb74d;
             border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem 0;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
             color: #e65100;
         }
         
@@ -101,9 +145,45 @@
             color: #bf360c;
         }
         
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+        }
+        
+        .highlight-box h4 {
+            color: #2e7d32;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .contact-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.2rem;
+            border-left: 4px solid #00bcd4;
+        }
+        
+        .contact-card h4 {
+            color: #006064;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
         .back-link {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e0e0;
         }
         
         .back-link a {
@@ -116,11 +196,21 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+            margin: 0 0.5rem;
         }
         
         .back-link a:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+        }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
@@ -130,7 +220,11 @@
             }
             
             .tokusho-title {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
+            }
+            
+            .tokusho-section h2 {
+                font-size: 1.2rem;
             }
             
             .tokusho-table td {
@@ -140,6 +234,15 @@
             
             .tokusho-table td:first-child {
                 width: 35%;
+            }
+            
+            .price-item {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -166,6 +269,10 @@
         <div class="tokusho-container">
             <h1 class="tokusho-title">特定商取引法に基づく表記</h1>
             
+            <p style="text-align: center; margin-bottom: 2rem; color: #555;">
+                当サイトで提供する商品・サービスは「特定商取引に関する法律」に基づき、以下の通り表記いたします。
+            </p>
+            
             <div class="tokusho-section">
                 <h2>事業者情報</h2>
                 <table class="tokusho-table">
@@ -182,153 +289,322 @@
                         <td>〒238-0224<br>神奈川県三浦市三崎町諸磯1621</td>
                     </tr>
                     <tr>
-                        <td>電話番号</td>
-                        <td>046-880-0835</td>
+                        <td>古物商許可</td>
+                        <td>該当なし</td>
                     </tr>
                     <tr>
-                        <td>メールアドレス</td>
-                        <td>info@miura-diving.com</td>
-                    </tr>
-                    <tr>
-                        <td>営業時間</td>
-                        <td>9:00〜16:00</td>
-                    </tr>
-                    <tr>
-                        <td>定休日</td>
-                        <td>不定休</td>
+                        <td>登録・届出</td>
+                        <td>該当なし</td>
                     </tr>
                 </table>
             </div>
 
             <div class="tokusho-section">
                 <h2>販売価格</h2>
+                <div class="price-list">
+                    <div class="price-category">
+                        <h3>ダイビング関連サービス</h3>
+                        <div class="price-item">
+                            <span class="price-name">オープンウォーターダイバー講習</span>
+                            <span class="price-value">53,900円（税込）</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">アドバンスドオープンウォーター講習</span>
+                            <span class="price-value">53,900円（税込）</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">体験ダイビング</span>
+                            <span class="price-value">13,200円（税込）</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">ファンダイビング</span>
+                            <span class="price-value">各コースページに記載（税込価格）</span>
+                        </div>
+                    </div>
+                    
+                    <div class="price-category">
+                        <h3>AIコンサルティングオンラインサロン</h3>
+                        <div class="price-item">
+                            <span class="price-name">月額会員費</span>
+                            <span class="price-value">9,800円（税込）</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-name">入会金</span>
+                            <span class="price-value">なし</span>
+                        </div>
+                    </div>
+                    
+                    <div class="price-category">
+                        <h3>物販（ダイビング器材）</h3>
+                        <div class="price-item">
+                            <span class="price-name">各商品</span>
+                            <span class="price-value">商品ページに税込価格を表示</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tokusho-note">
+                    <strong>注意：</strong>価格は予告なく変更する場合があります
+                </div>
+            </div>
+
+            <div class="tokusho-section">
+                <h2>商品代金以外の必要料金</h2>
                 <table class="tokusho-table">
                     <tr>
-                        <td>ダイビング関連サービス</td>
-                        <td>各商品・サービスページに表示<br>（税込価格で表示）</td>
+                        <td>ダイビングサービス</td>
+                        <td>
+                            ・レンタル器材費：1日5,500円（税込）<br>
+                            ・現地までの交通費：お客様負担<br>
+                            ・飲食代：お客様負担
+                        </td>
                     </tr>
                     <tr>
-                        <td>AIコンサルティングオンラインサロン</td>
-                        <td>月額9,800円（税込）<br>※毎月自動課金・いつでも解約可能</td>
+                        <td>AIオンラインサロン</td>
+                        <td>追加料金なし（月額料金に含む）</td>
                     </tr>
                     <tr>
-                        <td>送料</td>
-                        <td>該当なし（現地・オンラインサービス提供のため）</td>
-                    </tr>
-                    <tr>
-                        <td>その他費用</td>
-                        <td>レンタル器材費：1日5,500円（税込）<br>交通費：お客様負担</td>
+                        <td>物販</td>
+                        <td>
+                            ・送料：全国一律1,200円（税込）<br>
+                            ・代引手数料：330円（税込）<br>
+                            ・銀行振込手数料：お客様負担
+                        </td>
                     </tr>
                 </table>
             </div>
 
             <div class="tokusho-section">
                 <h2>支払方法・支払時期</h2>
+                <div class="highlight-box">
+                    <h4>クレジットカード決済（Stripe）</h4>
+                    <p><strong>対応ブランド：</strong>Visa / Mastercard / JCB / American Express / Diners Club / Discover</p>
+                    <ul>
+                        <li>ダイビングサービス：予約時または当日現地</li>
+                        <li>AIサロン：入会時および毎月自動課金</li>
+                        <li>物販：注文時</li>
+                    </ul>
+                </div>
+                
                 <table class="tokusho-table">
                     <tr>
-                        <td>ダイビング関連サービス</td>
-                        <td>・現金（当日現地支払い）<br>・銀行振込（事前振込）<br>・クレジットカード（PayPal経由）</td>
+                        <td>銀行振込</td>
+                        <td>
+                            ・ダイビングサービス：予約確定後3営業日以内<br>
+                            ・物販：注文確定後3営業日以内<br>
+                            ・振込先：お申込み後にご案内
+                        </td>
                     </tr>
                     <tr>
-                        <td>AIオンラインサロン</td>
-                        <td>・クレジットカード決済（自動課金）</td>
-                    </tr>
-                    <tr>
-                        <td>支払時期</td>
-                        <td>・ダイビング：現金は当日、振込は予約確定後3日以内<br>・AIサロン：入会時および毎月自動課金</td>
+                        <td>現金</td>
+                        <td>ダイビングサービス：当日現地にて</td>
                     </tr>
                 </table>
             </div>
 
             <div class="tokusho-section">
-                <h2>商品・サービス提供時期</h2>
+                <h2>商品の引渡時期／サービス提供時期</h2>
                 <table class="tokusho-table">
                     <tr>
-                        <td>ダイビング関連サービス</td>
+                        <td>ダイビングサービス</td>
                         <td>予約確定後、指定日時にサービス提供</td>
                     </tr>
                     <tr>
                         <td>AIオンラインサロン</td>
-                        <td>決済完了後、即座にDiscordサーバーへの招待メール送信<br>24時間以内にアクセス可能</td>
+                        <td>
+                            ・決済完了後24時間以内にDiscordサーバー招待メール送信<br>
+                            ・即座にサービス利用開始可能
+                        </td>
                     </tr>
                     <tr>
-                        <td>申込方法</td>
-                        <td>・ダイビング：電話、メール、LINE、お問い合わせフォーム<br>・AIサロン：専用申込フォームまたはお問い合わせ</td>
+                        <td>物販</td>
+                        <td>
+                            ・入金確認後3営業日以内に発送<br>
+                            ・配送業者：ヤマト運輸または佐川急便<br>
+                            ・お届け日時指定可能
+                        </td>
                     </tr>
                 </table>
             </div>
 
             <div class="tokusho-section">
-                <h2>返品・キャンセルについて</h2>
-                <table class="tokusho-table">
-                    <tr>
-                        <td>ダイビングキャンセル規定</td>
-                        <td>・前日キャンセル：料金の50%<br>・当日キャンセル：料金の100%<br>・悪天候による中止：キャンセル料なし</td>
-                    </tr>
-                    <tr>
-                        <td>AIサロン解約規定</td>
-                        <td>・いつでも解約可能（翌月から課金停止）<br>・解約は毎月25日までに連絡<br>・日割り返金なし</td>
-                    </tr>
-                    <tr>
-                        <td>返金方法</td>
-                        <td>銀行振込（振込手数料はお客様負担）<br>※AIサロンは月額制のため基本的に返金なし</td>
-                    </tr>
-                    <tr>
-                        <td>返金時期</td>
-                        <td>キャンセル確定後、7営業日以内</td>
-                    </tr>
-                </table>
+                <h2>返品・交換・キャンセル</h2>
                 
-                <div class="tokusho-note">
-                    <strong>重要事項：</strong><br>
-                    <strong>【ダイビング関連】</strong><br>
-                    ・体調不良や緊急事態によるキャンセルは個別に相談させていただきます<br>
-                    ・海況不良による中止の場合、代替日程をご提案いたします<br>
-                    ・安全管理上、当日の体調確認でご参加をお断りする場合があります<br>
-                    <strong>【AIオンラインサロン】</strong><br>
-                    ・Discord利用規約に反する行為があった場合、即座に退会処分となります<br>
-                    ・技術的な問題でアクセスできない場合は、サポートいたします
+                <div class="price-category">
+                    <h3>ダイビングサービス</h3>
+                    <div class="highlight-box">
+                        <h4>キャンセル料</h4>
+                        <ul>
+                            <li>前日17時まで：料金の50%</li>
+                            <li>当日または無連絡不参加：料金の100%</li>
+                            <li>悪天候による中止：キャンセル料なし（代替日提案または全額返金）</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="price-category">
+                    <h3>AIオンラインサロン</h3>
+                    <div class="highlight-box">
+                        <h4>解約方法</h4>
+                        <ul>
+                            <li>毎月25日までにinfo@miura-diving.comへ連絡</li>
+                            <li>当月末で課金停止、翌月から利用停止</li>
+                            <li>日割り返金なし</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="price-category">
+                    <h3>物販</h3>
+                    <table class="tokusho-table">
+                        <tr>
+                            <td>お客様都合（未使用品）</td>
+                            <td>
+                                ・商品到着後8日以内に事前連絡<br>
+                                ・未開封・未使用の商品のみ<br>
+                                ・返送料：お客様負担<br>
+                                ・返金時の振込手数料：お客様負担
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>不良品・欠陥品</td>
+                            <td>
+                                ・商品到着後8日以内に連絡<br>
+                                ・送料・手数料当方負担で交換または返金<br>
+                                ・交換不可の場合は全額返金
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>返品不可商品</td>
+                            <td>
+                                ・マスク・シュノーケル等直接口に触れる商品<br>
+                                ・オーダーメイド商品
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
             <div class="tokusho-section">
-                <h2>免責事項</h2>
+                <h2>販売数量・申込有効期限</h2>
                 <table class="tokusho-table">
                     <tr>
-                        <td>ダイビング安全管理</td>
-                        <td>PADI安全基準に準拠し、万全の安全管理体制でサービスを提供いたします</td>
+                        <td>販売数量</td>
+                        <td>
+                            ・ダイビングサービス：各コース定員制（最大4名）<br>
+                            ・AIサロン：制限なし<br>
+                            ・物販：在庫限り
+                        </td>
                     </tr>
                     <tr>
-                        <td>保険</td>
-                        <td>施設賠償責任保険、指導者賠償責任保険加入済み</td>
-                    </tr>
-                    <tr>
-                        <td>AIサロン免責</td>
-                        <td>提供する情報の正確性には努めますが、AI技術の特性上、完全性を保証するものではありません</td>
-                    </tr>
-                    <tr>
-                        <td>免責範囲</td>
-                        <td>お客様の故意・重過失による事故、AIサロン情報の利用結果については責任を負いかねます</td>
+                        <td>申込有効期限</td>
+                        <td>
+                            ・ダイビング予約：開催日前日17時まで<br>
+                            ・AIサロン：随時受付<br>
+                            ・物販：在庫がある限り受付
+                        </td>
                     </tr>
                 </table>
             </div>
 
             <div class="tokusho-section">
-                <h2>個人情報の取扱い</h2>
+                <h2>サービス動作環境</h2>
+                <div class="highlight-box">
+                    <h4>AIコンサルティングオンラインサロン</h4>
+                    <p><strong>必要環境：</strong></p>
+                    <ul>
+                        <li>インターネット接続環境</li>
+                        <li>Discord対応デバイス（PC・スマートフォン・タブレット）</li>
+                        <li>メールアドレス</li>
+                    </ul>
+                    
+                    <p><strong>対応OS：</strong></p>
+                    <ul>
+                        <li>Windows 10以降</li>
+                        <li>macOS 10.13以降</li>
+                        <li>iOS 12以降</li>
+                        <li>Android 6.0以降</li>
+                    </ul>
+                    
+                    <p><strong>推奨ブラウザ：</strong></p>
+                    <ul>
+                        <li>Chrome（最新版）</li>
+                        <li>Safari（最新版）</li>
+                        <li>Edge（最新版）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tokusho-section">
+                <h2>運営責任者</h2>
                 <table class="tokusho-table">
                     <tr>
-                        <td>個人情報保護</td>
-                        <td>お客様の個人情報は適切に管理し、サービス提供以外の目的では使用いたしません</td>
+                        <td>責任者</td>
+                        <td>吉田 哲司</td>
                     </tr>
                     <tr>
-                        <td>詳細</td>
-                        <td><a href="/privacy/" style="color: #00bcd4; text-decoration: none;">プライバシーポリシー</a>をご確認ください</td>
+                        <td>資格</td>
+                        <td>PADIコースディレクター</td>
+                    </tr>
+                    <tr>
+                        <td>事業責任者</td>
+                        <td>吉田 哲司</td>
                     </tr>
                 </table>
             </div>
 
+            <div class="tokusho-section">
+                <h2>連絡先</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h4>基本情報</h4>
+                        <p>
+                            <strong>住所：</strong>〒238-0224 神奈川県三浦市三崎町諸磯1621<br>
+                            <strong>電話：</strong>046-880-0835<br>
+                            <strong>メール：</strong>info@miura-diving.com<br>
+                            <strong>営業時間：</strong>9:00〜16:00<br>
+                            <strong>定休日：</strong>不定休
+                        </p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h4>お問い合わせ受付</h4>
+                        <p>
+                            <strong>電話受付：</strong>営業時間内<br>
+                            <strong>メール受付：</strong>24時間（返信は営業時間内）<br>
+                            <strong>緊急連絡：</strong>営業時間外は翌営業日対応
+                        </p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h4>アクセス</h4>
+                        <p>
+                            <strong>駐車場：</strong>有料駐車場完備<br>
+                            <strong>電車：</strong>京急三崎口駅→屋敷倉行バス「屋敷倉」下車徒歩1分
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tokusho-note">
+                <strong>免責事項：</strong><br>
+                ・海況・天候により安全上の理由でサービスを中止する場合があります<br>
+                ・AIサロンで提供する情報は参考情報であり、利用結果について保証いたしません<br>
+                ・お客様の故意・過失による損害については責任を負いかねます
+            </div>
+
+            <div class="tokusho-note">
+                <strong>個人情報について：</strong><br>
+                お客様の個人情報は適切に管理し、サービス提供以外の目的では使用いたしません。詳細は<a href="/privacy/" style="color: #00bcd4; text-decoration: none;">プライバシーポリシー</a>をご確認ください。
+            </div>
+
             <div class="back-link">
-                <a href="/">ホームページに戻る</a>
+                <a href="/">ホーム</a>
+                <a href="/privacy/">プライバシーポリシー</a>
+                <a href="#" onclick="window.scrollTo(0,0); return false;">トップへ戻る</a>
+            </div>
+
+            <div class="footer-note">
+                最終更新日：2025年1月25日
             </div>
         </div>
     </main>
