@@ -24,68 +24,103 @@
     <link rel="stylesheet" href="../assets/css/home-test.css?v=underwater2025">
     
     <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: #333;
+        }
+        
         .tokusho-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 3rem 2rem;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
             margin-top: 2rem;
             margin-bottom: 2rem;
             line-height: 1.8;
         }
         
         .tokusho-title {
-            font-size: 2.2rem;
-            color: #006064;
+            font-size: 2.5rem;
+            color: #2c3e50;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             font-weight: 700;
-            border-bottom: 3px solid #00bcd4;
-            padding-bottom: 1rem;
+            position: relative;
+        }
+        
+        .tokusho-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #00bcd4 0%, #26c6da 100%);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .tokusho-container > p {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .tokusho-section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
         
         .tokusho-section h2 {
-            font-size: 1.4rem;
-            color: #006064;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            padding: 0.8rem 1rem;
-            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
-            border-left: 5px solid #00bcd4;
-            border-radius: 5px;
+            font-size: 1.6rem;
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, #f8fffe 0%, #e0f7fa 100%);
+            border-left: 6px solid #00bcd4;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 188, 212, 0.1);
         }
         
         .tokusho-table {
             width: 100%;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
+            border: 2px solid #e8f5e5;
+            border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
         
         .tokusho-table tr:nth-child(even) {
-            background-color: #f8f9fa;
+            background-color: #fafbfc;
+        }
+        
+        .tokusho-table tr:nth-child(odd) {
+            background-color: white;
         }
         
         .tokusho-table td {
-            padding: 1rem;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
             vertical-align: top;
+            color: #444;
+            line-height: 1.7;
         }
         
         .tokusho-table td:first-child {
-            background-color: #e0f7fa;
-            font-weight: 600;
-            color: #006064;
-            width: 30%;
-            border-right: 1px solid #e0e0e0;
+            background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+            font-weight: 700;
+            color: #2e7d32;
+            width: 28%;
+            border-right: 2px solid #e8f5e5;
+            font-size: 0.95rem;
         }
         
         .tokusho-table tr:last-child td {
@@ -93,30 +128,39 @@
         }
         
         .price-list {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1rem 0;
+            background: linear-gradient(135deg, #f8fffe 0%, #f1f8fd 100%);
+            border: 2px solid #e0f2f1;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0, 150, 136, 0.05);
         }
         
         .price-category {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .price-category:last-child {
+            margin-bottom: 0;
         }
         
         .price-category h3 {
-            color: #006064;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            border-bottom: 2px solid #00bcd4;
-            padding-bottom: 0.3rem;
+            color: #2e7d32;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #4caf50;
+            padding-bottom: 0.5rem;
+            display: inline-block;
         }
         
         .price-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #e0e0e0;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e8f5e8;
+            font-size: 1rem;
         }
         
         .price-item:last-child {
@@ -125,124 +169,232 @@
         
         .price-name {
             flex: 1;
+            color: #444;
+            font-weight: 500;
         }
         
         .price-value {
-            font-weight: 600;
+            font-weight: 700;
             color: #d32f2f;
+            font-size: 1.1rem;
+            text-align: right;
+            min-width: 200px;
         }
         
         .tokusho-note {
-            background: #fff3e0;
-            border: 1px solid #ffb74d;
-            border-radius: 8px;
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            color: #e65100;
+            background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%);
+            border: 2px solid #ffcc02;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            color: #f57c00;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.1);
         }
         
         .tokusho-note strong {
-            color: #bf360c;
+            color: #e65100;
+            font-weight: 700;
         }
         
         .highlight-box {
             background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
-            border: 1px solid #4caf50;
-            border-radius: 8px;
-            padding: 1.2rem;
-            margin: 1rem 0;
+            border: 2px solid #4caf50;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
         }
         
         .highlight-box h4 {
             color: #2e7d32;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .highlight-box p {
+            color: #388e3c;
+            margin-bottom: 1rem;
             font-weight: 600;
+        }
+        
+        .highlight-box ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .highlight-box li {
+            color: #4caf50;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
         }
         
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 1rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
         
         .contact-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.2rem;
-            border-left: 4px solid #00bcd4;
+            background: linear-gradient(135deg, #fafbfc 0%, #f5f7fa 100%);
+            border: 2px solid #e3f2fd;
+            border-radius: 15px;
+            padding: 1.8rem;
+            border-left: 6px solid #00bcd4;
+            box-shadow: 0 4px 20px rgba(0, 188, 212, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 188, 212, 0.15);
         }
         
         .contact-card h4 {
             color: #006064;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .contact-card p {
+            color: #455a64;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        .contact-card strong {
+            color: #37474f;
             font-weight: 600;
         }
         
         .back-link {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 2px solid #e0e0e0;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 3px solid #e8f5e8;
         }
         
         .back-link a {
             display: inline-block;
             background: linear-gradient(135deg, #00bcd4 0%, #26c6da 100%);
             color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
-            margin: 0 0.5rem;
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.25);
+            margin: 0 0.8rem 0.8rem 0;
         }
         
         .back-link a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.35);
+            background: linear-gradient(135deg, #26c6da 0%, #4dd0e1 100%);
         }
         
         .footer-note {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e0e0e0;
-            color: #666;
-            font-size: 0.9rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f0f0f0;
+            color: #777;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        /* リスト要素の改善 */
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            color: #444;
+        }
+        
+        /* 強調テキストの改善 */
+        strong {
+            font-weight: 700;
+            color: #2c3e50;
         }
         
         @media (max-width: 768px) {
             .tokusho-container {
                 margin: 1rem;
-                padding: 1.5rem;
+                padding: 2rem 1.5rem;
             }
             
             .tokusho-title {
-                font-size: 1.6rem;
+                font-size: 2rem;
             }
             
             .tokusho-section h2 {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+                padding: 0.8rem 1rem;
             }
             
             .tokusho-table td {
-                padding: 0.8rem;
-                font-size: 0.9rem;
+                padding: 1rem;
+                font-size: 0.95rem;
             }
             
             .tokusho-table td:first-child {
-                width: 35%;
+                width: 40%;
+                font-size: 0.9rem;
             }
             
             .price-item {
                 flex-direction: column;
-                gap: 0.3rem;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .price-value {
+                min-width: auto;
+                text-align: left;
+                font-size: 1rem;
             }
             
             .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .back-link a {
+                display: block;
+                margin-bottom: 1rem;
+                padding: 0.8rem 2rem;
+            }
+            
+            .highlight-box h4 {
+                font-size: 1.1rem;
+            }
+            
+            .price-category h3 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tokusho-container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .tokusho-title {
+                font-size: 1.8rem;
+            }
+            
+            .tokusho-section h2 {
+                font-size: 1.3rem;
+            }
+            
+            .tokusho-table td:first-child {
+                width: 45%;
             }
         }
     </style>
