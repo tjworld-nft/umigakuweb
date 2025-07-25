@@ -323,6 +323,74 @@
             color: #2c3e50;
         }
         
+        /* ヘッダーの改善 */
+        .page-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 188, 212, 0.1) 50%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .page-nav {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .nav-links li {
+            margin: 0;
+        }
+        
+        .nav-links a {
+            display: block;
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-links a:hover {
+            background: linear-gradient(135deg, #00bcd4 0%, #26c6da 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.3);
+        }
+        
+        .nav-links a:active,
+        .nav-links a.active {
+            background: linear-gradient(135deg, #00acc1 0%, #00bcd4 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
+        }
+        
         @media (max-width: 768px) {
             .tokusho-container {
                 margin: 1rem;
@@ -378,6 +446,18 @@
             .price-category h3 {
                 font-size: 1.2rem;
             }
+            
+            /* モバイル用ヘッダー改善 */
+            .nav-links {
+                padding: 0.8rem 0;
+                gap: 0.3rem;
+            }
+            
+            .nav-links a {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.85rem;
+                border-radius: 20px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -395,6 +475,21 @@
             
             .tokusho-table td:first-child {
                 width: 45%;
+            }
+            
+            /* スマホ用ヘッダー改善 */
+            .nav-links {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .nav-links a {
+                text-align: center;
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+                border-radius: 15px;
             }
         }
     </style>
