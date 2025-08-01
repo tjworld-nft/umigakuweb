@@ -17,6 +17,14 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://miura-diving.com/tokusho/">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="msapplication-TileImage" content="/apple-touch-icon.png">
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    
     <!-- CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -391,72 +399,179 @@
             box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
         }
         
-        @media (max-width: 768px) {
+        /* タブレット対応 (768px-1024px) */
+        @media (max-width: 1024px) and (min-width: 769px) {
             .tokusho-container {
-                margin: 1rem;
-                padding: 2rem 1.5rem;
+                max-width: 95%;
+                padding: 2.5rem 1.8rem;
             }
             
             .tokusho-title {
-                font-size: 2rem;
+                font-size: 2.3rem;
             }
             
             .tokusho-section h2 {
-                font-size: 1.4rem;
-                padding: 0.8rem 1rem;
+                font-size: 1.5rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .nav-links a {
+                padding: 0.7rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* タブレット（縦向き）対応 (768px) */
+        @media (max-width: 768px) {
+            .tokusho-container {
+                margin: 0.8rem;
+                padding: 2rem 1.2rem;
+            }
+            
+            .tokusho-title {
+                font-size: 1.9rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .tokusho-title::after {
+                width: 80px;
+                height: 3px;
+            }
+            
+            .tokusho-container > p {
+                font-size: 1rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .tokusho-section {
+                margin-bottom: 3rem;
+            }
+            
+            .tokusho-section h2 {
+                font-size: 1.3rem;
+                padding: 0.7rem 1rem;
+                margin-bottom: 1.2rem;
+            }
+            
+            .tokusho-table {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
             }
             
             .tokusho-table td {
-                padding: 1rem;
-                font-size: 0.95rem;
+                padding: 0.8rem;
+                line-height: 1.6;
             }
             
             .tokusho-table td:first-child {
-                width: 40%;
-                font-size: 0.9rem;
+                width: 38%;
+                font-size: 0.85rem;
+                padding: 0.8rem 0.6rem;
+            }
+            
+            .price-list {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+            
+            .price-category {
+                margin-bottom: 1.5rem;
+            }
+            
+            .price-category h3 {
+                font-size: 1.15rem;
+                margin-bottom: 0.8rem;
             }
             
             .price-item {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.5rem;
+                gap: 0.4rem;
+                padding: 0.6rem 0;
             }
             
             .price-value {
                 min-width: auto;
                 text-align: left;
                 font-size: 1rem;
+                font-weight: 700;
             }
             
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .tokusho-note {
+                padding: 1.2rem;
+                margin: 1.5rem 0;
+                font-size: 0.95rem;
             }
             
-            .back-link a {
-                display: block;
-                margin-bottom: 1rem;
-                padding: 0.8rem 2rem;
+            .highlight-box {
+                padding: 1.2rem;
+                margin: 1.2rem 0;
             }
             
             .highlight-box h4 {
                 font-size: 1.1rem;
+                margin-bottom: 0.8rem;
             }
             
-            .price-category h3 {
-                font-size: 1.2rem;
+            .highlight-box p {
+                font-size: 0.95rem;
             }
             
-            /* モバイル用ヘッダー改善 */
+            .highlight-box li {
+                font-size: 0.9rem;
+                margin-bottom: 0.4rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+                margin: 1.5rem 0;
+            }
+            
+            .contact-card {
+                padding: 1.4rem;
+            }
+            
+            .contact-card h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .contact-card p {
+                font-size: 0.9rem;
+                line-height: 1.7;
+            }
+            
+            .back-link {
+                margin-top: 3rem;
+                padding-top: 2rem;
+            }
+            
+            .back-link a {
+                display: block;
+                margin-bottom: 0.8rem;
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .footer-note {
+                margin-top: 2.5rem;
+                font-size: 0.9rem;
+            }
+            
+            /* タブレット用ヘッダー */
             .nav-links {
-                padding: 0.8rem 0;
-                gap: 0.3rem;
+                padding: 0.8rem 0.5rem;
+                gap: 0.4rem;
             }
             
             .nav-links a {
-                padding: 0.6rem 0.8rem;
+                padding: 0.6rem 0.9rem;
                 font-size: 0.85rem;
-                border-radius: 20px;
+                border-radius: 18px;
             }
         }
         
