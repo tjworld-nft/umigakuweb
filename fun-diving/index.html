@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ファンダイビング・リフレッシュダイビング｜三浦 海の学校</title>
+    <meta name="description" content="三浦の海を楽しむファンダイビング。ビーチ・ボート・リフレッシュの3コース。ライセンス保持者向け。四季折々の三浦半島の海を満喫。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://miura-diving.com/fun-diving/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="三浦 海の学校">
+    <meta property="og:title" content="ファンダイビング・リフレッシュダイビング｜三浦 海の学校">
+    <meta property="og:description" content="三浦の海を楽しむファンダイビングコース。ビーチ、ボート、リフレッシュの3コース。">
+    <meta property="og:url" content="https://miura-diving.com/fun-diving/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "三浦 海の学校 — ファンダイビング",
+    "url": "https://miura-diving.com/fun-diving/",
+    "description": "三浦の海を楽しむファンダイビング。ビーチ・ボート・リフレッシュの3コース。",
+    "address": {"@type":"PostalAddress","addressLocality":"三浦市","addressRegion":"神奈川県","postalCode":"238-0224","addressCountry":"JP"},
+    "telephone": "046-880-0835"
+  }
+  </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Montserrat:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .subpage-hero {
+            min-height: 50vh;
+            min-height: 50dvh;
+        }
+
+        .subpage-hero h1 {
+            font-size: clamp(1.5rem, 5vw, 2.6rem);
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: .5rem;
+            font-size: .8rem;
+            color: var(--text-sub);
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: var(--teal-dark);
+        }
+
+        .breadcrumb span {
+            color: var(--text-light);
+        }
+
+        .plan-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media(min-width:768px) {
+            .plan-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .plan-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all var(--ease);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .plan-card-header {
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .plan-card-header.beach {
+            background: linear-gradient(135deg, var(--teal), var(--sky));
+        }
+
+        .plan-card-header.boat {
+            background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+        }
+
+        .plan-card-header.refresh {
+            background: linear-gradient(135deg, var(--coral), #FF8E7A);
+        }
+
+        .plan-card-header h3 {
+            font-size: 1.15rem;
+            margin-bottom: .25rem;
+        }
+
+        .plan-card-header .price {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .plan-card-header .price small {
+            font-size: .8rem;
+            font-weight: 400;
+            opacity: .8;
+        }
+
+        .plan-card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card-body p {
+            font-size: .9rem;
+            color: var(--text-sub);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .plan-detail {
+            font-size: .85rem;
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+        }
+
+        .plan-detail dt {
+            font-weight: 600;
+            color: var(--text-dark);
+            display: inline;
+        }
+
+        .plan-detail dd {
+            display: inline;
+            margin: 0 0 0 .25rem;
+        }
+
+        .plan-detail div {
+            margin-bottom: .4rem;
+        }
+
+        .plan-card-body .btn {
+            width: 100%;
+            text-align: center;
+            font-size: .9rem;
+            padding: .7rem 1rem;
+            margin-top: auto;
+        }
+
+        /* Rental table */
+        .rental-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .9rem;
+        }
+
+        .rental-table th,
+        .rental-table td {
+            padding: .75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .rental-table th {
+            background: var(--bg-soft);
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: .85rem;
+        }
+
+        .rental-table td {
+            color: var(--text-sub);
+        }
+
+        .rental-table tr:last-child td {
+            border-bottom: none;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* Info cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media(min-width:768px) {
+            .info-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+
+        .info-card .icon {
+            font-size: 1.8rem;
+            margin-bottom: .5rem;
+        }
+
+        .info-card h4 {
+            font-size: .85rem;
+            font-weight: 700;
+            margin-bottom: .25rem;
+        }
+
+        .info-card p {
+            font-size: .75rem;
+            color: var(--text-sub);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="../index.html" class="header-logo"><img src="../image/umigaku-logo.webp" alt="三浦 海の学校" width="120"
+                    height="40"></a>
+            <nav class="desktop-nav" role="navigation">
+                <a href="../license/">ダイビングライセンス</a>
+                <a href="../fun-diving/" style="color:var(--coral);">ファンダイビング</a>
+                <a href="../marine-activity/">マリンアクティビティ</a>
+                <a href="https://miura-diving.com/blog/">ブログ</a>
+                <a href="../contact/" class="btn btn--coral" style="padding:.6rem 1.4rem; font-size:.85rem;">お問い合わせ</a>
+            </nav>
+            <button class="hamburger" aria-label="メニューを開く"
+                aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+    <div class="mobile-nav" role="dialog" aria-modal="true">
+        <div class="mobile-nav-panel">
+            <a href="../index.html">ホーム</a><a href="../license/">ダイビングライセンス</a><a href="../fun-diving/">ファンダイビング</a><a
+                href="../marine-activity/">マリンアクティビティ</a><a href="https://miura-diving.com/blog/">ブログ</a>
+            <div class="mobile-nav-cta"><a href="../contact/" class="btn btn--coral">お問い合わせ</a></div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero subpage-hero">
+        <div class="hero-bubble" aria-hidden="true"></div>
+        <div class="hero-bubble" aria-hidden="true"></div>
+        <div class="hero-bg"><img src="../image/fun-diving-hero.png" alt="三浦でのファンダイビング" width="1920" height="1080"
+                loading="eager"></div>
+        <div class="hero-content">
+            <h1>ファンダイビング<br>リフレッシュダイビング</h1>
+            <p class="hero-sub">三浦の海を楽しむダイビング体験。<br>初心者からブランクダイバーまで安心サポート。</p>
+            <a href="#plans" class="btn btn--coral">コースを見る ↓</a>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <nav class="breadcrumb"><a href="../index.html">ホーム</a><span>›</span><span>ファンダイビング</span></nav>
+        </div>
+
+        <!-- PLANS -->
+        <section id="plans" class="section">
+            <div class="container text-center">
+                <span class="section-label reveal">Plans</span>
+                <h2 class="section-title reveal">コースと料金</h2>
+                <p class="section-lead reveal">目的に合わせて3つのコースからお選びください。</p>
+
+                <div class="plan-grid">
+                    <!-- Beach -->
+                    <div class="plan-card reveal" data-delay="0">
+                        <div class="plan-card-header beach">
+                            <h3>🏖️ ビーチダイビング</h3>
+                            <div class="price">¥13,200<small>（税込）</small></div>
+                        </div>
+                        <div class="plan-card-body">
+                            <p>穏やかな三浦のビーチでの2ダイブ。エントリーしやすく初ファンダイビングにもおすすめ。</p>
+                            <div class="plan-detail">
+                                <div>
+                                    <dt>ダイブ数:</dt>
+                                    <dd>2ビーチダイブ</dd>
+                                </div>
+                                <div>
+                                    <dt>含まれるもの:</dt>
+                                    <dd>ガイド・タンク・ウエイト・施設使用料・保険</dd>
+                                </div>
+                                <div>
+                                    <dt>別途必要:</dt>
+                                    <dd>レンタル器材代</dd>
+                                </div>
+                            </div>
+                            <a href="#fd-cta" class="btn btn--primary">予約する</a>
+                        </div>
+                    </div>
+
+                    <!-- Boat -->
+                    <div class="plan-card reveal" data-delay="1">
+                        <div class="plan-card-header boat">
+                            <h3>🚤 ボートダイビング</h3>
+                            <div class="price">¥17,600<small>（税込）</small></div>
+                        </div>
+                        <div class="plan-card-body">
+                            <p>ボートでしか行けないダイナミックなポイントへ。2ボートダイブで三浦の海を満喫。</p>
+                            <div class="plan-detail">
+                                <div>
+                                    <dt>ダイブ数:</dt>
+                                    <dd>2ボートダイブ</dd>
+                                </div>
+                                <div>
+                                    <dt>含まれるもの:</dt>
+                                    <dd>ガイド・タンク・ウエイト・乗船料・施設使用料・保険</dd>
+                                </div>
+                                <div>
+                                    <dt>別途必要:</dt>
+                                    <dd>レンタル器材代</dd>
+                                </div>
+                            </div>
+                            <a href="#fd-cta" class="btn btn--primary">予約する</a>
+                        </div>
+                    </div>
+
+                    <!-- Refresh -->
+                    <div class="plan-card reveal" data-delay="2">
+                        <div class="plan-card-header refresh">
+                            <h3>🔄 リフレッシュダイビング</h3>
+                            <div class="price">¥16,500<small>（税込）</small></div>
+                        </div>
+                        <div class="plan-card-body">
+                            <p>久しぶりの方にぴったり！器材の使い方や基本スキルを丁寧に復習してから1ダイブ。</p>
+                            <div class="plan-detail">
+                                <div>
+                                    <dt>ダイブ数:</dt>
+                                    <dd>プール復習 + 1ビーチダイブ</dd>
+                                </div>
+                                <div>
+                                    <dt>含まれるもの:</dt>
+                                    <dd>ガイド・タンク・ウエイト・施設使用料・保険</dd>
+                                </div>
+                                <div>
+                                    <dt>おすすめ:</dt>
+                                    <dd>半年以上ブランクのある方</dd>
+                                </div>
+                            </div>
+                            <a href="#fd-cta" class="btn btn--primary">予約する</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RENTAL -->
+        <section class="section section--alt">
+            <div class="container text-center">
+                <span class="section-label reveal">Rental</span>
+                <h2 class="section-title reveal">レンタル器材のご案内</h2>
+                <p class="section-lead reveal">手ぶらでOK！フルセットレンタルもご用意しています。</p>
+                <div
+                    style="max-width:600px; margin:0 auto; background:var(--white); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--border);">
+                    <table class="rental-table">
+                        <thead>
+                            <tr>
+                                <th>器材</th>
+                                <th>料金（税込）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>レギュレーター</td>
+                                <td>¥1,100</td>
+                            </tr>
+                            <tr>
+                                <td>BCD</td>
+                                <td>¥1,100</td>
+                            </tr>
+                            <tr>
+                                <td>ウエットスーツ / ドライスーツ</td>
+                                <td>¥1,100</td>
+                            </tr>
+                            <tr>
+                                <td>マスク＋フィン＋ブーツ</td>
+                                <td>¥1,100</td>
+                            </tr>
+                            <tr>
+                                <td>ダイブコンピューター</td>
+                                <td>¥1,100</td>
+                            </tr>
+                            <tr>
+                                <td>フルセット</td>
+                                <td>¥5,500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT TO BRING -->
+        <section class="section">
+            <div class="container text-center">
+                <span class="section-label reveal">Info</span>
+                <h2 class="section-title reveal">当日の持ち物・流れ</h2>
+                <div class="info-grid">
+                    <div class="info-card reveal" data-delay="0">
+                        <div class="icon">🩱</div>
+                        <h4>水着</h4>
+                        <p>ウエットスーツの下に着用</p>
+                    </div>
+                    <div class="info-card reveal" data-delay="1">
+                        <div class="icon">🧴</div>
+                        <h4>タオル</h4>
+                        <p>ダイビング後に使用</p>
+                    </div>
+                    <div class="info-card reveal" data-delay="2">
+                        <div class="icon">📋</div>
+                        <h4>Cカード</h4>
+                        <p>ダイビングライセンス</p>
+                    </div>
+                    <div class="info-card reveal" data-delay="3">
+                        <div class="icon">📓</div>
+                        <h4>ログブック</h4>
+                        <p>ダイブ記録に</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section section--alt">
+            <div class="container text-center">
+                <span class="section-label reveal">FAQ</span>
+                <h2 class="section-title reveal">よくある質問</h2>
+                <div class="faq-list" style="text-align:left;">
+                    <details class="faq-item reveal">
+                        <summary>ブランクがあっても大丈夫ですか？</summary>
+                        <div class="faq-answer">もちろんです！リフレッシュコースでプールからしっかり復習できるので、長いブランクがある方でも安心してお楽しみいただけます。</div>
+                    </details>
+                    <details class="faq-item reveal">
+                        <summary>1人でも参加できますか？</summary>
+                        <div class="faq-answer">はい、お一人でのご参加大歓迎です。少人数制なので他の参加者ともすぐに仲良くなれます。</div>
+                    </details>
+                    <details class="faq-item reveal">
+                        <summary>自分の器材を持ち込んでもいいですか？</summary>
+                        <div class="faq-answer">もちろんOKです！自器材の方はレンタル代がかかりません。タンク・ウエイトはこちらでご用意します。</div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="fd-cta" class="cta-section">
+            <div class="container text-center">
+                <span class="section-label reveal" style="color:rgba(255,255,255,.7);">Contact</span>
+                <h2 class="section-title reveal">ファンダイビングのご予約</h2>
+                <p class="section-lead reveal">お気軽にご連絡ください。当日の海況も事前にお知らせします。</p>
+                <div class="cta-methods reveal" data-delay="1">
+                    <a href="tel:046-880-0835" class="cta-card">
+                        <div class="cta-card-icon">📞</div>
+                        <div class="cta-card-title">電話で予約</div>
+                        <div class="cta-card-detail">046-880-0835</div>
+                    </a>
+                    <a href="https://lin.ee/kK3d5p2" class="cta-card" target="_blank" rel="noopener noreferrer">
+                        <div class="cta-card-icon">💬</div>
+                        <div class="cta-card-title">LINEで予約</div>
+                        <div class="cta-card-detail">お気軽にメッセージ</div>
+                    </a>
+                    <a href="mailto:info@miura-diving.com" class="cta-card">
+                        <div class="cta-card-icon">✉️</div>
+                        <div class="cta-card-title">メールで問合せ</div>
+                        <div class="cta-card-detail">info@miura-diving.com</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand"><strong style="color:#fff; font-size:1.1rem;">三浦 海の学校</strong>
+                    <p>〒238-0224 神奈川県三浦市三崎町諸磯1621<br>TEL: 046-880-0835<br>営業時間: 9:00〜16:00（不定休）</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>メニュー</h4><a href="../index.html">ホーム</a><a href="../license/">ダイビングライセンス</a><a
+                        href="../fun-diving/">ファンダイビング</a><a href="../marine-activity/">マリンアクティビティ</a>
+                </div>
+                <div class="footer-social">
+                    <h4>SNS</h4>
+                    <div class="footer-social-icons"><a href="https://www.instagram.com/miura_diving/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram">📷</a><a
+                            href="https://www.facebook.com/MiuraDiving" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook">📘</a><a href="https://x.com/miura_diving" target="_blank"
+                            rel="noopener noreferrer" aria-label="X (Twitter)">𝕏</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 三浦 海の学校 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js" defer></script>
+</body>
+
+</html>

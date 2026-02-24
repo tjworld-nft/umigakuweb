@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>PADIダイビングライセンス講習｜三浦 海の学校</title>
+    <meta name="description" content="三浦 海の学校のPADI全コース。体験ダイビングからオープンウォーター、アドバンス、レスキュー、プロコースまで。都心から60分、専用プール完備で初心者も安心。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://miura-diving.com/license/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="三浦 海の学校">
+    <meta property="og:title" content="PADIダイビングライセンス講習｜三浦 海の学校">
+    <meta property="og:description" content="体験ダイビングからプロコースまで全コース開講。専用プール完備で初心者も安心。">
+    <meta property="og:url" content="https://miura-diving.com/license/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "PADIダイビングライセンス講習",
+    "description": "初心者からプロまで対応するPADI公認ダイビングライセンス講習。専用プール完備。",
+    "provider": {
+      "@type": "Organization",
+      "name": "三浦 海の学校",
+      "url": "https://miura-diving.com"
+    },
+    "hasCourseInstance": [
+      {"@type":"CourseInstance","name":"体験ダイビング","courseMode":"onsite"},
+      {"@type":"CourseInstance","name":"PADIオープンウォーターダイバー","courseMode":"onsite"},
+      {"@type":"CourseInstance","name":"PADIアドバンスドオープンウォーター","courseMode":"onsite"},
+      {"@type":"CourseInstance","name":"EFR（エマージェンシーファーストレスポンス）","courseMode":"onsite"},
+      {"@type":"CourseInstance","name":"PADIレスキューダイバー","courseMode":"onsite"}
+    ]
+  }
+  </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Montserrat:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ── Subpage-specific styles ── */
+        .subpage-hero {
+            min-height: 50vh;
+            min-height: 50dvh;
+        }
+
+        .subpage-hero h1 {
+            font-size: clamp(1.5rem, 5vw, 2.6rem);
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: .5rem;
+            font-size: .8rem;
+            color: var(--text-sub);
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: var(--teal-dark);
+        }
+
+        .breadcrumb span {
+            color: var(--text-light);
+        }
+
+        /* Course cards */
+        .course-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media(min-width:640px) {
+            .course-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(min-width:960px) {
+            .course-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .course-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all var(--ease);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .course-card-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--teal), var(--sky));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .course-card-header h3 {
+            font-size: 1.1rem;
+            margin-bottom: .25rem;
+        }
+
+        .course-card-header .price {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .course-card-header .price small {
+            font-size: .8rem;
+            font-weight: 400;
+            opacity: .8;
+        }
+
+        .course-card-header .duration {
+            font-size: .85rem;
+            opacity: .85;
+            margin-top: .25rem;
+        }
+
+        .course-card-body {
+            padding: 1.25rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card-body p {
+            font-size: .9rem;
+            color: var(--text-sub);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .course-card-body .includes {
+            font-size: .8rem;
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+        }
+
+        .course-card-body .includes strong {
+            color: var(--text-dark);
+        }
+
+        .course-card-body .btn {
+            width: 100%;
+            text-align: center;
+            font-size: .9rem;
+            padding: .7rem 1rem;
+        }
+
+        /* Accent colors for different course levels */
+        .course-card--coral .course-card-header {
+            background: linear-gradient(135deg, var(--coral), #FF8E7A);
+        }
+
+        .course-card--yellow .course-card-header {
+            background: linear-gradient(135deg, #F0C040, #FFD700);
+            color: var(--text-dark);
+        }
+
+        .course-card--lavender .course-card-header {
+            background: linear-gradient(135deg, var(--lavender), #9B8ED4);
+        }
+
+        /* Specialty grid */
+        .specialty-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media(min-width:768px) {
+            .specialty-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media(min-width:1024px) {
+            .specialty-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        .specialty-card {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all var(--ease);
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .specialty-card .icon {
+            font-size: 1.8rem;
+            margin-bottom: .5rem;
+        }
+
+        .specialty-card h4 {
+            font-size: .85rem;
+            font-weight: 700;
+            margin-bottom: .25rem;
+        }
+
+        .specialty-card .sp-price {
+            font-size: .8rem;
+            color: var(--coral);
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="../index.html" class="header-logo" aria-label="三浦 海の学校 ホーム">
+                <img src="../image/umigaku-logo.webp" alt="三浦 海の学校" width="120" height="40">
+            </a>
+            <nav class="desktop-nav" role="navigation" aria-label="メインナビゲーション">
+                <a href="../license/" style="color:var(--coral);">ダイビングライセンス</a>
+                <a href="../fun-diving/">ファンダイビング</a>
+                <a href="../marine-activity/">マリンアクティビティ</a>
+                <a href="https://miura-diving.com/blog/">ブログ</a>
+                <a href="../contact/" class="btn btn--coral" style="padding:.6rem 1.4rem; font-size:.85rem;">お問い合わせ</a>
+            </nav>
+            <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav" role="dialog" aria-modal="true" aria-label="ナビゲーションメニュー">
+        <div class="mobile-nav-panel">
+            <a href="../index.html">ホーム</a>
+            <a href="../license/">ダイビングライセンス</a>
+            <a href="../fun-diving/">ファンダイビング</a>
+            <a href="../marine-activity/">マリンアクティビティ</a>
+            <a href="https://miura-diving.com/blog/">ブログ</a>
+            <div class="mobile-nav-cta"><a href="../contact/" class="btn btn--coral">お問い合わせ</a></div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero subpage-hero" aria-labelledby="hero-title">
+        <div class="hero-bubble" aria-hidden="true"></div>
+        <div class="hero-bubble" aria-hidden="true"></div>
+        <div class="hero-bg">
+            <img src="../image/diving-license-hero.png" alt="ダイビングライセンス講習の様子" width="1920" height="1080"
+                loading="eager">
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">🏅 PADI公認 5スター IDCセンター</div>
+            <h1 id="hero-title">PADIダイビング<br>ライセンス講習</h1>
+            <p class="hero-sub">体験ダイビングからプロコースまで。<br>あなたの目標に合わせたステップアップを。</p>
+            <a href="#courses" class="btn btn--coral">コース一覧を見る ↓</a>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <nav class="breadcrumb" aria-label="パンくずリスト">
+                <a href="../index.html">ホーム</a><span>›</span><span>ダイビングライセンス</span>
+            </nav>
+        </div>
+
+        <!-- MAIN COURSES -->
+        <section id="courses" class="section" aria-labelledby="courses-title">
+            <div class="container text-center">
+                <span class="section-label reveal">Courses</span>
+                <h2 id="courses-title" class="section-title reveal">開講コース一覧</h2>
+                <p class="section-lead reveal">初心者から上級者まで、あなたにぴったりのコースが見つかります。</p>
+
+                <div class="course-grid">
+                    <!-- 体験ダイビング -->
+                    <div class="course-card course-card--coral reveal" data-delay="0">
+                        <div class="course-card-header">
+                            <h3>🤿 体験ダイビング</h3>
+                            <div class="price">¥16,500<small>（税込）</small></div>
+                            <div class="duration">約3時間 / 1ダイブ</div>
+                        </div>
+                        <div class="course-card-body">
+                            <p>インストラクターが常に横について安全に海中世界を案内。ライセンス不要で10歳から参加OK。</p>
+                            <div class="includes"><strong>含:</strong> 器材レンタル一式・保険料・ガイド料</div>
+                            <a href="#license-cta" class="btn btn--primary">このコースに申し込む</a>
+                        </div>
+                    </div>
+
+                    <!-- OWD -->
+                    <div class="course-card reveal" data-delay="1">
+                        <div class="course-card-header">
+                            <h3>🌊 オープンウォーターダイバー</h3>
+                            <div class="price">¥53,900<small>（税込）</small></div>
+                            <div class="duration">3日間 / 最大18m</div>
+                        </div>
+                        <div class="course-card-body">
+                            <p>世界中で通用する入門ライセンス。eラーニング + プール + 海洋実習で基礎からしっかり学べます。</p>
+                            <div class="includes"><strong>含:</strong> eラーニング・ログブック・実習費・申請料・保険<br><span
+                                    style="color:var(--coral);font-weight:600;">※別途: レンタル器材代
+                                    ¥5,500/日（3日間=¥16,500）</span></div>
+                            <a href="../owd-license/" class="btn btn--coral" style="margin-bottom:.5rem;">🌊
+                                完全ガイドを見る</a>
+                            <a href="#license-cta" class="btn btn--primary">このコースに申し込む</a>
+                        </div>
+                    </div>
+
+                    <!-- AOW -->
+                    <div class="course-card reveal" data-delay="2">
+                        <div class="course-card-header">
+                            <h3>🐠 アドバンスド OWD</h3>
+                            <div class="price">¥53,900<small>（税込）</small></div>
+                            <div class="duration">2日間 / 最大30m</div>
+                        </div>
+                        <div class="course-card-body">
+                            <p>5つのアドベンチャーダイブでスキル拡張。ディープ・ナビゲーション・ボートダイブなど。</p>
+                            <div class="includes"><strong>含:</strong> 教材一式・実習費・申請料・保険<br><span
+                                    style="color:var(--coral);font-weight:600;">※別途: レンタル器材代
+                                    ¥5,500/日（2日間=¥11,000）</span></div>
+                            <a href="#license-cta" class="btn btn--primary">このコースに申し込む</a>
+                        </div>
+                    </div>
+
+                    <!-- EFR -->
+                    <div class="course-card course-card--yellow reveal" data-delay="3">
+                        <div class="course-card-header">
+                            <h3>🏥 EFR（救急法）</h3>
+                            <div class="price">¥22,000<small>（税込）</small></div>
+                            <div class="duration">1日</div>
+                        </div>
+                        <div class="course-card-body">
+                            <p>CPR・AEDなど一次・二次救命処置を学ぶ。ダイバー以外にも役立つ救急法コース。</p>
+                            <div class="includes"><strong>含:</strong> 教材一式・実習費・申請料</div>
+                            <a href="#license-cta" class="btn btn--primary">このコースに申し込む</a>
+                        </div>
+                    </div>
+
+                    <!-- Rescue -->
+                    <div class="course-card course-card--lavender reveal" data-delay="4">
+                        <div class="course-card-header">
+                            <h3>🛟 レスキューダイバー</h3>
+                            <div class="price">¥64,900<small>（税込）</small></div>
+                            <div class="duration">2日間</div>
+                        </div>
+                        <div class="course-card-body">
+                            <p>自己救助・他者救助スキルを学ぶ安全コース。プロレベルの手前の重要なステップ。</p>
+                            <div class="includes"><strong>含:</strong> 教材一式・実習費・申請料・保険<br><strong>前提:</strong> AOW＋EFR修了
+                            </div>
+                            <a href="#license-cta" class="btn btn--primary">このコースに申し込む</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPECIALTY -->
+        <section class="section section--alt" aria-labelledby="sp-title">
+            <div class="container text-center">
+                <span class="section-label reveal">Specialty</span>
+                <h2 id="sp-title" class="section-title reveal">スペシャルティコース</h2>
+                <p class="section-lead reveal">興味のある分野を深掘り。5つ取得でマスタースクーバダイバーに！</p>
+
+                <div class="specialty-grid">
+                    <div class="specialty-card reveal" data-delay="0">
+                        <div class="icon">⚖️</div>
+                        <h4>PPB（中性浮力）</h4>
+                        <div class="sp-price">¥16,500</div>
+                    </div>
+                    <div class="specialty-card reveal" data-delay="1">
+                        <div class="icon">🧥</div>
+                        <h4>ドライスーツ</h4>
+                        <div class="sp-price">¥16,500</div>
+                    </div>
+                    <div class="specialty-card reveal" data-delay="2">
+                        <div class="icon">🚤</div>
+                        <h4>ボートダイバー</h4>
+                        <div class="sp-price">¥16,500</div>
+                    </div>
+                    <div class="specialty-card reveal" data-delay="3">
+                        <div class="icon">🐟</div>
+                        <h4>魚の見分け方</h4>
+                        <div class="sp-price">¥16,500</div>
+                    </div>
+                    <div class="specialty-card reveal" data-delay="4">
+                        <div class="icon">📸</div>
+                        <h4>デジタルフォト</h4>
+                        <div class="sp-price">¥16,500</div>
+                    </div>
+                    <div class="specialty-card reveal" data-delay="0">
+                        <div class="icon">🧭</div>
+                        <h4>ナビゲーション</h4>
+                        <div class="sp-price">¥16,500</div>
+                    </div>
+                    <div class="specialty-card reveal" data-delay="1">
+                        <div class="icon">🌊</div>
+                        <h4>ディープダイバー</h4>
+                        <div class="sp-price">¥16,500</div>
+                    </div>
+                    <div class="specialty-card reveal" data-delay="2">
+                        <div class="icon">🌿</div>
+                        <h4>ナチュラリスト</h4>
+                        <div class="sp-price">¥16,500</div>
+                    </div>
+                    <div class="specialty-card reveal" data-delay="3">
+                        <div class="icon">🔍</div>
+                        <h4>サーチ&リカバリー</h4>
+                        <div class="sp-price">¥16,500</div>
+                    </div>
+                    <div class="specialty-card reveal" data-delay="4">
+                        <div class="icon">🌙</div>
+                        <h4>ナイトダイバー</h4>
+                        <div class="sp-price">¥16,500</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRO COURSE -->
+        <section class="section" aria-labelledby="pro-title">
+            <div class="container text-center">
+                <span class="section-label reveal">Professional</span>
+                <h2 id="pro-title" class="section-title reveal">プロフェッショナルコース</h2>
+                <p class="section-lead reveal">ダイビングを仕事に。PADI 5⭐ IDCセンターで夢を叶える。</p>
+
+                <div class="course-grid">
+                    <div class="course-card course-card--lavender reveal" data-delay="0">
+                        <div class="course-card-header">
+                            <h3>⭐ ダイブマスター</h3>
+                            <div class="price">お問い合わせ</div>
+                            <div class="duration">日数: 要相談</div>
+                        </div>
+                        <div class="course-card-body">
+                            <p>プロダイバーへの第一歩。ガイドやアシスタント業務ができるプロフェッショナルレベル。</p>
+                            <a href="#license-cta" class="btn btn--primary">お問い合わせ</a>
+                        </div>
+                    </div>
+                    <div class="course-card course-card--lavender reveal" data-delay="1">
+                        <div class="course-card-header">
+                            <h3>⭐ インストラクター (IDC)</h3>
+                            <div class="price">お問い合わせ</div>
+                            <div class="duration">日数: 要相談</div>
+                        </div>
+                        <div class="course-card-body">
+                            <p>PADIインストラクター資格。ダイビングを教えるプロフェッショナルへ。当校はIDCセンターです。</p>
+                            <a href="#license-cta" class="btn btn--primary">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section section--alt" aria-labelledby="faq-title">
+            <div class="container text-center">
+                <span class="section-label reveal">FAQ</span>
+                <h2 id="faq-title" class="section-title reveal">よくある質問</h2>
+                <div class="faq-list" style="text-align:left;">
+                    <details class="faq-item reveal">
+                        <summary>どのコースから始めればいいですか？</summary>
+                        <div class="faq-answer">
+                            初心者の方はオープンウォーターダイバー（OWD）がおすすめです。泳げない方でも安心して受講できます。まずは体験ダイビングで海を体感してみるのもOK！</div>
+                    </details>
+                    <details class="faq-item reveal">
+                        <summary>レンタル器材はありますか？</summary>
+                        <div class="faq-answer">はい、フルセットレンタル（1日5,500円）をご用意しています。手ぶらでお越しいただけます。</div>
+                    </details>
+                    <details class="faq-item reveal">
+                        <summary>連続受講で割引はありますか？</summary>
+                        <div class="faq-answer">OWDとAOWの連続受講など、組み合わせ割引がございます。詳しくはお問い合わせください。</div>
+                    </details>
+                    <details class="faq-item reveal">
+                        <summary>プロコースの受講条件は？</summary>
+                        <div class="faq-answer">ダイブマスターはレスキューダイバー認定＋60本以上のログが必要です。詳しい条件はご相談ください。</div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="license-cta" class="cta-section" aria-labelledby="cta-title">
+            <div class="container text-center">
+                <span class="section-label reveal" style="color:rgba(255,255,255,.7);">Contact</span>
+                <h2 id="cta-title" class="section-title reveal">ライセンス取得のお申し込み</h2>
+                <p class="section-lead reveal">コース選びに迷ったらお気軽にご相談ください。</p>
+                <div class="cta-methods reveal" data-delay="1">
+                    <a href="tel:046-880-0835" class="cta-card">
+                        <div class="cta-card-icon">📞</div>
+                        <div class="cta-card-title">電話で相談</div>
+                        <div class="cta-card-detail">046-880-0835</div>
+                    </a>
+                    <a href="https://lin.ee/kK3d5p2" class="cta-card" target="_blank" rel="noopener noreferrer">
+                        <div class="cta-card-icon">💬</div>
+                        <div class="cta-card-title">LINEで相談</div>
+                        <div class="cta-card-detail">お気軽にメッセージ</div>
+                    </a>
+                    <a href="mailto:info@miura-diving.com" class="cta-card">
+                        <div class="cta-card-icon">✉️</div>
+                        <div class="cta-card-title">メールで問合せ</div>
+                        <div class="cta-card-detail">info@miura-diving.com</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <strong style="color:#fff; font-size:1.1rem;">三浦 海の学校</strong>
+                    <p>〒238-0224 神奈川県三浦市三崎町諸磯1621<br>TEL: 046-880-0835<br>営業時間: 9:00〜16:00（不定休）</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>メニュー</h4>
+                    <a href="../index.html">ホーム</a>
+                    <a href="../license/">ダイビングライセンス</a>
+                    <a href="../fun-diving/">ファンダイビング</a>
+                    <a href="../marine-activity/">マリンアクティビティ</a>
+                </div>
+                <div class="footer-social">
+                    <h4>SNS</h4>
+                    <div class="footer-social-icons">
+                        <a href="https://www.instagram.com/miura_diving/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">📷</a>
+                        <a href="https://www.facebook.com/MiuraDiving" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook">📘</a>
+                        <a href="https://x.com/miura_diving" target="_blank" rel="noopener noreferrer"
+                            aria-label="X (Twitter)">𝕏</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 三浦 海の学校 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" defer></script>
+</body>
+
+</html>

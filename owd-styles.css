@@ -1,0 +1,1751 @@
+/* OWD講習詳細ページ用CSS */
+
+/* 全体のスタイル */
+.owd-course-content {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.owd-section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.owd-section-header h2 {
+  font-size: 36px;
+  color: #005792;
+  margin-bottom: 20px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.owd-section-header h2:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: #00bbf0;
+}
+
+.owd-section-subheading {
+  font-size: 20px;
+  color: #555;
+  max-width: 800px;
+  margin: 20px auto 0;
+}
+
+/* ヒーローセクション */
+.owd-hero-section {
+  position: relative;
+  height: 90vh;
+  min-height: 700px;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.owd-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 87, 146, 0.7), rgba(0, 187, 240, 0.7));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.owd-main-title {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeInDown 1s ease-out;
+}
+
+.owd-subtitle {
+  font-size: 26px;
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out 0.3s;
+  animation-fill-mode: both;
+}
+
+.owd-badge {
+  margin: 20px auto 30px;
+  animation: fadeIn 1.5s ease-out 0.6s;
+  animation-fill-mode: both;
+}
+
+.owd-badge img {
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.owd-cta-button-wrapper {
+  margin-top: 40px;
+  animation: fadeInUp 1s ease-out 0.9s;
+  animation-fill-mode: both;
+}
+
+.owd-cta-button {
+  display: inline-block;
+  background-color: #fd5f00;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 18px 36px;
+  border-radius: 50px;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(253, 95, 0, 0.3);
+}
+
+.owd-cta-button:hover {
+  background-color: #e65500;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(253, 95, 0, 0.4);
+  color: #fff;
+}
+
+.owd-secondary-button {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 50px;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.owd-secondary-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  color: #fff;
+}
+
+/* イントロセクション */
+.owd-intro-section {
+  padding: 100px 0;
+  background-color: #f9fdff;
+}
+
+.owd-section-desc {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+}
+
+.owd-section-desc p {
+  margin-bottom: 20px;
+}
+
+/* ハイライトセクション（9つの特徴） */
+.owd-highlight-section {
+  padding: 100px 0;
+  background-color: #f0f9ff;
+  position: relative;
+  overflow: hidden;
+}
+
+.owd-highlight-section:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/bubble-bg.png');
+  background-repeat: repeat;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.owd-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.owd-highlight-card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 87, 146, 0.1);
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.owd-highlight-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 87, 146, 0.2);
+}
+
+.owd-highlight-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #00bbf0, #005792);
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+.owd-highlight-card:hover:before {
+  transform: translateY(0);
+}
+
+.owd-highlight-icon {
+  font-size: 54px;
+  color: #00bbf0;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.owd-highlight-card:hover .owd-highlight-icon {
+  transform: scale(1.1);
+  color: #005792;
+}
+
+.owd-highlight-card h3 {
+  font-size: 22px;
+  color: #005792;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.owd-highlight-card p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* 講習内容セクション */
+.owd-course-details-section {
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.owd-learning-process {
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.owd-learning-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  background-color: #f9fdff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.owd-learning-icon {
+  flex: 0 0 100px;
+  font-size: 60px;
+  color: #00bbf0;
+  text-align: center;
+}
+
+.owd-learning-content {
+  flex: 1;
+  padding-left: 30px;
+}
+
+.owd-learning-content h3 {
+  font-size: 26px;
+  color: #005792;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.owd-feature-list {
+  margin-top: 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.owd-feature-list li {
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 30px;
+  font-size: 16px;
+  color: #444;
+}
+
+.owd-feature-list li:before {
+  content: '\f00c';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #00bbf0;
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+.owd-schedule-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #f9fdff;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+}
+
+.owd-schedule-title {
+  font-size: 28px;
+  color: #005792;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.owd-schedule-note {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.owd-schedule-timeline {
+  position: relative;
+}
+
+.owd-schedule-timeline:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 4px;
+  height: 100%;
+  background-color: #00bbf0;
+  border-radius: 4px;
+}
+
+.owd-day-item {
+  position: relative;
+  padding-left: 80px;
+  margin-bottom: 50px;
+}
+
+.owd-day-item:last-child {
+  margin-bottom: 0;
+}
+
+.owd-day-header {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.owd-day-number {
+  position: absolute;
+  top: -5px;
+  left: -80px;
+  width: 60px;
+  height: 60px;
+  background-color: #005792;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0, 87, 146, 0.3);
+  z-index: 1;
+}
+
+.owd-day-time {
+  font-size: 16px;
+  color: #666;
+  font-weight: 600;
+}
+
+.owd-day-content {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.owd-day-content h4 {
+  font-size: 22px;
+  color: #005792;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.owd-day-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.owd-schedule-block {
+  display: flex;
+  align-items: flex-start;
+}
+
+.owd-time {
+  flex: 0 0 70px;
+  font-weight: 700;
+  color: #005792;
+  font-size: 16px;
+}
+
+.owd-activity {
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+}
+
+.owd-course-notes {
+  margin-top: 50px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  border-left: 4px solid #fd5f00;
+}
+
+.owd-course-notes h4 {
+  font-size: 20px;
+  color: #fd5f00;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.owd-course-notes ul {
+  padding-left: 20px;
+}
+
+.owd-course-notes li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* 施設セクション */
+.owd-facility-section {
+  padding: 100px 0;
+  background-color: #f0f9ff;
+}
+
+.owd-facility-slider {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 20px 10px 40px;
+}
+
+.owd-facility-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.owd-facility-slide {
+  flex: 0 0 80%;
+  min-width: 300px;
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.owd-facility-slide:hover {
+  transform: translateY(-10px);
+}
+
+.owd-facility-slide img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.owd-facility-slide:hover img {
+  transform: scale(1.05);
+}
+
+.owd-facility-caption {
+  padding: 25px;
+}
+
+.owd-facility-caption h3 {
+  font-size: 22px;
+  color: #005792;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.owd-facility-caption p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* 料金プランセクション */
+.owd-price-section {
+  padding: 100px 0;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.owd-price-section:before {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0, 187, 240, 0.05);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.owd-price-section:after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(0, 87, 146, 0.05);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.owd-price-plans {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.owd-price-card {
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 300px;
+  max-width: 350px;
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 1;
+  border: 1px solid #eee;
+}
+
+.owd-price-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.owd-price-card.owd-featured {
+  transform: scale(1.05);
+  box-shadow: 0 20px 50px rgba(0, 187, 240, 0.2);
+  border: none;
+  z-index: 2;
+}
+
+.owd-price-card.owd-featured:hover {
+  transform: scale(1.05) translateY(-15px);
+}
+
+.owd-price-ribbon {
+  position: absolute;
+  top: 20px;
+  right: -30px;
+  background-color: #fd5f00;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 30px;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.owd-price-header {
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom right, #f9fdff 0%, #e6f7ff 100%);
+  border-bottom: 1px solid #eee;
+}
+
+.owd-price-header:before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 187, 240, 0.1);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.owd-price-header:after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 87, 146, 0.1);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.owd-price-header h3 {
+  font-size: 26px;
+  color: #005792;
+  margin-bottom: 20px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.owd-price {
+  position: relative;
+  z-index: 1;
+}
+
+.owd-currency {
+  font-size: 30px;
+  color: #005792;
+  vertical-align: top;
+  position: relative;
+  top: 5px;
+}
+
+.owd-amount {
+  font-size: 48px;
+  color: #005792;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.owd-period {
+  font-size: 18px;
+  color: #666;
+  font-weight: 400;
+}
+
+.owd-price-discount {
+  margin-top: 10px;
+  background-color: rgba(253, 95, 0, 0.1);
+  border-radius: 30px;
+  padding: 8px 15px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.owd-price-discount span {
+  display: block;
+  font-size: 14px;
+  color: #fd5f00;
+  font-weight: 600;
+}
+
+.owd-save {
+  font-weight: 700;
+  font-size: 16px !important;
+}
+
+.owd-price-features {
+  padding: 40px 30px;
+}
+
+.owd-price-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.owd-price-features li {
+  margin-bottom: 15px;
+  padding-left: 30px;
+  position: relative;
+  font-size: 16px;
+  color: #444;
+}
+
+.owd-price-features li:before {
+  content: '\f00c';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #00bbf0;
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+.owd-price-footer {
+  padding: 0 30px 40px;
+  text-align: center;
+}
+
+.owd-price-button {
+  display: inline-block;
+  background-color: #00bbf0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 187, 240, 0.3);
+}
+
+.owd-price-button:hover {
+  background-color: #005792;
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 187, 240, 0.4);
+}
+
+.owd-featured .owd-price-button {
+  background-color: #fd5f00;
+  box-shadow: 0 5px 15px rgba(253, 95, 0, 0.3);
+}
+
+.owd-featured .owd-price-button:hover {
+  background-color: #e65500;
+  box-shadow: 0 10px 20px rgba(253, 95, 0, 0.4);
+}
+
+.owd-price-notes {
+  max-width: 900px;
+  margin: 60px auto 0;
+  position: relative;
+  z-index: 1;
+}
+
+.owd-price-notes h4 {
+  font-size: 22px;
+  color: #005792;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.owd-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.owd-benefit-item {
+  background-color: #f9fdff;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.owd-benefit-item i {
+  font-size: 22px;
+  color: #00bbf0;
+  margin-right: 15px;
+}
+
+.owd-benefit-item span {
+  font-size: 16px;
+  color: #333;
+}
+
+.owd-important-notice {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  border-left: 4px solid #fd5f00;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.owd-important-notice h4 {
+  font-size: 20px;
+  color: #fd5f00;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.owd-important-notice ul {
+  padding-left: 20px;
+}
+
+.owd-important-notice li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* 中間CTA */
+.owd-cta-banner-mid {
+  padding: 80px 0;
+  background: linear-gradient(to right, #005792, #00bbf0);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+}
+
+.owd-cta-banner-mid:before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.owd-cta-banner-mid:after {
+  content: '';
+  position: absolute;
+  bottom: -70px;
+  left: -70px;
+  width: 250px;
+  height: 250px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+/* インストラクターセクション */
+.owd-instructor-section {
+  padding: 100px 0;
+  background-color: #f9fdff;
+}
+
+.owd-instructors-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.owd-instructor-card {
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 300px;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.owd-instructor-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.owd-instructor-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.owd-instructor-image:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+}
+
+.owd-instructor-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.6s ease;
+}
+
+.owd-instructor-card:hover .owd-instructor-image img {
+  transform: scale(1.1);
+}
+
+.owd-instructor-info {
+  padding: 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.owd-instructor-info h3 {
+  font-size: 24px;
+  color: #005792;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.owd-instructor-title {
+  font-size: 18px;
+  color: #00bbf0;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.owd-instructor-exp {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.owd-instructor-cert {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.owd-cert-badge {
+  font-size: 13px;
+  color: #fff;
+  background-color: #005792;
+  padding: 5px 12px;
+  border-radius: 30px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.owd-instructor-desc {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* 受講者の声セクション */
+.owd-testimonial-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 100px 0;
+  color: #fff;
+}
+
+.owd-testimonial-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 87, 146, 0.9), rgba(0, 187, 240, 0.9));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.owd-testimonial-section .owd-section-header h2 {
+  color: #fff;
+}
+
+.owd-testimonial-section .owd-section-header h2:after {
+  background-color: #fff;
+}
+
+.owd-testimonial-section .owd-section-subheading {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.owd-testimonials-slider {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.owd-testimonial-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  padding: 40px;
+  margin: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.owd-testimonial-content {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  font-style: italic;
+  position: relative;
+}
+
+.owd-testimonial-content:before {
+  content: '\f10d';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 30px;
+  position: absolute;
+  top: -15px;
+  left: -10px;
+}
+
+.owd-testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+.owd-author-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  border: 3px solid #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.owd-author-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.owd-author-info h4 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.owd-author-info p {
+  font-size: 15px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.owd-rating {
+  color: #ffdd00;
+  font-size: 16px;
+}
+
+/* FAQ セクション */
+.owd-faq-section {
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.owd-faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.owd-faq-item {
+  margin-bottom: 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.owd-faq-item:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.owd-faq-question {
+  background-color: #f9fdff;
+  padding: 25px 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.owd-faq-question:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #00bbf0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.owd-faq-item.active .owd-faq-question:after,
+.owd-faq-question:hover:after {
+  opacity: 1;
+}
+
+.owd-faq-question h3 {
+  font-size: 18px;
+  color: #005792;
+  margin: 0;
+  font-weight: 600;
+  padding-right: 20px;
+  transition: all 0.3s ease;
+}
+
+.owd-faq-item.active .owd-faq-question h3,
+.owd-faq-question:hover h3 {
+  color: #00bbf0;
+}
+
+.owd-faq-toggle {
+  color: #00bbf0;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.owd-faq-item.active .owd-faq-toggle {
+  transform: rotate(45deg);
+}
+
+.owd-faq-answer {
+  padding: 0 30px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  background-color: #fff;
+}
+
+.owd-faq-item.active .owd-faq-answer {
+  padding: 25px 30px;
+  max-height: 1000px;
+}
+
+/* 申し込みセクション */
+.owd-application-section {
+  padding: 100px 0;
+  background-color: #f0f9ff;
+  position: relative;
+  overflow: hidden;
+}
+
+.owd-application-section:before {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0, 187, 240, 0.05);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.owd-form-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.owd-form-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.owd-form-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.owd-form-right {
+  flex: 2;
+  min-width: 500px;
+}
+
+.owd-contact-info {
+  background-color: #005792;
+  border-radius: 20px;
+  padding: 40px;
+  color: #fff;
+  margin-bottom: 30px;
+  box-shadow: 0 15px 40px rgba(0, 87, 146, 0.3);
+}
+
+.owd-contact-info h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.owd-contact-info h3:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: #00bbf0;
+}
+
+.owd-contact-info p {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.owd-contact-info i {
+  font-size: 20px;
+  color: #00bbf0;
+  margin-right: 15px;
+  width: 25px;
+  text-align: center;
+}
+
+.owd-map {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.owd-map iframe {
+  display: block;
+}
+
+.owd-follow-us {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.owd-follow-us h4 {
+  font-size: 20px;
+  color: #005792;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.owd-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.owd-social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #f0f9ff;
+  color: #00bbf0;
+  font-size: 22px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.owd-social-icons a:hover {
+  background-color: #00bbf0;
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+.owd-application-form-wrapper {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.owd-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px 25px;
+}
+
+.owd-form-col {
+  flex: 1;
+  padding: 0 10px;
+  min-width: 250px;
+}
+
+.owd-form-col.full-width {
+  flex: 0 0 100%;
+  width: 100%;
+}
+
+.owd-form-col label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 15px;
+}
+
+.owd-form-col label .required {
+  color: #fd5f00;
+}
+
+.owd-application-form-wrapper input,
+.owd-application-form-wrapper textarea,
+.owd-application-form-wrapper select {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.owd-application-form-wrapper input:focus,
+.owd-application-form-wrapper textarea:focus,
+.owd-application-form-wrapper select:focus {
+  border-color: #00bbf0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 187, 240, 0.1);
+}
+
+.owd-form-privacy {
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #f9fdff;
+  border-radius: 15px;
+  border-left: 4px solid #005792;
+}
+
+.owd-form-privacy label {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.owd-form-privacy input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+}
+
+.privacy-policy-text {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.owd-form-submit {
+  text-align: center;
+}
+
+.owd-application-form-wrapper input[type="submit"] {
+  background-color: #fd5f00;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: auto;
+  margin: 20px auto 0;
+  display: inline-block;
+  box-shadow: 0 5px 15px rgba(253, 95, 0, 0.3);
+}
+
+.owd-application-form-wrapper input[type="submit"]:hover {
+  background-color: #e65500;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(253, 95, 0, 0.4);
+}
+
+.wpcf7-not-valid-tip {
+  color: #fd5f00;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.wpcf7-response-output {
+  margin: 30px 0 0 !important;
+  padding: 15px !important;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* CTAバナー */
+.owd-cta-banner {
+  background: linear-gradient(to right, #005792, #00bbf0);
+  padding: 80px 0;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.owd-cta-banner:before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.owd-cta-banner:after {
+  content: '';
+  position: absolute;
+  bottom: -70px;
+  left: -70px;
+  width: 250px;
+  height: 250px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.owd-cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+.owd-cta-content h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.owd-cta-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.owd-cta-banner-button {
+  display: inline-block;
+  background-color: #fd5f00;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 18px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(253, 95, 0, 0.3);
+}
+
+.owd-cta-banner-button:hover {
+  background-color: #e65500;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(253, 95, 0, 0.4);
+  color: #fff;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1200px) {
+  .owd-highlight-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .owd-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 991px) {
+  .owd-main-title {
+    font-size: 46px;
+  }
+  
+  .owd-subtitle {
+    font-size: 22px;
+  }
+  
+  .owd-section-header h2 {
+    font-size: 32px;
+  }
+  
+  .owd-cta-content h2 {
+    font-size: 32px;
+  }
+  
+  .owd-schedule-wrapper {
+    padding: 30px;
+  }
+  
+  .owd-facility-slide {
+    flex: 0 0 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .owd-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .owd-price-plans {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .owd-price-card {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 30px;
+  }
+  
+  .owd-price-card.owd-featured {
+    transform: scale(1);
+    order: -1;
+  }
+  
+  .owd-price-card.owd-featured:hover {
+    transform: translateY(-15px);
+  }
+  
+  .owd-main-title {
+    font-size: 38px;
+  }
+  
+  .owd-subtitle {
+    font-size: 20px;
+  }
+  
+  .owd-cta-button, 
+  .owd-secondary-button {
+    display: block;
+    margin: 10px auto;
+    max-width: 280px;
+  }
+  
+  .owd-day-item {
+    padding-left: 50px;
+  }
+  
+  .owd-day-number {
+    left: -50px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .owd-schedule-timeline:before {
+    left: 20px;
+  }
+  
+  .owd-application-form-wrapper {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .owd-hero-section {
+    height: 80vh;
+  }
+  
+  .owd-main-title {
+    font-size: 32px;
+  }
+  
+  .owd-subtitle {
+    font-size: 18px;
+  }
+  
+  .owd-section-header h2 {
+    font-size: 28px;
+  }
+  
+  .owd-learning-item {
+    flex-direction: column;
+    padding: 25px;
+  }
+  
+  .owd-learning-icon {
+    margin-bottom: 20px;
+  }
+  
+  .owd-learning-content {
+    padding-left: 0;
+  }
+  
+  .owd-day-content {
+    padding: 15px;
+  }
+  
+  .owd-faq-question {
+    padding: 20px;
+  }
+  
+  .owd-faq-item.active .owd-faq-answer {
+    padding: 20px;
+  }
+  
+  .owd-contact-info {
+    padding: 25px;
+  }
+}
+
+/* トップページバナースタイル */
+.owd-top-banner {
+  margin: 40px 0;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.owd-top-banner:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.owd-top-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.5s ease;
+}
+
+.owd-top-banner:hover img {
+  transform: scale(1.05);
+}
+
+.owd-top-banner .banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 87, 146, 0.8), rgba(0, 187, 240, 0.6));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  color: #fff;
+}
+
+.owd-top-banner h3 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.owd-top-banner p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.owd-top-banner .banner-button {
+  display: inline-block;
+  background-color: #fd5f00;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.owd-top-banner .banner-button:hover {
+  background-color: #e65500;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}

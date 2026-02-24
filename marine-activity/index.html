@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>マリンアクティビティ（SUP・シュノーケリング・シーカヤック）｜三浦 海の学校</title>
+    <meta name="description" content="三浦の海を楽しむマリンアクティビティ。SUP・シュノーケリング・シーカヤック。ライセンス不要、初心者OK、都心から60分。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://miura-diving.com/marine-activity/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="三浦 海の学校">
+    <meta property="og:title" content="マリンアクティビティ｜三浦 海の学校">
+    <meta property="og:description" content="SUP・シュノーケリング・シーカヤック。ライセンス不要で気軽に三浦の海を楽しめます。">
+    <meta property="og:url" content="https://miura-diving.com/marine-activity/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "三浦 海の学校 — マリンアクティビティ",
+    "url": "https://miura-diving.com/marine-activity/",
+    "description": "三浦の海を楽しむマリンアクティビティ。SUP・シュノーケリング・シーカヤック。",
+    "address": {"@type":"PostalAddress","addressLocality":"三浦市","addressRegion":"神奈川県","postalCode":"238-0224","addressCountry":"JP"},
+    "telephone": "046-880-0835",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "マリンアクティビティ",
+      "itemListElement": [
+        {"@type":"Offer","name":"シーカヤック","priceCurrency":"JPY"},
+        {"@type":"Offer","name":"SUP（スタンドアップパドルボード）","priceCurrency":"JPY"},
+        {"@type":"Offer","name":"スノーケリング","priceCurrency":"JPY"}
+      ]
+    }
+  }
+  </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Montserrat:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .subpage-hero {
+            min-height: 50vh;
+            min-height: 50dvh;
+        }
+
+        .subpage-hero h1 {
+            font-size: clamp(1.5rem, 5vw, 2.6rem);
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: .5rem;
+            font-size: .8rem;
+            color: var(--text-sub);
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: var(--teal-dark);
+        }
+
+        .breadcrumb span {
+            color: var(--text-light);
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media(min-width:768px) {
+            .activity-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .activity-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all var(--ease);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .activity-card-visual {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .activity-card-visual.kayak {
+            background: linear-gradient(135deg, #A8E6CF, var(--teal-light));
+        }
+
+        .activity-card-visual.sup {
+            background: linear-gradient(135deg, var(--yellow-light), var(--yellow));
+        }
+
+        .activity-card-visual.snorkel {
+            background: linear-gradient(135deg, #B8CFFF, var(--sky));
+        }
+
+        .activity-card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activity-card-body h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: .4rem;
+        }
+
+        .activity-card-body>p {
+            font-size: .9rem;
+            color: var(--text-sub);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .activity-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: .25rem;
+            background: var(--bg-soft);
+            border-radius: 50px;
+            padding: .3rem .8rem;
+            font-size: .75rem;
+            font-weight: 600;
+            color: var(--text-sub);
+        }
+
+        .activity-includes {
+            font-size: .8rem;
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+            padding-top: .75rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .activity-includes strong {
+            color: var(--text-dark);
+        }
+
+        .activity-card-body .btn {
+            width: 100%;
+            text-align: center;
+            font-size: .9rem;
+            padding: .7rem 1rem;
+            margin-top: auto;
+        }
+
+        /* Access section */
+        .access-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .access-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .access-list {
+            list-style: none;
+        }
+
+        .access-list li {
+            padding: .6rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: .9rem;
+            display: flex;
+            gap: .5rem;
+        }
+
+        .access-list li:last-child {
+            border-bottom: none;
+        }
+
+        .access-list .label {
+            font-weight: 600;
+            color: var(--text-dark);
+            min-width: 5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="../index.html" class="header-logo"><img src="../image/umigaku-logo.webp" alt="三浦 海の学校" width="120"
+                    height="40"></a>
+            <nav class="desktop-nav" role="navigation">
+                <a href="../license/">ダイビングライセンス</a>
+                <a href="../fun-diving/">ファンダイビング</a>
+                <a href="../marine-activity/" style="color:var(--coral);">マリンアクティビティ</a>
+                <a href="https://miura-diving.com/blog/">ブログ</a>
+                <a href="../contact/" class="btn btn--coral" style="padding:.6rem 1.4rem; font-size:.85rem;">お問い合わせ</a>
+            </nav>
+            <button class="hamburger" aria-label="メニューを開く"
+                aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+    <div class="mobile-nav" role="dialog" aria-modal="true">
+        <div class="mobile-nav-panel">
+            <a href="../index.html">ホーム</a><a href="../license/">ダイビングライセンス</a><a href="../fun-diving/">ファンダイビング</a><a
+                href="../marine-activity/">マリンアクティビティ</a><a href="https://miura-diving.com/blog/">ブログ</a>
+            <div class="mobile-nav-cta"><a href="../contact/" class="btn btn--coral">お問い合わせ</a></div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero subpage-hero">
+        <div class="hero-bubble" aria-hidden="true"></div>
+        <div class="hero-bubble" aria-hidden="true"></div>
+        <div class="hero-bg"><img src="../image/marine-activity-hero.png" alt="三浦でのマリンアクティビティ" width="1920"
+                height="1080" loading="eager"></div>
+        <div class="hero-content">
+            <h1>楽しみ方いろいろ！<br>三浦のマリンアクティビティ</h1>
+            <p class="hero-sub">ライセンス不要！初心者OK！<br>三浦の海を気軽に楽しめるアクティビティ。</p>
+            <a href="#activities" class="btn btn--coral">アクティビティを見る ↓</a>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <nav class="breadcrumb"><a href="../index.html">ホーム</a><span>›</span><span>マリンアクティビティ</span></nav>
+        </div>
+
+        <!-- ACTIVITIES -->
+        <section id="activities" class="section">
+            <div class="container text-center">
+                <span class="section-label reveal">Activities</span>
+                <h2 class="section-title reveal">マリンアクティビティ一覧</h2>
+                <p class="section-lead reveal">三浦の海を存分に楽しめる、多彩なアクティビティをご用意。</p>
+
+                <div class="activity-grid">
+                    <!-- Kayak -->
+                    <div class="activity-card reveal" data-delay="0">
+                        <div class="activity-card-visual kayak">🛶</div>
+                        <div class="activity-card-body">
+                            <h3>シーカヤック</h3>
+                            <p>岩場や入江を巡るシーカヤック。1人乗り・2人乗りあり。透明度抜群の三浦の海をカヤックで冒険。</p>
+                            <div class="activity-meta">
+                                <span class="activity-tag">⏱ 約2時間</span>
+                                <span class="activity-tag">👥 最少2名</span>
+                                <span class="activity-tag">🔰 初心者OK</span>
+                                <span class="activity-tag">👧 8歳以上</span>
+                            </div>
+                            <div class="activity-includes">
+                                <strong>含まれるもの:</strong> ガイド・艇・パドル・ライフジャケット・保険・シャワー更衣室
+                            </div>
+                            <a href="#ma-cta" class="btn btn--primary">予約する</a>
+                        </div>
+                    </div>
+
+                    <!-- SUP -->
+                    <div class="activity-card reveal" data-delay="1">
+                        <div class="activity-card-visual sup">🏄</div>
+                        <div class="activity-card-body">
+                            <h3>SUP（スタンドアップパドル）</h3>
+                            <p>立ったまま漕ぐ人気アクティビティ。波の穏やかな三浦の海でSUP体験。初めてでもすぐに立てます！</p>
+                            <div class="activity-meta">
+                                <span class="activity-tag">⏱ 約2時間</span>
+                                <span class="activity-tag">👥 最少2名</span>
+                                <span class="activity-tag">🔰 初心者OK</span>
+                                <span class="activity-tag">👧 10歳以上</span>
+                            </div>
+                            <div class="activity-includes">
+                                <strong>含まれるもの:</strong> ガイド・SUPボード・パドル・ライフジャケット・保険・シャワー更衣室
+                            </div>
+                            <a href="#ma-cta" class="btn btn--primary">予約する</a>
+                        </div>
+                    </div>
+
+                    <!-- Snorkel -->
+                    <div class="activity-card reveal" data-delay="2">
+                        <div class="activity-card-visual snorkel">🤿</div>
+                        <div class="activity-card-body">
+                            <h3>スノーケリング</h3>
+                            <p>透明度抜群の海で水中世界を観察。カラフルな魚やサンゴの仲間を間近で楽しめます。</p>
+                            <div class="activity-meta">
+                                <span class="activity-tag">⏱ 約2時間</span>
+                                <span class="activity-tag">👥 最少2名</span>
+                                <span class="activity-tag">🔰 初心者OK</span>
+                                <span class="activity-tag">👧 8歳以上</span>
+                            </div>
+                            <div class="activity-includes">
+                                <strong>含まれるもの:</strong> ガイド・器材一式・ライフジャケット・保険・シャワー更衣室
+                            </div>
+                            <a href="#ma-cta" class="btn btn--primary">予約する</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACCESS -->
+        <section class="section section--alt">
+            <div class="container text-center">
+                <span class="section-label reveal">Access</span>
+                <h2 class="section-title reveal">東京から日帰りで楽しめる！</h2>
+                <p class="section-lead reveal">三浦半島は都心から約1時間。美しい海と豊かな自然が待っています。</p>
+
+                <div class="access-card reveal">
+                    <h3>📍 アクセス情報</h3>
+                    <ul class="access-list">
+                        <li><span class="label">住所</span><span>〒238-0224 神奈川県三浦市三崎町諸磯1621</span></li>
+                        <li><span class="label">電車</span><span>京急三崎口駅 → 屋敷倉行バス「屋敷倉」下車 徒歩1分</span></li>
+                        <li><span class="label">車</span><span>横浜横須賀道路 衣笠ICから約20分（有料駐車場完備）</span></li>
+                        <li><span class="label">所要時間</span><span>品川から約60分 / 横浜から約40分</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <div class="container text-center">
+                <span class="section-label reveal">FAQ</span>
+                <h2 class="section-title reveal">よくある質問</h2>
+                <div class="faq-list" style="text-align:left;">
+                    <details class="faq-item reveal">
+                        <summary>泳げなくても参加できますか？</summary>
+                        <div class="faq-answer">はい！ライフジャケットを着用するので、泳ぎが苦手な方でも安心してご参加いただけます。</div>
+                    </details>
+                    <details class="faq-item reveal">
+                        <summary>持ち物は何が必要ですか？</summary>
+                        <div class="faq-answer">水着、タオル、着替えをお持ちください。必要な器材はすべてこちらでご用意いたします。</div>
+                    </details>
+                    <details class="faq-item reveal">
+                        <summary>雨天でも開催しますか？</summary>
+                        <div class="faq-answer">小雨の場合は開催します。荒天・強風の場合は安全のため中止とさせていただく場合があります。その際はご連絡いたします。</div>
+                    </details>
+                    <details class="faq-item reveal">
+                        <summary>何名から参加できますか？</summary>
+                        <div class="faq-answer">各アクティビティとも最少2名からのご予約となります。お一人でのご参加希望の場合はご相談ください。</div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="ma-cta" class="cta-section">
+            <div class="container text-center">
+                <span class="section-label reveal" style="color:rgba(255,255,255,.7);">Contact</span>
+                <h2 class="section-title reveal">マリンアクティビティのご予約</h2>
+                <p class="section-lead reveal">お気軽にご連絡ください。グループ割引もご相談いただけます。</p>
+                <div class="cta-methods reveal" data-delay="1">
+                    <a href="tel:046-880-0835" class="cta-card">
+                        <div class="cta-card-icon">📞</div>
+                        <div class="cta-card-title">電話で予約</div>
+                        <div class="cta-card-detail">046-880-0835</div>
+                    </a>
+                    <a href="https://lin.ee/kK3d5p2" class="cta-card" target="_blank" rel="noopener noreferrer">
+                        <div class="cta-card-icon">💬</div>
+                        <div class="cta-card-title">LINEで予約</div>
+                        <div class="cta-card-detail">お気軽にメッセージ</div>
+                    </a>
+                    <a href="mailto:info@miura-diving.com" class="cta-card">
+                        <div class="cta-card-icon">✉️</div>
+                        <div class="cta-card-title">メールで問合せ</div>
+                        <div class="cta-card-detail">info@miura-diving.com</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand"><strong style="color:#fff; font-size:1.1rem;">三浦 海の学校</strong>
+                    <p>〒238-0224 神奈川県三浦市三崎町諸磯1621<br>TEL: 046-880-0835<br>営業時間: 9:00〜16:00（不定休）</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>メニュー</h4><a href="../index.html">ホーム</a><a href="../license/">ダイビングライセンス</a><a
+                        href="../fun-diving/">ファンダイビング</a><a href="../marine-activity/">マリンアクティビティ</a>
+                </div>
+                <div class="footer-social">
+                    <h4>SNS</h4>
+                    <div class="footer-social-icons"><a href="https://www.instagram.com/miura_diving/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram">📷</a><a
+                            href="https://www.facebook.com/MiuraDiving" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook">📘</a><a href="https://x.com/miura_diving" target="_blank"
+                            rel="noopener noreferrer" aria-label="X (Twitter)">𝕏</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 三浦 海の学校 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js" defer></script>
+</body>
+
+</html>

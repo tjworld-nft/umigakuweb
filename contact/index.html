@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>お問い合わせ｜三浦 海の学校</title>
+    <meta name="description" content="三浦 海の学校へのお問い合わせ。ダイビングライセンス、ファンダイビング、マリンアクティビティのご予約・ご相談はこちらから。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://miura-diving.com/contact/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="三浦 海の学校">
+    <meta property="og:title" content="お問い合わせ｜三浦 海の学校">
+    <meta property="og:url" content="https://miura-diving.com/contact/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Montserrat:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .subpage-hero {
+            min-height: 40vh;
+            min-height: 40dvh
+        }
+
+        .subpage-hero h1 {
+            font-size: clamp(1.5rem, 5vw, 2.6rem)
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: .5rem;
+            font-size: .8rem;
+            color: var(--text-sub);
+            padding: 1rem 0;
+            flex-wrap: wrap
+        }
+
+        .breadcrumb a {
+            color: var(--teal-dark)
+        }
+
+        .breadcrumb span {
+            color: var(--text-light)
+        }
+
+        /* Form styles */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border)
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem
+        }
+
+        .form-group label {
+            display: block;
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: .4rem
+        }
+
+        .form-group label .required {
+            color: var(--coral);
+            margin-left: .25rem;
+            font-size: .75rem
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: .75rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: .9rem;
+            color: var(--text-dark);
+            background: var(--white);
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(64, 195, 197, .15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6.5 6.5 6.5-6.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem
+        }
+
+        @media(max-width:600px) {
+            .form-row {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 1.5rem
+        }
+
+        .form-submit button {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: linear-gradient(135deg, var(--coral), #FF8E7A);
+            color: #fff;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all .3s;
+            font-family: inherit;
+        }
+
+        .form-submit button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, .3)
+        }
+
+        .form-note {
+            font-size: .75rem;
+            color: var(--text-sub);
+            margin-top: 1rem;
+            text-align: center;
+            line-height: 1.6
+        }
+
+        /* Quick contact cards */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem
+        }
+
+        @media(max-width:600px) {
+            .quick-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .quick-card {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all var(--ease);
+            text-decoration: none;
+            color: var(--text-dark)
+        }
+
+        .quick-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md)
+        }
+
+        .quick-card .icon {
+            font-size: 1.8rem;
+            margin-bottom: .5rem
+        }
+
+        .quick-card h4 {
+            font-size: .9rem;
+            font-weight: 700;
+            margin-bottom: .25rem
+        }
+
+        .quick-card p {
+            font-size: .75rem;
+            color: var(--text-sub)
+        }
+
+        /* Success message */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 3rem 1rem
+        }
+
+        .form-success .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem
+        }
+
+        .form-success h3 {
+            font-size: 1.3rem;
+            margin-bottom: .5rem;
+            color: var(--teal-dark)
+        }
+
+        .form-success p {
+            color: var(--text-sub)
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="../index.html" class="header-logo"><img src="../image/umigaku-logo.webp" alt="三浦 海の学校" width="120"
+                    height="40"></a>
+            <nav class="desktop-nav" role="navigation">
+                <a href="../license/">ダイビングライセンス</a>
+                <a href="../fun-diving/">ファンダイビング</a>
+                <a href="../marine-activity/">マリンアクティビティ</a>
+                <a href="https://miura-diving.com/blog/">ブログ</a>
+                <a href="../contact/" class="btn btn--coral"
+                    style="padding:.6rem 1.4rem;font-size:.85rem;color:var(--coral);">お問い合わせ</a>
+            </nav>
+            <button class="hamburger" aria-label="メニューを開く"
+                aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+    <div class="mobile-nav" role="dialog" aria-modal="true">
+        <div class="mobile-nav-panel">
+            <a href="../index.html">ホーム</a><a href="../license/">ダイビングライセンス</a><a href="../fun-diving/">ファンダイビング</a><a
+                href="../marine-activity/">マリンアクティビティ</a><a href="https://miura-diving.com/blog/">ブログ</a>
+            <div class="mobile-nav-cta"><a href="../contact/" class="btn btn--coral">お問い合わせ</a></div>
+        </div>
+    </div>
+
+    <section class="hero subpage-hero">
+        <div class="hero-bubble" aria-hidden="true"></div>
+        <div class="hero-bubble" aria-hidden="true"></div>
+        <div class="hero-bg"><img src="../image/hero-bg.webp" alt="三浦の海" width="1920" height="1080" loading="eager">
+        </div>
+        <div class="hero-content">
+            <h1>お問い合わせ</h1>
+            <p class="hero-sub">ダイビングやアクティビティに関するご質問・ご予約は<br>お気軽にお問い合わせください。</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <nav class="breadcrumb"><a href="../index.html">ホーム</a><span>›</span><span>お問い合わせ</span></nav>
+        </div>
+
+        <!-- QUICK CONTACT -->
+        <section class="section">
+            <div class="container text-center">
+                <span class="section-label reveal">Quick Contact</span>
+                <h2 class="section-title reveal">今すぐ連絡する</h2>
+                <div class="quick-grid">
+                    <a href="tel:046-880-0835" class="quick-card reveal" data-delay="0">
+                        <div class="icon">📞</div>
+                        <h4>電話</h4>
+                        <p>046-880-0835<br>9:00〜16:00</p>
+                    </a>
+                    <a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" class="quick-card reveal"
+                        data-delay="1">
+                        <div class="icon">💬</div>
+                        <h4>LINE</h4>
+                        <p>お気軽にメッセージ<br>24時間受付</p>
+                    </a>
+                    <a href="mailto:info@miura-diving.com" class="quick-card reveal" data-delay="2">
+                        <div class="icon">✉️</div>
+                        <h4>メール</h4>
+                        <p>info@miura-diving.com<br>24時間受付</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT FORM -->
+        <section class="section section--alt">
+            <div class="container text-center">
+                <span class="section-label reveal">Contact Form</span>
+                <h2 class="section-title reveal">お問い合わせフォーム</h2>
+                <p class="section-lead reveal">以下のフォームに入力して送信してください。<br>通常1営業日以内にご返信いたします。</p>
+
+                <form class="contact-form reveal" id="contactForm" action="/contact/send_mail.php" method="POST">
+                    <!-- CSRF対策トークン（PHP環境で自動生成されます） -->
+                    <input type="hidden" name="csrf_token" id="csrfToken" value="">
+                    <!-- ハニーポット（bot対策 - CSSで非表示） -->
+                    <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">お名前<span class="required">必須</span></label>
+                            <input type="text" id="name" name="name" placeholder="例: 山田 太郎" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kana">フリガナ</label>
+                            <input type="text" id="kana" name="kana" placeholder="例: ヤマダ タロウ">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">メールアドレス<span class="required">必須</span></label>
+                            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">電話番号</label>
+                            <input type="tel" id="phone" name="phone" placeholder="090-1234-5678">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">お問い合わせ種別<span class="required">必須</span></label>
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>選択してください</option>
+                            <option value="体験ダイビング">体験ダイビングについて</option>
+                            <option value="OWDライセンス">OWDライセンス取得について</option>
+                            <option value="AOWライセンス">AOW・その他ライセンスについて</option>
+                            <option value="ファンダイビング">ファンダイビングの予約</option>
+                            <option value="リフレッシュ">リフレッシュダイビングについて</option>
+                            <option value="マリンアクティビティ">マリンアクティビティの予約</option>
+                            <option value="書籍・講座">書籍・講座について</option>
+                            <option value="その他">その他のお問い合わせ</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">ご希望日</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="people">参加人数</label>
+                            <select id="people" name="people">
+                                <option value="" disabled selected>選択してください</option>
+                                <option value="1名">1名</option>
+                                <option value="2名">2名</option>
+                                <option value="3名">3名</option>
+                                <option value="4名">4名</option>
+                                <option value="5名以上">5名以上</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">お問い合わせ内容<span class="required">必須</span></label>
+                        <textarea id="message" name="message" placeholder="ご予約のご相談、ご質問など、なんでもお気軽にお書きください。"
+                            required></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit">✉️ 送信する</button>
+                    </div>
+                    <p class="form-note">※ このフォームはお問い合わせの受付用です。送信後、ご入力いただいたメールアドレスに確認メールが届きます。<br>※
+                        個人情報は適切に管理し、お問い合わせへの対応以外には使用いたしません。</p>
+                </form>
+
+                <div class="form-success" id="formSuccess">
+                    <div class="icon">🎉</div>
+                    <h3>送信が完了しました！</h3>
+                    <p>お問い合わせありがとうございます。<br>1営業日以内にご返信いたします。</p>
+                    <a href="../index.html" class="btn btn--primary" style="margin-top:1rem;">トップページに戻る</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACCESS -->
+        <section class="section">
+            <div class="container text-center">
+                <span class="section-label reveal">Access</span>
+                <h2 class="section-title reveal">アクセス</h2>
+                <div
+                    style="max-width:700px;margin:0 auto;background:var(--white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border);">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.5!2d139.6187!3d35.1705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z44CSMjM4LTAyMjQg56We5aWI5bed55yM5LiJ5rWm5biC5LiJ5bSO55S66Ku455Cy!5e0!3m2!1sja!2sjp!4v1"
+                        width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div style="padding:1.25rem;text-align:left;">
+                        <p style="font-size:.9rem;font-weight:700;margin-bottom:.25rem;">三浦 海の学校</p>
+                        <p style="font-size:.8rem;color:var(--text-sub);line-height:1.6;">〒238-0224
+                            神奈川県三浦市三崎町諸磯1621<br>TEL: 046-880-0835<br>営業時間: 9:00〜16:00（不定休）<br>京急三崎口駅から無料送迎あり</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand"><strong style="color:#fff;font-size:1.1rem;">三浦 海の学校</strong>
+                    <p>〒238-0224 神奈川県三浦市三崎町諸磯1621<br>TEL: 046-880-0835<br>営業時間: 9:00〜16:00（不定休）</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>メニュー</h4><a href="../index.html">ホーム</a><a href="../license/">ダイビングライセンス</a><a
+                        href="../fun-diving/">ファンダイビング</a><a href="../marine-activity/">マリンアクティビティ</a>
+                </div>
+                <div class="footer-social">
+                    <h4>SNS</h4>
+                    <div class="footer-social-icons"><a href="https://www.instagram.com/miura_diving/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram">📷</a><a
+                            href="https://www.facebook.com/MiuraDiving" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook">📘</a><a href="https://x.com/miura_diving" target="_blank"
+                            rel="noopener noreferrer" aria-label="X (Twitter)">𝕏</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 三浦 海の学校 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js" defer></script>
+    <script>
+        // 送信結果の表示
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var status = params.get('status');
+            if (status === 'success') {
+                document.getElementById('contactForm').style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+                // ページ上部にスクロール
+                document.querySelector('.section--alt').scrollIntoView({ behavior: 'smooth' });
+            } else if (status === 'error') {
+                var reason = params.get('reason') || '';
+                var msg = 'エラーが発生しました。';
+                if (reason === 'rate') msg = '送信回数の制限に達しました。しばらくしてからお試しください。';
+                if (reason === 'validation') msg = '入力内容に不備があります。もう一度ご確認ください。';
+                if (reason === 'send') msg = 'メール送信に失敗しました。お電話またはLINEでお問い合わせください。';
+                alert(msg);
+            }
+        })();
+    </script>
+</body>
+
+</html>

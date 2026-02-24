@@ -1,0 +1,11 @@
+<!-- ★IMPROVE v2: AquaBit LAB アイコン - Data Analysis -->
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="32" cy="32" r="30" fill="#00C6FA" fill-opacity="0.1"/>
+  <rect x="14" y="18" width="36" height="28" rx="4" fill="none" stroke="#0074E4" stroke-width="2"/>
+  <path d="M20 26L26 32L30 28L40 38" stroke="#FF6B00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="26" cy="32" r="2" fill="#FF6B00"/>
+  <circle cx="30" cy="28" r="2" fill="#FF6B00"/>
+  <circle cx="40" cy="38" r="2" fill="#FF6B00"/>
+  <path d="M18 50L46 50" stroke="#0074E4" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 46L14 18" stroke="#0074E4" stroke-width="2" stroke-linecap="round"/>
+</svg>
