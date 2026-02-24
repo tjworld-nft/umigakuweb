@@ -13,12 +13,16 @@
 ini_set('display_errors', 0);
 error_reporting(0);
 
+// 日本語メール送信設定
+mb_internal_encoding('UTF-8');
+mb_language('Japanese');
+
 // セッション開始（CSRF対策用）
 session_start();
 
 // ===== 設定 =====
 $TO_EMAIL      = 'info@miura-diving.com';  // 送信先メールアドレス（Xserver上のメールアドレス）
-$FROM_EMAIL    = 'noreply@miura-diving.com'; // 送信元メールアドレス
+$FROM_EMAIL    = 'info@miura-diving.com';  // 送信元もinfo@（Xserverに登録済みのアドレスを使用）
 $SITE_NAME     = '三浦 海の学校';
 $REDIRECT_OK   = '/contact/?status=success';  // 送信成功時のリダイレクト先
 $REDIRECT_ERR  = '/contact/?status=error';    // エラー時のリダイレクト先
@@ -31,16 +35,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // ===== CSRFトークン検証 =====
-if (!isset($_POST['csrf_token']) || !isset($_SESSION['csrf_token'])) {
-    header('Location: ' . $REDIRECT_ERR . '&reason=csrf');
-    exit;
+// index.php経由ならトークンあり、index.html直接アクセスなら空値でスキップ
+$csrf_token = $_POST['csrf_token'] ?? '';
+if (!empty($csrf_token) && isset($_SESSION['csrf_token'])) {
+    if (!hash_equals($_SESSION['csrf_token'], $csrf_token)) {
+        header('Location: ' . $REDIRECT_ERR . '&reason=csrf');
+        exit;
+    }
+    // トークンを使い捨てにする（リプレイ攻撃防止）
+    unset($_SESSION['csrf_token']);
 }
-if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-    header('Location: ' . $REDIRECT_ERR . '&reason=csrf');
-    exit;
-}
-// トークンを使い捨てにする（リプレイ攻撃防止）
-unset($_SESSION['csrf_token']);
 
 // ===== レート制限（1分間に3回まで） =====
 $rate_key = 'contact_rate_' . ($_SERVER['REMOTE_ADDR'] ?? 'unknown');
