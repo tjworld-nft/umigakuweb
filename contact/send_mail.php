@@ -147,11 +147,16 @@ EOT;
 $body = str_replace('SEND_DATE', date('Y年m月d日 H:i:s'), $body);
 
 // ===== メールヘッダー =====
+// mb_send_mail は件名・本文を自動で ISO-2022-JP に変換するため
+// Content-Type に UTF-8 を指定しない（衝突して文字化けする）
 $subject = "【お問い合わせ】{$category} - {$name}様";
 
-$headers  = "From: {$SITE_NAME} <{$FROM_EMAIL}>\r\n";
-$headers .= "Reply-To: {$name} <{$email}>\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+// From/Reply-To の日本語部分をMIMEエンコード
+$from_name_encoded = mb_encode_mimeheader($SITE_NAME, 'ISO-2022-JP', 'B');
+$reply_name_encoded = mb_encode_mimeheader($name, 'ISO-2022-JP', 'B');
+
+$headers  = "From: {$from_name_encoded} <{$FROM_EMAIL}>\r\n";
+$headers .= "Reply-To: {$reply_name_encoded} <{$email}>\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
 // ===== メール送信 =====
@@ -188,8 +193,7 @@ if ($result) {
   心当たりのない場合は、お手数ですが破棄してください。
 EOT;
 
-    $auto_reply_headers  = "From: {$SITE_NAME} <{$FROM_EMAIL}>\r\n";
-    $auto_reply_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $auto_reply_headers  = "From: {$from_name_encoded} <{$FROM_EMAIL}>\r\n";
 
     mb_send_mail($email, $auto_reply_subject, $auto_reply_body, $auto_reply_headers);
 }
