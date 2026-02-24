@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お申し込み完了 - PADIダイビングライセンス講習 | 三浦海の学校</title>
+    <meta name="description" content="OWDライセンス講習のお申し込みが完了しました。担当者より24時間以内にご連絡いたします。">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #0c2d48 0%, #2e86ab 50%, #4ecdc4 100%);
+            background-size: 400% 400%;
+            animation: ocean-gradient 8s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px 0;
+        }
+
+        /* Ocean Background Animation */
+        @keyframes ocean-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Bubbles */
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: bubble-float 4s infinite ease-in-out;
+        }
+
+        .bubble:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .bubble:nth-child(2) { left: 20%; animation-delay: 1s; width: 15px; height: 15px; }
+        .bubble:nth-child(3) { left: 30%; animation-delay: 2s; width: 25px; height: 25px; }
+        .bubble:nth-child(4) { left: 40%; animation-delay: 0.5s; }
+        .bubble:nth-child(5) { left: 50%; animation-delay: 1.5s; width: 12px; height: 12px; }
+        .bubble:nth-child(6) { left: 60%; animation-delay: 3s; }
+        .bubble:nth-child(7) { left: 70%; animation-delay: 2.5s; width: 18px; height: 18px; }
+        .bubble:nth-child(8) { left: 80%; animation-delay: 0.8s; }
+        .bubble:nth-child(9) { left: 90%; animation-delay: 1.8s; width: 22px; height: 22px; }
+        .bubble:nth-child(10) { left: 15%; animation-delay: 3.5s; width: 14px; height: 14px; }
+        .bubble:nth-child(11) { left: 75%; animation-delay: 2.8s; width: 26px; height: 26px; }
+        .bubble:nth-child(12) { left: 35%; animation-delay: 4s; width: 16px; height: 16px; }
+
+        @keyframes bubble-float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            z-index: 10;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 40px);
+        }
+
+        .thanks-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .thanks-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 50%, #FF9350 100%);
+        }
+
+        .thanks-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.1) 0%, transparent 70%);
+            animation: sparkle 4s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: rotate(0deg) scale(1); }
+            50% { opacity: 0.1; transform: rotate(180deg) scale(1.1); }
+        }
+
+        .thanks-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            animation: celebration 3s ease-in-out infinite;
+            position: relative;
+            z-index: 5;
+        }
+
+        @keyframes celebration {
+            0%, 100% { 
+                transform: translateY(0) scale(1) rotate(0deg); 
+                filter: drop-shadow(0 0 10px rgba(78, 205, 196, 0.3));
+            }
+            25% { 
+                transform: translateY(-20px) scale(1.15) rotate(-8deg); 
+                filter: drop-shadow(0 0 20px rgba(255, 147, 80, 0.6));
+            }
+            50% { 
+                transform: translateY(-15px) scale(1.1) rotate(8deg); 
+                filter: drop-shadow(0 0 15px rgba(69, 183, 209, 0.6));
+            }
+            75% { 
+                transform: translateY(-8px) scale(1.05) rotate(-4deg); 
+                filter: drop-shadow(0 0 12px rgba(78, 205, 196, 0.5));
+            }
+        }
+
+        .thanks-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0c2d48 0%, #2e86ab 50%, #4ecdc4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 5;
+            animation: title-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes title-glow {
+            0% { filter: drop-shadow(0 0 5px rgba(78, 205, 196, 0.3)); }
+            100% { filter: drop-shadow(0 0 15px rgba(78, 205, 196, 0.6)); }
+        }
+
+        .thanks-message {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 35px;
+            line-height: 1.9;
+            position: relative;
+            z-index: 5;
+            font-weight: 500;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .thanks-details {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .thanks-details h3 {
+            color: #0c2d48;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .thanks-details ul {
+            list-style: none;
+            color: #495057;
+        }
+
+        .thanks-details li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .thanks-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 50%, #2e86ab 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            animation: contact-pulse 4s ease-in-out infinite;
+            box-shadow: 0 8px 32px rgba(78, 205, 196, 0.3);
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: contact-shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes contact-pulse {
+            0%, 100% { box-shadow: 0 8px 32px rgba(78, 205, 196, 0.3); }
+            50% { box-shadow: 0 12px 48px rgba(78, 205, 196, 0.5); }
+        }
+
+        @keyframes contact-shimmer {
+            0%, 100% { opacity: 0.3; transform: rotate(0deg); }
+            50% { opacity: 0.1; transform: rotate(180deg); }
+        }
+
+        .contact-info h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 50%, #FF9350 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: btn-glow 3s ease-in-out infinite alternate;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.5);
+        }
+
+        @keyframes btn-glow {
+            0% { box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3); }
+            100% { box-shadow: 0 6px 20px rgba(78, 205, 196, 0.6); }
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #45b7d1;
+            border: 2px solid #45b7d1;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #45b7d1 0%, #4ecdc4 100%);
+            transition: left 0.3s ease;
+            z-index: 1;
+        }
+
+        .btn-secondary span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-secondary:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary:hover {
+            color: white;
+            border-color: #4ecdc4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(69, 183, 209, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 0;
+            }
+            
+            .container {
+                padding: 10px;
+                min-height: calc(100vh - 20px);
+            }
+            
+            .thanks-card {
+                padding: 30px 20px;
+                max-height: 95vh;
+                margin: 10px 0;
+            }
+
+            .thanks-title {
+                font-size: 1.8rem;
+            }
+            
+            .thanks-icon {
+                font-size: 3.5rem;
+                margin-bottom: 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .thanks-card {
+                padding: 25px 15px;
+                border-radius: 20px;
+            }
+            
+            .thanks-title {
+                font-size: 1.5rem;
+            }
+            
+            .thanks-icon {
+                font-size: 3rem;
+            }
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Bubbles Background -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
+    <div class="container">
+        <div class="thanks-card floating">
+            <div class="thanks-icon">🌊✨</div>
+            
+            <h1 class="thanks-title">お申し込みありがとうございます！</h1>
+            
+            <p class="thanks-message">
+                PADIダイビングライセンス講習のお申し込みが正常に完了しました。<br>
+                担当者より<strong>24時間以内</strong>にご連絡いたします。
+            </p>
+            
+            <div class="thanks-details">
+                <h3>📋 次のステップ</h3>
+                <ul>
+                    <li>お申し込み内容の確認メールをお送りしました</li>
+                    <li>担当者から詳細なご案内をご連絡します</li>
+                    <li>講習日程の調整を行います</li>
+                    <li>必要な書類や持ち物をご案内します</li>
+                </ul>
+            </div>
+            
+            <div class="contact-info">
+                <h3>📞 お急ぎの場合は直接お電話ください</h3>
+                <p><strong>電話:</strong> 046-880-0835</p>
+                <p><strong>営業時間:</strong> 8:00-18:00（年中無休）</p>
+                <p><strong>メール:</strong> info@miura-diving.com</p>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="https://miura-diving.com/owd-license/" class="btn btn-secondary"><span>コース詳細に戻る</span></a>
+                <a href="https://miura-diving.com/" class="btn btn-primary">トップページへ</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ページ読み込み時のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.thanks-card');
+            const icon = document.querySelector('.thanks-icon');
+            const title = document.querySelector('.thanks-title');
+            const message = document.querySelector('.thanks-message');
+            const details = document.querySelector('.thanks-details');
+            const contact = document.querySelector('.contact-info');
+            const buttons = document.querySelector('.cta-buttons');
+            
+            // 初期状態設定
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px) scale(0.9)';
+            
+            // 段階的なアニメーション
+            setTimeout(() => {
+                card.style.transition = 'all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+            }, 200);
+            
+            // アイコンの遅延アニメーション
+            setTimeout(() => {
+                icon.style.animation = 'celebration 2s ease-in-out infinite, pulse 1.5s ease-in-out infinite';
+            }, 800);
+            
+            // 要素の順次表示
+            const elements = [title, message, details, contact, buttons];
+            elements.forEach((element, index) => {
+                if (element) {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        element.style.transition = 'all 0.6s ease';
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }, 1000 + (index * 200));
+                }
+            });
+            
+            // 追加のパルスアニメーション
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

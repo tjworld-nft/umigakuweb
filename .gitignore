@@ -1,0 +1,13 @@
+# WordPress設定（APIキー含む）
+wp-config.php
+
+# APIキーを含むファイル
+fortune-handler.php
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

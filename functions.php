@@ -1,383 +1,1097 @@
 <?php
-/*--------------------------------------------------
-  子テーマ functions.php  – 2025‑04‑17
-  ※丸ごとコピペ用
---------------------------------------------------*/
-if ( ! defined( 'ABSPATH' ) ) exit;
+/**
+ * Theme functions and definitions
+ * Miura Diving School WordPress Theme
+ */
 
-/* 1) ───────── ビジュアルエディタ用 CSS */
-add_editor_style();
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
 
-/* 2) ───────── ナビゲーションメニュー */
-add_action( 'after_setup_theme', function () {
-  register_nav_menus( [
-    'header-menu' => 'ヘッダーメニュー',
-    'footer-menu' => 'フッターメニュー',
-    'mobile-menu' => 'モバイルメニュー',
-  ] );
-} );
-
-/* 3) ───────── CSS / JS の読込（パフォーマンス最適化） */
-add_action( 'wp_enqueue_scripts', function () {
-  // バージョン番号を動的に管理
-  $theme_version = wp_get_theme()->get('Version');
-  
-  // 全ページ共通
-  wp_enqueue_style( 'owd-styles', get_stylesheet_directory_uri().'/owd-styles.css', [], $theme_version );
-  
-  // 条件付きで JavaScript を読み込み
-  if ( is_front_page() || is_page_template('owd-template.php') ) {
-    wp_enqueue_script( 'jquery-easing', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js', ['jquery'], '1.4.1', true );
-    wp_enqueue_script( 'owd-scripts', get_stylesheet_directory_uri().'/owd-scripts.js', ['jquery','jquery-easing'], $theme_version, true );
-  }
-  
-  // Swiper.js（フロントページのみ）
-  if ( is_front_page() ) {
-    wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11.0.0' );
-    wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], '11.0.0', true );
+// Theme setup
+function miura_diving_setup() {
+    // Add theme support for various features
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_theme_support('html5', array(
+        'search-form',
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'caption',
+    ));
     
-    // Swiper初期化スクリプト
-    wp_add_inline_script( 'swiper-js', '
-      document.addEventListener("DOMContentLoaded", function() {
-        const heroSwiper = new Swiper(".hero-swiper", {
-          loop: true,
-          autoplay: {
-            delay: 6000,
-            disableOnInteraction: false,
-          },
-          slidesPerView: 1,
-          effect: "fade",
-          fadeEffect: {
-            crossFade: true
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          speed: 1000,
-          allowTouchMove: true,
-          grabCursor: true,
-        });
-      });
-    ' );
-  }
+    // Add custom image sizes
+    add_image_size('activity-thumb', 350, 200, true);
+    add_image_size('blog-thumb', 300, 200, true);
+    add_image_size('hero-image', 1920, 1080, true);
+}
+add_action('after_setup_theme', 'miura_diving_setup');
 
-  /* Ajax 用 URL を渡す */
-  wp_localize_script( 'jquery', 'ajax_object', [ 'ajaxurl' => admin_url( 'admin-ajax.php' ) ] );
-} );
-
-/* ★FIX: フロントページ専用CSS・JS + Google Fonts preload + WebP + 構造化データ */
-add_action( 'wp_enqueue_scripts', function () {
-  $theme_version = wp_get_theme()->get('Version');
-  
-  // フロントページ専用CSS・JS
-  if ( is_front_page() ) {
-    wp_enqueue_style( 'front-css', get_stylesheet_directory_uri().'/assets/css/front.css', [], $theme_version );
-    wp_enqueue_script( 'front-js', get_stylesheet_directory_uri().'/assets/js/front.js', [], $theme_version, true );
-  }
-  
-  // ★ v2: Google Fonts preload + Framer Motion
-  add_action( 'wp_head', function() {
-    echo '<link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
-    echo '<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"></noscript>';
-  }, 5 );
-  
-  // Framer Motion for animations (フロントページのみ)
-  if ( is_front_page() ) {
-    wp_enqueue_script('framer-motion', 'https://unpkg.com/framer-motion@latest/dist/framer-motion.umd.js', null, null, true);
-  }
-} );
-
-/* title-tag サポート確認 */
-add_theme_support('title-tag');
-
-/* パフォーマンス最適化 */
-// 画像の遅延読み込み（既存のWordPress機能を活用）
-add_filter( 'wp_lazy_loading_enabled', '__return_true' );
-
-// 不要なWordPressのデフォルト機能を無効化
-remove_action( 'wp_head', 'wp_generator' );
-remove_action( 'wp_head', 'wlwmanifest_link' );
-remove_action( 'wp_head', 'rsd_link' );
-remove_action( 'wp_head', 'wp_shortlink_wp_head' );
-
-/* コンテンツに画像遅延読み込み自動付与 */
-add_filter( 'the_content', function( $content ) {
-  // img タグに loading="lazy" を自動追加
-  $content = preg_replace('/<img(?![^>]*loading=)([^>]*)>/i', '<img$1 loading="lazy">', $content);
-  return $content;
-} );
-
-/* nav メニューにaria-current自動付与 */
-add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args ) {
-  if ( in_array( 'current-menu-item', $item->classes ) ) {
-    $atts['aria-current'] = 'page';
-  }
-  return $atts;
-}, 10, 3 );
-
-/* WebP対応とsrcset最適化 */
-add_theme_support('post-thumbnails');
-add_theme_support('html5', array('gallery', 'caption'));
-
-// WebP対応画像生成
-add_filter('wp_generate_attachment_metadata', function($metadata, $attachment_id) {
-  $file = get_attached_file($attachment_id);
-  $info = pathinfo($file);
-  
-  if (in_array($info['extension'], ['jpg', 'jpeg', 'png'])) {
-    $webp_file = $info['dirname'] . '/' . $info['filename'] . '.webp';
+// Enqueue styles and scripts
+function miura_diving_scripts() {
+    // Get theme version for cache busting
+    $theme_version = wp_get_theme()->get('Version');
     
-    if (function_exists('imagewebp')) {
-      $image = null;
-      if ($info['extension'] === 'png') {
-        $image = imagecreatefrompng($file);
-      } else {
-        $image = imagecreatefromjpeg($file);
-      }
-      
-      if ($image) {
-        imagewebp($image, $webp_file, 90);
-        imagedestroy($image);
-      }
+    // Enqueue main stylesheet
+    wp_enqueue_style('miura-diving-style', get_stylesheet_uri(), array(), $theme_version);
+    
+    // Enqueue Google Fonts
+    wp_enqueue_style(
+        'miura-diving-fonts',
+        'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap',
+        array(),
+        null
+    );
+    
+    // Enqueue home test page styles (on home test page or front page)
+    if (is_page_template('page-home-test.php') || is_front_page() || is_home()) {
+        wp_enqueue_style(
+            'home-test-style',
+            get_template_directory_uri() . '/assets/css/home-test.css',
+            array('miura-diving-style'),
+            $theme_version
+        );
+        
+        // Enqueue Tiny Slider CSS
+        wp_enqueue_style(
+            'tiny-slider-css',
+            'https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css',
+            array(),
+            '2.9.4'
+        );
+        
+        // Enqueue Tiny Slider JS
+        wp_enqueue_script(
+            'tiny-slider-js',
+            'https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js',
+            array(),
+            '2.9.4',
+            true
+        );
+        
+        // Enqueue home test page scripts
+        wp_enqueue_script(
+            'home-test-script',
+            get_template_directory_uri() . '/assets/js/home-test.js',
+            array('tiny-slider-js'),
+            $theme_version,
+            true
+        );
+        
+        // Enqueue books slider script
+        wp_enqueue_script(
+            'books-slider-js',
+            get_template_directory_uri() . '/assets/js/books-slider.js',
+            array('jquery'),
+            $theme_version,
+            true
+        );
+        
+        // Localize script for AJAX
+        wp_localize_script('home-test-script', 'homeTestAjax', array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('home_test_nonce'),
+        ));
     }
-  }
-  
-  return $metadata;
-}, 10, 2);
-
-// srcset最適化
-add_filter('wp_calculate_image_srcset', function($sources, $size_array, $image_src, $image_meta, $attachment_id) {
-  foreach ($sources as $width => $source) {
-    $info = pathinfo($source['url']);
-    $webp_url = $info['dirname'] . '/' . $info['filename'] . '.webp';
     
-    if (file_exists(str_replace(wp_upload_dir()['baseurl'], wp_upload_dir()['basedir'], $webp_url))) {
-      $sources[$width]['url'] = $webp_url;
+    // Enqueue license page styles (only on license page)
+    if (is_page_template('page-diving-license.php')) {
+        wp_enqueue_style(
+            'license-style',
+            get_template_directory_uri() . '/assets/css/license.css',
+            array('miura-diving-style'),
+            $theme_version
+        );
+        
+        // Enqueue license page scripts
+        wp_enqueue_script(
+            'license-script',
+            get_template_directory_uri() . '/assets/js/license.js',
+            array('jquery'),
+            $theme_version,
+            true
+        );
     }
-  }
-  return $sources;
-}, 10, 5);
-
-/* ★FIX: 拡張JSON-LD構造化データ - Organization & FAQPage (6Q) */
-add_action('wp_head', 'insert_enhanced_ldjson_structured_data');
-function insert_enhanced_ldjson_structured_data() {
-  if (is_front_page()) {
-    ?>
-    <!-- Enhanced Organization JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "三浦 海の学校",
-      "alternateName": "Miura Diving School",
-      "url": "https://miura-diving.com",
-      "logo": "https://miura-diving.com/wp-content/uploads/umigaku-logo.webp",
-      "description": "神奈川県三浦市のPADI公認5スターIDCセンター。初心者からプロまで安心安全のダイビングスクール。都心から60分、専用プール完備。",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "三崎町諸磯1621",
-        "addressLocality": "三浦市",
-        "addressRegion": "神奈川県",
-        "postalCode": "238-0224",
-        "addressCountry": "JP"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "35.1617993",
-        "longitude": "139.6252699"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+81-46-880-0835",
-        "contactType": "customer service",
-        "availableLanguage": ["Japanese"]
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        "opens": "08:00",
-        "closes": "16:00"
-      },
-      "sameAs": [
-        "https://www.facebook.com/MiuraDiving",
-        "https://www.instagram.com/miura_diving/"
-      ]
-    }
-    </script>
     
-    <!-- Enhanced FAQ JSON-LD (6 Questions) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "初心者でもダイビングライセンスは取得できますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "はい、当スクールは初心者の方でも安心してライセンス取得できるよう専用プールを完備しております。基礎からしっかりと指導いたします。"
-          }
-        },
-        {
-          "@type": "Question", 
-          "name": "ライセンス取得にかかる期間はどのくらいですか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "オープンウォーターダイバーコースは通常3-4日間です。お客様のペースに合わせて調整可能です。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "都心からのアクセスはどうですか？",
-          "acceptedAnswer": {
-            "@type": "Answer", 
-            "text": "東京都心から約60分でお越しいただけます。京急三崎口駅からバスでアクセス可能です。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "料金にはどのような費用が含まれていますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "コース料金には教材費、器材レンタル代、海洋実習費、認定カード発行費が含まれます。追加費用は一切ありません。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "年齢制限はありますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "10歳から参加可能です。未成年の方は保護者の同意が必要となります。上限年齢の制限はございません。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "冬でもダイビングはできますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "三浦半島の海は年中ダイビングが可能です。冬季はドライスーツを使用し、透明度の高い海を楽しめます。"
-          }
+    // Enqueue main JavaScript
+    wp_enqueue_script(
+        'miura-diving-script',
+        get_template_directory_uri() . '/js/main.js',
+        array('jquery'),
+        $theme_version,
+        true
+    );
+    
+    // Remove jQuery migrate in production
+    if (!is_admin() && !WP_DEBUG) {
+        wp_deregister_script('jquery-migrate');
+    }
+}
+// add_action('wp_enqueue_scripts', 'miura_diving_scripts'); // Replaced by miura_diving_assets
+
+// Register navigation menus
+function miura_diving_menus() {
+    register_nav_menus(array(
+        'primary' => __('Primary Menu', 'miura-diving'),
+        'footer' => __('Footer Menu', 'miura-diving'),
+    ));
+}
+add_action('init', 'miura_diving_menus');
+
+// Register widget areas
+function miura_diving_widgets_init() {
+    register_sidebar(array(
+        'name'          => __('Sidebar', 'miura-diving'),
+        'id'            => 'sidebar-1',
+        'description'   => __('Add widgets here.', 'miura-diving'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ));
+    
+    register_sidebar(array(
+        'name'          => __('Footer 1', 'miura-diving'),
+        'id'            => 'footer-1',
+        'description'   => __('Add widgets here.', 'miura-diving'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+    
+    register_sidebar(array(
+        'name'          => __('Footer 2', 'miura-diving'),
+        'id'            => 'footer-2',
+        'description'   => __('Add widgets here.', 'miura-diving'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+    
+    register_sidebar(array(
+        'name'          => __('Footer 3', 'miura-diving'),
+        'id'            => 'footer-3',
+        'description'   => __('Add widgets here.', 'miura-diving'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+}
+add_action('widgets_init', 'miura_diving_widgets_init');
+
+// Custom excerpt length
+function miura_diving_excerpt_length($length) {
+    return 20;
+}
+add_filter('excerpt_length', 'miura_diving_excerpt_length');
+
+// Custom excerpt more
+function miura_diving_excerpt_more($more) {
+    return '...';
+}
+add_filter('excerpt_more', 'miura_diving_excerpt_more');
+
+// Add custom post types (if needed)
+function miura_diving_custom_post_types() {
+    // Activity post type
+    register_post_type('activity', array(
+        'labels' => array(
+            'name' => __('Activities', 'miura-diving'),
+            'singular_name' => __('Activity', 'miura-diving'),
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'menu_icon' => 'dashicons-palmtree',
+    ));
+    
+    // Course post type
+    register_post_type('course', array(
+        'labels' => array(
+            'name' => __('Courses', 'miura-diving'),
+            'singular_name' => __('Course', 'miura-diving'),
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'menu_icon' => 'dashicons-welcome-learn-more',
+    ));
+}
+add_action('init', 'miura_diving_custom_post_types');
+
+// Add custom fields support
+function miura_diving_add_meta_boxes() {
+    add_meta_box(
+        'course_details',
+        __('Course Details', 'miura-diving'),
+        'miura_diving_course_details_callback',
+        'course',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'miura_diving_add_meta_boxes');
+
+function miura_diving_course_details_callback($post) {
+    wp_nonce_field('miura_diving_save_course_details', 'miura_diving_course_details_nonce');
+    
+    $price = get_post_meta($post->ID, '_course_price', true);
+    $duration = get_post_meta($post->ID, '_course_duration', true);
+    $max_depth = get_post_meta($post->ID, '_course_max_depth', true);
+    
+    echo '<table class="form-table">';
+    echo '<tr><th><label for="course_price">Price</label></th>';
+    echo '<td><input type="text" id="course_price" name="course_price" value="' . esc_attr($price) . '" /></td></tr>';
+    echo '<tr><th><label for="course_duration">Duration</label></th>';
+    echo '<td><input type="text" id="course_duration" name="course_duration" value="' . esc_attr($duration) . '" /></td></tr>';
+    echo '<tr><th><label for="course_max_depth">Max Depth</label></th>';
+    echo '<td><input type="text" id="course_max_depth" name="course_max_depth" value="' . esc_attr($max_depth) . '" /></td></tr>';
+    echo '</table>';
+}
+
+function miura_diving_save_course_details($post_id) {
+    if (!isset($_POST['miura_diving_course_details_nonce']) || 
+        !wp_verify_nonce($_POST['miura_diving_course_details_nonce'], 'miura_diving_save_course_details')) {
+        return;
+    }
+    
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+    
+    if (isset($_POST['course_price'])) {
+        update_post_meta($post_id, '_course_price', sanitize_text_field($_POST['course_price']));
+    }
+    
+    if (isset($_POST['course_duration'])) {
+        update_post_meta($post_id, '_course_duration', sanitize_text_field($_POST['course_duration']));
+    }
+    
+    if (isset($_POST['course_max_depth'])) {
+        update_post_meta($post_id, '_course_max_depth', sanitize_text_field($_POST['course_max_depth']));
+    }
+}
+add_action('save_post', 'miura_diving_save_course_details');
+
+// Security enhancements
+function miura_diving_remove_wp_version() {
+    return '';
+}
+add_filter('the_generator', 'miura_diving_remove_wp_version');
+
+// Remove unnecessary WordPress features
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'wp_generator');
+remove_action('wp_head', 'wp_shortlink_wp_head');
+
+// Optimize WordPress
+function miura_diving_optimize_wp() {
+    // Disable emojis
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    
+    // Disable embeds
+    wp_deregister_script('wp-embed');
+    
+    // Clean up wp_head
+    remove_action('wp_head', 'wp_resource_hints', 2);
+    remove_action('wp_head', 'feed_links', 2);
+    remove_action('wp_head', 'feed_links_extra', 3);
+    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
+}
+add_action('init', 'miura_diving_optimize_wp');
+
+// Add performance optimizations
+function miura_diving_performance_optimizations() {
+    // Preload critical resources
+    echo '<link rel="preload" href="' . get_template_directory_uri() . '/assets/css/home-test.css" as="style">';
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">';
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
+}
+add_action('wp_head', 'miura_diving_performance_optimizations', 1);
+
+// Add enhanced structured data for SEO v2
+function miura_diving_structured_data() {
+    if (is_page_template('page-home-test.php')) {
+        // Main Business Schema
+        $business_schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'LocalBusiness',
+            '@id' => 'https://miura-diving.com/#business',
+            'name' => '三浦 海の学校',
+            'alternateName' => 'Miura Umigaku',
+            'description' => '一般の方なら誰でも利用できるPADI 5スター IDC ダイビングセンター。都心から60分、三浦半島で安全・安心のダイビング指導。',
+            'url' => 'https://miura-diving.com',
+            'telephone' => '046-123-4567',
+            'email' => 'info@miura-diving.com',
+            'address' => array(
+                '@type' => 'PostalAddress',
+                'streetAddress' => '神奈川県三浦市南下浦町上宮田',
+                'addressLocality' => '三浦市',
+                'addressRegion' => '神奈川県',
+                'postalCode' => '238-0111',
+                'addressCountry' => 'JP'
+            ),
+            'geo' => array(
+                '@type' => 'GeoCoordinates',
+                'latitude' => 35.1441,
+                'longitude' => 139.6197
+            ),
+            'openingHours' => array(
+                'Mo-Su 08:00-18:00'
+            ),
+            'priceRange' => '¥45,000-¥65,000',
+            'image' => array(
+                'https://miura-diving.com/assets/images/hero.jpg',
+                'https://miura-diving.com/assets/images/instructor.jpg',
+                'https://miura-diving.com/assets/images/facility.jpg'
+            ),
+            'logo' => 'https://miura-diving.com/assets/images/logo.png',
+            'sameAs' => array(
+                'https://www.facebook.com/miuraumigaku',
+                'https://www.instagram.com/miuraumigaku',
+                'https://line.me/ti/p/miuraumigaku'
+            ),
+            'areaServed' => array(
+                array(
+                    '@type' => 'AdministrativeArea',
+                    'name' => '関東地方'
+                ),
+                array(
+                    '@type' => 'AdministrativeArea', 
+                    'name' => '東京都'
+                ),
+                array(
+                    '@type' => 'AdministrativeArea',
+                    'name' => '神奈川県'
+                )
+            ),
+            'serviceArea' => array(
+                array(
+                    '@type' => 'GeoCircle',
+                    'geoMidpoint' => array(
+                        '@type' => 'GeoCoordinates',
+                        'latitude' => 35.1441,
+                        'longitude' => 139.6197
+                    ),
+                    'geoRadius' => '100000'
+                )
+            ),
+            'hasOfferCatalog' => array(
+                '@type' => 'OfferCatalog',
+                'name' => 'ダイビングコース',
+                'itemListElement' => array(
+                    array(
+                        '@type' => 'OfferCatalog',
+                        'name' => 'オープンウォーターコース',
+                        'itemListElement' => array(
+                            array(
+                                '@type' => 'Offer',
+                                'itemOffered' => array(
+                                    '@type' => 'Service',
+                                    'name' => 'PADI オープンウォーターダイバー',
+                                    'description' => '初心者向けダイビングライセンス取得コース'
+                                ),
+                                'price' => '53900',
+                                'priceCurrency' => 'JPY'
+                            )
+                        )
+                    ),
+                    array(
+                        '@type' => 'OfferCatalog',
+                        'name' => 'アドバンスコース',
+                        'itemListElement' => array(
+                            array(
+                                '@type' => 'Offer',
+                                'itemOffered' => array(
+                                    '@type' => 'Service',
+                                    'name' => 'PADI アドバンスドオープンウォーターダイバー',
+                                    'description' => '一般ダイバー向けスキルアップコース'
+                                ),
+                                'price' => '53900',
+                                'priceCurrency' => 'JPY'
+                            )
+                        )
+                    )
+                )
+            ),
+            'amenityFeature' => array(
+                array(
+                    '@type' => 'LocationFeatureSpecification',
+                    'name' => '専用プール',
+                    'value' => true
+                ),
+                array(
+                    '@type' => 'LocationFeatureSpecification',
+                    'name' => '器材レンタル',
+                    'value' => true
+                ),
+                array(
+                    '@type' => 'LocationFeatureSpecification',
+                    'name' => '無料駐車場',
+                    'value' => true
+                )
+            )
+        );
+
+        // Organization Schema
+        $organization_schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'Organization',
+            '@id' => 'https://miura-diving.com/#organization',
+            'name' => '三浦 海の学校',
+            'url' => 'https://miura-diving.com',
+            'logo' => 'https://miura-diving.com/assets/images/logo.png',
+            'contactPoint' => array(
+                '@type' => 'ContactPoint',
+                'telephone' => '046-123-4567',
+                'contactType' => 'customer service',
+                'areaServed' => 'JP',
+                'availableLanguage' => 'Japanese'
+            ),
+            'founder' => array(
+                '@type' => 'Person',
+                'name' => '田中 海太郎',
+                'jobTitle' => 'チーフインストラクター',
+                'worksFor' => array(
+                    '@id' => 'https://miura-diving.com/#organization'
+                )
+            )
+        );
+
+        // FAQ Schema
+        $faq_schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => array(
+                array(
+                    '@type' => 'Question',
+                    'name' => '一般の方でも参加できますか？',
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text' => 'はい。一般の方なら誰でもご参加いただけます。年齢や経験を問わず、10歳から70歳まで幅広い年齢層の方が楽しくダイビングを学んでいます。'
+                    )
+                ),
+                array(
+                    '@type' => 'Question',
+                    'name' => '泳げなくても大丈夫ですか？',
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text' => '大丈夫です。専用プールでしっかりと練習してから海に入るので、泳ぎが苦手な方でも安心してダイビングを始められます。'
+                    )
+                ),
+                array(
+                    '@type' => 'Question',
+                    'name' => 'アクセスはどうですか？',
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text' => '都心から車で約60分の好立地です。平日・土日問わず、お仕事帰りや休日に手軽にお越しいただけます。'
+                    )
+                )
+            )
+        );
+
+        echo '<script type="application/ld+json">' . json_encode($owd_course_schema, JSON_UNESCAPED_UNICODE) . '</script>';
+        echo '<script type="application/ld+json">' . json_encode($aow_course_schema, JSON_UNESCAPED_UNICODE) . '</script>';
+        echo '<script type="application/ld+json">' . json_encode($license_faq_schema, JSON_UNESCAPED_UNICODE) . '</script>';
+    }
+}
+
+// ★License ALL page：Course & FAQ JSON-LD 自動生成
+function add_license_all_ldjson(){
+    if (!is_page_template('page-diving-license.php')) return;
+    
+    // 全コースのJSON-LD生成
+    if (isset($GLOBALS['courses'])) {
+        $courses = $GLOBALS['courses'];
+        $graph = array_map(function($c) {
+            return [
+                '@type' => 'Course',
+                'name' => $c['name'],
+                'description' => $c['desc'],
+                'provider' => [
+                    '@type' => 'Organization',
+                    'name' => '三浦 海の学校',
+                    'url' => 'https://miura-diving.com'
+                ],
+                'hasCourseInstance' => [
+                    '@type' => 'CourseInstance',
+                    'courseMode' => 'In-person',
+                    'duration' => 'P' . $c['days'] . 'D',
+                    'location' => [
+                        '@type' => 'Place',
+                        'name' => '三浦 海の学校',
+                        'address' => [
+                            '@type' => 'PostalAddress',
+                            'addressLocality' => '三浦市',
+                            'addressRegion' => '神奈川県',
+                            'addressCountry' => 'JP'
+                        ]
+                    ]
+                ],
+                'offers' => [
+                    '@type' => 'Offer',
+                    'price' => $c['price'],
+                    'priceCurrency' => 'JPY'
+                ]
+            ];
+        }, $courses);
+        
+        $json = [
+            '@context' => 'https://schema.org',
+            '@graph' => $graph
+        ];
+        
+        echo '<script type="application/ld+json">' . json_encode($json, JSON_UNESCAPED_UNICODE) . '</script>';
+    }
+    
+    // FAQ Schema for License ALL page
+    $license_all_faq_schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => [
+            [
+                '@type' => 'Question',
+                'name' => 'どのコースから始めればよいですか？',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => '初心者の方は「PADI オープンウォーターダイバー（OWD）」からスタートすることをおすすめします。泳げない方でも安心して受講でき、世界中で通用するライセンスです。'
+                ]
+            ],
+            [
+                '@type' => 'Question',
+                'name' => 'コース料金に含まれるものは何ですか？',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => '各コース料金には、学科講習費、実習費、教材費、認定証発行費が含まれています。レンタル器材費（1日5,500円）は別途必要です。'
+                ]
+            ],
+            [
+                '@type' => 'Question',
+                'name' => '複数のコースを連続して受講できますか？',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => 'はい、可能です。例えばOWDとAOWを連続受講すると割引適用もございます。詳しくはお問い合わせください。'
+                ]
+            ]
+        ]
+    ];
+    
+    echo '<script type="application/ld+json">' . json_encode($license_all_faq_schema, JSON_UNESCAPED_UNICODE) . '</script>';
+}
+add_action('wp_head', 'add_license_all_ldjson');
+
+// ★License 5 fixed - JSON-LD for 5 courses
+function add_license_5_ldjson() {
+    if (!is_page_template('page-diving-license.php')) return;
+    
+    // 5コース用JSON-LD生成
+    if (isset($GLOBALS['license_courses'])) {
+        $courses = $GLOBALS['license_courses'];
+        $graph = array_map(function($c) {
+            return [
+                '@type' => 'Course',
+                'name' => $c['name'],
+                'description' => $c['desc'],
+                'provider' => [
+                    '@type' => 'Organization',
+                    'name' => '三浦 海の学校',
+                    'url' => 'https://miura-diving.com'
+                ],
+                'hasCourseInstance' => [
+                    '@type' => 'CourseInstance',
+                    'courseMode' => 'In-person',
+                    'duration' => $c['duration'],
+                    'location' => [
+                        '@type' => 'Place',
+                        'name' => '三浦 海の学校',
+                        'address' => [
+                            '@type' => 'PostalAddress',
+                            'addressLocality' => '三浦市',
+                            'addressRegion' => '神奈川県',
+                            'addressCountry' => 'JP'
+                        ]
+                    ]
+                ],
+                'offers' => [
+                    '@type' => 'Offer',
+                    'price' => $c['price'],
+                    'priceCurrency' => 'JPY'
+                ]
+            ];
+        }, $courses);
+        
+        $json = [
+            '@context' => 'https://schema.org',
+            '@graph' => $graph
+        ];
+        
+        echo '<script type="application/ld+json">' . json_encode($json, JSON_UNESCAPED_UNICODE) . '</script>';
+    }
+}
+add_action('wp_head', 'add_license_5_ldjson');
+    
+    // ★License page JSON-LD
+    if (is_page_template('page-diving-license.php')) {
+        // Course Schema for OWD
+        $owd_course_schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'Course',
+            'name' => 'PADI オープンウォーターダイバー講習',
+            'description' => '初心者向けダイビングライセンス講習。泳げない方でも安心して参加できる3日間のコース。',
+            'provider' => array(
+                '@type' => 'Organization',
+                'name' => '三浦 海の学校',
+                'url' => 'https://miura-diving.com'
+            ),
+            'hasCourseInstance' => array(
+                '@type' => 'CourseInstance',
+                'courseMode' => 'In-person',
+                'duration' => 'P3D',
+                'location' => array(
+                    '@type' => 'Place',
+                    'name' => '三浦 海の学校',
+                    'address' => array(
+                        '@type' => 'PostalAddress',
+                        'addressLocality' => '三浦市',
+                        'addressRegion' => '神奈川県',
+                        'addressCountry' => 'JP'
+                    )
+                )
+            ),
+            'offers' => array(
+                '@type' => 'Offer',
+                'price' => '53900',
+                'priceCurrency' => 'JPY'
+            )
+        );
+
+        // Course Schema for AOW
+        $aow_course_schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'Course',
+            'name' => 'PADI アドバンスドオープンウォーターダイバー講習',
+            'description' => 'OWD取得者向けスキルアップ講習。より深い海を楽しめるようになる2日間のコース。',
+            'provider' => array(
+                '@type' => 'Organization',
+                'name' => '三浦 海の学校',
+                'url' => 'https://miura-diving.com'
+            ),
+            'hasCourseInstance' => array(
+                '@type' => 'CourseInstance',
+                'courseMode' => 'In-person',
+                'duration' => 'P2D',
+                'location' => array(
+                    '@type' => 'Place',
+                    'name' => '三浦 海の学校',
+                    'address' => array(
+                        '@type' => 'PostalAddress',
+                        'addressLocality' => '三浦市',
+                        'addressRegion' => '神奈川県',
+                        'addressCountry' => 'JP'
+                    )
+                )
+            ),
+            'offers' => array(
+                '@type' => 'Offer',
+                'price' => '53900',
+                'priceCurrency' => 'JPY'
+            )
+        );
+
+        // FAQ Schema for License page
+        $license_faq_schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => array(
+                array(
+                    '@type' => 'Question',
+                    'name' => '泳げませんが、ライセンス取得は可能ですか？',
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text' => 'はい、可能です。ダイビングは泳力よりも正しい呼吸法と器材の使い方が重要です。専用プールでゆっくり練習してから海に入るので、泳げない方でも安心してライセンスを取得できます。'
+                    )
+                ),
+                array(
+                    '@type' => 'Question',
+                    'name' => '年齢制限はありますか？',
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text' => 'OWDコースは10歳から参加可能です。上限はありませんが、健康状態に問題がないことが条件となります。事前に医師の診断書が必要な場合もございます。'
+                    )
+                ),
+                array(
+                    '@type' => 'Question',
+                    'name' => '講習は何日間で完了しますか？',
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text' => 'OWDコースは3日間、AOWコースは2日間で完了します。平日・土日問わず開催しており、お仕事の都合に合わせてスケジュール調整も可能です。'
+                    )
+                )
+            )
+        );
+
+        // Website Schema
+        $website_schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'WebSite',
+            '@id' => 'https://miura-diving.com/#website',
+            'url' => 'https://miura-diving.com',
+            'name' => '三浦 海の学校 - PADI 5スター IDC ダイビングセンター',
+            'description' => '一般の方なら誰でも利用できるダイビングスクール。都心から60分、三浦半島で本格ダイビング。',
+            'publisher' => array(
+                '@id' => 'https://miura-diving.com/#organization'
+            ),
+            'potentialAction' => array(
+                '@type' => 'SearchAction',
+                'target' => 'https://miura-diving.com/search?q={search_term_string}',
+                'query-input' => 'required name=search_term_string'
+            )
+        );
+
+        echo '<script type="application/ld+json">' . json_encode($business_schema, JSON_UNESCAPED_UNICODE) . '</script>';
+        echo '<script type="application/ld+json">' . json_encode($organization_schema, JSON_UNESCAPED_UNICODE) . '</script>';
+        echo '<script type="application/ld+json">' . json_encode($faq_schema, JSON_UNESCAPED_UNICODE) . '</script>';
+        echo '<script type="application/ld+json">' . json_encode($website_schema, JSON_UNESCAPED_UNICODE) . '</script>';
+    }
+}
+add_action('wp_head', 'miura_diving_structured_data');
+
+// Add custom CSS for admin
+function miura_diving_admin_styles() {
+    echo '<style>
+        .post-type-course .form-table th,
+        .post-type-activity .form-table th {
+            width: 150px;
         }
-      ]
+    </style>';
+}
+add_action('admin_head', 'miura_diving_admin_styles');
+
+// AJAX handler for contact form (if needed)
+function miura_diving_handle_contact_form() {
+    check_ajax_referer('home_test_nonce', 'nonce');
+    
+    $name = sanitize_text_field($_POST['name']);
+    $email = sanitize_email($_POST['email']);
+    $message = sanitize_textarea_field($_POST['message']);
+    
+    // Process contact form submission
+    // Add your contact form processing logic here
+    
+    wp_send_json_success(array('message' => 'お問い合わせありがとうございます。'));
+}
+add_action('wp_ajax_contact_form', 'miura_diving_handle_contact_form');
+add_action('wp_ajax_nopriv_contact_form', 'miura_diving_handle_contact_form');
+
+// ★TOP polish v3 - SEO & OGP
+function miura_diving_seo_ogp() {
+    if (is_page_template('page-home-test.php') || is_front_page()) {
+        ?>
+        <!-- ★SEO & OGP -->
+        <meta name="description" content="三浦海の学校は一般の方でも参加できるPADI5スターIDCセンター。都心から60分、初心者向けライセンス講習やSUP・シュノーケリングも開催。専用プール完備で安心。">
+        <link rel="canonical" href="https://miura-diving.com/">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="ja_JP">
+        <meta property="og:site_name" content="三浦 海の学校">
+        <meta property="og:title" content="ダイビングライセンス取得なら | 三浦 海の学校">
+        <meta property="og:description" content="一般の方でも参加できるPADI5スターIDCセンター。都心から60分、初心者向け講習も充実。">
+        <meta property="og:url" content="https://miura-diving.com/">
+        <meta property="og:image" content="https://miura-diving.com/ogp.jpg">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <!-- ★LCP 画像プリロード -->
+        <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/image/owd-hero.png" imagesrcset="<?php echo get_stylesheet_directory_uri(); ?>/image/owd-hero.png 1x" type="image/png">
+        <?php
     }
-    </script>
-    <?php
-  }
+    
+    // ★License page SEO & OGP
+    if (is_page_template('page-diving-license.php')) {
+        ?>
+        <!-- ★License page SEO & OGP -->
+        <title>PADIダイビングライセンス講習 | 三浦 海の学校</title>
+        <meta name="description" content="三浦海の学校のPADIダイビングライセンス講習。OWD・AOW取得可能。都心から60分、一般の方でも泳げない方でも安心の指導体制。専用プール完備で段階的にスキルアップ。">
+        <link rel="canonical" href="https://miura-diving.com/diving-license/">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="ja_JP">
+        <meta property="og:site_name" content="三浦 海の学校">
+        <meta property="og:title" content="PADIダイビングライセンス講習 | 三浦 海の学校">
+        <meta property="og:description" content="一般の方でも安心してライセンス取得。OWD・AOW講習を都心から60分の三浦で開催。泳げない方もOK。">
+        <meta property="og:url" content="https://miura-diving.com/diving-license/">
+        <meta property="og:image" content="https://miura-diving.com/assets/img/license-ogp.jpg">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <!-- ★LCP 画像プリロード -->
+        <link rel="preload" as="image" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/license-hero.webp" type="image/webp">
+        <?php
+    }
+}
+add_action('wp_head', 'miura_diving_seo_ogp');
+
+// ★CSS/JS 条件読み込み
+function miura_diving_assets() {
+    if (is_page_template('page-home-test.php') || is_front_page()) {
+        wp_enqueue_style('home-test', get_stylesheet_directory_uri() . '/assets/css/home-test.css', [], '3.0');
+        wp_enqueue_script('home-test', get_stylesheet_directory_uri() . '/assets/js/home-test.js', [], '3.0', true);
+        wp_script_add_data('home-test', 'defer', true);
+        
+        // Books slider script
+        wp_enqueue_script('books-slider-js', get_stylesheet_directory_uri() . '/assets/js/books-slider.js', array('jquery'), '3.0', true);
+    }
+    
+    // ★License page assets
+    if (is_page_template('page-diving-license.php')) {
+        wp_enqueue_style('license', get_stylesheet_directory_uri() . '/assets/css/license.css', [], '1.0');
+        wp_enqueue_script('license', get_stylesheet_directory_uri() . '/assets/js/license.js', [], '1.0', true);
+        wp_script_add_data('license', 'defer', true);
+    }
+}
+add_action('wp_enqueue_scripts', 'miura_diving_assets');
+
+// Theme customizer
+function miura_diving_customize_register($wp_customize) {
+    // Add contact section
+    $wp_customize->add_section('contact_info', array(
+        'title' => __('Contact Information', 'miura-diving'),
+        'priority' => 30,
+    ));
+    
+    // Phone number
+    $wp_customize->add_setting('phone_number', array(
+        'default' => '046-123-4567',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('phone_number', array(
+        'label' => __('Phone Number', 'miura-diving'),
+        'section' => 'contact_info',
+        'type' => 'text',
+    ));
+    
+    // Email address
+    $wp_customize->add_setting('email_address', array(
+        'default' => 'info@miura-diving.com',
+        'sanitize_callback' => 'sanitize_email',
+    ));
+    
+    $wp_customize->add_control('email_address', array(
+        'label' => __('Email Address', 'miura-diving'),
+        'section' => 'contact_info',
+        'type' => 'email',
+    ));
+}
+add_action('customize_register', 'miura_diving_customize_register');
+
+// Helper function to get customizer values
+function miura_diving_get_option($option, $default = '') {
+    return get_theme_mod($option, $default);
 }
 
-// DNS prefetch でパフォーマンス向上
-add_action( 'wp_head', function() {
-  echo '<link rel="dns-prefetch" href="//fonts.googleapis.com">';
-  echo '<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">';
-  echo '<link rel="dns-prefetch" href="//connect.facebook.net">';
-  echo '<link rel="dns-prefetch" href="//platform.twitter.com">';
-} );
+// Add JSON-LD structured data for license 5 courses page
+function add_license_5_ldjson() {
+    if (!is_page_template('page-diving-license.php')) return;
+    
+    if (isset($GLOBALS['license_courses'])) {
+        $courses = $GLOBALS['license_courses'];
+        
+        $graph = array_map(function($c) {
+            return [
+                '@type' => 'Course',
+                'name' => $c['name'],
+                'description' => $c['desc'],
+                'offers' => [
+                    '@type' => 'Offer',
+                    'price' => $c['price'],
+                    'priceCurrency' => 'JPY'
+                ],
+                'courseMode' => 'blended',
+                'provider' => [
+                    '@type' => 'Organization',
+                    'name' => '三浦海の学校',
+                    'url' => 'https://miura-diving.com'
+                ]
+            ];
+        }, $courses);
+        
+        $json_ld = [
+            '@context' => 'https://schema.org',
+            '@graph' => array_merge([
+                [
+                    '@type' => 'WebPage',
+                    '@id' => home_url('/diving-license/'),
+                    'url' => home_url('/diving-license/'),
+                    'name' => 'PADIダイビングライセンス講習 | 三浦海の学校',
+                    'description' => '体験ダイビングからレスキューダイバーまで5コース開講。PADI認定ダイビングスクール。',
+                    'isPartOf' => [
+                        '@type' => 'WebSite',
+                        '@id' => home_url('/#website'),
+                        'url' => home_url('/'),
+                        'name' => '三浦海の学校'
+                    ]
+                ]
+            ], $graph)
+        ];
+        
+        echo '<script type="application/ld+json">' . wp_json_encode($json_ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+    }
+}
+add_action('wp_head', 'add_license_5_ldjson');
 
-// ★FIX: 画像サイズ最適化 + Hero用追加
-add_theme_support( 'post-thumbnails' );
-add_image_size( 'hero', 1920, 1080, true );
-add_image_size( 'service-card', 400, 240, true );
-add_image_size( 'feature-icon', 80, 80, true );
+// Books array for homepage slider
+$BOOKS = [
+    [
+        'title' => '「私にはムリ・・」から「潜りたい」に変わるダイビングのはじめ方',
+        'desc'  => '初心者の不安や疑問をプロが忖度なしで解消。安全ルールや器材選びまで網羅した超実践ガイド。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/start-diving.png',
+        'url'   => 'https://amzn.to/40BBpqn',
+        'author' => '吉田哲司',
+        'kindle_unlimited' => true
+    ],
+    [
+        'title' => 'むずかしく考えなくて大丈夫！ はじめてのセルフダイビング',
+        'desc'  => 'セルフ・バディ・ソロの違いから海外ポイントまで、自由に潜るコツを学べるセルフ派入門書。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/self-diving.png',
+        'url'   => 'https://amzn.to/4003YO7',
+        'author' => '吉田哲司',
+        'kindle_unlimited' => true
+    ],
+    [
+        'title' => 'ぷかぷか浮かんで水中散歩！ 今日から始めるごきげんスノーケリング',
+        'desc'  => '泳ぎが苦手な人でも安心。安全テクニックと国内外おすすめスポットをプロ目線でやさしく案内。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/snorkel.png',
+        'url'   => 'https://amzn.to/44ToUbh',
+        'author' => '吉田哲司'
+    ],
+    [
+        'title' => '海に一歩、人生にひと花: 「年だから」と言わない60代からのダイビング',
+        'desc'  => '60歳からでも遅くない！ 健康維持と生きがいを広げるシニア向けダイビング応援ブック。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/senior-diver.png',
+        'url'   => 'https://amzn.to/40z9qaN',
+        'author' => '吉田哲司'
+    ],
+    [
+        'title' => 'AIは、あなたの「魔法の杖」: 知識ゼロ・パソコン苦手でも大丈夫！',
+        'desc'  => 'ChatGPT ほか最新AIを今日から使いこなす方法を、テック好きダイバーがやさしく解説する超入門。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/ai.png',
+        'url'   => 'https://amzn.to/45TGvBY',
+        'author' => '吉田哲司',
+        'kindle_unlimited' => true
+    ],
+    [
+        'title' => 'はじめてのSUP: ドキドキの初体験からワンちゃんとの水上散歩まで',
+        'desc'  => 'ボード選び・乗り方・安全のコツを写真とQ&Aで解説。愛犬と楽しむSUP情報も満載の初心者ガイド。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/sup.png',
+        'url'   => 'https://amzn.to/3TSlwYL',
+        'author' => '吉田哲司'
+    ],
+    [
+        'title' => '大切な人と、海の上で過ごす時間: 家族・仲間と楽しむシーカヤック入門',
+        'desc'  => 'シーカヤックの魅力と始め方を、必要装備やおすすめスポットと合わせて紹介するやさしい入門書。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/kayac.png',
+        'url'   => 'https://amzn.to/4nxWYCa',
+        'author' => '吉田哲司'
+    ],
+    [
+        'title' => '親子で楽しむ！マリンアクティビティ完全ガイド',
+        'desc'  => 'SUP・カヤック・スノーケリング・体験ダイビングまで、親子で海を満喫する方法を一冊に凝縮。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/marine.png',
+        'url'   => 'https://amzn.to/44LzvpB',
+        'author' => '吉田哲司'
+    ],
+    [
+        'title' => 'ブランクダイバー復活ガイド: "ReActivate" 完全ロードマップ',
+        'desc'  => '半年以上潜っていないダイバーが自信を取り戻すためのリフレッシュ手順と安全チェックを徹底解説。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/brank-diver.png',
+        'url'   => 'https://amzn.to/44eH3kD',
+        'author' => '吉田哲司'
+    ],
+    [
+        'title' => '水中で学ぶマインドフルネス: ダイビングがもたらす心の平穏',
+        'desc'  => '呼吸と意識を整え、海の癒しを体験。ダイビングで実践するマインドフルネスのメソッドを紹介。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/maindfulness.png',
+        'url'   => 'https://amzn.to/3I9PdlI',
+        'author' => '吉田哲司'
+    ],
+    [
+        'title' => 'おかしだいすき みーちゃん: 10歳の女の子が乳幼児に書いた絵本',
+        'desc'  => 'お菓子が大好きなみーちゃんの甘くてかわいい冒険を10歳作者が描いた心温まるストーリー絵本。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/mi-chan.png',
+        'url'   => 'https://amzn.to/3TmIyqI',
+        'author' => '吉田哲司（編集）'
+    ],
+    [
+        'title' => 'うみがめになったぜんくんの大冒険: 海を守る小さな勇者の物語',
+        'desc'  => '海ガメに変身したぜんくんがゴミ問題に立ち向かう、友情と環境保護を描いた感動のエコ絵本。',
+        'img'   => get_stylesheet_directory_uri().'/assets/img/books/zenkun.png',
+        'url'   => 'https://amzn.to/4ny1P6k',
+        'author' => '吉田哲司（編集）'
+    ],
+];
 
-// lazy loading フィルター追加
-add_filter( 'the_content', 'add_lazy_loading_to_content' );
-function add_lazy_loading_to_content( $content ) {
-  // img タグに loading="lazy" を自動追加（Hero以外）
-  $content = preg_replace('/<img(?![^>]*loading=)([^>]*?)(?![^>]*fetchpriority)>/i', '<img$1 loading="lazy">', $content);
-  return $content;
+// Function to display books slider
+function display_books_slider() {
+    global $BOOKS;
+    
+    if (empty($BOOKS)) {
+        return '';
+    }
+    
+    $html = '<section class="books-slider-section" aria-labelledby="books-title">';
+    $html .= '<div class="container">';
+    $html .= '<h2 id="books-title" class="section-title">おすすめ</h2>';
+    $html .= '<div class="books-slider-container">';
+    $html .= '<div class="swiper books-swiper">';
+    $html .= '<div class="swiper-wrapper">';
+    
+    foreach ($BOOKS as $book) {
+        $html .= '<div class="swiper-slide">';
+        $html .= '<div class="book-card">';
+        $html .= '<a href="' . esc_url($book['url']) . '" target="_blank" rel="noopener" class="book-link">';
+        $html .= '<img src="' . esc_url($book['img']) . '" alt="' . esc_attr($book['title']) . '" class="book-image">';
+        $html .= '<div class="book-content">';
+        $html .= '<h3 class="book-title">' . esc_html($book['title']) . '</h3>';
+        $html .= '<p class="book-desc">' . esc_html($book['desc']) . '</p>';
+        $html .= '</div>';
+        $html .= '</a>';
+        $html .= '</div>';
+        $html .= '</div>';
+    }
+    
+    $html .= '</div>';
+    $html .= '<div class="swiper-pagination"></div>';
+    $html .= '<div class="swiper-button-next"></div>';
+    $html .= '<div class="swiper-button-prev"></div>';
+    $html .= '</div>';
+    $html .= '</div>';
+    $html .= '</div>';
+    $html .= '</section>';
+    
+    return $html;
 }
 
-/* 4) ───────── OWD 専用リライトルール */
-add_action( 'init', function () {
-  add_rewrite_rule( '^owd-course/?$', 'index.php?owd_template=1', 'top' );
-} );
-add_filter( 'query_vars', function ( $vars ){
-  $vars[] = 'owd_template';
-  return $vars;
-} );
-add_filter( 'template_include', function ( $template ){
-  if ( get_query_var( 'owd_template' ) ){
-    $new = locate_template( 'owd-template.php' );
-    if ( $new ) return $new;
-  }
-  return $template;
-} );
-
-/* 5) ───────── ライセンスページ専用 META / JSON‑LD */
-add_action( 'wp_head', function () {
-  if ( is_page_template( 'diving-license.php' ) ){ ?>
-
-<!-- ────── ライセンスページ専用 META ────── -->
-<meta name="description" content="神奈川県三浦市のPADIダイビングショップ「三浦 海の学校」。体験ダイビングから各種ライセンス取得まで幅広く対応。" />
-<meta name="keywords"    content="ダイビングライセンス,PADI,三浦,体験ダイビング,OWD,AOW,レスキュー" />
-
-<meta property="og:title"       content="ダイビングライセンスコース一覧 | 三浦 海の学校" />
-<meta property="og:description" content="初心者からプロまで、安心・安全にダイビングを学べます。都心から90分、専用プール完備。" />
-<meta property="og:url"         content="https://miura-diving.com/license" />
-<meta property="og:image"       content="https://miura-diving.com/wp-content/uploads/P6292740-1-scaled.jpg" />
-<meta property="og:type"        content="website" />
-<meta property="og:site_name"   content="三浦 海の学校" />
-<meta property="og:locale"      content="ja_JP" />
-
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"LocalBusiness",
-  "name":"三浦 海の学校",
-  "image":"https://miura-diving.com/wp-content/uploads/海学-1.png",
-  "description":"神奈川県三浦市のPADIダイビングショップ。体験ダイビングから各種ライセンス取得まで提供。",
-  "address":{"@type":"PostalAddress","streetAddress":"三崎町諸磯1621","addressLocality":"三浦市","addressRegion":"神奈川県","postalCode":"238-0224","addressCountry":"JP"},
-  "geo":{"@type":"GeoCoordinates","latitude":"35.1814","longitude":"139.6742"},
-  "telephone":"046-884-8878",
-  "url":"https://miura-diving.com/license",
-  "priceRange":"¥16,500〜",
-  "openingHours":"Mo-Su 09:00-16:00",
-  "sameAs":["https://www.facebook.com/MiuraDiving","https://www.instagram.com/miura_diving/"]
+// Function to enqueue Swiper assets
+function enqueue_swiper_assets() {
+    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0');
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true);
 }
-</script>
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"ItemList",
-  "itemListElement":[
-    {"@type":"Course","position":1,"name":"体験ダイビング","url":"https://miura-diving.com/license#experience"},
-    {"@type":"Course","position":2,"name":"オープンウォーターダイバー (OWD)","url":"https://miura-diving.com/owd-course/"}
-  ]
-}
-</script>
-<!-- ───────────────────── -->
-<?php }
-} );
-
-// トップページだけ<title>をカスタマイズ（SEOキーワード追加）
-add_filter('pre_get_document_title', function($title) {
-  if (is_front_page() || is_home()) {
-    return '【公式】三浦 海の学校｜神奈川のPADIダイビングライセンス＆体験ダイビング';
-  }
-  return $title;
+// Hook to enqueue Swiper assets on homepage
+add_action('wp_enqueue_scripts', function() {
+    if (is_front_page() || is_home() || is_page_template('page-home-test.php')) {
+        enqueue_swiper_assets();
+    }
 });
 
-function enqueue_child_theme_styles() {
-    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
-    wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'));
-    // ファンダイビングページ用のカスタムCSS
-    if (is_page('fun-diving')) {
-        wp_enqueue_style('fun-diving-style', get_stylesheet_directory_uri() . '/fundiving-styles.css', array('child-style'));
-    }
-}
-add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
-
-// /blog（投稿一覧）では diving-miura カテゴリーだけ表示
-function miura_blog_only_diving( $query ) {
-  if ( ! is_admin()
-    && $query->is_main_query()
-    && $query->is_home()     // 投稿ページ（/blog/）のみ
-  ) {
-    $query->set( 'category_name', 'diving-miura' );
-  }
-}
-add_action( 'pre_get_posts', 'miura_blog_only_diving' );
-
+?>
