@@ -78,7 +78,7 @@ get_header(); ?>
     "opens": "09:00",
     "closes": "16:00"
   },
-  "priceRange": "¥7,700〜"
+  "priceRange": "¥5,500〜"
 }
 </script>
 
@@ -134,7 +134,7 @@ get_header(); ?>
                 <div class="activity-body" style="padding: 30px; background-color: #fff;">
                   <div class="activity-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                     <h3 style="font-size: 1.8rem; margin: 0; color: #333;">スノーケリング</h3>
-                    <div class="activity-price" style="font-size: 1.2rem; font-weight: 700; color: #1e73be;">7,700円/人</div>
+                    <div class="activity-price" style="font-size: 1.2rem; font-weight: 700; color: #1e73be;">5,500円/人</div>
                   </div>
                   <p class="activity-description" style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px; color: #555;">
                     三浦半島の美しい海中世界を覗いてみませんか？透明度の高い海でカラフルな魚や珍しい海藻など、様々な海の生物に出会えます。初めての方には基本的な呼吸法からしっかりレクチャー。水中で使えるカメラやスマホなどあれば思い出をカタチに残せます。
@@ -176,7 +176,7 @@ get_header(); ?>
                 <div class="activity-body" style="padding: 30px; background-color: #fff;">
                   <div class="activity-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                     <h3 style="font-size: 1.8rem; margin: 0; color: #333;">SUP（スタンドアップパドルボード）</h3>
-                    <div class="activity-price" style="font-size: 1.2rem; font-weight: 700; color: #1e73be;">7,700円/人</div>
+                    <div class="activity-price" style="font-size: 1.2rem; font-weight: 700; color: #1e73be;">5,500円/人</div>
                   </div>
                   <p class="activity-description" style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px; color: #555;">
                     今大人気のSUPを三浦の穏やかな海で体験しませんか？立ったままボードを漕ぐ新感覚のマリンスポーツは、バランス感覚を鍛えながら海の景色を一望できる魅力があります。初めての方でも、丁寧な指導ですぐに漕げるようになります！
@@ -218,7 +218,7 @@ get_header(); ?>
                 <div class="activity-body" style="padding: 30px; background-color: #fff;">
                   <div class="activity-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                     <h3 style="font-size: 1.8rem; margin: 0; color: #333;">シーカヤック</h3>
-                    <div class="activity-price" style="font-size: 1.2rem; font-weight: 700; color: #1e73be;">7,700円/人</div>
+                    <div class="activity-price" style="font-size: 1.2rem; font-weight: 700; color: #1e73be;">5,500円/人</div>
                   </div>
                   <p class="activity-description" style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px; color: #555;">
                     三浦半島の海岸線を冒険しませんか？1人乗りと2人乗りから選べるシーカヤックで、岩場や入江など、陸からは見ることのできない絶景ポイントを巡ります。カップルや親子で一緒に漕ぐ2人乗りカヤックも大人気です！

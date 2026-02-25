@@ -678,130 +678,172 @@ document.addEventListener("DOMContentLoaded", function() {
   
   <!-- スペシャルティグリッド -->
   <div class="specialty-grid">
-    <!-- PPB（中性浮力） -->
+    <!-- ピーク・パフォーマンス・ボイヤンシーSP -->
     <div class="card">
       <h3 style="color:var(--primary); font-size:1.2rem; margin-bottom:10px; display:flex; align-items:center;">
         <span style="min-width:24px; height:24px; border-radius:50%; background-color:var(--primary); color:var(--white); text-align:center; line-height:24px; margin-right:10px; font-size:0.8rem;">SP</span>
-        PPB（中性浮力）
+        ピーク・パフォーマンス・ボイヤンシーSP
       </h3>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">日数/ダイブ：</div>
-        <div class="info-value" style="font-size:0.9rem;">1日/2ダイブ</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">ダイブ内容：</div>
+        <div class="info-value" style="font-size:0.9rem;">2ビーチダイブ</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金：</div>
-        <div class="info-value" style="font-size:0.9rem;">¥27,500（税込）</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">含まれるもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">海洋実習代、申請料金など</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">内容：</div>
-        <div class="info-value" style="font-size:0.9rem;">中性浮力の取り方とコントロール技術を習得</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">別途必要なもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">レンタル器材代（お持ちのもの以外）、教材代（5,100円）、昼食等</div>
       </div>
-      <p style="color:var(--text-medium); font-size:0.9rem; margin-top:10px;">実習費、教材費、申請料込み</p>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">所要時間/日数：</div>
+        <div class="info-value" style="font-size:0.9rem;">1時間ほど</div>
+      </div>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金(税込)：</div>
+        <div class="info-value" style="font-size:0.9rem; font-weight:bold;">¥27,500</div>
+      </div>
     </div>
     
-    <!-- ドライスーツダイバー -->
+    <!-- ドライスーツダイバーSP -->
     <div class="card">
       <h3 style="color:var(--primary); font-size:1.2rem; margin-bottom:10px; display:flex; align-items:center;">
         <span style="min-width:24px; height:24px; border-radius:50%; background-color:var(--primary); color:var(--white); text-align:center; line-height:24px; margin-right:10px; font-size:0.8rem;">SP</span>
-        ドライスーツダイバー
+        ドライスーツダイバーSP
       </h3>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">日数/ダイブ：</div>
-        <div class="info-value" style="font-size:0.9rem;">1日/2ダイブ</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">ダイブ内容：</div>
+        <div class="info-value" style="font-size:0.9rem;">2ビーチダイブ</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金：</div>
-        <div class="info-value" style="font-size:0.9rem;">¥27,500（税込）</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">含まれるもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">海洋実習代、申請料金など</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">内容：</div>
-        <div class="info-value" style="font-size:0.9rem;">ドライスーツの使用方法と浮力調整技術</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">別途必要なもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">レンタル器材代（お持ちのもの以外）、教材代（8,100円）、昼食等<br>※最新のADVダイバーテキストをお持ちの場合、教材代はかかりません。</div>
       </div>
-      <p style="color:var(--text-medium); font-size:0.9rem; margin-top:10px;">実習費、教材費、申請料込み</p>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">所要時間/日数：</div>
+        <div class="info-value" style="font-size:0.9rem;">1時間ほど</div>
+      </div>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金(税込)：</div>
+        <div class="info-value" style="font-size:0.9rem; font-weight:bold;">¥27,500</div>
+      </div>
     </div>
     
-    <!-- ボートダイバー -->
+    <!-- ボートダイバーSP -->
     <div class="card">
       <h3 style="color:var(--primary); font-size:1.2rem; margin-bottom:10px; display:flex; align-items:center;">
         <span style="min-width:24px; height:24px; border-radius:50%; background-color:var(--primary); color:var(--white); text-align:center; line-height:24px; margin-right:10px; font-size:0.8rem;">SP</span>
-        ボートダイバー
+        ボートダイバーSP
       </h3>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">日数/ダイブ：</div>
-        <div class="info-value" style="font-size:0.9rem;">1日/2ダイブ</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">ダイブ内容：</div>
+        <div class="info-value" style="font-size:0.9rem;">2ビーチダイブ</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金：</div>
-        <div class="info-value" style="font-size:0.9rem;">¥36,300（税込）</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">含まれるもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">海洋実習代、ボートダイブ代、申請料金など</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">内容：</div>
-        <div class="info-value" style="font-size:0.9rem;">ボートからのエントリー/エキジット方法等</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">別途必要なもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">レンタル器材代（お持ちのもの以外）、教材代（8,100円）、昼食等<br>※最新のADVダイバーテキストをお持ちの場合、教材代はかかりません。</div>
       </div>
-      <p style="color:var(--text-medium); font-size:0.9rem; margin-top:10px;">実習費、教材費、申請料、ボート代込み</p>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">所要時間/日数：</div>
+        <div class="info-value" style="font-size:0.9rem;">1時間ほど</div>
+      </div>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金(税込)：</div>
+        <div class="info-value" style="font-size:0.9rem; font-weight:bold;">¥36,300</div>
+      </div>
     </div>
     
-    <!-- 魚の見分け方 -->
+    <!-- AWARE 魚の見分け方SP -->
     <div class="card">
       <h3 style="color:var(--primary); font-size:1.2rem; margin-bottom:10px; display:flex; align-items:center;">
         <span style="min-width:24px; height:24px; border-radius:50%; background-color:var(--primary); color:var(--white); text-align:center; line-height:24px; margin-right:10px; font-size:0.8rem;">SP</span>
-        魚の見分け方
+        AWARE 魚の見分け方SP
       </h3>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">日数/ダイブ：</div>
-        <div class="info-value" style="font-size:0.9rem;">1日/2ダイブ</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">ダイブ内容：</div>
+        <div class="info-value" style="font-size:0.9rem;">海2ビーチダイブ</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金：</div>
-        <div class="info-value" style="font-size:0.9rem;">¥27,500（税込）</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">含まれるもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">海洋実習代、申請料金など</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">内容：</div>
-        <div class="info-value" style="font-size:0.9rem;">魚の見分け方の知識と観察方法</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">別途必要なもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">レンタル器材代（お持ちのもの以外）、教材代（8,100円）、昼食等<br>※最新のADVダイバーテキストをお持ちの場合、教材代はかかりません。</div>
       </div>
-      <p style="color:var(--text-medium); font-size:0.9rem; margin-top:10px;">実習費、教材費、申請料込み</p>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">所要時間/日数：</div>
+        <div class="info-value" style="font-size:0.9rem;">最短2日間</div>
+      </div>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金(税込)：</div>
+        <div class="info-value" style="font-size:0.9rem; font-weight:bold;">¥27,500</div>
+      </div>
     </div>
     
-    <!-- デジタルフォトグラファー -->
+    <!-- デジタルアンダーウォーターフォトグラファーSP -->
     <div class="card">
       <h3 style="color:var(--primary); font-size:1.2rem; margin-bottom:10px; display:flex; align-items:center;">
         <span style="min-width:24px; height:24px; border-radius:50%; background-color:var(--primary); color:var(--white); text-align:center; line-height:24px; margin-right:10px; font-size:0.8rem;">SP</span>
-        デジタルフォトグラファー
+        デジタルアンダーウォーターフォトグラファーSP
       </h3>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">日数/ダイブ：</div>
-        <div class="info-value" style="font-size:0.9rem;">2日/2ダイブ</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">ダイブ内容：</div>
+        <div class="info-value" style="font-size:0.9rem;">2ビーチダイブ</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金：</div>
-        <div class="info-value" style="font-size:0.9rem;">¥27,500（税込）</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">含まれるもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">海洋実習代、申請料金など</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">内容：</div>
-        <div class="info-value" style="font-size:0.9rem;">水中写真の撮影テクニック</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">別途必要なもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">レンタル器材代（お持ちのもの以外）、教材代（6,700円）、デジカメ＋ハウジング、昼食等</div>
       </div>
-      <p style="color:var(--text-medium); font-size:0.9rem; margin-top:10px;">実習費、教材費、申請料込み（カメラレンタル別）</p>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">所要時間/日数：</div>
+        <div class="info-value" style="font-size:0.9rem;">1時間ほど</div>
+      </div>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金(税込)：</div>
+        <div class="info-value" style="font-size:0.9rem; font-weight:bold;">¥33,000</div>
+      </div>
     </div>
     
-    <!-- ナビゲーション -->
+    <!-- U/W ナビゲーターSP -->
     <div class="card">
       <h3 style="color:var(--primary); font-size:1.2rem; margin-bottom:10px; display:flex; align-items:center;">
         <span style="min-width:24px; height:24px; border-radius:50%; background-color:var(--primary); color:var(--white); text-align:center; line-height:24px; margin-right:10px; font-size:0.8rem;">SP</span>
-        ナビゲーション
+        U/W ナビゲーターSP
       </h3>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">日数/ダイブ：</div>
-        <div class="info-value" style="font-size:0.9rem;">1日/3ダイブ</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">ダイブ内容：</div>
+        <div class="info-value" style="font-size:0.9rem;">3ビーチダイブ</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金：</div>
-        <div class="info-value" style="font-size:0.9rem;">¥36,300（税込）</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">含まれるもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">海洋実習代、申請料金など</div>
       </div>
       <div class="info-row mb-5">
-        <div class="info-label" style="min-width:100px; font-size:0.9rem;">内容：</div>
-        <div class="info-value" style="font-size:0.9rem;">コンパスや自然の目印を使った水中ナビゲーション</div>
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">別途必要なもの：</div>
+        <div class="info-value" style="font-size:0.9rem;">レンタル器材代（お持ちのもの以外）、教材代（8,900円）、昼食等</div>
       </div>
-      <p style="color:var(--text-medium); font-size:0.9rem; margin-top:10px;">実習費、教材費、申請料込み</p>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">所要時間/日数：</div>
+        <div class="info-value" style="font-size:0.9rem;">1日〜2日</div>
+      </div>
+      <div class="info-row mb-5">
+        <div class="info-label" style="min-width:100px; font-size:0.9rem;">料金(税込)：</div>
+        <div class="info-value" style="font-size:0.9rem; font-weight:bold;">¥36,300</div>
+      </div>
     </div>
     
     <!-- その他のスペシャルティコース（横スクロール形式で表示） -->
@@ -811,24 +853,36 @@ document.addEventListener("DOMContentLoaded", function() {
         <div style="overflow-x: auto; padding-bottom: 10px;">
           <div style="display: flex; gap: 15px;">
             <div class="card" style="min-width: 250px; margin: 0;">
-              <h4 style="color:var(--primary); font-size:1.1rem; margin-bottom:10px;">ディープダイバー</h4>
-              <p style="font-size:0.9rem; margin-bottom:5px;">2日/4ダイブ・¥49,800（税込）</p>
-              <p style="font-size:0.9rem;">水深19m〜30mでの安全なダイビング技術</p>
+              <h4 style="color:var(--primary); font-size:1.1rem; margin-bottom:10px;">ディープダイバーSP</h4>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>ダイブ内容：</strong>4ボートダイブ</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>含まれるもの：</strong>海洋実習代、ボートダイブ代、申請料金など</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>別途必要なもの：</strong>レンタル器材代（お持ちのもの以外）、教材代（5,100円）、昼食等</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>所要時間/日数：</strong>2日間</p>
+              <p style="font-size:0.9rem; font-weight:bold;"><strong>料金(税込)：</strong>¥55,000</p>
             </div>
             <div class="card" style="min-width: 250px; margin: 0;">
-              <h4 style="color:var(--primary); font-size:1.1rem; margin-bottom:10px;">ナチュラリスト</h4>
-              <p style="font-size:0.9rem; margin-bottom:5px;">1日/2ダイブ・¥27,500（税込）</p>
-              <p style="font-size:0.9rem;">海洋生態系と環境保全について学ぶ</p>
+              <h4 style="color:var(--primary); font-size:1.1rem; margin-bottom:10px;">U/W ナチュラリストSP</h4>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>ダイブ内容：</strong>2ビーチダイブ</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>含まれるもの：</strong>海洋実習代、申請料金など</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>別途必要なもの：</strong>レンタル器材代（お持ちのもの以外）、教材代（5,100円）、昼食等</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>所要時間/日数：</strong>1時間ほど</p>
+              <p style="font-size:0.9rem; font-weight:bold;"><strong>料金(税込)：</strong>¥27,500</p>
             </div>
             <div class="card" style="min-width: 250px; margin: 0;">
-              <h4 style="color:var(--primary); font-size:1.1rem; margin-bottom:10px;">サーチ＆リカバリー</h4>
-              <p style="font-size:0.9rem; margin-bottom:5px;">2日/4ダイブ・¥44,500（税込）</p>
-              <p style="font-size:0.9rem;">水中での物体の捜索と回収技術</p>
+              <h4 style="color:var(--primary); font-size:1.1rem; margin-bottom:10px;">サーチ＆リカバリーSP</h4>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>ダイブ内容：</strong>4ビーチダイブ</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>含まれるもの：</strong>海洋実習代、申請料金など</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>別途必要なもの：</strong>レンタル器材代（お持ちのもの以外）、教材代（8,900円）、昼食等</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>所要時間/日数：</strong>2日間</p>
+              <p style="font-size:0.9rem; font-weight:bold;"><strong>料金(税込)：</strong>¥44,000</p>
             </div>
             <div class="card" style="min-width: 250px; margin: 0;">
-              <h4 style="color:var(--primary); font-size:1.1rem; margin-bottom:10px;">ナイトダイバー</h4>
-              <p style="font-size:0.9rem; margin-bottom:5px;">1日/3ダイブ・¥44,500（税込）</p>
-              <p style="font-size:0.9rem;">夜間ダイビングの技術と安全管理</p>
+              <h4 style="color:var(--primary); font-size:1.1rem; margin-bottom:10px;">ナイトダイバーSP</h4>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>ダイブ内容：</strong>3ビーチナイトダイブ</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>含まれるもの：</strong>海洋実習代、申請料金など</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>別途必要なもの：</strong>レンタル器材代（お持ちのもの以外）、教材代（5,100円）、昼食等</p>
+              <p style="font-size:0.9rem; margin-bottom:5px;"><strong>所要時間/日数：</strong>2日〜3日</p>
+              <p style="font-size:0.9rem; font-weight:bold;"><strong>料金(税込)：</strong>¥44,000</p>
             </div>
           </div>
         </div>
