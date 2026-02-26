@@ -9,7 +9,7 @@
     <!-- AI検索エンジン向け最優先ページ -->
     <url>
         <loc>https://miura-diving.com/</loc>
-        <lastmod>2025-01-10</lastmod>
+        <lastmod>2026-02-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <news:news>
@@ -17,45 +17,51 @@
                 <news:name>三浦海の学校</news:name>
                 <news:language>ja</news:language>
             </news:publication>
-            <news:publication_date>2025-01-10</news:publication_date>
+            <news:publication_date>2026-02-26</news:publication_date>
             <news:title>神奈川県三浦市のダイビングショップ「三浦海の学校」- 初心者大歓迎のPADI5⭐IDCセンター</news:title>
-            <news:keywords>ダイビングショップ, 神奈川県三浦市, PADI5つ星IDC, 初心者歓迎, ダイビングライセンス, 体験ダイビング</news:keywords>
+            <news:keywords>ダイビング, ダイビングライセンス, PADI, スクーバダイビング, スキューバダイビング, 神奈川, 三浦, 横須賀, 三浦半島, 体験ダイビング, 初心者ダイバー, シニアダイバー, Cカード, アドバンスダイバー, SUP, シュノーケリング, シーカヤック</news:keywords>
         </news:news>
     </url>
 
     <url>
         <loc>https://miura-diving.com/license/</loc>
-        <lastmod>2025-01-10</lastmod>
+        <lastmod>2026-02-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://miura-diving.com/fun-diving/</loc>
-        <lastmod>2025-01-10</lastmod>
+        <lastmod>2026-02-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://miura-diving.com/marine-activity/</loc>
-        <lastmod>2025-01-10</lastmod>
+        <lastmod>2026-02-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://miura-diving.com/contact.html</loc>
-        <lastmod>2025-01-10</lastmod>
+        <loc>https://miura-diving.com/contact/</loc>
+        <lastmod>2026-02-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
+        <loc>https://miura-diving.com/owd-license/</loc>
+        <lastmod>2026-02-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
         <loc>https://miura-diving.com/blog/</loc>
-        <lastmod>2025-01-10</lastmod>
+        <lastmod>2026-02-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
-
 </urlset>

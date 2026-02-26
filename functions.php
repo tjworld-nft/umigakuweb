@@ -823,13 +823,13 @@ function miura_diving_seo_ogp() {
         <!-- ★License page SEO & OGP -->
         <title>PADIダイビングライセンス講習 | 三浦 海の学校</title>
         <meta name="description" content="三浦海の学校のPADIダイビングライセンス講習。OWD・AOW取得可能。都心から60分、一般の方でも泳げない方でも安心の指導体制。専用プール完備で段階的にスキルアップ。">
-        <link rel="canonical" href="https://miura-diving.com/diving-license/">
+        <link rel="canonical" href="https://miura-diving.com/license/">
         <meta property="og:type" content="website">
         <meta property="og:locale" content="ja_JP">
         <meta property="og:site_name" content="三浦 海の学校">
         <meta property="og:title" content="PADIダイビングライセンス講習 | 三浦 海の学校">
         <meta property="og:description" content="一般の方でも安心してライセンス取得。OWD・AOW講習を都心から60分の三浦で開催。泳げない方もOK。">
-        <meta property="og:url" content="https://miura-diving.com/diving-license/">
+        <meta property="og:url" content="https://miura-diving.com/license/">
         <meta property="og:image" content="https://miura-diving.com/assets/img/license-ogp.jpg">
         <meta name="twitter:card" content="summary_large_image">
 

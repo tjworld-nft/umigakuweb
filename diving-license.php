@@ -222,7 +222,7 @@ get_header();
 </script>
 
 <!-- 追加メタデータ -->
-<link rel="canonical" href="https://miura-diving.com/license" />
+<link rel="canonical" href="https://miura-diving.com/license/" />
 <meta name="robots" content="index, follow" />
 <meta name="geo.region" content="JP-14" />
 <meta name="geo.placename" content="三浦市" />

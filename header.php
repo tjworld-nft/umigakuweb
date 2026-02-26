@@ -161,7 +161,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
     </script>
 
     <!-- 固定：追加メタ -->
-    <link rel="canonical" href="https://miura-diving.com/license">
+    <link rel="canonical" href="https://miura-diving.com/license/">
     <meta name="robots"     content="index, follow">
     <meta name="geo.region" content="JP-14">
   <?php endif; ?>
