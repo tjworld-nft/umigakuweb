@@ -3,7 +3,7 @@
   <!-- メインページ -->
   <url>
     <loc>https://miura-diving.com/</loc>
-    <lastmod>2025-01-02</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,15 +11,15 @@
   <!-- ライセンスページ -->
   <url>
     <loc>https://miura-diving.com/license/</loc>
-    <lastmod>2025-01-02</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   
   <!-- ファンダイビングページ -->
   <url>
     <loc>https://miura-diving.com/fun-diving/</loc>
-    <lastmod>2025-01-02</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -27,7 +27,7 @@
   <!-- マリンアクティビティページ -->
   <url>
     <loc>https://miura-diving.com/marine-activity/</loc>
-    <lastmod>2025-01-02</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -35,23 +35,39 @@
   <!-- お問い合わせページ -->
   <url>
     <loc>https://miura-diving.com/contact/</loc>
-    <lastmod>2025-01-02</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
+  <!-- OWDランディングページ -->
+  <url>
+    <loc>https://miura-diving.com/owd-license/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- プライバシーポリシーページ -->
   <url>
-    <loc>https://miura-diving.com/privacy/</loc>
-    <lastmod>2025-01-02</lastmod>
+    <loc>https://miura-diving.com/privacy-policy/</loc>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   
+  <!-- 特定商取引法ページ -->
+  <url>
+    <loc>https://miura-diving.com/tokusho/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
   <!-- ブログページ -->
   <url>
     <loc>https://miura-diving.com/blog/</loc>
-    <lastmod>2025-01-02</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
