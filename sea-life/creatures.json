@@ -152,6 +152,82 @@
     ]
   },
   {
+    "id": "kuromo-umiushi",
+    "name_ja": "クロモウミウシ",
+    "name_en": "Black Sap-sucking Slug",
+    "name_sci": "Aplysiopsis nigra",
+    "category": "ウミウシ",
+    "family": "ハダカモウミウシ科",
+    "size": "0.5〜2cm",
+    "depth": "1〜10m",
+    "season": ["春", "夏", "秋"],
+    "rarity": 3,
+    "description": "黒っぽい体色にミノのような突起（背側突起）を持つ小型のウミウシ。海藻の上で生活し、海藻の汁を吸って栄養を得ています。三浦の浅場の海藻帯でよく見られます。",
+    "beginner_tips": "海藻をじっくり観察してみましょう。体長1cmほどと非常に小さいので、目が慣れるまでは見つけにくいですが、黒っぽいミノのような突起が目印です。",
+    "log_point": "どの種類の海藻の上にいたかを記録すると面白いです。体色は食べている海藻によって微妙に変わります。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "kuromoumiushi.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "ebisu-umiushi",
+    "name_ja": "エビスウミウシ",
+    "name_en": "Ebisu Dorid",
+    "name_sci": "Polycera abei",
+    "category": "ウミウシ",
+    "family": "フジタウミウシ科",
+    "size": "1〜3cm",
+    "depth": "3〜20m",
+    "season": ["冬", "春"],
+    "rarity": 3,
+    "description": "白い体にオレンジや黄色の突起が並ぶ華やかなウミウシ。コケムシなどを食べて生活しています。冬から春にかけて三浦の岩礁域で見られることがあります。",
+    "beginner_tips": "岩の表面に付いたコケムシの近くを探してみましょう。小さいですが、白い体にカラフルな突起があるので見つけたときの嬉しさは格別です。",
+    "log_point": "突起の色や数には個体差があります。どんな基質（岩・コケムシなど）の上にいたかも記録してみましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "ebisuumiushi.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "yubinouhanagasa-umiushi",
+    "name_ja": "ユビノウハナガサウミウシ",
+    "name_en": "Finger-branched Tritonia",
+    "name_sci": "Tritoniopsis elegans",
+    "category": "ウミウシ",
+    "family": "ホクヨウウミウシ科",
+    "size": "2〜5cm",
+    "depth": "3〜25m",
+    "season": ["冬", "春", "夏"],
+    "rarity": 3,
+    "description": "半透明の白い体に、指のように枝分かれした鰓突起が背中に並ぶ美しいウミウシ。ソフトコーラルを食べて生活しており、三浦のヤギ類やトサカ類が豊富なポイントで見つかります。",
+    "beginner_tips": "ソフトコーラル（ヤギやトサカ）の上を探してみましょう。半透明で周囲に溶け込みやすいですが、枝分かれした鰓がフワフワと揺れる姿がとても綺麗です。",
+    "log_point": "どの種類のソフトコーラルの上にいたか記録しましょう。鰓突起の数や枝分かれの仕方が個体によって違うのも観察ポイントです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "ubinouhanagasaumiushi.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "arimo-umiushi",
+    "name_ja": "アリモウミウシ",
+    "name_en": "Boodlea Sap-sucking Slug",
+    "name_sci": "Ercolania boodleae",
+    "category": "ウミウシ",
+    "family": "ハダカモウミウシ科",
+    "size": "0.3〜1cm",
+    "depth": "1〜10m",
+    "season": ["春", "夏"],
+    "rarity": 3,
+    "description": "体長わずか数mmの極小ウミウシ。緑がかった半透明の体に、背中にミノのような突起が並びます。海藻のアリモ（有藻）に付いていることが名前の由来。盗葉緑体を行い、体内で光合成もできます。",
+    "beginner_tips": "とにかく小さいので、虫眼鏡やマクロレンズがあると見つけやすいです。緑色の海藻をじーっと見つめて、小さな突起がモゾモゾ動いたらそれがアリモウミウシかもしれません！",
+    "log_point": "極小サイズのため、見つけたこと自体がすごい！何mmくらいだったか、何色だったかを記録しましょう。マクロ写真の練習にも最適です。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "arimoumiushi.JPG", "credit": "" }
+    ]
+  },
+  {
     "id": "hirataei",
     "name_ja": "ヒラタエイ",
     "name_en": "Japanese Butterfly Ray",
@@ -187,6 +263,101 @@
     "spot": "ビーチポイント",
     "photos": [
       { "file": "tatunoitoko.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "kokeginpo",
+    "name_ja": "コケギンポ",
+    "name_en": "Fringed Blenny",
+    "name_sci": "Neoclinus bryope",
+    "category": "魚類",
+    "family": "コケギンポ科",
+    "size": "3〜8cm",
+    "depth": "1〜15m",
+    "season": ["春", "夏", "秋", "冬"],
+    "rarity": 2,
+    "description": "頭の上にフサフサした皮弁（ひべん）を持つ小さな魚。岩の穴やカイメンの隙間から顔だけ出してキョロキョロしている姿がとても愛らしいです。三浦のビーチポイントでは一年中観察できる人気者。",
+    "beginner_tips": "岩の小さな穴を覗いてみましょう。頭のフサフサした飾りと、穴から顔を出すひょうきんな表情がたまりません。驚かさなければじっとしてくれるので写真も撮りやすいですよ。",
+    "log_point": "皮弁の形や色、住んでいる穴の大きさを記録してみましょう。同じ穴にずっと住み続ける習性があるので、次回のダイビングで再会できるかも。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "kokeginpo.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "oniokoze",
+    "name_ja": "オニオコゼ",
+    "name_en": "Devil Stinger",
+    "name_sci": "Inimicus japonicus",
+    "category": "魚類",
+    "family": "オニオコゼ科",
+    "size": "15〜25cm",
+    "depth": "1〜50m",
+    "season": ["春", "夏", "秋", "冬"],
+    "rarity": 3,
+    "description": "ゴツゴツした体と砂に紛れる体色で完璧に擬態する底生魚。背ビレに強い毒棘を持ち、うっかり踏むと大変危険です。三浦の砂地や岩と砂の境目でじっとしていることが多いです。",
+    "beginner_tips": "砂地をよく見ると、岩のように見えるのに目が付いている…それがオニオコゼです。毒があるので絶対に触らないこと！少し離れて観察しましょう。見つけたらガイドに教えてあげてください。",
+    "log_point": "体色は周囲の環境に合わせて変化します。どんな底質（砂地・岩場）にいたか、体色のパターンを記録すると面白いです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "oniokoze.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "umisuzume",
+    "name_ja": "ウミスズメ",
+    "name_en": "Roundbelly Cowfish",
+    "name_sci": "Lactoria diaphana",
+    "category": "魚類",
+    "family": "ハコフグ科",
+    "size": "10〜20cm",
+    "depth": "3〜30m",
+    "season": ["夏", "秋"],
+    "rarity": 3,
+    "description": "体が硬い骨板で覆われた箱型の魚。頭に2本の角があるのが特徴で、ぷっくりした体型と愛嬌のある顔が人気です。三浦では夏から秋にかけて浅場で見られることがあります。",
+    "beginner_tips": "岩礁の近くをゆっくり泳いでいることが多いです。箱のような四角い体と頭の角が目印。泳ぎがゆっくりなので、落ち着いて観察・撮影できます。",
+    "log_point": "角の長さや体の模様には個体差があります。正面から見たときの顔がとてもユニークなので、ぜひ正面顔の写真にも挑戦してみてください。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "umisuzume.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "budai",
+    "name_ja": "ブダイ",
+    "name_en": "Japanese Parrotfish",
+    "name_sci": "Calotomus japonicus",
+    "category": "魚類",
+    "family": "ブダイ科",
+    "size": "20〜40cm",
+    "depth": "1〜20m",
+    "season": ["春", "夏", "秋", "冬"],
+    "rarity": 2,
+    "description": "丈夫な歯で岩の表面の海藻を削り取って食べる魚。体色は赤褐色〜暗緑色で、成長段階や性別によって変化します。三浦の岩礁域では一年中観察できるおなじみの魚です。",
+    "beginner_tips": "岩場でガリガリと何かを食べている魚がいたら、それはブダイかもしれません。食事中は夢中で逃げにくいので、近くで観察しやすいです。口元に注目してみましょう。",
+    "log_point": "体色のバリエーションが豊富です。赤系・緑系・青系など、色の違いを記録してみましょう。夜は粘液の膜に包まれて眠る習性があるので、ナイトダイビングでも面白い観察対象です。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "bidai.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "torafukebori",
+    "name_ja": "トラフケボリ",
+    "name_en": "Tiger Egg Cowrie",
+    "name_sci": "Crenavolva striatula",
+    "category": "軟体動物",
+    "family": "ウミウサギ科",
+    "size": "1〜3cm",
+    "depth": "5〜30m",
+    "season": ["春", "夏", "秋", "冬"],
+    "rarity": 3,
+    "description": "虎模様の外套膜（がいとうまく）で貝殻を覆っている美しい巻貝の仲間。ヤギ類やトサカ類などのソフトコーラルに付いて生活しており、宿主と同じ色に擬態していることが多いです。",
+    "beginner_tips": "ソフトコーラル（ヤギやトサカ）の枝をよく観察してみましょう。虎縞模様の膨らみが見えたらトラフケボリです。小さいですが模様がとても美しいので、見つけると嬉しくなりますよ。",
+    "log_point": "宿主となっているソフトコーラルの種類と、外套膜の色・模様を記録しましょう。宿主によって体色が変わるので、バリエーションの比較が楽しいです。",
+    "spot": "宮川湾",
+    "photos": [
+      { "file": "torafukebori.JPG", "credit": "" }
     ]
   }
 ]
