@@ -228,6 +228,82 @@
     ]
   },
   {
+    "id": "midoriamamo-umiushi",
+    "name_ja": "ミドリアマモウミウシ",
+    "name_en": "Green Eelgrass Slug",
+    "name_sci": "Placida babai",
+    "category": "ウミウシ",
+    "family": "ハダカモウミウシ科",
+    "size": "0.5〜1.5cm",
+    "depth": "1〜10m",
+    "season": ["春", "夏"],
+    "rarity": 3,
+    "description": "鮮やかな緑色の体に細いミノ状の突起が並ぶ極小ウミウシ。アマモなどの海草や海藻に付いて生活し、盗葉緑体を行って光合成もできます。三浦の浅い海藻帯で春から夏にかけて見られます。",
+    "beginner_tips": "アマモや緑色の海藻の上を虫眼鏡で探してみましょう。緑色の体が海藻に溶け込んでいますが、細いミノのような突起がピンと立っているのが見分けるコツです。",
+    "log_point": "どの海藻の上にいたか、体の緑の濃さやミノ突起の数を記録しましょう。極小サイズなのでマクロ撮影の腕試しにもなります。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "midoriamamoumiushi.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "nishikitsubamegai",
+    "name_ja": "ニシキツバメガイ",
+    "name_en": "Ornate Aglajid",
+    "name_sci": "Chelidonura hirundinina",
+    "category": "ウミウシ",
+    "family": "カノコキセワタ科",
+    "size": "1〜3cm",
+    "depth": "1〜15m",
+    "season": ["春", "夏", "秋"],
+    "rarity": 3,
+    "description": "黒い体に鮮やかな青やオレンジのラインが走る、ツバメの尾のように二股に分かれた後端が特徴的なウミウシの仲間。砂地や岩礁の隙間を滑るように這い回り、小型の生物を捕食しています。",
+    "beginner_tips": "砂地と岩場の境目あたりをスルスルと移動していることが多いです。黒い体に鮮やかなラインが入っているので、慣れれば見つけやすい種類です。動きが速めなので見つけたら素早く観察しましょう。",
+    "log_point": "体のラインの色（青・オレンジ）のパターンや、尾の二股の長さを記録してみましょう。移動スピードが速いので動画撮影もおすすめです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "nishikitsubamegai.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "mukademino-umiushi",
+    "name_ja": "ムカデミノウミウシ",
+    "name_en": "Blue Dragon Nudibranch",
+    "name_sci": "Pteraeolidia semperi",
+    "category": "ウミウシ",
+    "family": "ムカデミノウミウシ科",
+    "size": "3〜10cm",
+    "depth": "2〜20m",
+    "season": ["春", "夏", "秋", "冬"],
+    "rarity": 2,
+    "description": "細長い体に無数のミノ（背側突起）が並ぶ姿がムカデに似ていることが名前の由来。青紫〜灰色の体色で、体内に褐虫藻を共生させて光合成を行う珍しいウミウシです。三浦では一年中見られます。",
+    "beginner_tips": "岩壁やヤギ類のそばで見つかることが多いです。細長い体にたくさんのミノが付いた姿は一度見たら忘れられません。比較的大きいので初心者でも見つけやすいウミウシです。",
+    "log_point": "体色は個体や環境によって青・紫・灰色と変化します。ミノの色や体の長さを記録してみましょう。光合成するウミウシとしてログのネタにもなります。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "mukademinoumiushi.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "hiro-umiushi",
+    "name_ja": "ヒロウミウシ",
+    "name_en": "Hiro's Nudibranch",
+    "name_sci": "Okenia hiroi",
+    "category": "ウミウシ",
+    "family": "ネコジタウミウシ科",
+    "size": "0.5〜1.5cm",
+    "depth": "3〜20m",
+    "season": ["冬", "春", "夏"],
+    "rarity": 3,
+    "description": "ピンク〜赤紫色の小さな体に、背中から突き出した長い突起が特徴的なウミウシ。コケムシを食べて生活しており、三浦の岩礁域で冬から春にかけてよく見られます。",
+    "beginner_tips": "岩の表面のコケムシの近くを探してみましょう。とても小さいですが、ピンク色の体と長い突起が目印。見つけたら自慢できるかわいいウミウシです！",
+    "log_point": "体色のピンクの濃さや突起の長さ・本数には個体差があります。どんなコケムシの上にいたかも記録ポイントです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "hiroumiushi.jpeg", "credit": "" }
+    ]
+  },
+  {
     "id": "hirataei",
     "name_ja": "ヒラタエイ",
     "name_en": "Japanese Butterfly Ray",
@@ -339,6 +415,25 @@
     "spot": "ビーチポイント",
     "photos": [
       { "file": "bidai.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "kurohoshiishimochi",
+    "name_ja": "クロホシイシモチ",
+    "name_en": "Dotted Cardinalfish",
+    "name_sci": "Apogon notatus",
+    "category": "魚類",
+    "family": "テンジクダイ科",
+    "size": "5〜10cm",
+    "depth": "1〜20m",
+    "season": ["春", "夏", "秋", "冬"],
+    "rarity": 1,
+    "description": "半透明がかった体に黒い斑点が散らばる小型の魚。岩陰や洞窟の入り口付近で群れていることが多く、三浦のビーチポイントでは一年中観察できるおなじみの魚です。オスが口の中で卵を守る「マウスブルーディング」でも知られています。",
+    "beginner_tips": "岩の下や穴の入り口を覗いてみましょう。たくさん群れていることが多いので見つけやすいです。よく見ると口をモゴモゴさせている個体がいるかも…それは卵を口の中で育てているお父さんです！",
+    "log_point": "群れの大きさや、口内保育中の個体がいたかどうかを記録しましょう。繁殖期（初夏〜夏）はオスの口が膨らんでいるのが観察できます。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "kurohoshiishimochi.jpeg", "credit": "" }
     ]
   },
   {
