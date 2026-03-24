@@ -1,0 +1,192 @@
+[
+  {
+    "id": "ao-umiushi",
+    "name_ja": "アオウミウシ",
+    "name_en": "Hypselodoris festiva",
+    "name_sci": "Hypselodoris festiva",
+    "category": "ウミウシ",
+    "family": "イロウミウシ科",
+    "size": "2〜5cm",
+    "depth": "1〜30m",
+    "season": ["春", "夏", "秋", "冬"],
+    "rarity": 1,
+    "description": "鮮やかな青い体に黄色い縁取りが美しいウミウシの代表種。三浦の海では一年中観察でき、岩肌やカイメンの上をゆっくり這っている姿が見られます。",
+    "beginner_tips": "岩の表面をよく見てみましょう。青い色が目立つので、ウミウシ探しの入門にぴったり！動きがゆっくりなので写真も撮りやすいです。",
+    "log_point": "体の模様や色の濃さには個体差があります。黄色い縁取りの太さや、背中の斑点の数を観察してみましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "ao-umiushi.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "sarasa-umiushi",
+    "name_ja": "サラサウミウシ",
+    "name_en": "Chromodoris tinctoria",
+    "name_sci": "Goniobranchus tinctoria",
+    "category": "ウミウシ",
+    "family": "イロウミウシ科",
+    "size": "2〜5cm",
+    "depth": "3〜20m",
+    "season": ["春", "夏", "秋", "冬"],
+    "rarity": 1,
+    "description": "白い体に赤褐色の網目模様が入った上品なウミウシ。名前の「更紗（さらさ）」は、インド起源の染色布に由来し、その模様が更紗模様に似ていることから名付けられました。",
+    "beginner_tips": "アオウミウシと同じく岩の上でよく見つかります。白地に赤い模様が特徴的なので見分けやすいです。",
+    "log_point": "模様のパターンは個体ごとに異なります。触角と二次鰓（にじえら）の色にも注目してみましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "sarasa-umiushi.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "shiro-umiushi",
+    "name_ja": "シロウミウシ",
+    "name_en": "Chromodoris orientalis",
+    "name_sci": "Chromodoris orientalis",
+    "category": "ウミウシ",
+    "family": "イロウミウシ科",
+    "size": "2〜5cm",
+    "depth": "2〜20m",
+    "season": ["春", "夏", "秋", "冬"],
+    "rarity": 1,
+    "description": "白い体に黒い斑点が散らばり、体の縁に黄色いラインが入るウミウシ。三浦の海では非常にポピュラーで、アオウミウシと並んで最もよく見かけるウミウシの一つです。",
+    "beginner_tips": "白い体に黒い点々模様が目印。岩の上や壁面をゆっくり這っています。アオウミウシと一緒に見つかることも多いです。",
+    "log_point": "黒い斑点の数や大きさは個体差が大きいです。体の縁の黄色いラインがどこまで続いているか観察してみましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "shiro-umiushi.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "shirayuki-umiushi",
+    "name_ja": "シラユキウミウシ",
+    "name_en": "Noumea nivalis",
+    "name_sci": "Verconia nivalis",
+    "category": "ウミウシ",
+    "family": "イロウミウシ科",
+    "size": "1〜3cm",
+    "depth": "5〜25m",
+    "season": ["冬", "春"],
+    "rarity": 3,
+    "description": "半透明の白い体に、縁がほんのりオレンジ色に染まる美しいウミウシ。名前の通り「白雪」のような清楚な見た目が特徴。小型なので見つけるには少しコツが必要です。",
+    "beginner_tips": "やや小さいので岩壁をじっくり観察する必要があります。白くて半透明の体にオレンジの縁取りが目印。冬から春にかけてが見頃です。",
+    "log_point": "半透明の体を通して内臓が透けて見えることがあります。体の縁のオレンジ色の濃さは個体によって異なります。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "shirayuki-umiushi.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "komon-umiushi",
+    "name_ja": "コモンウミウシ",
+    "name_en": "Chromodoris aureopurpurea",
+    "name_sci": "Goniobranchus aureopurpurea",
+    "category": "ウミウシ",
+    "family": "イロウミウシ科",
+    "size": "2〜4cm",
+    "depth": "3〜25m",
+    "season": ["春", "夏", "秋", "冬"],
+    "rarity": 2,
+    "description": "白い体に紫色の斑紋が入り、体の縁が黄色く縁取られたウミウシ。名前の「小紋」は着物の柄に由来し、紫色の模様が小紋柄のように見えることから名付けられました。",
+    "beginner_tips": "紫の模様と黄色い縁取りの組み合わせが目を引きます。岩礁やカイメンの近くで見つかることが多いです。",
+    "log_point": "紫色の模様の入り方には個体差があります。触角と二次鰓の色も観察ポイントです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "komon-umiushi.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "hiramirumidorigai",
+    "name_ja": "ヒラミルミドリガイ",
+    "name_en": "Elysia trisinuata",
+    "name_sci": "Elysia trisinuata",
+    "category": "ウミウシ",
+    "family": "ゴクラクミドリガイ科",
+    "size": "1〜3cm",
+    "depth": "1〜15m",
+    "season": ["春", "夏", "秋"],
+    "rarity": 2,
+    "description": "緑色の体を持つ嚢舌目（のうぜつもく）のウミウシの仲間。海藻のミルに擬態して生活しており、食べた海藻の葉緑体を体内に取り込んで光合成を行う「盗葉緑体」という驚きの能力を持っています。",
+    "beginner_tips": "緑色の海藻「ミル」の上にいることが多いです。海藻そっくりなので最初は見つけにくいですが、よく見ると触角がちょこんと出ています。",
+    "log_point": "海藻の上にいる姿と、移動中の姿では印象がかなり変わります。光合成ができるウミウシとしてログに書くと話題になりますよ。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "hiramirumidorigai.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "konohamidorigai",
+    "name_ja": "コノハミドリガイ",
+    "name_en": "Elysia ornata",
+    "name_sci": "Elysia ornata",
+    "category": "ウミウシ",
+    "family": "ゴクラクミドリガイ科",
+    "size": "1〜3cm",
+    "depth": "1〜10m",
+    "season": ["春", "夏", "秋"],
+    "rarity": 2,
+    "description": "鮮やかな緑色の体に、背中の両翼の縁がオレンジや黒で彩られた美しいウミウシの仲間。ヒラミルミドリガイと同じく盗葉緑体を行い、体内で光合成ができます。",
+    "beginner_tips": "浅い岩場の海藻の近くで見つかります。小さいですが、緑にオレンジの縁取りが鮮やかなので慣れれば見つけやすいです。",
+    "log_point": "翼を広げた姿と閉じた姿の違いを観察してみましょう。光合成するために翼を広げて日光を浴びている姿が見られることもあります。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "konohamidorigai.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "kuroheriamefurashi",
+    "name_ja": "クロヘリアメフラシ",
+    "name_en": "Aplysia parvula",
+    "name_sci": "Aplysia parvula",
+    "category": "ウミウシ",
+    "family": "アメフラシ科",
+    "size": "2〜6cm",
+    "depth": "1〜15m",
+    "season": ["冬", "春", "夏"],
+    "rarity": 1,
+    "description": "茶褐色〜暗緑色の体に黒い縁取りがあるアメフラシの仲間。海藻の上でよく見られ、体色は食べている海藻によって変化します。春先には卵塊（らんかい）を産む姿も観察できます。",
+    "beginner_tips": "海藻の上にちょこんと乗っていることが多いです。触るとアメフラシの仲間なので紫色の液を出すことも。そっと観察しましょう。",
+    "log_point": "体色のバリエーション（茶色・緑・赤みがかったもの）を記録してみましょう。春先は卵塊を産んでいる姿に注目です。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "kuroheri.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "hirataei",
+    "name_ja": "ヒラタエイ",
+    "name_en": "Japanese Butterfly Ray",
+    "name_sci": "Gymnura japonica",
+    "category": "魚類",
+    "family": "ヒラタエイ科",
+    "size": "30〜80cm（体盤幅）",
+    "depth": "1〜30m",
+    "season": ["春", "夏", "秋"],
+    "rarity": 2,
+    "description": "体が平たく横に広いひし形をしたエイの仲間。砂地に潜って身を隠していることが多く、目だけを砂の上に出してじっとしています。尾に毒棘があるため、砂地を歩く際は注意が必要です。",
+    "beginner_tips": "砂地をよく見ると、砂に埋もれたエイの輪郭が見えることがあります。近づきすぎず、少し離れて観察しましょう。尾の棘には毒があるので触らないように。",
+    "log_point": "体盤の大きさや模様、砂に隠れている様子を記録しましょう。砂から飛び立つように泳ぎ出す姿はとても優雅です。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "hirataei.JPG", "credit": "" }
+    ]
+  },
+  {
+    "id": "tatunoitoko",
+    "name_ja": "タツノイトコ",
+    "name_en": "Banded Pipefish",
+    "name_sci": "Hippichthys penicillus",
+    "category": "魚類",
+    "family": "ヨウジウオ科",
+    "size": "5〜15cm",
+    "depth": "1〜15m",
+    "season": ["春", "夏", "秋"],
+    "rarity": 3,
+    "description": "タツノオトシゴの近縁種で、細長い体と管状の口が特徴。海藻や海草に体を絡ませてじっとしていることが多く、擬態が上手なため見つけにくい生物です。タツノオトシゴと同じく、オスが育児嚢でお腹の中で卵を育てます。",
+    "beginner_tips": "海藻の茂みの中をじっくり探してみましょう。細長い棒のような体なので最初は海藻と区別がつきにくいですが、小さな目と管のような口が見えたらタツノイトコです。",
+    "log_point": "体色は環境に合わせて変化します。どんな海藻に擬態していたか、体の色や模様を詳しく記録してみましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      { "file": "tatunoitoko.JPG", "credit": "" }
+    ]
+  }
+]
