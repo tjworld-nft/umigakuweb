@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>三浦の海の生き物図鑑｜三浦 海の学校で出会える水中生物</title>
+    <meta name="description"
+        content="三浦半島・三浦 海の学校のダイビングで出会える水中生物の図鑑。ウミウシ・魚類など、初心者ダイバーにも分かりやすく生態や見つけ方のコツを紹介。ログ付けにも役立つ観察ポイント付き。">
+    <meta name="keywords"
+        content="三浦,ダイビング,水中生物,ウミウシ,図鑑,海の生き物,三浦半島,ファンダイビング,ログ付け,初心者ダイバー">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://miura-diving.com/sea-life/">
+    <meta name="geo.region" content="JP-14">
+    <meta name="geo.placename" content="三浦市">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="三浦 海の学校">
+    <meta property="og:title" content="三浦の海の生き物図鑑｜三浦 海の学校で出会える水中生物">
+    <meta property="og:description" content="三浦半島のダイビングで出会える水中生物を写真付きで紹介。ウミウシ・魚類の生態や見つけ方のコツ、ログ付けの観察ポイントも。">
+    <meta property="og:url" content="https://miura-diving.com/sea-life/">
+    <meta property="og:image" content="https://miura-diving.com/wp-content/uploads/1.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://miura-diving.com/wp-content/uploads/1.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "三浦の海の生き物図鑑",
+        "description": "三浦半島・三浦 海の学校のダイビングで出会える水中生物の図鑑。初心者ダイバー向けに生態や見つけ方を紹介。",
+        "url": "https://miura-diving.com/sea-life/",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "三浦 海の学校",
+            "url": "https://miura-diving.com"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://miura-diving.com/"},
+            {"@type": "ListItem", "position": 2, "name": "海の生き物図鑑", "item": "https://miura-diving.com/sea-life/"}
+        ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Hero */
+        .subpage-hero { min-height: 45vh; min-height: 45dvh; }
+        .subpage-hero h1 { font-size: clamp(1.5rem, 5vw, 2.6rem); }
+
+        /* Breadcrumb */
+        .breadcrumb { display:flex; gap:.5rem; font-size:.8rem; color:var(--text-sub); padding:1rem 0; flex-wrap:wrap; }
+        .breadcrumb a { color:var(--teal-dark); }
+        .breadcrumb span { color:var(--text-light); }
+
+        /* Intro */
+        .sealife-intro { font-size:.95rem; color:var(--text-sub); line-height:1.8; max-width:750px; margin:0 auto 2rem; text-align:center; }
+
+        /* Filter */
+        .filter-bar { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+        .filter-btn {
+            padding:.5rem 1.2rem; border-radius:50px; border:2px solid var(--border);
+            background:var(--white); color:var(--text-sub); font-size:.85rem; font-weight:500;
+            cursor:pointer; transition:all var(--ease); font-family:var(--ff-body);
+        }
+        .filter-btn:hover { border-color:var(--teal); color:var(--teal-dark); }
+        .filter-btn.active { background:var(--teal); border-color:var(--teal); color:var(--white); }
+
+        /* Grid */
+        .creature-grid {
+            display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;
+        }
+        @media(min-width:640px) { .creature-grid { grid-template-columns:repeat(3,1fr); gap:1.25rem; } }
+        @media(min-width:1024px) { .creature-grid { grid-template-columns:repeat(4,1fr); gap:1.5rem; } }
+
+        /* Card */
+        .creature-card {
+            background:var(--white); border-radius:var(--radius-md); overflow:hidden;
+            box-shadow:var(--shadow-sm); border:1px solid var(--border);
+            cursor:pointer; transition:all var(--ease);
+        }
+        .creature-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+        .creature-card-img {
+            width:100%; aspect-ratio:1/1; object-fit:cover; display:block;
+        }
+        .creature-card-body { padding:.75rem 1rem 1rem; }
+        .creature-card-body h3 { font-size:.95rem; font-weight:700; margin-bottom:.15rem; }
+        .creature-card-body .sci-name { font-size:.7rem; color:var(--text-light); font-style:italic; margin-bottom:.4rem; }
+        .creature-card-meta { display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; }
+        .creature-tag {
+            font-size:.65rem; padding:.15rem .5rem; border-radius:50px;
+            background:var(--bg-soft); color:var(--teal-dark); font-weight:500;
+        }
+        .creature-rarity { font-size:.7rem; color:var(--yellow); letter-spacing:-1px; }
+
+        /* Search */
+        .search-bar {
+            max-width:400px; margin:0 auto 1.5rem; position:relative;
+        }
+        .search-bar input {
+            width:100%; padding:.7rem 1rem .7rem 2.5rem; border-radius:50px;
+            border:2px solid var(--border); font-size:.9rem; font-family:var(--ff-body);
+            background:var(--white); transition:border-color var(--ease); outline:none;
+        }
+        .search-bar input:focus { border-color:var(--teal); }
+        .search-bar::before {
+            content:'🔍'; position:absolute; left:.85rem; top:50%; transform:translateY(-50%);
+            font-size:.9rem; pointer-events:none;
+        }
+
+        /* Count */
+        .creature-count { text-align:center; font-size:.85rem; color:var(--text-light); margin-bottom:1.5rem; }
+        .no-results { text-align:center; color:var(--text-light); padding:3rem 0; font-size:.95rem; }
+
+        /* Modal */
+        .modal-overlay {
+            display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,.6); z-index:9999; align-items:center; justify-content:center;
+            padding:1rem; backdrop-filter:blur(4px);
+        }
+        .modal-overlay.open { display:flex; }
+        .modal-content {
+            background:var(--white); border-radius:var(--radius-lg); max-width:700px; width:100%;
+            max-height:90vh; overflow-y:auto; position:relative;
+            box-shadow:0 24px 64px rgba(0,0,0,.2);
+        }
+        .modal-close {
+            position:sticky; top:0; float:right; background:rgba(255,255,255,.9); border:none;
+            font-size:1.5rem; cursor:pointer; padding:.5rem .75rem; border-radius:0 var(--radius-lg) 0 var(--radius-sm);
+            z-index:1; color:var(--text-sub); backdrop-filter:blur(4px);
+        }
+        .modal-close:hover { color:var(--text-dark); }
+        .modal-img { width:100%; max-height:400px; object-fit:cover; display:block; border-radius:var(--radius-lg) var(--radius-lg) 0 0; }
+        /* Gallery */
+        .modal-gallery { position:relative; }
+        .modal-gallery-nav {
+            position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.85);
+            border:none; font-size:1.4rem; cursor:pointer; padding:.3rem .6rem; border-radius:50%;
+            color:var(--text-dark); box-shadow:var(--shadow-sm); z-index:2; line-height:1;
+        }
+        .modal-gallery-nav:hover { background:var(--white); }
+        .modal-gallery-nav.prev { left:.5rem; }
+        .modal-gallery-nav.next { right:.5rem; }
+        .modal-thumbs {
+            display:flex; gap:.4rem; padding:.5rem 1rem; overflow-x:auto; background:var(--bg-cream);
+        }
+        .modal-thumbs img {
+            width:56px; height:56px; object-fit:cover; border-radius:8px; cursor:pointer;
+            border:2px solid transparent; transition:border-color var(--ease); flex-shrink:0;
+        }
+        .modal-thumbs img.active { border-color:var(--teal); }
+        .modal-thumbs img:hover { border-color:var(--teal-light); }
+        .modal-photo-credit {
+            font-size:.7rem; color:var(--text-light); text-align:right; padding:.25rem 1rem .5rem;
+            background:var(--bg-cream);
+        }
+        .modal-body { padding:1.5rem 2rem 2rem; }
+        .modal-body h2 { font-size:1.4rem; margin-bottom:.1rem; }
+        .modal-body .sci-name { font-size:.85rem; color:var(--text-light); font-style:italic; margin-bottom:1rem; }
+        .modal-info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.5rem; margin-bottom:1.25rem; }
+        @media(min-width:480px) { .modal-info-grid { grid-template-columns:repeat(4,1fr); } }
+        .modal-info-item {
+            background:var(--bg-soft); border-radius:var(--radius-sm); padding:.6rem .75rem; text-align:center;
+        }
+        .modal-info-item .label { font-size:.65rem; color:var(--text-light); margin-bottom:.15rem; }
+        .modal-info-item .value { font-size:.8rem; font-weight:700; color:var(--text-dark); }
+        .modal-section { margin-bottom:1rem; }
+        .modal-section h4 {
+            font-size:.8rem; font-weight:700; color:var(--teal-dark);
+            margin-bottom:.35rem; display:flex; align-items:center; gap:.35rem;
+        }
+        .modal-section p { font-size:.88rem; color:var(--text-sub); line-height:1.7; }
+        .modal-credit { font-size:.75rem; color:var(--text-light); text-align:right; margin-top:.75rem; }
+        .modal-season { display:flex; gap:.35rem; flex-wrap:wrap; }
+        .modal-season span {
+            font-size:.7rem; padding:.2rem .6rem; border-radius:50px;
+            background:var(--bg-soft); color:var(--text-sub);
+        }
+        .modal-season span.current { background:var(--teal-light); color:var(--teal-dark); font-weight:600; }
+        .modal-spot {
+            display:inline-block; font-size:.75rem; padding:.25rem .7rem; border-radius:50px;
+            background:linear-gradient(135deg, var(--teal), var(--sky)); color:var(--white); font-weight:500;
+        }
+
+        /* Tip box */
+        .tip-box {
+            background:linear-gradient(135deg, #FFF9E6, #FFF3CC); border-radius:var(--radius-sm);
+            padding:1rem 1.15rem; margin-bottom:1rem; border-left:3px solid var(--yellow);
+        }
+        .tip-box h4 { color:#B8860B; }
+        .tip-box p { color:#6B5B00; }
+
+        .log-box {
+            background:linear-gradient(135deg, #EFF8FF, #DBEEFF); border-radius:var(--radius-sm);
+            padding:1rem 1.15rem; border-left:3px solid var(--sky);
+        }
+        .log-box h4 { color:#1E6FA0; }
+        .log-box p { color:#2A5F7A; }
+
+        @media(max-width:480px) {
+            .modal-body { padding:1rem 1.25rem 1.5rem; }
+            .modal-info-grid { grid-template-columns:repeat(2,1fr); }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="../index.html" class="header-logo"><img src="../image/umigaku-logo.webp" alt="三浦 海の学校" width="120" height="40"></a>
+            <nav class="desktop-nav" role="navigation">
+                <a href="../license/">ダイビングライセンス</a>
+                <a href="../fun-diving/">ファンダイビング</a>
+                <a href="../marine-activity/">マリンアクティビティ</a>
+                <a href="../sea-life/" style="color:var(--coral);">海の生き物図鑑</a>
+                <a href="https://miura-diving.com/blog/">ブログ</a>
+                <a href="../contact/" class="btn btn--coral" style="padding:.6rem 1.4rem; font-size:.85rem;">お問い合わせ</a>
+            </nav>
+            <button class="hamburger" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+    <div class="mobile-nav" role="dialog" aria-modal="true">
+        <div class="mobile-nav-panel">
+            <a href="../index.html">ホーム</a>
+            <a href="../license/">ダイビングライセンス</a>
+            <a href="../fun-diving/">ファンダイビング</a>
+            <a href="../marine-activity/">マリンアクティビティ</a>
+            <a href="../sea-life/">海の生き物図鑑</a>
+            <a href="https://miura-diving.com/blog/">ブログ</a>
+            <div class="mobile-nav-cta"><a href="../contact/" class="btn btn--coral">お問い合わせ</a></div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero subpage-hero">
+        <div class="hero-bubble" aria-hidden="true"></div>
+        <div class="hero-bubble" aria-hidden="true"></div>
+        <div class="hero-bg"><img src="../image/fish/ao-umiushi.JPG" alt="三浦の海の生き物" width="1920" height="1080" loading="eager" style="filter:brightness(.7);"></div>
+        <div class="hero-content">
+            <h1>三浦の海の生き物図鑑</h1>
+            <p class="hero-sub">三浦 海の学校のダイビングで出会える水中生物たち。<br>初心者ダイバーにも分かりやすく、見つけ方のコツや<br>ログ付けに役立つ観察ポイントを紹介します。</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <nav class="breadcrumb"><a href="../index.html">ホーム</a><span>›</span><span>海の生き物図鑑</span></nav>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <p class="sealife-intro">三浦半島の海には、カラフルなウミウシから迫力あるエイまで、四季折々のさまざまな生き物が暮らしています。<br>ダイビングで実際に出会える生き物たちを、見つけ方のコツや豆知識と一緒にご紹介します。</p>
+
+                <!-- Search -->
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="生き物の名前で検索..." autocomplete="off">
+                </div>
+
+                <!-- Filter -->
+                <div class="filter-bar" id="filterBar">
+                    <button class="filter-btn active" data-filter="all">すべて</button>
+                </div>
+
+                <p class="creature-count" id="creatureCount"></p>
+                <p style="text-align:center; font-size:.8rem; color:var(--text-light); margin-bottom:1.5rem;">※ 掲載する生き物は、ダイビングで出会うたびに少しずつ増やしていきます。お楽しみに！</p>
+
+                <!-- Grid -->
+                <div class="creature-grid" id="creatureGrid"></div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container text-center">
+                <span class="section-label reveal" style="color:rgba(255,255,255,.7);">Diving</span>
+                <h2 class="section-title reveal">この生き物たちに会いに行こう</h2>
+                <p class="section-lead reveal">三浦 海の学校のファンダイビングで、実際に水中生物を観察できます。</p>
+                <div class="cta-methods reveal" data-delay="1">
+                    <a href="../fun-diving/" class="cta-card">
+                        <div class="cta-card-icon">🤿</div>
+                        <div class="cta-card-title">ファンダイビング</div>
+                        <div class="cta-card-detail">コース詳細を見る</div>
+                    </a>
+                    <a href="https://lin.ee/kK3d5p2" class="cta-card" target="_blank" rel="noopener noreferrer">
+                        <div class="cta-card-icon">💬</div>
+                        <div class="cta-card-title">LINEで予約</div>
+                        <div class="cta-card-detail">お気軽にメッセージ</div>
+                    </a>
+                    <a href="../contact/" class="cta-card">
+                        <div class="cta-card-icon">✉️</div>
+                        <div class="cta-card-title">お問い合わせ</div>
+                        <div class="cta-card-detail">ご質問はこちら</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand"><strong style="color:#fff; font-size:1.1rem;">三浦 海の学校</strong>
+                    <p>〒238-0224 神奈川県三浦市三崎町諸磯1621<br>TEL: 046-880-0835<br>営業時間: 9:00〜16:00（不定休）</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>メニュー</h4>
+                    <a href="../index.html">ホーム</a>
+                    <a href="../license/">ダイビングライセンス</a>
+                    <a href="../fun-diving/">ファンダイビング</a>
+                    <a href="../marine-activity/">マリンアクティビティ</a>
+                    <a href="../sea-life/">海の生き物図鑑</a>
+                </div>
+                <div class="footer-social">
+                    <h4>SNS</h4>
+                    <div class="footer-social-icons">
+                        <a href="https://www.instagram.com/tj_official_umigaku/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+                        <a href="https://www.facebook.com/miuraumigaku/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">📘</a>
+                        <a href="https://x.com/miura_diving" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">𝕏</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 三浦 海の学校 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" defer></script>
+    <script>
+    (function() {
+        var pageDir = document.querySelector('script[src*="main.js"]') ? '../' : '/';
+        var jsonUrl = (window.location.pathname.indexOf('/sea-life/') !== -1) ? 'creatures.json' : '/sea-life/creatures.json';
+        var imgBase = (window.location.pathname.indexOf('/sea-life/') !== -1) ? '../image/fish/' : '/image/fish/';
+        var MONTH_TO_SEASON = ['冬','冬','春','春','春','夏','夏','夏','秋','秋','秋','冬'];
+        var currentSeason = MONTH_TO_SEASON[new Date().getMonth()];
+        var creatures = [];
+        var currentFilter = 'all';
+        var currentSearch = '';
+        var galleryIndex = 0;
+        var galleryPhotos = [];
+
+        function renderStars(n) {
+            return '<span class="creature-rarity">' + '★'.repeat(n) + '☆'.repeat(5 - n) + '</span>';
+        }
+
+        function matchesSearch(c, q) {
+            if (!q) return true;
+            q = q.toLowerCase();
+            return c.name_ja.toLowerCase().indexOf(q) !== -1 ||
+                   c.name_en.toLowerCase().indexOf(q) !== -1 ||
+                   c.name_sci.toLowerCase().indexOf(q) !== -1 ||
+                   c.family.toLowerCase().indexOf(q) !== -1 ||
+                   c.category.toLowerCase().indexOf(q) !== -1;
+        }
+
+        function buildCard(c) {
+            var photo = c.photos && c.photos[0] ? c.photos[0].file : '';
+            var div = document.createElement('div');
+            div.className = 'creature-card';
+            div.dataset.category = c.category;
+            var photoCount = c.photos ? c.photos.length : 0;
+            var badge = photoCount > 1 ? '<span style="position:absolute;top:.5rem;right:.5rem;background:rgba(0,0,0,.6);color:#fff;font-size:.65rem;padding:.15rem .45rem;border-radius:50px;">📷 ' + photoCount + '</span>' : '';
+            div.innerHTML =
+                '<div style="position:relative;">' +
+                    '<img class="creature-card-img" src="' + imgBase + photo + '" alt="' + c.name_ja + '" loading="lazy" width="400" height="400">' +
+                    badge +
+                '</div>' +
+                '<div class="creature-card-body">' +
+                    '<h3>' + c.name_ja + '</h3>' +
+                    '<p class="sci-name">' + c.name_sci + '</p>' +
+                    '<div class="creature-card-meta">' +
+                        '<span class="creature-tag">' + c.category + '</span>' +
+                        renderStars(c.rarity) +
+                    '</div>' +
+                '</div>';
+            div.addEventListener('click', function() { openModal(c); });
+            return div;
+        }
+
+        function buildSeasonTags(seasons) {
+            return '<div class="modal-season">' +
+                seasons.map(function(s) {
+                    return '<span' + (s === currentSeason ? ' class="current"' : '') + '>' + s + '</span>';
+                }).join('') + '</div>';
+        }
+
+        function buildGallery(photos, name) {
+            if (!photos || photos.length === 0) return '';
+            galleryPhotos = photos;
+            galleryIndex = 0;
+            var navPrev = photos.length > 1 ? '<button class="modal-gallery-nav prev" onclick="window._gallery(-1)">‹</button>' : '';
+            var navNext = photos.length > 1 ? '<button class="modal-gallery-nav next" onclick="window._gallery(1)">›</button>' : '';
+            var thumbs = '';
+            if (photos.length > 1) {
+                thumbs = '<div class="modal-thumbs">' +
+                    photos.map(function(p, i) {
+                        return '<img src="' + imgBase + p.file + '" alt="' + name + '" data-idx="' + i + '"' +
+                            (i === 0 ? ' class="active"' : '') + ' onclick="window._galleryTo(' + i + ')">';
+                    }).join('') + '</div>';
+            }
+            var credit = photos[0].credit ? '<div class="modal-photo-credit">📸 Photo by ' + photos[0].credit + '</div>' : '';
+            return '<div class="modal-gallery">' +
+                navPrev + navNext +
+                '<img class="modal-img" id="galleryMain" src="' + imgBase + photos[0].file + '" alt="' + name + '">' +
+                '</div>' + thumbs + '<div class="modal-photo-credit" id="galleryCredit">' + (photos[0].credit ? '📸 Photo by ' + photos[0].credit : '') + '</div>';
+        }
+
+        window._galleryTo = function(idx) {
+            galleryIndex = idx;
+            var main = document.getElementById('galleryMain');
+            var creditEl = document.getElementById('galleryCredit');
+            if (!main) return;
+            main.src = '../image/fish/' + galleryPhotos[idx].file;
+            if (creditEl) creditEl.textContent = galleryPhotos[idx].credit ? '📸 Photo by ' + galleryPhotos[idx].credit : '';
+            document.querySelectorAll('.modal-thumbs img').forEach(function(t, i) {
+                t.classList.toggle('active', i === idx);
+            });
+        };
+
+        window._gallery = function(dir) {
+            var newIdx = galleryIndex + dir;
+            if (newIdx < 0) newIdx = galleryPhotos.length - 1;
+            if (newIdx >= galleryPhotos.length) newIdx = 0;
+            window._galleryTo(newIdx);
+        };
+
+        function openModal(c) {
+            var gallery = buildGallery(c.photos, c.name_ja);
+            document.getElementById('modalContent').innerHTML =
+                '<button class="modal-close" aria-label="閉じる">&times;</button>' +
+                gallery +
+                '<div class="modal-body">' +
+                    '<h2>' + c.name_ja + '</h2>' +
+                    '<p class="sci-name">' + c.name_en + '（' + c.name_sci + '）</p>' +
+                    '<div class="modal-info-grid">' +
+                        '<div class="modal-info-item"><div class="label">分類</div><div class="value">' + c.family + '</div></div>' +
+                        '<div class="modal-info-item"><div class="label">大きさ</div><div class="value">' + c.size + '</div></div>' +
+                        '<div class="modal-info-item"><div class="label">水深</div><div class="value">' + c.depth + '</div></div>' +
+                        '<div class="modal-info-item"><div class="label">ポイント</div><div class="value"><span class="modal-spot">' + c.spot + '</span></div></div>' +
+                    '</div>' +
+                    '<div class="modal-section"><h4>シーズン</h4>' + buildSeasonTags(c.season) + '</div>' +
+                    '<div class="modal-section"><h4>生態</h4><p>' + c.description + '</p></div>' +
+                    '<div class="modal-section tip-box"><h4>💡 見つけ方のコツ</h4><p>' + c.beginner_tips + '</p></div>' +
+                    '<div class="modal-section log-box"><h4>📓 ログ付けポイント</h4><p>' + c.log_point + '</p></div>' +
+                '</div>';
+            document.getElementById('modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            document.querySelector('.modal-close').addEventListener('click', closeModal);
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+            if (document.getElementById('modal').classList.contains('open')) {
+                if (e.key === 'ArrowLeft') window._gallery(-1);
+                if (e.key === 'ArrowRight') window._gallery(1);
+            }
+        });
+
+        function renderGrid() {
+            var grid = document.getElementById('creatureGrid');
+            grid.innerHTML = '';
+            var count = 0;
+            creatures.forEach(function(c) {
+                if ((currentFilter === 'all' || c.category === currentFilter) && matchesSearch(c, currentSearch)) {
+                    grid.appendChild(buildCard(c));
+                    count++;
+                }
+            });
+            document.getElementById('creatureCount').textContent = count + '種の生き物';
+            if (count === 0) {
+                grid.innerHTML = '<p class="no-results">該当する生き物が見つかりませんでした。</p>';
+            }
+        }
+
+        function buildFilters() {
+            var cats = [];
+            creatures.forEach(function(c) {
+                if (cats.indexOf(c.category) === -1) cats.push(c.category);
+            });
+            var bar = document.getElementById('filterBar');
+            cats.forEach(function(cat) {
+                var btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                btn.dataset.filter = cat;
+                btn.textContent = cat;
+                bar.appendChild(btn);
+            });
+
+            bar.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('filter-btn')) return;
+                bar.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.filter;
+                renderGrid();
+            });
+        }
+
+        // Search
+        var searchTimer;
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(function() {
+                currentSearch = e.target.value.trim();
+                renderGrid();
+            }, 200);
+        });
+
+        // Load data
+        fetch(jsonUrl)
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                creatures = data;
+                buildFilters();
+                renderGrid();
+            });
+    })();
+    </script>
+</body>
+
+</html>
