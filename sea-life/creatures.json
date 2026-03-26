@@ -8,14 +8,22 @@
     "family": "イロウミウシ科",
     "size": "2〜5cm",
     "depth": "1〜30m",
-    "season": ["春", "夏", "秋", "冬"],
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
     "rarity": 1,
     "description": "鮮やかな青い体に黄色い縁取りが美しいウミウシの代表種。三浦の海では一年中観察でき、岩肌やカイメンの上をゆっくり這っている姿が見られます。",
     "beginner_tips": "岩の表面をよく見てみましょう。青い色が目立つので、ウミウシ探しの入門にぴったり！動きがゆっくりなので写真も撮りやすいです。",
     "log_point": "体の模様や色の濃さには個体差があります。黄色い縁取りの太さや、背中の斑点の数を観察してみましょう。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "ao-umiushi.JPG", "credit": "" }
+      {
+        "file": "ao-umiushi.JPG",
+        "credit": ""
+      }
     ]
   },
   {
@@ -27,14 +35,22 @@
     "family": "イロウミウシ科",
     "size": "2〜5cm",
     "depth": "3〜20m",
-    "season": ["春", "夏", "秋", "冬"],
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
     "rarity": 1,
     "description": "白い体に赤褐色の網目模様が入った上品なウミウシ。名前の「更紗（さらさ）」は、インド起源の染色布に由来し、その模様が更紗模様に似ていることから名付けられました。",
     "beginner_tips": "アオウミウシと同じく岩の上でよく見つかります。白地に赤い模様が特徴的なので見分けやすいです。",
     "log_point": "模様のパターンは個体ごとに異なります。触角と二次鰓（にじえら）の色にも注目してみましょう。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "sarasa-umiushi.JPG", "credit": "" }
+      {
+        "file": "sarasa-umiushi.JPG",
+        "credit": ""
+      }
     ]
   },
   {
@@ -46,14 +62,22 @@
     "family": "イロウミウシ科",
     "size": "2〜5cm",
     "depth": "2〜20m",
-    "season": ["春", "夏", "秋", "冬"],
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
     "rarity": 1,
     "description": "白い体に黒い斑点が散らばり、体の縁に黄色いラインが入るウミウシ。三浦の海では非常にポピュラーで、アオウミウシと並んで最もよく見かけるウミウシの一つです。",
     "beginner_tips": "白い体に黒い点々模様が目印。岩の上や壁面をゆっくり這っています。アオウミウシと一緒に見つかることも多いです。",
     "log_point": "黒い斑点の数や大きさは個体差が大きいです。体の縁の黄色いラインがどこまで続いているか観察してみましょう。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "shiro-umiushi.JPG", "credit": "" }
+      {
+        "file": "shiro-umiushi.JPG",
+        "credit": ""
+      }
     ]
   },
   {
@@ -65,14 +89,20 @@
     "family": "イロウミウシ科",
     "size": "1〜3cm",
     "depth": "5〜25m",
-    "season": ["冬", "春"],
+    "season": [
+      "冬",
+      "春"
+    ],
     "rarity": 3,
     "description": "半透明の白い体に、縁がほんのりオレンジ色に染まる美しいウミウシ。名前の通り「白雪」のような清楚な見た目が特徴。小型なので見つけるには少しコツが必要です。",
     "beginner_tips": "やや小さいので岩壁をじっくり観察する必要があります。白くて半透明の体にオレンジの縁取りが目印。冬から春にかけてが見頃です。",
     "log_point": "半透明の体を通して内臓が透けて見えることがあります。体の縁のオレンジ色の濃さは個体によって異なります。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "shirayuki-umiushi.JPG", "credit": "" }
+      {
+        "file": "shirayuki-umiushi.JPG",
+        "credit": ""
+      }
     ]
   },
   {
@@ -84,14 +114,22 @@
     "family": "イロウミウシ科",
     "size": "2〜4cm",
     "depth": "3〜25m",
-    "season": ["春", "夏", "秋", "冬"],
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
     "rarity": 2,
     "description": "白い体に紫色の斑紋が入り、体の縁が黄色く縁取られたウミウシ。名前の「小紋」は着物の柄に由来し、紫色の模様が小紋柄のように見えることから名付けられました。",
     "beginner_tips": "紫の模様と黄色い縁取りの組み合わせが目を引きます。岩礁やカイメンの近くで見つかることが多いです。",
     "log_point": "紫色の模様の入り方には個体差があります。触角と二次鰓の色も観察ポイントです。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "komon-umiushi.JPG", "credit": "" }
+      {
+        "file": "komon-umiushi.JPG",
+        "credit": ""
+      }
     ]
   },
   {
@@ -103,14 +141,21 @@
     "family": "ゴクラクミドリガイ科",
     "size": "1〜3cm",
     "depth": "1〜15m",
-    "season": ["春", "夏", "秋"],
+    "season": [
+      "春",
+      "夏",
+      "秋"
+    ],
     "rarity": 2,
     "description": "緑色の体を持つ嚢舌目（のうぜつもく）のウミウシの仲間。海藻のミルに擬態して生活しており、食べた海藻の葉緑体を体内に取り込んで光合成を行う「盗葉緑体」という驚きの能力を持っています。",
     "beginner_tips": "緑色の海藻「ミル」の上にいることが多いです。海藻そっくりなので最初は見つけにくいですが、よく見ると触角がちょこんと出ています。",
     "log_point": "海藻の上にいる姿と、移動中の姿では印象がかなり変わります。光合成ができるウミウシとしてログに書くと話題になりますよ。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "hiramirumidorigai.JPG", "credit": "" }
+      {
+        "file": "hiramirumidorigai.JPG",
+        "credit": ""
+      }
     ]
   },
   {
@@ -122,14 +167,21 @@
     "family": "ゴクラクミドリガイ科",
     "size": "1〜3cm",
     "depth": "1〜10m",
-    "season": ["春", "夏", "秋"],
+    "season": [
+      "春",
+      "夏",
+      "秋"
+    ],
     "rarity": 2,
     "description": "鮮やかな緑色の体に、背中の両翼の縁がオレンジや黒で彩られた美しいウミウシの仲間。ヒラミルミドリガイと同じく盗葉緑体を行い、体内で光合成ができます。",
     "beginner_tips": "浅い岩場の海藻の近くで見つかります。小さいですが、緑にオレンジの縁取りが鮮やかなので慣れれば見つけやすいです。",
     "log_point": "翼を広げた姿と閉じた姿の違いを観察してみましょう。光合成するために翼を広げて日光を浴びている姿が見られることもあります。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "konohamidorigai.JPG", "credit": "" }
+      {
+        "file": "konohamidorigai.JPG",
+        "credit": ""
+      }
     ]
   },
   {
@@ -141,14 +193,306 @@
     "family": "アメフラシ科",
     "size": "2〜6cm",
     "depth": "1〜15m",
-    "season": ["冬", "春", "夏"],
+    "season": [
+      "冬",
+      "春",
+      "夏"
+    ],
     "rarity": 1,
     "description": "茶褐色〜暗緑色の体に黒い縁取りがあるアメフラシの仲間。海藻の上でよく見られ、体色は食べている海藻によって変化します。春先には卵塊（らんかい）を産む姿も観察できます。",
     "beginner_tips": "海藻の上にちょこんと乗っていることが多いです。触るとアメフラシの仲間なので紫色の液を出すことも。そっと観察しましょう。",
     "log_point": "体色のバリエーション（茶色・緑・赤みがかったもの）を記録してみましょう。春先は卵塊を産んでいる姿に注目です。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "kuroheri.JPG", "credit": "" }
+      {
+        "file": "kuroheri.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "kuromo-umiushi",
+    "name_ja": "クロモウミウシ",
+    "name_en": "Black Sap-sucking Slug",
+    "name_sci": "Aplysiopsis nigra",
+    "category": "ウミウシ",
+    "family": "ハダカモウミウシ科",
+    "size": "0.5〜2cm",
+    "depth": "1〜10m",
+    "season": [
+      "春",
+      "夏",
+      "秋"
+    ],
+    "rarity": 3,
+    "description": "黒っぽい体色にミノのような突起（背側突起）を持つ小型のウミウシ。海藻の上で生活し、海藻の汁を吸って栄養を得ています。三浦の浅場の海藻帯でよく見られます。",
+    "beginner_tips": "海藻をじっくり観察してみましょう。体長1cmほどと非常に小さいので、目が慣れるまでは見つけにくいですが、黒っぽいミノのような突起が目印です。",
+    "log_point": "どの種類の海藻の上にいたかを記録すると面白いです。体色は食べている海藻によって微妙に変わります。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "kuromoumiushi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "ebisu-umiushi",
+    "name_ja": "エビスウミウシ",
+    "name_en": "Ebisu Dorid",
+    "name_sci": "Polycera abei",
+    "category": "ウミウシ",
+    "family": "フジタウミウシ科",
+    "size": "1〜3cm",
+    "depth": "3〜20m",
+    "season": [
+      "冬",
+      "春"
+    ],
+    "rarity": 3,
+    "description": "白い体にオレンジや黄色の突起が並ぶ華やかなウミウシ。コケムシなどを食べて生活しています。冬から春にかけて三浦の岩礁域で見られることがあります。",
+    "beginner_tips": "岩の表面に付いたコケムシの近くを探してみましょう。小さいですが、白い体にカラフルな突起があるので見つけたときの嬉しさは格別です。",
+    "log_point": "突起の色や数には個体差があります。どんな基質（岩・コケムシなど）の上にいたかも記録してみましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "ebisuumiushi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "yubinouhanagasa-umiushi",
+    "name_ja": "ユビノウハナガサウミウシ",
+    "name_en": "Finger-branched Tritonia",
+    "name_sci": "Tritoniopsis elegans",
+    "category": "ウミウシ",
+    "family": "ホクヨウウミウシ科",
+    "size": "2〜5cm",
+    "depth": "3〜25m",
+    "season": [
+      "冬",
+      "春",
+      "夏"
+    ],
+    "rarity": 3,
+    "description": "半透明の白い体に、指のように枝分かれした鰓突起が背中に並ぶ美しいウミウシ。ソフトコーラルを食べて生活しており、三浦のヤギ類やトサカ類が豊富なポイントで見つかります。",
+    "beginner_tips": "ソフトコーラル（ヤギやトサカ）の上を探してみましょう。半透明で周囲に溶け込みやすいですが、枝分かれした鰓がフワフワと揺れる姿がとても綺麗です。",
+    "log_point": "どの種類のソフトコーラルの上にいたか記録しましょう。鰓突起の数や枝分かれの仕方が個体によって違うのも観察ポイントです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "ubinouhanagasaumiushi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "arimo-umiushi",
+    "name_ja": "アリモウミウシ",
+    "name_en": "Boodlea Sap-sucking Slug",
+    "name_sci": "Ercolania boodleae",
+    "category": "ウミウシ",
+    "family": "ハダカモウミウシ科",
+    "size": "0.3〜1cm",
+    "depth": "1〜10m",
+    "season": [
+      "春",
+      "夏"
+    ],
+    "rarity": 3,
+    "description": "体長わずか数mmの極小ウミウシ。緑がかった半透明の体に、背中にミノのような突起が並びます。海藻のアリモ（有藻）に付いていることが名前の由来。盗葉緑体を行い、体内で光合成もできます。",
+    "beginner_tips": "とにかく小さいので、虫眼鏡やマクロレンズがあると見つけやすいです。緑色の海藻をじーっと見つめて、小さな突起がモゾモゾ動いたらそれがアリモウミウシかもしれません！",
+    "log_point": "極小サイズのため、見つけたこと自体がすごい！何mmくらいだったか、何色だったかを記録しましょう。マクロ写真の練習にも最適です。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "arimoumiushi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "midoriamamo-umiushi",
+    "name_ja": "ミドリアマモウミウシ",
+    "name_en": "Green Eelgrass Slug",
+    "name_sci": "Placida babai",
+    "category": "ウミウシ",
+    "family": "ハダカモウミウシ科",
+    "size": "0.5〜1.5cm",
+    "depth": "1〜10m",
+    "season": [
+      "春",
+      "夏"
+    ],
+    "rarity": 1,
+    "description": "鮮やかな緑色の体に細いミノ状の突起が並ぶ極小ウミウシ。アマモなどの海草や海藻に付いて生活し、盗葉緑体を行って光合成もできます。三浦の浅い海藻帯で春から夏にかけて見られます。",
+    "beginner_tips": "アマモや緑色の海藻の上を虫眼鏡で探してみましょう。緑色の体が海藻に溶け込んでいますが、細いミノのような突起がピンと立っているのが見分けるコツです。",
+    "log_point": "どの海藻の上にいたか、体の緑の濃さやミノ突起の数を記録しましょう。極小サイズなのでマクロ撮影の腕試しにもなります。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "midoriamamoumiushi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "nishikitsubamegai",
+    "name_ja": "ニシキツバメガイ",
+    "name_en": "Ornate Aglajid",
+    "name_sci": "Chelidonura hirundinina",
+    "category": "ウミウシ",
+    "family": "カノコキセワタ科",
+    "size": "1〜3cm",
+    "depth": "1〜15m",
+    "season": [
+      "春",
+      "夏",
+      "秋"
+    ],
+    "rarity": 3,
+    "description": "黒い体に鮮やかな青やオレンジのラインが走る、ツバメの尾のように二股に分かれた後端が特徴的なウミウシの仲間。砂地や岩礁の隙間を滑るように這い回り、小型の生物を捕食しています。",
+    "beginner_tips": "砂地と岩場の境目あたりをスルスルと移動していることが多いです。黒い体に鮮やかなラインが入っているので、慣れれば見つけやすい種類です。動きが速めなので見つけたら素早く観察しましょう。",
+    "log_point": "体のラインの色（青・オレンジ）のパターンや、尾の二股の長さを記録してみましょう。移動スピードが速いので動画撮影もおすすめです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "nishikitsubamegai.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "mukademino-umiushi",
+    "name_ja": "ムカデミノウミウシ",
+    "name_en": "Blue Dragon Nudibranch",
+    "name_sci": "Pteraeolidia semperi",
+    "category": "ウミウシ",
+    "family": "ムカデミノウミウシ科",
+    "size": "3〜10cm",
+    "depth": "2〜20m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 2,
+    "description": "細長い体に無数のミノ（背側突起）が並ぶ姿がムカデに似ていることが名前の由来。青紫〜灰色の体色で、体内に褐虫藻を共生させて光合成を行う珍しいウミウシです。三浦では一年中見られます。",
+    "beginner_tips": "岩壁やヤギ類のそばで見つかることが多いです。細長い体にたくさんのミノが付いた姿は一度見たら忘れられません。比較的大きいので初心者でも見つけやすいウミウシです。",
+    "log_point": "体色は個体や環境によって青・紫・灰色と変化します。ミノの色や体の長さを記録してみましょう。光合成するウミウシとしてログのネタにもなります。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "mukademinoumiushi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "hiro-umiushi",
+    "name_ja": "ヒロウミウシ",
+    "name_en": "Hiro's Nudibranch",
+    "name_sci": "Okenia hiroi",
+    "category": "ウミウシ",
+    "family": "ネコジタウミウシ科",
+    "size": "0.5〜1.5cm",
+    "depth": "3〜20m",
+    "season": [
+      "冬",
+      "春",
+      "夏"
+    ],
+    "rarity": 3,
+    "description": "ピンク〜赤紫色の小さな体に、背中から突き出した長い突起が特徴的なウミウシ。コケムシを食べて生活しており、三浦の岩礁域で冬から春にかけてよく見られます。",
+    "beginner_tips": "岩の表面のコケムシの近くを探してみましょう。とても小さいですが、ピンク色の体と長い突起が目印。見つけたら自慢できるかわいいウミウシです！",
+    "log_point": "体色のピンクの濃さや突起の長さ・本数には個体差があります。どんなコケムシの上にいたかも記録ポイントです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "hiroumiushi.jpeg",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "adeyakamidorigai",
+    "name_ja": "アデヤカミドリガイ",
+    "name_en": "Splendid Sap-sucking Slug",
+    "name_sci": "Thuridilla splendens",
+    "category": "ウミウシ",
+    "family": "ゴクラクミドリガイ科",
+    "size": "1〜3cm",
+    "depth": "2〜20m",
+    "season": [
+      "春",
+      "夏",
+      "秋"
+    ],
+    "rarity": 3,
+    "description": "鮮やかな緑〜青色の体に黒い縁取りが入り、翼のような側足を優雅に広げて移動するウミウシの仲間。海藻を食べて盗葉緑体を行い、体内で光合成ができます。三浦の岩礁域で春〜秋に見られます。",
+    "beginner_tips": "岩の表面の海藻付近をゆっくり這っています。鮮やかな色合いが目を引くので、見つけたときの感動は格別。翼を広げた姿を写真に収めてみましょう。",
+    "log_point": "側足の色の入り方は個体差があります。翼を広げた姿と閉じた姿の両方を記録すると面白いです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "adeyakamidorigai.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "jiboga-umiushi",
+    "name_ja": "ジボガウミウシ",
+    "name_en": "Siboga Glossodoris",
+    "name_sci": "Glossodoris sibogae",
+    "category": "ウミウシ",
+    "family": "イロウミウシ科",
+    "size": "2〜5cm",
+    "depth": "3〜25m",
+    "season": [
+      "春",
+      "夏",
+      "秋"
+    ],
+    "rarity": 3,
+    "description": "黄色〜クリーム色の体に白い縁取り、青紫色の触角と二次鰓を持つウミウシ。カイメンを食べて生活しており、三浦の岩礁域で見られることがあります。",
+    "beginner_tips": "岩の表面やカイメンの近くを探してみましょう。黄色い体に紫の触角が鮮やかなので、見つけやすいウミウシの一つです。",
+    "log_point": "体の黄色の濃さや縁取りの白さに個体差があります。触角と二次鰓の色もチェックしてみましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "jibogaumiushi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "koibo-umiushi",
+    "name_ja": "コイボウミウシ",
+    "name_en": "Pustular Phyllidiella",
+    "name_sci": "Phyllidiella pustulosa",
+    "category": "ウミウシ",
+    "family": "イボウミウシ科",
+    "size": "3〜7cm",
+    "depth": "2〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 2,
+    "description": "黒い体にピンク〜灰色のイボ状突起が並ぶウミウシ。カイメンを食べて生活し、体内に毒を蓄えています。三浦の岩礁域で一年中見られる比較的ポピュラーな種類です。",
+    "beginner_tips": "岩の上やカイメンの近くでよく見つかります。黒い体にイボイボした突起が特徴的。見た目はちょっとグロテスクですが、よく見ると模様が面白いですよ。触らないようにしましょう。",
+    "log_point": "イボの色や配置パターンは個体によって異なります。大きさや見つけた場所の底質も記録してみましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "koiboumiushi.JPG",
+        "credit": ""
+      }
     ]
   },
   {
@@ -160,14 +504,21 @@
     "family": "ヒラタエイ科",
     "size": "30〜80cm（体盤幅）",
     "depth": "1〜30m",
-    "season": ["春", "夏", "秋"],
+    "season": [
+      "春",
+      "夏",
+      "秋"
+    ],
     "rarity": 2,
     "description": "体が平たく横に広いひし形をしたエイの仲間。砂地に潜って身を隠していることが多く、目だけを砂の上に出してじっとしています。尾に毒棘があるため、砂地を歩く際は注意が必要です。",
     "beginner_tips": "砂地をよく見ると、砂に埋もれたエイの輪郭が見えることがあります。近づきすぎず、少し離れて観察しましょう。尾の棘には毒があるので触らないように。",
     "log_point": "体盤の大きさや模様、砂に隠れている様子を記録しましょう。砂から飛び立つように泳ぎ出す姿はとても優雅です。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "hirataei.JPG", "credit": "" }
+      {
+        "file": "hirataei.JPG",
+        "credit": ""
+      }
     ]
   },
   {
@@ -179,679 +530,766 @@
     "family": "ヨウジウオ科",
     "size": "5〜15cm",
     "depth": "1〜15m",
-    "season": ["春", "夏", "秋"],
+    "season": [
+      "春",
+      "夏",
+      "秋"
+    ],
     "rarity": 3,
     "description": "タツノオトシゴの近縁種で、細長い体と管状の口が特徴。海藻や海草に体を絡ませてじっとしていることが多く、擬態が上手なため見つけにくい生物です。タツノオトシゴと同じく、オスが育児嚢でお腹の中で卵を育てます。",
     "beginner_tips": "海藻の茂みの中をじっくり探してみましょう。細長い棒のような体なので最初は海藻と区別がつきにくいですが、小さな目と管のような口が見えたらタツノイトコです。",
     "log_point": "体色は環境に合わせて変化します。どんな海藻に擬態していたか、体の色や模様を詳しく記録してみましょう。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "tatunoitoko.JPG", "credit": "" }
+      {
+        "file": "tatunoitoko.JPG",
+        "credit": ""
+      }
     ]
   },
   {
-    "id": "tatsunootoshigo",
-    "name_ja": "タツノオトシゴ",
-    "name_en": "Japanese Seahorse",
-    "name_sci": "Hippocampus coronatus",
+    "id": "kokeginpo",
+    "name_ja": "コケギンポ",
+    "name_en": "Fringed Blenny",
+    "name_sci": "Neoclinus bryope",
     "category": "魚類",
-    "family": "ヨウジウオ科",
-    "size": "5〜10cm",
-    "depth": "3〜25m",
-    "season": ["春", "夏", "秋"],
-    "rarity": 4,
-    "description": "馬のような頭と巻いた尾が特徴的な魚。海藻やロープに尾を巻き付けてじっとしていることが多く、小さなエビなどを管状の口で吸い込んで食べます。オスがお腹の育児嚢で卵を育て、稚魚を産むユニークな繁殖形態を持ちます。",
-    "beginner_tips": "海藻やロープに尾を巻きつけてじっとしています。体色は周囲に合わせて変わるので、海藻の間をじっくり探しましょう。見つけたらラッキー！",
-    "log_point": "体色（黄色・茶色・黒など）と、何に巻き付いていたかを記録しましょう。お腹が膨らんでいたらオスの抱卵中かも。",
-    "spot": "ボート（宮川湾）",
-    "photos": [
-      { "file": "tatsunootoshigo.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "yuureikurage",
-    "name_ja": "ユウレイクラゲ",
-    "name_en": "Ghost Jellyfish",
-    "name_sci": "Cyanea nozakii",
-    "category": "クラゲ",
-    "family": "ミズクラゲ科",
-    "size": "30〜50cm（傘径）",
-    "depth": "0〜20m",
-    "season": ["夏", "秋"],
-    "rarity": 2,
-    "description": "半透明の大きな傘と長く伸びる触手が幽霊のように見えることから名付けられたクラゲ。触手には毒があり、刺されると痛みがあるため注意が必要。水中を漂う姿は幻想的で、ダイバーに人気の被写体です。",
-    "beginner_tips": "水中をゆらゆら漂っているので見つけやすいですが、長い触手には毒があるので距離を保って観察しましょう。近づきすぎないのがポイント。",
-    "log_point": "傘のサイズや触手の長さ、周囲に小魚が隠れていないかを観察してみましょう。クラゲの周りにはエビや幼魚が共生していることもあります。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "yuureikurage.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "kiankou",
-    "name_ja": "キアンコウ",
-    "name_en": "Yellow Goosefish",
-    "name_sci": "Lophius litulon",
-    "category": "魚類",
-    "family": "アンコウ科",
-    "size": "40〜100cm",
-    "depth": "10〜30m",
-    "season": ["冬", "春"],
-    "rarity": 5,
-    "description": "平たい体と大きな口が特徴的なアンコウの仲間。頭部の突起（エスカ）を振って小魚をおびき寄せて捕食します。砂地に体を埋めて待ち伏せする姿が見られ、出会えたら非常にラッキーな激レア種です。",
-    "beginner_tips": "砂地に完全に埋もれていることが多いため、ガイドの指示に注目！見つけても驚かさないようにそっと観察しましょう。",
-    "log_point": "体のサイズ、砂に隠れている様子、エスカ（疑似餌）の動きを記録。三浦で見られたら自慢できるレア遭遇です。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "kiankou.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "houbou",
-    "name_ja": "ホウボウ",
-    "name_en": "Red Gurnard",
-    "name_sci": "Chelidonichthys spinosus",
-    "category": "魚類",
-    "family": "ホウボウ科",
-    "size": "20〜40cm",
-    "depth": "5〜30m",
-    "season": ["秋", "冬", "春"],
-    "rarity": 3,
-    "description": "鮮やかな青緑色の胸びれが特徴的な底生魚。胸びれの下にある3対の遊離軟条を足のように使って砂地を歩く姿が見られます。驚くと胸びれを大きく広げ、その美しい色で威嚇します。",
-    "beginner_tips": "砂地の底をよく見ると、足のようなヒレで歩いている姿が見られます。驚かさないようにゆっくり近づくと、美しい胸びれを広げてくれることも。",
-    "log_point": "胸びれの色や模様、歩く様子を記録しましょう。胸びれを広げた瞬間はシャッターチャンスです。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "houbou.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "samejimaotomeumiushi",
-    "name_ja": "サメジマオトメウミウシ",
-    "name_en": "Dermatobranchus striatellus",
-    "name_sci": "Dermatobranchus striatellus",
-    "category": "ウミウシ",
-    "family": "オトメウミウシ科",
-    "size": "1〜3cm",
-    "depth": "5〜20m",
-    "season": ["冬", "春", "夏"],
-    "rarity": 3,
-    "description": "半透明の白い体に細かい縦縞模様が入るオトメウミウシの仲間。静岡県の鮫島で最初に発見されたことが名前の由来です。小型で地味な見た目ですが、よく見ると繊細な美しさがあります。",
-    "beginner_tips": "岩壁やカイメンの近くで見つかります。小さくて地味なので見落としがちですが、ガイドに教えてもらえるチャンス大。",
-    "log_point": "体の縞模様のパターンや、体色の微妙な違いを観察してみましょう。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "samejimaotomeumiushi.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "otohimeebi",
-    "name_ja": "オトヒメエビ",
-    "name_en": "Banded Coral Shrimp",
-    "name_sci": "Stenopus hispidus",
-    "category": "甲殻類",
-    "family": "オトヒメエビ科",
-    "size": "3〜6cm",
-    "depth": "5〜30m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 3,
-    "description": "赤と白のストライプ模様が美しいエビ。長い白いヒゲ（触角）が特徴で、岩の隙間やオーバーハングの下にペアで住んでいることが多いです。魚のクリーニング（体の寄生虫を食べる）をする習性があります。",
-    "beginner_tips": "岩の隙間やオーバーハングの暗い場所を覗いてみましょう。長い白いヒゲが先に見えることが多いです。ペアで仲良くいることが多いので2匹探してみて。",
-    "log_point": "ペアかどうか、クリーニング行動をしているか、卵を持っているかを記録しましょう。",
-    "spot": "ボート（宮川湾）",
-    "photos": [
-      { "file": "otohimeebi.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "ibobekkoutamagai",
-    "name_ja": "イボベッコウタマガイ",
-    "name_en": "Pedicularia pacifica",
-    "name_sci": "Pedicularia pacifica",
-    "category": "貝類",
-    "family": "ベッコウタマガイ科",
-    "size": "0.5〜1.5cm",
-    "depth": "10〜30m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 4,
-    "description": "ヤギ類（ソフトコーラル）に寄生する小さな巻貝の仲間。外套膜で殻を覆い、宿主のヤギそっくりに擬態しているため非常に見つけにくい生物です。マクロ好きダイバーに人気の被写体。",
-    "beginner_tips": "ヤギ（ソフトコーラル）の枝をじっくり観察すると、ポコっと膨らんだ部分が見つかることがあります。ガイドに教えてもらうのが一番の近道です。",
-    "log_point": "宿主のヤギの色と、貝の外套膜の色がどのくらい似ているか観察してみましょう。擬態の精度に驚くはず。",
-    "spot": "ボート（宮川湾）",
-    "photos": [
-      { "file": "ibobekkoutamagai.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "minokasago",
-    "name_ja": "ミノカサゴ",
-    "name_en": "Luna Lionfish",
-    "name_sci": "Pterois lunulata",
-    "category": "魚類",
-    "family": "フサカサゴ科",
-    "size": "15〜30cm",
-    "depth": "3〜30m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 2,
-    "description": "扇のように広がる大きなヒレと、赤褐色と白の縞模様が美しい魚。優雅に泳ぐ姿はダイバーに人気ですが、背びれの棘には強い毒があるため要注意。小魚を追い込んで捕食する姿も観察できます。",
-    "beginner_tips": "岩陰やオーバーハングの下にいることが多いです。ゆっくり泳ぐので写真が撮りやすいですが、背びれの棘に毒があるので絶対に触らないように。",
-    "log_point": "ヒレを広げた姿の美しさを記録しましょう。捕食時に胸びれで小魚を追い込む姿が見られたらぜひログに書いて。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "minokasago.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "bobusanumiushi",
-    "name_ja": "ボブサンウミウシ",
-    "name_en": "Chromodoris roboi",
-    "name_sci": "Chromodoris roboi",
-    "category": "ウミウシ",
-    "family": "イロウミウシ科",
-    "size": "2〜5cm",
-    "depth": "5〜30m",
-    "season": ["冬", "春"],
-    "rarity": 4,
-    "description": "鮮やかなオレンジ色の体に青い斑紋が入る美しいウミウシ。「ボブさん」という愛称で親しまれ、ウミウシ好きダイバーの憧れの存在。冬から春にかけて見られることがあり、見つけたら大興奮間違いなし。",
-    "beginner_tips": "オレンジと青のコントラストが鮮やかで、見つけたらすぐにわかります。冬場のボートダイビングで出会えるチャンスがあります。",
-    "log_point": "体のオレンジと青の配色パターン、サイズを詳しく記録しましょう。レア種なので出会えた日付と場所は特に大切。",
-    "spot": "ボート（宮川湾）",
-    "photos": [
-      { "file": "bobusanumiushi.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "utsubo",
-    "name_ja": "ウツボ",
-    "name_en": "Kidako Moray",
-    "name_sci": "Gymnothorax kidako",
-    "category": "魚類",
-    "family": "ウツボ科",
-    "size": "40〜80cm",
-    "depth": "1〜30m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 1,
-    "description": "岩の隙間から顔を出し、口を開閉して呼吸する姿がおなじみの魚。怖い見た目ですが、自分から攻撃することはほとんどありません。鋭い歯を持つので手を出さないように注意。三浦の海では一年中見られます。",
-    "beginner_tips": "岩の隙間やテトラポッドの穴から顔を出していることが多いです。口をパクパクしているのは呼吸しているだけなので怖がらなくてOK。ただし手は絶対に近づけないで。",
-    "log_point": "体の模様（黄色い斑点の有無など）で種類が異なります。顔だけ出しているか、全身が見えたかも記録しましょう。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "utsubo.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "tsubameuoyg",
-    "name_ja": "ツバメウオ（幼魚）",
-    "name_en": "Longfin Batfish (Juvenile)",
-    "name_sci": "Platax teira",
-    "category": "魚類",
-    "family": "マンジュウダイ科",
-    "size": "3〜10cm（幼魚）",
-    "depth": "1〜10m",
-    "season": ["夏", "秋"],
-    "rarity": 3,
-    "description": "幼魚は茶褐色の体に長く伸びた背びれと腹びれが特徴で、枯れ葉に擬態しています。水面近くをひらひらと漂う姿は本当に落ち葉そっくり。成長すると体が丸く銀色になり、まったく違う姿になります。",
-    "beginner_tips": "水面近くに枯れ葉のようにひらひら漂っているのを探しましょう。本当の枯れ葉と間違えやすいので、よく動きを観察して。",
-    "log_point": "ヒレの長さや体色を記録。成長段階によって姿がどんどん変わるので、サイズの記録が大事です。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "tsubameuoyg.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "tunodashi",
-    "name_ja": "ツノダシ",
-    "name_en": "Moorish Idol",
-    "name_sci": "Zanclus cornutus",
-    "category": "魚類",
-    "family": "ツノダシ科",
-    "size": "15〜20cm",
-    "depth": "3〜20m",
-    "season": ["夏", "秋"],
-    "rarity": 3,
-    "description": "白・黒・黄色の鮮やかな体色と、長く伸びた背びれが特徴の熱帯性の魚。映画「ファインディング・ニモ」のギルのモデルとしても知られています。三浦では夏から秋にかけて黒潮に乗ってやってきます。",
-    "beginner_tips": "ムレハタタテダイと見た目が似ていますが、口先が細く尖っているのがツノダシ。単独かペアで泳いでいることが多いです。",
-    "log_point": "ムレハタタテダイとの違いを比較記録してみましょう。口の形、背びれの長さ、体の厚みが異なります。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "tunodashi.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "akaei",
-    "name_ja": "アカエイ",
-    "name_en": "Red Stingray",
-    "name_sci": "Hemitrygon akajei",
-    "category": "魚類",
-    "family": "アカエイ科",
-    "size": "40〜70cm（体盤幅）",
-    "depth": "1〜30m",
-    "season": ["春", "夏", "秋"],
-    "rarity": 2,
-    "description": "砂地に潜んでいることが多い大型のエイ。尾に強い毒棘を持ち、踏むと刺されることがあるため砂地を歩く際は要注意。砂から飛び立つように泳ぐ姿は迫力があり、見応えがあります。",
-    "beginner_tips": "砂地に埋もれていることが多いので、砂地のわずかな盛り上がりや目の出っ張りに注目。絶対に踏まないよう、砂地では足元をよく確認しましょう。",
-    "log_point": "体盤の大きさ、体色（背中の色や腹側の赤み）、尾の長さを記録。ヒラタエイとの違いも比較してみましょう。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "akaei.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "takanohadai",
-    "name_ja": "タカノハダイ",
-    "name_en": "Spottedtail Morwong",
-    "name_sci": "Goniistius zonatus",
-    "category": "魚類",
-    "family": "タカノハダイ科",
-    "size": "20〜35cm",
-    "depth": "3〜25m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 1,
-    "description": "体に斜めの褐色の縞模様が走り、尾びれに白い斑点があるのが特徴。岩礁域でよく見られる身近な魚で、三浦では一年中観察できます。底生の小動物を食べるため、岩場の近くをうろうろしている姿が見られます。",
-    "beginner_tips": "岩礁の近くをゆっくり泳いでいるので見つけやすいです。斜めの縞模様が特徴なので、覚えやすい魚の一つ。",
-    "log_point": "体側の縞模様の本数や、尾びれの白い斑点の数を観察してみましょう。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "takanohadai.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "murehatatatedai",
-    "name_ja": "ムレハタタテダイ",
-    "name_en": "Schooling Bannerfish",
-    "name_sci": "Heniochus diphreutes",
-    "category": "魚類",
-    "family": "チョウチョウウオ科",
-    "size": "12〜18cm",
-    "depth": "5〜25m",
-    "season": ["夏", "秋"],
-    "rarity": 3,
-    "description": "白と黒の縞模様に黄色い尾びれ、長く伸びた背びれが美しいチョウチョウウオの仲間。名前の通り群れで泳ぐことが多く、数十匹の群れに出会えることもあります。ツノダシとよく似ていますが別の種類です。",
-    "beginner_tips": "群れで泳いでいるのが特徴。ツノダシとよく似ていますが、ムレハタタテダイの方が口先が短く、体がやや厚いです。",
-    "log_point": "群れの個体数、ツノダシとの混泳が見られたかを記録しましょう。同じ場所にいると比較観察ができます。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "murehatatatedai.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "hosotenrokukebori",
-    "name_ja": "ホソテンロクケボリ",
-    "name_en": "Primovula concinna",
-    "name_sci": "Primovula concinna",
-    "category": "貝類",
-    "family": "ウミウサギガイ科",
-    "size": "0.5〜1cm",
-    "depth": "10〜30m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 4,
-    "description": "ヤギ類（ソフトコーラル）に住む非常に小さな巻貝。外套膜が宿主のヤギに似た色と模様をしており、完璧な擬態で身を隠しています。マクロ撮影の人気被写体で、見つけるにはかなりの目が必要です。",
-    "beginner_tips": "ヤギの枝を一つ一つ丁寧に見ていくと、小さな膨らみとして見つかることがあります。ガイドにリクエストして探してもらいましょう。",
-    "log_point": "宿主のヤギの種類と色、貝の外套膜の色パターンを記録。拡大写真で細かい模様を残すのがおすすめ。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "hosotenrokukebori.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "sesujiminoumiushi",
-    "name_ja": "セスジミノウミウシ",
-    "name_en": "Coryphellina rubrolineata",
-    "name_sci": "Coryphellina rubrolineata",
-    "category": "ウミウシ",
-    "family": "ミノウミウシ科",
-    "size": "1〜3cm",
-    "depth": "5〜25m",
-    "season": ["冬", "春", "夏"],
-    "rarity": 3,
-    "description": "半透明の体にオレンジ色のミノ（突起）が並び、背中に赤い線が走る美しいミノウミウシ。ミノの先端が白く光って見えるのが特徴。ヒドロ虫を食べて生活しています。",
-    "beginner_tips": "壁面やオーバーハングのヒドロ虫（羽毛状の生き物）の近くを探しましょう。半透明の体にオレンジのミノが鮮やかです。",
-    "log_point": "ミノの色や数、背中の赤い線の濃さを観察。ヒドロ虫を食べている場面が見られたら貴重な記録です。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "sesujiminoumiushi.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "kingyohanadai",
-    "name_ja": "キンギョハナダイ",
-    "name_en": "Sea Goldie",
-    "name_sci": "Pseudanthias squamipinnis",
-    "category": "魚類",
-    "family": "ハタ科",
-    "size": "5〜12cm",
-    "depth": "5〜30m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 1,
-    "description": "オレンジ〜ピンク色の体が美しい小型の魚。メスはオレンジ色、オスは赤紫色でヒレが長く伸びます。岩礁の上を群れで泳ぎ、プランクトンを食べています。群れの中の大きなメスがオスに性転換する面白い生態があります。",
-    "beginner_tips": "岩礁の上で群れで泳いでいるオレンジ色の小さな魚がキンギョハナダイです。群れの中でひときわ赤くてヒレの長い個体がオスです。",
-    "log_point": "オスとメスの比率、群れの大きさを記録しましょう。性転換中の個体（中間色）が見つかることもあります。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "kingyohanadai.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "semihoubou",
-    "name_ja": "セミホウボウ",
-    "name_en": "Oriental Flying Gurnard",
-    "name_sci": "Dactyloptena orientalis",
-    "category": "魚類",
-    "family": "セミホウボウ科",
-    "size": "15〜30cm",
-    "depth": "5〜30m",
-    "season": ["春", "夏", "秋"],
-    "rarity": 4,
-    "description": "巨大な胸びれを広げると蝶のように美しい模様が現れる魚。普段は胸びれを畳んで砂地を歩くように移動していますが、驚くと大きく翼のように広げて威嚇します。その姿は水中で最も美しい光景の一つ。",
-    "beginner_tips": "砂地を歩くように移動している姿を探しましょう。驚かさずにゆっくり近づくと、胸びれを広げてくれることも。広げた瞬間は感動ものです。",
-    "log_point": "胸びれを広げたかどうか、広げた時の模様の色や大きさを記録。砂地を歩く姿と泳ぐ姿の両方を観察できたらベスト。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "semihoubou.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "tsubakuroei",
-    "name_ja": "ツバクロエイ",
-    "name_en": "Japanese Eagle Ray",
-    "name_sci": "Myliobatis tobijei",
-    "category": "魚類",
-    "family": "トビエイ科",
-    "size": "50〜100cm（体盤幅）",
-    "depth": "3〜30m",
-    "season": ["夏", "秋"],
-    "rarity": 3,
-    "description": "尖った頭部と長い尾が特徴的な大型のエイ。水中をはばたくように優雅に泳ぐ姿は迫力満点。砂地の貝類や甲殻類を食べるため、砂地付近で見られます。群れで泳ぐこともあります。",
-    "beginner_tips": "砂地の上を優雅に飛ぶように泳いでいます。大きな体なので見つけやすいですが、驚かさないよう静かに観察しましょう。",
-    "log_point": "体盤の大きさ、泳ぎ方、単体か群れかを記録。アカエイやヒラタエイとの違いも比較してみましょう。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "tsubakuroei.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "hanaanago",
-    "name_ja": "ハナアナゴ",
-    "name_en": "Spotted Garden Eel",
-    "name_sci": "Ariosoma major",
-    "category": "魚類",
-    "family": "アナゴ科",
-    "size": "30〜50cm",
-    "depth": "5〜25m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 2,
-    "description": "砂地に体の半分以上を埋めて、頭だけを出している姿が特徴的なアナゴの仲間。驚くと砂の中に素早く引っ込みます。夜行性で、夜になると砂から出て活動します。",
-    "beginner_tips": "砂地から小さな頭がちょこんと出ているのを探しましょう。近づきすぎると引っ込んでしまうので、ゆっくりと距離を保って観察するのがコツ。",
-    "log_point": "砂から出ている長さ、周囲に何匹いたかを記録。夜のダイビングでは砂から出て泳ぐ姿が見られることもあります。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "hanaanago.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "korodaiyg",
-    "name_ja": "コロダイ（幼魚）",
-    "name_en": "Painted Sweetlips (Juvenile)",
-    "name_sci": "Diagramma pictum",
-    "category": "魚類",
-    "family": "イサキ科",
-    "size": "3〜8cm（幼魚）",
-    "depth": "3〜15m",
-    "season": ["夏", "秋"],
-    "rarity": 3,
-    "description": "幼魚は白い体に茶褐色の太い帯模様があり、体をくねらせながら泳ぐユニークな姿が特徴。この動きはヒラムシ（有毒の扁形動物）に擬態していると考えられています。成魚になると模様が変わり、全く異なる外見になります。",
-    "beginner_tips": "浅い岩場で体をくねくねさせて泳いでいる小さな魚を探しましょう。独特のダンスのような泳ぎ方ですぐにわかります。",
-    "log_point": "体のくねらせ方、帯模様の太さやパターン、サイズを記録。成長に伴う変化が大きい魚なので、サイズの記録が重要です。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "korodaiyg.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "ishidai",
-    "name_ja": "イシダイ",
-    "name_en": "Barred Knifejaw",
-    "name_sci": "Oplegnathus fasciatus",
-    "category": "魚類",
-    "family": "イシダイ科",
-    "size": "20〜50cm",
-    "depth": "3〜30m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 1,
-    "description": "白と黒の太い縞模様が特徴的な磯の王者。強力な歯でサザエやウニの殻をかみ砕いて食べます。幼魚は縞模様がくっきりしていますが、成長したオス（老成魚）は全体的に黒くなり「クチグロ」と呼ばれます。",
-    "beginner_tips": "岩礁の周りを堂々と泳いでいる白黒の縞模様の魚がイシダイです。好奇心旺盛でダイバーに近づいてくることもあります。",
-    "log_point": "縞模様の本数、体のサイズ、幼魚か成魚かを記録。老成魚の「クチグロ」に出会えたらレアです。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "ishidai.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "nokogiriyouji",
-    "name_ja": "ノコギリヨウジ",
-    "name_en": "Banded Pipefish",
-    "name_sci": "Doryrhamphus japonicus",
-    "category": "魚類",
-    "family": "ヨウジウオ科",
-    "size": "5〜10cm",
-    "depth": "5〜25m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 3,
-    "description": "赤と白のストライプが鮮やかなヨウジウオの仲間。岩の隙間やオーバーハングの天井にくっつくようにして生活しています。タツノオトシゴと同じく、オスが卵を育てる習性を持ちます。",
-    "beginner_tips": "岩の隙間やオーバーハングの暗い場所を覗いてみましょう。赤白のストライプが鮮やかなので、見つけられれば識別は簡単です。",
-    "log_point": "体のストライプの色の濃さ、尾びれの模様を観察。ペアでいることが多いので2匹目も探してみましょう。",
-    "spot": "ボート（宮川湾）",
-    "photos": [
-      { "file": "nokogiriyouji.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "hotateumihebi",
-    "name_ja": "ホタテウミヘビ",
-    "name_en": "Spotted Snake Eel",
-    "name_sci": "Ophichthus erabo",
-    "category": "魚類",
-    "family": "ウミヘビ科（魚類）",
-    "size": "50〜80cm",
-    "depth": "3〜20m",
-    "season": ["春", "夏", "秋"],
-    "rarity": 3,
-    "description": "砂地から顔だけを出している姿が特徴的な魚。名前にウミヘビとありますが爬虫類ではなく魚類で、毒はありません。砂地に体を埋めて獲物を待ち伏せします。",
-    "beginner_tips": "砂地から頭だけ出しているのを探しましょう。ウミヘビという名前ですが魚なので毒はありません。近づくと砂に引っ込むので静かに観察を。",
-    "log_point": "砂から出ている体の長さ、体の模様を記録。ハナアナゴとの違いも比較してみましょう。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "hotateumihebi.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "sakishimaminoumiushi",
-    "name_ja": "サキシマミノウミウシ",
-    "name_en": "Cratena lineata",
-    "name_sci": "Cratena lineata",
-    "category": "ウミウシ",
-    "family": "サキシマミノウミウシ科",
-    "size": "1〜3cm",
-    "depth": "5〜20m",
-    "season": ["冬", "春"],
-    "rarity": 3,
-    "description": "半透明の体に茶褐色のミノ（突起）が並ぶミノウミウシの仲間。ミノの中に褐虫藻を取り込んでおり、ミノが褐色に見えるのが特徴。ヒドロ虫を食べて暮らしています。",
-    "beginner_tips": "壁面のヒドロ虫の近くを丁寧に探しましょう。小さいので目を凝らす必要がありますが、ミノが特徴的なので見つけたら識別しやすいです。",
-    "log_point": "ミノの色や数、体の透明度を観察。ヒドロ虫を食べている姿が見られたら記録に残しましょう。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "sakishimaminoumiushi.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "iboisobanagani",
-    "name_ja": "イボイソバナガニ",
-    "name_en": "Xenocarcinus tuberculatus",
-    "name_sci": "Xenocarcinus tuberculatus",
-    "category": "甲殻類",
-    "family": "クモガニ科",
-    "size": "0.5〜1.5cm",
-    "depth": "10〜30m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 4,
-    "description": "ムチカラマツやヤギ類に住む非常に小さなカニ。宿主にそっくりに擬態しており、体にイボ状の突起があることが名前の由来。マクロ好きダイバーの人気被写体で、見つけるにはかなりの観察力が必要です。",
-    "beginner_tips": "ムチカラマツの幹をじっくり見ると、小さなカニがしがみついているのが見つかることがあります。ガイドにリクエストしてみましょう。",
-    "log_point": "宿主の種類、カニの体色と宿主の色の一致度、体のイボの様子を記録しましょう。",
-    "spot": "ボート（宮川湾）",
-    "photos": [
-      { "file": "iboisobanagani.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "akahoshikakureebi",
-    "name_ja": "アカホシカクレエビ",
-    "name_en": "Sarasvati Anemone Shrimp",
-    "name_sci": "Ancylomenes sarasvati",
-    "category": "甲殻類",
-    "family": "テナガエビ科",
-    "size": "1〜3cm",
-    "depth": "5〜25m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 3,
-    "description": "半透明の体に赤い斑点が散らばる美しいカクレエビ。イソギンチャクに共生しており、イソギンチャクの触手の間を器用に歩き回ります。クリーニングステーションでは魚の体の寄生虫を食べる姿も見られます。",
-    "beginner_tips": "イソギンチャクの触手の間をよく見ると、透明な体に赤い点々のエビが見つかります。小さいので目を凝らして探しましょう。",
-    "log_point": "宿主のイソギンチャクの種類、エビの数、クリーニング行動が見られたかを記録しましょう。",
-    "spot": "ボート（宮川湾）",
-    "photos": [
-      { "file": "akahoshikakureebi.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "aosahagiyg",
-    "name_ja": "アオサハギ（幼魚）",
-    "name_en": "Brachaluteres ulvacea (Juvenile)",
-    "name_sci": "Brachaluteres ulvacea",
-    "category": "魚類",
-    "family": "カワハギ科",
-    "size": "1〜3cm（幼魚）",
-    "depth": "3〜20m",
-    "season": ["夏", "秋"],
-    "rarity": 3,
-    "description": "青みがかった小さな体が特徴的なカワハギの仲間の幼魚。海藻やヤギ類の近くにちょこんといることが多く、小さくて可愛らしい姿がマクロ撮影で人気です。",
-    "beginner_tips": "ヤギや海藻の枝の先にちょこんと止まっている小さな青い魚を探しましょう。1cm程度ととても小さいので、ガイドに教えてもらうのがベスト。",
-    "log_point": "体のサイズ、何に寄り添っていたか、体色の青みの濃さを記録しましょう。",
-    "spot": "ボート（宮川湾）",
-    "photos": [
-      { "file": "aosahagiyg.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "hanaotomeumiushi",
-    "name_ja": "ハナオトメウミウシ",
-    "name_en": "Dermatobranchus ornatus",
-    "name_sci": "Dermatobranchus ornatus",
-    "category": "ウミウシ",
-    "family": "オトメウミウシ科",
-    "size": "2〜4cm",
-    "depth": "5〜25m",
-    "season": ["冬", "春", "夏"],
-    "rarity": 3,
-    "description": "白い体にオレンジ色の縁取りと背中に走る線が特徴的なオトメウミウシの仲間。花のような華やかな見た目が名前の由来です。ヤギ類の近くで見つかることが多いです。",
-    "beginner_tips": "ヤギ類やソフトコーラルの近くの岩壁を丁寧に探しましょう。白とオレンジの配色が目を引きます。",
-    "log_point": "体のオレンジ色の線のパターンや濃さを観察。サメジマオトメウミウシとの違いも比較してみましょう。",
-    "spot": "ビーチポイント",
-    "photos": [
-      { "file": "hanaotomeumiushi.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "tentouumiushi",
-    "name_ja": "テントウウミウシ",
-    "name_en": "Stiliger aureomarginatus",
-    "name_sci": "Stiliger aureomarginatus",
-    "category": "ウミウシ",
-    "family": "ハダカモウミウシ科",
-    "size": "0.3〜0.8cm",
-    "depth": "5〜20m",
-    "season": ["冬", "春"],
-    "rarity": 4,
-    "description": "テントウムシのような丸い体に黒い斑点がある極小のウミウシ。体長1cm未満と非常に小さく、見つけるのは至難の業。海藻の上で生活し、その可愛らしい姿からウミウシファンに絶大な人気があります。",
-    "beginner_tips": "1cm以下と非常に小さいので肉眼で見つけるのは難しいです。ガイドに「テントウウミウシを見たい」とリクエストしてみましょう。",
-    "log_point": "体のサイズ、斑点のパターン、何の海藻にいたかを記録。極小サイズなのでマクロレンズでの撮影がおすすめ。",
-    "spot": "ボート（宮川湾）",
-    "photos": [
-      { "file": "tentouumiushi.JPG", "credit": "" }
-    ]
-  },
-  {
-    "id": "gonzui",
-    "name_ja": "ゴンズイ",
-    "name_en": "Striped Catfish",
-    "name_sci": "Plotosus japonicus",
-    "category": "魚類",
-    "family": "ゴンズイ科",
-    "size": "10〜20cm",
+    "family": "コケギンポ科",
+    "size": "3〜8cm",
     "depth": "1〜15m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 1,
-    "description": "黒い体に2本の黄色い縦線が走るナマズの仲間。幼魚は「ゴンズイ玉」と呼ばれる密集した球状の群れを作って泳ぎます。背びれと胸びれの棘に毒があるため、触らないよう注意が必要です。",
-    "beginner_tips": "幼魚が球状に群れた「ゴンズイ玉」は水中の名物シーン。岩陰に群れでいることが多いです。可愛いですが棘に毒があるので触らないように。",
-    "log_point": "ゴンズイ玉の大きさ（何匹くらいか）、行動パターンを記録しましょう。成魚は単独でいることもあります。",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 2,
+    "description": "頭の上にフサフサした皮弁（ひべん）を持つ小さな魚。岩の穴やカイメンの隙間から顔だけ出してキョロキョロしている姿がとても愛らしいです。三浦のビーチポイントでは一年中観察できる人気者。",
+    "beginner_tips": "岩の小さな穴を覗いてみましょう。頭のフサフサした飾りと、穴から顔を出すひょうきんな表情がたまりません。驚かさなければじっとしてくれるので写真も撮りやすいですよ。",
+    "log_point": "皮弁の形や色、住んでいる穴の大きさを記録してみましょう。同じ穴にずっと住み続ける習性があるので、次回のダイビングで再会できるかも。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "gonzui.JPG", "credit": "" }
+      {
+        "file": "kokeginpo.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "oniokoze",
+    "name_ja": "オニオコゼ",
+    "name_en": "Devil Stinger",
+    "name_sci": "Inimicus japonicus",
+    "category": "魚類",
+    "family": "オニオコゼ科",
+    "size": "15〜25cm",
+    "depth": "1〜50m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 3,
+    "description": "ゴツゴツした体と砂に紛れる体色で完璧に擬態する底生魚。背ビレに強い毒棘を持ち、うっかり踏むと大変危険です。三浦の砂地や岩と砂の境目でじっとしていることが多いです。",
+    "beginner_tips": "砂地をよく見ると、岩のように見えるのに目が付いている…それがオニオコゼです。毒があるので絶対に触らないこと！少し離れて観察しましょう。見つけたらガイドに教えてあげてください。",
+    "log_point": "体色は周囲の環境に合わせて変化します。どんな底質（砂地・岩場）にいたか、体色のパターンを記録すると面白いです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "oniokoze.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "umisuzume",
+    "name_ja": "ウミスズメ",
+    "name_en": "Roundbelly Cowfish",
+    "name_sci": "Lactoria diaphana",
+    "category": "魚類",
+    "family": "ハコフグ科",
+    "size": "10〜20cm",
+    "depth": "3〜30m",
+    "season": [
+      "夏",
+      "秋"
+    ],
+    "rarity": 3,
+    "description": "体が硬い骨板で覆われた箱型の魚。頭に2本の角があるのが特徴で、ぷっくりした体型と愛嬌のある顔が人気です。三浦では夏から秋にかけて浅場で見られることがあります。",
+    "beginner_tips": "岩礁の近くをゆっくり泳いでいることが多いです。箱のような四角い体と頭の角が目印。泳ぎがゆっくりなので、落ち着いて観察・撮影できます。",
+    "log_point": "角の長さや体の模様には個体差があります。正面から見たときの顔がとてもユニークなので、ぜひ正面顔の写真にも挑戦してみてください。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "umisuzume.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "budai",
+    "name_ja": "ブダイ",
+    "name_en": "Japanese Parrotfish",
+    "name_sci": "Calotomus japonicus",
+    "category": "魚類",
+    "family": "ブダイ科",
+    "size": "20〜40cm",
+    "depth": "1〜20m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 2,
+    "description": "丈夫な歯で岩の表面の海藻を削り取って食べる魚。体色は赤褐色〜暗緑色で、成長段階や性別によって変化します。三浦の岩礁域では一年中観察できるおなじみの魚です。",
+    "beginner_tips": "岩場でガリガリと何かを食べている魚がいたら、それはブダイかもしれません。食事中は夢中で逃げにくいので、近くで観察しやすいです。口元に注目してみましょう。",
+    "log_point": "体色のバリエーションが豊富です。赤系・緑系・青系など、色の違いを記録してみましょう。夜は粘液の膜に包まれて眠る習性があるので、ナイトダイビングでも面白い観察対象です。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "bidai.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "kurohoshiishimochi",
+    "name_ja": "クロホシイシモチ",
+    "name_en": "Dotted Cardinalfish",
+    "name_sci": "Apogon notatus",
+    "category": "魚類",
+    "family": "テンジクダイ科",
+    "size": "5〜10cm",
+    "depth": "1〜20m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 1,
+    "description": "半透明がかった体に黒い斑点が散らばる小型の魚。岩陰や洞窟の入り口付近で群れていることが多く、三浦のビーチポイントでは一年中観察できるおなじみの魚です。オスが口の中で卵を守る「マウスブルーディング」でも知られています。",
+    "beginner_tips": "岩の下や穴の入り口を覗いてみましょう。たくさん群れていることが多いので見つけやすいです。よく見ると口をモゴモゴさせている個体がいるかも…それは卵を口の中で育てているお父さんです！",
+    "log_point": "群れの大きさや、口内保育中の個体がいたかどうかを記録しましょう。繁殖期（初夏〜夏）はオスの口が膨らんでいるのが観察できます。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "kurohoshiishimochi.jpeg",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "nijiginpo",
+    "name_ja": "ニジギンポ",
+    "name_en": "Striped Fang Blenny",
+    "name_sci": "Petroscirtes breviceps",
+    "category": "魚類",
+    "family": "イソギンポ科",
+    "size": "5〜10cm",
+    "depth": "1〜15m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 2,
+    "description": "細長い体に横縞模様が入るイソギンポの仲間。空き瓶や貝殻の中に住み着く習性があり、穴から顔を出してキョロキョロする姿が愛らしいです。三浦のビーチポイントでは一年中観察できます。",
+    "beginner_tips": "砂地に落ちている空き瓶や貝殻の中を覗いてみましょう。穴からひょっこり顔を出している姿がとてもかわいいです。驚かさなければじっとしているので写真も撮りやすいですよ。",
+    "log_point": "どんな場所（瓶、貝殻、岩穴）に住んでいたかを記録してみましょう。体色や横縞の本数にも個体差があります。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "nijiginpo.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "datehaze",
+    "name_ja": "ダテハゼ",
+    "name_en": "Spotted Shrimp Goby",
+    "name_sci": "Amblyeleotris japonica",
+    "category": "魚類",
+    "family": "ハゼ科",
+    "size": "5〜10cm",
+    "depth": "3〜20m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 2,
+    "description": "砂地の巣穴でテッポウエビと共生するハゼ。白っぽい体にオレンジ色の横帯が入り、巣穴の前でホバリングする姿がよく見られます。エビが巣穴を掘り、ハゼが見張りをする共生関係が面白いです。",
+    "beginner_tips": "砂地の巣穴の前にじっとしているハゼを探しましょう。近くにテッポウエビがいるはずなので、静かに待っていると穴からエビが出てくるのを観察できます。共生の様子を楽しんでください！",
+    "log_point": "共生しているテッポウエビの種類や、ハゼとエビの行動パターンを記録してみましょう。巣穴の大きさも面白い観察ポイントです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "datehaze.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "kuroishimochi",
+    "name_ja": "クロイシモチ",
+    "name_en": "Black Cardinalfish",
+    "name_sci": "Apogonichthyoides niger",
+    "category": "魚類",
+    "family": "テンジクダイ科",
+    "size": "5〜8cm",
+    "depth": "1〜15m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 3,
+    "description": "全身が黒っぽい体色のテンジクダイの仲間。岩の隙間や穴の中に隠れていることが多く、暗い場所を好みます。クロホシイシモチと同じくマウスブルーディング（口内保育）を行います。",
+    "beginner_tips": "岩の下や洞窟の暗がりを覗いてみましょう。黒い体が暗い場所に溶け込んでいるので見つけにくいですが、ライトで照らすと目がキラリと光ります。",
+    "log_point": "見つけた場所の環境（岩穴の大きさ、深さ）を記録しましょう。口内保育中の個体がいたかどうかもチェックポイントです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "kuroishimochi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "aoriika-tamago",
+    "name_ja": "アオリイカの卵",
+    "name_en": "Bigfin Reef Squid Eggs",
+    "name_sci": "Sepioteuthis lessoniana",
+    "category": "軟体動物",
+    "family": "ヤリイカ科",
+    "size": "卵嚢: 5〜15cm",
+    "depth": "3〜15m",
+    "season": [
+      "春",
+      "夏"
+    ],
+    "rarity": 2,
+    "description": "アオリイカが岩の隙間や海藻に産み付ける白い房状の卵嚢。透明な卵嚢の中でイカの赤ちゃんが成長する様子が観察でき、ハッチアウト（孵化）の瞬間に立ち会えることもあります。三浦では春〜夏が産卵シーズンです。",
+    "beginner_tips": "岩の隙間や海藻の根元に白いブドウの房のようなものがぶら下がっていたら、それがアオリイカの卵です。よく見ると中に小さなイカの形が見えますよ！",
+    "log_point": "卵の発生段階（透明→目が見える→体が見える）を記録すると、シーズン中の成長観察が楽しめます。卵嚢の数も記録しましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "ikanoegg.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "nagasakisuzumedai",
+    "name_ja": "ナガサキスズメダイ",
+    "name_en": "Nagasaki Damselfish",
+    "name_sci": "Pomacentrus nagasakiensis",
+    "category": "魚類",
+    "family": "スズメダイ科",
+    "size": "5〜10cm",
+    "depth": "1〜20m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 1,
+    "description": "鮮やかな青色の体が美しいスズメダイの仲間。幼魚は特に青色が鮮やかで、宝石のように輝きます。三浦の浅い岩礁域で一年中見られるおなじみの魚です。",
+    "beginner_tips": "浅い岩場でキラキラと青く光る小さな魚がいたら、ナガサキスズメダイかもしれません。岩の近くに縄張りを作って暮らしているので、同じ場所にいることが多いです。",
+    "log_point": "幼魚と成魚では青色の鮮やかさが違います。体の大きさと色の変化を記録してみましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "nagasakisuzumedai.JPG",
+        "credit": ""
+      }
     ]
   },
   {
     "id": "suzumedai",
     "name_ja": "スズメダイ",
-    "name_en": "Pearl-spot Chromis",
+    "name_en": "Japanese Chromis",
     "name_sci": "Chromis notata",
     "category": "魚類",
     "family": "スズメダイ科",
-    "size": "8〜15cm",
-    "depth": "3〜25m",
-    "season": ["春", "夏", "秋", "冬"],
+    "size": "10〜18cm",
+    "depth": "1〜20m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
     "rarity": 1,
-    "description": "暗い青灰色の体に、尾びれの付け根に白い点があるのが特徴。三浦の海では最もよく見かける魚の一つで、岩礁の上を群れで泳いでいます。夏には岩に卵を産みつけ、オスが卵を守る姿も観察できます。",
-    "beginner_tips": "岩礁の周りに群れで泳いでいる身近な魚です。地味に見えますが、よく見ると尾の白い点が目印。夏には卵を守るオスの威嚇行動が見られます。",
-    "log_point": "群れの大きさ、季節による体色の変化を記録。夏場は岩の上に卵を産みつけて守っている姿を探してみましょう。",
+    "description": "暗い青〜灰褐色の体に、尾ビレの付け根の白い斑点が特徴的な温帯性のスズメダイ。三浦の岩礁域では一年中大きな群れで見られ、最もよく目にする魚の一つです。幼魚は鮮やかな青色をしています。",
+    "beginner_tips": "岩場の周りで群れている魚がいたら、まずスズメダイを疑ってみましょう。尾の付け根の白い点が見分けるポイント。群れの中をよく見ると、色の違う幼魚が混じっていることもありますよ。",
+    "log_point": "群れの大きさや、幼魚と成魚の割合を記録してみましょう。幼魚の鮮やかな青色は成長とともに暗くなっていきます。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "suzumedai.JPG", "credit": "" }
+      {
+        "file": "suzumedai.JPG",
+        "credit": ""
+      },
+      {
+        "file": "suzumedai2.JPG",
+        "credit": ""
+      }
     ]
   },
   {
-    "id": "kagokakidai",
-    "name_ja": "カゴカキダイ",
-    "name_en": "Stripey",
-    "name_sci": "Microcanthus strigatus",
+    "id": "kaeruankou",
+    "name_ja": "カエルアンコウ",
+    "name_en": "Striated Frogfish",
+    "name_sci": "Antennarius striatus",
     "category": "魚類",
-    "family": "カゴカキダイ科",
-    "size": "10〜20cm",
-    "depth": "3〜20m",
-    "season": ["春", "夏", "秋", "冬"],
-    "rarity": 1,
-    "description": "黄色い体に黒の縦縞模様が鮮やかな魚。群れで泳ぐ姿は黄色と黒のストライプが水中に映えてとても美しいです。三浦では岩礁域でよく見られ、ダイバーにも人気の魚です。",
-    "beginner_tips": "黄色と黒のストライプが目立つので見つけやすい魚です。群れで泳いでいることが多く、水中で見かける機会は多いです。",
-    "log_point": "群れの個体数、他の魚との混泳の有無を記録しましょう。",
+    "family": "カエルアンコウ科",
+    "size": "5〜15cm",
+    "depth": "3〜30m",
+    "season": [
+      "秋",
+      "冬",
+      "春"
+    ],
+    "rarity": 4,
+    "description": "丸っこい体にゴツゴツした表面、手のような胸ビレで岩の上を「歩く」ユニークな魚。頭の上のエスカ（疑似餌）を振って小魚をおびき寄せて捕食します。体色は白・黄・オレンジ・黒など変異が豊富です。",
+    "beginner_tips": "岩やカイメンにそっくりに擬態しているので見つけるのが大変！ガイドさんに教えてもらうのが一番です。見つけたらじっくり観察して、手のような胸ビレで歩く姿を楽しんでください。",
+    "log_point": "体色（白・黄・オレンジ・黒など）と模様、大きさを記録しましょう。エスカの形状も個体によって違います。見つけた場所を覚えておくと再会できるかも。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "kagokakidai.JPG", "credit": "" }
+      {
+        "file": "kaeruankou.JPG",
+        "credit": ""
+      }
     ]
   },
   {
-    "id": "hanahaze",
-    "name_ja": "ハナハゼ",
-    "name_en": "Elegant Firefish",
-    "name_sci": "Ptereleotris hanae",
+    "id": "hoshihaze",
+    "name_ja": "ホシハゼ",
+    "name_en": "Starry Goby",
+    "name_sci": "Asterropteryx semipunctata",
     "category": "魚類",
-    "family": "クロユリハゼ科",
-    "size": "8〜12cm",
-    "depth": "5〜25m",
-    "season": ["春", "夏", "秋"],
+    "family": "ハゼ科",
+    "size": "3〜5cm",
+    "depth": "1〜15m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
     "rarity": 2,
-    "description": "淡い紫〜青色の細長い体と、長く伸びた尾びれが優雅なハゼの仲間。砂地の巣穴の上をホバリングするように泳ぎ、危険を感じると素早く巣穴に逃げ込みます。テッポウエビと共生することもあります。",
-    "beginner_tips": "砂地の上を浮くように泳いでいる細長い紫色の魚です。近づくと巣穴に引っ込むので、ゆっくり距離を詰めましょう。",
-    "log_point": "尾びれの長さ、体色の紫の濃さ、テッポウエビとの共生が見られたかを記録しましょう。",
+    "description": "小さな体に青白い星のような斑点が散らばるハゼ。岩の隙間や転石の下に隠れていることが多く、砂底や岩礁の境目でよく見られます。三浦のビーチポイントでは一年中観察できます。",
+    "beginner_tips": "岩のそばの砂底でじっとしている小さなハゼを探してみましょう。よく見ると体にキラキラした星のような模様があります。驚かすとすぐ隠れてしまうので、ゆっくり近づきましょう。",
+    "log_point": "体の斑点パターンや体色を記録してみましょう。見つけた環境（砂底・岩の隙間など）も面白い観察ポイントです。",
     "spot": "ビーチポイント",
     "photos": [
-      { "file": "hanahaze.JPG", "credit": "" }
+      {
+        "file": "hoshihaze.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "kawahagi",
+    "name_ja": "カワハギ",
+    "name_en": "Thread-sail Filefish",
+    "name_sci": "Stephanolepis cirrhifer",
+    "category": "魚類",
+    "family": "カワハギ科",
+    "size": "15〜25cm",
+    "depth": "1〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 1,
+    "description": "ザラザラした皮膚と独特の菱形の体型が特徴的な魚。おちょぼ口で器用にエサをつまむ姿がかわいらしく、好奇心旺盛でダイバーに近づいてくることもあります。三浦では一年中観察できるおなじみの魚です。",
+    "beginner_tips": "岩礁の周りをひらひら泳いでいる菱形の魚がカワハギです。好奇心が強いのでダイバーの近くに寄ってくることも。おちょぼ口で何かをつまんで食べている姿を観察してみましょう。",
+    "log_point": "体色の変化や、食事中の行動を記録してみましょう。頭の上の角（第一背ビレ棘）の長さにも個体差があります。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "kawahagi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "otomehaze",
+    "name_ja": "オトメハゼ",
+    "name_en": "Maiden Goby",
+    "name_sci": "Valenciennea puellaris",
+    "category": "魚類",
+    "family": "ハゼ科",
+    "size": "8〜15cm",
+    "depth": "3〜20m",
+    "season": [
+      "夏",
+      "秋"
+    ],
+    "rarity": 3,
+    "description": "白っぽい体にオレンジ色の小さな斑点が散らばるベントスハゼの仲間。砂を口に含んでエサをこし取る「ジョーフィッシュ」のような食事スタイルが特徴です。ペアで行動することが多いです。",
+    "beginner_tips": "砂地でモグモグと砂を食べているハゼを見つけたら、オトメハゼかもしれません。ペアでいることが多いので、一匹見つけたら近くにもう一匹いないか探してみましょう。",
+    "log_point": "ペアでいたか単独だったか、巣穴の場所を記録しましょう。砂を口に含んで吐き出す食事の様子も面白い観察ポイントです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "otomehaze.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "mitsuboshikurosuzumedai",
+    "name_ja": "ミツボシクロスズメダイ（幼魚）",
+    "name_en": "Three-spot Dascyllus (juvenile)",
+    "name_sci": "Dascyllus trimaculatus",
+    "category": "魚類",
+    "family": "スズメダイ科",
+    "size": "1〜3cm（幼魚）",
+    "depth": "1〜15m",
+    "season": [
+      "夏",
+      "秋"
+    ],
+    "rarity": 2,
+    "description": "黒い体に白い3つの点が輝く、とてもかわいらしいスズメダイの幼魚。イソギンチャクの周りに隠れて生活し、クマノミのように触手の間を出入りする姿が観察できます。夏〜秋に三浦にやってくる季節来遊魚です。",
+    "beginner_tips": "イソギンチャクの近くを探しましょう。黒い体に白い3つの星のような模様が目印。イソギンチャクの触手の中に隠れたり出てきたりする姿がとてもかわいいです！",
+    "log_point": "どのイソギンチャクに住んでいたか、何匹いたかを記録しましょう。白い斑点の大きさは成長とともに変化します。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "mituboshikurosuzumedaiyg.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "garasuhaze",
+    "name_ja": "ガラスハゼ",
+    "name_en": "Whip Coral Goby",
+    "name_sci": "Bryaninops yongei",
+    "category": "魚類",
+    "family": "ハゼ科",
+    "size": "2〜4cm",
+    "depth": "5〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 3,
+    "description": "透明な体を持つ極小のハゼで、ムチカラマツなどの枝上に張り付いて生活しています。体が透き通っているため骨や内臓が透けて見えます。宮川湾のボートポイントで観察できます。",
+    "beginner_tips": "ムチカラマツの枝をよく見てみましょう。透明な小さなハゼがちょこんと乗っています。マクロレンズがあると体の透明さがよくわかりますよ。",
+    "log_point": "どの種類のカラマツに付いていたか、枝のどの位置にいたかを記録しましょう。透明な体を通して見える卵巣の色から雌雄を判別できることもあります。",
+    "spot": "宮川湾",
+    "photos": [
+      {
+        "file": "garasuhaze.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "mebaru",
+    "name_ja": "メバル",
+    "name_en": "Japanese Rockfish",
+    "name_sci": "Sebastes inermis",
+    "category": "魚類",
+    "family": "メバル科",
+    "size": "15〜30cm",
+    "depth": "3〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 1,
+    "description": "大きな目が特徴的な根魚の代表種。名前の由来も「目が張る」から。岩礁の近くでホバリングするように浮いていることが多く、群れで見られることもあります。三浦では一年中観察できるポピュラーな魚です。",
+    "beginner_tips": "岩の近くで中層にじっと浮いている魚を探しましょう。大きな目がくりっとしていて愛嬌があります。群れでいることも多いので、一匹見つけたら周りにもいるかもしれません。",
+    "log_point": "体色のバリエーション（赤系・黒系・白系）を記録しましょう。最近の分類ではアカメバル・クロメバル・シロメバルに分けられています。",
+    "spot": "宮川湾",
+    "photos": [
+      {
+        "file": "mebaru.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "hirame",
+    "name_ja": "ヒラメ",
+    "name_en": "Japanese Flounder",
+    "name_sci": "Paralichthys olivaceus",
+    "category": "魚類",
+    "family": "ヒラメ科",
+    "size": "30〜60cm",
+    "depth": "1〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 2,
+    "description": "砂地に体を埋めて完璧に擬態する大型の底生魚。左側に両目がある「左ヒラメ」が見分けのポイント。獲物が近づくと一瞬で飛びかかる俊敏さを持ちます。三浦の砂地で一年中見られます。",
+    "beginner_tips": "砂地をよく見ると、魚の輪郭が浮かび上がることがあります。目が2つこちらを見ていたらヒラメです！近づきすぎると飛び去ってしまうので、そっと観察しましょう。",
+    "log_point": "体の大きさと擬態している砂底の色を記録してみましょう。ヒラメが飛び立つ瞬間は迫力があるので、動画撮影もおすすめです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "hirame.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "minamiginpo",
+    "name_ja": "ミナミギンポ",
+    "name_en": "Namiye's Blenny",
+    "name_sci": "Ecsenius namiyei",
+    "category": "魚類",
+    "family": "イソギンポ科",
+    "size": "4〜8cm",
+    "depth": "1〜15m",
+    "season": [
+      "夏",
+      "秋"
+    ],
+    "rarity": 3,
+    "description": "黒い体に白い腹部のツートンカラーが特徴的なイソギンポ。岩の穴から顔を出してキョロキョロする姿がコケギンポに似ていますが、体色で見分けられます。夏〜秋に三浦で観察できる季節来遊魚です。",
+    "beginner_tips": "岩の穴から顔を出している黒い魚がいたらミナミギンポかもしれません。コケギンポとの違いは頭のフサフサがないこと。ひょうきんな表情が写真映えします！",
+    "log_point": "住んでいる穴の大きさや周囲の環境を記録しましょう。コケギンポとの見分けポイントも確認してみてください。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "minamiginpo.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "kamisoriuo",
+    "name_ja": "カミソリウオ",
+    "name_en": "Robust Ghost Pipefish",
+    "name_sci": "Solenostomus cyanopterus",
+    "category": "魚類",
+    "family": "カミソリウオ科",
+    "size": "5〜12cm",
+    "depth": "3〜25m",
+    "season": [
+      "秋",
+      "冬"
+    ],
+    "rarity": 4,
+    "description": "枯れ葉や海藻の切れ端に擬態して漂う神秘的な魚。薄く平たい体を逆さまにして揺れながら浮いている姿はまさに水中のアート。ペアで行動することが多く、メスの腹ビレで卵を抱える珍しい繁殖方法を持ちます。",
+    "beginner_tips": "海藻の近くで枯れ葉のようなものがゆらゆら揺れていたら要注目。それはカミソリウオかもしれません！見つけるのは難しいですが、ガイドさんに教えてもらうとその擬態の見事さに感動します。",
+    "log_point": "体色（茶色・緑・赤系など）と擬態対象、ペアだったかどうかを記録しましょう。メスが卵を抱えていたかも重要な観察ポイントです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "kamisoriuo.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "koganeaji",
+    "name_ja": "コガネアジ",
+    "name_en": "Golden Trevally",
+    "name_sci": "Gnathanodon speciosus",
+    "category": "魚類",
+    "family": "アジ科",
+    "size": "20〜50cm",
+    "depth": "3〜30m",
+    "season": [
+      "夏",
+      "秋"
+    ],
+    "rarity": 4,
+    "description": "全身が黄金色に輝く美しいアジの仲間。幼魚は特に鮮やかな黄色で、大型魚やクラゲについて泳ぐ習性があります。三浦には夏〜秋に南方から流れてくる季節来遊魚です。",
+    "beginner_tips": "中層を泳ぐ金色の魚を見かけたらコガネアジかもしれません。幼魚は特に黄色が鮮やかで美しいです。大型魚の近くにいることもあるので、周囲にも注目してみましょう。",
+    "log_point": "体のサイズと黄色の鮮やかさ、何かに付いて泳いでいたかどうかを記録しましょう。季節来遊魚なので、見られた時期の記録も大切です。",
+    "spot": "宮川湾",
+    "photos": [
+      {
+        "file": "koganeaji.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "migimagi",
+    "name_ja": "ミギマキ",
+    "name_en": "Japanese Mottled Morwong",
+    "name_sci": "Goniistius zebra",
+    "category": "魚類",
+    "family": "タカノハダイ科",
+    "size": "20〜35cm",
+    "depth": "3〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 2,
+    "description": "白と黒の縞模様に黄色い唇が特徴的なタカノハダイの仲間。岩礁域を好み、岩の隙間で休んでいたり、ゆっくりと泳いでいる姿が見られます。三浦では一年中観察できる温帯性の魚です。",
+    "beginner_tips": "岩礁の近くをゆっくり泳いでいるシマシマの魚がいたらミギマキかもしれません。黄色い唇が特徴的なので注目してみてください。タカノハダイとの違いを見比べるのも楽しいです。",
+    "log_point": "縞模様の本数や黄色い唇の色の鮮やかさを記録しましょう。タカノハダイとの見分けポイントも確認してみてください。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "migimagi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "shimaushinoshita",
+    "name_ja": "シマウシノシタ",
+    "name_en": "Zebra Sole",
+    "name_sci": "Zebrias zebrinus",
+    "category": "魚類",
+    "family": "ウシノシタ科",
+    "size": "10〜20cm",
+    "depth": "3〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 3,
+    "description": "平たい体にゼブラ柄の縞模様が入ったカレイの仲間。砂地の上をゆっくりと這うように移動し、砂に体を埋めて擬態することもあります。主に夜行性で、昼間は砂に潜っていることが多いです。",
+    "beginner_tips": "砂地をよく見ると、シマシマ模様の平べったい魚が隠れているかもしれません。ゆっくり動くので見つけたら落ち着いて観察できます。砂から出てきて泳ぐ姿はまるで絨毯が動くようです。",
+    "log_point": "体のサイズや縞模様の本数、砂に潜っていたか表面にいたかを記録しましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "shimaushinoshita.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "zebragani",
+    "name_ja": "ゼブラガニ",
+    "name_en": "Zebra Crab",
+    "name_sci": "Zebrida adamsii",
+    "category": "甲殻類",
+    "family": "ゼブラガニ科",
+    "size": "1〜2cm",
+    "depth": "5〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 4,
+    "description": "白と紫〜茶色の縞模様が美しい小さなカニ。ラッパウニやイイジマフクロウニなどの大型ウニの上に住み、ウニの棘の間に隠れて生活しています。宮川湾のボートポイントで観察できます。",
+    "beginner_tips": "大きなウニを見つけたら、棘の間をよく観察してみましょう。1〜2cmの小さなカニがちょこんと乗っているかもしれません。シマシマ模様がとても可愛いので、見つけると嬉しくなりますよ！",
+    "log_point": "どの種類のウニの上にいたか、カニの大きさと模様を記録しましょう。ペアで見つかることもあります。",
+    "spot": "宮川湾",
+    "photos": [
+      {
+        "file": "zeburagani.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "monhanashako",
+    "name_ja": "モンハナシャコ",
+    "name_en": "Peacock Mantis Shrimp",
+    "name_sci": "Odontodactylus scyllarus",
+    "category": "甲殻類",
+    "family": "ハナシャコ科",
+    "size": "10〜18cm",
+    "depth": "3〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 3,
+    "description": "極彩色の体色と強力なパンチで知られるシャコの仲間。緑・赤・オレンジ・青など虹のような体色が美しく、甲殻類を砕くほどの強力な打撃力を持つハンマーのような前脚が特徴です。",
+    "beginner_tips": "砂地や岩の隙間の巣穴から顔を出していることが多いです。とてもカラフルなので見つけやすいですが、パンチ力がすごいので絶対に触らないように！巣穴から出てくる姿を静かに待ちましょう。",
+    "log_point": "体の色彩パターン、巣穴の場所と大きさを記録しましょう。卵を抱えている個体がいたかどうかも面白い観察ポイントです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "monhanasyako.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "murasakiisoginchaku",
+    "name_ja": "ムラサキイソギンチャク",
+    "name_en": "Purple Sea Anemone",
+    "name_sci": "Actinia equina",
+    "category": "その他",
+    "family": "ウメボシイソギンチャク科",
+    "size": "3〜7cm",
+    "depth": "1〜20m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 2,
+    "description": "紫〜赤紫色の美しい体色を持つイソギンチャク。岩の上に付着し、触手を広げてプランクトンなどを捕食します。宮川湾のボートポイントの岩壁で見られ、水中に彩りを添えています。",
+    "beginner_tips": "岩壁に紫色の花のようなものが咲いていたら、それがムラサキイソギンチャクです。触手を広げた姿はまるで海の花。触ると縮んでしまうので、そっと眺めて楽しみましょう。",
+    "log_point": "触手を広げた状態と閉じた状態の違いを観察しましょう。周囲にいた生き物（クマノミ類など）も記録すると面白いです。",
+    "spot": "宮川湾",
+    "photos": [
+      {
+        "file": "murasakiisogintyaku.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "torafukebori",
+    "name_ja": "トラフケボリ",
+    "name_en": "Tiger Egg Cowrie",
+    "name_sci": "Crenavolva striatula",
+    "category": "軟体動物",
+    "family": "ウミウサギ科",
+    "size": "1〜3cm",
+    "depth": "5〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 3,
+    "description": "虎模様の外套膜（がいとうまく）で貝殻を覆っている美しい巻貝の仲間。ヤギ類やトサカ類などのソフトコーラルに付いて生活しており、宿主と同じ色に擬態していることが多いです。",
+    "beginner_tips": "ソフトコーラル（ヤギやトサカ）の枝をよく観察してみましょう。虎縞模様の膨らみが見えたらトラフケボリです。小さいですが模様がとても美しいので、見つけると嬉しくなりますよ。",
+    "log_point": "宿主となっているソフトコーラルの種類と、外套膜の色・模様を記録しましょう。宿主によって体色が変わるので、バリエーションの比較が楽しいです。",
+    "spot": "宮川湾",
+    "photos": [
+      {
+        "file": "torafukebori.JPG",
+        "credit": ""
+      }
     ]
   }
 ]
