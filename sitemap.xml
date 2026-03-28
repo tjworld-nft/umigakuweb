@@ -71,4 +71,28 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <!-- 海の生き物図鑑 -->
+  <url>
+    <loc>https://miura-diving.com/sea-life/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 神奈川ダイビングライセンスLP -->
+  <url>
+    <loc>https://miura-diving.com/kanagawa-diving-license/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 神奈川ダイビングスクールLP -->
+  <url>
+    <loc>https://miura-diving.com/kanagawa-diving-school/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>

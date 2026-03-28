@@ -7,6 +7,9 @@ Allow: /license/
 Allow: /fun-diving/
 Allow: /marine-activity/
 Allow: /contact/
+Allow: /sea-life/
+Allow: /kanagawa-diving-license/
+Allow: /kanagawa-diving-school/
 
 # 管理・技術ファイルの除外
 Disallow: /wp-admin/
