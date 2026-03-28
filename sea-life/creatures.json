@@ -23,6 +23,10 @@
       {
         "file": "ao-umiushi.JPG",
         "credit": ""
+      },
+      {
+        "file": "aoumiushi2.JPG",
+        "credit": ""
       }
     ]
   },
@@ -154,6 +158,10 @@
     "photos": [
       {
         "file": "hiramirumidorigai.JPG",
+        "credit": ""
+      },
+      {
+        "file": "hiramirumidorigai2.JPG",
         "credit": ""
       }
     ]
@@ -1383,10 +1391,10 @@
     ]
   },
   {
-    "id": "adeyakamidorigai",
-    "name_ja": "アデヤカミドリガイ",
-    "name_en": "Splendid Sap-sucking Slug",
-    "name_sci": "Thuridilla splendens",
+    "id": "hanamidorigai",
+    "name_ja": "ハナミドリガイ",
+    "name_en": "Graceful Sap-sucking Slug",
+    "name_sci": "Thuridilla gracilis",
     "category": "ウミウシ",
     "family": "ゴクラクミドリガイ科",
     "size": "1〜3cm",
@@ -1397,13 +1405,13 @@
       "秋"
     ],
     "rarity": 3,
-    "description": "鮮やかな緑〜青色の体に黒い縁取りが入り、翼のような側足を優雅に広げて移動するウミウシの仲間。海藻を食べて盗葉緑体を行い、体内で光合成ができます。三浦の岩礁域で春〜秋に見られます。",
-    "beginner_tips": "岩の表面の海藻付近をゆっくり這っています。鮮やかな色合いが目を引くので、見つけたときの感動は格別。翼を広げた姿を写真に収めてみましょう。",
-    "log_point": "側足の色の入り方は個体差があります。翼を広げた姿と閉じた姿の両方を記録すると面白いです。",
+    "description": "緑色の体に白や橙色の細かい斑点が散りばめられた美しいウミウシの仲間。翼のような側足を広げて移動し、海藻を食べて葉緑体を取り込む盗葉緑体を行います。アデヤカミドリガイに似ますが、体色の斑点模様や側足の縁の色合いで区別できます。三浦の岩礁域で春〜秋に見られます。",
+    "beginner_tips": "岩の表面の海藻付近をゆっくり這っています。小さいので見落としがちですが、鮮やかな色合いが目を引きます。アデヤカミドリガイとの違いを観察してみましょう。",
+    "log_point": "体色の斑点の色や側足の縁の模様に個体差があります。アデヤカミドリガイとの識別ポイントを記録しておくと良いでしょう。",
     "spot": "ビーチポイント",
     "photos": [
       {
-        "file": "adeyakamidorigai.JPG",
+        "file": "hanamidorigai.JPG",
         "credit": ""
       }
     ]
@@ -2175,6 +2183,33 @@
     "photos": [
       {
         "file": "murasakiisogintyaku.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "nekozame",
+    "name_ja": "ネコザメ",
+    "name_en": "Japanese Bullhead Shark",
+    "name_sci": "Heterodontus japonicus",
+    "category": "魚類",
+    "family": "ネコザメ科",
+    "size": "50〜120cm",
+    "depth": "1〜30m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 3,
+    "description": "丸い頭に猫のような目が特徴的なおとなしいサメの仲間。夜行性で、日中は岩の隙間や穴の中でじっとしていることが多いです。貝やウニなどの硬いものを噛み砕く強い歯を持ち、ドリルのような形のユニークな卵（卵鞘）を産むことでも知られています。三浦の岩礁域で一年を通して観察できます。",
+    "beginner_tips": "岩の隙間や穴の奥にじっとしていることが多いので、ライトで照らして覗いてみましょう。おとなしい性格ですが、触ったり追い回したりせず、そっと観察しましょう。",
+    "log_point": "体のサイズや模様の濃さ、見つけた場所の環境（穴の中・砂地など）を記録しておくと面白いです。卵鞘（らんしょう）を見つけたら大発見！",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "nekozame.JPG",
         "credit": ""
       }
     ]
