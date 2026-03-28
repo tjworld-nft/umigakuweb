@@ -142,16 +142,26 @@
         .breadcrumb a { color:var(--teal-dark); }
         .breadcrumb span { color:var(--text-light); }
 
-        /* Check list */
-        .checklist { max-width:650px; margin:1.5rem auto 0; text-align:left; }
-        .checklist-item {
-            display:flex; align-items:flex-start; gap:.75rem; padding:.75rem 1rem;
-            background:var(--white); border-radius:var(--radius-sm); margin-bottom:.5rem;
-            box-shadow:var(--shadow-sm); border:1px solid var(--border);
+        /* Point cards */
+        .point-grid { display:grid; grid-template-columns:1fr; gap:1rem; max-width:850px; margin:2rem auto 0; }
+        @media(min-width:768px) { .point-grid { grid-template-columns:repeat(3,1fr); } }
+        .point-grid .span-2 { grid-column:span 1; }
+        @media(min-width:768px) { .point-grid .span-2 { grid-column:span 1; } }
+        .point-card {
+            background:var(--white); border-radius:var(--radius-md); padding:1.5rem 1.25rem;
+            box-shadow:var(--shadow-sm); border:1px solid var(--border); text-align:center;
+            position:relative; transition:all var(--ease);
         }
-        .checklist-item .check { color:var(--teal); font-weight:700; font-size:1.1rem; flex-shrink:0; margin-top:.1rem; }
-        .checklist-item h4 { font-size:.9rem; font-weight:700; color:var(--text-dark); margin-bottom:.15rem; }
-        .checklist-item p { font-size:.8rem; color:var(--text-sub); line-height:1.5; }
+        .point-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); }
+        .point-num {
+            width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--teal),var(--sky));
+            color:#fff; font-size:.85rem; font-weight:700; display:flex; align-items:center; justify-content:center;
+            margin:0 auto .75rem;
+        }
+        .point-card .point-icon { font-size:1.6rem; margin-bottom:.5rem; }
+        .point-card h4 { font-size:.9rem; font-weight:700; color:var(--teal-dark); margin-bottom:.4rem; }
+        .point-card p { font-size:.8rem; color:var(--text-sub); line-height:1.6; }
+        .point-match { display:inline-block; margin-top:.5rem; font-size:.72rem; font-weight:600; color:var(--coral); background:rgba(255,107,157,.1); padding:.2rem .6rem; border-radius:50px; }
 
         /* Feature cards */
         .feature-grid { display:grid; grid-template-columns:1fr; gap:1.5rem; }
@@ -255,43 +265,43 @@
         <section class="section">
             <div class="container text-center">
                 <span class="section-label reveal">Point</span>
-                <h2 class="section-title reveal">神奈川でダイビングスクールを選ぶポイント</h2>
-                <p class="section-lead reveal">安心して楽しくダイビングを始めるために、スクール選びで確認すべき5つのポイント。</p>
-                <div class="checklist">
-                    <div class="checklist-item reveal" data-delay="0">
-                        <span class="check"><i class="fas fa-check-circle"></i></span>
-                        <div>
-                            <h4>認定団体（PADI等）の信頼性</h4>
-                            <p>世界最大のダイビング教育機関PADIの認定スクールなら、世界基準の質の高い講習が受けられます。</p>
-                        </div>
+                <h2 class="section-title reveal">失敗しないダイビングスクールの選び方</h2>
+                <p class="section-lead reveal">神奈川でスクールを探すとき、必ずチェックしたい5つの基準。<br>三浦 海の学校はすべてをクリアしています。</p>
+                <div class="point-grid">
+                    <div class="point-card reveal" data-delay="0">
+                        <div class="point-num">1</div>
+                        <div class="point-icon"><i class="fas fa-award" style="color:var(--coral);"></i></div>
+                        <h4>認定団体のランク</h4>
+                        <p>PADI等の世界的な認定団体から、どのレベルの認定を受けているか。ランクが高いほど指導の質と実績が保証されます。</p>
+                        <span class="point-match"><i class="fas fa-check"></i> PADI最高位 5スターIDC</span>
                     </div>
-                    <div class="checklist-item reveal" data-delay="1">
-                        <span class="check"><i class="fas fa-check-circle"></i></span>
-                        <div>
-                            <h4>施設の充実度（プールの有無）</h4>
-                            <p>専用プールがあるスクールなら、海に出る前に安全な環境でしっかり練習できます。</p>
-                        </div>
+                    <div class="point-card reveal" data-delay="1">
+                        <div class="point-num">2</div>
+                        <div class="point-icon"><i class="fas fa-swimming-pool" style="color:var(--teal);"></i></div>
+                        <h4>専用プールの有無</h4>
+                        <p>いきなり海では不安。専用プールで基礎スキルを身につけてから海洋実習に進めるかどうかは大きな差です。</p>
+                        <span class="point-match"><i class="fas fa-check"></i> 水深3.5m 専用プール完備</span>
                     </div>
-                    <div class="checklist-item reveal" data-delay="2">
-                        <span class="check"><i class="fas fa-check-circle"></i></span>
-                        <div>
-                            <h4>立地とアクセス</h4>
-                            <p>通いやすさは継続の鍵。都心からのアクセスが良く、送迎サービスがあると便利です。</p>
-                        </div>
+                    <div class="point-card reveal" data-delay="2">
+                        <div class="point-num">3</div>
+                        <div class="point-icon"><i class="fas fa-map-marker-alt" style="color:var(--sky);"></i></div>
+                        <h4>アクセスの良さ</h4>
+                        <p>通いやすさは継続の鍵。講習だけでなく、その後のファンダイビングも見据えた立地選びが大切です。</p>
+                        <span class="point-match"><i class="fas fa-check"></i> 都心60分・無料送迎あり</span>
                     </div>
-                    <div class="checklist-item reveal" data-delay="3">
-                        <span class="check"><i class="fas fa-check-circle"></i></span>
-                        <div>
-                            <h4>少人数制かどうか</h4>
-                            <p>大人数の講習では目が行き届きません。少人数制なら一人ひとりに合わせた指導が受けられます。</p>
-                        </div>
+                    <div class="point-card reveal" data-delay="0">
+                        <div class="point-num">4</div>
+                        <div class="point-icon"><i class="fas fa-user-friends" style="color:var(--teal-dark);"></i></div>
+                        <h4>少人数制の指導</h4>
+                        <p>大人数の講習では一人ひとりへの目配りが難しくなります。少人数制なら自分のペースで確実にスキルを習得できます。</p>
+                        <span class="point-match"><i class="fas fa-check"></i> 最大6名の少人数制</span>
                     </div>
-                    <div class="checklist-item reveal" data-delay="4">
-                        <span class="check"><i class="fas fa-check-circle"></i></span>
-                        <div>
-                            <h4>講習後のサポート体制</h4>
-                            <p>ライセンス取得がゴールではありません。ファンダイビングやステップアップコースが充実しているかも重要です。</p>
-                        </div>
+                    <div class="point-card reveal" data-delay="1">
+                        <div class="point-num">5</div>
+                        <div class="point-icon"><i class="fas fa-route" style="color:var(--coral);"></i></div>
+                        <h4>取得後のサポート</h4>
+                        <p>ライセンス取得はスタートライン。ファンダイビングやステップアップコースが充実しているかも重要な判断基準です。</p>
+                        <span class="point-match"><i class="fas fa-check"></i> 全PADIコース開講</span>
                     </div>
                 </div>
             </div>
@@ -302,7 +312,7 @@
             <div class="container text-center">
                 <span class="section-label reveal">Features</span>
                 <h2 class="section-title reveal">三浦 海の学校の特長</h2>
-                <p class="section-lead reveal">上記5つのポイントをすべて満たす、神奈川県三浦市のダイビングスクールです。</p>
+                <p class="section-lead reveal">5つの基準をすべてクリアした、神奈川県三浦市のダイビングスクールです。</p>
                 <div class="feature-grid" style="margin-top:1.5rem;">
                     <div class="feature-card reveal" data-delay="0">
                         <div class="feature-card-img">
