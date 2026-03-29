@@ -54,6 +54,10 @@
       {
         "file": "sarasa-umiushi.JPG",
         "credit": ""
+      },
+      {
+        "file": "sarasaumiushi2.JPG",
+        "credit": ""
       }
     ]
   },
@@ -80,6 +84,10 @@
     "photos": [
       {
         "file": "shiro-umiushi.JPG",
+        "credit": ""
+      },
+      {
+        "file": "shiroumiushi2.JPG",
         "credit": ""
       }
     ]
@@ -1417,6 +1425,33 @@
     ]
   },
   {
+    "id": "setoiroumiushi",
+    "name_ja": "セトイロウミウシ",
+    "name_en": "Seto Chromodoris",
+    "name_sci": "Goniobranchus setoensis",
+    "category": "ウミウシ",
+    "family": "イロウミウシ科",
+    "size": "2〜4cm",
+    "depth": "3〜25m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 3,
+    "description": "白い体に紫色の縁取りと、背面にオレンジ色や黄色の斑紋が入る美しいウミウシ。触角と二次鰓は鮮やかなオレンジ色で、白い体とのコントラストが目を引きます。三浦の岩礁域で一年を通して見られますが、やや注意して探す必要があります。",
+    "beginner_tips": "岩壁やオーバーハングの下を丁寧に探してみましょう。白い体に紫の縁取りとオレンジの触角がとても綺麗で、見つけたときの感動はひとしおです。",
+    "log_point": "背面の斑紋の色合い（オレンジ寄りか黄色寄りか）や、紫の縁取りの幅に個体差があります。サイズと合わせて記録してみましょう。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "setoiroumiushi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
     "id": "gonzui",
     "name_ja": "ゴンズイ",
     "name_en": "Striped Catfish",
@@ -1789,6 +1824,10 @@
     "photos": [
       {
         "file": "kokeginpo.JPG",
+        "credit": ""
+      },
+      {
+        "file": "kokeginpo2.JPG",
         "credit": ""
       }
     ]
@@ -2210,6 +2249,31 @@
     "photos": [
       {
         "file": "nekozame.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "amefurashi",
+    "name_ja": "アメフラシ",
+    "name_en": "Sea Hare",
+    "name_sci": "Aplysia kurodai",
+    "category": "軟体動物",
+    "family": "アメフラシ科",
+    "size": "10〜30cm",
+    "depth": "0〜10m",
+    "season": [
+      "春",
+      "夏"
+    ],
+    "rarity": 2,
+    "description": "茶褐色〜暗紫色の大きな軟体動物で、頭の触角がウサギの耳に似ていることから英名は「Sea Hare（海のウサギ）」。刺激を受けると紫色のインクを出すことで有名です。春〜初夏に浅場で産卵のために集まり、黄色い糸状の卵塊（海そうめん）を産みます。三浦のビーチでは春に大量に見られることがあります。",
+    "beginner_tips": "春〜初夏、浅い岩場や海藻の多い場所で見つけやすいです。大きくてゆっくり動くので観察しやすいですよ。黄色い麺のような卵塊（海そうめん）も一緒に探してみましょう。",
+    "log_point": "体の色（茶色・黒・紫など）やサイズ、卵塊の有無を記録しましょう。複数集まっている場合は個体数もカウントすると面白いです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "amefurashi.JPG",
         "credit": ""
       }
     ]
