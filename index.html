@@ -674,6 +674,133 @@
     </section>
 
     <!-- ============================================================
+         WEATHER — ダイビングコンディション
+         ============================================================ -->
+    <section class="section section--alt" aria-labelledby="weather-title">
+      <div class="container text-center">
+        <span class="section-label reveal">Condition</span>
+        <h2 id="weather-title" class="section-title reveal">今週のダイビングコンディション</h2>
+        <p class="section-lead reveal">諸磯エリアの天気・風・波を元に、ダイビングのしやすさを自動判定しています。</p>
+        <div id="weather-cards" class="weather-cards reveal">
+          <p class="weather-loading">天気データを読み込み中…</p>
+        </div>
+        <p class="weather-note reveal">※ 判定はあくまで目安です。実際の催行はスタッフが当日の海況を確認して判断します。</p>
+      </div>
+    </section>
+
+    <style>
+      .weather-cards{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 0 1rem;max-width:900px;margin:0 auto;}
+      .weather-cards::-webkit-scrollbar{height:6px;}
+      .weather-cards::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+      .weather-card{flex:0 0 clamp(110px,20%,140px);scroll-snap-align:start;background:var(--white);border-radius:var(--radius-md);padding:1rem .75rem;box-shadow:var(--shadow-sm);border:1px solid var(--border);text-align:center;transition:transform .2s;}
+      .weather-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+      .weather-card.today{border-color:var(--accent);box-shadow:0 0 0 2px rgba(78,205,196,.25);}
+      .weather-day{font-size:.8rem;color:var(--text-sub);margin-bottom:.25rem;font-weight:600;}
+      .weather-date{font-size:.95rem;font-weight:700;color:var(--text-dark);margin-bottom:.5rem;}
+      .weather-date .dow-sun{color:#e74c3c;}
+      .weather-date .dow-sat{color:#3498db;}
+      .weather-icon{font-size:1.8rem;margin-bottom:.4rem;line-height:1;}
+      .weather-temp{font-size:.8rem;color:var(--text-sub);margin-bottom:.4rem;}
+      .weather-wind{font-size:.75rem;color:var(--text-sub);margin-bottom:.5rem;line-height:1.3;}
+      .weather-wave{font-size:.7rem;color:var(--text-sub);margin-bottom:.6rem;}
+      .weather-badge{display:inline-block;font-size:.85rem;font-weight:700;width:2.2rem;height:2.2rem;line-height:2.2rem;border-radius:50%;color:#fff;}
+      .weather-badge.rank-best{background:#4ECDC4;}
+      .weather-badge.rank-good{background:#45B7D1;}
+      .weather-badge.rank-caution{background:#f39c12;}
+      .weather-badge.rank-ng{background:#e74c3c;}
+      .weather-label{display:block;font-size:.65rem;color:var(--text-sub);margin-top:.25rem;}
+      .weather-note{font-size:.75rem;color:var(--text-sub);margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;}
+      .weather-loading{color:var(--text-sub);font-size:.9rem;padding:2rem 0;}
+      @media(max-width:768px){
+        .weather-card{flex:0 0 120px;padding:.8rem .6rem;}
+        .weather-icon{font-size:1.5rem;}
+      }
+    </style>
+
+    <script>
+    (function(){
+      const LAT=35.1547,LON=139.6128;
+      const WEATHER_URL=`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,winddirection_10m_dominant,precipitation_probability_max&timezone=Asia/Tokyo&forecast_days=7`;
+      const MARINE_URL=`https://marine-api.open-meteo.com/v1/marine?latitude=${LAT}&longitude=${LON}&daily=wave_height_max&timezone=Asia/Tokyo&forecast_days=7`;
+
+      const WMO_ICONS={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌦',55:'🌧',56:'🌧',57:'🌧',61:'🌧',63:'🌧',65:'🌧',66:'🌧',67:'🌧',71:'🌨',73:'🌨',75:'🌨',77:'🌨',80:'🌦',81:'🌧',82:'🌧',85:'🌨',86:'🌨',95:'⛈',96:'⛈',99:'⛈'};
+      const DOW=['日','月','火','水','木','金','土'];
+
+      function degToDir(deg){
+        const dirs=['N','NE','NE','E','E','SE','SE','S','S','SW','SW','W','W','NW','NW','N'];
+        return dirs[Math.round(deg/22.5)%16];
+      }
+      function degToJa(deg){
+        const ja=['北','北北東','北東','東北東','東','東南東','南東','南南東','南','南南西','南西','西南西','西','西北西','北西','北北西'];
+        return ja[Math.round(deg/22.5)%16];
+      }
+      function kmhToMs(v){return v/3.6;}
+
+      // 判定ロジック
+      function judge(windSpeedKmh,windDirDeg){
+        const ms=kmhToMs(windSpeedKmh);
+        const dir=degToDir(windDirDeg);
+        // 北・北東・東・北西は常に◎
+        if(['N','NE','E','NW'].includes(dir)) return {rank:'best',label:'◎'};
+        // 西: ≤4→◎, 5-7→○, 8+→×
+        if(dir==='W'){
+          if(ms<=4) return {rank:'best',label:'◎'};
+          if(ms<=7) return {rank:'good',label:'○'};
+          return {rank:'ng',label:'×'};
+        }
+        // 南東・南・南西: ≤4→◎, 5-7→○, 8-9→△, 10+→×
+        if(ms<=4) return {rank:'best',label:'◎'};
+        if(ms<=7) return {rank:'good',label:'○'};
+        if(ms<=9) return {rank:'caution',label:'△'};
+        return {rank:'ng',label:'×'};
+      }
+
+      async function loadWeather(){
+        try{
+          const [wRes,mRes]=await Promise.all([fetch(WEATHER_URL),fetch(MARINE_URL)]);
+          const w=await wRes.json(), m=await mRes.json();
+          const container=document.getElementById('weather-cards');
+          const todayStr=new Date().toLocaleDateString('sv-SE');
+          let html='';
+          for(let i=0;i<7;i++){
+            const date=new Date(w.daily.time[i]+'T00:00:00+09:00');
+            const dow=DOW[date.getDay()];
+            const dowClass=date.getDay()===0?'dow-sun':date.getDay()===6?'dow-sat':'';
+            const isToday=w.daily.time[i]===todayStr;
+            const code=w.daily.weathercode[i];
+            const icon=WMO_ICONS[code]||'🌤';
+            const hi=Math.round(w.daily.temperature_2m_max[i]);
+            const lo=Math.round(w.daily.temperature_2m_min[i]);
+            const ws=w.daily.windspeed_10m_max[i];
+            const wd=w.daily.winddirection_10m_dominant[i];
+            const waveH=m.daily&&m.daily.wave_height_max?m.daily.wave_height_max[i]:null;
+            const ms=kmhToMs(ws);
+            const dirJa=degToJa(wd);
+            const j=judge(ws,wd);
+            const mm=date.getMonth()+1;
+            const dd=date.getDate();
+            html+=`<div class="weather-card${isToday?' today':''}">
+              <div class="weather-day">${isToday?'TODAY':''}</div>
+              <div class="weather-date">${mm}/${dd}<span class="${dowClass}">(${dow})</span></div>
+              <div class="weather-icon">${icon}</div>
+              <div class="weather-temp">${hi}° / ${lo}°</div>
+              <div class="weather-wind">${dirJa} ${ms.toFixed(1)}m/s</div>
+              ${waveH!=null?`<div class="weather-wave">波 ${waveH.toFixed(1)}m</div>`:''}
+              <span class="weather-badge rank-${j.rank}">${j.label}</span>
+              <span class="weather-label">${j.rank==='best'?'良好':j.rank==='good'?'OK':j.rank==='caution'?'注意':'厳しい'}</span>
+            </div>`;
+          }
+          container.innerHTML=html;
+        }catch(e){
+          document.getElementById('weather-cards').innerHTML='<p class="weather-loading">天気データの取得に失敗しました。</p>';
+        }
+      }
+      if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',loadWeather);}
+      else{loadWeather();}
+    })();
+    </script>
+
+    <!-- ============================================================
          ACCESS
          ============================================================ -->
     <section class="section section--alt" aria-labelledby="access-title">
