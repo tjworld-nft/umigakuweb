@@ -383,30 +383,6 @@ get_header(); ?>
     <a href="#application" class="owd-price-button">このプランで申し込む</a>
   </div>
 </div>
-        <div class="owd-price-card">
-          <div class="owd-price-header">
-            <h3>プライベートプラン</h3>
-            <div class="owd-price">
-              <span class="owd-currency">¥</span>
-              <span class="owd-amount">98,000</span>
-              <span class="owd-period">（税込）</span>
-            </div>
-          </div>
-          <div class="owd-price-features">
-            <ul>
-              <li>eラーニング学習教材</li>
-              <li>完全マンツーマンレッスン</li>
-              <li>あなたのペースで進行</li>
-              <li>日程の柔軟な調整が可能</li>
-              <li>無料送迎サービス</li>
-              <li>認定申請料・Cカード発行料</li>
-              <li>水中写真プレゼント</li>
-            </ul>
-          </div>
-          <div class="owd-price-footer">
-            <a href="#application" class="owd-price-button">このプランで申し込む</a>
-          </div>
-        </div>
       </div>
       
       <div class="owd-price-notes">
@@ -571,7 +547,7 @@ get_header(); ?>
             <span class="owd-faq-toggle"><i class="fas fa-plus"></i></span>
           </div>
           <div class="owd-faq-answer">
-            <p>連続でなくても構いません。ご都合に合わせて日程を調整することができます。ただし、あまり期間が空くと習得したスキルを忘れてしまう可能性があるため、なるべく1ヶ月以内での修了をおすすめしています。プライベートプランでは、さらに柔軟な日程調整が可能です。</p>
+            <p>連続でなくても構いません。ご都合に合わせて日程を調整することができます。ただし、あまり期間が空くと習得したスキルを忘れてしまう可能性があるため、なるべく1ヶ月以内での修了をおすすめしています。</p>
           </div>
         </div>
         <div class="owd-faq-item">
@@ -779,7 +755,7 @@ get_header(); ?>
       "name": "実技講習の3日間は連続で受ける必要がありますか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "連続でなくても構いません。ご都合に合わせて日程を調整することができます。ただし、あまり期間が空くと習得したスキルを忘れてしまう可能性があるため、なるべく1ヶ月以内での修了をおすすめしています。プライベートプランでは、さらに柔軟な日程調整が可能です。"
+        "text": "連続でなくても構いません。ご都合に合わせて日程を調整することができます。ただし、あまり期間が空くと習得したスキルを忘れてしまう可能性があるため、なるべく1ヶ月以内での修了をおすすめしています。"
       }
     },
     {
