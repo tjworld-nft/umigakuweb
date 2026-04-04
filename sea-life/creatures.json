@@ -114,6 +114,10 @@
       {
         "file": "shirayuki-umiushi.JPG",
         "credit": ""
+      },
+      {
+        "file": "shirayukiumiushi2.JPG",
+        "credit": ""
       }
     ]
   },
@@ -1447,6 +1451,32 @@
     "photos": [
       {
         "file": "setoiroumiushi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "miyako-umiushi",
+    "name_ja": "ミヤコウミウシ",
+    "name_en": "Dendrodoris denisoni",
+    "name_sci": "Dendrodoris denisoni",
+    "category": "ウミウシ",
+    "family": "クロシタナシウミウシ科",
+    "size": "3〜8cm",
+    "depth": "2〜20m",
+    "season": [
+      "冬",
+      "春",
+      "夏"
+    ],
+    "rarity": 3,
+    "description": "茶褐色の体に白や青の斑点が散りばめられた、やや大きめのウミウシ。体表はザラザラとした質感で、触角と二次鰓は濃い茶色。三浦のビーチポイントでは岩礁やゴロタ石の上でよく見られます。",
+    "beginner_tips": "ウミウシの中では大きめなので、初心者でも比較的見つけやすいです。茶色い岩に溶け込んでいることが多いので、ゴロタ石の上をゆっくり観察してみましょう。白い斑点が目印です。",
+    "log_point": "斑点の色味（白っぽいか青みがかっているか）や模様のパターンは個体差が大きいので、記録しておくと面白いです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "miyakoumiushi.JPG",
         "credit": ""
       }
     ]
