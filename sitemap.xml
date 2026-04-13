@@ -95,4 +95,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- ダイビング初心者ガイド（ピラーページ） -->
+  <url>
+    <loc>https://miura-diving.com/beginner-guide/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
