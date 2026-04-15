@@ -31,7 +31,24 @@ verification:
 3. **内部リンク**: 本文中に自然に埋め込む（下記参照）
 4. **まとめ**: 読者への呼びかけ ＋ `/contact/` リンク
 5. **著者情報コンポーネント**: `templates/author-block.md` を貼り付け（トークン部分を authors/{id}.yml の値で置換）
-6. **CTAブロック**: `templates/cta-block.md` をコピー
+6. **CTAブロック（BlogCTA）**: `templates/cta-block.md` から**該当バリアント1つだけ**をコピーして末尾に貼り付け
+
+## BlogCTA バリアント判定（記事末尾の共通CTA）
+
+`templates/cta-block.md` には3つのバリアントがコメントアウトで並んでいます。記事の `category` / `tags` に応じて、使うブロックのコメント（`<!--` / `-->`）を外して有効化します。
+
+| 判定条件（いずれか該当） | 使うバリアント | 最優先導線 |
+|---|---|---|
+| `tags` に "初心者" を含む / `category: beginner` | **beginner** | `/license/`（初心者向け見出し「初めての方へ」） |
+| `tags` に "ライセンス" / "OWD" / "AOW" / "PADI" を含む | **license** | `/license/` を最大強調（1ボタン目を太字化） |
+| `category` が `diving-log` / `seasonal-guide` / `sea-life` | **log** | `/fun-diving/` を主導線、`/license/` は保険 |
+| どれにも該当しない / 迷ったら | **beginner** を既定 | 同上 |
+
+**運用ルール**:
+- 各記事には**1バリアントのみ**貼る（重複NG）
+- 文言を記事ごとにチューニングする場合は、バリアント先頭の「Props」コメントに従って `heading` / `reassurance` / `primaryLabel` などを書き換える
+- LINEリンク（`https://lin.ee/kK3d5p2`）は全バリアント共通・変更不要
+- HTMLインラインスタイルで組んであるため、Markdown→HTML変換（Next.js等）でもそのまま描画される
 
 ## 著者プロフィールコンポーネントの適用方法
 
