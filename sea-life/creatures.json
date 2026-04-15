@@ -261,6 +261,10 @@
       {
         "file": "hirataei.JPG",
         "credit": ""
+      },
+      {
+        "file": "hirataei2.JPG",
+        "credit": ""
       }
     ]
   },
@@ -623,6 +627,10 @@
     "photos": [
       {
         "file": "akaei.JPG",
+        "credit": ""
+      },
+      {
+        "file": "akaei2.JPG",
         "credit": ""
       }
     ]
@@ -2324,6 +2332,33 @@
     "photos": [
       {
         "file": "amefurashi.JPG",
+        "credit": ""
+      }
+    ]
+  },
+  {
+    "id": "gomafubirodoumiushi",
+    "name_ja": "ゴマフビロードウミウシ",
+    "name_en": "Sea Bunny",
+    "name_sci": "Jorunna parva",
+    "category": "ウミウシ",
+    "family": "ドーリス科",
+    "size": "1〜2cm",
+    "depth": "1〜20m",
+    "season": [
+      "春",
+      "夏",
+      "秋",
+      "冬"
+    ],
+    "rarity": 3,
+    "description": "白〜淡い黄色のビロードのような体に、黒いゴマ粒状の斑点が散らばる小型のウミウシ。背中の突起が「耳」、触角が「うさぎの耳」のように見えることから英名は「Sea Bunny（海のうさぎ）」と呼ばれ、その愛らしい姿で世界中のダイバーに人気です。三浦のビーチポイントでもじっくり探すと出会える可愛い仲間です。",
+    "beginner_tips": "とても小さい（1〜2cm）ので、岩やカイメンの表面をゆっくり丁寧に探してみましょう。白っぽい体に黒ゴマ模様が目印です。見つけたらそっと観察を。",
+    "log_point": "体の地色（白・黄色みの強さ）や黒斑の密度、触角の形を記録しておくと図鑑と照合しやすいです。",
+    "spot": "ビーチポイント",
+    "photos": [
+      {
+        "file": "gomafubirodumiushi.JPG",
         "credit": ""
       }
     ]
