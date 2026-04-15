@@ -1,0 +1,24 @@
+id: tetsuji-yoshida
+name: "吉田 哲司"
+name_kana: "よしだ てつじ"
+role: "三浦 海の学校 代表 / 現役PADIコースディレクター"
+organization: "三浦 海の学校"
+credentials:
+  - "PADIコースディレクター（インストラクターを養成できる最上位インストラクター資格）"
+  - "PADI 5スターIDCセンター運営"
+  - "EFR（エマージェンシー・ファースト・レスポンス）インストラクタートレーナー"
+experience:
+  since: 1997
+  summary: "プロダイバーとして1997年から活動。三浦半島でのガイド歴は10年以上、初心者講習からインストラクター講習まで、幅広く講習を開催。"
+bio: |
+  プロダイバーとして1997年から活動しているPADIコースディレクターです。
+  三浦半島でのガイド歴は10年以上、初心者講習からインストラクター講習まで幅広く講習を開催しています。
+  この記事は、現場での実体験と専門知識にもとづいて執筆しています。
+photo: "/三浦blog/assets/authors/tetsuji-yoshida.jpg"
+profile_url: "/about/yoshida-tetsuji/"
+books:
+  - title: "はじめてのダイビング完全ガイド（仮）"
+    url: "/books/beginner-diving-guide/"
+social:
+  website: "https://miura-diving.com"
+  line: "https://lin.ee/kK3d5p2"
