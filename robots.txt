@@ -10,6 +10,8 @@ Allow: /contact/
 Allow: /sea-life/
 Allow: /kanagawa-diving-license/
 Allow: /kanagawa-diving-school/
+Allow: /yokohama-diving-license/
+Allow: /tokyo-diving-license/
 
 # 管理・技術ファイルの除外
 Disallow: /wp-admin/
