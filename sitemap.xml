@@ -119,4 +119,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 初めてのダイビング完全ガイド（不安解消サポート記事） -->
+  <url>
+    <loc>https://miura-diving.com/beginner-diving-guide/</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 横須賀ダイビングLP -->
+  <url>
+    <loc>https://miura-diving.com/yokosuka-diving/</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
