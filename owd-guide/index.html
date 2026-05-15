@@ -1048,6 +1048,146 @@ section { position: relative; }
 }
 
 /* =========================================================
+   LOGBOOK
+========================================================= */
+.logbook { background: var(--paper-2); padding: 100px 0; }
+
+.logbook-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 32px 24px 28px;
+  border: 1.5px solid var(--sky-100);
+  text-align: center;
+  box-shadow: 0 14px 32px rgba(31,124,184,0.1);
+}
+.logbook-card .qr-frame { margin-top: 6px; }
+.logbook-card .qr-frame img { width: 200px; height: 200px; }
+.logbook-card .btn { margin-top: 22px; }
+.logbook-url {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--sky-700);
+  background: var(--sky-50);
+  border: 1.5px solid var(--sky-200);
+  padding: 6px 14px;
+  border-radius: 100px;
+  word-break: break-all;
+}
+
+.install-intro {
+  margin-top: 28px;
+  padding: 18px 20px;
+  background: white;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--sky-500);
+  border-top: 1.5px solid var(--sky-100);
+  border-right: 1.5px solid var(--sky-100);
+  border-bottom: 1.5px solid var(--sky-100);
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--ink-2);
+}
+.install-intro strong { color: var(--ink); font-weight: 700; }
+
+.install-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+.install-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  border: 1.5px solid var(--sky-100);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.install-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(31,124,184,0.12);
+  border-color: var(--sky-300);
+}
+.install-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1.5px dashed var(--sky-200);
+}
+.install-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: white;
+  display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.install-icon.android {
+  background: #3ddc84;
+  color: var(--ink);
+}
+.install-label {
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+.install-name {
+  font-family: var(--f-round);
+  font-size: 15.5px;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.install-steps { display: grid; gap: 12px; }
+.install-steps li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+.install-steps .step-num {
+  width: 26px; height: 26px;
+  background: var(--sky-50);
+  border: 1.5px solid var(--sky-300);
+  color: var(--sky-700);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--f-round);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1;
+  margin-top: 1px;
+}
+.install-steps .step-text {
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--ink-2);
+}
+.install-steps .step-text strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+.install-note {
+  margin-top: 16px;
+  padding: 11px 14px;
+  background: var(--sky-50);
+  border-radius: var(--radius-sm);
+  font-size: 11.5px;
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+
+/* =========================================================
    CONTACT — LINE
 ========================================================= */
 .contact {
@@ -1336,6 +1476,7 @@ section { position: relative; }
 @media (min-width: 600px) {
   .bring-list { grid-template-columns: repeat(4, 1fr); }
   .hero-schedule-grid { grid-template-columns: repeat(3, 1fr); }
+  .install-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -1708,6 +1849,77 @@ section { position: relative; }
   </div>
 </section>
 
+<!-- ============ LOGBOOK ============ -->
+<section class="section logbook" id="logbook">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">After the Course · 07</span>
+      <h2 class="title">
+        デジタルログブック
+        <span class="serif">— Your Digital Logbook.</span>
+      </h2>
+      <p class="lede">認定後はこちらにダイブの記録を残せます。<strong style="color:var(--sky-700);">受講前にスマホのホーム画面に追加</strong>しておくと、アプリのように一発で開けて毎回検索する手間が省けます。</p>
+    </div>
+
+    <div class="logbook-card reveal reveal-d1">
+      <div class="qr-frame">
+        <img src="assets/logbook-qr.png" alt="三浦 海の学校 デジタルログブック QRコード" width="540" height="540">
+      </div>
+      <div class="qr-caption">
+        Scan to Open
+        <span class="qr-caption-jp">スマホのカメラでスキャン</span>
+      </div>
+      <div>
+        <a href="https://logbook.miura-diving.com/" class="btn btn-primary" target="_blank" rel="noopener">ログブックを開く <span class="arrow">→</span></a>
+      </div>
+      <div>
+        <span class="logbook-url">logbook.miura-diving.com</span>
+      </div>
+    </div>
+
+    <div class="install-intro reveal">
+      <strong>ホーム画面に追加しておきましょう</strong><br>
+      QRコードをスキャンしてサイトを開いたら、下記の手順でスマホのホーム画面にアイコンを追加してください。次回からはアプリのように1タップで開けます。手順は<strong>iPhoneとAndroidで異なります</strong>。
+    </div>
+
+    <div class="install-grid reveal">
+      <div class="install-card">
+        <div class="install-head">
+          <div class="install-icon">iOS</div>
+          <div>
+            <div class="install-label">iPhone · Safari</div>
+            <div class="install-name">iPhoneでの追加方法</div>
+          </div>
+        </div>
+        <ol class="install-steps">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Safari</strong> でログブックのページを開く</span></li>
+          <li><span class="step-num">2</span><span class="step-text">画面下中央の<strong>共有ボタン</strong>（□から↑が出ているアイコン）をタップ</span></li>
+          <li><span class="step-num">3</span><span class="step-text">メニューを下にスクロールし「<strong>ホーム画面に追加</strong>」を選択</span></li>
+          <li><span class="step-num">4</span><span class="step-text">右上の「<strong>追加</strong>」をタップして完了</span></li>
+        </ol>
+        <p class="install-note">※ Chrome など他のブラウザでは「ホーム画面に追加」が表示されません。必ず <strong>Safari</strong> で開いてください。</p>
+      </div>
+
+      <div class="install-card">
+        <div class="install-head">
+          <div class="install-icon android">AND</div>
+          <div>
+            <div class="install-label">Android · Chrome</div>
+            <div class="install-name">Androidでの追加方法</div>
+          </div>
+        </div>
+        <ol class="install-steps">
+          <li><span class="step-num">1</span><span class="step-text"><strong>Chrome</strong> でログブックのページを開く</span></li>
+          <li><span class="step-num">2</span><span class="step-text">画面右上の<strong>「︙」（3点メニュー）</strong>をタップ</span></li>
+          <li><span class="step-num">3</span><span class="step-text">「<strong>ホーム画面に追加</strong>」を選択</span></li>
+          <li><span class="step-num">4</span><span class="step-text">表示名を確認して「<strong>追加</strong>」をタップ</span></li>
+        </ol>
+        <p class="install-note">※ 機種・バージョンにより「<strong>アプリをインストール</strong>」と表示される場合があります。同じ操作でOKです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CONTACT ============ -->
 <section class="section contact" id="contact">
   <div class="wrap">
@@ -1821,6 +2033,16 @@ section { position: relative; }
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           <span class="faq-q-num">08</span>
+          <span class="faq-q-text">デジタルログブックは何に使いますか？</span>
+          <span class="faq-q-toggle">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          認定後のダイブ記録を残すためのWebログブックです。<strong>受講前にスマホのホーム画面に追加</strong>しておくと、アプリのように一発で開けて便利です。詳しくは <a href="#logbook">デジタルログブック</a> セクションをご覧ください。
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-num">09</span>
           <span class="faq-q-text">その他の質問はどこから？</span>
           <span class="faq-q-toggle">+</span>
         </button>
