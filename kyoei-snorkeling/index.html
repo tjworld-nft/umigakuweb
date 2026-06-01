@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>共栄大学 スノーケリング事前ガイド | 三浦 海の学校</title>
+  <meta name="description" content="共栄大学の学生さん向けスノーケリング事前ガイド。楽しさ、必要器材、安全、海の生き物との接し方、トラブル対処を当日前に確認できます。">
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="三浦 海の学校">
+  <meta property="og:title" content="共栄大学 スノーケリング事前ガイド">
+  <meta property="og:description" content="スノーケリングを安全に楽しく体験するための事前ガイド。器材、危険、生き物への接し方、トラブル対処をわかりやすく確認できます。">
+  <meta property="og:image" content="assets/hero-snorkeling-lesson.webp">
+  <style>
+    :root {
+      --ink: #14212a;
+      --muted: #52616d;
+      --paper: #ffffff;
+      --mist: #f3f8f8;
+      --line: #d9e6e7;
+      --sea: #087f8c;
+      --deep: #123c55;
+      --coral: #d45e47;
+      --sun: #e4b84f;
+      --green: #2d7356;
+      --shadow: 0 18px 44px rgba(20, 33, 42, .12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 76px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--mist);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.78;
+      letter-spacing: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 78vh;
+      min-height: 78dvh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: #fff;
+      background: var(--deep);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(10, 24, 33, .42), rgba(10, 24, 33, .14) 48%, rgba(10, 24, 33, 0)),
+        linear-gradient(0deg, rgba(10, 24, 33, .22), rgba(10, 24, 33, 0) 60%),
+        url("assets/hero-snorkeling-lesson.webp") center / cover no-repeat;
+      transform: scale(1.015);
+    }
+
+    .hero-inner {
+      position: relative;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 92px 0 34px;
+    }
+
+    .site-mark {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      text-decoration: none;
+      color: rgba(255, 255, 255, .94);
+    }
+
+    .site-mark img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .96);
+      padding: 5px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #f1d179;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    h1 {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(34px, 6vw, 64px);
+      line-height: 1.13;
+      letter-spacing: 0;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, .44);
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, .9);
+      font-size: clamp(16px, 2vw, 19px);
+      text-shadow: 0 2px 12px rgba(0, 0, 0, .46);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, .34);
+      background: rgba(255, 255, 255, .14);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+    }
+
+    .button.primary {
+      border-color: transparent;
+      background: var(--coral);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .18);
+    }
+
+    .hero-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 34px;
+      max-width: 920px;
+    }
+
+    .hero-stat {
+      min-height: 96px;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      background: rgba(255, 255, 255, .18);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.15;
+    }
+
+    .hero-stat span {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .quick-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(14px);
+    }
+
+    .quick-nav-inner {
+      width: min(1120px, calc(100% - 24px));
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .quick-nav a {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--deep);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 74px;
+    }
+
+    section {
+      scroll-margin-top: 78px;
+      margin-top: 58px;
+    }
+
+    section:first-child {
+      margin-top: 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .kicker {
+      margin: 0 0 8px;
+      color: var(--sea);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 10px 26px rgba(20, 33, 42, .07);
+      overflow: hidden;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .visual-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .visual-card.square img {
+      aspect-ratio: 4 / 3;
+    }
+
+    .feature-story {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .feature-copy {
+      display: grid;
+      align-content: center;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(20, 33, 42, .07);
+    }
+
+    .feature-copy h3 {
+      font-size: clamp(22px, 3vw, 32px);
+    }
+
+    .feature-copy p {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .lesson-bridge {
+      display: grid;
+      grid-template-columns: minmax(280px, .95fr) minmax(0, 1.05fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #edf6f4;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .callout {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(8, 127, 140, .26);
+      background: linear-gradient(135deg, rgba(8, 127, 140, .1), rgba(228, 184, 79, .16));
+    }
+
+    .callout-mark {
+      display: grid;
+      place-items: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--deep);
+      color: #fff;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .callout strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .callout p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .gear-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .gear-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .gear-item {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 12px;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .gear-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: #eaf5f7;
+      color: var(--sea);
+      font-weight: 900;
+    }
+
+    .gear-item strong {
+      display: block;
+      line-height: 1.35;
+    }
+
+    .gear-item span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      counter-reset: steps;
+    }
+
+    .step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .step::before {
+      counter-increment: steps;
+      content: counter(steps);
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--sea);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .step p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .risk-card {
+      border-top: 5px solid var(--coral);
+    }
+
+    .risk-card h3,
+    .solution-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mini-tag {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--coral);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .mini-tag.safe {
+      background: var(--green);
+    }
+
+    .etiquette-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .rule-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .rule {
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .rule strong {
+      display: block;
+      color: var(--deep);
+    }
+
+    .rule p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .trouble-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 58px;
+      padding: 14px 16px;
+      color: var(--deep);
+      cursor: pointer;
+      font-weight: 900;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #eef6f7;
+      color: var(--sea);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    details[open] summary::after {
+      content: "-";
+    }
+
+    .detail-body {
+      padding: 0 16px 16px;
+      color: var(--muted);
+    }
+
+    .detail-body b {
+      color: var(--ink);
+    }
+
+    .checklist {
+      display: grid;
+      gap: 10px;
+    }
+
+    .check-item {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      padding: 13px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .check-item input {
+      width: 20px;
+      height: 20px;
+      margin: 4px 0 0;
+      accent-color: var(--sea);
+    }
+
+    .check-item span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .signal {
+      min-height: 132px;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      text-align: center;
+    }
+
+    .signal-mark {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      background: #eaf5f7;
+      color: var(--sea);
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .signal strong {
+      display: block;
+      line-height: 1.35;
+    }
+
+    .signal span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .finish {
+      margin-top: 58px;
+      padding: 28px;
+      border-radius: 8px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(18, 60, 85, .94), rgba(8, 127, 140, .9)),
+        url("assets/marine-life-etiquette.webp") center / cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .finish h2 {
+      max-width: 720px;
+      color: #fff;
+    }
+
+    .finish p {
+      max-width: 760px;
+      margin: 12px 0 0;
+      color: rgba(255, 255, 255, .9);
+    }
+
+    @media (max-width: 900px) {
+      .hero-strip,
+      .grid.four,
+      .grid.three,
+      .signal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-head,
+      .feature-story,
+      .lesson-bridge,
+      .gear-layout,
+      .etiquette-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        min-height: 82vh;
+        min-height: 82dvh;
+      }
+
+      .hero-inner {
+        width: min(100% - 24px, 1120px);
+        padding-bottom: 24px;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(90deg, rgba(10, 24, 33, .44), rgba(10, 24, 33, .18)),
+          linear-gradient(0deg, rgba(10, 24, 33, .3), rgba(10, 24, 33, 0) 62%),
+          url("assets/hero-snorkeling-lesson.webp") 60% center / cover no-repeat;
+      }
+
+      .hero-strip,
+      .grid.two,
+      .grid.three,
+      .grid.four,
+      .signal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        width: min(100% - 24px, 1120px);
+        padding-top: 36px;
+      }
+
+      section {
+        margin-top: 44px;
+      }
+
+      .card-body,
+      .finish {
+        padding: 18px;
+      }
+
+      .callout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <a class="site-mark" href="../">
+        <img src="../image/umigaku-logo.webp" alt="三浦 海の学校">
+        <span>三浦 海の学校</span>
+      </a>
+      <p class="eyebrow">KYOEI UNIVERSITY PRE-LESSON GUIDE</p>
+      <h1>スノーケリングをもっと<br>楽しく、安全に</h1>
+      <p class="lead">水面に浮いて顔をつけるだけで、魚の群れや海藻の森、光の揺れが目の前に広がります。手軽に始められる活動だからこそ、海のルールと安全のコツを知ってから楽しみましょう。</p>
+      <div class="hero-actions" aria-label="主要リンク">
+        <a class="button primary" href="#flow">当日の流れを見る</a>
+        <a class="button" href="#trouble">トラブル対処を確認</a>
+      </div>
+      <div class="hero-strip" aria-label="このページでわかること">
+        <div class="hero-stat"><strong>楽しさ</strong><span>水面から海の世界をのぞく体験</span></div>
+        <div class="hero-stat"><strong>器材</strong><span>マスク、スノーケル、フィンなど</span></div>
+        <div class="hero-stat"><strong>安全</strong><span>波、流れ、疲れ、体調への備え</span></div>
+        <div class="hero-stat"><strong>マナー</strong><span>生き物に触らず、追わず、壊さない</span></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="quick-nav" aria-label="ページ内ナビゲーション">
+    <div class="quick-nav-inner">
+      <a href="#fun">楽しさ</a>
+      <a href="#gear">器材</a>
+      <a href="#flow">楽しみ方</a>
+      <a href="#risk">危険</a>
+      <a href="#life">生き物</a>
+      <a href="#trouble">トラブル</a>
+      <a href="#check">事前チェック</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="fun">
+      <div class="section-head">
+        <div>
+          <p class="kicker">WHY SNORKELING</p>
+          <h2>多くの人が夢中になるのは、海の中をすぐ近くに感じられるから。</h2>
+        </div>
+        <p class="section-note">スノーケリングは、深く潜る競技ではありません。浮力を使って楽に浮き、呼吸を整えながら、浅い海の生き物や地形を観察する活動です。</p>
+      </div>
+      <div class="feature-story">
+        <article class="card visual-card">
+          <img src="assets/snorkeling-appeal.webp" alt="水面に浮かぶスノーケラーと浅い海の魚や海藻の景色">
+        </article>
+        <div class="feature-copy">
+          <h3>泳ぎの速さより、見つける楽しさ。</h3>
+          <p>スノーケリングの魅力は、特別な技術がなくても海の世界をのぞけることです。水面に浮きながら、魚の動き、岩場のすき間、海藻の揺れをゆっくり観察できます。</p>
+          <p>ただし「簡単にできる」ことと「何も知らなくて安全」は別です。波、流れ、疲れ、器材のずれは事故につながることがあります。プロから最初にレクチャーを受けると、楽しむ余裕がぐっと増えます。</p>
+        </div>
+      </div>
+      <div class="grid three">
+        <article class="card">
+          <div class="card-body">
+            <h3>目の前に生き物が現れる</h3>
+            <p>魚の群れ、ウミウシ、カニ、海藻、岩場のすき間。水面からでも、海の中は想像以上に情報量があります。</p>
+            <div class="pill-row">
+              <span class="pill">観察</span>
+              <span class="pill">発見</span>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h3>浮いているだけで気持ちいい</h3>
+            <p>ライフジャケットを着て、体を預けると、波に合わせてゆっくり揺れます。力を抜くほど楽になります。</p>
+            <div class="pill-row">
+              <span class="pill">浮力</span>
+              <span class="pill">リラックス</span>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h3>仲間と同じ海を見る</h3>
+            <p>ひとりで遠くへ行くより、近くの人と発見を共有するほうが安全で楽しい活動です。バディ意識が基本です。</p>
+            <div class="pill-row">
+              <span class="pill">バディ</span>
+              <span class="pill">共有</span>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h3>安全のコツで楽しさが増える</h3>
+            <p>マスクに水が入った時、疲れた時、流れを感じた時の対応を知っているだけで、落ち着いて海を楽しめます。</p>
+            <div class="pill-row">
+              <span class="pill">レクチャー</span>
+              <span class="pill">安心</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="gear">
+      <div class="section-head">
+        <div>
+          <p class="kicker">EQUIPMENT</p>
+          <h2>器材は「よく見える」「楽に進む」「浮ける」ための道具。</h2>
+        </div>
+        <p class="section-note">器材はかっこよさよりも、サイズが合っていることが大切です。違和感があるときは、海に入る前に必ずインストラクターへ伝えてください。</p>
+      </div>
+
+      <div class="gear-layout">
+        <article class="card visual-card square">
+          <img src="assets/snorkeling-equipment.webp" alt="スノーケリングに使うマスク、スノーケル、フィン、ブーツ、ライフジャケット">
+          <div class="card-body">
+            <h3>主なレンタル器材</h3>
+            <p>当日は器材の名前、付け方、外れたときの直し方も水に入る前に確認します。</p>
+          </div>
+        </article>
+        <div class="gear-list">
+          <div class="gear-item"><div class="gear-icon">M</div><div><strong>マスク</strong><span>水中を見るための窓。髪の毛が挟まると水が入りやすくなります。</span></div></div>
+          <div class="gear-item"><div class="gear-icon">S</div><div><strong>スノーケル</strong><span>顔を水につけたまま呼吸するための管。口でゆっくり吸って吐きます。</span></div></div>
+          <div class="gear-item"><div class="gear-icon">F</div><div><strong>フィン</strong><span>少ない力で進むための足ひれ。膝を大きく曲げず、ゆっくり蹴ります。</span></div></div>
+          <div class="gear-item"><div class="gear-icon">B</div><div><strong>ブーツ</strong><span>岩場やフィンずれから足を守ります。砂や小石が入ったら無理せず直します。</span></div></div>
+          <div class="gear-item"><div class="gear-icon">L</div><div><strong>ライフジャケット</strong><span>水面で浮くための重要装備。きつすぎず、ゆるすぎず、必ず正しく着ます。</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="section-head">
+        <div>
+          <p class="kicker">HOW TO ENJOY</p>
+          <h2>正しい楽しみ方は、ゆっくり、近くで、よく見ること。</h2>
+        </div>
+        <p class="section-note">スノーケリングで疲れる人は、たいてい力みすぎています。速く泳がず、呼吸と浮力を味方にしましょう。</p>
+      </div>
+      <div class="lesson-bridge">
+        <article class="card visual-card">
+          <img src="assets/buddy-lesson.webp" alt="海辺でインストラクターから合図とバディ行動の説明を受ける学生">
+        </article>
+        <div class="feature-copy">
+          <h3>先に習うと、海の中で慌てにくい。</h3>
+          <p>器材の直し方、バディとの距離、困った時の合図を先に知っておくと、海に入ってからの不安が減ります。難しい活動ではありませんが、自然の中で行うからこそ、最初の確認が大切です。</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="step"><div><h3>陸上で器材と合図を確認</h3><p>マスクの付け方、スノーケルのくわえ方、フィンの履き方、困ったときの合図を練習します。</p></div></div>
+        <div class="step"><div><h3>浅いところで呼吸に慣れる</h3><p>顔をつけて、口呼吸をゆっくり確認。水が入っても慌てず顔を上げれば大丈夫です。</p></div></div>
+        <div class="step"><div><h3>バディと近い距離で移動</h3><p>ひとりで先に行かず、バディの近くで泳ぎます。移動したい時は、バディと一緒に動きましょう。疲れる前に休むのが上手な楽しみ方です。</p></div></div>
+        <div class="step"><div><h3>観察は静かに、距離を保って</h3><p>生き物を追いかけると逃げます。止まって見ていると、向こうから自然な姿を見せてくれます。</p></div></div>
+      </div>
+    </section>
+
+    <section id="risk">
+      <div class="section-head">
+        <div>
+          <p class="kicker">RISK AWARENESS</p>
+          <h2>危険を知っている人ほど、海を楽しめる。</h2>
+        </div>
+        <p class="section-note">海はプールと違い、波、風、流れ、水温、生き物、岩場が変化します。怖がるためではなく、落ち着いて行動するために確認します。</p>
+      </div>
+
+      <div class="grid three">
+        <article class="card risk-card">
+          <div class="card-body">
+            <h3><span class="mini-tag">波</span>波・うねり</h3>
+            <p>顔に水がかかりやすく、岩場では体が寄せられます。無理に進まず、顔を上げて合図します。</p>
+          </div>
+        </article>
+        <article class="card risk-card">
+          <div class="card-body">
+            <h3><span class="mini-tag">流</span>流れ</h3>
+            <p>気づかないうちに移動することがあります。目印と仲間の位置をこまめに確認します。</p>
+          </div>
+        </article>
+        <article class="card risk-card">
+          <div class="card-body">
+            <h3><span class="mini-tag">疲</span>疲労・冷え</h3>
+            <p>泳ぎ続けると体力を使います。寒い、息が上がる、足がつる前に休憩を伝えます。</p>
+          </div>
+        </article>
+        <article class="card risk-card">
+          <div class="card-body">
+            <h3><span class="mini-tag">岩</span>岩・浅瀬</h3>
+            <p>立とうとして足を切る、ウニを踏むことがあります。浅い場所ではフィンを下げすぎません。</p>
+          </div>
+        </article>
+        <article class="card risk-card">
+          <div class="card-body">
+            <h3><span class="mini-tag">具</span>器材トラブル</h3>
+            <p>マスクに水が入る、スノーケルに水が入る、フィンが脱げることがあります。慌てず止まります。</p>
+          </div>
+        </article>
+        <article class="card risk-card">
+          <div class="card-body">
+            <h3><span class="mini-tag">生</span>危険生物</h3>
+            <p>クラゲ、ウニ、エイ、オコゼなどは距離を保てば避けられます。触らない、踏まないが基本です。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="life">
+      <div class="section-head">
+        <div>
+          <p class="kicker">MARINE LIFE MANNERS</p>
+          <h2>水中生物とは、近づきすぎずに出会う。</h2>
+        </div>
+        <p class="section-note">海の中では、私たちが訪問者です。生き物を守ることは、自分の安全を守ることにもつながります。</p>
+      </div>
+
+      <div class="etiquette-wrap">
+        <article class="card visual-card">
+          <img src="assets/marine-life-etiquette.webp" alt="水面のスノーケラーと魚、クラゲ、ウニがいる浅い海の安全な距離感">
+          <div class="card-body">
+            <h3>観察の基本姿勢</h3>
+            <p>水面で浮きながら、目線を落として観察します。生き物の上に乗らない、手を伸ばさない、追い込まないことが大切です。</p>
+          </div>
+        </article>
+        <div class="rule-list">
+          <div class="rule"><strong>触らない</strong><p>かわいく見えても、毒やトゲがある生き物がいます。人の手で傷つく生き物もいます。</p></div>
+          <div class="rule"><strong>追いかけない</strong><p>追うほど生き物は逃げます。止まって待つほうが、自然な動きが見られます。</p></div>
+          <div class="rule"><strong>餌をあげない</strong><p>生き物の行動や生態系を変えてしまいます。人に近づきすぎる原因にもなります。</p></div>
+          <div class="rule"><strong>岩や海藻を壊さない</strong><p>小さな生き物のすみかです。フィンで蹴らない、手でつかまないようにします。</p></div>
+          <div class="rule"><strong>持ち帰らない</strong><p>貝殻、石、生き物はその場所の一部です。写真と記憶で持ち帰りましょう。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trouble">
+      <div class="section-head">
+        <div>
+          <p class="kicker">TROUBLE SHOOTING</p>
+          <h2>困ったら、止まる。浮く。知らせる。</h2>
+        </div>
+        <p class="section-note">多くのトラブルは「慌てて動き続ける」ことで大きくなります。ライフジャケットで浮けるので、まず止まって呼吸を整えましょう。</p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-mark">3</div>
+        <div>
+          <strong>合言葉は「止まる、浮く、知らせる」。</strong>
+          <p>無理に自分で解決しようとせず、顔を上げてインストラクターや近くの人に合図します。</p>
+        </div>
+      </div>
+
+      <div class="trouble-list" style="margin-top: 18px;">
+        <details open>
+          <summary>マスクに水が入った</summary>
+          <div class="detail-body"><b>対処:</b> 立てる場所なら顔を上げて直します。水面では仰向け気味に浮き、インストラクターに合図。髪の毛やストラップのねじれを確認します。</div>
+        </details>
+        <details>
+          <summary>スノーケルに水が入った</summary>
+          <div class="detail-body"><b>対処:</b> 顔を上げて口から外し、落ち着いて呼吸します。無理に水中で吸い続けません。必要ならスタッフが排水方法をサポートします。</div>
+        </details>
+        <details>
+          <summary>足がつった、疲れた</summary>
+          <div class="detail-body"><b>対処:</b> 泳ぐのをやめ、仰向けに浮きます。フィンキックを止めて合図。休めば回復することが多いので、我慢して進まないこと。</div>
+        </details>
+        <details>
+          <summary>仲間やスタッフと離れた</summary>
+          <div class="detail-body"><b>対処:</b> その場で顔を上げ、周囲を確認します。遠くへ探しに行かず、手を上げて知らせます。集合場所やスタッフの指示を優先します。</div>
+        </details>
+        <details>
+          <summary>クラゲやウニを見つけた</summary>
+          <div class="detail-body"><b>対処:</b> 近づかず、触らず、静かに距離を取ります。刺された、踏んだ可能性がある場合はすぐに申告し、自己判断でこすらないようにします。</div>
+        </details>
+        <details>
+          <summary>気分が悪い、寒い、怖い</summary>
+          <div class="detail-body"><b>対処:</b> 早めに伝えるのが正解です。海では我慢が一番危険です。休憩、岸への移動、器材調整など、その場に合った対応をします。</div>
+        </details>
+      </div>
+    </section>
+
+    <section id="signals">
+      <div class="section-head">
+        <div>
+          <p class="kicker">COMMUNICATION</p>
+          <h2>水の中では、短い合図が命綱。</h2>
+        </div>
+        <p class="section-note">声が届きにくいので、顔を上げて、はっきり合図します。わからないときも遠慮せず知らせてください。</p>
+      </div>
+      <div class="signal-grid">
+        <div class="signal"><div class="signal-mark">OK</div><strong>大丈夫</strong><span>問題なし。確認されたら返します。</span></div>
+        <div class="signal"><div class="signal-mark">!</div><strong>困っています</strong><span>片手を上げてスタッフへ知らせます。</span></div>
+        <div class="signal"><div class="signal-mark">STOP</div><strong>止まる</strong><span>動かず、その場で浮いて待ちます。</span></div>
+        <div class="signal"><div class="signal-mark">UP</div><strong>顔を上げる・戻る</strong><span>呼吸、集合、岸へ戻る合図です。</span></div>
+      </div>
+    </section>
+
+    <section id="check">
+      <div class="section-head">
+        <div>
+          <p class="kicker">BEFORE THE DAY</p>
+          <h2>前日までに、ここだけ確認。</h2>
+        </div>
+        <p class="section-note">準備ができているほど、当日の不安は小さくなります。体調に不安がある場合は、参加前に必ず相談してください。</p>
+      </div>
+      <div class="grid two">
+        <div class="checklist" aria-label="事前チェックリスト">
+          <label class="check-item"><input type="checkbox"><span>睡眠を取り、発熱・強い疲労・体調不良がないか確認した</span></label>
+          <label class="check-item"><input type="checkbox"><span>水着、タオル、着替え、濡れてもよいサンダルを準備した</span></label>
+          <label class="check-item"><input type="checkbox"><span>日焼け対策、飲み物、酔いやすい人は酔い止めの相談をした</span></label>
+          <label class="check-item"><input type="checkbox"><span>コンタクトやメガネ、髪の長さなど、器材に関わることを確認した</span></label>
+          <label class="check-item"><input type="checkbox"><span>海では「単独行動しない」「無理しない」「触らない」を守ると決めた</span></label>
+        </div>
+        <article class="card">
+          <div class="card-body">
+            <h3>こんな内容も当日に扱います</h3>
+            <p>海況の見方、エントリーとエキジット、ライフジャケットでの浮き方、フィンキック、呼吸、バディ確認、生き物観察、片付けと振り返り。</p>
+            <div class="pill-row">
+              <span class="pill">安全第一</span>
+              <span class="pill">少人数で確認</span>
+              <span class="pill">初めてでもOK</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="finish" aria-label="まとめ">
+      <p class="kicker" style="color: #f1d179;">SUMMARY</p>
+      <h2>海に入る前の準備は、海の中の余裕になる。</h2>
+      <p>スノーケリングは、自然の中で行う活動です。だからこそ、器材を正しく使い、仲間と近くにいて、生き物に敬意を持って観察することが大切です。当日は安全に、楽しく、三浦の海をのぞきに行きましょう。</p>
+    </section>
+  </main>
+</body>
+</html>
