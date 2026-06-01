@@ -1,0 +1,1670 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AOW講習 学習ガイド | 三浦 海の学校</title>
+  <meta name="description" content="AOW講習に申し込んだ方向けの事前学習ガイド。2日間5ダイブの流れ、ディープダイビング、ナビゲーション、選択科目の要点を確認できます。">
+  <style>
+    :root {
+      --ink: #16202a;
+      --muted: #5e6b78;
+      --line: #d8e1e8;
+      --paper: #ffffff;
+      --mist: #f4f8fa;
+      --sea: #087f8c;
+      --deep: #183a59;
+      --coral: #d85f45;
+      --sand: #e5c36f;
+      --green: #28745a;
+      --shadow: 0 14px 38px rgba(22, 32, 42, .12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--mist);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+      letter-spacing: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-shell {
+      background:
+        linear-gradient(180deg, rgba(8, 127, 140, .08), rgba(244, 248, 250, 0) 520px),
+        var(--mist);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 78vh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: #fff;
+      background: #10293f;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 20, 31, .82), rgba(8, 20, 31, .34) 58%, rgba(8, 20, 31, .18)),
+        linear-gradient(0deg, rgba(8, 20, 31, .72), rgba(8, 20, 31, 0) 52%),
+        url("../image/diving-license-hero.png") center / cover no-repeat;
+      transform: scale(1.02);
+    }
+
+    .hero-inner {
+      position: relative;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 88px 0 44px;
+    }
+
+    .site-mark {
+      position: absolute;
+      top: 22px;
+      left: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, .92);
+      font-weight: 700;
+    }
+
+    .site-mark img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .96);
+      padding: 5px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #f3d777;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin: 0;
+      font-size: 48px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 740px;
+      margin: 18px 0 0;
+      font-size: 18px;
+      color: rgba(255, 255, 255, .9);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 34px;
+      max-width: 880px;
+    }
+
+    .hero-stat {
+      min-height: 104px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, .32);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .11);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .hero-stat span {
+      display: block;
+      margin-top: 8px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .82);
+      line-height: 1.45;
+    }
+
+    .quick-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(14px);
+    }
+
+    .quick-nav-inner {
+      width: min(1120px, calc(100% - 24px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .quick-nav a {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--deep);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .quick-nav a:hover {
+      border-color: var(--sea);
+      color: var(--sea);
+    }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    section {
+      scroll-margin-top: 78px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--sea);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--deep);
+      font-size: 30px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--deep);
+      font-size: 20px;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .band {
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .intro-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfe;
+    }
+
+    .day-label {
+      color: var(--coral);
+      font-weight: 900;
+    }
+
+    .timeline-row ul,
+    .module-list,
+    .checklist,
+    .compact-list {
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .timeline-row li,
+    .module-list li,
+    .compact-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-top: 7px;
+      color: var(--muted);
+    }
+
+    .timeline-row li::before,
+    .module-list li::before,
+    .compact-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .77em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--sea);
+    }
+
+    .course-card {
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .course-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .course-card-body {
+      padding: 22px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 9px;
+      border-radius: 8px;
+      background: #eef6f7;
+      color: var(--deep);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .badge.required {
+      background: #fff0ec;
+      color: #9c3828;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .module-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .module-media {
+      height: 190px;
+      background: var(--deep);
+    }
+
+    .module-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .module-body {
+      padding: 22px;
+    }
+
+    .module-meta {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 4px 9px;
+      border-radius: 8px;
+      background: #f3efd8;
+      color: #765d10;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .module-meta.required {
+      background: #eaf4f4;
+      color: var(--sea);
+    }
+
+    .lesson {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .lesson:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .lesson-label {
+      font-weight: 900;
+      color: var(--coral);
+    }
+
+    .lesson p + p {
+      margin-top: 10px;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .choice-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .choice-card:nth-child(2n) {
+      border-top: 4px solid var(--sea);
+    }
+
+    .choice-card:nth-child(2n + 1) {
+      border-top: 4px solid var(--coral);
+    }
+
+    .choice-card:nth-child(3n) {
+      border-top-color: var(--sand);
+    }
+
+    .guide-stack {
+      display: grid;
+      gap: 26px;
+    }
+
+    .visual-guide {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .visual-guide img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .visual-guide-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .72fr);
+      gap: 18px;
+      padding: 24px;
+    }
+
+    .key-points {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .key-points li {
+      padding: 12px 14px;
+      border-left: 4px solid var(--sea);
+      border-radius: 8px;
+      background: #f5fafb;
+      color: var(--muted);
+    }
+
+    .dive-study {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .dive-study-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfdfe;
+    }
+
+    .dive-study-header p {
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .dive-tag {
+      display: inline-flex;
+      min-height: 32px;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: #eef6f7;
+      color: var(--sea);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .dive-study-body {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .study-panel {
+      min-height: 100%;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .study-panel h4 {
+      margin: 0 0 10px;
+      color: var(--deep);
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .study-panel p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .study-panel ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .study-panel li {
+      position: relative;
+      margin-top: 8px;
+      padding-left: 17px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .study-panel li::before {
+      content: "";
+      position: absolute;
+      top: .75em;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    .thinking-box {
+      margin-top: 0;
+      padding: 18px 20px;
+      border-top: 1px solid var(--line);
+      background: #fff9eb;
+      color: #6f5511;
+      font-size: 15px;
+    }
+
+    .mini-title {
+      margin-top: 14px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 18px 20px;
+      color: var(--deep);
+      font-weight: 900;
+    }
+
+    details > div {
+      padding: 0 20px 20px;
+      color: var(--muted);
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .quiz-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .quiz-card fieldset {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .quiz-card legend {
+      margin-bottom: 12px;
+      color: var(--deep);
+      font-weight: 900;
+    }
+
+    .quiz-card label,
+    .checklist label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px 0;
+      color: var(--muted);
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      accent-color: var(--sea);
+      flex: 0 0 auto;
+    }
+
+    .quiz-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    button,
+    .line-button {
+      min-height: 44px;
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      background: var(--sea);
+      color: #fff;
+      font: inherit;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button:hover,
+    .line-button:hover {
+      background: #066873;
+    }
+
+    .ghost-button {
+      background: #fff;
+      color: var(--deep);
+      border: 1px solid var(--line);
+    }
+
+    .ghost-button:hover {
+      background: #f7fafb;
+    }
+
+    .quiz-result {
+      color: var(--deep);
+      font-weight: 900;
+    }
+
+    .readiness {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(280px, 1.1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .progress-panel {
+      position: sticky;
+      top: 74px;
+      padding: 24px;
+      border-radius: 8px;
+      background: var(--deep);
+      color: #fff;
+    }
+
+    .progress-value {
+      display: block;
+      margin-top: 8px;
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .progress-bar {
+      height: 12px;
+      margin-top: 18px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .18);
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--sand);
+      transition: width .25s ease;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 5px;
+    }
+
+    .footer-cta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+      margin-top: 44px;
+      padding: 26px;
+      border-radius: 8px;
+      background: #14334f;
+      color: #fff;
+    }
+
+    .footer-cta h2 {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    .footer-cta p {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, .84);
+    }
+
+    .site-footer {
+      padding: 24px 16px 42px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        min-height: 700px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      h2 {
+        font-size: 25px;
+      }
+
+      .hero-grid,
+      .module-grid,
+      .choice-grid,
+      .details-grid,
+      .quiz-grid,
+      .visual-guide-body,
+      .dive-study-header,
+      .dive-study-body,
+      .intro-layout,
+      .readiness,
+      .section-head,
+      .footer-cta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        max-width: none;
+      }
+
+      .lesson,
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .progress-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-inner {
+        width: min(100% - 24px, 1120px);
+        padding-bottom: 28px;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-stat {
+        min-height: 112px;
+        padding: 13px;
+      }
+
+      main {
+        width: min(100% - 24px, 1120px);
+        padding-top: 34px;
+      }
+
+      .band {
+        padding: 22px;
+      }
+
+      .module-body,
+      .course-card-body,
+      .choice-card,
+      .visual-guide-body,
+      .study-panel,
+      .quiz-card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="hero">
+      <div class="hero-inner">
+        <a class="site-mark" href="../">
+          <img src="../image/umigaku-logo.webp" alt="三浦 海の学校">
+          <span>三浦 海の学校</span>
+        </a>
+        <p class="eyebrow">AOW講習 事前学習ガイド</p>
+        <h1>2日間・5ダイブを、もっと面白くするための予習ページ</h1>
+        <p class="lead">ディープダイビングとナビゲーションを軸に、選択科目で自分のダイビングの幅を広げます。細かい流れは当日インストラクターが案内するので、ここでは「何を見るか」「何を考えるか」をつかんでおきましょう。</p>
+        <div class="hero-grid" aria-label="講習概要">
+          <div class="hero-stat">
+            <strong>2日間</strong>
+            <span>海況に合わせて安全優先で進行</span>
+          </div>
+          <div class="hero-stat">
+            <strong>5本</strong>
+            <span>アドベンチャーダイブを実施</span>
+          </div>
+          <div class="hero-stat">
+            <strong>2科目</strong>
+            <span>ディープとナビゲーションは必須</span>
+          </div>
+          <div class="hero-stat">
+            <strong>3科目</strong>
+            <span>興味や海況に合わせて選択</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="quick-nav" aria-label="ページ内ナビゲーション">
+      <div class="quick-nav-inner">
+        <a href="#overview">全体像</a>
+        <a href="#required">必須科目</a>
+        <a href="#choices">選択科目</a>
+        <a href="#dive-guides">学習要項</a>
+        <a href="#study">学習メモ</a>
+        <a href="#quiz">理解度チェック</a>
+        <a href="#ready">当日チェック</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="overview" class="band">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Course Outline</p>
+            <h2>AOWは「できること」を増やす講習です</h2>
+          </div>
+          <p class="section-note">OWDで身につけた基本を使いながら、深度、方向感覚、浮力、観察力、ボートやドライスーツなどの経験値を広げていきます。</p>
+        </div>
+
+        <div class="intro-layout">
+          <div>
+            <p>講習は2日間で合計5ダイブ。必須科目はディープダイビングとアンダーウォーターナビゲーションです。残り3ダイブは、基本的にPPB、魚の見分け方、ボートダイビング、ドライスーツダイビング、ナチュラリストから選びます。</p>
+            <div class="timeline">
+              <div class="timeline-row">
+                <div class="day-label">1日目</div>
+                <div>
+                  <strong>基本の精度を上げる日</strong>
+                  <ul>
+                    <li>ナビゲーションやPPBなど、浅場で落ち着いて確認しやすい内容を中心に進めます。</li>
+                    <li>コンパス、キック数、浮力、姿勢、呼吸の使い方を見直します。</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="timeline-row">
+                <div class="day-label">2日目</div>
+                <div>
+                  <strong>環境に合わせて応用する日</strong>
+                  <ul>
+                    <li>ディープやボートなど、より幅のあるダイビングに挑戦します。</li>
+                    <li>安全停止、残圧管理、バディとの確認を丁寧に行います。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <article class="course-card">
+            <img src="../image/owd-hero.png" alt="講習前に海を確認するダイバー">
+            <div class="course-card-body">
+              <h3>このページで確認すること</h3>
+              <div class="badge-row">
+                <span class="badge required">ディープ</span>
+                <span class="badge required">ナビゲーション</span>
+                <span class="badge">PPB</span>
+                <span class="badge">魚の見分け方</span>
+                <span class="badge">ボート</span>
+                <span class="badge">ドライスーツ</span>
+                <span class="badge">ナチュラリスト</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="required" style="margin-top: 46px;">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Required Dives</p>
+            <h2>必須科目の考え方</h2>
+          </div>
+          <p class="section-note">どちらも「落ち着いて計画し、バディと確認しながら潜る」ための科目です。上手さより、確認の丁寧さを大切にします。</p>
+        </div>
+
+        <div class="module-grid">
+          <article class="module-card">
+            <div class="module-media">
+              <img src="../image/boat-dive.png" alt="深い海へ向かうダイビングボート">
+            </div>
+            <div class="module-body">
+              <span class="module-meta required">必須</span>
+              <h3>ディープダイビング</h3>
+              <ul class="module-list">
+                <li>深くなるほど空気の消費が早くなり、無減圧時間も短くなります。</li>
+                <li>色、浮力、残圧、体感の変化を観察します。</li>
+                <li>深度・時間・残圧・浮上速度をこまめに確認します。</li>
+              </ul>
+              <p class="mini-title">予習ポイント</p>
+              <p class="section-note">深い場所に行くこと自体が目的ではなく、計画通りに潜って戻る判断力を身につけるのが目的です。</p>
+            </div>
+          </article>
+
+          <article class="module-card">
+            <div class="module-media">
+              <img src="../assets/img/pool.png" alt="水中で姿勢を整えるダイバー">
+            </div>
+            <div class="module-body">
+              <span class="module-meta required">必須</span>
+              <h3>アンダーウォーターナビゲーション</h3>
+              <ul class="module-list">
+                <li>コンパスだけでなく、地形、砂紋、岩、光の向きも手がかりにします。</li>
+                <li>キック数や時間で距離感をつかみます。</li>
+                <li>往復、四角形、簡単な探索ルートを練習します。</li>
+              </ul>
+              <p class="mini-title">予習ポイント</p>
+              <p class="section-note">迷わない人になるというより、今どこにいるかを考え続けられる人になる練習です。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="choices" style="margin-top: 46px;">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Adventure Dives</p>
+            <h2>選択科目は3つ</h2>
+          </div>
+          <p class="section-note">海況、季節、経験、目的に合わせて決めます。希望がある場合は事前に相談してください。</p>
+        </div>
+
+        <div class="choice-grid">
+          <article class="choice-card">
+            <h3>PPB 中性浮力</h3>
+            <p>呼吸、姿勢、ウエイト量、フィンワークを整えて、砂を巻き上げずに止まる・進む練習です。</p>
+            <p class="mini-title">見ておくこと</p>
+            <ul class="compact-list">
+              <li>息を吸うと浮き、吐くと沈む感覚</li>
+              <li>体を水平に保つ姿勢</li>
+              <li>手を使わない移動</li>
+            </ul>
+          </article>
+
+          <article class="choice-card">
+            <h3>魚の見分け方</h3>
+            <p>名前を丸暗記するより、形、泳ぎ方、すみか、群れ方から仲間を見分ける練習です。</p>
+            <p class="mini-title">見ておくこと</p>
+            <ul class="compact-list">
+              <li>体型、口の形、ヒレの形</li>
+              <li>岩場、砂地、海藻まわりなどの環境</li>
+              <li>単独か群れか、隠れるか泳ぎ続けるか</li>
+            </ul>
+          </article>
+
+          <article class="choice-card">
+            <h3>ボートダイビング</h3>
+            <p>ボート上での動き、エントリー、潜降、浮上、エキジットを落ち着いて行う練習です。</p>
+            <p class="mini-title">見ておくこと</p>
+            <ul class="compact-list">
+              <li>器材の置き方と動線</li>
+              <li>エントリー前の最終確認</li>
+              <li>浮上後にボートへ戻る手順</li>
+            </ul>
+          </article>
+
+          <article class="choice-card">
+            <h3>ドライスーツ</h3>
+            <p>スーツ内の空気を管理しながら、寒い時期でも快適に潜るための基礎を確認します。</p>
+            <p class="mini-title">見ておくこと</p>
+            <ul class="compact-list">
+              <li>給気と排気のタイミング</li>
+              <li>足に空気がたまる感覚</li>
+              <li>首・手首まわりの水没予防</li>
+            </ul>
+          </article>
+
+          <article class="choice-card">
+            <h3>ナチュラリスト</h3>
+            <p>水中生物の関係や環境を観察し、海の中を傷つけずに楽しむ視点を育てます。</p>
+            <p class="mini-title">見ておくこと</p>
+            <ul class="compact-list">
+              <li>生き物同士の関係</li>
+              <li>触らない、追わない、着底しない意識</li>
+              <li>季節による海の変化</li>
+            </ul>
+          </article>
+
+          <article class="choice-card">
+            <h3>当日の組み合わせ</h3>
+            <p>基本は上の5科目から3つ。海況や参加者の経験により、最も安全で学びやすい順番に調整します。</p>
+            <p class="mini-title">事前に考えること</p>
+            <ul class="compact-list">
+              <li>上達したいこと</li>
+              <li>不安があること</li>
+              <li>今後行きたい海やスタイル</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="dive-guides" style="margin-top: 46px;">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Learning Guide</p>
+            <h2>各ダイブの学習要項</h2>
+          </div>
+          <p class="section-note">ここは「手順を覚える」よりも、なぜそのダイブを学ぶのか、どんなリスクがあり、どう考えると安全に楽しめるかを整理する場所です。</p>
+        </div>
+
+        <div class="guide-stack">
+          <article class="visual-guide">
+            <img src="assets/deep-safety.jpg" alt="深度変化と浮上ラインを確認しながら潜るディープダイビングの図解">
+            <div class="visual-guide-body">
+              <div>
+                <h3>深度・時間・残圧はセットで考える</h3>
+                <p>ディープでは、同じ海でも浅場とは条件が変わります。深くなるほど空気消費、浮力変化、無減圧時間、体への負荷が変わるため、ひとつの数字だけで判断しないことが大切です。</p>
+              </div>
+              <ul class="key-points">
+                <li>深度を見るたびに、残圧と時間も一緒に確認する。</li>
+                <li>浮上の余裕、安全停止、バディの状態まで含めて判断する。</li>
+                <li>違和感があれば我慢せず、早めに浅くする。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dive-study">
+            <div class="dive-study-header">
+              <div>
+                <h3>ディープダイビング</h3>
+                <p>深い場所へ行くための講習ではなく、深度が変わったときに判断を崩さないための講習です。</p>
+              </div>
+              <span class="dive-tag">必須</span>
+            </div>
+            <div class="dive-study-body">
+              <div class="study-panel">
+                <h4>する意味</h4>
+                <p>18mより深い世界では、色の見え方、残圧の減り方、浮力、無減圧時間の感覚が変わります。AOWではその変化を実際に確認し、深いポイントでも落ち着いて計画通りに潜る考え方を身につけます。</p>
+              </div>
+              <div class="study-panel">
+                <h4>主なリスク</h4>
+                <ul>
+                  <li>空気消費が早くなり、戻る余裕が少なくなる。</li>
+                  <li>無減圧時間が短く、予定外に長居しやすい。</li>
+                  <li>浮上速度が速くなりやすい。</li>
+                  <li>判断力や感覚がぼんやりすることがある。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>安全に楽しむ考え方</h4>
+                <ul>
+                  <li>最大深度、滞在時間、浮上開始残圧を事前に共有する。</li>
+                  <li>深度を落とすほど、残圧確認の間隔を短くする。</li>
+                  <li>「まだ行ける」より「余裕を残して戻る」を優先する。</li>
+                  <li>浮上中は呼吸を止めず、深度変化を小さく刻む。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>見ておく知識</h4>
+                <ul>
+                  <li>深度が増すと空気消費が増える理由。</li>
+                  <li>安全停止をする意味。</li>
+                  <li>色が吸収されて見え方が変わること。</li>
+                  <li>ダイブコンピューターの深度、時間、浮上速度表示。</li>
+                </ul>
+              </div>
+            </div>
+            <p class="thinking-box">考えておくこと：深い場所で「あと少し見たい」と思ったとき、何を確認してから判断するべきでしょうか。</p>
+          </article>
+
+          <article class="visual-guide">
+            <img src="assets/navigation-map.jpg" alt="水中コンパスと自然の目印を使うナビゲーションの図解">
+            <div class="visual-guide-body">
+              <div>
+                <h3>ナビゲーションは「方角」と「景色」の組み合わせ</h3>
+                <p>コンパスは大切ですが、コンパスだけを見続けると周囲やバディを見落とします。砂紋、岩、海藻、光、流れ、深度変化を一緒に読むことで、水中の地図が少しずつ頭にできます。</p>
+              </div>
+              <ul class="key-points">
+                <li>出発前に、帰りの方角と目印を決める。</li>
+                <li>進む距離はキック数、時間、地形の変化で確認する。</li>
+                <li>迷ったら動き続けず、止まってバディと情報を合わせる。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dive-study">
+            <div class="dive-study-header">
+              <div>
+                <h3>アンダーウォーターナビゲーション</h3>
+                <p>水中で自分の位置を考え続け、チームで安全に戻るための基礎です。</p>
+              </div>
+              <span class="dive-tag">必須</span>
+            </div>
+            <div class="dive-study-body">
+              <div class="study-panel">
+                <h4>する意味</h4>
+                <p>水中では視界が限られ、陸上より方向感覚が失われやすくなります。ナビゲーションを学ぶと、ガイドにただ付いていくのではなく、今どこにいて、どの方向に戻るのかを自分でも考えられます。</p>
+              </div>
+              <div class="study-panel">
+                <h4>主なリスク</h4>
+                <ul>
+                  <li>目的地や帰り道を見失い、泳ぐ距離が増える。</li>
+                  <li>迷った焦りで残圧消費が早くなる。</li>
+                  <li>コンパスに集中しすぎて深度やバディを見落とす。</li>
+                  <li>浮上場所がずれて、船や岸から離れる。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>安全に楽しむ考え方</h4>
+                <ul>
+                  <li>出発地点の景色を振り返って覚える。</li>
+                  <li>コンパス、地形、キック数を組み合わせる。</li>
+                  <li>不安になったら止まり、深度、残圧、方角を整理する。</li>
+                  <li>バディと同じ情報を見ているか確認する。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>見ておく知識</h4>
+                <ul>
+                  <li>コンパスのベゼルとラバーラインの使い方。</li>
+                  <li>往復、四角形、三角形の考え方。</li>
+                  <li>キック数と距離感の関係。</li>
+                  <li>ナチュラルナビゲーションの目印。</li>
+                </ul>
+              </div>
+            </div>
+            <p class="thinking-box">考えておくこと：コンパスの方角が合っていても「何か違う」と感じたら、周囲のどんな情報を見直しますか。</p>
+          </article>
+
+          <article class="visual-guide">
+            <img src="assets/buoyancy-eco.jpg" alt="中性浮力で海底から距離を保ち生き物を観察する図解">
+            <div class="visual-guide-body">
+              <div>
+                <h3>浮力と観察力は、安全にも環境にもつながる</h3>
+                <p>浮力が安定すると、疲れにくく、残圧にも余裕が出て、砂を巻き上げず、生き物にも近づきすぎません。魚の見分け方やナチュラリストも、まずは落ち着いた姿勢で観察することから始まります。</p>
+              </div>
+              <ul class="key-points">
+                <li>止まる技術は、見る余裕を作る技術。</li>
+                <li>海底に近いほど、フィンとゲージの位置に気を配る。</li>
+                <li>生き物の行動が変わったら、距離が近すぎる合図。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dive-study">
+            <div class="dive-study-header">
+              <div>
+                <h3>PPB 中性浮力</h3>
+                <p>上手に見えるためではなく、楽に、安全に、海を傷つけずに潜るための基礎です。</p>
+              </div>
+              <span class="dive-tag">選択</span>
+            </div>
+            <div class="dive-study-body">
+              <div class="study-panel">
+                <h4>する意味</h4>
+                <p>中性浮力が安定すると、余計な動きが減り、疲れにくく、空気の消費も落ち着きます。水底を壊さず、生き物を驚かせず、写真や観察もしやすくなります。</p>
+              </div>
+              <div class="study-panel">
+                <h4>主なリスク</h4>
+                <ul>
+                  <li>浮きすぎて急浮上につながる。</li>
+                  <li>沈みすぎて砂を巻き上げ、視界を悪くする。</li>
+                  <li>サンゴ、海藻、生き物に接触する。</li>
+                  <li>手で泳ぐ癖がつき、姿勢が崩れる。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>安全に楽しむ考え方</h4>
+                <ul>
+                  <li>BCDに頼りすぎず、呼吸の変化を待つ。</li>
+                  <li>水平姿勢を意識し、足先とゲージの位置を見る。</li>
+                  <li>着底する前に一呼吸早く調整する。</li>
+                  <li>止まれないときは、まず動きを小さくする。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>見ておく知識</h4>
+                <ul>
+                  <li>肺の浮力変化とタイムラグ。</li>
+                  <li>ウエイト量と姿勢の関係。</li>
+                  <li>深度変化でBCD内の空気が膨張・収縮すること。</li>
+                  <li>砂地、岩場、海藻場での距離感。</li>
+                </ul>
+              </div>
+            </div>
+            <p class="thinking-box">考えておくこと：浮きそうになった瞬間、すぐに排気する前に何を確認すると落ち着けるでしょうか。</p>
+          </article>
+
+          <article class="dive-study">
+            <div class="dive-study-header">
+              <div>
+                <h3>魚の見分け方</h3>
+                <p>名前を覚える講習ではなく、観察の切り口を増やして海の中をもっと面白く見る講習です。</p>
+              </div>
+              <span class="dive-tag">選択</span>
+            </div>
+            <div class="dive-study-body">
+              <div class="study-panel">
+                <h4>する意味</h4>
+                <p>魚を「知っている名前」だけで見ると、分からない魚は全部同じに見えます。体型、口、ヒレ、泳ぎ方、すみかを観察すると、名前が分からなくても仲間や暮らし方を推測できます。</p>
+              </div>
+              <div class="study-panel">
+                <h4>主なリスク</h4>
+                <ul>
+                  <li>観察に夢中になり、深度や残圧確認が遅れる。</li>
+                  <li>近づきすぎて魚を追い込む。</li>
+                  <li>写真や観察で着底し、環境を傷つける。</li>
+                  <li>バディとの距離が開く。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>安全に楽しむ考え方</h4>
+                <ul>
+                  <li>まず浮力とバディ位置を安定させてから観察する。</li>
+                  <li>魚の逃げ道をふさがない位置から見る。</li>
+                  <li>特徴は3つだけ覚えて、ログで調べる。</li>
+                  <li>見たい魚ほど、追わずに待つ。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>見ておく知識</h4>
+                <ul>
+                  <li>体型、尾びれ、口の向きで暮らし方が見えること。</li>
+                  <li>砂地、岩穴、海藻、群れなどのすみ分け。</li>
+                  <li>幼魚と成魚で色や模様が変わること。</li>
+                  <li>ログに残す観察メモの書き方。</li>
+                </ul>
+              </div>
+            </div>
+            <p class="thinking-box">考えておくこと：名前が分からない魚を見たとき、あとで調べるために何を覚えておくとよいでしょうか。</p>
+          </article>
+
+          <article class="dive-study">
+            <div class="dive-study-header">
+              <div>
+                <h3>ボートダイビング</h3>
+                <p>船から潜る楽しさと、船上・水面・浮上後の安全管理を学ぶ講習です。</p>
+              </div>
+              <span class="dive-tag">選択</span>
+            </div>
+            <div class="dive-study-body">
+              <div class="study-panel">
+                <h4>する意味</h4>
+                <p>ボートを使うと、ビーチから届きにくいポイントに行けます。その分、船上の動線、エントリー、集合、浮上場所、エキジットなど、水中以外の判断も大切になります。</p>
+              </div>
+              <div class="study-panel">
+                <h4>主なリスク</h4>
+                <ul>
+                  <li>船上で器材につまずく、転ぶ。</li>
+                  <li>エントリー後に集合が遅れる。</li>
+                  <li>流れで船やブイから離れる。</li>
+                  <li>浮上後、船に気づかれにくい位置に出る。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>安全に楽しむ考え方</h4>
+                <ul>
+                  <li>船上では荷物を小さくまとめ、通路を空ける。</li>
+                  <li>エントリー前にマスク、レギュレーター、残圧、給気を確認する。</li>
+                  <li>水面ではすぐにOKサインを出し、集合場所へ向かう。</li>
+                  <li>浮上場所と合図、緊急時の手順を事前に聞く。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>見ておく知識</h4>
+                <ul>
+                  <li>ジャイアントストライドなどのエントリー方法。</li>
+                  <li>潜降ロープ、ブイ、アンカーラインの役割。</li>
+                  <li>水面シグナルと浮上後の待ち方。</li>
+                  <li>船酔い対策と水分補給。</li>
+                </ul>
+              </div>
+            </div>
+            <p class="thinking-box">考えておくこと：浮上した場所が船から少し離れていたら、まず何をして自分の位置を知らせますか。</p>
+          </article>
+
+          <article class="dive-study">
+            <div class="dive-study-header">
+              <div>
+                <h3>ドライスーツダイビング</h3>
+                <p>寒い季節も快適に潜るために、スーツ内の空気と体温管理を学びます。</p>
+              </div>
+              <span class="dive-tag">選択</span>
+            </div>
+            <div class="dive-study-body">
+              <div class="study-panel">
+                <h4>する意味</h4>
+                <p>ドライスーツは体を濡らしにくく保温性があります。冬や春の海を楽しめる一方で、スーツ内の空気が浮力に影響するため、ウェットスーツとは違う考え方が必要です。</p>
+              </div>
+              <div class="study-panel">
+                <h4>主なリスク</h4>
+                <ul>
+                  <li>スーツ内の空気が足に移動し、姿勢が崩れる。</li>
+                  <li>排気が遅れて浮きやすくなる。</li>
+                  <li>首や手首から水が入る。</li>
+                  <li>暑さ、寒さ、締め付けで疲れやすくなる。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>安全に楽しむ考え方</h4>
+                <ul>
+                  <li>給気は「締め付けを取る程度」から始める。</li>
+                  <li>浮上前から少しずつ排気を意識する。</li>
+                  <li>足が浮く感覚が出たら、姿勢を戻して落ち着く。</li>
+                  <li>陸上で暑くなりすぎないよう準備の順番を考える。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>見ておく知識</h4>
+                <ul>
+                  <li>給気バルブと排気バルブの位置。</li>
+                  <li>スーツ内空気の移動と姿勢の関係。</li>
+                  <li>インナーの厚みとウエイト量。</li>
+                  <li>水没したときの落ち着いた対応。</li>
+                </ul>
+              </div>
+            </div>
+            <p class="thinking-box">考えておくこと：ドライスーツで急に足が軽く感じたら、慌てて泳ぐ前に何を整えるべきでしょうか。</p>
+          </article>
+
+          <article class="dive-study">
+            <div class="dive-study-header">
+              <div>
+                <h3>ナチュラリスト</h3>
+                <p>海の生き物と環境のつながりを見て、ダイバーとしての距離感を学ぶ講習です。</p>
+              </div>
+              <span class="dive-tag">選択</span>
+            </div>
+            <div class="dive-study-body">
+              <div class="study-panel">
+                <h4>する意味</h4>
+                <p>海の中は、魚、海藻、砂地、岩、甲殻類、貝、季節の変化がつながっています。ナチュラリストでは、名前よりも「どこにいて、何をしていて、なぜそこにいるのか」を観察します。</p>
+              </div>
+              <div class="study-panel">
+                <h4>主なリスク</h4>
+                <ul>
+                  <li>生き物を触る、動かす、追いかける。</li>
+                  <li>観察中にフィンやゲージが環境に当たる。</li>
+                  <li>小さな生き物に近づきすぎてストレスを与える。</li>
+                  <li>珍しいものに集中して周囲確認が減る。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>安全に楽しむ考え方</h4>
+                <ul>
+                  <li>触らない、追わない、持ち上げない。</li>
+                  <li>観察前に浮力とフィン位置を整える。</li>
+                  <li>生き物の逃げ道を残す。</li>
+                  <li>写真を撮るときも、環境との距離を優先する。</li>
+                </ul>
+              </div>
+              <div class="study-panel">
+                <h4>見ておく知識</h4>
+                <ul>
+                  <li>岩場、砂地、海藻場で見られる生き物の違い。</li>
+                  <li>擬態、共生、群れ、なわばりの考え方。</li>
+                  <li>卵や幼魚の季節性。</li>
+                  <li>ダイバーが環境へ与える影響。</li>
+                </ul>
+              </div>
+            </div>
+            <p class="thinking-box">考えておくこと：近づいた瞬間に生き物の動きが変わったら、それは何のサインでしょうか。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="study" class="band" style="margin-top: 46px;">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Study Notes</p>
+            <h2>講習前に押さえるメモ</h2>
+          </div>
+          <p class="section-note">細かな数値や手順は当日も確認します。ここでは、各ダイブで意識する観点を整理します。</p>
+        </div>
+
+        <div class="lesson">
+          <div class="lesson-label">残圧管理</div>
+          <div>
+            <p>深度が増すと同じ呼吸でもタンクの空気は早く減ります。残圧は「まだある」ではなく、「戻る分、浮上する分、予備を残せるか」で見ます。</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <div class="lesson-label">浮上</div>
+          <div>
+            <p>浮上はゆっくり、こまめに確認。安全停止中は深度を保ち、バディと周囲を見ます。浮上後もボートや岸まで気を抜きません。</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <div class="lesson-label">バディ確認</div>
+          <div>
+            <p>エントリー前、潜降前、深度変更前、浮上前に、バディの位置と様子を見ます。AOWでは「自分ができる」から「一緒に安全に潜れる」へ視野を広げます。</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <div class="lesson-label">観察</div>
+          <div>
+            <p>水中では、深度、時間、残圧、生物、地形、流れ、透明度など、見るものが増えます。全部を完璧に覚えるより、気づいたことをログに残す習慣が大切です。</p>
+          </div>
+        </div>
+
+        <div class="details-grid" style="margin-top: 24px;">
+          <details>
+            <summary>ディープで起きやすい変化</summary>
+            <div>色が変わって見える、空気の消費が早い、浮力調整が変わる、無減圧時間が短いなど。違和感があれば早めにインストラクターへ伝えます。</div>
+          </details>
+          <details>
+            <summary>ナビゲーションで大切なこと</summary>
+            <div>コンパスを見る時間と周囲を見る時間のバランスです。方角だけを見続けると、地形やバディを見失いやすくなります。</div>
+          </details>
+          <details>
+            <summary>中性浮力の目標</summary>
+            <div>止まる、浮きすぎない、沈みすぎない、手で水をかかない。呼吸と姿勢で小さく調整できる状態を目指します。</div>
+          </details>
+          <details>
+            <summary>生き物を見る距離感</summary>
+            <div>近づきすぎず、追いかけず、ライトや指示棒の使い方にも配慮します。生き物の行動が変わったら近すぎるサインです。</div>
+          </details>
+        </div>
+      </section>
+
+      <section id="quiz" style="margin-top: 46px;">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Knowledge Check</p>
+            <h2>理解度チェック</h2>
+          </div>
+          <p class="section-note">満点を取るためのテストではありません。迷ったところを当日質問できるようにするための確認です。</p>
+        </div>
+
+        <form id="quizForm" class="quiz-grid">
+          <div class="quiz-card">
+            <fieldset>
+              <legend>深い場所で特に意識することは？</legend>
+              <label><input type="radio" name="q1" value="0"> 魚を探すことだけに集中する</label>
+              <label><input type="radio" name="q1" value="1"> 深度、時間、残圧、浮上速度を確認する</label>
+              <label><input type="radio" name="q1" value="0"> できるだけ早く潜降する</label>
+            </fieldset>
+          </div>
+          <div class="quiz-card">
+            <fieldset>
+              <legend>ナビゲーションで使う手がかりは？</legend>
+              <label><input type="radio" name="q2" value="0"> コンパスだけ</label>
+              <label><input type="radio" name="q2" value="1"> コンパス、地形、砂紋、光、キック数など</label>
+              <label><input type="radio" name="q2" value="0"> 勘だけ</label>
+            </fieldset>
+          </div>
+          <div class="quiz-card">
+            <fieldset>
+              <legend>PPBで目指す状態は？</legend>
+              <label><input type="radio" name="q3" value="1"> 呼吸と姿勢で浮力を小さく調整できる</label>
+              <label><input type="radio" name="q3" value="0"> 手をたくさん使って位置を保つ</label>
+              <label><input type="radio" name="q3" value="0"> 重めのウエイトで沈み続ける</label>
+            </fieldset>
+          </div>
+          <div class="quiz-card">
+            <fieldset>
+              <legend>水中生物を見るときの基本は？</legend>
+              <label><input type="radio" name="q4" value="0"> 近づいて触って確認する</label>
+              <label><input type="radio" name="q4" value="0"> 逃げるまで追いかける</label>
+              <label><input type="radio" name="q4" value="1"> 距離を取り、行動を変えないよう観察する</label>
+            </fieldset>
+          </div>
+          <div class="quiz-card">
+            <fieldset>
+              <legend>ボートでエントリーした直後に大切なことは？</legend>
+              <label><input type="radio" name="q5" value="1"> OKサインを出し、集合場所とバディを確認する</label>
+              <label><input type="radio" name="q5" value="0"> すぐ単独で潜降する</label>
+              <label><input type="radio" name="q5" value="0"> 水面で器材を外す</label>
+            </fieldset>
+          </div>
+          <div class="quiz-card">
+            <fieldset>
+              <legend>ドライスーツで浮上中に意識することは？</legend>
+              <label><input type="radio" name="q6" value="0"> スーツ内に空気をため続ける</label>
+              <label><input type="radio" name="q6" value="1"> 姿勢を整え、少しずつ排気する</label>
+              <label><input type="radio" name="q6" value="0"> 足が浮いたら強く泳ぎ続ける</label>
+            </fieldset>
+          </div>
+          <div class="quiz-card">
+            <fieldset>
+              <legend>魚をあとで調べたいときに役立つ観察は？</legend>
+              <label><input type="radio" name="q7" value="0"> きれいだった、だけを覚える</label>
+              <label><input type="radio" name="q7" value="1"> 体型、ヒレ、口、すみか、泳ぎ方を見る</label>
+              <label><input type="radio" name="q7" value="0"> 追いかけて近くで見る</label>
+            </fieldset>
+          </div>
+          <div class="quiz-card">
+            <fieldset>
+              <legend>迷ったかもしれないと感じたら？</legend>
+              <label><input type="radio" name="q8" value="0"> とりあえず速く泳ぎ続ける</label>
+              <label><input type="radio" name="q8" value="1"> 止まって、深度・残圧・方角・バディを確認する</label>
+              <label><input type="radio" name="q8" value="0"> バディに黙って浮上する</label>
+            </fieldset>
+          </div>
+        </form>
+        <div class="quiz-actions">
+          <button type="button" id="scoreButton">採点する</button>
+          <button type="button" class="ghost-button" id="resetButton">リセット</button>
+          <span class="quiz-result" id="quizResult" aria-live="polite"></span>
+        </div>
+      </section>
+
+      <section id="ready" class="band" style="margin-top: 46px;">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Ready Check</p>
+            <h2>当日までのチェックリスト</h2>
+          </div>
+          <p class="section-note">体調と忘れ物の確認が、いちばん確実な安全対策です。無理がある場合は早めに相談してください。</p>
+        </div>
+
+        <div class="readiness">
+          <aside class="progress-panel">
+            <p>準備の進み具合</p>
+            <span class="progress-value" id="progressValue">0%</span>
+            <div class="progress-bar" aria-hidden="true">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </aside>
+          <div>
+            <div class="checklist" id="readyList">
+              <label><input type="checkbox"> Cカードとログを用意した</label>
+              <label><input type="checkbox"> 水着、タオル、着替えを用意した</label>
+              <label><input type="checkbox"> 酔いやすい場合の対策を考えた</label>
+              <label><input type="checkbox"> 睡眠不足や飲酒を避ける予定にした</label>
+              <label><input type="checkbox"> 希望したい選択科目を考えた</label>
+              <label><input type="checkbox"> 不安なこと、聞きたいことをメモした</label>
+              <label><input type="checkbox"> 集合時間と場所を確認した</label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-cta">
+        <div>
+          <h2>迷ったことは、講習前に聞いてください</h2>
+          <p>希望科目、ブランク、耳抜き、船酔い、ドライスーツなど、気になることは小さくても大丈夫です。</p>
+        </div>
+        <a class="line-button" href="https://lin.ee/rfr0YG1">LINEで相談</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 三浦 海の学校</p>
+    </footer>
+  </div>
+
+  <script>
+    const quizForm = document.getElementById("quizForm");
+    const scoreButton = document.getElementById("scoreButton");
+    const resetButton = document.getElementById("resetButton");
+    const quizResult = document.getElementById("quizResult");
+    const readyList = document.getElementById("readyList");
+    const progressValue = document.getElementById("progressValue");
+    const progressFill = document.getElementById("progressFill");
+
+    scoreButton.addEventListener("click", () => {
+      const questions = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"];
+      let answered = 0;
+      let score = 0;
+
+      questions.forEach((name) => {
+        const checked = quizForm.querySelector(`input[name="${name}"]:checked`);
+        if (checked) {
+          answered += 1;
+          score += Number(checked.value);
+        }
+      });
+
+      if (answered < questions.length) {
+        quizResult.textContent = `未回答が${questions.length - answered}問あります。`;
+        return;
+      }
+
+      quizResult.textContent = `${questions.length}問中${score}問正解。気になるところは当日確認しましょう。`;
+    });
+
+    resetButton.addEventListener("click", () => {
+      quizForm.reset();
+      quizResult.textContent = "";
+    });
+
+    function updateProgress() {
+      const boxes = Array.from(readyList.querySelectorAll("input[type='checkbox']"));
+      const checked = boxes.filter((box) => box.checked).length;
+      const percent = Math.round((checked / boxes.length) * 100);
+      progressValue.textContent = `${percent}%`;
+      progressFill.style.width = `${percent}%`;
+    }
+
+    readyList.addEventListener("change", updateProgress);
+    updateProgress();
+  </script>
+</body>
+</html>
