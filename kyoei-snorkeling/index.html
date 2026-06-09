@@ -343,6 +343,86 @@
       color: var(--muted);
     }
 
+    .event-panel {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .event-box {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(20, 33, 42, .07);
+    }
+
+    .event-box h3 {
+      margin-bottom: 12px;
+    }
+
+    .event-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+    }
+
+    .event-list div {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .event-list div:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .event-list dt {
+      color: var(--sea);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .event-list dd {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .bring-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .bring-item {
+      min-height: 92px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fbfb;
+    }
+
+    .bring-item strong {
+      display: block;
+      color: var(--deep);
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .bring-item span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
     .lesson-bridge {
       display: grid;
       grid-template-columns: minmax(280px, .95fr) minmax(0, 1.05fr);
@@ -703,6 +783,7 @@
       .section-head,
       .feature-story,
       .lesson-bridge,
+      .event-panel,
       .gear-layout,
       .etiquette-wrap {
         grid-template-columns: 1fr;
@@ -731,6 +812,7 @@
       .grid.two,
       .grid.three,
       .grid.four,
+      .bring-grid,
       .signal-grid {
         grid-template-columns: 1fr;
       }
@@ -780,6 +862,7 @@
 
   <nav class="quick-nav" aria-label="ページ内ナビゲーション">
     <div class="quick-nav-inner">
+      <a href="#event">日程・持ち物</a>
       <a href="#fun">楽しさ</a>
       <a href="#gear">器材</a>
       <a href="#flow">楽しみ方</a>
@@ -791,6 +874,44 @@
   </nav>
 
   <main>
+    <section id="event">
+      <div class="section-head">
+        <div>
+          <p class="kicker">CLASS INFORMATION</p>
+          <h2>研修名と実施日、当日の持ち物。</h2>
+        </div>
+        <p class="section-note">当日のマリンアクティビティに参加する前に、日程と準備物を確認しておきましょう。雨天順延の場合は、大学・担当教員からの案内を確認してください。</p>
+      </div>
+      <div class="event-panel">
+        <article class="event-box">
+          <h3>授業科目・講演等名称</h3>
+          <dl class="event-list">
+            <div>
+              <dt>名称</dt>
+              <dd>専門演習Ⅰ・海での水泳研修<br>泳ぎ方・海での安全確保等</dd>
+            </div>
+            <div>
+              <dt>実施日</dt>
+              <dd>2026年8月31日（月）</dd>
+            </div>
+            <div>
+              <dt>雨天順延</dt>
+              <dd>2026年9月2日（水）<br>2026年9月9日（水）</dd>
+            </div>
+          </dl>
+        </article>
+        <article class="event-box">
+          <h3>当日の持ち物</h3>
+          <div class="bring-grid" aria-label="当日の持ち物">
+            <div class="bring-item"><strong>水着</strong><span>服の下に着てくると準備がスムーズです。</span></div>
+            <div class="bring-item"><strong>タオル</strong><span>海から上がった後の体拭き用に使います。</span></div>
+            <div class="bring-item"><strong>マリンシューズ</strong><span>岩場や足元の保護に役立ちます。</span></div>
+            <div class="bring-item"><strong>日焼け止め</strong><span>海に入る前後で塗り直せるようにします。</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="fun">
       <div class="section-head">
         <div>
@@ -1053,7 +1174,7 @@
       <div class="grid two">
         <div class="checklist" aria-label="事前チェックリスト">
           <label class="check-item"><input type="checkbox"><span>睡眠を取り、発熱・強い疲労・体調不良がないか確認した</span></label>
-          <label class="check-item"><input type="checkbox"><span>水着、タオル、着替え、濡れてもよいサンダルを準備した</span></label>
+          <label class="check-item"><input type="checkbox"><span>水着、タオル、マリンシューズ、日焼け止め、着替えを準備した</span></label>
           <label class="check-item"><input type="checkbox"><span>日焼け対策、飲み物、酔いやすい人は酔い止めの相談をした</span></label>
           <label class="check-item"><input type="checkbox"><span>コンタクトやメガネ、髪の長さなど、器材に関わることを確認した</span></label>
           <label class="check-item"><input type="checkbox"><span>海では「単独行動しない」「無理しない」「触らない」を守ると決めた</span></label>
