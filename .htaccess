@@ -27,7 +27,16 @@ RewriteCond %{THE_REQUEST} \s/+privacy\.html[\s?] [NC]
 RewriteRule ^privacy\.html$ /privacy [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/+owd-lp\.html[\s?] [NC]
-RewriteRule ^owd-lp\.html$ /owd-license/ [R=301,L]
+RewriteRule ^owd-lp\.html$ /license/ [R=301,L]
+
+# Consolidate overlapping SEO landing pages into the primary pages.
+RewriteRule ^kanagawa-diving-license/?$ /license/ [R=301,L]
+RewriteRule ^kanagawa-diving-school/?$ / [R=301,L]
+RewriteRule ^owd-license/?$ /license/ [R=301,L]
+RewriteRule ^diving-license\.php$ /license/ [R=301,L]
+RewriteRule ^fun-diving\.php$ /fun-diving/ [R=301,L]
+RewriteRule ^marine-activity\.php$ /marine-activity/ [R=301,L]
+RewriteRule ^owd-lp\.php$ /license/ [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/+game\.html[\s?] [NC]
 RewriteRule ^game\.html$ /game [R=301,L]

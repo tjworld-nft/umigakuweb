@@ -274,7 +274,7 @@
     <section class="hero subpage-hero">
         <div class="hero-bubble" aria-hidden="true"></div>
         <div class="hero-bubble" aria-hidden="true"></div>
-        <div class="hero-bg"><img src="../image/hero-bg.webp" alt="三浦の海" width="1920" height="1080" loading="eager">
+        <div class="hero-bg"><img src="../image/miura-hero2.png" alt="三浦の海" width="1920" height="1080" loading="eager">
         </div>
         <div class="hero-content">
             <h1>お問い合わせ</h1>
@@ -291,23 +291,19 @@
         <section class="section">
             <div class="container text-center">
                 <span class="section-label reveal">Quick Contact</span>
-                <h2 class="section-title reveal">今すぐ連絡する</h2>
+                <h2 class="section-title reveal">ご相談方法</h2>
+                <p class="section-lead reveal">ご予約前の質問や、コース選びのご相談も受け付けています。</p>
                 <div class="quick-grid">
-                    <a href="tel:046-880-0835" class="quick-card reveal" data-delay="0">
-                        <div class="icon">📞</div>
-                        <h4>電話</h4>
-                        <p>046-880-0835<br>9:00〜16:00</p>
-                    </a>
                     <a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" class="quick-card reveal"
-                        data-delay="1">
+                        data-delay="0">
                         <div class="icon">💬</div>
-                        <h4>LINE</h4>
-                        <p>お気軽にメッセージ<br>24時間受付</p>
+                        <h4>公式LINE</h4>
+                        <p>短い質問や日程相談に<br>24時間受付</p>
                     </a>
-                    <a href="mailto:info@miura-diving.com" class="quick-card reveal" data-delay="2">
+                    <a href="#contactForm" class="quick-card reveal" data-delay="1">
                         <div class="icon">✉️</div>
-                        <h4>メール</h4>
-                        <p>info@miura-diving.com<br>24時間受付</p>
+                        <h4>お問い合わせフォーム</h4>
+                        <p>内容をまとめて相談したい方に<br>24時間受付</p>
                     </a>
                 </div>
             </div>
@@ -413,7 +409,7 @@
                     <div style="padding:1.25rem;text-align:left;">
                         <p style="font-size:.9rem;font-weight:700;margin-bottom:.25rem;">三浦 海の学校</p>
                         <p style="font-size:.8rem;color:var(--text-sub);line-height:1.6;">〒238-0224
-                            神奈川県三浦市三崎町諸磯1621<br>TEL: 046-880-0835<br>営業時間: 9:00〜16:00（不定休）<br>京急三崎口駅から無料送迎あり</p>
+                            神奈川県三浦市三崎町諸磯1621<br>電話: 080-4350-0412<br>営業時間: 9:00〜16:00（不定休）<br>開催場所・集合場所はご予約時にご案内します</p>
                     </div>
                 </div>
             </div>
@@ -424,7 +420,7 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-brand"><strong style="color:#fff;font-size:1.1rem;">三浦 海の学校</strong>
-                    <p>〒238-0224 神奈川県三浦市三崎町諸磯1621<br>TEL: 046-880-0835<br>営業時間: 9:00〜16:00（不定休）</p>
+                    <p>〒238-0224 神奈川県三浦市三崎町諸磯1621<br>営業時間: 9:00〜16:00（不定休）<br>開催場所・集合場所はご予約時にご案内します</p>
                 </div>
                 <div class="footer-nav">
                     <h4>メニュー</h4><a href="../index.html">ホーム</a><a href="../license/">ダイビングライセンス</a><a
@@ -460,7 +456,7 @@
                 var msg = 'エラーが発生しました。';
                 if (reason === 'rate') msg = '送信回数の制限に達しました。しばらくしてからお試しください。';
                 if (reason === 'validation') msg = '入力内容に不備があります。もう一度ご確認ください。';
-                if (reason === 'send') msg = 'メール送信に失敗しました。お電話またはLINEでお問い合わせください。';
+                if (reason === 'send') msg = 'メール送信に失敗しました。LINEからお問い合わせください。';
                 alert(msg);
             }
         })();
