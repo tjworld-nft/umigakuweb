@@ -200,13 +200,23 @@ a:hover { color: var(--coral); }
   justify-content: space-between;
 }
 
-.header-logo img {
-  height: 36px;
-  width: auto;
+.header-logo {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .04em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--ease);
 }
 
-.site-header.is-scrolled .header-logo img {
-  filter: none;
+.header-logo:hover,
+.header-logo:focus-visible {
+  color: var(--coral);
+}
+
+.site-header.is-scrolled .header-logo {
+  color: var(--teal-dark);
 }
 
 /* ---- Desktop nav ---- */
