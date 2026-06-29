@@ -30,7 +30,6 @@ RewriteCond %{THE_REQUEST} \s/+owd-lp\.html[\s?] [NC]
 RewriteRule ^owd-lp\.html$ /license/ [R=301,L]
 
 # Consolidate overlapping SEO landing pages into the primary pages.
-RewriteRule ^kanagawa-diving-license/?$ /license/ [R=301,L]
 RewriteRule ^kanagawa-diving-school/?$ / [R=301,L]
 RewriteRule ^owd-license/?$ /license/ [R=301,L]
 RewriteRule ^diving-license\.php$ /license/ [R=301,L]
@@ -61,6 +60,14 @@ RewriteRule ^privacy/?$ privacy.html [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^license/?$ license/index.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^beginner-guide/?$ beginner-guide/index.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^kanagawa-diving-license/?$ kanagawa-diving-license/index.html [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
