@@ -50,7 +50,7 @@
             {"@type": "Question", "name": "一人で参加しても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "はい、受講者の約7割がお一人での参加です。少人数制なので、すぐに他の受講者とも仲良くなれます。"}},
             {"@type": "Question", "name": "泳げなくてもダイビングできますか？", "acceptedAnswer": {"@type": "Answer", "text": "泳ぎに自信がない方も、まずはご相談ください。器材の使い方や水中での呼吸など、基本から一つずつ練習します。"}},
             {"@type": "Question", "name": "送迎サービスはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "京急三崎口駅からの無料送迎を行っています。事前予約制です。"}},
-            {"@type": "Question", "name": "何日でライセンスが取れますか？", "acceptedAnswer": {"@type": "Answer", "text": "事前にeラーニングで学科を学び、実技3日間で取得できます。3日間は連続でなくても大丈夫です。"}},
+            {"@type": "Question", "name": "何日でライセンスが取れますか？", "acceptedAnswer": {"@type": "Answer", "text": "事前にeラーニングで学科を学び、実技最短2日間で取得できます。日程は連続でなくても大丈夫です。"}},
             {"@type": "Question", "name": "費用はいくらですか？", "acceptedAnswer": {"@type": "Answer", "text": "OWD講習は¥53,900（税込）、AOW講習は¥59,800（税込）、OWD＋AOWセット講習は¥108,700（税込）です。通常合計¥113,700のところ、セット申込で¥5,000お得です。別途レンタル器材代（¥5,500/日）が必要です。"}}
         ]
     }
@@ -284,14 +284,6 @@
         }
         .access-detail td { color: var(--text-sub) }
 
-        /* ---- Map ---- */
-        .map-wrapper {
-            border-radius: var(--radius-md); overflow: hidden;
-            box-shadow: var(--shadow-sm); border: 1px solid var(--border);
-            margin-top: 1.5rem
-        }
-        .map-wrapper iframe { width: 100%; height: 350px; border: 0 }
-
         /* ---- Station photo ---- */
         .station-photo {
             display: flex; align-items: center; gap: 1.25rem;
@@ -340,6 +332,23 @@
             background: var(--bg-soft); border-radius: 50px; padding: .2rem .5rem;
             font-size: .65rem; color: var(--teal-dark); font-weight: 600;
         }
+
+        .group-discount {
+            max-width: 760px; margin: 1.25rem auto 0;
+            background: linear-gradient(135deg, #FFF4E8 0%, #FFF7F7 100%);
+            border: 3px solid var(--coral); border-radius: var(--radius-md);
+            padding: 1.4rem 1.6rem; text-align: center; box-shadow: var(--shadow-md);
+        }
+        .group-discount .label {
+            display: inline-block; background: var(--coral); color: #fff;
+            border-radius: 999px; padding: .25rem .8rem; font-size: .78rem;
+            font-weight: 700; margin-bottom: .55rem;
+        }
+        .group-discount .price {
+            font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 8vw, 3.2rem);
+            line-height: 1; font-weight: 700; color: var(--coral); margin-bottom: .35rem;
+        }
+        .group-discount p { font-size: .9rem; color: var(--text-dark); line-height: 1.7; margin: 0; }
     </style>
 </head>
 
@@ -501,12 +510,6 @@
                     </table>
                 </div>
 
-                <div class="map-wrapper reveal">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.0!2d139.6132697762269!3d35.151267472762996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60183d437b46dd8b%3A0x3b48336047ed3d4c!2z44Oi44Kv44Ki44OT44OD44OIIExBQg!5e0!3m2!1sja!2sjp!4v1"
-                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        title="三浦 海の学校 地図"></iframe>
-                </div>
             </div>
         </section>
 
@@ -642,7 +645,7 @@
                         <div class="plan-body">
                             <ul>
                                 <li>eラーニング学習教材</li>
-                                <li>最短3日間で取得可能</li>
+                                <li>最短2日間で取得可能</li>
                                 <li>少人数制レッスン（最大6名）</li>
                                 <li>基本練習＋海洋実習（計4ダイブ）</li>
                                 <li>無料送迎サービス</li>
@@ -662,7 +665,6 @@
                                 <li>OWD＋AOWセット講習</li>
                                 <li>OWD 53,900円＋AOW 59,800円</li>
                                 <li>4〜5日間で2ライセンス取得</li>
-                                <li>2名以上同時申込は 98,000円（税込）/1名</li>
                                 <li>ビーチ7ダイブ＋ボート2ダイブ</li>
                                 <li>長くダイビングを続けたい方に</li>
                                 <li>無料送迎サービス</li>
@@ -673,14 +675,20 @@
                     </div>
                 </div>
 
+                <div class="group-discount reveal">
+                    <span class="label">2名以上同時申込限定</span>
+                    <div class="price">98,000円<small style="font-size:.9rem;">（税込）/1名</small></div>
+                    <p>OWD＋AOWセット講習が、通常セット料金108,700円からさらにお得になります。友人・ご家族・カップルで始めたい方におすすめです。</p>
+                </div>
+
                 <div style="margin-top:2rem;">
                     <div class="reveal"
                         style="max-width:500px;margin:.75rem auto 0;background:#FFF5F5;border:2px solid var(--coral);border-radius:var(--radius-sm);padding:1rem 1.25rem;text-align:left;">
                         <p style="font-size:.9rem;font-weight:700;color:var(--coral);margin-bottom:.5rem;">別途必要な費用</p>
                         <ul style="list-style:none;font-size:.85rem;color:var(--text-dark);">
                             <li style="padding:.3rem 0;border-bottom:1px solid #FFD5D5;">レンタル器材代: <strong>¥5,500/日</strong><br><span
-                                    style="font-size:.8rem;color:var(--text-sub);">例）スタンダード3日間 → ¥5,500 x 3日 = <strong
-                                        style="color:var(--coral);">¥16,500</strong></span></li>
+                                    style="font-size:.8rem;color:var(--text-sub);">例）スタンダード2日間 → ¥5,500 x 2日 = <strong
+                                        style="color:var(--coral);">¥11,000</strong></span></li>
                             <li style="padding:.3rem 0;border-bottom:1px solid #FFD5D5;">セットプランのレンタル器材代: <strong>4〜5日分が別途必要</strong></li>
                             <li style="padding:.3rem 0;border-bottom:1px solid #FFD5D5;">昼食・お飲み物（各自ご持参ください）</li>
                             <li style="padding:.3rem 0;">駐車場代: ¥1,100/日（お車の方のみ）</li>
@@ -696,7 +704,7 @@
             <div class="container text-center">
                 <span class="section-label reveal">Flow</span>
                 <h2 class="section-title reveal">ライセンス取得の流れ</h2>
-                <p class="section-lead reveal">事前のeラーニング＋実技3日間で世界に通用するPADIライセンス取得</p>
+                <p class="section-lead reveal">事前のeラーニング＋実技最短2日間で世界に通用するPADIライセンス取得</p>
 
                 <div class="timeline" style="text-align:left;">
                     <div class="day-block reveal" data-delay="0">
@@ -721,23 +729,13 @@
                     <div class="day-block reveal" data-delay="1">
                         <div class="day-badge">2日目<small>9-16時</small></div>
                         <div class="day-content">
-                            <h4>限定水域講習 & 海洋実習 1ダイブ</h4>
+                            <h4>海洋実習 3ダイブ & 認定</h4>
                             <div class="schedule-row"><span class="schedule-time">9:00</span><span>集合・前日の復習</span></div>
-                            <div class="schedule-row"><span class="schedule-time">9:30</span><span>限定水域講習（応用スキル練習）</span></div>
+                            <div class="schedule-row"><span class="schedule-time">9:30</span><span>海洋実習 2ダイブ目</span></div>
                             <div class="schedule-row"><span class="schedule-time">12:00</span><span>ランチタイム</span></div>
-                            <div class="schedule-row"><span class="schedule-time">13:30</span><span>海洋実習 2ダイブ目</span></div>
-                            <div class="schedule-row"><span class="schedule-time">16:00</span><span>ふりかえり・終了</span></div>
-                        </div>
-                    </div>
-                    <div class="day-block reveal" data-delay="2">
-                        <div class="day-badge">3日目<small>9-16時</small></div>
-                        <div class="day-content">
-                            <h4>海洋実習 2ダイブ & 認定</h4>
-                            <div class="schedule-row"><span class="schedule-time">9:00</span><span>集合・前日の復習</span></div>
-                            <div class="schedule-row"><span class="schedule-time">10:00</span><span>海洋実習 3ダイブ目</span></div>
-                            <div class="schedule-row"><span class="schedule-time">12:00</span><span>ランチタイム</span></div>
-                            <div class="schedule-row"><span class="schedule-time">13:00</span><span>海洋実習 4ダイブ目（ファンダイブ体験!）</span></div>
-                            <div class="schedule-row"><span class="schedule-time">14:30</span><span>認定試験・手続き</span></div>
+                            <div class="schedule-row"><span class="schedule-time">13:00</span><span>海洋実習 3ダイブ目</span></div>
+                            <div class="schedule-row"><span class="schedule-time">14:30</span><span>海洋実習 4ダイブ目</span></div>
+                            <div class="schedule-row"><span class="schedule-time">15:30</span><span>認定試験・手続き</span></div>
                             <div class="schedule-row"><span class="schedule-time">16:00</span><span>修了式・おめでとうございます!</span></div>
                         </div>
                     </div>
@@ -845,7 +843,7 @@
                     <details class="faq-item reveal">
                         <summary>何日でライセンスが取れますか？</summary>
                         <div class="faq-answer">
-                            事前にeラーニングで学科を学び、実技3日間で取得できます。3日間は連続でなくてもOK。お仕事のお休みに合わせて柔軟に日程を組めます（1ヶ月以内の修了を推奨）。
+                            事前にeラーニングで学科を学び、実技最短2日間で取得できます。日程は連続でなくてもOK。お仕事のお休みに合わせて柔軟に日程を組めます（1ヶ月以内の修了を推奨）。
                         </div>
                     </details>
                     <details class="faq-item reveal">
