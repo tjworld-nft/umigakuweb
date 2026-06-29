@@ -246,7 +246,7 @@
     <section class="hero subpage-hero">
         <div class="hero-bubble" aria-hidden="true"></div>
         <div class="hero-bubble" aria-hidden="true"></div>
-        <div class="hero-bg"><img src="../image/fish/ao-umiushi.JPG" alt="三浦の海の生き物" width="1920" height="1080" loading="eager" style="filter:brightness(.7);"></div>
+        <div class="hero-bg"><img src="../image/fish/optimized/ao-umiushi-hero.webp" alt="三浦の海の生き物" width="1600" height="1200" loading="eager" style="filter:brightness(.7);"></div>
         <div class="hero-content">
             <h1>三浦の海の生き物図鑑</h1>
             <p class="hero-sub">三浦 海の学校のダイビングで出会える水中生物たち。<br>初心者ダイバーにも分かりやすく、見つけ方のコツや<br>ログ付けに役立つ観察ポイントを紹介します。</p>
@@ -348,6 +348,8 @@
         var pageDir = document.querySelector('script[src*="main.js"]') ? '../' : '/';
         var jsonUrl = (window.location.pathname.indexOf('/sea-life/') !== -1) ? 'creatures.json' : '/sea-life/creatures.json';
         var imgBase = (window.location.pathname.indexOf('/sea-life/') !== -1) ? '../image/fish/' : '/image/fish/';
+        var thumbBase = imgBase + 'thumbs/';
+        var optimizedBase = imgBase + 'optimized/';
         var MONTH_TO_SEASON = ['冬','冬','春','春','春','夏','夏','夏','秋','秋','秋','冬'];
         var currentSeason = MONTH_TO_SEASON[new Date().getMonth()];
         var creatures = [];
@@ -358,6 +360,10 @@
 
         function renderStars(n) {
             return '<span class="creature-rarity">' + '★'.repeat(n) + '☆'.repeat(5 - n) + '</span>';
+        }
+
+        function webpName(file) {
+            return file.replace(/\.[^.]+$/, '.webp');
         }
 
         function matchesSearch(c, q) {
@@ -379,7 +385,7 @@
             var badge = photoCount > 1 ? '<span style="position:absolute;top:.5rem;right:.5rem;background:rgba(0,0,0,.6);color:#fff;font-size:.65rem;padding:.15rem .45rem;border-radius:50px;">📷 ' + photoCount + '</span>' : '';
             div.innerHTML =
                 '<div style="position:relative;">' +
-                    '<img class="creature-card-img" src="' + imgBase + photo + '" alt="' + c.name_ja + '" loading="lazy" width="400" height="400">' +
+                    '<img class="creature-card-img" src="' + thumbBase + webpName(photo) + '" alt="' + c.name_ja + '" loading="lazy" decoding="async" width="480" height="480">' +
                     badge +
                 '</div>' +
                 '<div class="creature-card-body">' +
@@ -411,14 +417,14 @@
             if (photos.length > 1) {
                 thumbs = '<div class="modal-thumbs">' +
                     photos.map(function(p, i) {
-                        return '<img src="' + imgBase + p.file + '" alt="' + name + '" data-idx="' + i + '"' +
+                        return '<img src="' + thumbBase + webpName(p.file) + '" alt="' + name + '" data-idx="' + i + '" loading="lazy" decoding="async"' +
                             (i === 0 ? ' class="active"' : '') + ' onclick="window._galleryTo(' + i + ')">';
                     }).join('') + '</div>';
             }
             var credit = photos[0].credit ? '<div class="modal-photo-credit">📸 Photo by ' + photos[0].credit + '</div>' : '';
             return '<div class="modal-gallery">' +
                 navPrev + navNext +
-                '<img class="modal-img" id="galleryMain" src="' + imgBase + photos[0].file + '" alt="' + name + '">' +
+                '<img class="modal-img" id="galleryMain" src="' + optimizedBase + webpName(photos[0].file) + '" alt="' + name + '" decoding="async">' +
                 '</div>' + thumbs + '<div class="modal-photo-credit" id="galleryCredit">' + (photos[0].credit ? '📸 Photo by ' + photos[0].credit : '') + '</div>';
         }
 
@@ -427,7 +433,7 @@
             var main = document.getElementById('galleryMain');
             var creditEl = document.getElementById('galleryCredit');
             if (!main) return;
-            main.src = '../image/fish/' + galleryPhotos[idx].file;
+            main.src = optimizedBase + webpName(galleryPhotos[idx].file);
             if (creditEl) creditEl.textContent = galleryPhotos[idx].credit ? '📸 Photo by ' + galleryPhotos[idx].credit : '';
             document.querySelectorAll('.modal-thumbs img').forEach(function(t, i) {
                 t.classList.toggle('active', i === idx);
