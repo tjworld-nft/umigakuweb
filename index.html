@@ -15,8 +15,6 @@
   <link rel="canonical" href="https://miura-diving.com/">
   <meta name="geo.region" content="JP-14">
   <meta name="geo.placename" content="三浦市">
-  <meta name="geo.position" content="35.1617993;139.6252699">
-  <meta name="ICBM" content="35.1617993, 139.6252699">
 
   <!-- OGP -->
   <meta property="og:type" content="website">
@@ -52,16 +50,13 @@
     "logo": "https://miura-diving.com/wp-content/uploads/umigaku-logo.webp",
     "description": "神奈川県三浦市・三浦半島で、初心者向けのダイビング講習、体験ダイビング、ファンダイビング、SUP、スノーケリング、シーカヤックを少人数で開催するスクール。",
     "knowsAbout": ["スクーバダイビング", "スキューバダイビング", "ダイビングライセンス", "PADI", "Cカード", "体験ダイビング", "ファンダイビング", "アドバンスダイバー", "SUP", "スノーケリング", "シーカヤック"],
-    "areaServed": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {"@type": "GeoCoordinates", "latitude": "35.1617993", "longitude": "139.6252699"},
-      "geoRadius": "50000"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "35.1617993",
-      "longitude": "139.6252699"
-    },
+    "areaServed": [
+      {"@type": "AdministrativeArea", "name": "神奈川県"},
+      {"@type": "City", "name": "三浦市"},
+      {"@type": "City", "name": "横須賀市"},
+      {"@type": "City", "name": "横浜市"},
+      {"@type": "AdministrativeArea", "name": "東京都"}
+    ],
     "contactPoint": {
       "@type": "ContactPoint",
       "url": "https://miura-diving.com/contact/",
@@ -95,11 +90,6 @@
     "keywords": "ダイビング,スクーバダイビング,スキューバダイビング,ダイビングライセンス,Cカード,PADI,三浦,横須賀,神奈川,三浦半島,初心者,シニア,アドバンス,SUP,スノーケリング,シーカヤック",
     "email": "info@miura-diving.com",
     "openingHours": "Mo-Su 08:00-16:00",
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "35.1617993",
-      "longitude": "139.6252699"
-    },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "ダイビングサービス",
@@ -711,7 +701,7 @@
       <div class="container text-center">
         <span class="section-label reveal">Condition</span>
         <h2 id="weather-title" class="section-title reveal">今週のダイビングコンディション</h2>
-        <p class="section-lead reveal">諸磯エリアの天気・午前中の風(9〜13時)・波を元に、ダイビングのしやすさを自動判定しています。</p>
+        <p class="section-lead reveal">三浦エリア周辺の天気・午前中の風(9〜13時)・波を元に、ダイビングのしやすさを自動判定しています。</p>
         <div id="weather-cards" class="weather-cards reveal">
           <p class="weather-loading">天気データを読み込み中…</p>
         </div>
