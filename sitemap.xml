@@ -48,6 +48,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- ダイビングポイント: 城ヶ島 梶の浜ビーチ -->
+  <url>
+    <loc>https://miura-diving.com/diving-point/jogashima-kajinohama/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- 横須賀エリア案内 -->
   <url>
     <loc>https://miura-diving.com/yokosuka-diving/</loc>
