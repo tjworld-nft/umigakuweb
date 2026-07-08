@@ -924,7 +924,7 @@ get_header();
             </li>
             <li>
               <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-              <span class="text">神奈川県三浦市三崎町諸磯1621</span>
+              <span class="text">神奈川県三浦市</span>
             </li>
           </ul>
         </div>
@@ -936,7 +936,7 @@ get_header();
           <ul class="contact-list">
             <li>
               <span class="icon"><i class="fas fa-phone-alt"></i></span>
-              <span class="text">046-880-0835</span>
+              <span class="text">080-4350-0412</span>
             </li>
             <li>
               <span class="icon"><i class="far fa-envelope"></i></span>
