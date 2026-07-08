@@ -106,5 +106,5 @@
 ---
 
 <p style="text-align:center;font-size:14px;color:#555;">
-  📞 <a href="tel:046-880-0835">046-880-0835</a>（9:00〜16:00）　✉️ <a href="/contact/">お問い合わせフォーム</a>
+  📞 <a href="tel:080-4350-0412">080-4350-0412</a>（9:00〜16:00）　✉️ <a href="/contact/">お問い合わせフォーム</a>
 </p>

@@ -24,14 +24,9 @@ Disallow: /wp-content/plugins/
 Disallow: /wp-content/themes/
 
 # プレビュー・テストファイルの除外
-Disallow: /preview.html
-Disallow: /license-complete-preview.html
-Disallow: /license-simple-preview.html
-Disallow: /license-all-preview.html
 Disallow: /license-preview.html
 Disallow: /owd-lp-underwater-test.html
 Disallow: /diving-game-lp.html
-Disallow: /diving-game-sample.html
 Disallow: /books-slider-test.html
 Disallow: /maze-3d-test.html
 Disallow: /3d-maze-final.html

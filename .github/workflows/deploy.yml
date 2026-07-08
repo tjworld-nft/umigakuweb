@@ -48,3 +48,4 @@ jobs:
           **/.github/**
           **/wp-config.php
           **/.env*
+          AGENTS.md
