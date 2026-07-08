@@ -11,3 +11,7 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# LINEスタンプ作成支援ツール
+node_modules/
+dist/
