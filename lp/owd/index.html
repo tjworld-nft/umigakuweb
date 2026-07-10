@@ -130,6 +130,27 @@
         .price-includes strong { color: var(--teal-dark); }
         .no-extra { text-align: center; margin-top: 1rem; font-size: .88rem; font-weight: 700; color: var(--teal-dark); }
 
+        /* ── PADIバッジ帯 ── */
+        .padi-band { display: flex; align-items: center; justify-content: center; gap: 1rem; max-width: 640px; margin: 1.75rem auto 0; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 1rem 1.25rem; text-align: left; }
+        .padi-band img { width: 88px; height: 88px; border-radius: 10px; flex-shrink: 0; }
+        .padi-band p { font-size: .82rem; color: var(--text-sub); line-height: 1.65; }
+        .padi-band p strong { color: var(--teal-dark); }
+
+        /* ── モデルスケジュール ── */
+        .schedule-table { width: 100%; max-width: 640px; margin: 1.5rem auto 0; border-collapse: collapse; background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); font-size: .82rem; }
+        .schedule-table th, .schedule-table td { padding: .65rem .7rem; border-bottom: 1px solid var(--border); text-align: left; }
+        .schedule-table thead th { background: var(--teal-dark); color: #fff; text-align: center; }
+        .schedule-table tbody th { width: 4.5em; background: var(--bg-cream); color: var(--teal-dark); font-weight: 700; text-align: center; }
+        .schedule-note { max-width: 640px; margin: .6rem auto 0; font-size: .72rem; color: var(--text-sub); text-align: left; }
+
+        /* ── 最終CTA補助 ── */
+        .cta-topics { display: flex; justify-content: center; gap: .6rem; flex-wrap: wrap; list-style: none; margin: 0 0 1.4rem; padding: 0; }
+        .cta-topics li { background: rgba(255, 255, 255, .18); border: 1px solid rgba(255, 255, 255, .5); border-radius: 999px; padding: .35rem .9rem; font-size: .78rem; font-weight: 700; }
+        .qr-box { display: none; margin: 1.5rem auto 0; background: var(--white); color: var(--text-dark); border-radius: var(--radius-md); padding: 1rem 1.25rem; max-width: 320px; align-items: center; gap: 1rem; box-shadow: var(--shadow-md); }
+        .qr-box img { width: 96px; height: 96px; flex-shrink: 0; }
+        .qr-box p { font-size: .78rem; color: var(--text-sub); text-align: left; margin: 0; }
+        @media (min-width: 768px) { .qr-box { display: flex; } }
+
         /* ── 比較表 ── */
         .compare-table { width: 100%; max-width: 640px; margin: 1.75rem auto 0; border-collapse: collapse; background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); font-size: .82rem; }
         .compare-table th, .compare-table td { padding: .7rem .6rem; text-align: center; border-bottom: 1px solid var(--border); }
@@ -391,6 +412,16 @@
                     <img src="../../image/optimized/owd-lp-card-get.webp" alt="Cカード取得を祝うクラゲ女子とインストラクターのイラスト" width="800" height="600" loading="lazy">
                 </div>
             </div>
+            <table class="schedule-table">
+                <thead>
+                    <tr><th colspan="3">実技2日間のイメージ</th></tr>
+                </thead>
+                <tbody>
+                    <tr><th>1日目</th><td>午前: 器材の使い方・穏やかな浅場で基本練習</td><td>午後: 海洋実習①②</td></tr>
+                    <tr><th>2日目</th><td>午前: 海洋実習③④</td><td>午後: スキル確認・ログ付け・認定手続き</td></tr>
+                </tbody>
+            </table>
+            <p class="schedule-note">※あくまで目安です。海況やお一人おひとりの進み具合に合わせて調整します（3日間に分けてもOK）。</p>
         </div>
     </section>
 
@@ -438,6 +469,10 @@
                     <h3>吉田 哲司</h3>
                     <p>インストラクターを育成するコースディレクターとして、三浦の海で講習を中心に活動。「泳げない」「体力に自信がない」方こそ、基本から一つずつ。あなたのペースで必ず潜れるようになります。</p>
                 </div>
+            </div>
+            <div class="padi-band reveal">
+                <img src="../../image/optimized/padi-5star-idc.webp" alt="PADI 5スター インストラクター・ディベロップメント・ダイブリゾート認定" width="88" height="88" loading="lazy">
+                <p><strong>PADI 5スター IDCダイブリゾート。</strong>コースディレクターは、PADIインストラクターを育成・認定できる最上位ランクです。「教わる先生」の先生から、直接学べます。</p>
             </div>
         </div>
     </section>
@@ -514,7 +549,16 @@
         <div class="container">
             <h2>今年の夏を、<br>「海に潜れる自分」で過ごそう。</h2>
             <p>少人数制のため、各日にご案内できる人数はわずかです。<br>7〜8月は土日から埋まっていきます。まずは空き状況だけでもどうぞ。</p>
+            <ul class="cta-topics">
+                <li>空き状況の確認</li>
+                <li>自分でも取れるか相談</li>
+                <li>持ち物・アクセスの質問</li>
+            </ul>
             <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">LINEで空き状況を聞く<small>（無料・しつこい営業はしません）</small></a>
+            <div class="qr-box">
+                <img src="../../image/optimized/line-qr.webp" alt="三浦 海の学校 LINE公式アカウントのQRコード" width="96" height="96" loading="lazy">
+                <p>パソコンでご覧の方は、スマホのカメラでこのQRを読み取るとLINEが開きます。</p>
+            </div>
             <p class="alt">メール派の方は<a href="https://miura-diving.com/contact/">お問い合わせフォーム</a>へ</p>
         </div>
     </section>
