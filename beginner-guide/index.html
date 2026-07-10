@@ -155,6 +155,85 @@
         }
         .blog-link-list a:hover { transform:translateX(4px); box-shadow:var(--shadow-md); color:var(--teal-dark); }
         .blog-link-list a span { display:block; font-size:.8rem; font-weight:400; color:var(--text-sub); margin-top:.25rem; }
+
+        .guide-illust {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin: 1.5rem auto;
+        }
+
+        /* ── クラゲちゃんナビ吹き出し ── */
+        .navi-bubble {
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            max-width: 640px;
+            margin: 1.5rem auto 0;
+            text-align: left;
+        }
+
+        .navi-bubble__avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 3px solid var(--teal);
+            object-fit: cover;
+            flex-shrink: 0;
+            background: var(--white);
+        }
+
+        .navi-bubble__balloon {
+            position: relative;
+            flex: 1;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: .85rem 1rem;
+            font-size: .88rem;
+            line-height: 1.7;
+            color: var(--text-sub);
+        }
+
+        .navi-bubble__balloon::before,
+        .navi-bubble__balloon::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        .navi-bubble__balloon::before {
+            left: -9px;
+            border-right: 9px solid var(--border);
+        }
+
+        .navi-bubble__balloon::after {
+            left: -8px;
+            border-right: 8px solid var(--white);
+        }
+
+        @media (max-width: 600px) {
+            .navi-bubble { gap: .5rem; }
+
+            .navi-bubble__avatar {
+                width: 44px;
+                height: 44px;
+                border-width: 2px;
+            }
+
+            .navi-bubble__balloon {
+                font-size: .82rem;
+                padding: .7rem .85rem;
+            }
+        }
     </style>
 </head>
 
@@ -230,6 +309,7 @@
                 <span class="section-label reveal">Difference</span>
                 <h2 id="difference-title" class="section-title reveal" style="text-align:center;">体験ダイビングとライセンス取得の違い</h2>
                 <p class="section-lead reveal" style="text-align:center;">初心者が最初に迷いやすいポイントです。どちらが正解というより、「今回の目的」で選ぶと分かりやすくなります。</p>
+                <img class="guide-illust reveal" src="../image/optimized/beginner-compare.webp" alt="体験ダイビング（インストラクターが支える浅場体験）とライセンス取得後（自由に泳げる）の違いを表すイラスト" width="900" height="502" loading="lazy">
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;text-align:left;">
                     <div class="topic-card reveal" data-delay="0">
                         <h3>体験ダイビング</h3>
@@ -245,6 +325,10 @@
                 <div class="answer-box reveal" style="margin-top:1.5rem;">
                     <h3>初心者はどちらを選べばいい？</h3>
                     <p>「海の中を一度見てみたい」なら体験ダイビング、「旅行先や三浦の海で継続して潜りたい」ならライセンス取得がおすすめです。泳げない不安や一人参加の心配がある方は、無理に決めずにLINEで相談してから選べます。</p>
+                </div>
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">迷ったら体験ダイビングからで大丈夫！わたしも体験から始めたよ🌊</div>
                 </div>
             </div>
         </section>
@@ -367,14 +451,17 @@
                     <div class="answer-box reveal">
                         <h3>必要日数</h3>
                         <p>体験ダイビングは半日が目安です。ライセンス取得は事前のeラーニング＋実技2〜3日間が目安。連続日程でなくても、週末を使って分けて受講できます。</p>
+                        <img class="guide-illust" src="../image/optimized/beginner-days.webp" alt="カレンダーを見ながら楽しくダイビングの日程を計画するイラスト" width="800" height="600" loading="lazy">
                     </div>
                     <div class="answer-box reveal" data-delay="1">
                         <h3>持ち物</h3>
                         <p>水着、タオル、サンダル、着替え、日焼け止め、飲み物が基本です。器材はレンタルできます。季節やコースにより必要なものは予約時に分かりやすくご案内します。</p>
+                        <img class="guide-illust" src="../image/optimized/beginner-items.webp" alt="水着・タオル・サンダル・日焼け止めなど体験ダイビングの持ち物のイラスト" width="800" height="600" loading="lazy">
                     </div>
                     <div class="answer-box reveal" data-delay="2">
                         <h3>講習の流れ</h3>
                         <p>申し込み前の相談 → 日程決定 → eラーニング → 基本練習 → 海洋実習 → 認定、という流れです。不安なスキルは繰り返し確認し、無理に先へ進めません。</p>
+                        <img class="guide-illust" src="../image/optimized/beginner-study.webp" alt="海辺でインストラクターとやさしく学科講習を受けるイラスト" width="800" height="600" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -414,6 +501,10 @@
                     <h3>Q. 怖くなったら途中でやめられますか？</h3>
                     <p>はい。無理に続けることはありません。呼吸に慣れる、顔を水につける、浅い場所で落ち着くなど、その日の状態に合わせて進めます。</p>
                 </div>
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">ここにない不安も、LINEで気軽に聞いてね！</div>
+                </div>
             </div>
         </section>
 
@@ -422,6 +513,7 @@
             <div class="container" style="max-width:800px;">
                 <span class="section-label reveal">Access</span>
                 <h2 id="access-title" class="section-title reveal" style="text-align:center;">横須賀・横浜・東京近郊からの参加</h2>
+                <img class="guide-illust reveal" src="../image/optimized/beginner-access.webp" alt="京急線で三崎口駅に到着し送迎車で合流するアクセスのイラスト" width="800" height="600" loading="lazy" style="max-width:500px;">
                 <p class="reveal" style="font-size:.9rem;color:var(--text-sub);line-height:1.8;text-align:center;">最寄りは京急線「三崎口駅」。横須賀方面から日帰り、横浜方面から週末に、東京近郊から小旅行感覚で参加できます。送迎や集合場所は予約時に相談できます。</p>
                 <p class="reveal" style="text-align:center;margin-top:1rem;">
                     <a href="../kanagawa-diving-license/" class="btn btn--primary">神奈川でライセンスを取る選び方を見る</a>
@@ -434,6 +526,7 @@
             <div class="container" style="max-width:800px;">
                 <span class="section-label reveal">Step 4</span>
                 <h2 id="after-title" class="section-title reveal" style="text-align:center;">ライセンスを取ったらできること</h2>
+                <img class="guide-illust reveal" src="../image/optimized/beginner-dream.webp" alt="ライセンス取得後に水中カメラや魚の群れ、ウミガメとの出会いを楽しむイラスト" width="900" height="502" loading="lazy">
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-top:1.5rem;">
                     <div class="topic-card reveal" data-delay="0" style="text-align:center;">
                         <h3>ファンダイビング</h3>

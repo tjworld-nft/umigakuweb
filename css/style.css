@@ -198,6 +198,8 @@ a:hover { color: var(--coral); }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* ヘッダーはナビ項目数が多いため、本文コンテナより少し広めに確保する */
+  max-width: 1320px;
 }
 
 .header-logo {
@@ -222,12 +224,12 @@ a:hover { color: var(--coral); }
 /* ---- Desktop nav ---- */
 .desktop-nav { display: none; }
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .desktop-nav {
     display: flex;
-    gap: clamp(.9rem, 1.6vw, 1.75rem);
+    gap: clamp(.7rem, 1.3vw, 1.6rem);
     align-items: center;
-    margin-left: 2rem;
+    margin-left: 1.5rem;
   }
   .desktop-nav a {
     font-size: .9rem;
@@ -284,7 +286,7 @@ a:hover { color: var(--coral); }
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .hamburger { display: none; }
 }
 
@@ -383,8 +385,8 @@ a:hover { color: var(--coral); }
 }
 .hero--soft .hero-bg::after {
   background:
-    linear-gradient(180deg, rgba(10,44,58,.30) 0%, rgba(10,44,58,.22) 42%, rgba(10,44,58,.44) 100%),
-    radial-gradient(circle at 50% 45%, rgba(10,44,58,.18) 0%, rgba(10,44,58,0) 55%);
+    linear-gradient(180deg, rgba(10,44,58,.36) 0%, rgba(10,44,58,.30) 42%, rgba(10,44,58,.50) 100%),
+    radial-gradient(circle at 50% 45%, rgba(10,44,58,.22) 0%, rgba(10,44,58,0) 55%);
 }
 .hero--soft .hero-content {
   color: #fff;
@@ -396,12 +398,12 @@ a:hover { color: var(--coral); }
   box-shadow: 0 10px 28px rgba(20, 60, 78, .22);
   text-shadow: 0 1px 2px rgba(0,0,0,.3);
 }
-.hero--soft h1 {
-  text-shadow: 0 3px 20px rgba(34, 99, 126, .28);
+.hero.hero--soft h1 {
+  text-shadow: 0 2px 4px rgba(0,30,45,.45), 0 8px 22px rgba(0,30,45,.32);
 }
 .hero--soft .hero-sub {
   opacity: .96;
-  text-shadow: 0 2px 12px rgba(34, 99, 126, .24);
+  text-shadow: 0 1px 3px rgba(0,25,38,.5), 0 6px 16px rgba(0,25,38,.34);
 }
 
 .hero-content {
