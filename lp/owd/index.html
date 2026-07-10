@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>神奈川でダイビングライセンス取得｜総額表示・追加費用なし｜三浦 海の学校</title>
+    <meta name="description" content="PADIオープンウォーターダイバー講習 総額¥64,900（税込・レンタル器材込み）。神奈川・三浦の穏やかな海でコースディレクターが少人数指導。品川から京急で約70分。">
+    <meta name="robots" content="noindex, nofollow">
+    <!-- TODO: Google広告のコンバージョンタグ(gtag.js / AW-XXXXXXX)を発行したらここに貼る -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../favicon.ico">
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --bg-cream: #FAFBFC;
+            --bg-soft: #F0F7FA;
+            --teal: #4ECDC4;
+            --teal-light: #A8E6CF;
+            --teal-dark: #38AFA7;
+            --coral: #FF6B9D;
+            --yellow: #FFE66D;
+            --sky: #45B7D1;
+            --text-dark: #2D3436;
+            --text-sub: #636E72;
+            --border: #E5EDF2;
+            --line-green: #06C755;
+            --ff-body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --shadow-sm: 0 2px 12px rgba(0, 0, 0, .06);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, .08);
+            --ease: .35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--ff-body); color: var(--text-dark); background: var(--bg-cream); line-height: 1.8; }
+        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
+        section { padding: clamp(2.5rem, 7vw, 4.5rem) 0; }
+
+        /* ── ヘッダー ── */
+        .lp-header {
+            position: sticky; top: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: .6rem 1rem; background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
+        }
+        .lp-header .brand { font-weight: 900; font-size: .95rem; color: var(--teal-dark); text-decoration: none; }
+        .btn-line-sm {
+            display: inline-flex; align-items: center; gap: .4rem;
+            background: var(--line-green); color: #fff; text-decoration: none;
+            font-weight: 700; font-size: .8rem; padding: .5rem .9rem; border-radius: 999px;
+        }
+
+        /* ── ヒーロー ── */
+        .hero {
+            position: relative; min-height: 88svh; display: flex; align-items: center;
+            padding: 3.5rem 0; overflow: hidden;
+            background: linear-gradient(rgba(13, 59, 76, .38), rgba(13, 59, 76, .55)), url("../../image/optimized/owd-hero.webp") center/cover no-repeat;
+        }
+        .hero-inner { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; color: #fff; }
+        .hero .season { display: inline-block; background: var(--yellow); color: var(--text-dark); font-weight: 700; font-size: .8rem; padding: .3rem .9rem; border-radius: 999px; margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(1.55rem, 6vw, 2.6rem); font-weight: 900; line-height: 1.4; text-shadow: 0 2px 12px rgba(0, 0, 0, .35); margin-bottom: .75rem; }
+        .hero .sub { font-size: clamp(.9rem, 3vw, 1.05rem); font-weight: 500; text-shadow: 0 1px 8px rgba(0, 0, 0, .4); margin-bottom: 1.25rem; }
+        .price-flash {
+            display: inline-block; background: rgba(255, 255, 255, .96); color: var(--text-dark);
+            border-radius: var(--radius-md); padding: .9rem 1.4rem; box-shadow: var(--shadow-md); margin-bottom: 1.4rem;
+        }
+        .price-flash .label { font-size: .75rem; font-weight: 700; color: var(--teal-dark); }
+        .price-flash .num { font-size: clamp(1.6rem, 6vw, 2.1rem); font-weight: 900; color: var(--coral); line-height: 1.2; }
+        .price-flash .num small { font-size: .8rem; color: var(--text-sub); font-weight: 500; }
+        .price-flash .note { font-size: .72rem; color: var(--text-sub); }
+
+        .btn-line {
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .05rem;
+            line-height: 1.35; text-align: center;
+            background: var(--line-green); color: #fff; text-decoration: none;
+            font-weight: 900; font-size: 1.05rem; padding: 1rem 1.5rem; border-radius: 999px;
+            box-shadow: 0 8px 24px rgba(6, 199, 85, .35); max-width: 420px;
+            transition: transform var(--ease);
+        }
+        .btn-line:hover { transform: translateY(-2px); }
+        .btn-line small { font-weight: 500; font-size: .72rem; opacity: .95; }
+        .hero .cta-note { font-size: .75rem; margin-top: .6rem; text-shadow: 0 1px 6px rgba(0, 0, 0, .5); }
+
+        .relief-bar { background: var(--teal-dark); color: #fff; padding: .8rem 0; }
+        .relief-bar ul { display: flex; justify-content: center; gap: clamp(.8rem, 4vw, 2.5rem); list-style: none; flex-wrap: wrap; }
+        .relief-bar li { font-size: clamp(.78rem, 2.6vw, .9rem); font-weight: 700; display: flex; align-items: center; gap: .35rem; }
+        .relief-bar li::before { content: "✓"; color: var(--yellow); font-weight: 900; }
+
+        /* ── 見出し ── */
+        .sec-label { display: block; text-align: center; font-family: "Montserrat", var(--ff-body); font-size: .75rem; font-weight: 700; letter-spacing: .18em; color: var(--teal); text-transform: uppercase; margin-bottom: .4rem; }
+        .sec-title { text-align: center; font-size: clamp(1.3rem, 4.5vw, 1.8rem); font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 1.75rem; }
+        .sec-title em { font-style: normal; color: var(--coral); }
+
+        /* ── クラゲちゃんナビ吹き出し ── */
+        .navi-bubble { display: flex; align-items: flex-start; gap: .75rem; max-width: 640px; margin: 1.5rem auto 0; text-align: left; }
+        .navi-bubble__avatar { width: 56px; height: 56px; border-radius: 50%; border: 3px solid var(--teal); object-fit: cover; flex-shrink: 0; background: var(--white); }
+        .navi-bubble__balloon { position: relative; flex: 1; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: .85rem 1rem; font-size: .88rem; line-height: 1.7; color: var(--text-sub); }
+        .navi-bubble__balloon::before, .navi-bubble__balloon::after { content: ''; position: absolute; top: 18px; width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
+        .navi-bubble__balloon::before { left: -9px; border-right: 9px solid var(--border); }
+        .navi-bubble__balloon::after { left: -8px; border-right: 8px solid var(--white); }
+        @media (max-width: 600px) {
+            .navi-bubble { gap: .5rem; }
+            .navi-bubble__avatar { width: 44px; height: 44px; border-width: 2px; }
+            .navi-bubble__balloon { font-size: .82rem; padding: .7rem .85rem; }
+        }
+
+        .lp-illust { border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin: 1.5rem auto 0; }
+
+        /* ── 料金 ── */
+        .price-section { background: var(--bg-soft); }
+        .price-card { background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-md); overflow: hidden; max-width: 640px; margin: 0 auto; }
+        .price-card__head { background: linear-gradient(135deg, var(--teal), var(--sky)); color: #fff; text-align: center; padding: 1.25rem 1rem; }
+        .price-card__head h3 { font-size: 1.05rem; font-weight: 900; }
+        .price-card__body { padding: 1.5rem; }
+        .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: .65rem 0; border-bottom: 1px dashed var(--border); font-size: .92rem; }
+        .price-row .item small { display: block; font-size: .74rem; color: var(--text-sub); }
+        .price-row .yen { font-weight: 700; white-space: nowrap; }
+        .price-row--total { border-bottom: none; border-top: 2px solid var(--teal); margin-top: .4rem; padding-top: .9rem; }
+        .price-row--total .item { font-weight: 900; font-size: 1rem; }
+        .price-row--total .yen { font-size: 1.6rem; font-weight: 900; color: var(--coral); }
+        .price-row--total .yen small { font-size: .75rem; color: var(--text-sub); font-weight: 500; }
+        .price-includes { background: var(--bg-soft); border-radius: var(--radius-sm); padding: .9rem 1rem; margin-top: 1rem; font-size: .8rem; color: var(--text-sub); }
+        .price-includes strong { color: var(--teal-dark); }
+        .no-extra { text-align: center; margin-top: 1rem; font-size: .88rem; font-weight: 700; color: var(--teal-dark); }
+
+        /* ── 理由カード ── */
+        .reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+        .reason-card { background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border); overflow: hidden; }
+        .reason-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+        .reason-card__body { padding: 1.1rem 1.2rem 1.3rem; }
+        .reason-card .num { font-family: "Montserrat", var(--ff-body); font-weight: 700; color: var(--coral); font-size: .78rem; letter-spacing: .1em; }
+        .reason-card h3 { font-size: 1rem; font-weight: 900; color: var(--teal-dark); margin: .2rem 0 .4rem; line-height: 1.5; }
+        .reason-card p { font-size: .84rem; color: var(--text-sub); }
+
+        /* ── 流れ ── */
+        .flow-section { background: var(--bg-soft); }
+        .flow-step { display: flex; gap: 1rem; align-items: flex-start; max-width: 640px; margin: 0 auto 1.25rem; }
+        .flow-step__num { min-width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--sky)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.05rem; flex-shrink: 0; }
+        .flow-step__card { background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 1.1rem 1.25rem; flex: 1; }
+        .flow-step__card h3 { font-size: .95rem; font-weight: 900; color: var(--teal-dark); margin-bottom: .3rem; }
+        .flow-step__card p { font-size: .84rem; color: var(--text-sub); }
+        .flow-step__card .tag { display: inline-block; background: var(--yellow); border-radius: 999px; font-size: .68rem; font-weight: 700; padding: .1rem .6rem; margin-left: .4rem; vertical-align: middle; }
+        .flow-step__card img { border-radius: var(--radius-sm); margin-top: .75rem; }
+
+        /* ── インストラクター ── */
+        .instructor-card { display: flex; gap: 1.25rem; align-items: flex-start; background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 1.5rem; max-width: 640px; margin: 0 auto; flex-wrap: wrap; }
+        .instructor-card img { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; border: 4px solid var(--teal-light); flex-shrink: 0; }
+        .instructor-card .info { flex: 1; min-width: 220px; }
+        .instructor-card .role { font-size: .74rem; font-weight: 700; color: var(--coral); }
+        .instructor-card h3 { font-size: 1.15rem; font-weight: 900; margin: .15rem 0 .5rem; }
+        .instructor-card p { font-size: .85rem; color: var(--text-sub); }
+
+        /* ── 声 ── */
+        .voice-section { background: var(--bg-soft); }
+        .voices { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+        .voice-card { background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 1.4rem; }
+        .voice-card .stars { color: var(--coral); margin-bottom: .5rem; letter-spacing: .1em; }
+        .voice-card p { font-size: .85rem; color: var(--text-sub); margin-bottom: .6rem; }
+        .voice-card .who { font-size: .75rem; font-weight: 700; color: var(--teal-dark); }
+
+        /* ── FAQ ── */
+        .faq details { background: var(--white); border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: .75rem; overflow: hidden; }
+        .faq summary { cursor: pointer; list-style: none; padding: 1rem 1.2rem; font-weight: 700; font-size: .92rem; color: var(--teal-dark); display: flex; align-items: center; gap: .5rem; text-align: left; }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::after { margin-left: auto; }
+        .faq summary::before { content: "Q."; color: var(--coral); font-weight: 900; margin-right: .2rem; }
+        .faq summary::after { content: "+"; font-size: 1.3rem; color: var(--teal); transition: transform var(--ease); }
+        .faq details[open] summary::after { transform: rotate(45deg); }
+        .faq details p { padding: 0 1.2rem 1.1rem; font-size: .85rem; color: var(--text-sub); }
+
+        /* ── 最終CTA ── */
+        .final-cta { background: linear-gradient(135deg, var(--teal), var(--sky)); color: #fff; text-align: center; }
+        .final-cta h2 { font-size: clamp(1.3rem, 4.5vw, 1.8rem); font-weight: 900; line-height: 1.5; margin-bottom: .6rem; }
+        .final-cta p { font-size: .9rem; margin-bottom: 1.5rem; }
+        .final-cta .btn-line { margin: 0 auto; background: var(--white); color: var(--line-green); box-shadow: 0 8px 24px rgba(0, 0, 0, .18); }
+        .final-cta .alt { margin-top: 1.1rem; font-size: .8rem; }
+        .final-cta .alt a { color: #fff; font-weight: 700; }
+
+        .lp-footer { text-align: center; padding: 1.75rem 1rem 5.5rem; font-size: .74rem; color: var(--text-sub); }
+        .lp-footer a { color: var(--teal-dark); }
+
+        /* ── 追従LINEボタン ── */
+        .float-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; padding: .6rem .9rem calc(.6rem + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, .94); backdrop-filter: blur(8px); border-top: 1px solid var(--border); }
+        .float-cta .btn-line { max-width: 520px; margin: 0 auto; padding: .8rem 1.2rem; font-size: .95rem; }
+
+        .reveal { opacity: .01; transform: translateY(14px); transition: opacity .45s ease, transform .45s ease; }
+        .reveal.is-visible { opacity: 1; transform: none; }
+        /* JSが動かない環境でも本文が消えないよう保険 */
+        .no-js .reveal { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+    </style>
+</head>
+
+<body>
+    <header class="lp-header">
+        <a class="brand" href="https://miura-diving.com/">三浦 海の学校</a>
+        <a class="btn-line-sm" href="https://lin.ee/kK3d5p2" data-cv="line">LINEで相談</a>
+    </header>
+
+    <!-- ヒーロー -->
+    <div class="hero">
+        <div class="hero-inner">
+            <span class="season">2026年夏 受付中</span>
+            <h1>この夏、<br>海の中で呼吸しよう。</h1>
+            <p class="sub">神奈川・三浦｜PADIオープンウォーターダイバー（Cカード）取得コース</p>
+            <div class="price-flash">
+                <div class="label">レンタル器材まで全部込みの総額</div>
+                <div class="num">¥64,900<small>（税込）</small></div>
+                <div class="note">講習費¥53,900＋器材レンタル2日分。当日の追加費用はありません。</div>
+            </div>
+            <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">LINEで空き状況を聞く<small>（相談無料・営業なし）</small></a>
+            <p class="cta-note">「まだ迷っている」段階のご相談も歓迎です</p>
+        </div>
+    </div>
+
+    <div class="relief-bar">
+        <ul>
+            <li>泳げなくてもOK</li>
+            <li>10歳から参加可</li>
+            <li>おひとり様歓迎</li>
+        </ul>
+    </div>
+
+    <!-- 導入 -->
+    <section>
+        <div class="container">
+            <span class="sec-label">Summer Debut</span>
+            <h2 class="sec-title">ライセンスを取れば、<br>夏の海は<em>「眺める場所」から「潜る場所」</em>に変わる</h2>
+            <img class="lp-illust" src="../../image/optimized/owd-lp-summer-debut.webp" alt="夏の三浦の海へ誘うクラゲ女子のイラスト" width="900" height="502" loading="lazy">
+            <div class="navi-bubble">
+                <img class="navi-bubble__avatar" src="../../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
+                <div class="navi-bubble__balloon">
+                    はじめまして、案内役のクラゲちゃんです🪼 PADIオープンウォーターダイバーは世界中の海で通用する入門ライセンス。eラーニング＋実技2〜3日で、水深18mまでの海を自分の力で泳げるようになりますよ。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金 -->
+    <section class="price-section">
+        <div class="container">
+            <span class="sec-label">Price</span>
+            <h2 class="sec-title">「◯万円〜」の広告に疲れた方へ。<br><em>最初から総額</em>をお見せします</h2>
+            <div class="price-card reveal">
+                <div class="price-card__head">
+                    <h3>PADIオープンウォーターダイバーコース</h3>
+                </div>
+                <div class="price-card__body">
+                    <div class="price-row">
+                        <div class="item">講習費<small>eラーニング・ログブック・海洋実習費・申請料・保険 すべて込み</small></div>
+                        <div class="yen">¥53,900</div>
+                    </div>
+                    <div class="price-row">
+                        <div class="item">レンタル器材<small>¥5,500/日 × 実技2日分（フル器材）</small></div>
+                        <div class="yen">¥11,000</div>
+                    </div>
+                    <div class="price-row price-row--total">
+                        <div class="item">総額</div>
+                        <div class="yen">¥64,900<small>（税込）</small></div>
+                    </div>
+                    <div class="price-includes">
+                        <strong>当日の追加費用はありません。</strong>教材費・申請料・施設利用料などの「あとから請求」は一切なし。器材の購入も不要です（お持ちの方はレンタル代分お安くなります）。
+                    </div>
+                </div>
+            </div>
+            <div class="navi-bubble">
+                <img class="navi-bubble__avatar" src="../../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
+                <div class="navi-bubble__balloon">
+                    実技3日目が必要になった場合も追加のレンタル代（¥5,500）だけ。講習費の追加はかかりません。安心してマイペースに進めてくださいね。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 選ばれる理由 -->
+    <section>
+        <div class="container">
+            <span class="sec-label">Reason</span>
+            <h2 class="sec-title">三浦 海の学校が選ばれる<em>3つの理由</em></h2>
+            <div class="reasons">
+                <div class="reason-card reveal">
+                    <img src="../../image/optimized/instructor.webp" alt="PADIコースディレクター吉田哲司" width="800" height="800" loading="lazy">
+                    <div class="reason-card__body">
+                        <span class="num">REASON 01</span>
+                        <h3>コースディレクターが直接指導</h3>
+                        <p>インストラクターを育てる立場のPADIコースディレクターから直接学べる、神奈川でも数少ないスクールです。</p>
+                    </div>
+                </div>
+                <div class="reason-card reveal">
+                    <img src="../../image/optimized/pooldive.webp" alt="穏やかな浅場での少人数ダイビング講習" width="800" height="600" loading="lazy">
+                    <div class="reason-card__body">
+                        <span class="num">REASON 02</span>
+                        <h3>少人数制でマイペースに</h3>
+                        <p>大人数の流れ作業にはしません。プールのように穏やかな浅場で、一人ひとりのペースに合わせて練習します。</p>
+                    </div>
+                </div>
+                <div class="reason-card reveal">
+                    <img src="../../image/optimized/misakiguchi.webp" alt="京急三崎口駅" width="600" height="600" loading="lazy">
+                    <div class="reason-card__body">
+                        <span class="num">REASON 03</span>
+                        <h3>品川から京急で約70分</h3>
+                        <p>開催は三浦・城ヶ島と宮川湾。三崎口駅からの送迎もご予約時に相談できます。都心から日帰りで通えます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 流れ -->
+    <section class="flow-section">
+        <div class="container">
+            <span class="sec-label">Flow</span>
+            <h2 class="sec-title">取得までの流れは<em>かんたん4ステップ</em></h2>
+            <div class="flow-step reveal">
+                <div class="flow-step__num">1</div>
+                <div class="flow-step__card">
+                    <h3>LINEで日程を相談<span class="tag">今日できる</span></h3>
+                    <p>ご希望の時期・不安なことをLINEで気軽にどうぞ。日程と持ち物をご案内します。</p>
+                </div>
+            </div>
+            <div class="flow-step reveal">
+                <div class="flow-step__num">2</div>
+                <div class="flow-step__card">
+                    <h3>eラーニングで自宅学習<span class="tag">スキマ時間でOK</span></h3>
+                    <p>スマホで学科を事前に学習。当日は海に集中できます。</p>
+                    <img src="../../image/optimized/license-elearning.webp" alt="スマホでPADIのeラーニングを進めるイメージ" width="800" height="600" loading="lazy">
+                </div>
+            </div>
+            <div class="flow-step reveal">
+                <div class="flow-step__num">3</div>
+                <div class="flow-step__card">
+                    <h3>穏やかな浅場で練習 → 海洋実習</h3>
+                    <p>呼吸・浮力の基本を浅場でゆっくり練習してから、城ヶ島・宮川湾の海へ。実技は2〜3日間です。</p>
+                    <img src="../../image/optimized/dive.webp" alt="三浦の海での海洋実習" width="1200" height="900" loading="lazy">
+                </div>
+            </div>
+            <div class="flow-step reveal">
+                <div class="flow-step__num">4</div>
+                <div class="flow-step__card">
+                    <h3>PADIオープンウォーターダイバー認定！</h3>
+                    <p>世界中の海で使えるCカードを取得。次の週末から、海はあなたのフィールドです。</p>
+                    <img src="../../image/optimized/owd-lp-card-get.webp" alt="Cカード取得を祝うクラゲ女子とインストラクターのイラスト" width="800" height="600" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- インストラクター -->
+    <section>
+        <div class="container">
+            <span class="sec-label">Instructor</span>
+            <h2 class="sec-title">教えるのは、<em>教える人を育てるプロ</em></h2>
+            <div class="instructor-card reveal">
+                <img src="../../image/optimized/instructor.webp" alt="PADIコースディレクター 吉田哲司" width="132" height="132" loading="lazy">
+                <div class="info">
+                    <span class="role">PADIコースディレクター / 代表インストラクター</span>
+                    <h3>吉田 哲司</h3>
+                    <p>インストラクターを育成するコースディレクターとして、三浦の海で講習を中心に活動。「泳げない」「体力に自信がない」方こそ、基本から一つずつ。あなたのペースで必ず潜れるようになります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 受講者の声 -->
+    <section class="voice-section">
+        <div class="container">
+            <span class="sec-label">Voice</span>
+            <h2 class="sec-title">受講者の声</h2>
+            <div class="voices">
+                <div class="voice-card reveal">
+                    <div class="stars">★★★★★</div>
+                    <p>泳ぎが苦手で不安でしたが、基本から一つずつ教えてもらい、海でも落ち着いて潜れました。少人数なので質問もしやすく、講習があっという間でした。</p>
+                    <div class="who">20代女性・OWD取得</div>
+                </div>
+                <div class="voice-card reveal">
+                    <div class="stars">★★★★★</div>
+                    <p>60歳を過ぎてからの挑戦でしたが、自分のペースに合わせてもらえて楽しめました。今ではファンダイビングにも通っています。</p>
+                    <div class="who">60代男性・OWD取得</div>
+                </div>
+                <div class="voice-card reveal">
+                    <div class="stars">★★★★★</div>
+                    <p>一人で参加しましたが、すぐに打ち解けられました。品川から1時間で着くのでアクセスも楽。OWD取得後すぐにAOWも受講しました。</p>
+                    <div class="who">30代男性・OWD/AOW取得</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+        <div class="container">
+            <span class="sec-label">FAQ</span>
+            <h2 class="sec-title">よくあるご質問</h2>
+            <div class="faq">
+                <details>
+                    <summary>泳げないのですが、大丈夫ですか？</summary>
+                    <p>はい、大丈夫です。ダイビングは水泳と違い、器材で呼吸と浮力をコントロールします。プールのように穏やかな浅場で基礎からゆっくり練習するので、水が苦手な方でも安心です。</p>
+                </details>
+                <details>
+                    <summary>何日で取得できますか？</summary>
+                    <p>eラーニング（自宅学習）＋実技2〜3日間が目安です。連続した2日間でも、週末に分けてもOK。海況や習熟度に合わせて無理なく進めます。</p>
+                </details>
+                <details>
+                    <summary>年齢制限はありますか？</summary>
+                    <p>10歳から参加できます。上限はなく、60代・70代で取得される方も多数いらっしゃいます。</p>
+                </details>
+                <details>
+                    <summary>本当に総額¥64,900以外かかりませんか？</summary>
+                    <p>はい。講習費¥53,900に教材・申請料・保険まで含まれ、あとはレンタル器材¥5,500×実技日数のみ。実技が3日になった場合もレンタル代1日分が増えるだけで、講習費の追加はありません。水着・タオル・日焼け止めだけご持参ください。</p>
+                </details>
+                <details>
+                    <summary>一人での参加は浮きませんか？</summary>
+                    <p>おひとりでのご参加はとても多いです。少人数制なので置いていかれる心配もありません。</p>
+                </details>
+                <details>
+                    <summary>集合場所はどこですか？</summary>
+                    <p>開催は神奈川県三浦市の城ヶ島・宮川湾です。詳しい集合場所はご予約時にご案内します。京急三崎口駅からの送迎もご相談ください。</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>今年の夏を、<br>「海に潜れる自分」で過ごそう。</h2>
+            <p>7〜8月の週末は席が埋まりやすくなっています。まずは空き状況だけでもどうぞ。</p>
+            <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">LINEで空き状況を聞く<small>（無料・しつこい営業はしません）</small></a>
+            <p class="alt">メール派の方は<a href="https://miura-diving.com/contact/">お問い合わせフォーム</a>へ</p>
+        </div>
+    </section>
+
+    <footer class="lp-footer">
+        <p>三浦 海の学校｜神奈川県三浦市（開催: 城ヶ島・宮川湾）</p>
+        <p><a href="https://miura-diving.com/">公式サイトはこちら</a>｜<a href="https://miura-diving.com/license/">コース詳細ページ</a></p>
+    </footer>
+
+    <div class="float-cta">
+        <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">LINEで相談する（無料）</a>
+    </div>
+
+    <script>
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+            }, { threshold: .05, rootMargin: '0px 0px 120px 0px' });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+        }
+    </script>
+</body>
+
+</html>
