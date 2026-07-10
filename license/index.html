@@ -332,6 +332,85 @@
             color: var(--coral);
             font-weight: 600;
         }
+
+        .guide-illust {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin: 1.5rem auto;
+        }
+
+        /* ── クラゲちゃんナビ吹き出し ── */
+        .navi-bubble {
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            max-width: 640px;
+            margin: 1.5rem auto 0;
+            text-align: left;
+        }
+
+        .navi-bubble__avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 3px solid var(--teal);
+            object-fit: cover;
+            flex-shrink: 0;
+            background: var(--white);
+        }
+
+        .navi-bubble__balloon {
+            position: relative;
+            flex: 1;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: .85rem 1rem;
+            font-size: .88rem;
+            line-height: 1.7;
+            color: var(--text-sub);
+        }
+
+        .navi-bubble__balloon::before,
+        .navi-bubble__balloon::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        .navi-bubble__balloon::before {
+            left: -9px;
+            border-right: 9px solid var(--border);
+        }
+
+        .navi-bubble__balloon::after {
+            left: -8px;
+            border-right: 8px solid var(--white);
+        }
+
+        @media (max-width: 600px) {
+            .navi-bubble { gap: .5rem; }
+
+            .navi-bubble__avatar {
+                width: 44px;
+                height: 44px;
+                border-width: 2px;
+            }
+
+            .navi-bubble__balloon {
+                font-size: .82rem;
+                padding: .7rem .85rem;
+            }
+        }
     </style>
 </head>
 
@@ -400,6 +479,7 @@
                 <span class="section-label reveal">Start Here</span>
                 <h2 id="price-guide-title" class="section-title reveal">初心者向けライセンス講習の料金・日数</h2>
                 <p class="section-lead reveal">まずは「いくらかかるか」「何日必要か」「別途必要なもの」を確認できるようにしました。分からない点は申し込み前にLINEで相談できます。</p>
+                <img class="guide-illust reveal" src="../image/optimized/license-navi-price.webp" alt="三浦・城ヶ島でのPADIダイビングライセンス講習の料金・日数を案内するイラスト" width="800" height="600" loading="lazy">
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;text-align:left;">
                     <div class="specialty-card reveal" data-delay="0" style="padding:1.5rem;">
                         <h3 style="font-size:1rem;color:var(--teal-dark);margin-bottom:.5rem;">体験ダイビング</h3>
@@ -418,6 +498,10 @@
                         <p style="font-size:.85rem;color:var(--text-sub);line-height:1.7;">日程、持ち物、送迎、泳げない不安、一人参加の心配も事前に確認できます。</p>
                         <p style="margin-top:.75rem;"><a href="https://lin.ee/kK3d5p2" class="btn btn--coral" target="_blank" rel="noopener noreferrer">費用と日程をLINEで確認</a></p>
                     </div>
+                </div>
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">AOWまで一気に取るとセットで5,000円お得だよ！迷ったらOWDだけからでも大丈夫🌊</div>
                 </div>
                 <p class="reveal" style="font-size:.86rem;color:var(--text-sub);line-height:1.8;margin-top:1.5rem;">横須賀方面から日帰り、横浜方面から週末、東京近郊から小旅行感覚で参加できます。京急線「三崎口駅」からの送迎や集合場所は予約時にご相談ください。</p>
             </div>
@@ -447,6 +531,11 @@
                 <h2 id="courses-title" class="section-title reveal">PADIダイビングライセンス 開講コース一覧</h2>
                 <p class="section-lead reveal">
                     初心者ダイバーからステップアップ希望の方まで、目的に合わせて選べます。初めての方は、まず体験ダイビングまたはOWDをご覧ください。</p>
+                <img class="guide-illust reveal" src="../image/optimized/license-step-up.webp" alt="三浦・城ヶ島の海でOWDからAOWへとステップアップするダイビングライセンス講習のイラスト" width="800" height="600" loading="lazy">
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">OWDを取ったら次はAOWで潜れる場所がぐっと広がるよ。相棒インストラクターと一緒にステップアップしよう！</div>
+                </div>
 
                 <div class="course-grid">
                     <!-- 体験ダイビング -->
@@ -711,6 +800,11 @@
                 <span class="section-label reveal">Flow</span>
                 <h2 id="flow-title" class="section-title reveal">ライセンス取得の流れ（OWDの場合）</h2>
                 <p class="section-lead reveal">事前のeラーニング＋実技2〜3日間が目安です。海況や習熟度に合わせて無理なく進めます。</p>
+                <img class="guide-illust reveal" src="../image/optimized/license-elearning.webp" alt="自宅でタブレットを使ってPADIダイビングライセンスのeラーニングを楽しく学習するイラスト" width="800" height="600" loading="lazy" style="max-width:500px;">
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">eラーニングは自分のペースでOK。スキマ時間に少しずつ進めれば、当日はスムーズに実習に入れるよ！</div>
+                </div>
                 <div style="max-width:700px;margin:1.5rem auto 0;text-align:left;">
                     <div class="reveal" style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
                         <div style="min-width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--sky));color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-direction:column;line-height:1.1;">事前<small style="font-size:.6rem;opacity:.8;">自宅</small></div>

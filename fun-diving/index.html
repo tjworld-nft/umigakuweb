@@ -287,6 +287,85 @@
             font-size: .75rem;
             color: var(--text-sub);
         }
+
+        .guide-illust {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin: 1.5rem auto;
+        }
+
+        /* ── クラゲちゃんナビ吹き出し ── */
+        .navi-bubble {
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            max-width: 640px;
+            margin: 1.5rem auto 0;
+            text-align: left;
+        }
+
+        .navi-bubble__avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 3px solid var(--teal);
+            object-fit: cover;
+            flex-shrink: 0;
+            background: var(--white);
+        }
+
+        .navi-bubble__balloon {
+            position: relative;
+            flex: 1;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: .85rem 1rem;
+            font-size: .88rem;
+            line-height: 1.7;
+            color: var(--text-sub);
+        }
+
+        .navi-bubble__balloon::before,
+        .navi-bubble__balloon::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        .navi-bubble__balloon::before {
+            left: -9px;
+            border-right: 9px solid var(--border);
+        }
+
+        .navi-bubble__balloon::after {
+            left: -8px;
+            border-right: 8px solid var(--white);
+        }
+
+        @media (max-width: 600px) {
+            .navi-bubble { gap: .5rem; }
+
+            .navi-bubble__avatar {
+                width: 44px;
+                height: 44px;
+                border-width: 2px;
+            }
+
+            .navi-bubble__balloon {
+                font-size: .82rem;
+                padding: .7rem .85rem;
+            }
+        }
     </style>
 </head>
 
@@ -340,6 +419,11 @@
                 <span class="section-label reveal">Plans</span>
                 <h2 class="section-title reveal">ファンダイビングのコースと料金</h2>
                 <p class="section-lead reveal">目的に合わせて3つのコースからお選びください。</p>
+                <img class="guide-illust reveal" src="../image/optimized/fun-diving-buddy.webp" alt="三浦の海でインストラクターと一緒に色とりどりの魚を見ながら泳ぐファンダイビングのイラスト" width="800" height="600" loading="lazy">
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">ビーチダイビングなら気軽に2ダイブ楽しめるよ。まずはここから海の生き物に会いに行こう！</div>
+                </div>
 
                 <div class="plan-grid">
                     <!-- Beach -->
@@ -526,6 +610,11 @@
             <div class="container text-center">
                 <span class="section-label reveal">Info</span>
                 <h2 class="section-title reveal">当日の持ち物・流れ</h2>
+                <img class="guide-illust reveal" src="../image/optimized/fun-diving-ready.webp" alt="ビーチでBCDやフィン・マスクなどのダイビング器材をバッグに準備するイラスト" width="800" height="600" loading="lazy" style="max-width:500px;">
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">器材は全部レンタルOK！水着とタオルだけ持ってくれば、あとはこちらでご用意できるよ。</div>
+                </div>
                 <div class="info-grid">
                     <div class="info-card reveal" data-delay="0">
                         <div class="icon">🩱</div>
