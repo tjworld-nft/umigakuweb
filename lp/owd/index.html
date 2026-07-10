@@ -122,6 +122,8 @@
         .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: .65rem 0; border-bottom: 1px dashed var(--border); font-size: .92rem; }
         .price-row .item small { display: block; font-size: .74rem; color: var(--text-sub); }
         .price-row .yen { font-weight: 700; white-space: nowrap; }
+        .price-row--off .item strong { color: var(--coral); }
+        .price-row--off .yen { color: var(--coral); }
         .price-row--total { border-bottom: none; border-top: 2px solid var(--teal); margin-top: .4rem; padding-top: .9rem; }
         .price-row--total .item { font-weight: 900; font-size: 1rem; }
         .price-row--total .yen { font-size: 1.6rem; font-weight: 900; color: var(--coral); }
@@ -250,13 +252,13 @@
     <!-- ヒーロー -->
     <div class="hero">
         <div class="hero-inner">
-            <span class="season">2026年夏 受付中</span>
+            <span class="season">夏のLINE特典 8/31まで</span>
             <h1>この夏、<br>海の中で呼吸しよう。</h1>
             <p class="sub">神奈川・三浦｜PADIオープンウォーターダイバー（Cカード）取得コース｜実技最短2日</p>
             <div class="price-flash">
-                <div class="label">レンタル器材まで全部込みの総額</div>
-                <div class="num">¥64,900<small>（税込）</small></div>
-                <div class="note">講習費¥53,900＋器材レンタル2日分。当日の追加費用はありません。</div>
+                <div class="label">レンタル器材まで全部込みの総額（LINE特典適用時）</div>
+                <div class="num">¥59,400<small>（税込）通常¥64,900</small></div>
+                <div class="note">8/31までにLINEからのお申込みで器材レンタル1日分（¥5,500）が無料。当日の追加費用はありません。</div>
             </div>
             <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">LINEで空き状況を聞く<small>（相談無料・営業なし）</small></a>
             <p class="cta-note">友だち追加後、「空き状況を教えて」と一言送るだけでOK。<br>「まだ迷っている」段階のご相談も歓迎です。</p>
@@ -304,12 +306,17 @@
                         <div class="item">レンタル器材<small>¥5,500/日 × 実技2日分（フル器材）</small></div>
                         <div class="yen">¥11,000</div>
                     </div>
+                    <div class="price-row price-row--off">
+                        <div class="item"><strong>夏のLINE特典（8/31まで）</strong><small>LINEからのお申込みで器材レンタル1日分が無料</small></div>
+                        <div class="yen">−¥5,500</div>
+                    </div>
                     <div class="price-row price-row--total">
                         <div class="item">総額</div>
-                        <div class="yen">¥64,900<small>（税込）</small></div>
+                        <div class="yen">¥59,400<small>（税込・通常¥64,900）</small></div>
                     </div>
                     <div class="price-includes">
-                        <strong>当日の追加費用はありません。</strong>教材費・申請料・施設利用料などの「あとから請求」は一切なし。器材の購入も不要です（お持ちの方はレンタル代分お安くなります）。
+                        <strong>当日の追加費用はありません。</strong>教材費・申請料・施設利用料などの「あとから請求」は一切なし。器材の購入も不要です（お持ちの方はレンタル代分お安くなります）。<br>
+                        <small>※特典は2026年8月31日までにLINEでご相談のうえお申込みの方が対象。他の割引との併用はできません。</small>
                     </div>
                 </div>
             </div>
@@ -521,8 +528,8 @@
                     <p>10歳から参加できます。上限はなく、60代・70代で取得される方も多数いらっしゃいます。</p>
                 </details>
                 <details>
-                    <summary>本当に総額¥64,900以外かかりませんか？</summary>
-                    <p>はい。講習費¥53,900に教材・申請料・保険まで含まれ、あとはレンタル器材¥5,500×実技日数のみ。実技が3日になった場合もレンタル代1日分が増えるだけで、講習費の追加はありません。水着・タオル・日焼け止めだけご持参ください。</p>
+                    <summary>本当に表示の総額以外かかりませんか？</summary>
+                    <p>はい。講習費¥53,900に教材・申請料・保険まで含まれ、あとはレンタル器材¥5,500×実技日数のみ（通常総額¥64,900）。さらに8/31までのLINE特典でレンタル1日分が無料になり、実技2日なら総額¥59,400です。実技が3日になった場合もレンタル代1日分が増えるだけで、講習費の追加はありません。水着・タオル・日焼け止めだけご持参ください。</p>
                 </details>
                 <details>
                     <summary>高い器材を買わされたりしませんか？</summary>
@@ -548,7 +555,7 @@
     <section class="final-cta">
         <div class="container">
             <h2>今年の夏を、<br>「海に潜れる自分」で過ごそう。</h2>
-            <p>少人数制のため、各日にご案内できる人数はわずかです。<br>7〜8月は土日から埋まっていきます。まずは空き状況だけでもどうぞ。</p>
+            <p>少人数制のため、各日にご案内できる人数はわずかです。<br>7〜8月は土日から埋まっていきます。8/31までのLINE特典（レンタル1日分無料）も、このボタンから。</p>
             <ul class="cta-topics">
                 <li>空き状況の確認</li>
                 <li>自分でも取れるか相談</li>
