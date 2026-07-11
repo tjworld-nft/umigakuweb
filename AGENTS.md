@@ -3,11 +3,20 @@
 新しいチャット・Codex・他のAIツールで続きを作業するときは、まずこのファイルを読むこと。
 （このファイルは deploy.yml で本番アップロード対象外。サーバーに上げないこと）
 
-## 現在の状態（2026-07-10 更新）
+## 現在の状態（2026-07-11 更新）
 
 - **GitHubアカウント(tjworld-nft)は凍結中**。解除申請済み・返信待ち。凍結中に新アカウントは絶対作らない（BAN回避扱いになる）。
-- **本番 https://miura-diving.com/ はローカルブランチ `feature/site-polish` と同期済み**（FTPS手動デプロイで反映）。origin/main は古い（凍結でpush不可のため）。
+- **本番 https://miura-diving.com/ はローカルブランチ `feature/site-polish`（コミット c3261eb）と同期済み**（FTPS手動デプロイで反映）。origin/main は古い（凍結でpush不可のため）。
 - **凍結解除後にやること**: ① `git fetch` で回復確認 → ② `feature/site-polish` をpush → ③ PRを作りmainへマージ → ④ GitHub ActionsのFTP自動デプロイが走る（本番と同内容なので無害な再アップ）。以後は従来どおり「main push → 自動デプロイ」に戻る。
+
+## 進行中: OWD集客のGoogle広告（予算¥10,000）
+
+- 広告用LP **`lp/owd/index.html`** を2026-07-11に本番公開済み（https://miura-diving.com/lp/owd/ ・noindex）。
+- **戦略・キーワード・広告文・計測手順の正は `.agents/google-ads-plan.md`**（deploy対象外）。
+- 夏のLINE特典: 器材レンタル1日分(¥5,500)無料・8/31まで・LINE経由申込のみ → LP総額表示は¥59,400（通常¥64,900）。
+- 計測: LINE経由=合言葉「**夏割**」／フォーム経由=`?from=owd-lp`→通知メールに【流入元】行（contact/index.html+send_mail.php実装済み）。**8月末までLP URLは広告専用**（SNSに撒くと計測が混ざる）。
+- 残作業: ユーザーのGoogle Adsアカウント開設（エキスパートモード）→入稿→**CVタグ(AW-XXXX)をLPの`<head>`のTODOコメント位置に貼って再デプロイ**。実績数字をもらえたらヒーロー直下に信頼バー追加。
+- 手動FTPSの認証情報は `~/.config/miura-deploy/netrc`（権限600・gitリポジトリ外・パスワードをユーザーに聞かなくてよい）。
 
 ## デプロイ方法
 
