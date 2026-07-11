@@ -733,6 +733,36 @@ a:hover { color: var(--coral); }
 }
 
 /* ================================================================
+   TESTIMONIALS — customer photos
+   ================================================================ */
+.voice-photos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .voice-photos { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 960px) {
+  .voice-photos { grid-template-columns: repeat(4, 1fr); }
+}
+
+.voice-photos img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--ease);
+}
+
+.voice-photos img:hover {
+  transform: scale(1.03);
+}
+
+/* ================================================================
    TESTIMONIALS
    ================================================================ */
 .testimonials-track {

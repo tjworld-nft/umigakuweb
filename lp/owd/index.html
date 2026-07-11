@@ -222,6 +222,9 @@
 
         /* ── 声 ── */
         .voice-section { background: var(--bg-soft); }
+        .voice-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.5rem; }
+        .voice-photos img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+        @media (max-width: 480px) { .voice-photos { gap: .5rem; } }
         .voices { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
         .voice-card { background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 1.4rem; }
         .voice-card .stars { color: var(--coral); margin-bottom: .5rem; letter-spacing: .1em; }
@@ -510,6 +513,11 @@
         <div class="container">
             <span class="sec-label">Voice</span>
             <h2 class="sec-title">受講者の声</h2>
+            <div class="voice-photos">
+                <img class="reveal" src="../../image/optimized/enjoy-rocks-group.webp" alt="三浦の磯でピースするお客様3人" width="800" height="534" loading="lazy">
+                <img class="reveal" src="../../image/optimized/enjoy-surface-duo.webp" alt="三浦の海面で笑顔を見せるお客様2人" width="800" height="534" loading="lazy">
+                <img class="reveal" src="../../image/optimized/enjoy-uw-group.webp" alt="水中で集合するダイバーのグループ" width="800" height="534" loading="lazy">
+            </div>
             <div class="voices">
                 <div class="voice-card reveal">
                     <div class="stars">★★★★★</div>
