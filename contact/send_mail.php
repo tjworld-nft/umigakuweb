@@ -86,6 +86,10 @@ $category = clean($_POST['category'] ?? '');
 $date     = clean($_POST['date'] ?? '');
 $people   = clean($_POST['people'] ?? '');
 $message  = trim(htmlspecialchars($_POST['message'] ?? '', ENT_QUOTES, 'UTF-8'));
+// 流入元（広告LP計測用・英数字とハイフンのみ許可）
+$ref      = preg_replace('/[^a-zA-Z0-9_-]/', '', $_POST['ref'] ?? '');
+$ref      = mb_substr($ref, 0, 32);
+$ref_line = $ref !== '' ? "【流入元】 {$ref}\n" : '';
 
 // ===== バリデーション =====
 $errors = [];
@@ -130,7 +134,7 @@ $body = <<<EOT
 【お問い合わせ種別】 {$category}
 【ご希望日】 {$date}
 【参加人数】 {$people}
-
+{$ref_line}
 ── お問い合わせ内容 ──────────────
 {$message}
 ────────────────────────────
