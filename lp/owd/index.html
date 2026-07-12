@@ -131,6 +131,20 @@
 
         .lp-illust { border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin: 1.5rem auto 0; }
 
+        .aow-set-tip { max-width: 640px; margin: 2rem auto 0; padding: 1.25rem 1.5rem; background: var(--bg-soft); border: 1px dashed var(--teal); border-radius: var(--radius-md); text-align: left; }
+        .aow-set-tip__badge { display: inline-block; background: var(--teal); color: var(--white); font-size: .72rem; font-weight: 700; padding: .2rem .7rem; border-radius: 999px; margin-bottom: .6rem; }
+        .aow-set-tip h3 { font-size: 1.05rem; color: var(--text-dark); margin-bottom: .75rem; line-height: 1.6; }
+        .aow-set-tip h3 em { font-style: normal; color: var(--coral); }
+        .aow-set-tip ul { list-style: none; margin: 0 0 .75rem; padding: 0; }
+        .aow-set-tip li { position: relative; padding-left: 1.3em; font-size: .88rem; color: var(--text-sub); line-height: 1.7; margin-bottom: .35rem; }
+        .aow-set-tip li::before { content: '✓'; position: absolute; left: 0; color: var(--teal-dark); font-weight: 700; }
+        .aow-set-tip__small { font-size: .78rem; color: var(--text-sub); line-height: 1.7; margin: 0; }
+        @media (max-width: 600px) {
+            .aow-set-tip { padding: 1rem 1.1rem; }
+            .aow-set-tip h3 { font-size: .98rem; }
+            .aow-set-tip li { font-size: .84rem; }
+        }
+
         /* ── 料金 ── */
         .price-section { background: var(--bg-soft); }
         .price-card { background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-md); overflow: hidden; max-width: 640px; margin: 0 auto; }
@@ -350,6 +364,15 @@
                 <div class="navi-bubble__balloon">
                     実技3日目が必要になった場合も追加のレンタル代（¥5,500）だけ。講習費の追加はかかりません。安心してマイペースに進めてくださいね。
                 </div>
+            </div>
+            <div class="aow-set-tip reveal">
+                <span class="aow-set-tip__badge">ちなみに</span>
+                <h3>AOW（アドバンス）まで考えている方は、一緒に取ると<em>合計¥10,500</em>おトクです</h3>
+                <ul>
+                    <li>セット受講で講習費が<strong>−¥5,000</strong>（OWD ¥53,900＋AOW ¥59,800 → セット¥108,700）</li>
+                    <li>いまの季節は<strong>OWD2日＋AOW2日の最短4日間</strong>で取れるため、5日間かかる時期よりレンタル器材代が1日分<strong>−¥5,500</strong></li>
+                </ul>
+                <p class="aow-set-tip__small">※冬季や習熟度によりOWD3日＋AOW2日（計5日間）になる場合があります。もちろんOWDだけの受講もOK。AOWはあとから受講することもできます。</p>
             </div>
             <table class="compare-table">
                 <thead>
