@@ -73,6 +73,7 @@ portal_head('講座管理');
   <div class="dashboard-top"><div><p class="eyebrow">LEARNING ADMIN</p><h1>匿名受講アカウント管理</h1><p class="lead">個人情報を保存せず、受講者IDと講座権限だけを管理します。</p></div></div>
   <?php if ($generated): ?><div class="generated-code">今回発行した初回登録コード（この画面でのみ表示）<b><?= h($generated) ?></b></div><?php endif; ?>
   <?php if ($error): ?><p class="alert" style="margin:0 0 20px"><?= h($error) ?></p><?php endif; ?>
+  <section class="student-url-card" aria-labelledby="student-url-title"><div><p class="eyebrow">SEND TO STUDENTS</p><h2 id="student-url-title">お客様へ送る受講生サイト</h2><p>初回登録コードと一緒に、このURLをお客様へ送ってください。</p></div><div class="student-url-actions"><label for="studentSiteUrl">受講生サイトURL</label><div><input id="studentSiteUrl" type="text" value="https://miura-diving.com/aow-learning/" readonly><button type="button" data-copy-target="studentSiteUrl">URLをコピー</button><a href="https://miura-diving.com/aow-learning/" target="_blank" rel="noopener">サイトを開く ↗</a></div><p data-copy-status aria-live="polite"></p></div></section>
   <section class="admin-preview-card"><div><p class="eyebrow">CONTENT PREVIEW</p><h2>AOW教材の全内容を確認</h2><p>PPB・ナビゲーション・ナチュラリスト、全21問、修了画面まで管理者専用プレビューで確認できます。操作は受講者記録へ保存されません。</p></div><a href="course.php?course=aow">教材を開く →</a></section>
   <div class="admin-grid">
     <section class="panel"><h2>初回登録コードを発行</h2><form method="post"><input type="hidden" name="csrf" value="<?= h(csrf_token()) ?>"><input type="hidden" name="action" value="create_invite"><div class="check-options">

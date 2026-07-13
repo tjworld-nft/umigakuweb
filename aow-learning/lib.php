@@ -379,7 +379,7 @@ function portal_head(string $title): void
     security_headers();
     echo '<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">';
     echo '<meta name="robots" content="noindex,nofollow,noarchive"><meta name="theme-color" content="#12324a">';
-    echo '<title>' . h($title) . ' | 三浦 海の学校</title><link rel="stylesheet" href="portal.css"><link rel="stylesheet" href="admin-preview.css"></head><body>';
+    echo '<title>' . h($title) . ' | 三浦 海の学校</title><link rel="stylesheet" href="portal.css"><link rel="stylesheet" href="admin-preview.css"><script src="portal.js" defer></script></head><body>';
 }
 
 function portal_end(): void
