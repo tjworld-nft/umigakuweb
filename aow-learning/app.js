@@ -2,20 +2,26 @@
   const modules = ["ppb", "navigation", "naturalist"];
   const labels = { ppb: "PPB", navigation: "ナビゲーション", naturalist: "ナチュラリスト" };
   const csrf = document.querySelector('meta[name="csrf-token"]')?.content || "";
+  const adminPreview = document.querySelector('meta[name="admin-preview"]')?.content === "1";
   let learnerId = document.querySelector('meta[name="learner-id"]')?.content || "";
   let state = { modules: {}, ready: {}, completion: null };
   let saveTimer;
 
   try {
+    if (adminPreview) throw new DOMException("preview", "AbortError");
     const response = await fetch("api.php", { credentials: "same-origin", headers: { Accept: "application/json" } });
     if (response.status === 401) return void (location.href = "login.php");
     if (!response.ok) throw new Error("load failed");
     const payload = await response.json();
     state = payload.state || state;
     learnerId = payload.learnerId || learnerId;
-  } catch (_) {
-    showSyncError("進捗を読み込めませんでした。通信を確認して再読み込みしてください。");
-    return;
+  } catch (error) {
+    if (adminPreview && error?.name === "AbortError") {
+      state = { modules: {}, ready: {}, completion: null };
+    } else {
+      showSyncError("進捗を読み込めませんでした。通信を確認して再読み込みしてください。");
+      return;
+    }
   }
 
   function moduleState(name) {
@@ -25,6 +31,13 @@
 
   async function persist(issueCompletion = false) {
     clearTimeout(saveTimer);
+    if (adminPreview) {
+      if (issueCompletion && allReady() && allModulesComplete()) {
+        state.completion = { learnerId, issuedAt: new Date().toISOString(), code: "ADMIN-PREVIEW" };
+      }
+      renderProgress();
+      return;
+    }
     const response = await fetch("api.php", {
       method: "POST",
       credentials: "same-origin",

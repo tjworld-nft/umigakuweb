@@ -68,11 +68,12 @@ $users = $pdo->query('SELECT u.id, u.learner_id, u.status, u.created_at, u.last_
 $invites = $pdo->query('SELECT * FROM invite_codes ORDER BY id DESC LIMIT 30')->fetchAll();
 portal_head('講座管理');
 ?>
-<header class="portal-header"><div class="shell"><a class="brand" href="admin.php">三浦 海の学校｜講座管理</a><div class="header-actions"><a href="admin.php?logout=1">管理画面をログアウト</a></div></div></header>
+<header class="portal-header"><div class="shell"><a class="brand" href="admin.php">三浦 海の学校｜講座管理</a><div class="header-actions"><a href="course.php?course=aow">AOW教材をすべて確認</a><a href="admin.php?logout=1">管理画面をログアウト</a></div></div></header>
 <main class="dashboard shell">
   <div class="dashboard-top"><div><p class="eyebrow">LEARNING ADMIN</p><h1>匿名受講アカウント管理</h1><p class="lead">個人情報を保存せず、受講者IDと講座権限だけを管理します。</p></div></div>
   <?php if ($generated): ?><div class="generated-code">今回発行した初回登録コード（この画面でのみ表示）<b><?= h($generated) ?></b></div><?php endif; ?>
   <?php if ($error): ?><p class="alert" style="margin:0 0 20px"><?= h($error) ?></p><?php endif; ?>
+  <section class="admin-preview-card"><div><p class="eyebrow">CONTENT PREVIEW</p><h2>AOW教材の全内容を確認</h2><p>PPB・ナビゲーション・ナチュラリスト、全21問、修了画面まで管理者専用プレビューで確認できます。操作は受講者記録へ保存されません。</p></div><a href="course.php?course=aow">教材を開く →</a></section>
   <div class="admin-grid">
     <section class="panel"><h2>初回登録コードを発行</h2><form method="post"><input type="hidden" name="csrf" value="<?= h(csrf_token()) ?>"><input type="hidden" name="action" value="create_invite"><div class="check-options">
       <?php foreach ($courses as $course): ?><label><input type="checkbox" name="courses[]" value="<?= h((string)$course['slug']) ?>" <?= (int)$course['active'] ? '' : 'disabled' ?>> <?= h((string)$course['title']) ?><?= (int)$course['active'] ? '' : '（準備中）' ?></label><?php endforeach; ?>
