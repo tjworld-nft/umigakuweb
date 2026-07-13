@@ -3,6 +3,9 @@ wp-config.php
 
 # APIキーを含むファイル
 fortune-handler.php
+aow-learning/access-config.php
+aow-learning/*.sqlite*
+private-data/
 
 # OS files
 .DS_Store
