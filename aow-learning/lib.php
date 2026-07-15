@@ -77,6 +77,7 @@ function db(): PDO
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
+    $pdo->exec('PRAGMA busy_timeout = 5000');
     $pdo->exec('PRAGMA foreign_keys = ON');
     $pdo->exec('PRAGMA journal_mode = WAL');
     migrate($pdo);
@@ -367,9 +368,11 @@ function save_progress(int $userId, array $input, bool $issueCompletion = false)
         $completedAt = now_iso();
     }
     $json = json_encode($state, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
-    $stmt = $pdo->prepare('INSERT INTO course_progress (user_id, course_slug, state_json, completion_code, completed_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?)
-        ON CONFLICT(user_id, course_slug) DO UPDATE SET state_json=excluded.state_json, completion_code=excluded.completion_code, completed_at=excluded.completed_at, updated_at=excluded.updated_at');
+    // XserverのSQLite 3.7系でも動作する構文を使う。
+    // ON CONFLICT ... DO UPDATE はSQLite 3.24以降のため使用しない。
+    $stmt = $pdo->prepare('INSERT OR REPLACE INTO course_progress
+        (user_id, course_slug, state_json, completion_code, completed_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?)');
     $stmt->execute([$userId, APP_COURSE, $json, $code, $completedAt, now_iso()]);
     return load_progress($userId);
 }

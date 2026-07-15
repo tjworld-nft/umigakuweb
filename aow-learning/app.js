@@ -6,6 +6,8 @@
   let learnerId = document.querySelector('meta[name="learner-id"]')?.content || "";
   let state = { modules: {}, ready: {}, completion: null };
   let saveTimer;
+  let saveQueue = Promise.resolve();
+  let stateRevision = 0;
 
   try {
     if (adminPreview) throw new DOMException("preview", "AbortError");
@@ -29,27 +31,41 @@
     return state.modules[name];
   }
 
-  async function persist(issueCompletion = false) {
+  function persist(issueCompletion = false) {
     clearTimeout(saveTimer);
     if (adminPreview) {
       if (issueCompletion && allReady() && allModulesComplete()) {
         state.completion = { learnerId, issuedAt: new Date().toISOString(), code: "ADMIN-PREVIEW" };
       }
       renderProgress();
-      return;
+      return Promise.resolve();
     }
-    const response = await fetch("api.php", {
-      method: "POST",
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ csrf, state, issueCompletion })
+    const snapshot = JSON.parse(JSON.stringify(state));
+    const revision = stateRevision;
+    const request = saveQueue.catch(() => undefined).then(async () => {
+      const response = await fetch("api.php", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ csrf, state: snapshot, issueCompletion })
+      });
+      if (response.status === 401) {
+        location.href = "login.php";
+        return;
+      }
+      if (!response.ok) throw new Error("save failed");
+      const payload = await response.json();
+      if (revision === stateRevision) {
+        state = payload.state || state;
+      } else if (payload.state?.completion) {
+        state.completion = payload.state.completion;
+      }
+      learnerId = payload.learnerId || learnerId;
+      document.getElementById("syncError")?.remove();
+      renderProgress();
     });
-    if (response.status === 401) return void (location.href = "login.php");
-    if (!response.ok) throw new Error("save failed");
-    const payload = await response.json();
-    state = payload.state || state;
-    learnerId = payload.learnerId || learnerId;
-    renderProgress();
+    saveQueue = request;
+    return request;
   }
 
   function saveSoon() {
@@ -81,6 +97,7 @@
       if (!event.target.matches("input[type=radio]")) return;
       moduleState(module).answers[qid] = event.target.value;
       if (event.target.value !== question.dataset.answer) moduleState(module).complete = false;
+      stateRevision += 1;
       showFeedback(question, event.target.value);
       updateCompleteButton(module);
       renderProgress();
@@ -108,6 +125,7 @@
     updateCompleteButton(module);
     button.addEventListener("click", async () => {
       moduleState(module).complete = true;
+      stateRevision += 1;
       button.disabled = true;
       try {
         await persist();
@@ -115,6 +133,7 @@
         document.getElementById(next || "finish").scrollIntoView({ behavior: "smooth" });
       } catch (_) {
         moduleState(module).complete = false;
+        stateRevision += 1;
         showSyncError("レッスン完了を保存できませんでした。もう一度お試しください。");
         updateCompleteButton(module);
       }
@@ -125,6 +144,7 @@
     input.checked = Boolean(state.ready?.[input.dataset.ready]);
     input.addEventListener("change", () => {
       state.ready[input.dataset.ready] = input.checked;
+      stateRevision += 1;
       renderProgress();
       saveSoon();
     });

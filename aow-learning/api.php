@@ -26,6 +26,7 @@ try {
     $saved = save_progress((int)$user['id'], $state, !empty($payload['issueCompletion']));
     echo json_encode(['state' => $saved, 'learnerId' => $user['learner_id']], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
 } catch (Throwable $e) {
+    error_log('[AOW progress API] ' . get_class($e) . ': ' . $e->getMessage());
     http_response_code(400);
     echo json_encode(['error' => 'request_failed']);
 }
