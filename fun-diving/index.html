@@ -8,7 +8,7 @@
     <meta name="description"
         content="三浦半島の多彩なダイビングポイントで四季折々の海を満喫。ウミウシ、ダンゴウオ、季節の回遊魚まで。Cカード保持者向けファンダイビング。少人数制ガイド。">
     <meta name="keywords"
-        content="ファンダイビング,三浦,ダイビング,ボートダイビング,ビーチダイビング,リフレッシュダイビング,Cカード,スクーバダイビング,スキューバダイビング,三浦半島,横須賀,神奈川,ブランクダイバー,少人数,ダイビングポイント">
+        content="ファンダイビング,三浦,ダイビング,ボートダイビング,ビーチダイビング,リフレッシュダイビング,Cカード,スクーバダイビング,スキューバダイビング,三浦半島,横須賀,神奈川,ブランクダイバー,少人数,ダイビングポイント,宮川湾,カサゴ根,トビ根">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://miura-diving.com/fun-diving/">
     <meta name="geo.region" content="JP-14">
@@ -74,7 +74,7 @@
         "name": "三浦半島のダイビングポイントはどんな場所ですか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ビーチポイントは城ヶ島をメインに、海況によって他ポイントへ変更する場合があります。ボートポイントは宮川湾または城ヶ島をメインに、海況によって他ポイントへ変更する場合があります。"
+          "text": "ビーチポイントは城ヶ島をメインに、海況によって他ポイントへ変更する場合があります。ボートポイントは宮川湾（カサゴ根・トビ根）または城ヶ島をメインに、海況によって他ポイントへ変更する場合があります。"
         }
       }
     ]
@@ -287,6 +287,159 @@
             font-size: .75rem;
             color: var(--text-sub);
         }
+
+        .guide-illust {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin: 1.5rem auto;
+        }
+
+        /* ── ボートポイントマップ ── */
+        .point-map-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        @media(min-width:768px) {
+            .point-map-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .point-map-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .point-map-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: var(--bg-soft);
+        }
+
+        .point-map-body {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .point-map-body h3 {
+            font-size: 1.15rem;
+            margin-bottom: .5rem;
+            color: var(--text-dark);
+        }
+
+        .point-map-body .point-depth {
+            display: inline-block;
+            background: var(--bg-soft);
+            border-radius: 999px;
+            padding: .25rem .8rem;
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--teal-dark);
+            margin-bottom: .75rem;
+        }
+
+        .point-map-body p {
+            font-size: .9rem;
+            color: var(--text-sub);
+            line-height: 1.8;
+            margin-bottom: .75rem;
+        }
+
+        .point-map-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: .85rem;
+            color: var(--text-sub);
+            line-height: 1.9;
+        }
+
+        .point-map-body ul li::before {
+            content: "🐟 ";
+        }
+
+        /* ── クラゲちゃんナビ吹き出し ── */
+        .navi-bubble {
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            max-width: 640px;
+            margin: 1.5rem auto 0;
+            text-align: left;
+        }
+
+        .navi-bubble__avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 3px solid var(--teal);
+            object-fit: cover;
+            flex-shrink: 0;
+            background: var(--white);
+        }
+
+        .navi-bubble__balloon {
+            position: relative;
+            flex: 1;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: .85rem 1rem;
+            font-size: .88rem;
+            line-height: 1.7;
+            color: var(--text-sub);
+        }
+
+        .navi-bubble__balloon::before,
+        .navi-bubble__balloon::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        .navi-bubble__balloon::before {
+            left: -9px;
+            border-right: 9px solid var(--border);
+        }
+
+        .navi-bubble__balloon::after {
+            left: -8px;
+            border-right: 8px solid var(--white);
+        }
+
+        @media (max-width: 600px) {
+            .navi-bubble { gap: .5rem; }
+
+            .navi-bubble__avatar {
+                width: 44px;
+                height: 44px;
+                border-width: 2px;
+            }
+
+            .navi-bubble__balloon {
+                font-size: .82rem;
+                padding: .7rem .85rem;
+            }
+        }
     </style>
 </head>
 
@@ -340,6 +493,11 @@
                 <span class="section-label reveal">Plans</span>
                 <h2 class="section-title reveal">ファンダイビングのコースと料金</h2>
                 <p class="section-lead reveal">目的に合わせて3つのコースからお選びください。</p>
+                <img class="guide-illust reveal" src="../image/optimized/fun-diving-buddy.webp" alt="三浦の海でインストラクターと一緒に色とりどりの魚を見ながら泳ぐファンダイビングのイラスト" width="800" height="600" loading="lazy">
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">ビーチダイビングなら気軽に2ダイブ楽しめるよ。まずはここから海の生き物に会いに行こう！</div>
+                </div>
 
                 <div class="plan-grid">
                     <!-- Beach -->
@@ -365,7 +523,7 @@
                                 </div>
                                 <div>
                                     <dt>追加:</dt>
-                                    <dd>追加1ビーチダイビング ¥6,600</dd>
+                                    <dd>追加1ビーチダイビング ¥5,500</dd>
                                 </div>
                             </div>
                             <a href="#fd-cta" class="btn btn--primary">予約する</a>
@@ -395,7 +553,7 @@
                                 </div>
                                 <div>
                                     <dt>追加:</dt>
-                                    <dd>追加1ビーチダイビング ¥6,600<br>追加1ボートダイビング ¥8,800</dd>
+                                    <dd>追加ボートダイビング（3本目） ¥8,800<br>追加1ビーチダイビング ¥5,500</dd>
                                 </div>
                             </div>
                             <a href="#fd-cta" class="btn btn--primary">予約する</a>
@@ -425,7 +583,7 @@
                                 </div>
                                 <div>
                                     <dt>追加:</dt>
-                                    <dd>追加1ビーチダイビング ¥6,600</dd>
+                                    <dd>追加1ビーチダイビング ¥5,500</dd>
                                 </div>
                             </div>
                             <a href="#fd-cta" class="btn btn--primary">予約する</a>
@@ -449,7 +607,7 @@
                     <div class="info-card reveal" data-delay="1">
                         <div class="icon">🚤</div>
                         <h4>ボートポイント</h4>
-                        <p>宮川湾または城ヶ島がメインです。海況によって他ポイントに変更する可能性があります。</p>
+                        <p>宮川湾（カサゴ根・トビ根）または城ヶ島がメインです。海況によって他ポイントに変更する可能性があります。</p>
                     </div>
                 </div>
             </div>
@@ -475,6 +633,53 @@
                             <a href="../diving-point/jogashima-kajinohama/" class="btn btn--primary" style="font-size:.9rem;padding:.75rem 1.3rem;">ポイントマップを見る</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOAT POINT -->
+        <section class="section section--alt" aria-labelledby="boat-point-title">
+            <div class="container text-center">
+                <span class="section-label reveal">Boat Point</span>
+                <h2 id="boat-point-title" class="section-title reveal">宮川湾のボートポイントマップ</h2>
+                <p class="section-lead reveal">港から船でわずか5分。最大水深18mで、ボートダイビングデビューにもぴったりのポイントです。</p>
+                <div class="point-map-grid">
+                    <article class="point-map-card reveal" data-delay="0">
+                        <img src="../image/miyagawa-kasagone-map.webp"
+                            alt="宮川湾カサゴ根の水中マップ。根の上は水深約4m、周囲の砂地は水深14〜18m。ブイからガイドロープで根へ移動する" width="1024"
+                            height="1536" loading="lazy">
+                        <div class="point-map-body">
+                            <h3>カサゴ根</h3>
+                            <span class="point-depth">水深 約4〜18m</span>
+                            <p>大きな根がドンと沈む、明るい砂地に囲まれたポイント。ブイからガイドロープ沿いに根へ向かうので、ボートダイビングが初めてでも安心です。名前の通りカサゴの仲間が多く、じっくり探すマクロ派にも人気。毎年5〜6月にはアオリイカの産卵床が設置され、運が良ければ産卵シーンに立ち会えることも。</p>
+                            <ul>
+                                <li>カサゴの仲間・コケギンポ類</li>
+                                <li>タツノオトシゴ・ハナタツ</li>
+                                <li>アオリイカの産卵（5〜6月）</li>
+                                <li>夏〜秋は季節来遊魚も</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="point-map-card reveal" data-delay="1">
+                        <img src="../image/miyagawa-tobine-map.webp"
+                            alt="宮川湾トビ根の水中マップ。複数の根が入り組み、根の上は水深8〜10m、周囲は水深16〜18m" width="1024"
+                            height="1536" loading="lazy">
+                        <div class="point-map-body">
+                            <h3>トビ根</h3>
+                            <span class="point-depth">水深 約8〜18m</span>
+                            <p>いくつもの根が入り組んだ、ダイナミックな地形が魅力のポイント。根の間を縫うように泳ぐコース取りが楽しく、夏は根の上をネンブツダイの大群が覆い尽くします。岩壁のソフトコーラルにはガラスハゼやトラフケボリなど小さな生き物がいっぱい。</p>
+                            <ul>
+                                <li>ネンブツダイの群れ（夏）</li>
+                                <li>イシダイ・メバルなどの根魚</li>
+                                <li>ソフトコーラルとガラスハゼ</li>
+                                <li>オトヒメエビ・アカホシカクレエビ</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">宮川湾のボートポイントではタツノオトシゴやボブサンウミウシにも会えるよ。どんな生き物がいるかは<a href="../sea-life/">海の生き物図鑑</a>でチェックしてね！</div>
                 </div>
             </div>
         </section>
@@ -526,6 +731,11 @@
             <div class="container text-center">
                 <span class="section-label reveal">Info</span>
                 <h2 class="section-title reveal">当日の持ち物・流れ</h2>
+                <img class="guide-illust reveal" src="../image/optimized/fun-diving-ready.webp" alt="ビーチでBCDやフィン・マスクなどのダイビング器材をバッグに準備するイラスト" width="800" height="600" loading="lazy" style="max-width:500px;">
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">器材は全部レンタルOK！水着とタオルだけ持ってくれば、あとはこちらでご用意できるよ。</div>
+                </div>
                 <div class="info-grid">
                     <div class="info-card reveal" data-delay="0">
                         <div class="icon">🩱</div>
@@ -601,6 +811,8 @@
                         神奈川・三浦半島でファンダイビングを楽しむ</h2>
                     <p>三浦
                         海の学校のファンダイビングは、Cカード（ダイビングライセンス）をお持ちの方向けのスクーバダイビングサービスです。神奈川県三浦市・三浦半島の多彩なダイビングポイントで、ビーチダイビング・ボートダイビングをお楽しみいただけます。<a href="../yokosuka-diving/">横須賀エリアからもアクセス良好</a>で、久里浜駅から電車で約11分です。
+                    </p>
+                    <p>ボートダイビングのメインポイントは宮川湾の「カサゴ根」「トビ根」。港から船で約5分、最大水深18mの根のポイントで、カサゴやタツノオトシゴなどのマクロ生物から、夏のネンブツダイの群れ、5〜6月のアオリイカの産卵まで、季節ごとに違う表情の海を楽しめます。
                     </p>
                     <p>半年以上のブランクがある方には、リフレッシュダイビングコースがおすすめです。器材の使い方や基本スキルを確認し、その日の海況と経験に合わせて進めます。少人数制で、一人ひとりのペースに合わせたダイビングをサポートします。
                     </p>

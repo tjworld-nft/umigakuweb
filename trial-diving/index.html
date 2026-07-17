@@ -21,7 +21,9 @@
     <meta property="og:title" content="三浦・城ヶ島で体験ダイビング｜¥19,800・泳げなくてもOK">
     <meta property="og:description" content="ライセンス不要・半日・10歳からOK。泳げない方もインストラクターがずっと横について、穏やかな浅場から少しずつ海に慣れていけます。">
     <meta property="og:url" content="https://miura-diving.com/trial-diving/">
-    <meta property="og:image" content="https://miura-diving.com/image/optimized/surface.webp">
+    <meta property="og:image" content="https://miura-diving.com/image/og-trial-diving.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- Favicon -->
@@ -221,6 +223,88 @@
             color: var(--text-sub);
             line-height: 1.7;
         }
+
+        .flow-step .txt .flow-illust {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: .85rem;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .flow-step .txt .flow-illust { height: 140px; }
+        }
+
+        /* ── クラゲちゃんナビ吹き出し ── */
+        .navi-bubble {
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            max-width: 640px;
+            margin: 1.5rem auto 0;
+            text-align: left;
+        }
+
+        .navi-bubble__avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 3px solid var(--teal);
+            object-fit: cover;
+            flex-shrink: 0;
+            background: var(--white);
+        }
+
+        .navi-bubble__balloon {
+            position: relative;
+            flex: 1;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: .85rem 1rem;
+            font-size: .88rem;
+            line-height: 1.7;
+            color: var(--text-sub);
+        }
+
+        .navi-bubble__balloon::before,
+        .navi-bubble__balloon::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        .navi-bubble__balloon::before {
+            left: -9px;
+            border-right: 9px solid var(--border);
+        }
+
+        .navi-bubble__balloon::after {
+            left: -8px;
+            border-right: 8px solid var(--white);
+        }
+
+        @media (max-width: 600px) {
+            .navi-bubble { gap: .5rem; }
+
+            .navi-bubble__avatar {
+                width: 44px;
+                height: 44px;
+                border-width: 2px;
+            }
+
+            .navi-bubble__balloon {
+                font-size: .82rem;
+                padding: .7rem .85rem;
+            }
+        }
     </style>
 </head>
 
@@ -305,6 +389,10 @@
                         </ul>
                     </div>
                 </div>
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">表示のお値段だけで大丈夫！当日は水着とタオルがあればOKだよ🌊</div>
+                </div>
             </div>
         </section>
 
@@ -314,10 +402,15 @@
                 <span class="section-label reveal">Flow</span>
                 <h2 id="flow-title" class="section-title reveal">当日の流れ</h2>
                 <p class="section-lead reveal">「いきなり海」ではありません。穏やかな浅場で呼吸に慣れてから、少しずつ進みます。</p>
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">わたしも最初はドキドキだったけど、足の着く浅いところからゆっくり進むから安心してね！</div>
+                </div>
                 <div style="max-width:700px;margin:1.5rem auto 0;text-align:left;">
                     <div class="flow-step reveal">
                         <div class="num">集合</div>
                         <div class="txt">
+                            <img class="flow-illust" src="../image/optimized/trial-flow-1.webp" alt="海辺の集合場所でインストラクターがお出迎えするイラスト" loading="lazy" width="800" height="600">
                             <h4>集合・受付</h4>
                             <p>集合場所はご予約時にご案内します。京急「三崎口駅」からの送迎もご予約時にご相談いただけます。</p>
                         </div>
@@ -325,6 +418,7 @@
                     <div class="flow-step reveal" data-delay="1">
                         <div class="num">説明</div>
                         <div class="txt">
+                            <img class="flow-illust" src="../image/optimized/trial-flow-2.webp" alt="インストラクターがマスクや器材をやさしく説明するイラスト" loading="lazy" width="800" height="600">
                             <h4>説明と器材あわせ</h4>
                             <p>呼吸の仕方、耳抜き、水中でのサイン。大切なことだけをやさしく説明して、体に合った器材を準備します。</p>
                         </div>
@@ -332,6 +426,7 @@
                     <div class="flow-step reveal" data-delay="2">
                         <div class="num">練習</div>
                         <div class="txt">
+                            <img class="flow-illust" src="../image/optimized/trial-flow-3.webp" alt="足の着く穏やかな浅場で呼吸の練習をするイラスト" loading="lazy" width="800" height="600">
                             <h4>浅場で水慣れ・呼吸の練習</h4>
                             <p>城ヶ島のプールのように穏やかな浅場（限定水域）で、足の着く深さから練習。呼吸に慣れるまでのペースは人それぞれ。急がず進めます。</p>
                         </div>
@@ -339,6 +434,7 @@
                     <div class="flow-step reveal" data-delay="3">
                         <div class="num goal">本番</div>
                         <div class="txt">
+                            <img class="flow-illust" src="../image/optimized/trial-flow-4.webp" alt="インストラクターと並んで魚やウミウシに会いに行く水中散歩のイラスト" loading="lazy" width="800" height="600">
                             <h4>海の中をおさんぽ（1ダイブ）</h4>
                             <p>インストラクターがずっと横について、城ヶ島の海をご案内。魚の群れやウミウシなど、季節の生き物に会いに行きましょう。</p>
                         </div>
@@ -373,6 +469,10 @@
                         <summary>体験ダイビングとライセンス取得、どちらがいいですか？</summary>
                         <div class="faq-answer">「海の中を一度見てみたい」なら体験、「趣味として続けたい」ならライセンス取得がおすすめです。<a href="../beginner-guide/#difference">初心者ガイド</a>で違いを整理しています。迷っている段階でもLINEでご相談ください。</div>
                     </details>
+                </div>
+                <div class="navi-bubble reveal">
+                    <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
+                    <div class="navi-bubble__balloon">ほかに気になることがあったら、LINEで気軽に聞いてね！</div>
                 </div>
             </div>
         </section>

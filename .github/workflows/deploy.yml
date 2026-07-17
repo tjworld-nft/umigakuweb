@@ -46,3 +46,9 @@ jobs:
           **/.github/**
           **/wp-config.php
           **/.env*
+          **/AGENTS.md
+          **/CLAUDE.md
+          **/.claude/**
+          **/.agents/**
+          **/deploy-instructions.md
+          **/aow-learning/access-config.php

@@ -319,6 +319,8 @@
                 <form class="contact-form reveal" id="contactForm" action="/contact/send_mail.php" method="POST">
                     <!-- CSRF対策トークン（PHP環境で自動生成されます） -->
                     <input type="hidden" name="csrf_token" id="csrfToken" value="">
+                    <!-- 流入元計測（?from= パラメータを送信・広告LP効果測定用） -->
+                    <input type="hidden" name="ref" id="refSource" value="">
                     <!-- ハニーポット（bot対策 - CSSで非表示） -->
                     <div style="position:absolute;left:-9999px;" aria-hidden="true">
                         <input type="text" name="website" tabindex="-1" autocomplete="off">
@@ -440,6 +442,9 @@
         // 送信結果の表示
         (function () {
             var params = new URLSearchParams(window.location.search);
+            // 流入元(?from=)をhiddenに引き継ぎ（英数字とハイフンのみ許可）
+            var from = (params.get('from') || '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 32);
+            if (from) document.getElementById('refSource').value = from;
             var status = params.get('status');
             if (status === 'success') {
                 document.getElementById('contactForm').style.display = 'none';
