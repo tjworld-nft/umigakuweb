@@ -21,7 +21,9 @@ $meta = '<meta name="csrf-token" content="' . h(csrf_token()) . '"><meta name="l
 if ($isAdminPreview) $meta .= '<meta name="admin-preview" content="1">';
 $html = str_replace('</head>', $meta . '</head>', $html);
 $appVersion = (string)(filemtime(__DIR__ . '/app.js') ?: time());
+$styleVersion = (string)(filemtime(__DIR__ . '/styles.css') ?: time());
 $html = str_replace('src="app.js"', 'src="app.js?v=' . rawurlencode($appVersion) . '"', $html);
+$html = str_replace('href="styles.css"', 'href="styles.css?v=' . rawurlencode($styleVersion) . '"', $html);
 $html = $isAdminPreview ? str_replace('<body>', '<body><div class="admin-preview-banner"><b>管理者プレビュー</b><span>回答や修了操作は受講生の記録に保存されません。</span></div>', $html) : $html;
 $html = str_replace(
     '<span class="course-label">AOW PRE-STUDY</span>',

@@ -1,6 +1,7 @@
 (async () => {
-  const modules = ["ppb", "navigation", "naturalist"];
-  const labels = { ppb: "PPB", navigation: "ナビゲーション", naturalist: "ナチュラリスト" };
+  const modules = ["ppb", "navigation", "naturalist", "deep", "boat"];
+  const legacyModules = ["ppb", "navigation", "naturalist"];
+  const labels = { ppb: "PPB", navigation: "ナビゲーション", naturalist: "ナチュラリスト", deep: "ディープ", boat: "ボート" };
   const csrf = document.querySelector('meta[name="csrf-token"]')?.content || "";
   const adminPreview = document.querySelector('meta[name="admin-preview"]')?.content === "1";
   let learnerId = document.querySelector('meta[name="learner-id"]')?.content || "";
@@ -35,7 +36,7 @@
     clearTimeout(saveTimer);
     if (adminPreview) {
       if (issueCompletion && allReady() && allModulesComplete()) {
-        state.completion = { learnerId, issuedAt: new Date().toISOString(), code: "ADMIN-PREVIEW" };
+        state.completion = { learnerId, issuedAt: new Date().toISOString(), code: "ADMIN-PREVIEW", curriculumVersion: 2 };
       }
       renderProgress();
       return Promise.resolve();
@@ -168,48 +169,81 @@
     return ["gear", "condition", "question"].every((key) => Boolean(state.ready?.[key]));
   }
 
-  function allModulesComplete() {
-    return modules.every((name) => moduleState(name).complete);
+  function requiredModules() {
+    const version = Number(state.completion?.curriculumVersion || state.curriculumVersion || 2);
+    return state.completion && version === 1 ? legacyModules : modules;
   }
 
-  function renderCompletion(completed) {
-    issueCompletionButton.disabled = completed !== 3 || !allReady() || Boolean(state.completion);
+  function allModulesComplete() {
+    return requiredModules().every((name) => moduleState(name).complete);
+  }
+
+  function renderCompletion(completed, required) {
+    const legacyCompletion = Boolean(state.completion) && Number(state.completion.curriculumVersion || state.curriculumVersion || 2) === 1;
+    issueCompletionButton.disabled = completed !== required.length || !allReady() || Boolean(state.completion);
     issueCompletionButton.textContent = state.completion ? "修了記録 発行済み ✓" : "事前学科の修了画面を発行";
     const proof = document.getElementById("completionProof");
-    const valid = completed === 3 && state.completion;
+    const valid = Boolean(state.completion);
     proof.hidden = !valid;
     if (!valid) return;
     document.getElementById("completionName").textContent = state.completion.learnerId || learnerId;
     document.getElementById("completionDate").textContent = new Intl.DateTimeFormat("ja-JP", { dateStyle: "long", timeStyle: "short" }).format(new Date(state.completion.issuedAt));
     document.getElementById("completionCode").textContent = state.completion.code;
+    document.getElementById("completionSummary").textContent = legacyCompletion
+      ? "PPB・アンダーウォーター・ナビゲーション・アンダーウォーター・ナチュラリストの全21問を修了した旧3科目版の記録です。ディープとボートは追加教材として閲覧できます。"
+      : "PPB・アンダーウォーター・ナビゲーション・アンダーウォーター・ナチュラリスト・ディープ・ボートの全41問に正解しました。この画面を講習当日に提示してください。";
   }
 
   function renderProgress() {
-    const completed = modules.filter((name) => moduleState(name).complete).length;
-    const percentage = Math.round((completed / modules.length) * 100);
+    const required = requiredModules();
+    const completed = state.completion
+      ? required.length
+      : required.filter((name) => moduleState(name).complete).length;
+    const percentage = Math.round((completed / required.length) * 100);
+    const legacyCompletion = Boolean(state.completion) && required.length === legacyModules.length;
     document.getElementById("progressNumber").textContent = percentage;
     document.getElementById("progressRing").style.setProperty("--progress", percentage);
-    document.getElementById("mobileProgress").textContent = `${completed} / 3 完了`;
-    document.getElementById("progressMessage").textContent = completed === 3 ? "事前学習が完了しました" : completed ? `あと${3 - completed}レッスンです` : "最初のレッスンから始めましょう";
+    document.getElementById("mobileProgress").textContent = `${completed} / ${required.length} 完了`;
+    document.getElementById("progressMessage").textContent = completed === required.length ? "事前学習が完了しました" : completed ? `あと${required.length - completed}レッスンです` : "最初のレッスンから始めましょう";
     modules.forEach((name) => {
-      const done = moduleState(name).complete;
+      const lockedByCompletion = Boolean(state.completion) && required.includes(name);
+      const done = lockedByCompletion || moduleState(name).complete;
+      const additional = legacyCompletion && !required.includes(name);
       document.querySelectorAll(`[data-card="${name}"], [data-nav="${name}"]`).forEach((el) => el.classList.toggle("is-done", done));
+      document.querySelectorAll(`[data-module="${name}"] input[type="radio"]`).forEach((input) => {
+        input.disabled = lockedByCompletion;
+      });
       const status = document.querySelector(`[data-status="${name}"]`);
-      if (status) status.textContent = done ? "完了" : Object.keys(moduleState(name).answers).length ? "学習中" : "未開始";
+      if (status) status.textContent = done ? "完了" : Object.keys(moduleState(name).answers).length ? "学習中" : additional ? "追加教材" : "未開始";
       const button = document.querySelector(`[data-complete="${name}"]`);
       if (button) {
         button.textContent = done ? `${labels[name]} 完了 ✓` : `${labels[name]}を完了する`;
         button.classList.toggle("is-done", done);
+        if (lockedByCompletion) button.disabled = true;
       }
     });
-    const nextName = modules.find((name) => !moduleState(name).complete);
+    const nextName = modules.find((name) => {
+      const lockedByCompletion = Boolean(state.completion) && required.includes(name);
+      return !lockedByCompletion && !moduleState(name).complete;
+    });
     const nextLink = document.getElementById("nextLesson");
     nextLink.href = nextName ? `#${nextName}` : "#finish";
-    nextLink.textContent = nextName ? (completed ? "続きから学ぶ" : "最初のレッスンへ") : "最終チェックへ";
+    if (!nextName) {
+      nextLink.textContent = "最終チェックへ";
+    } else if (legacyCompletion && !required.includes(nextName)) {
+      nextLink.textContent = "追加教材を見る";
+    } else {
+      nextLink.textContent = completed ? "続きから学ぶ" : "最初のレッスンへ";
+    }
     const checklist = document.getElementById("dayChecklist");
-    checklist.hidden = completed !== 3;
-    document.getElementById("finishText").textContent = completed === 3 ? "3科目すべての知識確認が完了しました。最終チェック後に、サーバーで修了記録を発行してください。" : "3レッスンを完了すると、修了画面を発行できます。";
-    renderCompletion(completed);
+    checklist.hidden = completed !== required.length;
+    document.getElementById("finish-title").textContent = legacyCompletion ? "事前学科は修了済みです。" : "5レッスン全問正解で、事前学科修了。";
+    document.getElementById("finishText").textContent = legacyCompletion
+      ? "旧3科目版の修了記録はそのまま有効です。ディープとボートは追加教材として学習できます。"
+      : completed === required.length
+        ? "5科目すべての知識確認が完了しました。最終チェック後に、サーバーで修了記録を発行してください。"
+        : "5レッスンを完了すると、修了画面を発行できます。";
+    renderCompletion(completed, required);
   }
 
   renderProgress();

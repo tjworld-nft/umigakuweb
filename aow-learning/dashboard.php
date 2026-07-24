@@ -41,7 +41,8 @@ portal_head('マイコース');
       $state = $record && $record['state_json'] ? json_decode((string)$record['state_json'], true) : [];
       $completedModules = 0;
       if (isset($state['modules']) && is_array($state['modules'])) foreach ($state['modules'] as $module) if (!empty($module['complete'])) $completedModules++;
-      $percent = $record && $record['completion_code'] ? 100 : (int)round(($completedModules / 3) * 100);
+      $moduleCount = count(course_answer_key());
+      $percent = $record && $record['completion_code'] ? 100 : min(100, (int)round(($completedModules / $moduleCount) * 100));
     ?>
     <article class="course-card <?= $enrolled ? '' : 'is-locked' ?>">
       <span><?= $enrolled ? 'AVAILABLE' : ((int)$course['active'] ? 'CODE REQUIRED' : 'COMING LATER') ?></span>

@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 const APP_COURSE = 'aow';
+const COURSE_CURRICULUM_VERSION = 2;
 
 function app_config(): array
 {
@@ -143,9 +144,15 @@ function migrate(PDO $pdo): void
     foreach ($statements as $sql) $pdo->exec($sql);
 
     $seed = $pdo->prepare('INSERT OR IGNORE INTO courses (slug, title, description, sort_order, active) VALUES (?, ?, ?, ?, ?)');
-    $seed->execute(['aow', 'AOW 週末前の3レッスン', 'PPB・ナビゲーション・ナチュラリスト', 10, 1]);
-    $seed->execute(['deep', 'ディープ・ダイビング', '深度計画・ガス管理・安全手順', 20, 0]);
-    $seed->execute(['boat', 'ボート・ダイビング', '乗船準備・エントリー・ボート上の安全', 30, 0]);
+    $seed->execute(['aow', 'AOW 5ダイブ事前学習', 'PPB・ナビゲーション・ナチュラリスト・ディープ・ボート', 10, 1]);
+    $seed->execute(['deep', 'Deep Diver SP（準備中）', 'AOWの1ダイブより先へ進む全4ダイブのスペシャルティ', 20, 0]);
+    $seed->execute(['boat', 'Boat Diver SP（準備中）', 'AOWの1ダイブより先へ進む全2ダイブのスペシャルティ', 30, 0]);
+
+    // 既存DBの講座名も更新する。教材版とDBスキーマ版は混同しない。
+    $catalog = $pdo->prepare('UPDATE courses SET title = ?, description = ?, sort_order = ?, active = ? WHERE slug = ?');
+    $catalog->execute(['AOW 5ダイブ事前学習', 'PPB・ナビゲーション・ナチュラリスト・ディープ・ボート', 10, 1, 'aow']);
+    $catalog->execute(['Deep Diver SP（準備中）', 'AOWの1ダイブより先へ進む全4ダイブのスペシャルティ', 20, 0, 'deep']);
+    $catalog->execute(['Boat Diver SP（準備中）', 'AOWの1ダイブより先へ進む全2ダイブのスペシャルティ', 30, 0, 'boat']);
 }
 
 function now_iso(): string
@@ -298,13 +305,18 @@ function course_answer_key(): array
         'ppb' => ['ppb1'=>'b','ppb2'=>'a','ppb3'=>'c','ppb4'=>'b','ppb5'=>'c','ppb6'=>'a','ppb7'=>'b'],
         'navigation' => ['nav1'=>'c','nav2'=>'b','nav3'=>'a','nav4'=>'b','nav5'=>'c','nav6'=>'a','nav7'=>'b'],
         'naturalist' => ['nat1'=>'b','nat2'=>'c','nat3'=>'a','nat4'=>'b','nat5'=>'c','nat6'=>'a','nat7'=>'c'],
+        'deep' => ['deep1'=>'c','deep2'=>'b','deep3'=>'a','deep4'=>'c','deep5'=>'b','deep6'=>'c','deep7'=>'a','deep8'=>'b','deep9'=>'c','deep10'=>'a'],
+        'boat' => ['boat1'=>'b','boat2'=>'c','boat3'=>'a','boat4'=>'c','boat5'=>'b','boat6'=>'c','boat7'=>'a','boat8'=>'c','boat9'=>'b','boat10'=>'a'],
     ];
 }
 
-function clean_course_state(array $input): array
+function clean_course_state(array $input, int $curriculumVersion = COURSE_CURRICULUM_VERSION): array
 {
+    if (!in_array($curriculumVersion, [1, COURSE_CURRICULUM_VERSION], true)) {
+        $curriculumVersion = COURSE_CURRICULUM_VERSION;
+    }
     $keys = course_answer_key();
-    $state = ['modules' => [], 'ready' => []];
+    $state = ['curriculumVersion' => $curriculumVersion, 'modules' => [], 'ready' => []];
     $inputModules = isset($input['modules']) && is_array($input['modules']) ? $input['modules'] : [];
     foreach ($keys as $module => $answers) {
         $submitted = isset($inputModules[$module]['answers']) && is_array($inputModules[$module]['answers']) ? $inputModules[$module]['answers'] : [];
@@ -341,14 +353,19 @@ function load_progress(int $userId, string $slug = APP_COURSE): array
     $stmt = db()->prepare('SELECT state_json, completion_code, completed_at FROM course_progress WHERE user_id = ? AND course_slug = ?');
     $stmt->execute([$userId, $slug]);
     $row = $stmt->fetch();
-    $state = $row ? json_decode((string)$row['state_json'], true) : null;
-    if (!is_array($state)) $state = clean_course_state([]);
+    $rawState = $row ? json_decode((string)$row['state_json'], true) : null;
+    if (!is_array($rawState)) $rawState = [];
+    $curriculumVersion = isset($rawState['curriculumVersion'])
+        ? (int)$rawState['curriculumVersion']
+        : ($row && $row['completion_code'] ? 1 : COURSE_CURRICULUM_VERSION);
+    $state = clean_course_state($rawState, $curriculumVersion);
     $learnerStmt = db()->prepare('SELECT learner_id FROM users WHERE id = ?');
     $learnerStmt->execute([$userId]);
     $state['completion'] = $row && $row['completion_code'] ? [
         'learnerId' => (string)($learnerStmt->fetchColumn() ?: ''),
         'issuedAt' => $row['completed_at'],
         'code' => $row['completion_code'],
+        'curriculumVersion' => $curriculumVersion,
     ] : null;
     return $state;
 }
@@ -356,16 +373,21 @@ function load_progress(int $userId, string $slug = APP_COURSE): array
 function save_progress(int $userId, array $input, bool $issueCompletion = false): array
 {
     $pdo = db();
-    $state = clean_course_state($input);
-    $existing = $pdo->prepare('SELECT completion_code, completed_at FROM course_progress WHERE user_id = ? AND course_slug = ?');
+    $existing = $pdo->prepare('SELECT state_json, completion_code, completed_at FROM course_progress WHERE user_id = ? AND course_slug = ?');
     $existing->execute([$userId, APP_COURSE]);
     $row = $existing->fetch();
     $code = $row['completion_code'] ?? null;
     $completedAt = $row['completed_at'] ?? null;
+    $existingState = $row ? json_decode((string)$row['state_json'], true) : null;
+    $curriculumVersion = $code
+        ? (int)(is_array($existingState) && isset($existingState['curriculumVersion']) ? $existingState['curriculumVersion'] : 1)
+        : COURSE_CURRICULUM_VERSION;
+    $state = clean_course_state($input, $curriculumVersion);
     if ($issueCompletion && course_is_complete($state) && !$code) {
         $date = (new DateTimeImmutable('now', new DateTimeZone('Asia/Tokyo')))->format('Ymd');
         $code = 'AOW-' . $date . '-' . strtoupper(substr(bin2hex(random_bytes(4)), 0, 8));
         $completedAt = now_iso();
+        $state['curriculumVersion'] = COURSE_CURRICULUM_VERSION;
     }
     $json = json_encode($state, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
     // XserverのSQLite 3.7系でも動作する構文を使う。
