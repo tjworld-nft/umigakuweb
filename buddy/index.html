@@ -8,10 +8,19 @@
     <meta name="description" content="三浦 海の学校のお友達紹介キャンペーン。ご紹介くださったダイバーの方は付き添いダイビングが¥6,600引き（ビーチなら半額の¥6,600／ボート¥13,200）、受講されるお友達は器材レンタル1日分（¥5,500）無料。OWD・AOW講習が対象です。">
     <link rel="canonical" href="https://miura-diving.com/buddy/">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="三浦 海の学校">
     <meta property="og:title" content="お友達紹介「バディ割」｜三浦 海の学校">
     <meta property="og:description" content="あなたが誘ってくれたお友達がライセンスを取ると、あなたは¥6,600引きで一緒に潜れます。">
     <meta property="og:url" content="https://miura-diving.com/buddy/">
-    <meta property="og:image" content="https://miura-diving.com/image/optimized/enjoy-surface-duo.webp">
+    <meta property="og:image" content="https://miura-diving.com/image/og-buddy.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="三浦の海で水面からピースサインを送るダイバー2人">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="お友達紹介「バディ割」｜三浦 海の学校">
+    <meta name="twitter:description" content="あなたが誘ってくれたお友達がライセンスを取ると、あなたは¥6,600引きで一緒に潜れます。">
+    <meta name="twitter:image" content="https://miura-diving.com/image/og-buddy.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -144,6 +153,28 @@
         .flow-step__card h3 { font-size: .95rem; font-weight: 900; color: var(--teal-dark); margin-bottom: .3rem; }
         .flow-step__card p { font-size: .84rem; color: var(--text-sub); }
         .flow-step__card .tag { display: inline-block; background: var(--yellow); border-radius: 999px; font-size: .68rem; font-weight: 700; padding: .1rem .6rem; margin-left: .4rem; vertical-align: middle; }
+
+        /* ── 共有ブロック ── */
+        .share-block {
+            max-width: 640px; margin: 1.9rem auto 0; text-align: center;
+            background: var(--white); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 1.5rem 1.35rem;
+        }
+        .share-block h3 { font-size: 1rem; font-weight: 900; margin-bottom: .35rem; }
+        .share-block .lead { font-size: .82rem; color: var(--text-sub); margin-bottom: 1.1rem; }
+        .share-buttons { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
+        .btn-share {
+            display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+            min-height: 48px; padding: .7rem 1.3rem; border-radius: 999px;
+            border: 2px solid var(--border); background: var(--white); color: var(--text-dark);
+            font-family: inherit; font-size: .88rem; font-weight: 700; text-decoration: none;
+            cursor: pointer; transition: transform var(--ease), box-shadow var(--ease);
+        }
+        .btn-share:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+        .btn-share--line { background: var(--line-green); border-color: var(--line-green); color: #fff; box-shadow: 0 6px 18px rgba(6, 199, 85, .3); }
+        .btn-share[hidden] { display: none; }
+        .share-status { margin-top: .75rem; font-size: .8rem; font-weight: 700; color: var(--teal-dark); min-height: 1.4em; }
+        .share-url { font-size: .78rem; color: var(--text-sub); word-break: break-all; }
 
         /* ── 料金表 ── */
         .course-table { width: 100%; max-width: 660px; margin: 0 auto; border-collapse: collapse; background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); font-size: .84rem; }
@@ -338,6 +369,20 @@
                     <p>講習日に同行するか、認定後のファンダイビングにご一緒するか。お友達の予定に合わせて決めていただけます。</p>
                 </div>
             </div>
+
+            <div class="share-block reveal">
+                <h3>では、さっそく送ってみませんか</h3>
+                <p class="lead">ボタンを押すと、このページのURLがそのまま送れます。<br>誘われたお友達がLINEで「バディ」と送れば、特典が適用されます。</p>
+                <div class="share-buttons">
+                    <a class="btn-share btn-share--line"
+                        href="https://line.me/R/share?text=%E3%83%80%E3%82%A4%E3%83%93%E3%83%B3%E3%82%B0%E3%81%AE%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E3%80%81%E4%B8%80%E7%B7%92%E3%81%AB%E5%8F%96%E3%82%89%E3%81%AA%E3%81%84%EF%BC%9F%0A%E3%81%84%E3%81%BE%E7%B4%B9%E4%BB%8B%E3%81%A0%E3%81%A8%E3%80%81%E3%81%B5%E3%81%9F%E3%82%8A%E3%81%A8%E3%82%82%E7%89%B9%E5%85%B8%E3%81%8C%E3%81%82%E3%82%8B%E3%81%BF%E3%81%9F%E3%81%84%E3%80%82%0Ahttps%3A%2F%2Fmiura-diving.com%2Fbuddy%2F"
+                        target="_blank" rel="noopener noreferrer">LINEでお友達に送る</a>
+                    <button type="button" class="btn-share" id="share-copy">リンクをコピー</button>
+                    <button type="button" class="btn-share" id="share-native" hidden>他のアプリで送る</button>
+                </div>
+                <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+                <p class="share-url">https://miura-diving.com/buddy/</p>
+            </div>
         </div>
     </section>
 
@@ -494,6 +539,48 @@
         } else {
             document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
         }
+
+        // 共有ボタン
+        (function () {
+            const url = 'https://miura-diving.com/buddy/';
+            const text = 'ダイビングのライセンス、一緒に取らない？いま紹介だと、ふたりとも特典があるみたい。';
+            const status = document.getElementById('share-status');
+            const say = (msg) => { if (status) status.textContent = msg; };
+
+            const copyBtn = document.getElementById('share-copy');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function () {
+                    const done = () => say('リンクをコピーしました。LINEやメールに貼り付けて送ってください。');
+                    const fail = () => say('コピーできませんでした。下のURLを長押し（右クリック）でコピーしてください。');
+
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(url).then(done, fail);
+                        return;
+                    }
+                    // http や古いブラウザ向け。同期実行なのでクリックの操作文脈が保たれる
+                    const ta = document.createElement('textarea');
+                    ta.value = url;
+                    ta.setAttribute('readonly', '');
+                    ta.style.position = 'fixed';
+                    ta.style.opacity = '0';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    let ok = false;
+                    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+                    document.body.removeChild(ta);
+                    ok ? done() : fail();
+                });
+            }
+
+            const nativeBtn = document.getElementById('share-native');
+            if (nativeBtn && navigator.share) {
+                nativeBtn.hidden = false;
+                nativeBtn.addEventListener('click', function () {
+                    navigator.share({ title: 'お友達紹介「バディ割」｜三浦 海の学校', text: text, url: url })
+                        .catch(() => { /* ユーザーが共有をキャンセルしたときは何もしない */ });
+                });
+            }
+        })();
     </script>
 </body>
 
