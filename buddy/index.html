@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>お友達紹介「バディ割」｜ダイビングライセンス講習｜三浦 海の学校</title>
+    <meta name="description" content="三浦 海の学校のお友達紹介キャンペーン。ご紹介くださったダイバーの方は付き添いダイビングが半額（ビーチ¥6,600／ボート¥9,900）、受講されるお友達は器材レンタル1日分（¥5,500）無料。OWD・AOW講習が対象です。">
+    <link rel="canonical" href="https://miura-diving.com/buddy/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="お友達紹介「バディ割」｜三浦 海の学校">
+    <meta property="og:description" content="あなたが誘ってくれたお友達がライセンスを取ると、あなたは半額で一緒に潜れます。">
+    <meta property="og:url" content="https://miura-diving.com/buddy/">
+    <meta property="og:image" content="https://miura-diving.com/image/optimized/enjoy-surface-duo.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../favicon.ico">
+    <link rel="preload" as="image" href="../image/optimized/enjoy-surface-duo.webp" fetchpriority="high">
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --bg-cream: #FAFBFC;
+            --bg-soft: #F0F7FA;
+            --teal: #4ECDC4;
+            --teal-light: #A8E6CF;
+            --teal-dark: #38AFA7;
+            --coral: #FF6B9D;
+            --yellow: #FFE66D;
+            --sky: #45B7D1;
+            --text-dark: #2D3436;
+            --text-sub: #636E72;
+            --border: #E5EDF2;
+            --line-green: #06C755;
+            --ff-body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --shadow-sm: 0 2px 12px rgba(0, 0, 0, .06);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, .08);
+            --ease: .35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--ff-body); color: var(--text-dark); background: var(--bg-cream); line-height: 1.8; }
+        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
+        section { padding: clamp(2.5rem, 7vw, 4.5rem) 0; }
+
+        /* ── ヘッダー ── */
+        .lp-header {
+            position: sticky; top: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: .6rem 1rem; background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
+        }
+        .lp-header .brand { font-weight: 900; font-size: .95rem; color: var(--teal-dark); text-decoration: none; }
+        .btn-line-sm {
+            display: inline-flex; align-items: center; gap: .4rem;
+            background: var(--line-green); color: #fff; text-decoration: none;
+            font-weight: 700; font-size: .8rem; padding: .5rem .9rem; border-radius: 999px;
+        }
+
+        /* ── ヒーロー ── */
+        .hero {
+            position: relative; min-height: 78svh; display: flex; align-items: center;
+            padding: 3.5rem 0; overflow: hidden;
+            background: linear-gradient(rgba(13, 59, 76, .3), rgba(13, 59, 76, .55)), url("../image/optimized/enjoy-surface-duo.webp") center/cover no-repeat;
+        }
+        .hero-inner { width: 100%; min-width: 0; max-width: 860px; margin: 0 auto; padding: 0 1.25rem; color: #fff; }
+        .hero .season { display: inline-block; background: var(--yellow); color: var(--text-dark); font-weight: 700; font-size: .8rem; padding: .3rem .9rem; border-radius: 999px; margin-bottom: 1rem; }
+        .hero .kicker { font-size: clamp(.95rem, 3.2vw, 1.2rem); font-weight: 700; text-shadow: 0 1px 8px rgba(0, 0, 0, .45); margin-bottom: .5rem; }
+        .hero h1 { font-size: clamp(1.32rem, 5.1vw, 2.45rem); font-weight: 900; line-height: 1.45; text-shadow: 0 2px 12px rgba(0, 0, 0, .35); margin-bottom: .8rem; }
+        .hero h1 .hl { font-style: normal; color: var(--yellow); }
+        .hero .sub { font-size: clamp(.9rem, 3vw, 1.05rem); font-weight: 500; text-shadow: 0 1px 8px rgba(0, 0, 0, .4); margin-bottom: 1.25rem; }
+
+        .hero-perks { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; max-width: 620px; margin-bottom: 1.4rem; }
+        .hero-perk { background: rgba(255, 255, 255, .96); color: var(--text-dark); border-radius: var(--radius-md); padding: .85rem 1rem; box-shadow: var(--shadow-md); }
+        .hero-perk .who { font-size: .72rem; font-weight: 700; color: var(--teal-dark); }
+        .hero-perk .what { font-size: 1rem; font-weight: 900; line-height: 1.5; }
+        .hero-perk .what em { font-style: normal; color: var(--coral); }
+        .hero-perk .amount { font-size: .74rem; color: var(--text-sub); }
+
+        .btn-line {
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .05rem;
+            line-height: 1.35; text-align: center;
+            background: var(--line-green); color: #fff; text-decoration: none;
+            font-weight: 900; font-size: 1.05rem; padding: 1rem 1.5rem; border-radius: 999px;
+            box-shadow: 0 8px 24px rgba(6, 199, 85, .35); max-width: 420px;
+            transition: transform var(--ease);
+        }
+        .btn-line:hover { transform: translateY(-2px); }
+        .btn-line small { font-weight: 500; font-size: .72rem; opacity: .95; }
+        .hero .cta-note { font-size: .75rem; margin-top: .6rem; text-shadow: 0 1px 6px rgba(0, 0, 0, .5); }
+
+        .relief-bar { background: var(--teal-dark); color: #fff; padding: .8rem 0; }
+        .relief-bar ul { display: flex; justify-content: center; gap: clamp(.8rem, 4vw, 2.5rem); list-style: none; flex-wrap: wrap; }
+        .relief-bar li { font-size: clamp(.78rem, 2.6vw, .9rem); font-weight: 700; display: flex; align-items: center; gap: .35rem; }
+        .relief-bar li::before { content: "✓"; color: var(--yellow); font-weight: 900; }
+
+        /* ── 見出し ── */
+        .sec-label { display: block; text-align: center; font-family: "Montserrat", var(--ff-body); font-size: .75rem; font-weight: 700; letter-spacing: .18em; color: var(--teal); text-transform: uppercase; margin-bottom: .4rem; }
+        .sec-title { text-align: center; font-size: clamp(1.3rem, 4.5vw, 1.8rem); font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 1.75rem; }
+        .sec-title em { font-style: normal; color: var(--coral); }
+        .sec-lead { text-align: center; font-size: .9rem; color: var(--text-sub); max-width: 620px; margin: -1rem auto 1.75rem; }
+
+        /* ── クラゲちゃんナビ吹き出し ── */
+        .navi-bubble { display: flex; align-items: flex-start; gap: .75rem; max-width: 640px; margin: 1.5rem auto 0; text-align: left; }
+        .navi-bubble__avatar { width: 56px; height: 56px; border-radius: 50%; border: 3px solid var(--teal); object-fit: cover; flex-shrink: 0; background: var(--white); }
+        .navi-bubble__balloon { position: relative; flex: 1; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: .85rem 1rem; font-size: .88rem; line-height: 1.7; color: var(--text-sub); }
+        .navi-bubble__balloon::before, .navi-bubble__balloon::after { content: ''; position: absolute; top: 18px; width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
+        .navi-bubble__balloon::before { left: -9px; border-right: 9px solid var(--border); }
+        .navi-bubble__balloon::after { left: -8px; border-right: 8px solid var(--white); }
+        @media (max-width: 600px) {
+            .navi-bubble { gap: .5rem; }
+            .navi-bubble__avatar { width: 44px; height: 44px; border-width: 2px; }
+            .navi-bubble__balloon { font-size: .82rem; padding: .7rem .85rem; }
+        }
+
+        .lp-illust { border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin: 1.5rem auto 0; }
+
+        /* ── 特典カード ── */
+        .perk-section { background: var(--bg-soft); }
+        .perk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+        .perk-card { background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-md); overflow: hidden; display: flex; flex-direction: column; }
+        .perk-card__head { color: #fff; text-align: center; padding: 1rem; }
+        .perk-card--host .perk-card__head { background: linear-gradient(135deg, var(--coral), #ff9ab8); }
+        .perk-card--guest .perk-card__head { background: linear-gradient(135deg, var(--teal), var(--sky)); }
+        .perk-card__head .who { font-size: .74rem; font-weight: 700; opacity: .95; }
+        .perk-card__head h3 { font-size: 1.1rem; font-weight: 900; line-height: 1.5; }
+        .perk-card__body { padding: 1.25rem 1.35rem 1.5rem; flex: 1; }
+        .perk-price { display: flex; justify-content: space-between; align-items: baseline; padding: .55rem 0; border-bottom: 1px dashed var(--border); font-size: .88rem; }
+        .perk-price:last-of-type { border-bottom: none; }
+        .perk-price .item small { display: block; font-size: .72rem; color: var(--text-sub); }
+        .perk-price .yen { font-weight: 900; white-space: nowrap; color: var(--coral); font-size: 1.05rem; }
+        .perk-price .yen del { font-weight: 500; font-size: .78rem; color: var(--text-sub); margin-right: .3rem; }
+        .perk-note { background: var(--bg-soft); border-radius: var(--radius-sm); padding: .8rem .9rem; margin-top: 1rem; font-size: .78rem; color: var(--text-sub); line-height: 1.7; }
+        .perk-note strong { color: var(--teal-dark); }
+
+        /* ── ステップ ── */
+        .flow-step { display: flex; gap: 1rem; align-items: flex-start; max-width: 640px; margin: 0 auto 1.25rem; }
+        .flow-step__num { min-width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--sky)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.05rem; flex-shrink: 0; }
+        .flow-step__card { background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 1.1rem 1.25rem; flex: 1; }
+        .flow-step__card h3 { font-size: .95rem; font-weight: 900; color: var(--teal-dark); margin-bottom: .3rem; }
+        .flow-step__card p { font-size: .84rem; color: var(--text-sub); }
+        .flow-step__card .tag { display: inline-block; background: var(--yellow); border-radius: 999px; font-size: .68rem; font-weight: 700; padding: .1rem .6rem; margin-left: .4rem; vertical-align: middle; }
+
+        /* ── 料金表 ── */
+        .course-table { width: 100%; max-width: 660px; margin: 0 auto; border-collapse: collapse; background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); font-size: .84rem; }
+        .course-table th, .course-table td { padding: .7rem .6rem; border-bottom: 1px solid var(--border); text-align: center; }
+        .course-table thead th { background: var(--teal-dark); color: #fff; font-size: .78rem; }
+        .course-table thead th.after { background: var(--coral); }
+        .course-table tbody th { text-align: left; font-weight: 700; color: var(--text-dark); background: var(--bg-cream); font-size: .8rem; }
+        .course-table tbody th small { display: block; font-weight: 500; font-size: .7rem; color: var(--text-sub); }
+        .course-table td.before { color: var(--text-sub); }
+        .course-table td.after { color: var(--coral); font-weight: 900; font-size: .95rem; }
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .table-note { max-width: 660px; margin: .7rem auto 0; font-size: .74rem; color: var(--text-sub); text-align: left; line-height: 1.75; }
+
+        /* ── 条件 ── */
+        .terms { max-width: 660px; margin: 0 auto; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 1.4rem 1.5rem; }
+        .terms h3 { font-size: .95rem; font-weight: 900; color: var(--teal-dark); margin-bottom: .6rem; }
+        .terms ul { list-style: none; margin: 0 0 1.1rem; padding: 0; }
+        .terms ul:last-child { margin-bottom: 0; }
+        .terms li { position: relative; padding-left: 1.2em; font-size: .83rem; color: var(--text-sub); line-height: 1.8; margin-bottom: .3rem; }
+        .terms li::before { content: '・'; position: absolute; left: 0; color: var(--teal-dark); }
+        @media (max-width: 600px) { .terms { padding: 1.1rem 1.15rem; } .terms li { font-size: .8rem; } }
+
+        /* ── FAQ ── */
+        .faq-section { background: var(--bg-soft); }
+        .faq details { background: var(--white); border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: .75rem; overflow: hidden; }
+        .faq summary { cursor: pointer; list-style: none; padding: 1rem 1.2rem; font-weight: 700; font-size: .92rem; color: var(--teal-dark); display: flex; align-items: center; gap: .5rem; text-align: left; }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::before { content: "Q."; color: var(--coral); font-weight: 900; margin-right: .2rem; }
+        .faq summary::after { content: "+"; font-size: 1.3rem; color: var(--teal); transition: transform var(--ease); margin-left: auto; }
+        .faq details[open] summary::after { transform: rotate(45deg); }
+        .faq details p { padding: 0 1.2rem 1.1rem; font-size: .85rem; color: var(--text-sub); }
+
+        /* ── 最終CTA ── */
+        .final-cta { background: linear-gradient(135deg, var(--teal), var(--sky)); color: #fff; text-align: center; }
+        .final-cta h2 { font-size: clamp(1.3rem, 4.5vw, 1.8rem); font-weight: 900; line-height: 1.5; margin-bottom: .6rem; }
+        .final-cta p { font-size: .9rem; margin-bottom: 1.5rem; }
+        .final-cta .btn-line { margin: 0 auto; background: var(--white); color: var(--line-green); box-shadow: 0 8px 24px rgba(0, 0, 0, .18); }
+        .final-cta .alt { margin-top: 1.1rem; font-size: .8rem; }
+        .final-cta .alt a { color: #fff; font-weight: 700; }
+        .cta-topics { display: flex; justify-content: center; gap: .6rem; flex-wrap: wrap; list-style: none; margin: 0 0 1.4rem; padding: 0; }
+        .cta-topics li { background: rgba(255, 255, 255, .18); border: 1px solid rgba(255, 255, 255, .5); border-radius: 999px; padding: .35rem .9rem; font-size: .78rem; font-weight: 700; }
+        .qr-box { display: none; margin: 1.5rem auto 0; background: var(--white); color: var(--text-dark); border-radius: var(--radius-md); padding: 1rem 1.25rem; max-width: 320px; align-items: center; gap: 1rem; box-shadow: var(--shadow-md); }
+        .qr-box img { width: 96px; height: 96px; flex-shrink: 0; }
+        .qr-box p { font-size: .78rem; color: var(--text-sub); text-align: left; margin: 0; }
+        @media (min-width: 768px) { .qr-box { display: flex; } }
+
+        .lp-footer { text-align: center; padding: 1.75rem 1rem 5.5rem; font-size: .74rem; color: var(--text-sub); }
+        .lp-footer a { color: var(--teal-dark); }
+
+        .float-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; padding: .6rem .9rem calc(.6rem + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, .94); backdrop-filter: blur(8px); border-top: 1px solid var(--border); }
+        .float-cta .btn-line { max-width: 520px; margin: 0 auto; padding: .8rem 1.2rem; font-size: .95rem; }
+
+        .reveal { opacity: .01; transform: translateY(14px); transition: opacity .45s ease, transform .45s ease; }
+        .reveal.is-visible { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+    </style>
+</head>
+
+<body>
+    <header class="lp-header">
+        <a class="brand" href="https://miura-diving.com/">三浦 海の学校</a>
+        <a class="btn-line-sm" href="https://lin.ee/Y3nB18U">LINEで相談</a>
+    </header>
+
+    <!-- ヒーロー -->
+    <div class="hero">
+        <div class="hero-inner">
+            <span class="season">2026年8月1日スタート</span>
+            <p class="kicker">お友達紹介「バディ割」</p>
+            <h1>その海の話、<br><span class="hl">友達にも見せて</span>あげませんか。</h1>
+            <p class="sub">あなたが誘ってくれたお友達がライセンス講習を受けると、<br>あなたは<strong>半額</strong>で、その海に一緒に潜れます。</p>
+            <div class="hero-perks">
+                <div class="hero-perk">
+                    <div class="who">紹介してくださるダイバーの方</div>
+                    <div class="what">付き添いダイビングが<em>半額</em></div>
+                    <div class="amount">ビーチ ¥6,600 ／ ボート ¥9,900（税込）</div>
+                </div>
+                <div class="hero-perk">
+                    <div class="who">受講されるお友達</div>
+                    <div class="what">器材レンタル1日分が<em>無料</em></div>
+                    <div class="amount">¥5,500（税込）分・OWD／AOW どちらでも</div>
+                </div>
+            </div>
+            <a class="btn-line" href="https://lin.ee/Y3nB18U">LINEで「バディ」と送る<small>（相談無料・その場で日程をご案内します）</small></a>
+            <p class="cta-note">友だち追加後、「<strong>バディ</strong>」と一言送るだけでOK。<br>紹介する側・される側、どちらからのご連絡でも大丈夫です。</p>
+        </div>
+    </div>
+
+    <div class="relief-bar">
+        <ul>
+            <li>OWD・AOW どちらも対象</li>
+            <li>紹介人数の制限なし</li>
+            <li>三崎口駅から無料送迎</li>
+        </ul>
+    </div>
+
+    <!-- なぜ -->
+    <section>
+        <div class="container">
+            <span class="sec-label">Why</span>
+            <h2 class="sec-title">ダイビングは、<em>ひとりで完結しない</em>スポーツです</h2>
+            <p class="sec-lead">「いつか潜ってみたい」と思っていても、ひとりで申し込むのはやっぱり勇気がいるものです。だから、すでに潜っている友達の「一緒に行こう」のひとことには、それだけの価値があります。<br>誘ってくれたその友達にも、ちゃんと得をしてほしい。そう思ってこの制度をつくりました。</p>
+            <img class="lp-illust" src="../image/optimized/fun-diving-buddy.webp" alt="三浦の海でバディと一緒に泳ぐダイビングのイラスト" width="800" height="600" loading="lazy">
+            <div class="navi-bubble">
+                <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
+                <div class="navi-bubble__balloon">
+                    はじめまして、案内役のクラゲちゃんです🪼 このページは、そのままお友達に転送してもらって大丈夫。読んだお友達がLINEで「バディ」と送ってくれたら、そこからご案内します。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典 -->
+    <section class="perk-section">
+        <div class="container">
+            <span class="sec-label">Perks</span>
+            <h2 class="sec-title">特典は、<em>おふたりぶん</em>あります</h2>
+            <div class="perk-grid">
+                <div class="perk-card perk-card--host reveal">
+                    <div class="perk-card__head">
+                        <div class="who">紹介してくださるダイバーの方へ</div>
+                        <h3>付き添いダイビングが半額</h3>
+                    </div>
+                    <div class="perk-card__body">
+                        <div class="perk-price">
+                            <div class="item">ビーチダイビング<small>2ダイブ・ガイド・タンク・保険込み</small></div>
+                            <div class="yen"><del>¥13,200</del>¥6,600</div>
+                        </div>
+                        <div class="perk-price">
+                            <div class="item">ボートダイビング<small>2ダイブ・乗船料込み（AOW講習の日程が対象）</small></div>
+                            <div class="yen"><del>¥19,800</del>¥9,900</div>
+                        </div>
+                        <div class="perk-note">
+                            <strong>タイミングは2つから選べます。</strong>お友達の講習日にご一緒に潜っていただくか、お友達の認定後、はじめてのファンダイビングにご一緒に。どちらでも半額です。<br>
+                            <small>※レンタル器材代（¥5,500/日）は別途。当日の枠に限りがあるため、日程は事前にご相談ください。</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="perk-card perk-card--guest reveal">
+                    <div class="perk-card__head">
+                        <div class="who">受講されるお友達へ</div>
+                        <h3>器材レンタル1日分が無料</h3>
+                    </div>
+                    <div class="perk-card__body">
+                        <div class="perk-price">
+                            <div class="item">OWD（オープンウォーター）<small>実技2日間・最大18m</small></div>
+                            <div class="yen"><del>¥64,900</del>¥59,400</div>
+                        </div>
+                        <div class="perk-price">
+                            <div class="item">AOW（アドバンス）<small>実技2日間・最大30m</small></div>
+                            <div class="yen"><del>¥70,800</del>¥65,300</div>
+                        </div>
+                        <div class="perk-note">
+                            <strong>いずれも「これ以外かからない」総額です。</strong>教材費・申請料・保険・海洋実習費まで込み。当日の追加請求はありません。<br>
+                            <small>※2026年8月31日までの「夏割」（レンタル1日分無料）と同じ内容のため、併用はできません。9月以降もこの特典は続きます。</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navi-bubble">
+                <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
+                <div class="navi-bubble__balloon">
+                    紹介できる人数に上限はありません。何人誘ってくれても、そのたびに1回ずつ半額になりますよ。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使い方 -->
+    <section>
+        <div class="container">
+            <span class="sec-label">How to</span>
+            <h2 class="sec-title">やることは、<em>3つだけ</em></h2>
+            <div class="flow-step reveal">
+                <div class="flow-step__num">1</div>
+                <div class="flow-step__card">
+                    <h3>このページをお友達に送る<span class="tag">今日できる</span></h3>
+                    <p>LINEでもSNSでも、URLをそのまま転送していただければ大丈夫です。読んだお友達に伝わるように書いてあります。</p>
+                </div>
+            </div>
+            <div class="flow-step reveal">
+                <div class="flow-step__num">2</div>
+                <div class="flow-step__card">
+                    <h3>お友達がLINEで「バディ」と送る</h3>
+                    <p>そのときに<strong>紹介者（あなた）のお名前</strong>を教えていただければ、特典が確定します。日程・持ち物はそこからご案内します。</p>
+                </div>
+            </div>
+            <div class="flow-step reveal">
+                <div class="flow-step__num">3</div>
+                <div class="flow-step__card">
+                    <h3>当日、あなたも半額で一緒に潜る</h3>
+                    <p>講習日に同行するか、認定後のファンダイビングにご一緒するか。お友達の予定に合わせて決めていただけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 対象コースと金額 -->
+    <section class="perk-section">
+        <div class="container">
+            <span class="sec-label">Price</span>
+            <h2 class="sec-title">対象コースと、<em>特典適用後の総額</em></h2>
+            <div class="table-scroll">
+                <table class="course-table">
+                    <thead>
+                        <tr>
+                            <th>コース</th>
+                            <th>通常の総額</th>
+                            <th class="after">特典適用後</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>OWD<small>講習費¥53,900＋レンタル2日¥11,000</small></th>
+                            <td class="before">¥64,900</td>
+                            <td class="after">¥59,400</td>
+                        </tr>
+                        <tr>
+                            <th>AOW<small>講習費¥59,800＋レンタル2日¥11,000</small></th>
+                            <td class="before">¥70,800</td>
+                            <td class="after">¥65,300</td>
+                        </tr>
+                        <tr>
+                            <th>OWD＋AOW セット<small>セット講習費¥108,700＋レンタル4日¥22,000</small></th>
+                            <td class="before">¥135,700</td>
+                            <td class="after">¥119,700</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-note">
+                すべて税込・総額表示です。教材費・申請料・保険・海洋実習費は講習費に含まれています。<br>
+                ※セットは講習費のセット割（−¥5,000）に加え、レンタル1日分無料をOWD分・AOW分の2回（−¥11,000）適用した金額です。<br>
+                ※海況や習熟度により実技が1日増える場合があります。その場合もレンタル代（¥5,500）が増えるだけで、講習費の追加はありません。
+            </p>
+        </div>
+    </section>
+
+    <!-- 条件 -->
+    <section>
+        <div class="container">
+            <span class="sec-label">Terms</span>
+            <h2 class="sec-title">特典の条件</h2>
+            <div class="terms reveal">
+                <h3>期間</h3>
+                <ul>
+                    <li>2026年8月1日から。終了する場合は、このページでお知らせします。</li>
+                </ul>
+                <h3>紹介してくださる方（付き添いダイビング半額）</h3>
+                <ul>
+                    <li>PADIをはじめとする指定団体の認定ダイバーの方が対象です。当日はCカードとログブックをお持ちください。</li>
+                    <li>ご紹介いただいたお友達1名につき、半額の付き添いダイビング1回が適用されます（紹介人数の上限はありません）。</li>
+                    <li>お友達の講習日に同行される場合と、お友達の認定後に一緒にファンダイビングされる場合のどちらでも適用されます。</li>
+                    <li>ボートダイビングの半額は、AOW講習など当日にボートを使う日程が対象です。</li>
+                    <li>レンタル器材代（¥5,500/日）は特典の対象外です。</li>
+                    <li>少人数制のため、同じ日にご案内できる人数に限りがあります。日程は必ず事前にご相談ください。</li>
+                </ul>
+                <h3>受講されるお友達（レンタル1日分無料）</h3>
+                <ul>
+                    <li>OWD（オープンウォーターダイバー）またはAOW（アドバンスドオープンウォーターダイバー）コースが対象です。</li>
+                    <li>お申し込み時に、LINEで「バディ」と紹介者のお名前をお知らせください。お申し込み後のさかのぼり適用はできません。</li>
+                    <li>2026年8月31日までの「夏割」と同じ内容の特典のため、併用はできません（どちらか一方の適用となります）。</li>
+                </ul>
+                <h3>共通</h3>
+                <ul>
+                    <li>他の割引・キャンペーンとの併用はできません。</li>
+                    <li>特典の現金でのお支払い・他のサービスへの振り替えはできません。</li>
+                    <li>海況・天候により、日程の変更や中止をご相談させていただくことがあります。安全を最優先に判断します。</li>
+                    <li>キャンセル規定は<a href="https://miura-diving.com/tokusho/">特定商取引法に基づく表記</a>をご確認ください。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <span class="sec-label">FAQ</span>
+            <h2 class="sec-title">よくあるご質問</h2>
+            <div class="faq">
+                <details>
+                    <summary>友達と2人同時に受講したいのですが、紹介にあたりますか？</summary>
+                    <p>お二人とも初めての受講の場合は「紹介」ではなく同時のお申し込みとなり、<strong>お二人ともレンタル1日分無料の特典が適用されます</strong>。お一人が認定ダイバーで、もうお一人が受講される場合が「紹介」にあたり、認定ダイバーの方の付き添いダイビングが半額になります。</p>
+                </details>
+                <details>
+                    <summary>紹介した友達と同じ日に潜れないときは？</summary>
+                    <p>問題ありません。お友達の認定後、はじめてのファンダイビングにご一緒いただく形でも半額が適用されます。日程が合わない場合はLINEでご相談ください。</p>
+                </details>
+                <details>
+                    <summary>他店でCカードを取ったのですが、紹介できますか？</summary>
+                    <p>できます。認定団体・取得したお店は問いません。Cカードとログブックをお持ちいただければ大丈夫です。ブランクが長い方は、リフレッシュダイビングをおすすめすることがあります。</p>
+                </details>
+                <details>
+                    <summary>紹介した友達が申し込みをやめた場合は？</summary>
+                    <p>特典は適用されませんが、それだけです。ノルマもペナルティもありませんので、気軽に声をかけてみてください。</p>
+                </details>
+                <details>
+                    <summary>SNSに投稿したり、宣伝したりする必要はありますか？</summary>
+                    <p>ありません。SNSへの投稿は特典の条件ではありませんので、「友達に直接すすめる」だけで大丈夫です。もちろん、楽しかった写真を自由に投稿していただくのは大歓迎です。</p>
+                </details>
+                <details>
+                    <summary>紹介できる人数に上限はありますか？</summary>
+                    <p>上限はありません。ご紹介1名につき、半額の付き添いダイビングが1回ずつ適用されます。</p>
+                </details>
+                <details>
+                    <summary>集合場所はどこですか？</summary>
+                    <p>開催は神奈川県三浦市の城ヶ島・宮川湾です。詳しい集合場所はご予約時にご案内します。京急三崎口駅から開催地まで無料送迎をご利用いただけます（要予約）。</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>「一緒に潜ろうよ」の一言から、<br>次のダイバーが生まれます。</h2>
+            <p>まずはLINEで「バディ」と送ってください。<br>紹介する側・される側、どちらからでも大丈夫です。</p>
+            <ul class="cta-topics">
+                <li>「バディ」で特典適用</li>
+                <li>空き状況の確認</li>
+                <li>友達を誘う相談</li>
+            </ul>
+            <a class="btn-line" href="https://lin.ee/Y3nB18U">LINEで「バディ」と送る<small>（無料・しつこい営業はしません）</small></a>
+            <div class="qr-box">
+                <img src="../image/optimized/line-qr.webp" alt="三浦 海の学校 LINE公式アカウントのQRコード" width="96" height="96" loading="lazy">
+                <p>パソコンでご覧の方は、スマホのカメラでこのQRを読み取るとLINEが開きます。</p>
+            </div>
+            <p class="alt">メール派の方は<a href="https://miura-diving.com/contact/?from=buddy">お問い合わせフォーム</a>へ</p>
+        </div>
+    </section>
+
+    <footer class="lp-footer">
+        <p>三浦 海の学校｜神奈川県三浦市（開催: 城ヶ島・宮川湾）</p>
+        <p><a href="https://miura-diving.com/">公式サイト</a>｜<a href="https://miura-diving.com/license/">ライセンス講習</a>｜<a href="https://miura-diving.com/fun-diving/">ファンダイビング</a>｜<a href="https://miura-diving.com/tokusho/">特定商取引法に基づく表記</a></p>
+    </footer>
+
+    <div class="float-cta">
+        <a class="btn-line" href="https://lin.ee/Y3nB18U">LINEで「バディ」と送る（無料）</a>
+    </div>
+
+    <script>
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+            }, { threshold: .05, rootMargin: '0px 0px 120px 0px' });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+        }
+    </script>
+</body>
+
+</html>

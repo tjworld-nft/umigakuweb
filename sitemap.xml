@@ -27,9 +27,17 @@
   <!-- ライセンスページ -->
   <url>
     <loc>https://miura-diving.com/license/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- お友達紹介キャンペーン -->
+  <url>
+    <loc>https://miura-diving.com/buddy/</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   
   <!-- ファンダイビングページ -->
