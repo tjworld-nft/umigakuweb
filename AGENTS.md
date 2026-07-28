@@ -61,10 +61,11 @@
 - 画像は本サイトにコミット→mainマージで https://miura-diving.com/... のURLにしてから指定（https必須）。
 - **無料枠は月200通・友だち約89人＝一斉配信は月2回まで**。配信前に必ず `status` で残数確認。
 - **配信実行（--yes）は必ずユーザーの明示的な承認を得てから**。勝手に配信しない。
-- **絞り込み配信**: `roster sync`→`roster exclude "名前"`→`multicast` で送る相手を選べる。multicastは送った人数ぶんしか無料枠を消費しない。
-  ただし **2026-07-28 実測で `GET /v2/bot/followers/ids` は 403**（未認証アカウントのため友だち一覧が引けない）。
-  認証済アカウント申請を通すまでは、管理画面のチャットから個別送信するか `roster add <userId>` で手動登録する。詳細は `.agents/buddy-campaign.md`。
-- 名簿 `~/.config/line/roster.json` は表示名を含む個人情報。git外・600で保存。**コミット厳禁**。
+- **「全員から数人だけ除いて配信」は確立済み（2026-07-28実施）**: chat.line.bizで除外者にタグ→管理画面でチャットタグ型オーディエンス作成→
+  `audience list` でIDを確認→`narrowcast --exclude-audience <id>`。**narrowcastは送った人数ぶんしか無料枠を消費しない。**
+  手順と落とし穴（chat側とMessaging API側でuserIdが別体系・`followers/ids`は403・属性絞り込みは100人以上必要）は `.agents/buddy-campaign.md` に記載。
+- 名簿 `~/.config/line/roster.json` と除外リスト `~/.config/line/exclude-list.json` は顧客の表示名・userIdを含む個人情報。
+  git外・600で保存。**このリポジトリはpublicなのでコミット厳禁**。
 
 ## 実装済みコンポーネント
 
