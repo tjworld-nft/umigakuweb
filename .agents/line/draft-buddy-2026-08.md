@@ -13,9 +13,9 @@
 
 ■ ダイバーのあなた
 お友達がライセンス講習を受けると、
-付き添いダイビングが半額に
-　ビーチ ¥13,200 → ¥6,600
-　ボート ¥19,800 → ¥9,900
+付き添いダイビングが¥6,600引きに
+　ビーチ ¥13,200 → ¥6,600（半額）
+　ボート ¥19,800 → ¥13,200
 
 ■ 受講するお友達
 器材レンタル1日分（¥5,500）が無料
@@ -37,6 +37,19 @@ https://miura-diving.com/buddy/
 `image/optimized/enjoy-surface-duo.webp`（海面で笑顔の2人）が内容に合う。
 LINEの画像指定は https の URL が必要なので、配信するなら 1200x630 程度の JPG を作って
 `image/optimized/` にコミット → main マージ後に URL を `--image` に渡す。
+
+## 送る相手を絞る場合
+
+この告知は**既にダイバーの人にこそ届けたい**内容なので、全員宛より絞ったほうが刺さるし通数も節約できる。
+
+```bash
+python3 .agents/line/line_broadcast.py roster list                  # 名簿と除外フラグを確認
+python3 .agents/line/line_broadcast.py roster exclude "名前"          # 送らない人を指定
+python3 .agents/line/line_broadcast.py multicast --text "本文"        # プレビュー（宛先一覧が出る）
+```
+
+⚠ 2026-07-28時点、`roster sync`（友だち一覧の自動取得）は**未認証アカウントのため403**。
+認証済アカウント申請が通るまでは、管理画面のチャットから個別送信するのが現実的。詳細は `.agents/buddy-campaign.md`。
 
 ## 配信タイミング
 
