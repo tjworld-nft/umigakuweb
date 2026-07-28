@@ -153,6 +153,97 @@ def cmd_push(args):
     print(f"✅ {args.to} に送信しました")
 
 
+def cmd_audience(args):
+    """除外用オーディエンスの作成・確認。userIdのJSONはgit外に置くこと。"""
+    if args.action == "list":
+        res = api("GET", "/audienceGroup/list?page=1&size=40")
+        groups = res.get("audienceGroups", [])
+        if not groups:
+            print("オーディエンスはまだありません。")
+            return
+        for g in groups:
+            print(f"  [{g['audienceGroupId']}] {g['description']}  {g['status']}  {g.get('audienceCount', '?')}人")
+        return
+
+    if args.action == "create":
+        src = Path(args.file).expanduser()
+        if not src.exists():
+            sys.exit(f"ファイルがありません: {src}")
+        rows = json.loads(src.read_text())
+        ids = [{"id": r["userId"]} for r in rows]
+        print(f"{len(ids)} 人でオーディエンス「{args.name}」を作成します:")
+        for r in rows:
+            print(f"  ・{r['name']}")
+        if not args.yes:
+            print("→ 未作成です。作成するには --yes を付けて再実行してください。")
+            return
+        res = api("POST", "/audienceGroup/upload",
+                  {"description": args.name, "isIfaAudience": False, "audiences": ids})
+        print(f"✅ 作成しました: audienceGroupId={res['audienceGroupId']} status={res.get('audienceGroupStatus')}")
+        return
+
+    # status
+    res = api("GET", f"/audienceGroup/{args.id}")
+    g = res.get("audienceGroup", {})
+    print(f"[{g.get('audienceGroupId')}] {g.get('description')}  status={g.get('status')}  {g.get('audienceCount')}人")
+
+
+def cmd_narrowcast(args):
+    """オーディエンスを『除外』して、それ以外の友だち全員に配信する。"""
+    msgs = build_messages(args.text, args.image)
+    used = api("GET", "/message/quota/consumption").get("totalUsage", 0)
+    quota = api("GET", "/message/quota")
+    limit = quota.get("value") if quota.get("type") == "limited" else None
+    reach = api("GET", f"/insight/followers?date={args.date}") if args.date else {}
+
+    g = api("GET", f"/audienceGroup/{args.exclude_audience}").get("audienceGroup", {})
+    if g.get("status") != "READY":
+        sys.exit(f"オーディエンスがまだ使えません（status={g.get('status')}）。READY になるまで待ってください。")
+
+    excluded = g.get("audienceCount", 0)
+    targeted = reach.get("targetedReaches")
+    est = (targeted - excluded) if targeted else None
+
+    print(f"=== 絞り込み配信（オーディエンス除外）===")
+    print(f"除外: [{args.exclude_audience}] {g.get('description')} … {excluded} 人")
+    if targeted:
+        print(f"配信可能な友だち: {targeted} 人 → 送信見込み: 約 {est} 人")
+    print(f"今月消費: {used} 通" + (f" / 上限 {limit} 通" if limit else ""))
+    print("\n--- 本文 ---")
+    for i, m in enumerate(msgs, 1):
+        print(f"[{i}] " + (f"テキスト:\n{m['text']}" if m["type"] == "text" else f"画像: {m['originalContentUrl']}") + "\n")
+
+    if est is not None and est < 50:
+        print("⚠ 絞り込み配信は対象が50人未満だと配信されません。")
+
+    if not args.yes:
+        print("→ 未送信です。この内容・この宛先で配信するには --yes を付けて再実行してください。")
+        return
+    req = urllib.request.Request(
+        f"{API}/message/narrowcast",
+        data=json.dumps({
+            "messages": msgs,
+            "recipient": {"type": "operator", "not": {"type": "audience", "audienceGroupId": int(args.exclude_audience)}},
+        }).encode(),
+        method="POST",
+        headers={"Authorization": f"Bearer {token()}", "Content-Type": "application/json"},
+    )
+    try:
+        with urllib.request.urlopen(req) as res:
+            # requestIdはボディではなく X-Line-Request-Id ヘッダーで返る
+            request_id = res.headers.get("X-Line-Request-Id")
+    except urllib.error.HTTPError as e:
+        sys.exit(f"APIエラー {e.code}: {e.read().decode()}")
+    print(f"✅ 配信リクエストを送信しました（requestId: {request_id}）")
+    print(f"   進捗:  python3 line_broadcast.py narrowcast-status --request-id {request_id}")
+    print("   実際に送られたかは status の配信数の増分でも確認できます。")
+
+
+def cmd_narrowcast_status(args):
+    res = api("GET", f"/message/progress/narrowcast?requestId={args.request_id}")
+    print(json.dumps(res, ensure_ascii=False, indent=2))
+
+
 def cmd_roster(args):
     rows = load_roster()
     by_id = {r["userId"]: r for r in rows}
@@ -288,6 +379,23 @@ def main():
             sp.add_argument("--only", help="この人たちだけに送る（名前の一部をカンマ区切り）")
             sp.add_argument("--skip", help="今回だけ外す人（名前の一部をカンマ区切り）")
 
+    ap = sub.add_parser("audience", help="除外用オーディエンスの作成・確認")
+    ap.add_argument("action", choices=["create", "list", "status"])
+    ap.add_argument("--name", help="オーディエンス名（create）")
+    ap.add_argument("--file", help="userIdのJSON（create）。例: ~/.config/line/exclude-list.json")
+    ap.add_argument("--id", help="audienceGroupId（status）")
+    ap.add_argument("--yes", action="store_true", help="確認なしで作成")
+
+    np_ = sub.add_parser("narrowcast", help="オーディエンスを除外して、それ以外の全員に配信")
+    np_.add_argument("--text", action="append", default=[], help="テキスト吹き出し（複数可・各500文字まで）")
+    np_.add_argument("--image", action="append", default=[], help="画像URL（https必須）")
+    np_.add_argument("--exclude-audience", required=True, help="除外するaudienceGroupId")
+    np_.add_argument("--date", help="送信見込みの算出に使う日付（YYYYMMDD・任意）")
+    np_.add_argument("--yes", action="store_true", help="確認なしで即配信")
+
+    ns = sub.add_parser("narrowcast-status", help="絞り込み配信の進捗確認")
+    ns.add_argument("--request-id", required=True)
+
     rp = sub.add_parser("roster", help="配信名簿の管理（userId↔表示名・除外フラグ）")
     rp.add_argument("action", choices=["sync", "add", "list", "exclude", "include"])
     rp.add_argument("value", nargs="?", help="add=userId / exclude・include=名前の一部")
@@ -300,6 +408,9 @@ def main():
         "push": cmd_push,
         "multicast": cmd_multicast,
         "roster": cmd_roster,
+        "audience": cmd_audience,
+        "narrowcast": cmd_narrowcast,
+        "narrowcast-status": cmd_narrowcast_status,
     }[args.cmd](args)
 
 
