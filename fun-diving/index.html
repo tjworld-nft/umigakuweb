@@ -76,6 +76,14 @@
           "@type": "Answer",
           "text": "ビーチポイントは城ヶ島をメインに、海況によって他ポイントへ変更する場合があります。ボートポイントは宮川湾（カサゴ根・トビ根）または城ヶ島をメインに、海況によって他ポイントへ変更する場合があります。"
         }
+      },
+      {
+        "@type": "Question",
+        "name": "1日に3本・4本潜ることはできますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、できます。ビーチは3ビーチダイビング¥18,700・4ビーチダイビング¥24,200、ボートは3ボートダイビング¥28,600（いずれも税込・レンタル器材代別）です。経験本数を増やしたい方・AOW取得に向けて本数を稼ぎたい方は、ご予約時に希望の本数をお知らせください。"
+        }
       }
     ]
   }
@@ -217,6 +225,121 @@
             font-size: .9rem;
             padding: .7rem 1rem;
             margin-top: auto;
+        }
+
+        /* ── 本数別の料金 ── */
+        .dive-count {
+            max-width: 860px;
+            margin: 2.5rem auto 0;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 1.6rem 1.3rem;
+            text-align: left;
+        }
+
+        .dive-count h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: .5rem;
+        }
+
+        .dive-count-lead {
+            font-size: .85rem;
+            color: var(--text-sub);
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 1.4rem;
+        }
+
+        .dive-count-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        @media(min-width:768px) {
+            .dive-count-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .dive-count-col h4 {
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--teal), var(--sky));
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            padding: .55rem .9rem;
+        }
+
+        .dive-count-col.boat h4 {
+            background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+        }
+
+        .dive-count-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .88rem;
+            border: 1px solid var(--border);
+            border-top: none;
+        }
+
+        .dive-count-table th,
+        .dive-count-table td {
+            padding: .6rem .9rem;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+            color: var(--text-sub);
+        }
+
+        .dive-count-table thead th {
+            background: var(--bg-soft);
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .dive-count-table th:last-child,
+        .dive-count-table td:last-child {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .dive-count-table td:last-child {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .dive-count-table tr:last-child th,
+        .dive-count-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .dive-count-table tr.is-pickup td {
+            background: rgba(255, 230, 109, .25);
+        }
+
+        .dive-count-tag {
+            display: inline-block;
+            background: var(--coral);
+            color: var(--white);
+            font-size: .65rem;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: .1rem .55rem;
+            margin-left: .4rem;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .dive-count-note {
+            font-size: .75rem;
+            color: var(--text-sub);
+            line-height: 1.9;
+            margin-top: 1.1rem;
         }
 
         /* Rental table */
@@ -492,7 +615,7 @@
             <div class="container text-center">
                 <span class="section-label reveal">Plans</span>
                 <h2 class="section-title reveal">ファンダイビングのコースと料金</h2>
-                <p class="section-lead reveal">目的に合わせて3つのコースからお選びください。</p>
+                <p class="section-lead reveal">目的に合わせて3つのコースからお選びください。1日で3本・4本潜るプランもご用意しています。</p>
                 <img class="guide-illust reveal" src="../image/optimized/fun-diving-buddy.webp" alt="三浦の海でインストラクターと一緒に色とりどりの魚を見ながら泳ぐファンダイビングのイラスト" width="800" height="600" loading="lazy">
                 <div class="navi-bubble reveal">
                     <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="クラゲのナビゲーターキャラ" width="240" height="240" loading="lazy">
@@ -589,6 +712,69 @@
                             <a href="#fd-cta" class="btn btn--primary">予約する</a>
                         </div>
                     </div>
+                </div>
+
+                <!-- 本数を増やしたい方の料金 -->
+                <div class="dive-count reveal">
+                    <h3>1日で3本・4本潜りたい方の料金</h3>
+                    <p class="dive-count-lead">
+                        「経験本数を増やしたい」「AOWに向けて本数を稼ぎたい」という方は、1日で3本・4本のファンダイビングもお選びいただけます。</p>
+                    <div class="dive-count-grid">
+                        <div class="dive-count-col">
+                            <h4>🏖️ ビーチダイビング</h4>
+                            <table class="dive-count-table">
+                                <thead>
+                                    <tr>
+                                        <th>コース</th>
+                                        <th>料金（税込）</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2ビーチダイビング</td>
+                                        <td>¥13,200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3ビーチダイビング</td>
+                                        <td>¥18,700</td>
+                                    </tr>
+                                    <tr class="is-pickup">
+                                        <td>4ビーチダイビング<span class="dive-count-tag">本数を稼ぎたい方に</span></td>
+                                        <td>¥24,200</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dive-count-col boat">
+                            <h4>🚤 ボートダイビング</h4>
+                            <table class="dive-count-table">
+                                <thead>
+                                    <tr>
+                                        <th>コース</th>
+                                        <th>料金（税込）</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2ボートダイビング</td>
+                                        <td>¥19,800</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3ボートダイビング</td>
+                                        <td>¥28,600</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2ボート＋1ビーチ</td>
+                                        <td>¥25,300</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p class="dive-count-note">
+                        ※料金はすべて税込です。レンタル器材代（フルセット¥5,500）は別途必要です。<br>
+                        ※3本以上をご希望の場合は、ご予約時に希望の本数をお知らせください。1日のスケジュールを調整してご案内します。<br>
+                        ※当日の海況や体調によっては、安全のため本数を変更させていただく場合があります。</p>
                 </div>
             </div>
         </section>
@@ -797,6 +983,10 @@
                     <details class="faq-item reveal">
                         <summary>自分の器材を持ち込んでもいいですか？</summary>
                         <div class="faq-answer">もちろんOKです！自器材の方はレンタル代がかかりません。タンク・ウエイトはこちらでご用意します。</div>
+                    </details>
+                    <details class="faq-item reveal">
+                        <summary>1日に3本・4本潜ることはできますか？</summary>
+                        <div class="faq-answer">はい、できます。ビーチは3ビーチダイビング¥18,700・4ビーチダイビング¥24,200、ボートは3ボートダイビング¥28,600（いずれも税込・レンタル器材代別）です。経験本数を増やしたい方・AOW取得に向けて本数を稼ぎたい方は、ご予約時に希望の本数をお知らせください。</div>
                     </details>
                 </div>
             </div>
