@@ -20,6 +20,18 @@
 - LINE配信の下書きは `.agents/line/draft-buddy-2026-08.md`（**未送信**）。
 - ⚠ セット受講（OWD+AOW）は特典を2回適用（−¥11,000・総額¥119,700）。1回だと別々に取るより高くなり逆転する。
 
+## 進行中: 継続特典「つづける割」（2026-08-01開始）
+
+- 特典ページ **`tsuzukeru/index.html`**（https://miura-diving.com/tsuzukeru/ ）。デザインは `buddy/index.html` と同じトークン（Zen Maru Gothic・teal/coral・float CTA）。
+- **オファーの正はブログ記事**: https://miura-diving.com/blog/miura-diving-tsuzukeru-wari-2026-07-30/ （2026-07-30公開）。ページはこの記事の条件をそのまま反映している。
+- 内容: 潜った当日に次回の日付を確定すると**次回のファンダイビングが¥800引き**。ビーチ¥13,200→¥12,400／ボート¥19,800→¥19,000／リフレッシュ¥19,800→¥19,000（税込・ガイド/タンク/ウエイト/施設使用料/保険込み・レンタル器材代別）。
+- 条件4つ: ①当日に日付確定（「来月のどこか」はNG）②対象はファンダイビング全コース（体験・講習の受講料は対象外）③**バディ割・夏割と併用可**（ただし¥800引きは1回のダイビングにつき1つまで）④日程変更は空きがあれば無料。
+- 合言葉は「**つづける割**」（LINE）。フォーム経由は `?from=tsuzukeru`。
+- 導線: トップ `index.html`（バディ割バナーの直後）・`fun-diving/index.html`（料金表の直後・バディ割バナーの上）・**主要15ページの `footer-nav`**。グローバルナビには入れない。
+- ⚠ バディ割ページの共通条件「他の割引との併用不可」に**つづける割は例外**と明記済み（`buddy/index.html`）。特典を増やすときはこの整合を毎回確認する。
+- 画像: 挿絵 `image/optimized/tsuzukeru-calendar.webp`（fal / Nano Banana Pro生成）・OGP `image/og-tsuzukeru.jpg`。ヒーローは既存写真 `image/optimized/enjoy-rocks-group.webp`。
+- 未着手: LINE配信の下書き・告知（無料枠の残数に注意）。特商法ページには割引を載せていない。
+
 ## 進行中: OWD集客のGoogle広告（総予算¥5,000）
 
 - 広告用LP **`lp/owd/index.html`** を2026-07-11に本番公開済み（https://miura-diving.com/lp/owd/ ・noindex）。
