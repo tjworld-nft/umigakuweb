@@ -39,6 +39,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- つづける割（ファンダイビング継続特典） -->
+  <url>
+    <loc>https://miura-diving.com/tsuzukeru/</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   
   <!-- ファンダイビングページ -->
   <url>
