@@ -86,8 +86,8 @@ frontmatter は最低これだけ。モードBは `article_type: "seo"` と `tar
 ---
 title: "（30〜40字・三浦/神奈川/ダイビングを含む）"
 description: "（120字以内）"
-date: "YYYY-MM-DD"
-slug: "（英小文字とハイフン・末尾に日付）"
+date: "YYYY-MM-DD"        # 必ず「書いた当日」。1日に何本書いても全部その日にする
+slug: "（英小文字とハイフン・末尾に日付。dateと同じ日）"
 tags: ["ダイビング", "..."]
 keywords: ["三浦 ダイビング", "..."]
 mainImage: ./hero.webp
