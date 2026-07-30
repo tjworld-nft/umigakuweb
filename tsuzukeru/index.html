@@ -64,11 +64,7 @@
             backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
         }
         .lp-header .brand { font-weight: 900; font-size: .95rem; color: var(--teal-dark); text-decoration: none; }
-        .btn-line-sm {
-            display: inline-flex; align-items: center; gap: .4rem;
-            background: var(--line-green); color: #fff; text-decoration: none;
-            font-weight: 700; font-size: .8rem; padding: .5rem .9rem; border-radius: 999px;
-        }
+        .header-link { font-size: .78rem; font-weight: 700; color: var(--teal-dark); text-decoration: none; border-bottom: 1px solid var(--teal); padding-bottom: 1px; }
 
         /* ── ヒーロー ── */
         .hero {
@@ -90,17 +86,13 @@
         .hero-perk .what em { font-style: normal; color: var(--coral); }
         .hero-perk .amount { font-size: .74rem; color: var(--text-sub); }
 
-        .btn-line {
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .05rem;
-            line-height: 1.35; text-align: center;
-            background: var(--line-green); color: #fff; text-decoration: none;
-            font-weight: 900; font-size: 1.05rem; padding: 1rem 1.5rem; border-radius: 999px;
-            box-shadow: 0 8px 24px rgba(6, 199, 85, .35); max-width: 420px;
-            transition: transform var(--ease);
+        .hero-action {
+            background: rgba(255, 255, 255, .96); color: var(--text-dark);
+            border-radius: var(--radius-md); box-shadow: var(--shadow-md);
+            border-left: 5px solid var(--teal); padding: .9rem 1.1rem;
+            max-width: 620px; font-size: clamp(.85rem, 2.9vw, .95rem); line-height: 1.75;
         }
-        .btn-line:hover { transform: translateY(-2px); }
-        .btn-line small { font-weight: 500; font-size: .72rem; opacity: .95; }
-        .hero .cta-note { font-size: .75rem; margin-top: .6rem; text-shadow: 0 1px 6px rgba(0, 0, 0, .5); }
+        .hero-action strong { color: var(--teal-dark); }
 
         .relief-bar { background: var(--teal-dark); color: #fff; padding: .8rem 0; }
         .relief-bar ul { display: flex; justify-content: center; gap: clamp(.8rem, 4vw, 2.5rem); list-style: none; flex-wrap: wrap; }
@@ -188,25 +180,20 @@
         .faq details[open] summary::after { transform: rotate(45deg); }
         .faq details p { padding: 0 1.2rem 1.1rem; font-size: .85rem; color: var(--text-sub); }
 
-        /* ── 最終CTA ── */
+        /* ── 締め ── */
         .final-cta { background: linear-gradient(135deg, var(--teal), var(--sky)); color: #fff; text-align: center; }
-        .final-cta h2 { font-size: clamp(1.3rem, 4.5vw, 1.8rem); font-weight: 900; line-height: 1.5; margin-bottom: .6rem; }
-        .final-cta p { font-size: .9rem; margin-bottom: 1.5rem; }
-        .final-cta .btn-line { margin: 0 auto; background: var(--white); color: var(--line-green); box-shadow: 0 8px 24px rgba(0, 0, 0, .18); }
+        .final-cta h2 { font-size: clamp(1.3rem, 4.5vw, 1.8rem); font-weight: 900; line-height: 1.5; margin-bottom: 1.1rem; }
+        .closing-action {
+            display: inline-block; text-align: left;
+            background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .55);
+            border-radius: var(--radius-md); padding: .9rem 1.2rem;
+            font-size: clamp(.85rem, 2.9vw, .95rem); line-height: 1.8;
+        }
+        .closing-action strong { color: var(--yellow); }
         .final-cta .alt { margin-top: 1.1rem; font-size: .8rem; }
-        .final-cta .alt a { color: #fff; font-weight: 700; }
-        .cta-topics { display: flex; justify-content: center; gap: .6rem; flex-wrap: wrap; list-style: none; margin: 0 0 1.4rem; padding: 0; }
-        .cta-topics li { background: rgba(255, 255, 255, .18); border: 1px solid rgba(255, 255, 255, .5); border-radius: 999px; padding: .35rem .9rem; font-size: .78rem; font-weight: 700; }
-        .qr-box { display: none; margin: 1.5rem auto 0; background: var(--white); color: var(--text-dark); border-radius: var(--radius-md); padding: 1rem 1.25rem; max-width: 320px; align-items: center; gap: 1rem; box-shadow: var(--shadow-md); }
-        .qr-box img { width: 96px; height: 96px; flex-shrink: 0; }
-        .qr-box p { font-size: .78rem; color: var(--text-sub); text-align: left; margin: 0; }
-        @media (min-width: 768px) { .qr-box { display: flex; } }
 
-        .lp-footer { text-align: center; padding: 1.75rem 1rem 5.5rem; font-size: .74rem; color: var(--text-sub); }
+        .lp-footer { text-align: center; padding: 1.75rem 1rem 2.5rem; font-size: .74rem; color: var(--text-sub); }
         .lp-footer a { color: var(--teal-dark); }
-
-        .float-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; padding: .6rem .9rem calc(.6rem + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, .94); backdrop-filter: blur(8px); border-top: 1px solid var(--border); }
-        .float-cta .btn-line { max-width: 520px; margin: 0 auto; padding: .8rem 1.2rem; font-size: .95rem; }
 
         .reveal { opacity: .01; transform: translateY(14px); transition: opacity .45s ease, transform .45s ease; }
         .reveal.is-visible { opacity: 1; transform: none; }
@@ -217,7 +204,7 @@
 <body>
     <header class="lp-header">
         <a class="brand" href="https://miura-diving.com/">三浦 海の学校</a>
-        <a class="btn-line-sm" href="https://lin.ee/Y3nB18U">LINEで相談</a>
+        <a class="header-link" href="https://miura-diving.com/fun-diving/">ファンダイビングのご案内</a>
     </header>
 
     <!-- ヒーロー -->
@@ -231,7 +218,7 @@
                 <div class="hero-perk">
                     <div class="who">やっていただくこと</div>
                     <div class="what">潜った当日に<em>次回の日付を決める</em></div>
-                    <div class="amount">海から上がったあと、空き状況を見てその場でお取りします</div>
+                    <div class="amount">ログ付けのときに、空き状況を見てその場でお取りします</div>
                 </div>
                 <div class="hero-perk">
                     <div class="who">対象</div>
@@ -239,8 +226,7 @@
                     <div class="amount">ビーチ・ボート・リフレッシュ／次回が¥800引き（税込）</div>
                 </div>
             </div>
-            <a class="btn-line" href="https://lin.ee/Y3nB18U">LINEで「つづける割」と送る<small>（相談無料・空き状況もその場でお返しします）</small></a>
-            <p class="cta-note">友だち追加後、「<strong>つづける割</strong>」と一言送るだけでOK。<br>次回の日程を決めるところまで、一緒にやります。</p>
+            <p class="hero-action">ログ付けのときに、スタッフへ<strong>「次回の予約を入れてください」</strong>とひと言。<br>お手続きも、事前のご連絡も必要ありません。</p>
         </div>
     </div>
 
@@ -264,7 +250,7 @@
             <div class="navi-bubble">
                 <img class="navi-bubble__avatar" src="../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
                 <div class="navi-bubble__balloon">
-                    案内役のクラゲちゃんです🪼 海から上がったら「次はいつにしますか？」と、こちらからお声がけします。その場で日付が決まれば、それだけで次回が¥800引きですよ。
+                    案内役のクラゲちゃんです🪼 ログ付けのときに、スタッフへ「次回の予約を入れてください」とお伝えください。その場で日付が決まれば、それだけで次回が¥800引きですよ。
                 </div>
             </div>
         </div>
@@ -326,8 +312,8 @@
             <div class="flow-step reveal">
                 <div class="flow-step__num">2</div>
                 <div class="flow-step__card">
-                    <h3>海から上がったら、次回の日付を決める<span class="tag">その場でOK</span></h3>
-                    <p>「来月のどこかで」ではなく、日付を決めるのが条件です。空き状況を見ながら、その場でお取りします。次回のコースは当日と変えていただいても構いません。</p>
+                    <h3>ログ付けのときに、次回の予約を入れてもらう<span class="tag">その場でOK</span></h3>
+                    <p>ログブックを付けながら、スタッフへ「次回の予約を入れてください」とお伝えください。「来月のどこかで」ではなく、日付を決めるのが条件です。空き状況を見ながら、その場でお取りします。次回のコースは当日と変えていただいても構いません。</p>
                 </div>
             </div>
             <div class="flow-step reveal">
@@ -380,7 +366,8 @@
                 <h3>1. 潜った当日に、次回の日付を確定させてください</h3>
                 <ul>
                     <li>「来月のどこかで」ではなく、日付を決めていただくのが条件です。厳しく聞こえるかもしれませんが、これがこの特典の本体です。</li>
-                    <li>当日、海から上がったあとにご相談ください。空き状況を見ながら、その場でお取りします。</li>
+                    <li>ログ付けのときに、スタッフへ「次回の予約を入れてください」とお伝えください。空き状況を見ながら、その場でお取りします。</li>
+                    <li>事前のお申し出や合言葉は必要ありません。お手続きもその場だけで完了します。</li>
                 </ul>
                 <h3>2. 対象はファンダイビング全コースです</h3>
                 <ul>
@@ -423,6 +410,10 @@
             <h2 class="sec-title">よくあるご質問</h2>
             <div class="faq">
                 <details>
+                    <summary>特典を使うのに、事前の申し出は必要ですか？</summary>
+                    <p>必要ありません。ログ付けのときに、スタッフへ「次回の予約を入れてください」とお伝えいただければ、その場でお取りします。合言葉も、事前のご連絡もいりません。今回のご予約も通常どおりで大丈夫です。潜った日に次回を決めていただければ、その次回が¥800引きになります。</p>
+                </details>
+                <details>
                     <summary>次回の予定がまだ読めないのですが、それでも予約したほうがいいですか？</summary>
                     <p>はい、仮でも日付を入れてしまうことをおすすめします。空きがあれば無料で変更できますし、動かせない予定が出てきたらそのときにご相談いただければ大丈夫です。何も入っていないカレンダーから予約を作るほうが、実はずっと大変なんです。</p>
                 </details>
@@ -458,22 +449,12 @@
         </div>
     </section>
 
-    <!-- 最終CTA -->
+    <!-- 締め -->
     <section class="final-cta">
         <div class="container">
             <h2>1年に1回の思い出より、<br>月に1回の日常のダイビングへ。</h2>
-            <p>まずはLINEで「つづける割」と送ってください。<br>次回の日程を決めるところまで、一緒にやりましょう。</p>
-            <ul class="cta-topics">
-                <li>「つづける割」で適用</li>
-                <li>空き状況の確認</li>
-                <li>リフレッシュの相談</li>
-            </ul>
-            <a class="btn-line" href="https://lin.ee/Y3nB18U">LINEで「つづける割」と送る<small>（無料・しつこい営業はしません）</small></a>
-            <div class="qr-box">
-                <img src="../image/optimized/line-qr.webp" alt="三浦 海の学校 LINE公式アカウントのQRコード" width="96" height="96" loading="lazy">
-                <p>パソコンでご覧の方は、スマホのカメラでこのQRを読み取るとLINEが開きます。</p>
-            </div>
-            <p class="alt">メール派の方は<a href="https://miura-diving.com/contact/?from=tsuzukeru">お問い合わせフォーム</a>へ</p>
+            <p class="closing-action">ログ付けのときに、スタッフへ<strong>「次回の予約を入れてください」</strong>とひと言。<br>それだけで、次回のダイビングが¥800引きになります。</p>
+            <p class="alt">2026年8月1日から。三浦の海でお待ちしています。</p>
         </div>
     </section>
 
@@ -481,10 +462,6 @@
         <p>三浦 海の学校｜神奈川県三浦市（開催: 城ヶ島・宮川湾）</p>
         <p><a href="https://miura-diving.com/">公式サイト</a>｜<a href="https://miura-diving.com/fun-diving/">ファンダイビング</a>｜<a href="https://miura-diving.com/buddy/">お友達紹介（バディ割）</a>｜<a href="https://miura-diving.com/tokusho/">特定商取引法に基づく表記</a></p>
     </footer>
-
-    <div class="float-cta">
-        <a class="btn-line" href="https://lin.ee/Y3nB18U">LINEで「つづける割」と送る（無料）</a>
-    </div>
 
     <script>
         if ('IntersectionObserver' in window) {
