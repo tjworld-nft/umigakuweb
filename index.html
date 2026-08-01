@@ -299,6 +299,29 @@
   <main>
 
     <!-- ============================================================
+         DIVE — 水面の下。WebGPU/WebGL2で描く三浦の海の中
+         canvasが読み込まれない環境では、この背景グラデーションと
+         文字だけが残る（それでも section として成立する）
+         ============================================================ -->
+    <section id="dive" class="dive" aria-labelledby="dive-title" data-ocean>
+      <div class="dive-surface" aria-hidden="true"></div>
+      <div class="dive-inner">
+        <span class="dive-label">Under the surface</span>
+        <h2 id="dive-title">水面の下は、<br class="sp-only">こんな世界です。</h2>
+        <p class="dive-lead">
+          浜から数十メートル。器材を背負って沈むと、光の筋がゆれて、群れが目の前を横切ります。<br>
+          三浦の海は、そういう場所です。
+        </p>
+        <div class="dive-buttons">
+          <a href="https://miura-diving.com/trial-diving/" class="btn btn--coral">まずは体験ダイビング</a>
+          <a href="https://miura-diving.com/sea-life/" class="btn btn--ghost">海の生き物図鑑を見る</a>
+        </div>
+        <!-- 文言は起動時にJSが実測値で書き換える（canvasが載らなければ非表示のまま） -->
+        <p class="dive-note" data-ocean-note>この背景はお使いの端末のGPUでリアルタイムに描いています</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
          BEGINNER ENTRY
          ============================================================ -->
     <section class="section section--alt" aria-labelledby="beginner-title">
@@ -1022,6 +1045,8 @@
     </div>
 
   <script src="js/main.js" defer></script>
+  <!-- ヒーローの海中レイヤー。端末を見て、描ける環境にだけ本体を取りに行く -->
+  <script src="js/ocean/boot.js" defer></script>
 
 </body>
 

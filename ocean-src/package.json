@@ -1,0 +1,15 @@
+{
+  "name": "umigaku-ocean",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "三浦 海の学校 — ヒーローのWebGPU海中レイヤー（three.js / TSL）のソース。ビルド成果物は ../js/ocean/ocean.min.js",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "three": "0.185.1"
+  }
+}

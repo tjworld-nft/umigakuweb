@@ -18,3 +18,6 @@ Thumbs.db
 # LINEスタンプ作成支援ツール
 node_modules/
 dist/
+
+# 海中レイヤーのビルド環境（js/ocean/ocean.min.js はコミットする）
+ocean-src/node_modules/
