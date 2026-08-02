@@ -18,7 +18,7 @@
  * 同じ「傾き」を時間の関数として解析的に出す（うねり＋カーソルのふくらみ）。
  * 波の伝播はしないが、見た目の質感は揃う。
  */
-import { StorageInstancedBufferAttribute } from 'three/webgpu';
+import { StorageInstancedBufferAttribute, Vector2 } from 'three/webgpu';
 import {
   Fn, float, int, vec2, storage, instanceIndex, uniform,
   sin, cos, exp, floor, clamp, mix, min, max,
@@ -52,6 +52,12 @@ export function createRipple({ shared, useCompute, grid }) {
   const uDamp = uniform(0.9965);
   const uPokeAmp = uniform(0);       // カーソルの速さに応じてJS側が入れる
   const uPokeSharp = uniform(900);   // 押す範囲の狭さ
+  /* 雫。カーソルと違って一瞬だけ強く落とす。ここから輪が広がっていく。
+     スマホにはカーソルが無いので、水が生きて見えるのはほぼこれのおかげになる。 */
+  const uDrop = uniform(new Vector2(0.5, 0.5));
+  const uDropAmp = uniform(0);
+  const uDropSharp = uniform(5200);  // カーソルよりずっと狭い＝点で落ちる
+  const uDropAge = uniform(0);       // 落ちてからの秒数（コンピュート無しの経路だけが使う）
   const uSwell = uniform(0.085);    // うねりの効き
   const uRippleK = uniform(3.4);    // 計算した波の効き
   const { uTime, uPointer, uAspect } = shared;
@@ -102,8 +108,12 @@ export function createRipple({ shared, useCompute, grid }) {
       const d = uv.sub(uPointer).mul(vec2(uAspect, 1));
       const push = exp(d.dot(d).mul(uPokeSharp).negate()).mul(uPokeAmp);
 
+      /* 雫が落ちる。1〜2ステップだけ入って、あとは波動方程式が輪を広げてくれる */
+      const dd = uv.sub(uDrop).mul(vec2(uAspect, 1));
+      const drop = exp(dd.dot(dd).mul(uDropSharp).negate()).mul(uDropAmp);
+
       prev.element(i).assign(
-        h.mul(2).sub(prev.element(i)).add(lap.mul(uSpeed)).mul(uDamp).add(push)
+        h.mul(2).sub(prev.element(i)).add(lap.mul(uSpeed)).mul(uDamp).add(push).add(drop)
       );
     })().compute(CELLS);
 
@@ -162,18 +172,55 @@ export function createRipple({ shared, useCompute, grid }) {
       return d.mul(exp(q.mul(uPokeSharp).negate()).mul(uPokeAmp).mul(uPokeSharp).mul(-2));
     });
 
-    gradAt = (uv, detailUv) =>
-      bulgeGrad(uv).mul(uRippleK).add(swellGrad(detailUv, uTime).mul(uSwell));
+    /* 雫の輪。こちらには波動方程式が無いので、広がって薄れる輪を時間の式で描く。
+       伝わり方は本物ではないが、「雫が落ちて輪が広がった」ことは同じように見える。 */
+    const dropRingGrad = /*@__PURE__*/ Fn(([uv]) => {
+      const d = uv.sub(uDrop).mul(vec2(uAspect, 1));
+      const r = max(d.length(), float(1e-4));
+      const front = r.sub(uDropAge.mul(0.42));          // 輪の半径は時間に比例して広がる
+      const env = exp(front.mul(front).mul(-900))
+        .mul(exp(uDropAge.mul(-1.7)))                   // 時間とともに薄れる
+        .mul(uDropAmp);
+      /* 輪の前後で符号が変わるので、山と谷ができる */
+      return d.div(r).mul(env.mul(front).mul(-1800));
+    });
+
+    gradAt = (uv, detailUv) => bulgeGrad(uv).mul(uRippleK)
+      .add(dropRingGrad(uv).mul(uRippleK))
+      .add(swellGrad(detailUv, uTime).mul(uSwell));
   }
+
+  /* 雫を何フレーム入れ続けるか。コンピュート経路は1フレーム入れれば、
+     あとは波動方程式が勝手に輪を広げてくれるので手を離す。 */
+  let dropFrames = 0;
 
   return {
     computeInit,
     computeSteps,
     gradAt,
     attrs,
-    params: { waveSpeed: uSpeed, damping: uDamp, swell: uSwell, strength: uRippleK, pokeSize: uPokeSharp },
+    params: {
+      waveSpeed: uSpeed, damping: uDamp, swell: uSwell, strength: uRippleK,
+      pokeSize: uPokeSharp, dropSize: uDropSharp,
+    },
     /** カーソルの勢い。0にすると水は静まっていく */
     setPoke(v) { uPokeAmp.value = v; },
+    /** 雫を1滴落とす。x,y は画面比（下端が0）、strength は落とす強さ */
+    drop(x, y, strength) {
+      uDrop.value.set(x, y);
+      uDropAmp.value = strength;
+      uDropAge.value = 0;
+      dropFrames = 1;
+    },
+    /** 1フレームぶん進める。雫の後始末はここでやる */
+    tick(dt) {
+      if (useCompute) {
+        if (dropFrames > 0 && --dropFrames <= 0) uDropAmp.value = 0;
+      } else if (uDropAmp.value > 0) {
+        uDropAge.value += dt;
+        if (uDropAge.value > 6) uDropAmp.value = 0;   // 輪が薄れきったら畳む
+      }
+    },
     grid: N,
   };
 }

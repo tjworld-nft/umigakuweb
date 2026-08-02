@@ -20,6 +20,7 @@ import { uniform } from 'three/tsl';
 import { PRESETS, detectTier, Governor } from './quality.js';
 import { createRipple } from './ripple.js';
 import { createWash, createHeroPhoto } from './surface.js';
+import { buildSeaMask } from './sea-mask.js';
 import { createHud } from './hud.js';
 
 /**
@@ -131,11 +132,18 @@ export async function start({ host, hero, webgpu, cores, memory }) {
     },
   };
 
+  /* ---------- どこが海か ----------
+     写真から切り出す。切り出せなかった（画素を読めない）ときは、
+     写真の層はあきらめて素の<img>をそのまま見せる。人物の上で水が
+     波打つくらいなら、ヒーローは静止画のままのほうがよい。 */
+  const seaMask = buildSeaMask(img, findHorizon(img));
+  const seaOk = !!seaMask && seaMask.userData.coverage > 0.02;
+
   const ripple = createRipple({ shared, useCompute, grid: preset.grid });
   const wash = createWash({ shared, ripple });
-  const heroPhoto = createHeroPhoto({ shared, ripple, photo });
-  heroPhoto.setHorizon(findHorizon(img));
-  scene.add(wash.object, heroPhoto.object);
+  const heroPhoto = seaOk ? createHeroPhoto({ shared, ripple, photo, seaMask }) : null;
+  scene.add(wash.object);
+  if (heroPhoto) scene.add(heroPhoto.object);
 
   /* ---------- 採寸 ---------- */
   let vw = 0, vh = 0;
@@ -176,6 +184,7 @@ export async function start({ host, hero, webgpu, cores, memory }) {
   let heroVisible = true;
 
   function measureHero() {
+    if (!heroPhoto) { heroVisible = false; return; }
     const r = hero.getBoundingClientRect();
     const iw = img.naturalWidth, ih = img.naturalHeight;
     /* 寸法が取れないうちは写真を出さない。古い位置のまま描くと大きくずれる */
@@ -211,6 +220,37 @@ export async function start({ host, hero, webgpu, cores, memory }) {
   addEventListener('pointermove', onPointer, { passive: true });
   addEventListener('touchmove', onPointer, { passive: true });
 
+  /* 最後に水が動いた時刻。カーソル・タップ・雫のどれでも更新する。
+     これが古くなったら、描く頻度を落としてよいと判断する。 */
+  let lastStir = performance.now();
+
+  /* ---------- 触ると雫が落ちる ----------
+     スマホにはカーソルが無いので、「動かすと水が押される」は起きない。
+     触れた所に雫を落とせば、指で触った手応えがそのまま水に出る。
+
+     ただし**指を置いた時点では落とさない**。スマホのスクロールは必ず
+     指を置くところから始まるので、押した瞬間に落とすと、画面を送るたびに
+     水しぶきが上がることになる。離すまで待って、ほとんど動いていなければ
+     「触った」と見なす。マウスのクリックはこの条件を自然に満たす。 */
+  let tapX = 0, tapY = 0, tapAt = 0;
+
+  function onDown(e) {
+    tapX = e.clientX; tapY = e.clientY; tapAt = performance.now();
+  }
+
+  function onUp(e) {
+    if (vw < 8 || vh < 8 || !tapAt) return;
+    const moved = Math.hypot(e.clientX - tapX, e.clientY - tapY);
+    const held = performance.now() - tapAt;
+    tapAt = 0;
+    if (moved > 10 || held > 600) return;        // スクロールや長押しは水を落とさない
+    ripple.drop(e.clientX / vw, 1 - e.clientY / vh, 0.55);
+    lastStir = performance.now();
+  }
+  addEventListener('pointerdown', onDown, { passive: true });
+  addEventListener('pointerup', onUp, { passive: true });
+  addEventListener('pointercancel', () => { tapAt = 0; }, { passive: true });
+
   /* ---------- スクロール ---------- */
   let scrollStir = 0;
   let lastScroll = window.scrollY;
@@ -224,6 +264,26 @@ export async function start({ host, hero, webgpu, cores, memory }) {
   }
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  /* ---------- ときどき雫が落ちる ----------
+     誰も触っていない間、水面は完全に静まってしまう。そうなると
+     「サイトの上に水が張ってある」ことが誰にも伝わらない（実際、指を置いていない
+     お客さんには何も起きていなかった）。数秒に一滴だけ落として、水を生かしておく。 */
+  let nextDrop = lastStir + 1400;
+
+  /* 輪は3〜4秒で薄れる（減衰0.9965／ステップ）。重ならないくらいの間隔を空ける */
+  function scheduleDrop(now) { nextDrop = now + 4500 + Math.random() * 5500; }
+
+  function maybeDrop(now) {
+    if (now < nextDrop) return;
+    scheduleDrop(now);
+    /* ヒーローが見えているときは海のあたり（画面の下寄り）へ。
+       それ以外は画面のどこでもよい ── 白い紙の上を輪が渡っていく。 */
+    const x = 0.10 + Math.random() * 0.80;
+    const y = heroVisible ? 0.16 + Math.random() * 0.32 : 0.10 + Math.random() * 0.80;
+    ripple.drop(x, y, 0.30);
+    lastStir = now;
+  }
 
   /* ---------- 走らせる ---------- */
   const hud = createHud();
@@ -255,13 +315,18 @@ export async function start({ host, hero, webgpu, cores, memory }) {
        ヒーローの高さが変わっても、写真がずれない。rectの読み出しは1回だけ。 */
     measureHero();
 
-    /* 水が静まっていて、ヒーローも画面に無いときは半分の頻度で描く。
-       絵はほとんど変わらないので、電池を無駄に使わない。 */
-    const calm = poke < 0.02 && !heroVisible;
+    if (poke > 0.02) lastStir = now;
+    maybeDrop(now);
+
+    /* 何も起きていない間は半分の頻度で描く。残っているのは何十秒もかけて流れる
+       うねりだけなので、30fpsでも動きは同じに見える。ノートPCやスマホを
+       開きっぱなしにされたときに、GPUを回し続けないための歯止め。 */
+    const idle = now - lastStir > 4000;
     half ^= 1;
-    if (calm && half) return;
+    if (idle && half) return;
 
     if (useCompute) for (const step of ripple.computeSteps) renderer.compute(step);
+    ripple.tick(Math.min(raw, 50) / 1000);
     renderer.render(scene, camera);
 
     if (hud.visible) {
@@ -295,7 +360,44 @@ export async function start({ host, hero, webgpu, cores, memory }) {
   });
   addEventListener('resize', resize, { passive: true });
   /* アドレスバーの伸縮など、resizeイベントの来ない高さ変化も拾う */
-  new ResizeObserver(resize).observe(canvas);
+  const ro = new ResizeObserver(resize);
+  ro.observe(canvas);
+
+  /* ---------- 全部たたむ ---------- */
+  function teardown() {
+    if (disposed) return false;
+    disposed = true;
+    pause();
+    removeEventListener('pointermove', onPointer);
+    removeEventListener('touchmove', onPointer);
+    removeEventListener('pointerdown', onDown);
+    removeEventListener('pointerup', onUp);
+    removeEventListener('scroll', onScroll);
+    removeEventListener('resize', resize);
+    ro.disconnect();
+    canvas.remove();
+    host.classList.remove('is-ocean');
+    return true;
+  }
+
+  /* ---------- 描画が続けられなくなったとき ----------
+     GPUのデバイスは失われることがある（ドライバの更新・省電力・長く裏に置かれたタブ）。
+     そうなるとcanvasは最後の絵のまま固まる。ヒーロー写真は不透明に貼ってあるので、
+     止まった絵が本物の写真の上に残り続けてしまう。そうなったら黙って畳んで、
+     元のHTMLの見た目に戻す ── 水が無くてもページは完成している。 */
+  function surrender(why) {
+    if (!teardown()) return;
+    if (window.console && console.debug) console.debug('[ocean] 描画を諦めました:', why);
+  }
+
+  const device = renderer.backend && renderer.backend.device;
+  if (device && device.lost) {
+    device.lost.then((info) => surrender((info && info.message) || 'device lost'));
+  }
+  canvas.addEventListener('webglcontextlost', (e) => {
+    e.preventDefault();
+    surrender('webglcontextlost');
+  });
 
   host.classList.add('is-ocean');
   requestAnimationFrame(() => canvas.classList.add('is-live'));
@@ -310,18 +412,12 @@ export async function start({ host, hero, webgpu, cores, memory }) {
     renderer, scene, camera, ripple, wash, heroPhoto, shared,
     resize, measureHero,
     dispose() {
-      disposed = true;
-      pause();
-      removeEventListener('pointermove', onPointer);
-      removeEventListener('touchmove', onPointer);
-      removeEventListener('scroll', onScroll);
-      removeEventListener('resize', resize);
+      teardown();
       wash.dispose();
-      heroPhoto.dispose();
+      if (heroPhoto) heroPhoto.dispose();
+      if (seaMask) seaMask.dispose();
       photo.dispose();
       renderer.dispose();
-      canvas.remove();
-      host.classList.remove('is-ocean');
     },
   };
   window.__ocean = api;
@@ -331,8 +427,9 @@ export async function start({ host, hero, webgpu, cores, memory }) {
       `%c🌊 三浦 海の学校%c  ${backendName} / ${preset.name}\n` +
       (useCompute
         ? `サイトの上に張った水面は、${preset.grid}×${preset.grid}のグリッドで2次元の波動方程式を\n` +
-          `コンピュートシェーダで解いています。カーソルを動かすと波が立ち、伝わり、\n` +
-          `壁で跳ね返り、干渉して収まります。波の形はどこにも書いていません。`
+          `コンピュートシェーダで解いています。カーソルを動かす・画面に触れる・数秒に一度落ちる雫。\n` +
+          `どれも同じ式に入って、波が立ち、伝わり、壁で跳ね返り、干渉して収まります。\n` +
+          `波の形はどこにも書いていません。`
         : `このブラウザにWebGPUが無いため、水面は解析的な近似で動いています。`) + '\n' +
       `Shift+O で計測パネル、window.__ocean.ripple.params / .heroPhoto.params / .wash.params で係数を変えられます。\n` +
       `ダイビングの相談はこちら → https://miura-diving.com/contact/`,
