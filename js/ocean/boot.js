@@ -25,12 +25,16 @@
   if (!mq) return;
   if (mq('(prefers-reduced-motion: reduce)').matches) return;
 
-  /* --- 3. 通信量の節約設定・低速回線では読み込まない --------------------- */
+  /* --- 3. 通信量の節約設定・本当に遅い回線では読み込まない ----------------
+     effectiveType は直近の実測からの推定値で、十分速い回線でも '3g' と
+     報告されることが多い（実際に本番で踏んだ）。ここで 3g を弾くと
+     多くの実ユーザーで無効になってしまうので、2g 系だけを対象にする。
+     本体は表示が終わって暇になってから取りに行くので、3g でも表示は妨げない。 */
   var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   if (conn) {
     if (conn.saveData) return;
     var et = conn.effectiveType || '';
-    if (et === 'slow-2g' || et === '2g' || et === '3g') return;
+    if (et === 'slow-2g' || et === '2g') return;
   }
 
   /* --- 4. 端末の体力（分からない環境は「あり」とみなす） ------------------ */
