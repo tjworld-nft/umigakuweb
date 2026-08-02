@@ -3,63 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ocean preview</title>
+<title>water preview</title>
 <link rel="stylesheet" href="/css/style.css">
 <style>
-  /* 開発用。diveセクション1枚だけを固定サイズで出して見た目を詰める。
-     ビューポート依存にすると、非表示のプレビューペインで寸法が0になり
-     測り間違える（実機とは無関係の事故） */
-  body { margin:0; background:#02273B; }
-  .dive { width:1280px; height:720px; min-height:0; }
-  .dive.sp { width:390px; height:700px; }
+  /* 開発用。ヒーロー1枚＋白いセクションを2枚だけ置いて、
+     ヒーローの水と、白い紙の上に落ちる水の影を同時に見る。
+     寸法をビューポート依存にすると、非表示のプレビューペインで0になって
+     測り間違えるので固定する（実機とは無関係の事故を避けるため）。 */
+  body { margin: 0; }
+  .hero { min-height: 0; height: 620px; }
+  /* ビューポート幅そのままで置く。stageを固定幅にすると、
+     canvas(=ビューポート全面)とヒーローの幅がずれて比較にならない。 */
+  .stage { width: 100%; }
+  .stage.sp { width: 390px; }
+  .stage.sp .hero { height: 520px; }
 </style>
 </head>
-<body>
-<section id="dive" class="dive" aria-labelledby="dive-title" data-ocean>
-  <div class="dive-surface" aria-hidden="true"></div>
-  <div class="dive-inner">
-    <span class="dive-label">Under the surface</span>
-    <h2 id="dive-title">水面の下は、<br class="sp-only">こんな世界です。</h2>
-    <p class="dive-lead">
-      浜から数十メートル。器材を背負って沈むと、光の筋がゆれて、群れが目の前を横切ります。<br>
-      三浦の海は、そういう場所です。
-    </p>
-    <div class="dive-buttons">
-      <a href="#" class="btn btn--coral">まずは体験ダイビング</a>
-      <a href="#" class="btn btn--ghost">海の生き物図鑑を見る</a>
+<body data-ocean>
+<div class="stage">
+  <section class="hero hero--soft" aria-labelledby="hero-title" data-ocean-hero>
+    <div class="hero-bubble" aria-hidden="true"></div>
+    <div class="hero-bg">
+      <img src="/image/optimized/home-hero-soft-diving.webp" alt="" width="1800" height="1014">
     </div>
-    <p class="dive-note" data-ocean-note>この背景はお使いの端末のGPUでリアルタイムに描いています</p>
-  </div>
-</section>
+    <div class="hero-content">
+      <div class="hero-badge">神奈川・三浦の初心者向けダイビング</div>
+      <h1 id="hero-title">泳げない方も、一人参加も。<br>三浦の海で安心して。</h1>
+      <p class="hero-sub">体験ダイビングとライセンス取得、どちらが合うか分からなくても大丈夫。</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn btn--coral">LINEで不安を相談する</a>
+        <a href="#" class="btn btn--ghost">初心者ガイドを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container text-center">
+      <span class="section-label">For Beginners</span>
+      <h2 class="section-title">はじめての方は、ここから選べます</h2>
+      <p class="section-lead">この面の上を、ヒーローと同じ水面を通った光がゆっくり流れます。文字の読みやすさが落ちていないかをここで見ます。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container text-center">
+      <h2 class="section-title">白地でも同じように見えるか</h2>
+      <p class="section-lead">背景が真っ白なセクション。水の影が濃すぎないか、動きが速すぎないかを確認します。</p>
+    </div>
+  </section>
+</div>
 
 <script type="module">
   /* プレビュー用パラメータ:
      ?frames=N   起動後にNフレームぶん手動で進めてから止める（rAFの回らない環境用）
      ?webgl=1    WebGL2フォールバック経路を強制して見比べる
+     ?sp=1       スマホ幅
+     ?poke=x,y   その位置（画面比・下端0）でカーソルを回して水をかき混ぜてから止める
   */
   const q = new URLSearchParams(location.search);
-  const el = document.querySelector('[data-ocean]');
-  if (q.get('sp')) el.classList.add('sp');
+  if (q.get('sp')) document.querySelector('.stage').classList.add('sp');
+
+  const host = document.querySelector('[data-ocean]');
+  const hero = document.querySelector('[data-ocean-hero]');
   const mod = await import('/js/ocean/ocean.min.js?v=' + Date.now());
   const o = await mod.start({
-    hero: el,
+    host, hero,
     webgpu: q.get('webgl') ? false : !!navigator.gpu,
     cores: 8,
     memory: 16,
   });
 
-  const canvas = document.querySelector('.ocean-canvas');
+  const canvas = document.querySelector('.page-water');
   canvas.style.transition = 'none';
   canvas.classList.add('is-live');
 
   const frames = parseInt(q.get('frames') || '0', 10);
   if (frames > 0) {
+    const poke = (q.get('poke') || '').split(',').map(Number);
+    const stirring = poke.length === 2 && poke.every((n) => !Number.isNaN(n));
     const dt = 1 / 60;
     for (let i = 0; i < frames; i++) {
       o.shared.uTime.value += dt;
-      o.shared.uDelta.value = dt;
-      o.school.tickFrame(i);
-      if (o.compute) o.renderer.compute(o.school.computeStep);
+      if (stirring && i < frames * 0.6) {
+        /* カーソルで円を描いているのと同じことをする */
+        const a = i * 0.09;
+        o.shared.uPointer.value.set(poke[0] + Math.cos(a) * 0.05, poke[1] + Math.sin(a) * 0.05);
+        o.ripple.setPoke(0.010);
+      } else {
+        o.ripple.setPoke(0);
+      }
+      if (o.compute) for (const s of o.ripple.computeSteps) o.renderer.compute(s);
       // 最後の1枚だけ完了を待つ。待たないと画面に出る前に採取してしまう
       if (i === frames - 1) await o.renderer.renderAsync(o.scene, o.camera);
       else o.renderer.render(o.scene, o.camera);

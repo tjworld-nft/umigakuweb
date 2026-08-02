@@ -32,15 +32,15 @@ export function createHud() {
     update(s) {
       if (!on || !el) return;
       el.textContent =
-        `三浦 海の学校 / ocean layer\n` +
+        `三浦 海の学校 / water\n` +
         `backend   ${s.backend}\n` +
-        `boids     ${s.compute ? 'compute shader' : 'procedural (no compute)'}\n` +
-        `fish      ${s.fish} / ${s.fishMax}   近傍 ${s.neighbors}\n` +
-        `motes     ${s.motes}    bubbles ${s.bubbles}\n` +
+        `水面      ${s.sim}\n` +
         `dpr       ${s.dpr.toFixed(2)}\n` +
         `frame     ${s.ms.toFixed(1)} ms  (${(1000 / Math.max(s.ms, 0.01)).toFixed(0)} fps)\n` +
+        `波の勢い  ${s.poke.toFixed(3)}\n` +
+        `スクロール ${(s.scroll * 100).toFixed(0)}%\n` +
         `draws     ${s.draws}\n` +
-        `\nwindow.__ocean で群れの係数をいじれます`;
+        `\nwindow.__ocean.ripple.params / .surface.params`;
     },
     get visible() { return on; },
   };

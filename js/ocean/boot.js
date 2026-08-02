@@ -1,8 +1,8 @@
 /* ==========================================================================
-   三浦 海の学校 — ヒーロー海中レイヤーの起動ゲート
+   三浦 海の学校 — サイト全体に敷く水の、起動ゲート
    --------------------------------------------------------------------------
-   本体（three.js同梱・約200KB）を落とすかどうかをここだけで決める。
-   落とさない場合は従来どおり写真＋CSSのヒーローがそのまま残るので、
+   本体（three.js同梱・約190KB）を落とすかどうかをここだけで決める。
+   落とさない場合は従来どおりの見た目がそのまま残るので、
    このファイルが何もしなくてもページは完成している。
    ========================================================================== */
 (function () {
@@ -11,8 +11,9 @@
   var SELF = document.currentScript && document.currentScript.src;
   if (!SELF) return;
 
-  var hero = document.querySelector('[data-ocean]');
-  if (!hero) return;
+  var host = document.querySelector('[data-ocean]');
+  var hero = document.querySelector('[data-ocean-hero]');
+  if (!host || !hero) return;
 
   /* --- 1. 明示的なオプトアウト（?ocean=off でも切れる） ------------------ */
   try {
@@ -51,14 +52,16 @@
   var coarse = mq('(pointer: coarse)').matches;
   if (!hasWebGPU && coarse) return;
 
-  /* --- 6. ヒーローが画面内にある間の、暇な時間に読み込む ------------------ */
+  /* --- 6. ヒーローが画面内にある間の、暇な時間に読み込む --------------------
+     水はページ全体に効くが、いちばん効くのはヒーロー。
+     すぐ下まで来ていない読者のために先回りしてダウンロードはしない。 */
   var started = false;
   function launch() {
     if (started) return;
     started = true;
     import(new URL('./ocean.min.js', SELF).href)
       .then(function (mod) {
-        return mod.start({ hero: hero, webgpu: hasWebGPU, cores: cores, memory: mem });
+        return mod.start({ host: host, hero: hero, webgpu: hasWebGPU, cores: cores, memory: mem });
       })
       .catch(function (err) {
         /* 失敗しても写真のヒーローが残るだけなので、静かに諦める */

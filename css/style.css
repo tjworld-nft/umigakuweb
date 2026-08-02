@@ -1130,114 +1130,26 @@ a:hover { color: var(--coral); }
 }
 
 /* ================================================================
-   DIVE — 水面の下のセクション
-   背景のcanvasはWebGPU（無ければWebGL2）でその場で描いている。
-   canvasが載らない端末でも、このグラデーションと文字だけで成立させる。
+   WATER — サイト全体に一枚だけ敷く水
+   ヒーローでは写真の「海の部分」だけが実際に波立ち、それ以降は
+   同じ水面を通った光が白い背景の上をゆっくり流れる。
+   canvasが載らない環境ではこのCSSは何もしない（従来どおりの見た目）。
    ================================================================ */
-.dive {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  min-height: clamp(560px, 88vh, 820px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(4rem, 10vw, 7rem) 1.25rem;
-  color: #fff;
-  background:
-    radial-gradient(120% 80% at 50% -10%, rgba(180,244,255,.30) 0%, rgba(180,244,255,0) 55%),
-    linear-gradient(180deg, #1AA2B6 0%, #0C7B95 20%, #06607C 42%, #04425C 68%, #02273B 100%);
-}
-
-/* 入った直後の水面。canvasが無いときはこれだけでも「潜った」と分かる */
-.dive-surface {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: clamp(90px, 16vh, 170px);
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(226,252,255,.55) 0%, rgba(190,240,252,.16) 45%, rgba(190,240,252,0) 100%);
-  mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
-}
-
-.ocean-canvas {
-  position: absolute;
+.page-water {
+  position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 1;            /* セクションより上・ヒーローの文字(z-index:2)より下 */
   pointer-events: none;
   opacity: 0;
-  transition: opacity 1.6s cubic-bezier(.4,0,.2,1);
+  transition: opacity 1.8s cubic-bezier(.4,0,.2,1);
+  contain: strict;
 }
-.ocean-canvas.is-live { opacity: 1; }
+.page-water.is-live { opacity: 1; }
 
-/* canvasが載ったらCSSの簡易水面は引っ込める（シェーダ側が描くため） */
-.dive.is-ocean .dive-surface { opacity: 0; transition: opacity 1.6s ease; }
+/* 水が動き出したら、CSSの飾り泡は引っ込める（水面のゆらぎと役目が重なる） */
+body.is-ocean .hero-bubble { display: none; }
 
-.dive-inner {
-  position: relative;
-  z-index: 3;
-  max-width: 720px;
-  text-align: center;
-  text-shadow: 0 2px 14px rgba(0, 30, 45, .5);
-}
-
-.dive-label {
-  display: inline-block;
-  font-family: var(--ff-accent);
-  font-size: .72rem;
-  font-weight: 600;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: #B9F3FF;
-  margin-bottom: 1rem;
-}
-
-.dive h2 {
-  font-size: clamp(1.7rem, 5.2vw, 2.9rem);
-  font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 1.1rem;
-  text-shadow: 0 2px 6px rgba(0, 25, 40, .55), 0 10px 30px rgba(0, 25, 40, .4);
-}
-
-.dive-lead {
-  font-size: clamp(.95rem, 2.3vw, 1.1rem);
-  line-height: 1.85;
-  opacity: .95;
-  margin-bottom: 2rem;
-}
-
-.dive-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .75rem;
-  justify-content: center;
-}
-
-/* 「GPUで描いています」はcanvasが実際に載ったときだけ出す */
-.dive-note { display: none; }
-.dive.is-ocean .dive-note {
-  display: block;
-  margin-top: 1.6rem;
-  font-size: .72rem;
-  letter-spacing: .04em;
-  color: rgba(220, 248, 255, .62);
-  text-shadow: none;
-}
-
-@media (max-width: 768px) {
-  .dive { min-height: clamp(480px, 78svh, 640px); }
-  .dive-buttons { flex-direction: column; align-items: center; }
-  .dive-buttons .btn { width: 100%; max-width: 280px; }
-  .dive-buttons .btn--ghost { border-color: rgba(255,255,255,.7); color: #fff; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ocean-canvas { display: none; }
-}
-@media print {
-  .dive { display: none; }
-}
+@media (prefers-reduced-motion: reduce) { .page-water { display: none; } }
+@media print { .page-water { display: none; } }
