@@ -46,7 +46,13 @@ export function createWash({ shared, ripple }) {
   const { uAspect, uScroll, uFade, colors } = shared;
   const tools = waterTools({ shared, ripple });
 
-  const uAmbient = uniform(0.075);
+  /* 白い紙の上に落ちる影の濃さ。
+     水面が平らなときは (1-caustic) がほぼ0なので、ここをいくら上げても
+     何も起きない ── 効くのは波が立っている所だけ。0.075だった頃は、
+     カーソルでかき混ぜている最中ですら合成後の差が最大4/255しかなく、
+     「サイト全体に敷いた水」は事実上どこにも見えていなかった。
+     静かなときは今までどおり透明なまま、波が通った所だけがそれと分かる濃さにする。 */
+  const uAmbient = uniform(0.30);
   const cWash = uniform(colors.wash.clone());
 
   const material = new MeshBasicNodeMaterial({
@@ -82,14 +88,14 @@ export function createWash({ shared, ripple }) {
 /* ------------------------------------------------------------------------ */
 /* 2. ヒーロー写真 — 海だけが波立つ                                           */
 /* ------------------------------------------------------------------------ */
-export function createHeroPhoto({ shared, ripple, photo }) {
+export function createHeroPhoto({ shared, ripple, photo, seaMask }) {
   const { uAspect, uFade, colors } = shared;
   const tools = waterTools({ shared, ripple });
 
   const uRefract = uniform(0.022);      // 海がどれだけ歪むか
-  const uSeaCaustic = uniform(0.50);    // 海面のきらめき
-  const uGlint = uniform(0.42);         // 光の反射
-  const uHorizon = uniform(0.473);      // 写真の中の水平線（写真UVのv・下端が0）
+  const uSeaCaustic = uniform(0.95);    // 海面のきらめき（明るさの余白ぶんだけ効く）
+  const uGlint = uniform(0.55);         // 光の反射（同上）
+  const uSeaShade = uniform(0.13);      // 光が散った側の沈み
   /* ヒーローが画面のどこにいるか（x, y, w, h ／ 0〜1・下が0）。
      水面は画面全体で1枚なので、板の中のUVを画面座標に直すのに使う。 */
   const uBox = uniform(new Vector4(0, 0, 1, 1));
@@ -118,15 +124,10 @@ export function createHeroPhoto({ shared, ripple, photo }) {
     const g = tools.slopeAt(s, uAspect);
     const caustic = tools.causticAt(s, g, uAspect);
 
-    /* 海だけを見分ける。水平線より下で、かつ青緑が強いところ。
-       閾値は実際の写真の画素を測って決めた（リニア空間）:
-         空 0.28〜0.39 ／ 海 0.26〜0.35 ／ 人 0.00〜0.16 ／ 岩と木 0.13
-       空は水平線で、人と岩はこの青緑さで外れる。
-       写真UVは v=0 が画像の下端なので、海は v が小さい側。 */
-    const flat = texture(photo, tuv);
-    const aqua = flat.g.add(flat.b).mul(0.5).sub(flat.r);
-    const sea = float(1).sub(smoothstep(uHorizon.sub(0.012), uHorizon.add(0.045), tuv.y))
-      .mul(smoothstep(0.17, 0.26, aqua));
+    /* どこが海か。起動時に写真から切り出したマスクを引くだけ（sea-mask.js）。
+       以前はここで「水平線より下・青緑が強い」を毎フレーム判定していたが、
+       それだと青緑のラッシュガードを着たお客さんまで水として波打っていた。 */
+    const sea = texture(seaMask, tuv).r;
 
     /* 海の部分だけ屈折させる */
     const raw = texture(photo, tuv.add(g.mul(uRefract).mul(sea))).rgb;
@@ -140,11 +141,23 @@ export function createHeroPhoto({ shared, ripple, photo }) {
     const lum = dot(bright, vec3(0.2126, 0.7152, 0.0722));
     const shot = mix(vec3(lum), bright, 1.08);
 
-    /* 海面のきらめきと、傾いた面が空を返す反射 */
+    /* 海面のきらめきと、傾いた面が空を返す反射。
+       ここは足し算なので、そのまま足すと**もともと明るい浅瀬が白に張り付く**。
+       この写真の売りは砂地と根が透けて見えていることなので、それを潰すと本末転倒になる
+       （足しっぱなしだった頃は海の平均輝度が137→192、1.2%が純白に飽和していた）。
+       そこで、足せる光の量を「白までの余白」で割り引く。浅瀬では静かに、
+       光の届きにくい深い側ではしっかり効く ── 実際の海の見え方と同じ向きになる。 */
+    const shotLum = dot(shot, vec3(0.2126, 0.7152, 0.0722));
+    const head = clamp(float(1).sub(shotLum), 0, 1);
     const glint = pow(clamp(g.y.mul(2.2).add(0.5), 0, 1), 8.0);
-    const lit = shot
-      .add(cSun.mul(caustic.mul(uSeaCaustic).mul(sea)))
-      .add(cSun.mul(glint.mul(uGlint).mul(sea)));
+
+    /* 光が集まった裏側では、その分だけ光が抜けている。ごくわずかに沈ませると、
+       明るさの総量を上げずに水面の陰影だけが増える（＝白飛びさせずに波が見える）。 */
+    const shade = float(1).sub(caustic).mul(uSeaShade).mul(sea);
+
+    const lit = shot.mul(float(1).sub(shade))
+      .add(cSun.mul(caustic.mul(uSeaCaustic).mul(head).mul(sea)))
+      .add(cSun.mul(glint.mul(uGlint).mul(head).mul(sea)));
 
     /* 文字を読ませるための落とし。元の .hero-bg::after と同じ配合。
        t は板の中の「上からの割合」なので、ヒーローの高さに自動で追随する。 */
@@ -197,11 +210,9 @@ export function createHeroPhoto({ shared, ripple, photo }) {
       /* --- 水面を引くための画面座標（下が0） --- */
       uBox.value.set(r.left / vw, 1 - (r.top + r.height) / vh, r.width / vw, r.height / vh);
     },
-    /** 写真の中の水平線（上端からの割合を渡す） */
-    setHorizon(fromTop) { uHorizon.value = 1 - fromTop; },
     params: {
       refraction: uRefract, seaSparkle: uSeaCaustic, glint: uGlint,
-      horizon: uHorizon, ...tools.params,
+      seaShade: uSeaShade, ...tools.params,
     },
     dispose() { geometry.dispose(); material.dispose(); },
   };
