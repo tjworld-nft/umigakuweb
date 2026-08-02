@@ -46,7 +46,7 @@ export function createWash({ shared, ripple }) {
   const { uAspect, uScroll, uFade, colors } = shared;
   const tools = waterTools({ shared, ripple });
 
-  const uAmbient = uniform(0.115);
+  const uAmbient = uniform(0.075);
   const cWash = uniform(colors.wash.clone());
 
   const material = new MeshBasicNodeMaterial({
@@ -131,8 +131,12 @@ export function createHeroPhoto({ shared, ripple, photo }) {
     /* 海の部分だけ屈折させる */
     const raw = texture(photo, tuv.add(g.mul(uRefract).mul(sea))).rgb;
 
+    /* ここから先はsRGB空間で組み立てる。CSSのfilterやgradientはsRGBで効くので、
+       リニア空間のまま混ぜると同じ数字でも眠い絵になる（実際に文字が読みにくくなった）。 */
+    const srgb = pow(clamp(raw, 0, 1), float(1 / 2.2));
+
     /* 元のCSS（brightness 1.1 / saturate 1.08）と同じ見え方に揃える */
-    const bright = raw.mul(1.1);
+    const bright = srgb.mul(1.1);
     const lum = dot(bright, vec3(0.2126, 0.7152, 0.0722));
     const shot = mix(vec3(lum), bright, 1.08);
 
@@ -153,7 +157,10 @@ export function createHeroPhoto({ shared, ripple, photo }) {
     const rd = vec2(local.x.sub(0.5).mul(uAspect), t.sub(0.45)).length();
     const scrim = band.add(float(0.22).mul(float(1).sub(smoothstep(0, 0.55, rd))));
 
-    return vec4(mix(lit, cScrim, clamp(scrim, 0, 1)), uFade);
+    /* 落としもsRGB空間で重ねてから、リニアに戻して出力する */
+    const scrimSrgb = pow(clamp(cScrim, 0, 1), float(1 / 2.2));
+    const out = mix(lit, scrimSrgb, clamp(scrim, 0, 1));
+    return vec4(pow(clamp(out, 0, 1), float(2.2)), uFade);
   })();
 
   const geometry = new PlaneGeometry(1, 1);
