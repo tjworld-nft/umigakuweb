@@ -40,7 +40,7 @@ export function createHud() {
         `波の勢い  ${s.poke.toFixed(3)}\n` +
         `スクロール ${(s.scroll * 100).toFixed(0)}%\n` +
         `draws     ${s.draws}\n` +
-        `\nwindow.__ocean.ripple.params / .surface.params`;
+        `\nwindow.__ocean.ripple.params / .heroPhoto.params`;
     },
     get visible() { return on; },
   };

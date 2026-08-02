@@ -12,14 +12,14 @@
  * ここまで来た端末は「描いてよい」と分かっている。
  */
 import {
-  WebGPURenderer, Scene, OrthographicCamera, Color, Texture, Vector2,
+  WebGPURenderer, Scene, OrthographicCamera, Color, TextureLoader, Vector2,
   SRGBColorSpace, LinearFilter, ClampToEdgeWrapping,
 } from 'three/webgpu';
 import { uniform } from 'three/tsl';
 
 import { PRESETS, detectTier, Governor } from './quality.js';
 import { createRipple } from './ripple.js';
-import { createSurface } from './surface.js';
+import { createWash, createHeroPhoto } from './surface.js';
 import { createHud } from './hud.js';
 
 /**
@@ -29,7 +29,7 @@ import { createHud } from './hud.js';
  * 返すのはテクスチャのv座標（画像の下端が0）。
  */
 function findHorizon(img) {
-  const FALLBACK = 0.473;
+  const FALLBACK = 0.527;
   try {
     const w = 240;
     const h = Math.max(2, Math.round((w * img.naturalHeight) / img.naturalWidth));
@@ -53,7 +53,7 @@ function findHorizon(img) {
     }
     if (rows.length < 3) return FALLBACK;
     rows.sort((a, b) => a - b);
-    return 1 - rows[Math.floor(rows.length / 2)];   // 上からの割合 → v座標
+    return rows[Math.floor(rows.length / 2)];       // 上からの割合
   } catch (e) {
     return FALLBACK;                         // 別ドメインの画像などで読めないとき
   }
@@ -98,8 +98,12 @@ export async function start({ host, hero, webgpu, cores, memory }) {
   const useCompute = !!(renderer.backend && renderer.backend.isWebGPUBackend);
   const backendName = useCompute ? 'WebGPU' : 'WebGL2';
 
-  /* ---------- 写真をテクスチャに（すでに読み込み済みの<img>を使い回す） ---------- */
-  const photo = new Texture(img);
+  /* ---------- 写真をテクスチャに ----------
+     <img>要素をそのままTextureに包むのではなく、TextureLoaderで読み直す。
+     ブラウザのキャッシュに載っているので通信は発生しない。 */
+  const photo = await new Promise((res, rej) => {
+    new TextureLoader().load(img.currentSrc || img.src, res, undefined, rej);
+  });
   photo.colorSpace = SRGBColorSpace;
   photo.minFilter = LinearFilter;
   photo.magFilter = LinearFilter;
@@ -128,9 +132,10 @@ export async function start({ host, hero, webgpu, cores, memory }) {
   };
 
   const ripple = createRipple({ shared, useCompute, grid: preset.grid });
-  const surface = createSurface({ shared, ripple, photo });
-  surface.setHorizon(findHorizon(img));
-  scene.add(surface.object);
+  const wash = createWash({ shared, ripple });
+  const heroPhoto = createHeroPhoto({ shared, ripple, photo });
+  heroPhoto.setHorizon(findHorizon(img));
+  scene.add(wash.object, heroPhoto.object);
 
   /* ---------- 採寸 ---------- */
   let vw = 0, vh = 0;
@@ -174,22 +179,9 @@ export async function start({ host, hero, webgpu, cores, memory }) {
     const r = hero.getBoundingClientRect();
     heroVisible = r.bottom > 0 && r.top < vh;
     const iw = img.naturalWidth, ih = img.naturalHeight;
-    if (!iw || !ih || r.width < 1 || r.height < 1) return;
-
-    const s = Math.max(r.width / iw, r.height / ih);
-    const dw = iw * s, dh = ih * s;
-    const ox = (r.width - dw) / 2;
-    const oy = (r.height - dh) / 2;
-
-    surface.setHero({
-      top: 1 - r.top / vh,
-      bottom: 1 - r.bottom / vh,
-      feather: 1.2 / vh,                       // 1px強だけぼかして境目のギザギザを消す
-      map: [
-        vw / dw, (-r.left - ox) / dw,          // texU = ax·p.x + bx
-        vh / dh, 1 - (vh - r.top - oy) / dh,   // texV = ay·p.y + by
-      ],
-    });
+    if (!iw || !ih || r.width < 1 || r.height < 1 || vw < 8 || vh < 8) return;
+    heroPhoto.object.visible = heroVisible;
+    if (heroVisible) heroPhoto.setBox(r, vw, vh, iw, ih);
   }
 
   resize();
@@ -314,7 +306,7 @@ export async function start({ host, hero, webgpu, cores, memory }) {
     compute: useCompute,
     tier: preset.name,
     grid: preset.grid,
-    renderer, scene, camera, ripple, surface, shared,
+    renderer, scene, camera, ripple, wash, heroPhoto, shared,
     resize, measureHero,
     dispose() {
       disposed = true;
@@ -323,7 +315,8 @@ export async function start({ host, hero, webgpu, cores, memory }) {
       removeEventListener('touchmove', onPointer);
       removeEventListener('scroll', onScroll);
       removeEventListener('resize', resize);
-      surface.dispose();
+      wash.dispose();
+      heroPhoto.dispose();
       photo.dispose();
       renderer.dispose();
       canvas.remove();
@@ -340,7 +333,7 @@ export async function start({ host, hero, webgpu, cores, memory }) {
           `コンピュートシェーダで解いています。カーソルを動かすと波が立ち、伝わり、\n` +
           `壁で跳ね返り、干渉して収まります。波の形はどこにも書いていません。`
         : `このブラウザにWebGPUが無いため、水面は解析的な近似で動いています。`) + '\n' +
-      `Shift+O で計測パネル、window.__ocean.ripple.params / .surface.params で係数を変えられます。\n` +
+      `Shift+O で計測パネル、window.__ocean.ripple.params / .heroPhoto.params / .wash.params で係数を変えられます。\n` +
       `ダイビングの相談はこちら → https://miura-diving.com/contact/`,
       'font-weight:bold;font-size:14px;color:#0d9aa8',
       'color:#7a8a90'

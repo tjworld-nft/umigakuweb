@@ -92,6 +92,7 @@
       } else {
         o.ripple.setPoke(0);
       }
+      o.measureHero();
       if (o.compute) for (const s of o.ripple.computeSteps) o.renderer.compute(s);
       // 最後の1枚だけ完了を待つ。待たないと画面に出る前に採取してしまう
       if (i === frames - 1) await o.renderer.renderAsync(o.scene, o.camera);

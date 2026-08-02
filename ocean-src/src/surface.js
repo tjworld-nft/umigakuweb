@@ -1,91 +1,128 @@
 /**
- * 画面いっぱいの一枚。ページ全体をこれ一枚で覆って、場所によって役割を変える。
+ * 画面に重ねる2枚。
  *
- *  ヒーローの中  … 写真をそのまま出す。ただし**海の部分だけ**を水面の傾きで
- *                  屈折させ、光の反射とコースティクスを乗せる。空・人・岩は
- *                  1ピクセルも動かさない（写真の色と水平線から海を見分けている）。
- *  それより下    … 同じ水面を通った光の影が、白い背景の上をゆっくり流れる。
- *                  白基調を壊さないよう、淡い水色をごく薄く重ねるだけ。
+ *  1. wash  … 画面いっぱい。同じ水面を通った光の影が、白い背景の上をゆっくり流れる。
+ *  2. hero  … ヒーロー写真。**海の部分だけ**を水面の傾きで屈折させ、
+ *             光の反射とコースティクスを乗せる。空・人・岩は1ピクセルも動かさない。
  *
- * コースティクスは水面の傾きの発散から出している。傾きの方向へ少し進んで
- * もう一度傾きを測り、光線が集まっているか散っているかを見る、という手。
+ * heroの板は「ヒーローの矩形にぴったり重なる位置」に幾何学的に置く。
+ * object-fit:cover の切り取りはUV属性として焼き込んであるので、
+ * シェーダの中に貼り位置を合わせる式が一切ない（＝ずれる余地がない）。
  */
-import { Mesh, PlaneGeometry, MeshBasicNodeMaterial, NormalBlending, Vector4 } from 'three/webgpu';
 import {
-  Fn, float, vec2, vec3, vec4, uniform, uv, texture, dot, pow, mix, clamp, smoothstep,
+  Mesh, PlaneGeometry, MeshBasicNodeMaterial, NormalBlending, Vector4,
+} from 'three/webgpu';
+import {
+  Fn, float, vec2, vec3, vec4, uniform, uv, texture,
+  dot, pow, mix, clamp, smoothstep,
 } from 'three/tsl';
 
-export function createSurface({ shared, ripple, photo }) {
-  const { uTime, uAspect, uScroll, uFade, colors } = shared;
-
-  /* --- ヒーローの居場所（画面座標・下端0 上端1）。JS側が毎フレーム入れる --- */
-  const uHeroTop = uniform(1.4);
-  const uHeroBottom = uniform(0.0);
-  const uFeather = uniform(0.002);
-  /* 画面座標 → 写真のUV への一次変換。object-fit:cover の計算はJS側で済ませる */
-  const uPhotoMap = uniform(new Vector4(1, 0, 1, 0));
-  const uHorizon = uniform(0.473);      // 写真の中の水平線（v座標・下端が0）。起動時に実測して上書きする
-
-  /* --- 効きの強さ。window.__ocean.surface.params から触れる --- */
-  const uRefract = uniform(0.011);      // 海がどれだけ歪むか
-  const uSeaCaustic = uniform(0.26);    // 海面のきらめき
-  const uGlint = uniform(0.24);         // 光の反射
-  const uAmbient = uniform(0.115);      // ページ側に落ちる水の影
+/* 水面の傾きとコースティクス。2枚で同じ水を見ているので共通にする */
+function waterTools({ shared, ripple }) {
+  const { uTime } = shared;
   const uCausticK = uniform(2.6);
   const uCausticP = uniform(4.0);
   const uCausticStep = uniform(0.012);
 
-  const cSun = uniform(colors.sun.clone());
-  const cScrim = uniform(colors.scrim.clone());
-  const cWash = uniform(colors.wash.clone());
-
-  const material = new MeshBasicNodeMaterial({
-    transparent: true,
-    depthWrite: false,
-    depthTest: false,
-    blending: NormalBlending,
-    fog: false,
+  /** 画面座標 s（0〜1）における水面の傾き */
+  const slopeAt = /*@__PURE__*/ Fn(([s, aspect]) => {
+    const drift = vec2(s.x.mul(aspect).add(shared.uTime.mul(0.008)), s.y.sub(uTime.mul(0.011)));
+    return ripple.gradAt(s, drift);
   });
 
-  /* 水面の傾き。うねりはゆっくり流して、止まって見えないようにする */
-  const slopeAt = /*@__PURE__*/ Fn(([p]) => {
-    const drift = vec2(p.x.mul(uAspect).add(uTime.mul(0.008)), p.y.sub(uTime.mul(0.011)));
-    return ripple.gradAt(p, drift);
-  });
-
-  /* 光線が集まっているか散っているか＝コースティクス */
-  const causticAt = /*@__PURE__*/ Fn(([p, g]) => {
-    const spread = slopeAt(p.add(g.mul(uCausticStep))).sub(g).length();
+  /** 光線が集まっているか散っているか＝コースティクス */
+  const causticAt = /*@__PURE__*/ Fn(([s, g, aspect]) => {
+    const spread = slopeAt(s.add(g.mul(uCausticStep)), aspect).sub(g).length();
     return pow(clamp(float(1).sub(spread.mul(uCausticK)), 0, 1), uCausticP);
   });
 
-  /* 色と不透明度は同じ計算から出るので、vec4のまま outputNode に渡す。
-     ここでは変数（toVar）も代入も使わず、式だけで組む。TSLは2回以上参照される
-     ノードを自動で一時変数にまとめるので、書き味を変えても計算量は増えない。 */
-  const shade = Fn(() => {
-    /* 画面座標（左下が0,0）。正射影カメラに 1×1 の板を正対させてあるので、
-       このUVはキャンバスと厳密に1:1で対応する。 */
-    const p = uv();
-    const g = slopeAt(p);
-    const caustic = causticAt(p, g);
+  return { slopeAt, causticAt, params: { causticSharpness: uCausticP, causticContrast: uCausticK } };
+}
 
-    /* ---------- ヒーローの中かどうか ---------- */
-    /* smoothstep は edge0 < edge1 でないと結果が未定義（WGSL）。
-       上端の判定は「超えたら0」なので、順序を保ったまま 1 から引く。 */
-    const inHero = smoothstep(uHeroBottom.sub(uFeather), uHeroBottom.add(uFeather), p.y)
-      .mul(float(1).sub(smoothstep(uHeroTop.sub(uFeather), uHeroTop.add(uFeather), p.y)));
+/* ------------------------------------------------------------------------ */
+/* 1. 画面いっぱいの層 — 白い紙の上に落ちる水の影                             */
+/* ------------------------------------------------------------------------ */
+export function createWash({ shared, ripple }) {
+  const { uAspect, uScroll, uFade, colors } = shared;
+  const tools = waterTools({ shared, ripple });
 
-    /* ---------- 写真 ---------- */
-    const tuv = vec2(
-      uPhotoMap.x.mul(p.x).add(uPhotoMap.y),
-      uPhotoMap.z.mul(p.y).add(uPhotoMap.w)
+  const uAmbient = uniform(0.115);
+  const cWash = uniform(colors.wash.clone());
+
+  const material = new MeshBasicNodeMaterial({
+    transparent: true, depthWrite: false, depthTest: false,
+    blending: NormalBlending, fog: false,
+  });
+
+  material.outputNode = Fn(() => {
+    const s = uv();                        // 画面いっぱいの板なので、これが画面座標
+    const g = tools.slopeAt(s, uAspect);
+    const caustic = tools.causticAt(s, g, uAspect);
+
+    /* 光の当たっていないところに、淡い水色をごく薄く落とす。
+       白い背景を暗くしすぎないよう、濃さは uAmbient で抑える。 */
+    const a = float(1).sub(caustic)
+      .mul(uAmbient)
+      .mul(mix(0.85, 1.35, uScroll))       // 下へ行くほどわずかに濃く＝沈んでいく
+      .mul(uFade);
+    return vec4(cWash, a);
+  })();
+
+  const mesh = new Mesh(new PlaneGeometry(1, 1), material);
+  mesh.frustumCulled = false;
+  mesh.renderOrder = 0;
+
+  return {
+    object: mesh, material,
+    params: { pageLight: uAmbient, ...tools.params },
+    dispose() { mesh.geometry.dispose(); material.dispose(); },
+  };
+}
+
+/* ------------------------------------------------------------------------ */
+/* 2. ヒーロー写真 — 海だけが波立つ                                           */
+/* ------------------------------------------------------------------------ */
+export function createHeroPhoto({ shared, ripple, photo }) {
+  const { uAspect, uFade, colors } = shared;
+  const tools = waterTools({ shared, ripple });
+
+  const uRefract = uniform(0.012);      // 海がどれだけ歪むか
+  const uSeaCaustic = uniform(0.30);    // 海面のきらめき
+  const uGlint = uniform(0.26);         // 光の反射
+  const uHorizon = uniform(0.473);      // 写真の中の水平線（写真UVのv・下端が0）
+  /* ヒーローが画面のどこにいるか（x, y, w, h ／ 0〜1・下が0）。
+     水面は画面全体で1枚なので、板の中のUVを画面座標に直すのに使う。 */
+  const uBox = uniform(new Vector4(0, 0, 1, 1));
+  /* object-fit:cover の切り取り（u0, uの幅, v0, vの幅）。板のUVをこれで写真UVに直す */
+  const uCrop = uniform(new Vector4(0, 1, 0, 1));
+
+  const cSun = uniform(colors.sun.clone());
+  const cScrim = uniform(colors.scrim.clone());
+
+  const material = new MeshBasicNodeMaterial({
+    transparent: true, depthWrite: false, depthTest: false,
+    blending: NormalBlending, fog: false,
+  });
+
+  material.outputNode = Fn(() => {
+    const local = uv();                                   // 板の中の位置（0〜1・下が0）
+    const tuv = vec2(                                     // cover の切り取りを当てた写真UV
+      uCrop.x.add(local.x.mul(uCrop.y)),
+      uCrop.z.add(local.y.mul(uCrop.w))
+    );
+    const s = vec2(                                       // 画面座標に直す
+      uBox.x.add(local.x.mul(uBox.z)),
+      uBox.y.add(local.y.mul(uBox.w))
     );
 
+    const g = tools.slopeAt(s, uAspect);
+    const caustic = tools.causticAt(s, g, uAspect);
+
     /* 海だけを見分ける。水平線より下で、かつ青緑が強いところ。
-       閾値は実際の写真の画素を測って決めた（リニア空間での値）:
+       閾値は実際の写真の画素を測って決めた（リニア空間）:
          空 0.28〜0.39 ／ 海 0.26〜0.35 ／ 人 0.00〜0.16 ／ 岩と木 0.13
        空は水平線で、人と岩はこの青緑さで外れる。
-       水平線より下＝vが小さい側が海。 */
+       写真UVは v=0 が画像の下端なので、海は v が小さい側。 */
     const flat = texture(photo, tuv);
     const aqua = flat.g.add(flat.b).mul(0.5).sub(flat.r);
     const sea = float(1).sub(smoothstep(uHorizon.sub(0.012), uHorizon.add(0.045), tuv.y))
@@ -99,61 +136,66 @@ export function createSurface({ shared, ripple, photo }) {
     const lum = dot(bright, vec3(0.2126, 0.7152, 0.0722));
     const shot = mix(vec3(lum), bright, 1.08);
 
-    /* 海面のきらめきと、傾いた面が空を返す反射。
-       傾きが大きいところで一気に飽和しないよう、ゲインは控えめにする。 */
+    /* 海面のきらめきと、傾いた面が空を返す反射 */
     const glint = pow(clamp(g.y.mul(2.2).add(0.5), 0, 1), 8.0);
     const lit = shot
       .add(cSun.mul(caustic.mul(uSeaCaustic).mul(sea)))
       .add(cSun.mul(glint.mul(uGlint).mul(sea)));
 
-    /* 文字を読ませるための落とし。元の .hero-bg::after と同じ配合 */
-    const t = uHeroTop.sub(p.y).div(uHeroTop.sub(uHeroBottom).max(1e-3)).clamp(0, 1);
+    /* 文字を読ませるための落とし。元の .hero-bg::after と同じ配合。
+       t は板の中の「上からの割合」なので、ヒーローの高さに自動で追随する。 */
+    const t = float(1).sub(local.y);
     const band = mix(
       mix(float(0.36), float(0.30), smoothstep(0, 0.42, t)),
       float(0.50),
       smoothstep(0.42, 1.0, t)
     );
-    const rd = vec2(p.x.sub(0.5).mul(uAspect), t.sub(0.45)).length();
+    const rd = vec2(local.x.sub(0.5).mul(uAspect), t.sub(0.45)).length();
     const scrim = band.add(float(0.22).mul(float(1).sub(smoothstep(0, 0.55, rd))));
-    const heroCol = mix(lit, cScrim, clamp(scrim, 0, 1));
 
-    /* ---------- ヒーローの外：白い紙の上に落ちる水の影 ---------- */
-    const washAlpha = float(1).sub(caustic)
-      .mul(uAmbient)
-      .mul(mix(0.85, 1.35, uScroll));    // 下へ行くほどわずかに濃く＝沈んでいく
+    return vec4(mix(lit, cScrim, clamp(scrim, 0, 1)), uFade);
+  })();
 
-    return vec4(
-      mix(cWash, heroCol, inHero),
-      mix(washAlpha, float(1), inHero).mul(uFade)
-    );
-  });
-
-  material.outputNode = shade();
-
-  /* 正射影カメラ（左右±0.5・上下±0.5）にぴったり収まる板 */
-  const mesh = new Mesh(new PlaneGeometry(1, 1), material);
+  const geometry = new PlaneGeometry(1, 1);
+  const mesh = new Mesh(geometry, material);
   mesh.frustumCulled = false;
+  mesh.renderOrder = 1;
 
   return {
     object: mesh,
     material,
     /**
-     * ヒーローが画面のどこにいるか、写真をどう貼るかを渡す。
-     * top/bottom は画面座標（下端0・上端1）、map は screen→texture の一次変換。
+     * ヒーローの矩形に板を重ね、object-fit:cover の切り取りをUVに焼き込む。
+     * @param {DOMRect} r      ヒーローの位置（ビューポート基準・CSSピクセル）
+     * @param {number} vw
+     * @param {number} vh      ビューポートの大きさ
+     * @param {number} iw
+     * @param {number} ih      写真の元寸
      */
-    setHero(m) {
-      uHeroTop.value = m.top;
-      uHeroBottom.value = m.bottom;
-      uFeather.value = m.feather;
-      uPhotoMap.value.set(m.map[0], m.map[1], m.map[2], m.map[3]);
+    setBox(r, vw, vh, iw, ih) {
+      /* --- 板を矩形にぴったり重ねる（正射影の ±0.5 空間） --- */
+      mesh.position.set(
+        (r.left + r.width / 2) / vw - 0.5,
+        0.5 - (r.top + r.height / 2) / vh,
+        0.001
+      );
+      mesh.scale.set(r.width / vw, r.height / vh, 1);
+
+      /* --- cover の切り取り。板のUV(0〜1)を写真UVに写す一次変換にする --- */
+      const s = Math.max(r.width / iw, r.height / ih);
+      const uSpan = r.width / (iw * s);
+      const vSpan = r.height / (ih * s);
+      uCrop.value.set((1 - uSpan) / 2, uSpan, (1 - vSpan) / 2, vSpan);   // center center
+
+      /* --- 水面を引くための画面座標（下が0） --- */
+      uBox.value.set(r.left / vw, 1 - (r.top + r.height) / vh, r.width / vw, r.height / vh);
     },
-    setHorizon(v) { uHorizon.value = v; },
+    /** 写真の中の水平線（上端からの割合を渡す） */
+    setHorizon(fromTop) { uHorizon.value = 1 - fromTop; },
     params: {
       refraction: uRefract, seaSparkle: uSeaCaustic, glint: uGlint,
-      pageLight: uAmbient, causticSharpness: uCausticP, horizon: uHorizon,
+      horizon: uHorizon, ...tools.params,
     },
-    /* 貼り位置が合っているか外から見られるように（開発用） */
-    debug: { photoMap: uPhotoMap, heroTop: uHeroTop, heroBottom: uHeroBottom },
-    dispose() { mesh.geometry.dispose(); material.dispose(); },
+    dispose() { geometry.dispose(); material.dispose(); },
   };
 }
