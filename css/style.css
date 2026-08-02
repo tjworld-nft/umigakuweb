@@ -1128,3 +1128,28 @@ a:hover { color: var(--coral); }
 @media print {
   .mobile-cta-bar { display: none; }
 }
+
+/* ================================================================
+   WATER — サイト全体に一枚だけ敷く水
+   ヒーローでは写真の「海の部分」だけが実際に波立ち、それ以降は
+   同じ水面を通った光が白い背景の上をゆっくり流れる。
+   canvasが載らない環境ではこのCSSは何もしない（従来どおりの見た目）。
+   ================================================================ */
+.page-water {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;            /* セクションより上・ヒーローの文字(z-index:2)より下 */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.8s cubic-bezier(.4,0,.2,1);
+  contain: strict;
+}
+.page-water.is-live { opacity: 1; }
+
+/* 水が動き出したら、CSSの飾り泡は引っ込める（水面のゆらぎと役目が重なる） */
+body.is-ocean .hero-bubble { display: none; }
+
+@media (prefers-reduced-motion: reduce) { .page-water { display: none; } }
+@media print { .page-water { display: none; } }

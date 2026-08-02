@@ -220,7 +220,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body itemscope itemtype="https://schema.org/WebPage">
+<body itemscope itemtype="https://schema.org/WebPage" data-ocean>
 
   <!-- ============================================================
        HEADER
@@ -266,7 +266,7 @@
   <!-- ============================================================
        HERO
        ============================================================ -->
-  <section class="hero hero--soft" aria-labelledby="hero-title">
+  <section class="hero hero--soft" aria-labelledby="hero-title" data-ocean-hero>
     <!-- Decorative bubbles -->
     <div class="hero-bubble" aria-hidden="true"></div>
     <div class="hero-bubble" aria-hidden="true"></div>
@@ -1022,6 +1022,8 @@
     </div>
 
   <script src="js/main.js" defer></script>
+  <!-- サイト全体に敷く水。端末を見て、描ける環境にだけ本体を取りに行く -->
+  <script src="js/ocean/boot.js" defer></script>
 
 </body>
 
