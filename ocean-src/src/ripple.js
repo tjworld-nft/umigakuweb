@@ -52,8 +52,8 @@ export function createRipple({ shared, useCompute, grid }) {
   const uDamp = uniform(0.9965);
   const uPokeAmp = uniform(0);       // カーソルの速さに応じてJS側が入れる
   const uPokeSharp = uniform(900);   // 押す範囲の狭さ
-  const uSwell = uniform(0.055);     // うねりの効き
-  const uRippleK = uniform(2.2);     // 計算した波の効き
+  const uSwell = uniform(0.085);    // うねりの効き
+  const uRippleK = uniform(3.4);    // 計算した波の効き
   const { uTime, uPointer, uAspect } = shared;
 
   let attrs = null;

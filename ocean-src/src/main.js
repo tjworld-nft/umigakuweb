@@ -177,9 +177,10 @@ export async function start({ host, hero, webgpu, cores, memory }) {
 
   function measureHero() {
     const r = hero.getBoundingClientRect();
-    heroVisible = r.bottom > 0 && r.top < vh;
     const iw = img.naturalWidth, ih = img.naturalHeight;
-    if (!iw || !ih || r.width < 1 || r.height < 1 || vw < 8 || vh < 8) return;
+    /* 寸法が取れないうちは写真を出さない。古い位置のまま描くと大きくずれる */
+    const ok = iw > 0 && ih > 0 && r.width >= 1 && r.height >= 1 && vw >= 8 && vh >= 8;
+    heroVisible = ok && r.bottom > 0 && r.top < vh;
     heroPhoto.object.visible = heroVisible;
     if (heroVisible) heroPhoto.setBox(r, vw, vh, iw, ih);
   }

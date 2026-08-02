@@ -86,9 +86,9 @@ export function createHeroPhoto({ shared, ripple, photo }) {
   const { uAspect, uFade, colors } = shared;
   const tools = waterTools({ shared, ripple });
 
-  const uRefract = uniform(0.012);      // 海がどれだけ歪むか
-  const uSeaCaustic = uniform(0.30);    // 海面のきらめき
-  const uGlint = uniform(0.26);         // 光の反射
+  const uRefract = uniform(0.022);      // 海がどれだけ歪むか
+  const uSeaCaustic = uniform(0.50);    // 海面のきらめき
+  const uGlint = uniform(0.42);         // 光の反射
   const uHorizon = uniform(0.473);      // 写真の中の水平線（写真UVのv・下端が0）
   /* ヒーローが画面のどこにいるか（x, y, w, h ／ 0〜1・下が0）。
      水面は画面全体で1枚なので、板の中のUVを画面座標に直すのに使う。 */
