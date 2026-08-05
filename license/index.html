@@ -473,6 +473,50 @@
             </nav>
         </div>
 
+        <!-- SUMMER CAMPAIGN — 夏のLINE特典（2026/8/31まで・期間終了後はこのブロックごと削除可） -->
+        <div class="container">
+            <aside class="lc-campaign" aria-labelledby="lc-campaign-title">
+                <div class="lc-campaign__head">
+                    <span class="lc-campaign__badge">夏のLINE特典</span>
+                    <h2 id="lc-campaign-title">LINEからのお申込みで、器材レンタル1日分（¥5,500）が無料<span class="lc-campaign__due">8/31まで</span></h2>
+                    <p class="lc-campaign__count" data-deadline-days>受付は<span class="days"></span></p>
+                </div>
+                <div class="lc-campaign__links">
+                    <a href="../lp/owd/">
+                        <strong>OWD（はじめてのライセンス）</strong>
+                        <span>特典適用の総額 <b>¥59,400</b>（通常¥64,900）</span>
+                        <span class="lc-campaign__go">特設ページを見る →</span>
+                    </a>
+                    <a href="../lp/aow/">
+                        <strong>AOW（アドバンス）</strong>
+                        <span>特典適用の総額 <b>¥65,300</b>（通常¥70,800）</span>
+                        <span class="lc-campaign__go">特設ページを見る →</span>
+                    </a>
+                </div>
+                <p class="lc-campaign__note">※他の割引との併用はできません（認定後のファンダイビングが対象の「つづける割」は併用いただけます）。少人数制のため、土日は早めに埋まります。</p>
+            </aside>
+        </div>
+
+        <style>
+            /* ---- 夏のLINE特典バナー（期間限定・8/31終了時に削除可） ---- */
+            [data-deadline-days][hidden] { display: none !important; }
+            .lc-campaign { max-width: 900px; margin: 1.5rem auto 0; background: linear-gradient(135deg, var(--coral), #FF9BC0 60%, var(--yellow)); color: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 1.6rem 1.6rem 1.4rem; }
+            .lc-campaign__head { text-align: center; margin-bottom: 1.2rem; }
+            .lc-campaign__badge { display: inline-block; background: var(--white); color: var(--coral); font-size: .74rem; font-weight: 900; padding: .2rem .9rem; border-radius: 50px; margin-bottom: .6rem; }
+            .lc-campaign h2 { font-size: clamp(1.05rem, 3.6vw, 1.35rem); font-weight: 900; line-height: 1.6; color: var(--white); margin-bottom: .6rem; }
+            .lc-campaign__due { display: inline-block; background: var(--yellow); color: var(--text-dark); border-radius: 8px; padding: 0 .45rem; margin-left: .4rem; white-space: nowrap; }
+            .lc-campaign__count { display: inline-block; background: var(--white); color: var(--coral); font-weight: 900; font-size: .85rem; padding: .25rem 1rem; border-radius: 50px; }
+            .lc-campaign__links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .9rem; }
+            .lc-campaign__links a { display: flex; flex-direction: column; gap: .25rem; background: var(--white); color: var(--text-dark); text-decoration: none; border-radius: var(--radius-md); padding: 1rem 1.1rem; box-shadow: var(--shadow-sm); transition: transform var(--ease); }
+            .lc-campaign__links a:hover { transform: translateY(-3px); }
+            .lc-campaign__links strong { font-size: .95rem; font-weight: 900; color: var(--teal-dark); }
+            .lc-campaign__links span { font-size: .8rem; color: var(--text-sub); }
+            .lc-campaign__links b { font-size: 1.15rem; color: var(--coral); }
+            .lc-campaign__go { margin-top: .3rem; font-weight: 700; color: var(--coral) !important; }
+            .lc-campaign__note { font-size: .76rem; line-height: 1.75; margin: .9rem 0 0; opacity: .95; }
+            @media (max-width: 600px) { .lc-campaign { padding: 1.2rem 1.1rem 1rem; } }
+        </style>
+
         <!-- BEGINNER SUMMARY -->
         <section id="price-guide" class="section" aria-labelledby="price-guide-title">
             <div class="container text-center">
@@ -565,7 +609,8 @@
                             <div class="includes"><strong>含:</strong> eラーニング・ログブック・実習費・申請料・保険<br><span
                                     style="color:var(--coral);font-weight:600;">※別途: レンタル器材代
                                     ¥5,500/日（2日間=¥11,000〜）</span></div>
-                            <a href="https://miura-diving.com/beginner-guide/" class="btn btn--coral" style="margin-bottom:.5rem;">初心者ガイドを見る</a>
+                            <a href="../lp/owd/" class="btn btn--coral" style="margin-bottom:.5rem;">夏割つきの総額を見る（特設ページ）</a>
+                            <a href="https://miura-diving.com/beginner-guide/" class="btn btn--primary" style="margin-bottom:.5rem;">初心者ガイドを見る</a>
                             <a href="#license-cta" class="btn btn--primary">このコースに申し込む</a>
                         </div>
                     </div>
@@ -582,6 +627,7 @@
                             <div class="includes"><strong>含:</strong> 教材一式・実習費・申請料・保険<br><span
                                     style="color:var(--coral);font-weight:600;">※別途: レンタル器材代
                                     ¥5,500/日（2日間=¥11,000）</span></div>
+                            <a href="../lp/aow/" class="btn btn--coral" style="margin-bottom:.5rem;">夏割つきの総額を見る（特設ページ）</a>
                             <a href="#license-cta" class="btn btn--primary">このコースに申し込む</a>
                         </div>
                     </div>
@@ -1014,6 +1060,25 @@
         <a class="cta-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer"><i class="fab fa-line" aria-hidden="true"></i>LINEで相談</a>
         <a class="cta-form" href="/contact/"><i class="fas fa-envelope" aria-hidden="true"></i>予約・問い合わせ</a>
     </div>
+
+    <script>
+        /* 夏のLINE特典・締切までの残り日数（日本時間の日付基準・8/31が最終日）
+           期間終了後はこのスクリプトごと削除してOK */
+        (function () {
+            var wraps = document.querySelectorAll('[data-deadline-days]');
+            if (!wraps.length) return;
+            var n = new Date();
+            var jst = new Date(n.getTime() + n.getTimezoneOffset() * 60000 + 9 * 3600000);
+            var today = Date.UTC(jst.getFullYear(), jst.getMonth(), jst.getDate());
+            var days = Math.round((Date.UTC(2026, 7, 31) - today) / 86400000);
+            Array.prototype.forEach.call(wraps, function (w) {
+                if (days < 0) { w.hidden = true; return; }
+                var slot = w.querySelector('.days');
+                if (!slot) return;
+                slot.textContent = days === 0 ? '本日まで' : 'あと' + days + '日';
+            });
+        })();
+    </script>
 
     <script src="../js/main.js" defer></script>
 </body>
