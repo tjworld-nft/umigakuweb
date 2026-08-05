@@ -20,6 +20,7 @@ import { uniform } from 'three/tsl';
 import { PRESETS, detectTier, Governor } from './quality.js';
 import { createRipple } from './ripple.js';
 import { createWash, createHeroPhoto } from './surface.js';
+import { createCampaignPanel } from './campaign.js';
 import { buildSeaMask } from './sea-mask.js';
 import { createHud } from './hud.js';
 
@@ -145,6 +146,12 @@ export async function start({ host, hero, webgpu, cores, memory }) {
   scene.add(wash.object);
   if (heroPhoto) scene.add(heroPhoto.object);
 
+  /* ---------- 帯を水の中にする（夏割） ----------
+     [data-ocean-panel] があるページだけ。無ければ何もしない。 */
+  const panelEl = document.querySelector('[data-ocean-panel]');
+  const panel = panelEl ? createCampaignPanel({ shared, ripple, tier }) : null;
+  if (panel) scene.add(panel.object);
+
   /* ---------- 採寸 ---------- */
   let vw = 0, vh = 0;
 
@@ -192,6 +199,32 @@ export async function start({ host, hero, webgpu, cores, memory }) {
     heroVisible = ok && r.bottom > 0 && r.top < vh;
     heroPhoto.object.visible = heroVisible;
     if (heroVisible) heroPhoto.setBox(r, vw, vh, iw, ih);
+  }
+
+  /* 帯も同じやり方で毎フレーム測り直す。画面の外にいる間は描かない。 */
+  const waterlineEl = panelEl && panelEl.querySelector('[data-ocean-waterline]');
+  const guardEl = panelEl && panelEl.querySelector('[data-ocean-guard]');
+
+  /* 帯の水面が画面のどこにあるか（下端0の画面比）。雫の落とし所に使う。
+     画面の外にあるときは null。 */
+  let panelSurfaceY = null;
+
+  function measurePanel() {
+    if (!panel) return;
+    const r = panelEl.getBoundingClientRect();
+    const ok = r.width >= 1 && r.height >= 1 && vw >= 8 && vh >= 8;
+    const visible = ok && r.bottom > 0 && r.top < vh;
+    panel.object.visible = visible;
+    panelSurfaceY = null;
+    if (!visible) return;
+    /* 水面の高さはCSSの余白が決めている（その要素の下辺）。実寸で渡す。 */
+    const surfacePx = waterlineEl
+      ? waterlineEl.getBoundingClientRect().bottom - r.top
+      : 0;
+    panel.setBox(r, vw, vh, surfacePx, guardEl ? guardEl.getBoundingClientRect() : null);
+
+    const y = 1 - (r.top + surfacePx) / vh;
+    if (y > 0.05 && y < 0.95) panelSurfaceY = y;
   }
 
   resize();
@@ -278,9 +311,13 @@ export async function start({ host, hero, webgpu, cores, memory }) {
     if (now < nextDrop) return;
     scheduleDrop(now);
     /* ヒーローが見えているときは海のあたり（画面の下寄り）へ。
-       それ以外は画面のどこでもよい ── 白い紙の上を輪が渡っていく。 */
+       夏割の帯が出ているときは、その水面のあたりへ ── 雫が落ちて線が上下するのが
+       いちばんよく見える場所。それ以外は画面のどこでもよい。 */
     const x = 0.10 + Math.random() * 0.80;
-    const y = heroVisible ? 0.16 + Math.random() * 0.32 : 0.10 + Math.random() * 0.80;
+    let y;
+    if (heroVisible) y = 0.16 + Math.random() * 0.32;
+    else if (panelSurfaceY !== null) y = panelSurfaceY + (Math.random() - 0.45) * 0.16;
+    else y = 0.10 + Math.random() * 0.80;
     ripple.drop(x, y, 0.30);
     lastStir = now;
   }
@@ -314,6 +351,7 @@ export async function start({ host, hero, webgpu, cores, memory }) {
     /* 貼り位置は毎フレーム測り直す。フォントの読み込みや折りたたみの開閉で
        ヒーローの高さが変わっても、写真がずれない。rectの読み出しは1回だけ。 */
     measureHero();
+    measurePanel();
 
     if (poke > 0.02) lastStir = now;
     maybeDrop(now);
@@ -377,6 +415,8 @@ export async function start({ host, hero, webgpu, cores, memory }) {
     ro.disconnect();
     canvas.remove();
     host.classList.remove('is-ocean');
+    /* 帯の背景をCSSに返す。canvasが消えたのに透明のままだと、帯が白く抜ける */
+    if (panelEl) panelEl.classList.remove('is-watered');
     return true;
   }
 
@@ -403,18 +443,35 @@ export async function start({ host, hero, webgpu, cores, memory }) {
   requestAnimationFrame(() => canvas.classList.add('is-live'));
   play();
 
+  /* ---------- 帯の背景をCSSからcanvasへ渡す ----------
+     帯のCSSグラデーションと、この層が描く下地は同じ配色にしてある。
+     渡すのはcanvasが完全に出てから ── 先に透かすと、帯が一瞬白く抜ける。
+     （canvasは1.8秒かけてフェードインする。transitionendが来ない環境もあるので
+       タイマーと両掛けにして、先に来たほうで渡す） */
+  if (panelEl) {
+    let handed = false;
+    const handOver = () => {
+      if (handed || disposed) return;
+      handed = true;
+      panelEl.classList.add('is-watered');
+    };
+    canvas.addEventListener('transitionend', handOver, { once: true });
+    setTimeout(handOver, 2200);
+  }
+
   /* ---------- 触って遊べるように置いておく ---------- */
   const api = {
     backend: backendName,
     compute: useCompute,
     tier: preset.name,
     grid: preset.grid,
-    renderer, scene, camera, ripple, wash, heroPhoto, shared,
-    resize, measureHero,
+    renderer, scene, camera, ripple, wash, heroPhoto, panel, shared,
+    resize, measureHero, measurePanel,
     dispose() {
       teardown();
       wash.dispose();
       if (heroPhoto) heroPhoto.dispose();
+      if (panel) panel.dispose();
       if (seaMask) seaMask.dispose();
       photo.dispose();
       renderer.dispose();

@@ -17,8 +17,8 @@ import {
   dot, pow, mix, clamp, smoothstep,
 } from 'three/tsl';
 
-/* 水面の傾きとコースティクス。2枚で同じ水を見ているので共通にする */
-function waterTools({ shared, ripple }) {
+/* 水面の傾きとコースティクス。どの層も同じ水を見ているので共通にする */
+export function waterTools({ shared, ripple }) {
   const { uTime } = shared;
   const uCausticK = uniform(2.6);
   const uCausticP = uniform(4.0);
