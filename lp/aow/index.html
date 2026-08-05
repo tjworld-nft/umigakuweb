@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>神奈川でダイビングライセンス取得｜実技最短2日・総額表示｜三浦 海の学校</title>
-    <meta name="description" content="PADIオープンウォーターダイバー講習。学科はeラーニング、実技最短2日で取得。レンタル器材まで込みの総額表示・追加費用なし。神奈川・三浦の穏やかな海でコースディレクターが少人数指導。">
+    <title>神奈川でAOW（アドバンス）取得｜実技2日・総額表示｜三浦 海の学校</title>
+    <meta name="description" content="PADIアドバンスド・オープンウォーターダイバー講習。5ダイブ（3ビーチ＋2ボート・乗船料込み）で浮力・ナビゲーション・ディープが身につき、最大30mまで潜れるように。レンタル器材まで込みの総額表示・追加費用なし。神奈川・三浦でコースディレクターが少人数指導。">
     <meta name="robots" content="noindex, nofollow">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-669449671"></script>
@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../../favicon.ico">
-    <link rel="preload" as="image" href="../../image/optimized/fun-diving-hero.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="../../image/optimized/dive.webp" fetchpriority="high">
     <style>
         :root {
             --white: #FFFFFF;
@@ -31,8 +31,10 @@
             --coral: #FF6B9D;
             --yellow: #FFE66D;
             --sky: #45B7D1;
+            --navy: #17516B;
             --text-dark: #2D3436;
             --text-sub: #636E72;
+            --text-light: #B2BEC3;
             --border: #E5EDF2;
             --line-green: #06C755;
             --ff-body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
@@ -68,7 +70,7 @@
         .hero {
             position: relative; min-height: 88svh; display: flex; align-items: center;
             padding: 3.5rem 0; overflow: hidden;
-            background: linear-gradient(rgba(13, 59, 76, .28), rgba(13, 59, 76, .5)), url("../../image/optimized/fun-diving-hero.webp") center/cover no-repeat;
+            background: linear-gradient(rgba(7, 40, 56, .30), rgba(7, 40, 56, .55)), url("../../image/optimized/dive.webp") center/cover no-repeat;
         }
         .hero-inner { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; color: #fff; }
         .hero .season { display: inline-block; background: var(--yellow); color: var(--text-dark); font-weight: 700; font-size: .8rem; padding: .3rem .9rem; border-radius: 999px; margin-bottom: 1rem; }
@@ -132,6 +134,18 @@
 
         .lp-illust { border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin: 1.5rem auto 0; }
 
+        /* ── 悩みリスト ── */
+        .pain-list { max-width: 640px; margin: 0 auto; list-style: none; padding: 0; }
+        .pain-list li {
+            position: relative; background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--coral);
+            border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);
+            padding: .85rem 1rem .85rem 2.6rem; margin-bottom: .7rem; font-size: .92rem; line-height: 1.75;
+        }
+        .pain-list li::before { content: "…"; position: absolute; left: 1rem; top: .8rem; color: var(--coral); font-weight: 900; }
+        .pain-answer { max-width: 640px; margin: 1.5rem auto 0; text-align: center; font-size: 1rem; font-weight: 700; line-height: 1.9; color: var(--teal-dark); }
+        .pain-answer em { font-style: normal; color: var(--coral); }
+
+        /* ── お得ボックス ── */
         .aow-set-tip { max-width: 640px; margin: 2rem auto 0; padding: 1.25rem 1.5rem; background: var(--bg-soft); border: 1px dashed var(--teal); border-radius: var(--radius-md); text-align: left; }
         .aow-set-tip__badge { display: inline-block; background: var(--teal); color: var(--white); font-size: .72rem; font-weight: 700; padding: .2rem .7rem; border-radius: 999px; margin-bottom: .6rem; }
         .aow-set-tip h3 { font-size: 1.05rem; color: var(--text-dark); margin-bottom: .75rem; line-height: 1.6; }
@@ -166,13 +180,30 @@
         .price-row--total .yen small { font-size: .75rem; color: var(--text-sub); font-weight: 500; }
         .price-includes { background: var(--bg-soft); border-radius: var(--radius-sm); padding: .9rem 1rem; margin-top: 1rem; font-size: .8rem; color: var(--text-sub); }
         .price-includes strong { color: var(--teal-dark); }
-        .no-extra { text-align: center; margin-top: 1rem; font-size: .88rem; font-weight: 700; color: var(--teal-dark); }
 
         /* ── PADIバッジ帯 ── */
         .padi-band { display: flex; align-items: center; justify-content: center; gap: 1rem; max-width: 640px; margin: 1.75rem auto 0; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 1rem 1.25rem; text-align: left; }
         .padi-band img { width: 88px; height: 88px; border-radius: 10px; flex-shrink: 0; }
         .padi-band p { font-size: .82rem; color: var(--text-sub); line-height: 1.65; }
         .padi-band p strong { color: var(--teal-dark); }
+
+        /* ── アドベンチャーダイブ ── */
+        .dive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+        .dive-card { background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; }
+        .dive-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+        .dive-card__body { padding: 1.1rem 1.2rem 1.3rem; flex: 1; }
+        .dive-card .tag-req { display: inline-block; background: var(--coral); color: #fff; font-size: .66rem; font-weight: 700; padding: .12rem .6rem; border-radius: 999px; margin-bottom: .4rem; }
+        .dive-card .tag-opt { display: inline-block; background: var(--bg-soft); color: var(--teal-dark); border: 1px solid var(--teal-light); font-size: .66rem; font-weight: 700; padding: .12rem .6rem; border-radius: 999px; margin-bottom: .4rem; }
+        .dive-card .tag-inc { display: inline-block; background: var(--sky); color: #fff; font-size: .66rem; font-weight: 700; padding: .12rem .6rem; border-radius: 999px; margin-bottom: .4rem; }
+        .dive-intro { max-width: 640px; margin: -.75rem auto 1.75rem; text-align: center; font-size: .88rem; color: var(--text-sub); line-height: 1.8; }
+        .dive-intro strong { color: var(--teal-dark); }
+        .dive-card h3 { font-size: 1rem; font-weight: 900; color: var(--teal-dark); margin-bottom: .35rem; line-height: 1.5; }
+        .dive-card p { font-size: .84rem; color: var(--text-sub); }
+        .dive-more { max-width: 640px; margin: 1.5rem auto 0; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 1.1rem 1.25rem; }
+        .dive-more h3 { font-size: .92rem; font-weight: 900; color: var(--teal-dark); margin-bottom: .5rem; }
+        .dive-more ul { list-style: none; display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 .6rem; padding: 0; }
+        .dive-more li { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 999px; font-size: .78rem; font-weight: 700; color: var(--text-sub); padding: .25rem .8rem; }
+        .dive-more p { font-size: .78rem; color: var(--text-sub); margin: 0; }
 
         /* ── モデルスケジュール ── */
         .schedule-table { width: 100%; max-width: 640px; margin: 1.5rem auto 0; border-collapse: collapse; background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); font-size: .82rem; }
@@ -189,7 +220,7 @@
         .qr-box p { font-size: .78rem; color: var(--text-sub); text-align: left; margin: 0; }
         @media (min-width: 768px) { .qr-box { display: flex; } }
 
-        /* ── 比較表 ── */
+        /* ── 比較表（OWDとの違い） ── */
         .compare-table { width: 100%; max-width: 640px; margin: 1.75rem auto 0; border-collapse: collapse; background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); font-size: .82rem; }
         .compare-table th, .compare-table td { padding: .7rem .6rem; text-align: center; border-bottom: 1px solid var(--border); }
         .compare-table thead th { background: var(--teal-dark); color: #fff; font-size: .8rem; }
@@ -204,12 +235,6 @@
         .mid-cta { text-align: center; margin-top: 2rem; }
         .mid-cta .btn-line { margin: 0 auto; }
         .mid-cta p { font-size: .8rem; color: var(--text-sub); margin-top: .5rem; }
-
-        /* ── 海の生き物 ── */
-        .fish-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; max-width: 720px; margin: 0 auto; }
-        .fish-card { background: var(--white); border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
-        .fish-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
-        .fish-card figcaption { font-size: .76rem; font-weight: 700; color: var(--teal-dark); padding: .5rem .6rem .6rem; text-align: center; }
 
         /* ── 理由カード ── */
         .reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
@@ -239,24 +264,22 @@
         .instructor-card p { font-size: .85rem; color: var(--text-sub); }
 
         /* ── 声 ── */
-        .voice-section { background: var(--bg-soft); }
-        .voice-photos-note { text-align: center; font-size: .85rem; color: var(--text-muted, #6b7a8a); margin: 2rem 0 .75rem; }
-        .voice-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
-        .voice-photos img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
-        @media (max-width: 480px) { .voice-photos { gap: .5rem; } }
         .voices { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
         .voice-card { background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 1.4rem; }
         .voice-card .stars { color: var(--coral); margin-bottom: .5rem; letter-spacing: .1em; }
         .voice-card p { font-size: .85rem; color: var(--text-sub); margin-bottom: .6rem; }
         .voice-card .who { font-size: .75rem; font-weight: 700; color: var(--teal-dark); }
+        .voice-photos-note { text-align: center; font-size: .85rem; color: var(--text-sub); margin: 2rem 0 .75rem; }
+        .voice-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+        .voice-photos img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+        @media (max-width: 480px) { .voice-photos { gap: .5rem; } }
 
         /* ── FAQ ── */
         .faq details { background: var(--white); border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: .75rem; overflow: hidden; }
         .faq summary { cursor: pointer; list-style: none; padding: 1rem 1.2rem; font-weight: 700; font-size: .92rem; color: var(--teal-dark); display: flex; align-items: center; gap: .5rem; text-align: left; }
         .faq summary::-webkit-details-marker { display: none; }
-        .faq summary::after { margin-left: auto; }
         .faq summary::before { content: "Q."; color: var(--coral); font-weight: 900; margin-right: .2rem; }
-        .faq summary::after { content: "+"; font-size: 1.3rem; color: var(--teal); transition: transform var(--ease); }
+        .faq summary::after { content: "+"; font-size: 1.3rem; color: var(--teal); transition: transform var(--ease); margin-left: auto; }
         .faq details[open] summary::after { transform: rotate(45deg); }
         .faq details p { padding: 0 1.2rem 1.1rem; font-size: .85rem; color: var(--text-sub); }
 
@@ -293,39 +316,48 @@
     <div class="hero">
         <div class="hero-inner">
             <span class="season">夏のLINE特典 9/30まで<span data-deadline-days> ・<span class="days"></span></span></span>
-            <p class="kicker">この夏、海の中で呼吸しよう。</p>
-            <h1>実技<em class="hl">最短2日</em>で、<br>ダイビングライセンス。</h1>
-            <p class="sub">学科はスマホで事前学習だから、海に集中できる。<br>PADIオープンウォーターダイバー取得<span style="white-space:nowrap">｜神奈川・三浦</span></p>
+            <p class="kicker">Cカードは持っている。次は、自分で潜れる自分に。</p>
+            <h1>実技<em class="hl">2日</em>で、<br>アドバンスダイバー。</h1>
+            <p class="sub">5ダイブ（3ビーチ＋2ボート）で、浮力・ナビ・ディープが自分のものになる。<br>PADIアドバンスド・オープンウォーターダイバー取得<span style="white-space:nowrap">｜神奈川・三浦</span></p>
             <div class="price-flash">
-                <div class="burst-badge"><small>学科は</small><span>自宅OK</span></div>
+                <div class="burst-badge"><small>認定後は</small><span>最大30m</span></div>
                 <div class="label">LINE特典適用時の総額<br>（レンタル器材まで全部込み）</div>
-                <div class="num">¥59,400<small>（税込）通常¥64,900</small></div>
+                <div class="num">¥65,300<small>（税込）通常¥70,800</small></div>
                 <div class="note">9/30までにLINEからのお申込みで器材レンタル1日分（¥5,500）が無料。当日の追加費用はありません。</div>
             </div>
             <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">LINEで空き状況を聞く<small>（相談無料・営業なし）</small></a>
-            <p class="cta-note">友だち追加後、「<strong>夏割</strong>」と一言送るだけでOK。<br>特典の適用と空き状況をあわせてご案内します。迷っている段階のご相談も歓迎です。</p>
+            <p class="cta-note">友だち追加後、「<strong>アドバンス夏割</strong>」と一言送るだけでOK。<br>特典の適用と空き状況をあわせてご案内します。ブランクがある方のご相談も歓迎です。</p>
         </div>
     </div>
 
     <div class="relief-bar">
         <ul>
-            <li>泳げなくてもOK</li>
-            <li>10歳から参加可</li>
+            <li>ブランク何年でもOK</li>
+            <li>OWDはどこで取った方でもOK</li>
+            <li>ボート2本の乗船料込み</li>
             <li>おひとり様歓迎</li>
             <li>三崎口駅から無料送迎</li>
         </ul>
     </div>
 
-    <!-- 導入 -->
+    <!-- 導入（課題提起） -->
     <section>
         <div class="container">
-            <span class="sec-label">Summer Debut</span>
-            <h2 class="sec-title">ライセンスを取れば、<br>夏の海は<em>「眺める場所」から「潜る場所」</em>に変わる</h2>
-            <img class="lp-illust" src="../../image/optimized/owd-lp-summer-debut.webp" alt="夏の三浦の海へ誘うクラゲ女子のイラスト" width="900" height="502" loading="lazy">
+            <span class="sec-label">Why Advanced</span>
+            <h2 class="sec-title">Cカードを取ったあと、<br>止まってしまう理由は<em>だいたい同じ</em>です</h2>
+            <ul class="pain-list">
+                <li class="reveal">ガイドの後ろをついていくだけで、海のどこを泳いだのか覚えていない</li>
+                <li class="reveal">浮力が決まらない。浮きそうになったり、砂を巻き上げたりしてしまう</li>
+                <li class="reveal">「18mまで」の制限が引っかかって、行きたいポイントを見送ったことがある</li>
+                <li class="reveal">ボートダイビングに誘われたけれど、自信がなくて断ってしまった</li>
+                <li class="reveal">そのうち間が空いて、久しぶりに潜るのが怖くなってしまった</li>
+            </ul>
+            <p class="pain-answer reveal">どれも「向いていない」のではなく、<br><em>まだ習っていないだけ</em>です。<br>その5つをまとめて練習するのが、アドバンス講習です。</p>
+            <img class="lp-illust reveal" src="../../image/optimized/license-step-up.webp" alt="OWDからAOWへステップアップするダイビング講習のイラスト" width="800" height="600" loading="lazy">
             <div class="navi-bubble">
                 <img class="navi-bubble__avatar" src="../../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
                 <div class="navi-bubble__balloon">
-                    はじめまして、案内役のクラゲちゃんです🪼 PADIオープンウォーターダイバーは世界中の海で通用する入門ライセンス。eラーニング＋実技2〜3日で、水深18mまでの海を自分の力で泳げるようになりますよ。
+                    こんにちは、案内役のクラゲちゃんです🪼 アドバンス（AOW）は「試験」ではなく、インストラクターと一緒に5本潜って幅を広げるコース。落ちることはありません。ブランクが長い方は、最初の1本を慣らしから始められますよ。
                 </div>
             </div>
         </div>
@@ -338,12 +370,12 @@
             <h2 class="sec-title">「◯万円〜」の広告に疲れた方へ。<br><em>最初から総額</em>をお見せします</h2>
             <div class="price-card reveal">
                 <div class="price-card__head">
-                    <h3>PADIオープンウォーターダイバーコース</h3>
+                    <h3>PADIアドバンスド・オープンウォーターダイバーコース</h3>
                 </div>
                 <div class="price-card__body">
                     <div class="price-row">
-                        <div class="item">講習費<small>eラーニング・ログブック・海洋実習費・申請料・保険 すべて込み</small></div>
-                        <div class="yen">¥53,900</div>
+                        <div class="item">講習費<small>教材一式・5ダイブ（3ビーチ＋2ボート）の実習費・<strong>ボートの乗船料</strong>・申請料・保険 すべて込み</small></div>
+                        <div class="yen">¥59,800</div>
                     </div>
                     <div class="price-row">
                         <div class="item">レンタル器材<small>¥5,500/日 × 実技2日分（フル器材）</small></div>
@@ -355,58 +387,133 @@
                     </div>
                     <div class="price-row price-row--total">
                         <div class="item">総額</div>
-                        <div class="yen">¥59,400<small>（税込・通常¥64,900）</small></div>
+                        <div class="yen">¥65,300<small>（税込・通常¥70,800）</small></div>
                     </div>
                     <div class="price-includes">
-                        <strong>当日の追加費用はありません。</strong>教材費・申請料・施設利用料などの「あとから請求」は一切なし。器材の購入も不要です（お持ちの方はレンタル代分お安くなります）。<br>
-                        <small>※特典は2026年9月30日までにLINEで「夏割」とお送りのうえお申込みの方が対象。他の割引との併用はできません（認定後のファンダイビングが対象の「つづける割」は併用いただけます）。</small>
+                        <strong>当日の追加費用はありません。</strong>教材費・申請料・<strong>ボート2本の乗船料</strong>まで込みで、「あとから請求」は一切なし。器材の購入も不要です（お持ちの方はレンタル代分お安くなります）。<br>
+                        <small>※特典は2026年9月30日までにLINEで「アドバンス夏割」とお送りのうえお申込みの方が対象。他の割引との併用はできません（認定後のファンダイビングが対象の「つづける割」は併用いただけます）。</small>
                     </div>
                 </div>
             </div>
             <div class="navi-bubble">
                 <img class="navi-bubble__avatar" src="../../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
                 <div class="navi-bubble__balloon">
-                    実技3日目が必要になった場合も追加のレンタル代（¥5,500）だけ。講習費の追加はかかりません。安心してマイペースに進めてくださいね。
+                    レンタル器材をお持ちでない部分だけ借りることもできます。どこまで自前かによって金額が変わるので、お手持ちの器材をLINEで教えてくださいね。
                 </div>
             </div>
             <div class="aow-set-tip aow-set-tip--buddy reveal">
-                <span class="aow-set-tip__badge">ひとりでも、友達とでも</span>
-                <h3>おひとりでのご参加が一番多いですが、<em>お友達と一緒</em>でも大丈夫です</h3>
+                <span class="aow-set-tip__badge">お友達紹介「バディ割」</span>
+                <h3>ダイバーのお友達と<em>一緒に受ける</em>のもおすすめです</h3>
                 <ul>
                     <li>お友達と<strong>2人同時のお申し込みも歓迎</strong>。お二人とも特典（レンタル1日分無料）が適用されます</li>
-                    <li>すでにダイバーのお友達がいる方は、<strong>その方も一緒に潜れます</strong>。付き添いダイビングが¥6,600引きになります（ビーチは半額の¥6,600／ボート¥13,200・税込）</li>
+                    <li>すでにダイバーのお友達がいる方は、<strong>その方も同じ日に潜れます</strong>。付き添いダイビングが¥6,600引きになります（ビーチは半額の¥6,600／ボート¥13,200・税込）</li>
                 </ul>
                 <p class="aow-set-tip__small">※付き添いダイビングの割引は、認定ダイバーの方が対象です（レンタル器材代は別途）。少人数制のため同じ日にご案内できる人数に限りがありますので、日程はLINEでご相談ください。</p>
             </div>
             <div class="aow-set-tip reveal">
-                <span class="aow-set-tip__badge">ちなみに</span>
-                <h3>AOW（アドバンス）まで考えている方は、一緒に取ると<em>合計¥16,000</em>おトクです</h3>
+                <span class="aow-set-tip__badge">まだOWDをお持ちでない方へ</span>
+                <h3>OWDから続けて取ると、合計<em>¥16,000</em>おトクです</h3>
                 <ul>
                     <li>セット受講で講習費が<strong>−¥5,000</strong>（OWD ¥53,900＋AOW ¥59,800 → セット¥108,700）</li>
                     <li>レンタル1日分無料の特典が<strong>OWD分・AOW分の2回</strong>適用されて<strong>−¥11,000</strong></li>
                     <li>セット総額は<strong>¥119,700</strong>（税込・通常¥135,700）</li>
                 </ul>
-                <p class="aow-set-tip__small">※いまの季節はOWD2日＋AOW2日の最短4日間で取得できます。冬季や習熟度によりOWD3日＋AOW2日（計5日間）になる場合があり、そのときはレンタル代が1日分（¥5,500）増えます。もちろんOWDだけの受講もOK。AOWはあとから受講することもできます。</p>
+                <p class="aow-set-tip__small">※いまの季節はOWD2日＋AOW2日の最短4日間で取得できます。冬季や習熟度によりOWD3日＋AOW2日（計5日間）になる場合があり、そのときはレンタル代が1日分（¥5,500）増えます。まずはOWDだけ、という進め方ももちろんOKです（<a href="../owd/">OWDのご案内はこちら</a>）。</p>
             </div>
+            <div class="padi-band reveal">
+                <img src="../../image/optimized/padi-5star-idc.webp" alt="PADI 5スター インストラクター・ディベロップメント・ダイブリゾート認定" width="88" height="88" loading="lazy">
+                <p><strong>PADI 5スター IDCダイブリゾート。</strong>アドバンスは、認定カードが世界中で通用するPADIの正式なコースです。三浦 海の学校はインストラクターを育成できるランクの施設です。</p>
+            </div>
+            <div class="mid-cta">
+                <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">総額のまま、この内容で相談する<small>（LINE・無料）</small></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5本のアドベンチャーダイブ -->
+    <section>
+        <div class="container">
+            <span class="sec-label">5 Adventure Dives</span>
+            <h2 class="sec-title">2日間で潜る<em>5本</em>（3ビーチ＋2ボート）。<br>1本ごとに、できることが増えます</h2>
+            <p class="dive-intro reveal"><strong>ボート2本の乗船料も講習費に入っています。</strong>「ボートは別料金」ではありません。</p>
+            <div class="dive-grid">
+                <div class="dive-card reveal">
+                    <img src="../../image/optimized/dive.webp" alt="青い海の中層を潜るダイバー" width="1200" height="900" loading="lazy">
+                    <div class="dive-card__body">
+                        <span class="tag-req">必須</span>
+                        <h3>ディープダイビング</h3>
+                        <p>深い水深での身体と器材の変化、空気の減り方、安全に浮上する手順を実践で確認します。認定後は最大30mまでが行動範囲になります。</p>
+                    </div>
+                </div>
+                <div class="dive-card reveal">
+                    <img src="../../image/optimized/compus.webp" alt="水中でコンパスを使ってナビゲーションの練習をするダイバー" width="1200" height="900" loading="lazy">
+                    <div class="dive-card__body">
+                        <span class="tag-req">必須</span>
+                        <h3>水中ナビゲーション</h3>
+                        <p>コンパスとキック数・地形を使って、狙った場所に戻ってくる練習。「自分がどこにいるか分かる」だけで、海の怖さは驚くほど減ります。</p>
+                    </div>
+                </div>
+                <div class="dive-card reveal">
+                    <img src="../../image/optimized/pooldive.webp" alt="穏やかな浅場で中性浮力を練習するダイバー" width="800" height="600" loading="lazy">
+                    <div class="dive-card__body">
+                        <span class="tag-opt">選択の定番</span>
+                        <h3>PPB（中性浮力）</h3>
+                        <p>止まりたいところで止まれるようになるための1本。空気の減りが遅くなり、砂も巻き上げなくなって、写真も格段に撮りやすくなります。</p>
+                    </div>
+                </div>
+                <div class="dive-card reveal">
+                    <img src="../../image/optimized/boat.webp" alt="宮川湾でボートダイビングに出発するダイバー" width="800" height="800" loading="lazy">
+                    <div class="dive-card__body">
+                        <span class="tag-inc">2本とも乗船料込み</span>
+                        <h3>ボートダイビング</h3>
+                        <p>船でのエントリー・エキジット、器材の置き方、揺れる船上での動き方。5本のうち2本はボートで潜るので、行けるポイントが一気に広がります。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dive-more reveal">
+                <h3>5本目は、こんな中から選べます</h3>
+                <ul>
+                    <li>水中ナチュラリスト</li>
+                    <li>魚の見分け方</li>
+                    <li>サーチ＆リカバリー</li>
+                    <li>ドライスーツ</li>
+                    <li>水中フォト</li>
+                </ul>
+                <p>※必須はディープと水中ナビゲーションの2本、残り3本は選択です。何を選ぶか迷ったら、いま困っていることを教えていただければこちらから提案します。水中フォトは水中カメラをお持ちの方が対象です。5本の内訳は3ビーチ＋2ボートで、ボートの乗船料も講習費に含まれます。開催ポイントは城ヶ島・宮川湾を中心に、当日の海況とコース内容に合わせてご案内します。</p>
+            </div>
+            <div class="mid-cta">
+                <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">どの5本にするか相談する<small>（LINE・無料）</small></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OWDとの違い -->
+    <section class="price-section">
+        <div class="container">
+            <span class="sec-label">OWD vs AOW</span>
+            <h2 class="sec-title">アドバンスを取ると、<em>何が変わるのか</em></h2>
             <table class="compare-table">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>よくある「◯万円〜」表示</th>
-                        <th class="ours">三浦 海の学校</th>
+                        <th>OWD（いまのカード）</th>
+                        <th class="ours">AOW（アドバンス）</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><th>教材費・申請料</th><td class="ng">別料金のことが多い</td><td class="ok">込み</td></tr>
-                    <tr><th>海洋実習費・施設利用料</th><td class="ng">別料金のことが多い</td><td class="ok">込み</td></tr>
-                    <tr><th>保険</th><td class="ng">要確認</td><td class="ok">込み</td></tr>
-                    <tr><th>器材レンタル</th><td class="ng">別料金</td><td class="ok">¥5,500/日と明示</td></tr>
-                    <tr><th>支払い総額</th><td class="ng">申込後にわかる</td><td class="ok">申込前にわかる</td></tr>
+                    <tr><th>潜れる深さ</th><td class="ng">最大18m</td><td class="ok">最大30m</td></tr>
+                    <tr><th>行けるポイント</th><td class="ng">浅場が中心</td><td class="ok">深場・沈船・ドロップオフも</td></tr>
+                    <tr><th>ツアーの参加条件</th><td class="ng">「AOW以上」で断られることがある</td><td class="ok">国内・海外とも参加できる幅が広い</td></tr>
+                    <tr><th>ナビゲーション</th><td class="ng">ガイド頼り</td><td class="ok">自分で戻ってこられる</td></tr>
+                    <tr><th>次のステップ</th><td class="ng">—</td><td class="ok">レスキュー／各スペシャルティへ</td></tr>
                 </tbody>
             </table>
-            <p class="compare-note">※「よくある表示」は一般的な広告表示の傾向であり、特定の他社を指すものではありません。各社の最新料金は各公式サイトでご確認ください。</p>
-            <div class="mid-cta">
-                <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">総額のまま、この内容で相談する<small>（LINE・無料）</small></a>
+            <p class="compare-note">※AOWの認定深度は最大30mです（12〜14歳のジュニア アドバンスは深度の制限が異なります）。実際に潜る深さは、当日の海況・ポイント・経験本数に応じて安全側で判断します。</p>
+            <div class="navi-bubble">
+                <img class="navi-bubble__avatar" src="../../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
+                <div class="navi-bubble__balloon">
+                    海外リゾートのツアーは「アドバンス以上」の条件がついているものが本当に多いです。旅行の予定がある方は、行く前に取っておくと選べるメニューが変わりますよ🐠
+                </div>
             </div>
         </div>
     </section>
@@ -422,15 +529,15 @@
                     <div class="reason-card__body">
                         <span class="num">REASON 01</span>
                         <h3>コースディレクターが直接指導</h3>
-                        <p>インストラクターを育てる立場のPADIコースディレクターから直接学べる、神奈川でも数少ないスクールです。</p>
+                        <p>インストラクターを育てる立場のPADIコースディレクターから直接学べる、神奈川でも数少ないスクールです。「なぜそうするのか」まで説明します。</p>
                     </div>
                 </div>
                 <div class="reason-card reveal">
                     <img src="../../image/optimized/pooldive.webp" alt="穏やかな浅場での少人数ダイビング講習" width="800" height="600" loading="lazy">
                     <div class="reason-card__body">
                         <span class="num">REASON 02</span>
-                        <h3>少人数制でマイペースに</h3>
-                        <p>大人数の流れ作業にはしません。プールのように穏やかな浅場で、一人ひとりのペースに合わせて練習します。</p>
+                        <h3>ブランクありでも、慣らしから</h3>
+                        <p>「何年も潜っていない」方が一番多いくらいです。少人数制なので、器材の組み立てや耳抜きの確認から、焦らずスタートできます。</p>
                     </div>
                 </div>
                 <div class="reason-card reveal">
@@ -449,80 +556,47 @@
     <section class="flow-section">
         <div class="container">
             <span class="sec-label">Flow</span>
-            <h2 class="sec-title">学科は自宅、実技は<em>最短2日</em>。<br>流れはかんたん4ステップ</h2>
+            <h2 class="sec-title">学科は自宅、実技は<em>2日</em>。<br>流れはかんたん4ステップ</h2>
             <div class="flow-step reveal">
                 <div class="flow-step__num">1</div>
                 <div class="flow-step__card">
-                    <h3>LINEで日程を相談<span class="tag">今日できる</span></h3>
-                    <p>ご希望の時期・不安なことをLINEで気軽にどうぞ。日程と持ち物をご案内します。</p>
+                    <h3>LINEで日程と5本の内容を相談<span class="tag">今日できる</span></h3>
+                    <p>ブランクの長さ、いま困っていること、お手持ちの器材をお知らせください。日程と選択ダイブの組み方をご提案します。</p>
                 </div>
             </div>
             <div class="flow-step reveal">
                 <div class="flow-step__num">2</div>
                 <div class="flow-step__card">
-                    <h3>eラーニングで自宅学習<span class="tag">スキマ時間でOK</span></h3>
-                    <p>スマホで学科を事前に学習。当日は海に集中できます。</p>
-                    <img src="../../image/optimized/license-elearning.webp" alt="スマホでPADIのeラーニングを進めるイメージ" width="800" height="600" loading="lazy">
+                    <h3>教材で予習<span class="tag">スキマ時間でOK</span></h3>
+                    <p>選んだアドベンチャーダイブの知識部分を事前に予習。当日は海に集中できます。</p>
+                    <img src="../../image/optimized/license-elearning.webp" alt="スマホでPADIの教材を進めるイメージ" width="800" height="600" loading="lazy">
                 </div>
             </div>
             <div class="flow-step reveal">
                 <div class="flow-step__num">3</div>
                 <div class="flow-step__card">
-                    <h3>穏やかな浅場で練習 → 海洋実習</h3>
-                    <p>呼吸・浮力の基本を浅場でゆっくり練習してから、城ヶ島・宮川湾の海へ。実技は2〜3日間です。</p>
-                    <img src="../../image/optimized/dive.webp" alt="三浦の海での海洋実習" width="1200" height="900" loading="lazy">
+                    <h3>2日間で5ダイブ（3ビーチ＋2ボート）</h3>
+                    <p>1本ずつテーマを決めて潜り、上がったら振り返り。できたこと・次に意識することを言葉にしてから次の1本へ進みます。ボートの乗船料は講習費に含まれています。</p>
+                    <img src="../../image/optimized/enjoy-uw-group.webp" alt="三浦の海でアドベンチャーダイブを行う少人数のグループ" width="800" height="534" loading="lazy">
                 </div>
             </div>
             <div class="flow-step reveal">
                 <div class="flow-step__num">4</div>
                 <div class="flow-step__card">
-                    <h3>PADIオープンウォーターダイバー認定！</h3>
-                    <p>世界中の海で使えるCカードを取得。次の週末から、海はあなたのフィールドです。</p>
-                    <img src="../../image/optimized/owd-lp-card-get.webp" alt="Cカード取得を祝うクラゲ女子とインストラクターのイラスト" width="800" height="600" loading="lazy">
+                    <h3>PADIアドバンスドオープンウォーターダイバー認定！</h3>
+                    <p>ログ付けと申請手続きまでその日のうちに。次の週末から、行けるポイントが広がります。</p>
                 </div>
             </div>
             <table class="schedule-table">
                 <thead>
-                    <tr><th colspan="3">実技2日間のイメージ</th></tr>
+                    <tr><th colspan="3">実技2日間のイメージ（3ビーチ＋2ボート）</th></tr>
                 </thead>
                 <tbody>
-                    <tr><th>1日目</th><td>午前: 器材の使い方・穏やかな浅場で基本練習</td><td>午後: 海洋実習①②</td></tr>
-                    <tr><th>2日目</th><td>午前: 海洋実習③④</td><td>午後: スキル確認・ログ付け・認定手続き</td></tr>
+                    <tr><th>1日目</th><td>午前: 器材セッティング確認・慣らし＋ビーチ1本目</td><td>午後: ビーチ2本目・3本目（ナビゲーション／中性浮力など）</td></tr>
+                    <tr><th>2日目</th><td>午前: ボート4本目・5本目（ディープなど）</td><td>午後: 振り返り・ログ付け・認定手続き</td></tr>
                 </tbody>
             </table>
-            <p class="schedule-note">※あくまで目安です。海況やお一人おひとりの進み具合に合わせて調整します（3日間に分けてもOK）。</p>
-        </div>
-    </section>
-
-    <!-- 取得後の世界 -->
-    <section>
-        <div class="container">
-            <span class="sec-label">After License</span>
-            <h2 class="sec-title">取得したら、<em>この子たち</em>に会いに行こう</h2>
-            <div class="fish-grid">
-                <figure class="fish-card">
-                    <img src="../../image/optimized/lp-fish-nekozame2.webp" alt="城ヶ島で出会えるネコザメ" width="480" height="360" loading="lazy">
-                    <figcaption>ネコザメ</figcaption>
-                </figure>
-                <figure class="fish-card">
-                    <img src="../../image/optimized/lp-fish-sarasaumiushi3.webp" alt="三浦の海のサラサウミウシ" width="480" height="360" loading="lazy">
-                    <figcaption>サラサウミウシ</figcaption>
-                </figure>
-                <figure class="fish-card">
-                    <img src="../../image/optimized/lp-fish-hanaanago2.webp" alt="砂地から顔を出すハナアナゴ" width="480" height="360" loading="lazy">
-                    <figcaption>ハナアナゴ</figcaption>
-                </figure>
-                <figure class="fish-card">
-                    <img src="../../image/optimized/lp-fish-komonumiushi2.webp" alt="宮川湾のコモンウミウシ" width="480" height="360" loading="lazy">
-                    <figcaption>コモンウミウシ</figcaption>
-                </figure>
-            </div>
-            <div class="navi-bubble">
-                <img class="navi-bubble__avatar" src="../../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
-                <div class="navi-bubble__balloon">
-                    ぜんぶ、講習で潜る城ヶ島・宮川湾でスタッフが実際に撮影した写真です。サメもウミウシも、ライセンスを取ったあなたのご近所さんになりますよ🦈
-                </div>
-            </div>
+            <p class="schedule-note">※あくまで目安です。海況・選択したアドベンチャーダイブ・お一人おひとりの進み具合に合わせて調整します（日を分けて受講してもOK）。</p>
         </div>
     </section>
 
@@ -536,12 +610,8 @@
                 <div class="info">
                     <span class="role">PADIコースディレクター / 代表インストラクター</span>
                     <h3>吉田 哲司</h3>
-                    <p>インストラクターを育成するコースディレクターとして、三浦の海で講習を中心に活動。「泳げない」「体力に自信がない」方こそ、基本から一つずつ。あなたのペースで必ず潜れるようになります。</p>
+                    <p>インストラクターを育成するコースディレクターとして、三浦の海で講習を中心に活動。「浮力が決まらない」「ナビが苦手」は、たいてい原因がはっきりしています。1本ずつ、直せるところから一緒に直していきましょう。</p>
                 </div>
-            </div>
-            <div class="padi-band reveal">
-                <img src="../../image/optimized/padi-5star-idc.webp" alt="PADI 5スター インストラクター・ディベロップメント・ダイブリゾート認定" width="88" height="88" loading="lazy">
-                <p><strong>PADI 5スター IDCダイブリゾート。</strong>コースディレクターは、PADIインストラクターを育成・認定できる最上位ランクです。「教わる先生」の先生から、直接学べます。</p>
             </div>
         </div>
     </section>
@@ -550,22 +620,17 @@
     <section>
         <div class="container">
             <span class="sec-label">Voice</span>
-            <h2 class="sec-title">受講者の声</h2>
+            <h2 class="sec-title">アドバンスまで進んだ方の声</h2>
             <div class="voices">
                 <div class="voice-card reveal">
                     <div class="stars">★★★★★</div>
-                    <p>泳ぎが苦手で不安でしたが、基本から一つずつ教えてもらい、海でも落ち着いて潜れました。少人数なので質問もしやすく、講習があっという間でした。</p>
-                    <div class="who">20代女性・OWD取得</div>
+                    <p>一人で参加しましたが、すぐに打ち解けられました。品川から1時間で着くのでアクセスも楽。OWD取得後すぐにAOWも受講し、30mの世界を楽しんでいます。</p>
+                    <div class="who">中村さん（20代男性）・横浜市在住 / OWD＋AOW取得</div>
                 </div>
                 <div class="voice-card reveal">
                     <div class="stars">★★★★★</div>
                     <p>60歳を過ぎてからの挑戦でしたが、自分のペースに合わせてもらえて楽しめました。今ではファンダイビングにも通っています。</p>
-                    <div class="who">60代男性・OWD取得</div>
-                </div>
-                <div class="voice-card reveal">
-                    <div class="stars">★★★★★</div>
-                    <p>一人で参加しましたが、すぐに打ち解けられました。品川から1時間で着くのでアクセスも楽。OWD取得後すぐにAOWも受講しました。</p>
-                    <div class="who">30代男性・OWD/AOW取得</div>
+                    <div class="who">山田さん（60代男性）・川崎市在住 / OWD＋AOW取得</div>
                 </div>
             </div>
             <p class="voice-photos-note reveal">実際の講習・海洋実習のようす</p>
@@ -584,32 +649,36 @@
             <h2 class="sec-title">よくあるご質問</h2>
             <div class="faq">
                 <details>
-                    <summary>泳げないのですが、大丈夫ですか？</summary>
-                    <p>はい、大丈夫です。ダイビングは水泳と違い、器材で呼吸と浮力をコントロールします。プールのように穏やかな浅場で基礎からゆっくり練習するので、水が苦手な方でも安心です。</p>
+                    <summary>何年もブランクがあります。いきなりアドバンスで大丈夫ですか？</summary>
+                    <p>大丈夫です。実際、ブランクのある方からのお申し込みが多いコースです。1本目を慣らしに使い、器材の組み立て・耳抜き・浮力の確認から始めます。ブランクの年数と、いま不安なことをLINEでお知らせいただければ、そこに合わせて5本の組み方を決めます。</p>
                 </details>
                 <details>
-                    <summary>何日で取得できますか？</summary>
-                    <p>eラーニング（自宅学習）＋実技2〜3日間が目安です。連続した2日間でも、週末に分けてもOK。海況や習熟度に合わせて無理なく進めます。</p>
+                    <summary>他店・他団体でOWDを取ったのですが受けられますか？</summary>
+                    <p>受けられます。PADI以外の指導団体で取得された方も、同等ランクの認定カードをお持ちであれば受講できます。カードの写真をLINEで送っていただければ確認します。</p>
                 </details>
                 <details>
-                    <summary>年齢制限はありますか？</summary>
-                    <p>10歳から参加できます。上限はなく、60代・70代で取得される方も多数いらっしゃいます。</p>
+                    <summary>ログ本数が少ない（数本しかない）のですが、条件はありますか？</summary>
+                    <p>PADIオープンウォーターダイバー（または相当）の認定があれば、本数の条件はありません。OWD認定の直後に続けて受講される方も多いです。少人数制なので、本数が少ない方でも置いていかれる心配はありません。</p>
                 </details>
                 <details>
                     <summary>本当に表示の総額以外かかりませんか？</summary>
-                    <p>はい。講習費¥53,900に教材・申請料・保険まで含まれ、あとはレンタル器材¥5,500×実技日数のみ（通常総額¥64,900）。さらに9/30までのLINE特典でレンタル1日分が無料になり、実技2日なら総額¥59,400です。実技が3日になった場合もレンタル代1日分が増えるだけで、講習費の追加はありません。水着・タオル・日焼け止めだけご持参ください。</p>
+                    <p>はい。講習費¥59,800に教材・5ダイブ（3ビーチ＋2ボート）の実習費・<strong>ボートの乗船料</strong>・申請料・保険まで含まれ、あとはレンタル器材¥5,500×実技日数のみ（通常総額¥70,800）。さらに9/30までのLINE特典でレンタル1日分が無料になり、実技2日なら総額¥65,300です。器材をお持ちの方は、その分だけお安くなります。</p>
                 </details>
                 <details>
-                    <summary>高い器材を買わされたりしませんか？</summary>
-                    <p>しません。講習はレンタル器材（¥5,500/日）で完結し、器材の購入は不要です。続けたくなってから、必要なものを必要なタイミングでご相談いただければ十分です。</p>
+                    <summary>年齢制限はありますか？</summary>
+                    <p>12歳から受講できます。12〜14歳の方は「ジュニア アドバンスドオープンウォーターダイバー」としての認定になり、深度の制限が異なります。上限はなく、60代・70代の方も受講されています。</p>
+                </details>
+                <details>
+                    <summary>2日連続で行けません。日を分けられますか？</summary>
+                    <p>分けられます。週末ごとに1日ずつでもOKです。ご希望の日程をLINEでお知らせください。少人数制のため、土日は早めに埋まります。</p>
                 </details>
                 <details>
                     <summary>天候や海が荒れたときはどうなりますか？</summary>
-                    <p>安全を最優先に、当日の海況を確認して開催を判断します。海況により開催場所の変更や日程のご相談をさせていただくことがあります。無理に潜ることはありません。</p>
+                    <p>安全を最優先に、当日の海況を確認して開催を判断します。海況により開催場所やアドベンチャーダイブの内容を入れ替えたり、日程のご相談をさせていただくことがあります。無理に潜ることはありません。</p>
                 </details>
                 <details>
-                    <summary>一人での参加は浮きませんか？</summary>
-                    <p>おひとりでのご参加はとても多いです。少人数制なので置いていかれる心配もありません。</p>
+                    <summary>高い器材を買わされたりしませんか？</summary>
+                    <p>しません。講習はレンタル器材（¥5,500/日）で完結し、器材の購入は不要です。お持ちの器材だけ使って、足りない分をレンタルすることもできます。</p>
                 </details>
                 <details>
                     <summary>集合場所はどこですか？</summary>
@@ -622,25 +691,25 @@
     <!-- 最終CTA -->
     <section class="final-cta">
         <div class="container">
-            <h2>今年の夏を、<br>「海に潜れる自分」で過ごそう。</h2>
-            <p>少人数制のため、各日にご案内できる人数はわずかです。<br>8〜9月は土日から埋まっていきます。9/30までのLINE特典（レンタル1日分無料）も、このボタンから。</p>
+            <h2>「ついていくダイビング」を、<br>今年で終わりにしませんか。</h2>
+            <p>少人数制のため、各日にご案内できる人数はわずかです。<br>8〜9月の土日から埋まっていきます。9/30までのLINE特典（レンタル1日分無料）も、このボタンから。</p>
             <ul class="cta-topics">
-                <li>「夏割」で特典適用</li>
+                <li>「アドバンス夏割」で特典適用</li>
                 <li>空き状況の確認</li>
-                <li>自分でも取れるか相談</li>
+                <li>ブランクの相談</li>
             </ul>
             <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">LINEで空き状況を聞く<small>（無料・しつこい営業はしません）</small></a>
             <div class="qr-box">
                 <img src="../../image/optimized/line-qr.webp" alt="三浦 海の学校 LINE公式アカウントのQRコード" width="96" height="96" loading="lazy">
                 <p>パソコンでご覧の方は、スマホのカメラでこのQRを読み取るとLINEが開きます。</p>
             </div>
-            <p class="alt">メール派の方は<a href="https://miura-diving.com/contact/?from=owd-lp">お問い合わせフォーム</a>へ</p>
+            <p class="alt">メール派の方は<a href="https://miura-diving.com/contact/?from=aow-lp">お問い合わせフォーム</a>へ</p>
         </div>
     </section>
 
     <footer class="lp-footer">
         <p>三浦 海の学校｜神奈川県三浦市（開催: 城ヶ島・宮川湾）</p>
-        <p><a href="https://miura-diving.com/">公式サイトはこちら</a>｜<a href="https://miura-diving.com/license/">コース詳細ページ</a></p>
+        <p><a href="https://miura-diving.com/">公式サイトはこちら</a>｜<a href="https://miura-diving.com/license/">コース詳細ページ</a>｜<a href="../owd/">OWD（はじめてのライセンス）はこちら</a></p>
     </footer>
 
     <div class="float-cta">
