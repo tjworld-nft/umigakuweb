@@ -86,6 +86,13 @@
 cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 ```
 
+- ⚠ **ビルドし直したら `index.html` の `boot.js?v=…` を必ず上げる。**
+  サーバは `js/ocean/*` を**7日キャッシュ**する（`cache-control: max-age=604800`）。
+  index.html はキャッシュされないので、番号を上げないと
+  「新しいHTML＋古い本体」という組み合わせが一度来たことのある人に7日間出続ける
+  （2026-08-05に実際に踏んだ。夏割の帯がCSSの下地だけの平らな面に見えた）。
+  `?v=` は boot.js が本体の取得にもそのまま引き継ぐので、直すのは index.html の1か所。
+
 - ビルドはbrotli後 **230KBを超えるとエラーで落ちる**（転送量の歯止め）。現状は約190KB。
 - 見た目を詰めるときはリポジトリ直下を静的配信して `/ocean-src/preview.html` を開く。
   `?frames=N`（rAFの回らない環境用にNフレーム手動で進める）／`?webgl=1`（WebGL2経路）／

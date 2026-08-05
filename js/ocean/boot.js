@@ -63,7 +63,12 @@
   function launch() {
     if (started) return;
     started = true;
-    import(new URL('./ocean.min.js', SELF).href)
+    /* 本体にも、このファイルに付いていたのと同じ ?v= を付けて取りに行く。
+       js/ocean/* は7日キャッシュされるので、これが無いと中身を差し替えても
+       一度来たことのある人には古い本体が出続ける（実際に踏んだ）。 */
+    var ver = '';
+    try { ver = new URL(SELF, location.href).search; } catch (e) { /* noop */ }
+    import(new URL('./ocean.min.js' + ver, SELF).href)
       .then(function (mod) {
         return mod.start({ host: host, hero: hero, webgpu: hasWebGPU, cores: cores, memory: mem });
       })
