@@ -313,9 +313,12 @@
          SUMMER CAMPAIGN — 夏のLINE特典（2026/9/30まで）
          期間終了後はこのセクションと .hero-campaign-pill を削除すればOK
          ============================================================ -->
-    <section id="summer-campaign" class="summer-campaign" aria-labelledby="summer-campaign-title">
+    <section id="summer-campaign" class="summer-campaign" aria-labelledby="summer-campaign-title" data-ocean-panel>
+      <!-- 帯の上端の「水面」。ここは空けておく場所であり、canvasが載ったときは
+           この要素の下辺が水面の高さになる（js/ocean が実寸で測る） -->
+      <div class="sc-waterline" data-ocean-waterline aria-hidden="true"></div>
       <div class="container">
-        <div class="sc-head">
+        <div class="sc-head" data-ocean-guard>
           <span class="sc-label">Summer Campaign</span>
           <h2 id="summer-campaign-title">夏のLINE特典は<span class="sc-hl">9月30日まで</span><span class="sc-extended">延長しました</span></h2>
           <p class="sc-lead">LINEからのお申込みで、<strong>器材レンタル1日分（¥5,500）が無料</strong>になります。<br class="sp-only">ライセンス講習の総額が、そのぶんそのまま下がります。</p>
@@ -409,14 +412,23 @@
       .hero-campaign-pill .days { font-weight: 900; }
       @media (max-width: 480px) { .hero-campaign-pill { font-size: .74rem; padding: .4rem .8rem; } }
 
+      /* 帯そのものが「水の中」。配色は ocean-src/src/campaign.js の PALETTE と同じで、
+         canvasが載るとこの下地をそのままcanvasが引き継ぐ（載らなければこのまま）。 */
       .summer-campaign {
         padding: var(--section-pad) 0;
-        background: linear-gradient(135deg, #FF5C93, var(--coral) 45%, #FF97BE);
+        background: linear-gradient(180deg, #0F849E 0%, #095574 45%, #063A57 100%);
         color: var(--white);
-        position: relative; z-index: 2;
+        position: relative; z-index: 2;   /* 水のcanvas(z-index:1)より上 */
       }
+      /* 水面が動き出したら、下地の描画はcanvasに任せる */
+      .summer-campaign.is-watered { background: transparent; }
+      /* 帯の上端の水面ぶんの余白。canvasの有無で高さが変わらないので、
+         水が後から載ってもレイアウトは1pxも動かない */
+      /* 高さの下辺が水面。そこから下の余白は、水面の明線と見出しを離すため
+         （文字が水面の線に触れると、その1行だけコントラストが落ちる） */
+      .sc-waterline { height: clamp(1.5rem, 3.5vw, 2.5rem); margin-bottom: clamp(1rem, 2.5vw, 1.75rem); }
       .summer-campaign .sc-head { text-align: center; max-width: 760px; margin: 0 auto 2rem; }
-      .sc-label { display: block; font-family: var(--ff-accent); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; opacity: .9; margin-bottom: .5rem; }
+      .sc-label { display: block; font-family: var(--ff-accent); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: .5rem; }
       .summer-campaign h2 { font-size: clamp(1.5rem, 5.2vw, 2.3rem); font-weight: 900; line-height: 1.45; color: var(--white); margin-bottom: .8rem; }
       .sc-hl { color: var(--text-dark); background: var(--yellow); border-radius: 8px; padding: 0 .35rem; display: inline-block; }
       .sc-extended { display: inline-block; vertical-align: middle; margin-left: .5rem; background: rgba(255, 255, 255, .28); border: 1px solid rgba(255, 255, 255, .6); border-radius: 50px; font-size: .68em; font-weight: 700; padding: .1em .8em; white-space: nowrap; }
@@ -429,12 +441,14 @@
       .sc-card {
         display: flex; flex-direction: column;
         background: var(--white); color: var(--text-dark); text-decoration: none;
-        border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+        border-radius: var(--radius-lg);
+        /* 影は黒ではなく深い水の色。カードが水の中に浮いて見える */
+        box-shadow: 0 18px 46px rgba(3, 32, 50, .38);
         padding: 1.6rem 1.5rem 1.4rem; border-top: 6px solid var(--coral);
         transition: transform var(--ease), box-shadow var(--ease);
       }
       .sc-card--aow { border-top-color: var(--sky); }
-      .sc-card:hover { transform: translateY(-4px); box-shadow: 0 20px 52px rgba(0, 0, 0, .16); }
+      .sc-card:hover { transform: translateY(-4px); box-shadow: 0 24px 58px rgba(3, 32, 50, .46); }
       .sc-card__tag { display: inline-block; align-self: flex-start; background: var(--bg-soft); color: var(--teal-dark); border: 1px solid var(--teal-light); font-size: .72rem; font-weight: 700; padding: .2rem .8rem; border-radius: 50px; margin-bottom: .7rem; }
       .sc-card--aow .sc-card__tag { color: #2A7E97; border-color: #A9DDEA; }
       .sc-card h3 { font-size: clamp(1.05rem, 3.4vw, 1.25rem); font-weight: 900; line-height: 1.5; color: var(--text-dark); margin-bottom: .5rem; }

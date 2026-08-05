@@ -17,6 +17,20 @@
   .stage { width: 100%; }
   .stage.sp { width: 390px; }
   .stage.sp .hero { height: 520px; }
+
+  /* 夏割の帯。index.html の <style> と同じ配色・同じ構造だけを写したもの。
+     カードまでは要らない ── ここで見るのは水面・光の柱・泡・文字の読みやすさ。 */
+  .summer-campaign {
+    padding: clamp(3rem, 8vw, 6rem) 0;
+    background: linear-gradient(180deg, #0F849E 0%, #095574 45%, #063A57 100%);
+    color: #fff; position: relative; z-index: 2; text-align: center;
+  }
+  .summer-campaign.is-watered { background: transparent; }
+  .sc-waterline { height: clamp(1.5rem, 3.5vw, 2.5rem); margin-bottom: clamp(1rem, 2.5vw, 1.75rem); }
+  .sc-head { max-width: 760px; margin: 0 auto; }
+  .sc-head h2 { font-size: clamp(1.5rem, 5.2vw, 2.3rem); font-weight: 900; line-height: 1.45; }
+  .sc-head p { line-height: 1.85; margin-top: .8rem; }
+  .sc-filler { height: 420px; }
 </style>
 </head>
 <body data-ocean>
@@ -34,6 +48,19 @@
         <a href="#" class="btn btn--coral">LINEで不安を相談する</a>
         <a href="#" class="btn btn--ghost">初心者ガイドを見る</a>
       </div>
+    </div>
+  </section>
+
+  <section class="summer-campaign" data-ocean-panel>
+    <div class="sc-waterline" data-ocean-waterline aria-hidden="true"></div>
+    <div class="container">
+      <div class="sc-head" data-ocean-guard>
+        <span class="section-label">Summer Campaign</span>
+        <h2>夏のLINE特典は9月30日まで</h2>
+        <p>ここは水の中。上端の線が水面で、波が来ると上下します。白抜き文字が読めているか、
+          光の柱と泡が出過ぎていないかをここで見ます。</p>
+      </div>
+      <div class="sc-filler"></div>
     </div>
   </section>
 
@@ -76,6 +103,9 @@
   const canvas = document.querySelector('.page-water');
   canvas.style.transition = 'none';
   canvas.classList.add('is-live');
+  /* 本番は「canvasが完全に出てから」帯の下地を渡す（2.2秒後）。
+     ここは待たずに渡す ── frames指定のときは待っている間に描画が終わってしまう。 */
+  document.querySelectorAll('[data-ocean-panel]').forEach((el) => el.classList.add('is-watered'));
 
   const frames = parseInt(q.get('frames') || '0', 10);
   if (frames > 0) {

@@ -44,6 +44,16 @@ const swellGrad = /*@__PURE__*/ Fn(([uv, t]) => {
   return g;
 });
 
+/** うねりの高さ。上のswellGradはこれを微分したもの（同じ位相・同じ係数） */
+const swellHeight = /*@__PURE__*/ Fn(([uv, t]) => {
+  let h = null;
+  for (const s of SWELL) {
+    const term = sin(uv.x.mul(s.d[0]).add(uv.y.mul(s.d[1])).add(t.mul(s.w))).mul(s.a);
+    h = h === null ? term : h.add(term);
+  }
+  return h;
+});
+
 export function createRipple({ shared, useCompute, grid }) {
   const N = grid;
   const CELLS = N * N;
@@ -66,6 +76,7 @@ export function createRipple({ shared, useCompute, grid }) {
   let computeInit = null;
   let computeSteps = [];
   let gradAt;
+  let heightAt;
 
   if (useCompute) {
     /* h(t) と h(t-1)。役割は毎ステップ入れ替わる */
@@ -163,6 +174,29 @@ export function createRipple({ shared, useCompute, grid }) {
     gradAt = (uv, detailUv) =>
       sampleGrad(uv).mul(uRippleK).add(swellGrad(detailUv, uTime).mul(uSwell));
 
+    /* 高さそのもの。傾きしか要らない屈折とコースティクスでは使わないが、
+       「水面がどこにあるか」を線として描くには高さが要る（夏割の帯の水面）。 */
+    const AR = storage(aAttr, 'float', CELLS).toReadOnly();
+
+    const sampleHeight = /*@__PURE__*/ Fn(([uv]) => {
+      const g = clamp(uv, 0, 1).mul(float(N - 1));
+      const base = floor(g);
+      const f = g.sub(base);
+      const x0 = int(base.x);
+      const y0 = int(base.y);
+      const x1 = min(x0.add(1), int(N - 1));
+      const y1 = min(y0.add(1), int(N - 1));
+      const nI = int(N);
+      const p00 = float(AR.element(y0.mul(nI).add(x0)));
+      const p10 = float(AR.element(y0.mul(nI).add(x1)));
+      const p01 = float(AR.element(y1.mul(nI).add(x0)));
+      const p11 = float(AR.element(y1.mul(nI).add(x1)));
+      return mix(mix(p00, p10, f.x), mix(p01, p11, f.x), f.y);
+    });
+
+    heightAt = (uv, detailUv) =>
+      sampleHeight(uv).add(swellHeight(detailUv, uTime).mul(uSwell));
+
   } else {
     /* --- WebGL2用 --- 波は伝わらないが、うねりとカーソルのふくらみは効く */
     const bulgeGrad = /*@__PURE__*/ Fn(([uv]) => {
@@ -188,6 +222,24 @@ export function createRipple({ shared, useCompute, grid }) {
     gradAt = (uv, detailUv) => bulgeGrad(uv).mul(uRippleK)
       .add(dropRingGrad(uv).mul(uRippleK))
       .add(swellGrad(detailUv, uTime).mul(uSwell));
+
+    /* 高さ。波動方程式が無いので、カーソルのふくらみと雫の輪をそのまま高さとして返す */
+    const bulgeHeight = /*@__PURE__*/ Fn(([uv]) => {
+      const d = uv.sub(uPointer).mul(vec2(uAspect, 1));
+      return exp(d.dot(d).mul(uPokeSharp).negate()).mul(uPokeAmp);
+    });
+
+    const dropRingHeight = /*@__PURE__*/ Fn(([uv]) => {
+      const d = uv.sub(uDrop).mul(vec2(uAspect, 1));
+      const front = max(d.length(), float(1e-4)).sub(uDropAge.mul(0.42));
+      return exp(front.mul(front).mul(-900))
+        .mul(exp(uDropAge.mul(-1.7)))
+        .mul(uDropAmp);
+    });
+
+    heightAt = (uv, detailUv) => bulgeHeight(uv).mul(uRippleK)
+      .add(dropRingHeight(uv).mul(uRippleK))
+      .add(swellHeight(detailUv, uTime).mul(uSwell));
   }
 
   /* 雫を何フレーム入れ続けるか。コンピュート経路は1フレーム入れれば、
@@ -198,6 +250,7 @@ export function createRipple({ shared, useCompute, grid }) {
     computeInit,
     computeSteps,
     gradAt,
+    heightAt,
     attrs,
     params: {
       waveSpeed: uSpeed, damping: uDamp, swell: uSwell, strength: uRippleK,
@@ -226,4 +279,4 @@ export function createRipple({ shared, useCompute, grid }) {
 }
 
 /* うねりだけ欲しいとき（コースティクスの下地など）に外からも使う */
-export { swellGrad };
+export { swellGrad, swellHeight };
