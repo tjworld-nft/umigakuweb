@@ -1217,7 +1217,11 @@
 
   <script src="js/main.js" defer></script>
   <!-- サイト全体に敷く水。端末を見て、描ける環境にだけ本体を取りに行く -->
-  <script src="js/ocean/boot.js" defer></script>
+  <!-- ⚠ js/ocean/* はサーバが7日キャッシュする（max-age=604800）。
+       ocean-src を作り直したら、必ずこの ?v= を上げること。
+       上げないと、once来たことのある人には古い水が出続ける（index.html だけ新しくなる）。
+       この番号は boot.js が ocean.min.js の取得にもそのまま引き継ぐので、直すのはここ1か所。 -->
+  <script src="js/ocean/boot.js?v=20260805" defer></script>
 
 </body>
 
