@@ -38,7 +38,7 @@
     "hasCourseInstance": [
       {"@type":"CourseInstance","name":"体験ダイビング（ディスカバースクーバダイビング）","courseMode":"onsite","description":"ダイビングライセンス不要。初心者でも安心して海中世界を体験。"},
       {"@type":"CourseInstance","name":"PADIオープンウォーターダイバー（OWD）Cカード取得","courseMode":"onsite","description":"世界中で通用するスクーバダイビングの入門ライセンス（Cカード）。","duration":"P2D"},
-      {"@type":"CourseInstance","name":"PADIアドバンスドオープンウォーターダイバー（AOW）","courseMode":"onsite","description":"アドバンス講習でスキル拡張。ディープ・ナビゲーションなど5種類のアドベンチャーダイブ。"},
+      {"@type":"CourseInstance","name":"PADIアドバンスドオープンウォーターダイバー（AOW）","courseMode":"onsite","description":"アドバンス講習でスキル拡張。ディープ・ナビゲーションなど5ダイブ（3ビーチ＋2ボート・乗船料込み）のアドベンチャーダイブ。","duration":"P2D"},
       {"@type":"CourseInstance","name":"EFR（エマージェンシーファーストレスポンス）","courseMode":"onsite"},
       {"@type":"CourseInstance","name":"PADIレスキューダイバー","courseMode":"onsite"},
       {"@type":"CourseInstance","name":"PADIダイブマスター","courseMode":"onsite"}
@@ -473,12 +473,12 @@
             </nav>
         </div>
 
-        <!-- SUMMER CAMPAIGN — 夏のLINE特典（2026/8/31まで・期間終了後はこのブロックごと削除可） -->
+        <!-- SUMMER CAMPAIGN — 夏のLINE特典（2026/9/30まで・期間終了後はこのブロックごと削除可） -->
         <div class="container">
             <aside class="lc-campaign" aria-labelledby="lc-campaign-title">
                 <div class="lc-campaign__head">
                     <span class="lc-campaign__badge">夏のLINE特典</span>
-                    <h2 id="lc-campaign-title">LINEからのお申込みで、器材レンタル1日分（¥5,500）が無料<span class="lc-campaign__due">8/31まで</span></h2>
+                    <h2 id="lc-campaign-title">LINEからのお申込みで、器材レンタル1日分（¥5,500）が無料<span class="lc-campaign__due">9/30まで</span></h2>
                     <p class="lc-campaign__count" data-deadline-days>受付は<span class="days"></span></p>
                 </div>
                 <div class="lc-campaign__links">
@@ -498,7 +498,7 @@
         </div>
 
         <style>
-            /* ---- 夏のLINE特典バナー（期間限定・8/31終了時に削除可） ---- */
+            /* ---- 夏のLINE特典バナー（期間限定・9/30終了時に削除可） ---- */
             [data-deadline-days][hidden] { display: none !important; }
             .lc-campaign { max-width: 900px; margin: 1.5rem auto 0; background: linear-gradient(135deg, var(--coral), #FF9BC0 60%, var(--yellow)); color: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 1.6rem 1.6rem 1.4rem; }
             .lc-campaign__head { text-align: center; margin-bottom: 1.2rem; }
@@ -623,8 +623,8 @@
                             <div class="duration">2日間 / 最大30m</div>
                         </div>
                         <div class="course-card-body">
-                            <p>5つのアドベンチャーダイブでスキル拡張。ディープ・ナビゲーション・ボートダイブなど。</p>
-                            <div class="includes"><strong>含:</strong> 教材一式・実習費・申請料・保険<br><span
+                            <p>5ダイブ（3ビーチ＋2ボート）でスキル拡張。ディープ・ナビゲーションが必須、残り3本は中性浮力やナチュラリストなどから選べます。</p>
+                            <div class="includes"><strong>含:</strong> 教材一式・実習費・ボート2本の乗船料・申請料・保険<br><span
                                     style="color:var(--coral);font-weight:600;">※別途: レンタル器材代
                                     ¥5,500/日（2日間=¥11,000）</span></div>
                             <a href="../lp/aow/" class="btn btn--coral" style="margin-bottom:.5rem;">夏割つきの総額を見る（特設ページ）</a>
@@ -1062,7 +1062,7 @@
     </div>
 
     <script>
-        /* 夏のLINE特典・締切までの残り日数（日本時間の日付基準・8/31が最終日）
+        /* 夏のLINE特典・締切までの残り日数（日本時間の日付基準・9/30が最終日）
            期間終了後はこのスクリプトごと削除してOK */
         (function () {
             var wraps = document.querySelectorAll('[data-deadline-days]');
@@ -1070,7 +1070,7 @@
             var n = new Date();
             var jst = new Date(n.getTime() + n.getTimezoneOffset() * 60000 + 9 * 3600000);
             var today = Date.UTC(jst.getFullYear(), jst.getMonth(), jst.getDate());
-            var days = Math.round((Date.UTC(2026, 7, 31) - today) / 86400000);
+            var days = Math.round((Date.UTC(2026, 8, 30) - today) / 86400000);
             Array.prototype.forEach.call(wraps, function (w) {
                 if (days < 0) { w.hidden = true; return; }
                 var slot = w.querySelector('.days');
