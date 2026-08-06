@@ -66,4 +66,38 @@
   .boat-prep-list span{grid-column:2}
   .line-guide__grid{grid-template-columns:1fr}
   .line-guide__grid>div,.line-guide__grid>div:nth-child(4){grid-column:1/-1}
+  /* 受講者IDを足したときの .completion-form{1fr auto} が上の820px指定を打ち消していた。
+     スマホ幅では発行ボタンが57px幅に潰れて縦一列になるので、1カラムに戻す。 */
+  .completion-form{grid-template-columns:1fr}
+  .completion-form input,.completion-form button{width:100%}
+  /* スマホでは唯一の「マイコース」「ログアウト」導線なので消さない。
+     文字は小さいままにして、タップ範囲だけ疑似要素で44px級に広げる（レイアウトは動かない）。 */
+  .logout-link{display:inline-block;position:relative}
+  .logout-link:after{content:"";position:absolute;left:-4px;right:-4px;top:-12px;bottom:-12px}
+}
+/* 保存状況の表示。進捗が残ったかどうかを本人が確かめられるようにする。 */
+.sync-status{position:fixed;z-index:60;left:16px;right:16px;bottom:24px;margin:0 auto;width:fit-content;max-width:calc(100% - 32px);display:flex;align-items:center;justify-content:center;gap:12px;padding:11px 20px;border-radius:21px;background:var(--navy);color:#fff;font-size:13px;line-height:1.5;box-shadow:0 10px 30px rgba(18,50,74,.28)}
+.sync-status[hidden]{display:none}
+.sync-status.is-saved{background:#146b56}
+.sync-status.is-error{background:#fff3ee;color:#7f3626;box-shadow:0 10px 30px rgba(127,54,38,.22);outline:1px solid #e0b3a3}
+.sync-status a{color:inherit;font-weight:800;white-space:nowrap}
+/* キーボード操作の現在地を、地の色に埋もれない形で見せる。 */
+:focus-visible{outline:3px solid #167e82;outline-offset:2px}
+.lesson-hero :focus-visible,.course-head :focus-visible,.finish :focus-visible,.completion-form :focus-visible,.day-checklist :focus-visible{outline-color:#7fe3d9}
+/* legendが2行以上になると、fieldsetの上枠が設問文の途中を横切ってしまう（スマホでは全問）。
+   floatにすると枠の中の普通の見出しとして流れる。 */
+.question legend{float:left;width:100%;padding:0 0 12px}
+.question legend+label{clear:both}
+/* AA(4.5:1)にわずかに届いていなかった小さな文字を濃くする。 */
+.section-number{color:#136b6f}
+.lesson-nav a small{color:#4f6068}
+/* レッスンタブは5つあってスマホでは画面外まで続く。右端をぼかして「まだ先がある」と分かるようにする。 */
+@media(max-width:820px){
+  .lesson-nav{position:relative;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent)}
+  .lesson-nav.is-scroll-end{-webkit-mask-image:none;mask-image:none}
+  .sync-status{bottom:80px}
+}
+/* 3つ並べると折り返す幅では受講者IDを省く（IDはマイコースと修了画面に出る）。 */
+@media(max-width:520px){
+  .auth-actions .course-label{display:none}
 }

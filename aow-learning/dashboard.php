@@ -40,16 +40,22 @@ portal_head('マイコース');
       foreach ($courses as $candidate) if ($candidate['slug'] === $course['slug']) $record = $candidate;
       $state = $record && $record['state_json'] ? json_decode((string)$record['state_json'], true) : [];
       $completedModules = 0;
-      if (isset($state['modules']) && is_array($state['modules'])) foreach ($state['modules'] as $module) if (!empty($module['complete'])) $completedModules++;
+      $answeredQuestions = 0;
+      if (isset($state['modules']) && is_array($state['modules'])) foreach ($state['modules'] as $module) {
+        if (!empty($module['complete'])) $completedModules++;
+        if (isset($module['answers']) && is_array($module['answers'])) $answeredQuestions += count($module['answers']);
+      }
       $moduleCount = count(course_answer_key());
       $percent = $record && $record['completion_code'] ? 100 : min(100, (int)round(($completedModules / $moduleCount) * 100));
+      // レッスンを1つも終えていなくても、1問でも答えていれば「続き」がある。
+      $started = $percent > 0 || $answeredQuestions > 0;
     ?>
     <article class="course-card <?= $enrolled ? '' : 'is-locked' ?>">
       <span><?= $enrolled ? 'AVAILABLE' : ((int)$course['active'] ? 'CODE REQUIRED' : 'COMING LATER') ?></span>
       <h2><?= h((string)$course['title']) ?></h2><p><?= h((string)$course['description']) ?></p>
       <?php if ($enrolled): ?><div class="progress-bar"><i style="width:<?= $percent ?>%"></i></div><?php endif; ?>
       <div class="course-card__footer">
-        <?php if ($enrolled && $course['slug'] === 'aow'): ?><b><?= $record && $record['completion_code'] ? '修了' : $percent . '%完了' ?></b><a href="course.php?course=aow"><?= $percent ? '続きから' : '学習開始' ?> →</a>
+        <?php if ($enrolled && $course['slug'] === 'aow'): ?><b><?= $record && $record['completion_code'] ? '修了' : ($percent . '%完了' . ($percent === 0 && $answeredQuestions ? '（' . $answeredQuestions . '問 回答済み）' : '')) ?></b><a href="course.php?course=aow"><?= $started ? '続きから' : '学習開始' ?> →</a>
         <?php elseif ($enrolled): ?><b>教材準備中</b>
         <?php else: ?><b><?= (int)$course['active'] ? '追加コードで開放' : '準備中' ?></b><?php endif; ?>
       </div>
