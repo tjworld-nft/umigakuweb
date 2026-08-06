@@ -1,4 +1,4 @@
-(async () => {
+(() => {
   const modules = ["ppb", "navigation", "naturalist", "deep", "boat"];
   const legacyModules = ["ppb", "navigation", "naturalist"];
   const labels = { ppb: "PPB", navigation: "ナビゲーション", naturalist: "ナチュラリスト", deep: "ディープ", boat: "ボート" };
@@ -9,31 +9,113 @@
   let saveTimer;
   let saveQueue = Promise.resolve();
   let stateRevision = 0;
+  // 初回同期が終わるまでは保存しない。途中の状態を送ると
+  // サーバー側は「送られてきた状態が全部」として上書きするので、既存の進捗を消してしまう。
+  let loaded = false;
+  let pendingWhileLoading = false;
+  let savedNoticeTimer;
+  let savingNoticeTimer;
 
-  try {
-    if (adminPreview) throw new DOMException("preview", "AbortError");
-    const response = await fetch("api.php", { credentials: "same-origin", headers: { Accept: "application/json" } });
-    if (response.status === 401) return void (location.href = "login.php");
-    if (!response.ok) throw new Error("load failed");
-    const payload = await response.json();
-    state = payload.state || state;
-    learnerId = payload.learnerId || learnerId;
-  } catch (error) {
-    if (adminPreview && error?.name === "AbortError") {
-      state = { modules: {}, ready: {}, completion: null };
-    } else {
-      showSyncError("進捗を読み込めませんでした。通信を確認して再読み込みしてください。");
-      return;
-    }
-  }
+  const issueCompletionButton = document.getElementById("issueCompletion");
+  const syncStatus = createSyncStatus();
+
+  /* ---------- 進捗の入れ物 ---------- */
 
   function moduleState(name) {
-    if (!state.modules[name]) state.modules[name] = { answers: {}, complete: false };
+    const current = state.modules[name];
+    if (!current || typeof current !== "object") {
+      state.modules[name] = { answers: {}, complete: false };
+    } else if (!current.answers || typeof current.answers !== "object" || Array.isArray(current.answers)) {
+      // 配列で届くと "ppb1" のような文字列キーが JSON.stringify で消え、保存されない。
+      current.answers = Object.assign({}, current.answers);
+    }
     return state.modules[name];
+  }
+
+  function readyState() {
+    if (!state.ready || typeof state.ready !== "object" || Array.isArray(state.ready)) {
+      state.ready = Object.assign({}, state.ready);
+    }
+    return state.ready;
+  }
+
+  // 読み込み中に答えた分を捨てずにサーバーの記録と合わせる。
+  function mergeServerState(incoming) {
+    const merged = incoming && typeof incoming === "object" ? incoming : {};
+    const remoteModules = merged.modules && typeof merged.modules === "object" ? merged.modules : {};
+    const nextModules = {};
+    modules.forEach((name) => {
+      const remote = remoteModules[name] && typeof remoteModules[name] === "object" ? remoteModules[name] : {};
+      const remoteAnswers = remote.answers && typeof remote.answers === "object" ? remote.answers : {};
+      const local = state.modules[name];
+      nextModules[name] = {
+        answers: Object.assign({}, remoteAnswers, local ? local.answers : null),
+        complete: Boolean(remote.complete) || Boolean(local && local.complete)
+      };
+    });
+    merged.modules = nextModules;
+    merged.ready = Object.assign({}, merged.ready, state.ready);
+    state = merged;
+  }
+
+  /* ---------- 保存状況の表示 ---------- */
+
+  function createSyncStatus() {
+    const box = document.createElement("div");
+    box.id = "syncStatus";
+    box.className = "sync-status";
+    box.setAttribute("role", "status");
+    box.setAttribute("aria-live", "polite");
+    box.hidden = true;
+    box.innerHTML = '<span data-sync-text></span><a data-sync-action hidden></a>';
+    document.body.append(box);
+    return box;
+  }
+
+  function setSyncStatus(kind, message, action) {
+    clearTimeout(savedNoticeTimer);
+    clearTimeout(savingNoticeTimer);
+    syncStatus.hidden = false;
+    syncStatus.classList.remove("is-saving", "is-saved", "is-error");
+    syncStatus.classList.add("is-" + kind);
+    syncStatus.querySelector("[data-sync-text]").textContent = message;
+    const link = syncStatus.querySelector("[data-sync-action]");
+    if (action) {
+      link.textContent = action.label;
+      link.href = action.href;
+      link.hidden = false;
+    } else {
+      link.hidden = true;
+      link.removeAttribute("href");
+    }
+    if (kind === "saved") savedNoticeTimer = setTimeout(hideSyncStatus, 2200);
+  }
+
+  function hideSyncStatus() {
+    clearTimeout(savedNoticeTimer);
+    clearTimeout(savingNoticeTimer);
+    syncStatus.hidden = true;
+  }
+
+  // すぐ終わる保存で「保存中…」がちらつかないよう、遅いときだけ出す。
+  function noticeSavingIfSlow() {
+    clearTimeout(savingNoticeTimer);
+    savingNoticeTimer = setTimeout(() => setSyncStatus("saving", "保存中…"), 400);
+  }
+
+  function signInAgain(message) {
+    setSyncStatus("error", message, { label: "ログインし直す", href: "login.php" });
+  }
+
+  /* ---------- サーバーとのやり取り ---------- */
+
+  function buildPayload(issueCompletion) {
+    return JSON.stringify({ csrf, state: JSON.parse(JSON.stringify(state)), issueCompletion });
   }
 
   function persist(issueCompletion = false) {
     clearTimeout(saveTimer);
+    saveTimer = undefined;
     if (adminPreview) {
       if (issueCompletion && allReady() && allModulesComplete()) {
         state.completion = { learnerId, issuedAt: new Date().toISOString(), code: "ADMIN-PREVIEW", curriculumVersion: 2 };
@@ -41,18 +123,24 @@
       renderProgress();
       return Promise.resolve();
     }
-    const snapshot = JSON.parse(JSON.stringify(state));
+    if (!loaded) {
+      pendingWhileLoading = true;
+      return Promise.resolve();
+    }
+    const body = buildPayload(issueCompletion);
     const revision = stateRevision;
+    noticeSavingIfSlow();
     const request = saveQueue.catch(() => undefined).then(async () => {
       const response = await fetch("api.php", {
         method: "POST",
         credentials: "same-origin",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ csrf, state: snapshot, issueCompletion })
+        body
       });
-      if (response.status === 401) {
-        location.href = "login.php";
-        return;
+      if (response.status === 401 || response.status === 419) {
+        // 黙ってログイン画面へ飛ばすと、画面に出ている回答ごと消えて理由も分からない。
+        signInAgain("ログインの有効期限が切れました。この画面の回答はまだ保存されていません。");
+        throw new Error("session expired");
       }
       if (!response.ok) throw new Error("save failed");
       const payload = await response.json();
@@ -62,7 +150,7 @@
         state.completion = payload.state.completion;
       }
       learnerId = payload.learnerId || learnerId;
-      document.getElementById("syncError")?.remove();
+      setSyncStatus("saved", "保存しました");
       renderProgress();
     });
     saveQueue = request;
@@ -71,40 +159,75 @@
 
   function saveSoon() {
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => persist().catch(() => showSyncError("進捗を保存できませんでした。通信を確認してください。")), 350);
-  }
-
-  function showSyncError(message) {
-    let note = document.getElementById("syncError");
-    if (!note) {
-      note = document.createElement("p");
-      note.id = "syncError";
-      note.style.cssText = "position:fixed;z-index:99;left:16px;right:16px;bottom:82px;margin:auto;max-width:620px;padding:13px 16px;background:#fff0eb;color:#934433;box-shadow:0 8px 30px rgba(0,0,0,.18);font-size:13px";
-      document.body.append(note);
+    if (!loaded) {
+      pendingWhileLoading = true;
+      return;
     }
-    note.textContent = message;
+    saveTimer = setTimeout(() => {
+      saveTimer = undefined;
+      persist().catch((error) => {
+        if (error?.message !== "session expired") {
+          setSyncStatus("error", "進捗を保存できませんでした。通信を確認してください。");
+        }
+      });
+    }, 350);
   }
 
-  document.querySelectorAll(".question").forEach((question) => {
+  // 画面を閉じる・アプリを切り替える瞬間に、待機中の保存を取りこぼさない。
+  function flushPendingSave() {
+    if (adminPreview || !loaded || !saveTimer) return;
+    clearTimeout(saveTimer);
+    saveTimer = undefined;
+    const body = buildPayload(false);
+    if (navigator.sendBeacon && navigator.sendBeacon("api.php", new Blob([body], { type: "application/json" }))) return;
+    try {
+      fetch("api.php", {
+        method: "POST",
+        credentials: "same-origin",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body
+      });
+    } catch (_) {
+      /* 離脱時なので握りつぶす */
+    }
+  }
+
+  window.addEventListener("pagehide", flushPendingSave);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") flushPendingSave();
+  });
+
+  /* ---------- 設問 ---------- */
+
+  const questionNodes = [...document.querySelectorAll(".question")];
+
+  questionNodes.forEach((question) => {
     const module = question.closest("[data-module]").dataset.module;
     const qid = question.dataset.question;
-    const saved = moduleState(module).answers[qid];
-    if (saved) {
-      const input = question.querySelector(`input[value="${saved}"]`);
-      if (input) input.checked = true;
-      showFeedback(question, saved);
-    }
+    // 正誤の解説は選んだ直後に差し込まれる。読み上げにも届くようにしておく。
+    question.querySelector("[data-feedback]")?.setAttribute("aria-live", "polite");
     question.addEventListener("change", (event) => {
       if (!event.target.matches("input[type=radio]")) return;
       moduleState(module).answers[qid] = event.target.value;
       if (event.target.value !== question.dataset.answer) moduleState(module).complete = false;
       stateRevision += 1;
       showFeedback(question, event.target.value);
-      updateCompleteButton(module);
       renderProgress();
       saveSoon();
     });
   });
+
+  function restoreAnswers() {
+    questionNodes.forEach((question) => {
+      const module = question.closest("[data-module]").dataset.module;
+      const saved = moduleState(module).answers[question.dataset.question];
+      if (!saved) return;
+      const input = question.querySelector(`input[value="${saved}"]`);
+      if (input) input.checked = true;
+      showFeedback(question, saved);
+    });
+  }
 
   function showFeedback(question, value) {
     const correct = value === question.dataset.answer;
@@ -114,59 +237,82 @@
     question.querySelector("[data-feedback]").textContent = source.content.textContent.trim();
   }
 
+  function remainingQuestions(module) {
+    const article = document.querySelector(`[data-module="${module}"]`);
+    if (!article) return 0;
+    return [...article.querySelectorAll(".question")]
+      .filter((q) => moduleState(module).answers[q.dataset.question] !== q.dataset.answer).length;
+  }
+
   function updateCompleteButton(module) {
     const article = document.querySelector(`[data-module="${module}"]`);
-    const questions = [...article.querySelectorAll(".question")];
-    const allCorrect = questions.every((q) => moduleState(module).answers[q.dataset.question] === q.dataset.answer);
-    article.querySelector("[data-complete]").disabled = moduleState(module).complete || !allCorrect;
+    const button = article?.querySelector("[data-complete]");
+    if (!button) return;
+    button.disabled = !loaded || moduleState(module).complete || remainingQuestions(module) > 0;
   }
 
   document.querySelectorAll("[data-complete]").forEach((button) => {
     const module = button.dataset.complete;
     updateCompleteButton(module);
     button.addEventListener("click", async () => {
+      if (button.disabled) return;
       moduleState(module).complete = true;
       stateRevision += 1;
       button.disabled = true;
       try {
         await persist();
+        if (!moduleState(module).complete) {
+          // 通信は成功したのにサーバーが完了を認めなかった場合。黙って戻すと原因が分からない。
+          setSyncStatus("error", "レッスン完了を保存できませんでした。回答を確認して、もう一度お試しください。");
+          updateCompleteButton(module);
+          return;
+        }
         const next = modules[modules.indexOf(module) + 1];
         document.getElementById(next || "finish").scrollIntoView({ behavior: "smooth" });
-      } catch (_) {
+      } catch (error) {
         moduleState(module).complete = false;
         stateRevision += 1;
-        showSyncError("レッスン完了を保存できませんでした。もう一度お試しください。");
+        if (error?.message !== "session expired") {
+          setSyncStatus("error", "レッスン完了を保存できませんでした。もう一度お試しください。");
+        }
         updateCompleteButton(module);
       }
     });
   });
 
+  /* ---------- 最終チェックと修了 ---------- */
+
   document.querySelectorAll("[data-ready]").forEach((input) => {
-    input.checked = Boolean(state.ready?.[input.dataset.ready]);
     input.addEventListener("change", () => {
-      state.ready[input.dataset.ready] = input.checked;
+      readyState()[input.dataset.ready] = input.checked;
       stateRevision += 1;
       renderProgress();
       saveSoon();
     });
   });
 
-  const issueCompletionButton = document.getElementById("issueCompletion");
-  document.getElementById("completionLearnerPreview").textContent = learnerId;
+  function restoreReady() {
+    document.querySelectorAll("[data-ready]").forEach((input) => {
+      input.checked = Boolean(readyState()[input.dataset.ready]);
+    });
+  }
+
   issueCompletionButton.addEventListener("click", async () => {
-    if (!allReady() || !allModulesComplete()) return;
+    if (issueCompletionButton.disabled || !allReady() || !allModulesComplete()) return;
     issueCompletionButton.disabled = true;
     try {
       await persist(true);
       document.getElementById("completionProof").scrollIntoView({ behavior: "smooth", block: "center" });
-    } catch (_) {
-      showSyncError("修了情報を発行できませんでした。もう一度お試しください。");
+    } catch (error) {
+      if (error?.message !== "session expired") {
+        setSyncStatus("error", "修了情報を発行できませんでした。もう一度お試しください。");
+      }
       renderProgress();
     }
   });
 
   function allReady() {
-    return ["gear", "condition", "question"].every((key) => Boolean(state.ready?.[key]));
+    return ["gear", "condition", "question"].every((key) => Boolean(readyState()[key]));
   }
 
   function requiredModules() {
@@ -180,7 +326,7 @@
 
   function renderCompletion(completed, required) {
     const legacyCompletion = Boolean(state.completion) && Number(state.completion.curriculumVersion || state.curriculumVersion || 2) === 1;
-    issueCompletionButton.disabled = completed !== required.length || !allReady() || Boolean(state.completion);
+    issueCompletionButton.disabled = !loaded || completed !== required.length || !allReady() || Boolean(state.completion);
     issueCompletionButton.textContent = state.completion ? "修了記録 発行済み ✓" : "事前学科の修了画面を発行";
     const proof = document.getElementById("completionProof");
     const valid = Boolean(state.completion);
@@ -213,12 +359,22 @@
       document.querySelectorAll(`[data-module="${name}"] input[type="radio"]`).forEach((input) => {
         input.disabled = lockedByCompletion;
       });
+      const answered = Object.keys(moduleState(name).answers).length;
       const status = document.querySelector(`[data-status="${name}"]`);
-      if (status) status.textContent = done ? "完了" : Object.keys(moduleState(name).answers).length ? "学習中" : additional ? "追加教材" : "未開始";
+      if (status) status.textContent = done ? "完了" : answered ? "学習中" : additional ? "追加教材" : "未開始";
       const button = document.querySelector(`[data-complete="${name}"]`);
       if (button) {
-        button.textContent = done ? `${labels[name]} 完了 ✓` : `${labels[name]}を完了する`;
+        const remaining = remainingQuestions(name);
+        // 押せない理由を書いておく。何も言わずに灰色のままだと、詰まったように見える。
+        button.textContent = done
+          ? `${labels[name]} 完了 ✓`
+          : remaining
+            ? `${labels[name]}を完了する（正解あと${remaining}問）`
+            : `${labels[name]}を完了する`;
         button.classList.toggle("is-done", done);
+        // 保存結果を反映し直す。ここで戻さないと、サーバーが完了を認めなかったときに
+        // ボタンが押せないまま固まり、再読み込みするまで先へ進めなくなる。
+        updateCompleteButton(name);
         if (lockedByCompletion) button.disabled = true;
       }
     });
@@ -246,5 +402,59 @@
     renderCompletion(completed, required);
   }
 
+  /* ---------- レッスンタブ ---------- */
+
+  const lessonNav = document.querySelector(".lesson-nav");
+  if (lessonNav) {
+    const markScrollEnd = () => {
+      const atEnd = lessonNav.scrollLeft + lessonNav.clientWidth >= lessonNav.scrollWidth - 2;
+      lessonNav.classList.toggle("is-scroll-end", atEnd);
+    };
+    lessonNav.addEventListener("scroll", markScrollEnd, { passive: true });
+    window.addEventListener("resize", markScrollEnd);
+    markScrollEnd();
+  }
+
+  /* ---------- 起動 ---------- */
+
+  // 設問の操作はここまでで有効になっている。通信の往復を待つ間に選んだ答えも取りこぼさない。
+  document.getElementById("completionLearnerPreview").textContent = learnerId;
   renderProgress();
+
+  async function load() {
+    if (adminPreview) {
+      state = { modules: {}, ready: {}, completion: null };
+      loaded = true;
+      renderProgress();
+      return;
+    }
+    setSyncStatus("saving", "進捗を読み込んでいます…");
+    try {
+      const response = await fetch("api.php", { credentials: "same-origin", headers: { Accept: "application/json" } });
+      if (response.status === 401) {
+        location.href = "login.php";
+        return;
+      }
+      if (!response.ok) throw new Error("load failed");
+      const payload = await response.json();
+      mergeServerState(payload.state);
+      learnerId = payload.learnerId || learnerId;
+    } catch (_) {
+      loadFailed = true;
+      setSyncStatus("error", "進捗を読み込めませんでした。通信を確認してください。", { label: "再読み込み", href: location.href });
+      return;
+    }
+    loaded = true;
+    hideSyncStatus();
+    document.getElementById("completionLearnerPreview").textContent = learnerId;
+    restoreAnswers();
+    restoreReady();
+    renderProgress();
+    if (pendingWhileLoading) {
+      pendingWhileLoading = false;
+      saveSoon();
+    }
+  }
+
+  load();
 })();

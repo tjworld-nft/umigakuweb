@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 const APP_COURSE = 'aow';
 const COURSE_CURRICULUM_VERSION = 2;
+// テーブル定義や講座カタログを変えたら +1 する。教材版(COURSE_CURRICULUM_VERSION)とは別物。
+const SCHEMA_VERSION = 3;
 
 function app_config(): array
 {
@@ -33,15 +35,30 @@ function is_https(): bool
     return isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower((string)$_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https';
 }
 
+// 共用サーバーの共通セッション置き場は他サイトのGCに巻き込まれる。
+// 書ける専用ディレクトリを取れたときだけそちらを使い、取れなければ既定のまま。
+function session_storage_path(): ?string
+{
+    $base = dirname((string)app_config()['database_path']) . '/sessions';
+    if (!is_dir($base)) @mkdir($base, 0700, true);
+    return is_dir($base) && is_writable($base) ? $base : null;
+}
+
 function start_secure_session(): void
 {
     if (session_status() === PHP_SESSION_ACTIVE) return;
+    $lifetime = 60 * 60 * 24 * 30;
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
     ini_set('session.use_trans_sid', '0');
+    // Cookieを30日にしても gc_maxlifetime が既定(1440秒)のままだと、
+    // 教材を24分読んでいただけでサーバー側のセッションが消え、保存時にログイン画面へ飛ぶ。
+    ini_set('session.gc_maxlifetime', (string)$lifetime);
+    $sessionPath = session_storage_path();
+    if ($sessionPath !== null) session_save_path($sessionPath);
     session_name('miura_learning');
     session_set_cookie_params([
-        'lifetime' => 60 * 60 * 24 * 30,
+        'lifetime' => $lifetime,
         'path' => '/aow-learning/',
         'secure' => is_https(),
         'httponly' => true,
@@ -87,6 +104,11 @@ function db(): PDO
 
 function migrate(PDO $pdo): void
 {
+    // 以前はこの関数が毎リクエストで6本の書き込みを流していた。
+    // SQLiteは書き込み同士が待ち合うので、教材の保存がそこで詰まる。
+    // スキーマ版が最新なら何もしない。
+    if ((int)$pdo->query('PRAGMA user_version')->fetchColumn() === SCHEMA_VERSION) return;
+
     $statements = [
         'CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -153,11 +175,25 @@ function migrate(PDO $pdo): void
     $catalog->execute(['AOW 5ダイブ事前学習', 'PPB・ナビゲーション・ナチュラリスト・ディープ・ボート', 10, 1, 'aow']);
     $catalog->execute(['Deep Diver SP（準備中）', 'AOWの1ダイブより先へ進む全4ダイブのスペシャルティ', 20, 0, 'deep']);
     $catalog->execute(['Boat Diver SP（準備中）', 'AOWの1ダイブより先へ進む全2ダイブのスペシャルティ', 30, 0, 'boat']);
+
+    $pdo->exec('PRAGMA user_version = ' . SCHEMA_VERSION);
 }
 
 function now_iso(): string
 {
     return (new DateTimeImmutable('now', new DateTimeZone('Asia/Tokyo')))->format(DATE_ATOM);
+}
+
+// 管理画面用。ISO8601をそのまま出すと "2026-08-06T16:43" と読みにくい。
+function jst_short(?string $iso, bool $withTime = true): string
+{
+    if (!$iso) return '—';
+    try {
+        $dt = new DateTimeImmutable($iso);
+    } catch (Throwable $e) {
+        return '—';
+    }
+    return $dt->setTimezone(new DateTimeZone('Asia/Tokyo'))->format($withTime ? 'Y/m/d H:i' : 'Y/m/d');
 }
 
 function h(string $value): string
@@ -177,12 +213,16 @@ function csrf_token(): string
     return (string)$_SESSION['csrf'];
 }
 
-function require_csrf(?string $token = null): void
+function require_csrf(?string $token = null, bool $asJson = false): void
 {
     $provided = $token ?? (isset($_POST['csrf']) ? (string)$_POST['csrf'] : '');
     if (!hash_equals(csrf_token(), $provided)) {
         http_response_code(419);
-        exit('セッションの有効期限が切れました。ページを再読み込みしてください。');
+        // JSONを名乗っているエンドポイントでプレーンテキストを返すと、
+        // ブラウザ側は「原因不明の失敗」としてしか扱えない。
+        exit($asJson
+            ? json_encode(['error' => 'session_expired'])
+            : 'セッションの有効期限が切れました。ページを再読み込みしてください。');
     }
 }
 
@@ -330,7 +370,10 @@ function clean_course_state(array $input, int $curriculumVersion = COURSE_CURRIC
             if (($cleanAnswers[$question] ?? '') !== $correct) $allCorrect = false;
         }
         $requestedComplete = !empty($inputModules[$module]['complete']);
-        $state['modules'][$module] = ['answers' => $cleanAnswers, 'complete' => $allCorrect && $requestedComplete];
+        // 空の連想配列は json_encode で [] になり、ブラウザ側では配列として届く。
+        // 配列に "ppb1" のような文字列キーを入れても JSON.stringify が落とすため、
+        // 1問も答えていない状態から回答が一切保存されなくなる。必ずオブジェクトで返す。
+        $state['modules'][$module] = ['answers' => (object)$cleanAnswers, 'complete' => $allCorrect && $requestedComplete];
     }
     $inputReady = isset($input['ready']) && is_array($input['ready']) ? $input['ready'] : [];
     foreach (['gear', 'condition', 'question'] as $key) $state['ready'][$key] = !empty($inputReady[$key]);
@@ -373,6 +416,22 @@ function load_progress(int $userId, string $slug = APP_COURSE): array
 function save_progress(int $userId, array $input, bool $issueCompletion = false): array
 {
     $pdo = db();
+    // 読んで書くまでを1つの書き込みトランザクションにする。別のタブや端末から
+    // 同時に保存が来たとき、発行済みの修了番号を読み損ねて消してしまうのを防ぐ。
+    $ownTransaction = !$pdo->inTransaction();
+    if ($ownTransaction) $pdo->beginTransaction();
+    try {
+        $state = write_progress_row($pdo, $userId, $input, $issueCompletion);
+        if ($ownTransaction) $pdo->commit();
+    } catch (Throwable $e) {
+        if ($ownTransaction && $pdo->inTransaction()) $pdo->rollBack();
+        throw $e;
+    }
+    return $state;
+}
+
+function write_progress_row(PDO $pdo, int $userId, array $input, bool $issueCompletion): array
+{
     $existing = $pdo->prepare('SELECT state_json, completion_code, completed_at FROM course_progress WHERE user_id = ? AND course_slug = ?');
     $existing->execute([$userId, APP_COURSE]);
     $row = $existing->fetch();

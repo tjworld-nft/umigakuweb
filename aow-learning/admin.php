@@ -4,6 +4,7 @@ require __DIR__ . '/lib.php';
 start_secure_session();
 $error = '';
 $generated = '';
+$reset = null;
 
 if (isset($_GET['logout'])) {
     unset($_SESSION['admin_authenticated']);
@@ -56,15 +57,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $userId = (int)($_POST['user_id'] ?? 0);
         $status = (string)($_POST['status'] ?? '') === 'active' ? 'active' : 'suspended';
         $pdo->prepare('UPDATE users SET status = ? WHERE id = ?')->execute([$status, $userId]);
+    } elseif ($action === 'reset_access') {
+        // パスワードと復旧コードの両方を忘れると、これまでは復帰する手段が無かった。
+        $userId = (int)($_POST['user_id'] ?? 0);
+        $lookup = $pdo->prepare('SELECT learner_id FROM users WHERE id = ?');
+        $lookup->execute([$userId]);
+        $targetLearner = (string)($lookup->fetchColumn() ?: '');
+        if ($targetLearner === '') {
+            $error = '対象の受講者が見つかりません。';
+        } else {
+            $tempPassword = random_code('PASS', 3);
+            $tempRecovery = random_code('REC', 3);
+            $pdo->prepare('UPDATE users SET password_hash = ?, recovery_hash = ? WHERE id = ?')
+                ->execute([password_hash($tempPassword, PASSWORD_DEFAULT), token_hash($tempRecovery), $userId]);
+            $reset = ['learner_id' => $targetLearner, 'password' => $tempPassword, 'recovery' => $tempRecovery];
+        }
     }
 }
 $courses = $pdo->query('SELECT * FROM courses ORDER BY sort_order')->fetchAll();
 $users = $pdo->query('SELECT u.id, u.learner_id, u.status, u.created_at, u.last_login_at,
     GROUP_CONCAT(e.course_slug) AS courses,
-    MAX(CASE WHEN p.course_slug = "aow" THEN p.completed_at END) AS aow_completed
+    MAX(CASE WHEN p.course_slug = "aow" THEN p.completed_at END) AS aow_completed,
+    MAX(CASE WHEN p.course_slug = "aow" THEN p.state_json END) AS aow_state,
+    MAX(CASE WHEN p.course_slug = "aow" THEN p.updated_at END) AS aow_updated
     FROM users u LEFT JOIN enrollments e ON e.user_id = u.id
     LEFT JOIN course_progress p ON p.user_id = u.id
     GROUP BY u.id ORDER BY u.id DESC')->fetchAll();
+$moduleLabels = ['ppb' => 'PPB', 'navigation' => 'ナビ', 'naturalist' => '観察', 'deep' => 'ディープ', 'boat' => 'ボート'];
 $invites = $pdo->query('SELECT * FROM invite_codes ORDER BY id DESC LIMIT 30')->fetchAll();
 portal_head('講座管理');
 ?>
@@ -72,17 +91,45 @@ portal_head('講座管理');
 <main class="dashboard shell">
   <div class="dashboard-top"><div><p class="eyebrow">LEARNING ADMIN</p><h1>匿名受講アカウント管理</h1><p class="lead">個人情報を保存せず、受講者IDと講座権限だけを管理します。</p></div></div>
   <?php if ($generated): ?><div class="generated-code">今回発行した初回登録コード（この画面でのみ表示）<b><?= h($generated) ?></b></div><?php endif; ?>
+  <?php if ($reset): ?><div class="generated-code generated-code--reset">
+    <?= h($reset['learner_id']) ?> のログイン情報を再発行しました（この画面でのみ表示）
+    <b>仮パスワード：<?= h($reset['password']) ?></b>
+    <b>復旧コード：<?= h($reset['recovery']) ?></b>
+    <small>ハイフンも含めてそのままお客様へお伝えください。ログイン後、「パスワードを忘れた方」からこの復旧コードでご自身のパスワードに変更していただけます。</small>
+  </div><?php endif; ?>
   <?php if ($error): ?><p class="alert" style="margin:0 0 20px"><?= h($error) ?></p><?php endif; ?>
-  <section class="student-url-card" aria-labelledby="student-url-title"><div><p class="eyebrow">SEND TO STUDENTS</p><h2 id="student-url-title">お客様へ送る受講生サイト</h2><p>初回登録コードと一緒に、このURLをお客様へ送ってください。</p></div><div class="student-url-actions"><label for="studentSiteUrl">受講生サイトURL</label><div><input id="studentSiteUrl" type="text" value="https://miura-diving.com/aow-learning/" readonly><button type="button" data-copy-target="studentSiteUrl">URLをコピー</button><a href="https://miura-diving.com/aow-learning/" target="_blank" rel="noopener">サイトを開く ↗</a></div><p data-copy-status aria-live="polite"></p></div></section>
+  <section class="student-url-card" aria-labelledby="student-url-title"><div><p class="eyebrow">SEND TO STUDENTS</p><h2 id="student-url-title">お客様へ送る受講生サイト</h2><p>初回登録コードと一緒に、このURLをお客様へ送ってください。</p></div><div class="student-url-actions"><label for="studentSiteUrl">受講生サイトURL</label><div><input id="studentSiteUrl" type="text" value="https://miura-diving.com/aow-learning/" readonly><button type="button" data-copy-target="studentSiteUrl" data-copy-message="受講生サイトのURLをコピーしました。お客様へのメッセージに貼り付けられます。">URLをコピー</button><a href="https://miura-diving.com/aow-learning/" target="_blank" rel="noopener">サイトを開く ↗</a></div><p data-copy-status aria-live="polite"></p></div></section>
   <section class="admin-preview-card"><div><p class="eyebrow">CONTENT PREVIEW</p><h2>AOW教材の全内容を確認</h2><p>PPB・ナビゲーション・ナチュラリスト・ディープ・ボート、全41問、修了画面まで管理者専用プレビューで確認できます。操作は受講者記録へ保存されません。</p></div><a href="course.php?course=aow">教材を開く →</a></section>
   <div class="admin-grid">
     <section class="panel"><h2>初回登録コードを発行</h2><form method="post"><input type="hidden" name="csrf" value="<?= h(csrf_token()) ?>"><input type="hidden" name="action" value="create_invite"><div class="check-options">
       <?php foreach ($courses as $course): ?><label><input type="checkbox" name="courses[]" value="<?= h((string)$course['slug']) ?>" <?= (int)$course['active'] ? '' : 'disabled' ?>> <?= h((string)$course['title']) ?><?= (int)$course['active'] ? '' : '（準備中）' ?></label><?php endforeach; ?>
       </div><div class="field"><label for="valid_days">有効日数</label><input id="valid_days" name="valid_days" type="number" min="1" max="365" value="30"></div><button class="primary" type="submit">1回限りのコードを発行</button></form></section>
-    <section class="panel"><h2>発行済みコード</h2><table><thead><tr><th>表示</th><th>講座</th><th>状態</th><th>期限</th></tr></thead><tbody><?php foreach ($invites as $invite): ?><tr><td><?= h((string)$invite['code_hint']) ?></td><td><?= h(implode(', ', json_decode((string)$invite['course_slugs'], true) ?: [])) ?></td><td><?= h((string)$invite['status']) ?></td><td><?= h(substr((string)$invite['expires_at'], 0, 10)) ?></td></tr><?php endforeach; ?></tbody></table></section>
+    <section class="panel"><h2>発行済みコード</h2><table><thead><tr><th>表示</th><th>講座</th><th>状態</th><th>期限</th></tr></thead><tbody><?php foreach ($invites as $invite): ?><tr><td><?= h((string)$invite['code_hint']) ?></td><td><?= h(implode(', ', json_decode((string)$invite['course_slugs'], true) ?: [])) ?></td><td><?= h((string)$invite['status']) ?></td><td><?= h(jst_short((string)$invite['expires_at'], false)) ?></td></tr><?php endforeach; ?></tbody></table></section>
   </div>
-  <section class="panel" style="margin-top:20px"><h2>受講状況</h2><?php if (!$users): ?><p class="empty">まだ受講者はいません。</p><?php else: ?><table><thead><tr><th>受講者ID</th><th>講座</th><th>AOW</th><th>最終ログイン</th><th>状態</th></tr></thead><tbody>
-    <?php foreach ($users as $row): ?><tr><td><b><?= h((string)$row['learner_id']) ?></b></td><td><?= h((string)($row['courses'] ?: '—')) ?></td><td><?= $row['aow_completed'] ? '修了 ' . h(substr((string)$row['aow_completed'], 0, 10)) : '学習中' ?></td><td><?= h($row['last_login_at'] ? substr((string)$row['last_login_at'], 0, 16) : '—') ?></td><td><form method="post"><input type="hidden" name="csrf" value="<?= h(csrf_token()) ?>"><input type="hidden" name="action" value="user_status"><input type="hidden" name="user_id" value="<?= (int)$row['id'] ?>"><input type="hidden" name="status" value="<?= $row['status'] === 'active' ? 'suspended' : 'active' ?>"><button class="secondary" type="submit"><?= $row['status'] === 'active' ? '停止する' : '再開する' ?></button></form></td></tr><?php endforeach; ?>
+  <section class="panel" style="margin-top:20px"><h2>受講状況</h2><?php if (!$users): ?><p class="empty">まだ受講者はいません。</p><?php else: ?><table><thead><tr><th>受講者ID</th><th>講座</th><th>AOWの進み方</th><th>最終ログイン</th><th>操作</th></tr></thead><tbody>
+    <?php foreach ($users as $row):
+      $rowState = $row['aow_state'] ? json_decode((string)$row['aow_state'], true) : null;
+      $rowModules = is_array($rowState) && isset($rowState['modules']) && is_array($rowState['modules']) ? $rowState['modules'] : [];
+      $doneCount = 0;
+      foreach ($moduleLabels as $slug => $_label) if (!empty($rowModules[$slug]['complete'])) $doneCount++;
+    ?><tr>
+      <td><b><?= h((string)$row['learner_id']) ?></b><?= $row['status'] === 'active' ? '' : '<span class="row-flag">停止中</span>' ?></td>
+      <td><?= h((string)($row['courses'] ?: '—')) ?></td>
+      <td>
+        <?php if ($row['aow_completed']): ?><b>修了 <?= h(jst_short((string)$row['aow_completed'], false)) ?></b>
+        <?php else: ?><b><?= $doneCount ?> / <?= count($moduleLabels) ?> レッスン</b>
+          <span class="lesson-dots" aria-label="<?= h(implode('・', array_map(fn($s, $l) => $l . (empty($rowModules[$s]['complete']) ? '未完了' : '完了'), array_keys($moduleLabels), $moduleLabels))) ?>">
+            <?php foreach ($moduleLabels as $slug => $label): ?><i class="<?= empty($rowModules[$slug]['complete']) ? '' : 'is-done' ?>"><?= h($label) ?></i><?php endforeach; ?>
+          </span>
+          <?php if ($row['aow_updated']): ?><small>最終保存 <?= h(jst_short((string)$row['aow_updated'])) ?></small><?php endif; ?>
+        <?php endif; ?>
+      </td>
+      <td><?= h(jst_short($row['last_login_at'] ? (string)$row['last_login_at'] : null)) ?></td>
+      <td><div class="row-actions">
+        <form method="post"><input type="hidden" name="csrf" value="<?= h(csrf_token()) ?>"><input type="hidden" name="action" value="user_status"><input type="hidden" name="user_id" value="<?= (int)$row['id'] ?>"><input type="hidden" name="status" value="<?= $row['status'] === 'active' ? 'suspended' : 'active' ?>"><button class="secondary" type="submit" data-confirm="<?= h((string)$row['learner_id']) ?> を<?= $row['status'] === 'active' ? '停止' : '再開' ?>します。よろしいですか？"><?= $row['status'] === 'active' ? '停止する' : '再開する' ?></button></form>
+        <form method="post"><input type="hidden" name="csrf" value="<?= h(csrf_token()) ?>"><input type="hidden" name="action" value="reset_access"><input type="hidden" name="user_id" value="<?= (int)$row['id'] ?>"><button class="secondary" type="submit" data-confirm="<?= h((string)$row['learner_id']) ?> の仮パスワードと復旧コードを再発行します。今のパスワードは使えなくなります。よろしいですか？">ログイン情報を再発行</button></form>
+      </div></td>
+    </tr><?php endforeach; ?>
   </tbody></table><?php endif; ?></section>
 </main>
 <?php portal_end(); ?>

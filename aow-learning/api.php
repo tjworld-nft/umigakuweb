@@ -21,7 +21,7 @@ try {
         exit;
     }
     $payload = json_decode((string)file_get_contents('php://input'), true, 512, JSON_THROW_ON_ERROR);
-    require_csrf(isset($payload['csrf']) ? (string)$payload['csrf'] : '');
+    require_csrf(isset($payload['csrf']) ? (string)$payload['csrf'] : '', true);
     $state = isset($payload['state']) && is_array($payload['state']) ? $payload['state'] : [];
     $saved = save_progress((int)$user['id'], $state, !empty($payload['issueCompletion']));
     echo json_encode(['state' => $saved, 'learnerId' => $user['learner_id']], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
