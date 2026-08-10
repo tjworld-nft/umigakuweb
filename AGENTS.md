@@ -195,8 +195,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - 導線: トップの `.home-manga` 帯（BEGINNER ENTRY の直後）／主要15ページの `footer-nav`／
   `license/`・`beginner-guide/`（第1話）と `fun-diving/`（第2話）の `.manga-teaser`。
   **グローバルナビには入れていない**（既に幅いっぱいで、まんがを足すと折り返す。実測でnav幅1108px/1280px）。
-- **動画版（2026-08-10追加）**: 第1〜3話の各ページ末尾に約70〜91秒のダイジェスト動画を埋め込んでいる（`.mr-video`・`preload="none"`なので開いただけでは読み込まない）。
-  **第4話は動画版を準備中**（完成したら manga-publish 工程Bで `.mr-video`＋VideoObject＋一覧カードの「動画版あり」を追加する）。
+- **動画版（2026-08-10追加・全4話そろい 2026-08-11）**: 各話ページの末尾に約70〜91秒のダイジェスト動画を埋め込んでいる（`.mr-video`・`preload="none"`なので開いただけでは読み込まない）。
   ファイルは **`video/manga/<slug>.mp4`**（720x1280・H.264 crf26・6.5〜8.9MB）と `<slug>-poster.jpg`。
   原本はショート動画工場 `~/Documents/short-factory/out/clara-<slug>.mp4`（47〜68MB）で、ffmpegで縮めてコミットしている。
   構造化データは `VideoObject`。語りはクララ（MiniMaxシステム音声・AI開示は動画に焼き込み済み）。
