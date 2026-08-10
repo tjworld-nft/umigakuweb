@@ -1153,3 +1153,131 @@ body.is-ocean .hero-bubble { display: none; }
 
 @media (prefers-reduced-motion: reduce) { .page-water { display: none; } }
 @media print { .page-water { display: none; } }
+
+/* ================================================================
+   HOME — 「まんが」バンド（/manga/ への導線）
+   水のレイヤー(.page-water z-index:1)より上に出すため position/z-index を持たせる
+   ================================================================ */
+.home-manga {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  background: linear-gradient(135deg, #12333F 0%, #1C5566 48%, var(--teal-dark) 100%);
+  color: var(--white);
+  padding: clamp(2.8rem, 7vw, 4.2rem) 0;
+}
+.home-manga::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.15) 1.2px, transparent 1.3px);
+  background-size: 10px 10px;
+  pointer-events: none;
+}
+.home-manga .container { position: relative; z-index: 2; }
+.home-manga .section-label { color: rgba(255,255,255,.72); }
+.home-manga h2 { color: var(--white); }
+.home-manga .section-lead { color: rgba(255,255,255,.88); }
+.home-manga__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(.7rem, 2vw, 1.2rem);
+  max-width: 880px;
+  margin: 1.8rem auto 0;
+  text-align: left;
+}
+.home-manga__card {
+  display: block;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--radius-md);
+  padding: .7rem;
+  text-decoration: none;
+  color: var(--white);
+  transition: transform var(--ease), background var(--ease);
+}
+.home-manga__card:hover { transform: translateY(-4px); background: rgba(255,255,255,.15); }
+.home-manga__card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 896 / 900;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  background: var(--white);
+  margin-bottom: .6rem;
+}
+.home-manga__ep {
+  display: block;
+  font-family: var(--ff-accent);
+  font-size: .64rem;
+  letter-spacing: .1em;
+  color: var(--yellow);
+  margin-bottom: .2rem;
+}
+.home-manga__card b {
+  display: block;
+  font-size: .88rem;
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: .3rem;
+}
+.home-manga__card span.t {
+  display: block;
+  font-size: .72rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.78);
+}
+.home-manga__more { margin-top: 1.6rem; }
+@media (max-width: 560px) {
+  .home-manga__grid { grid-template-columns: 1fr; max-width: 340px; }
+  .home-manga__card { display: grid; grid-template-columns: 84px 1fr; gap: .8rem; align-items: center; }
+  .home-manga__card img { margin-bottom: 0; aspect-ratio: 896 / 1080; }
+}
+
+/* ---------- まんがへの小さな導線（各ページに置く帯） ---------- */
+.manga-teaser {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 1rem;
+  align-items: center;
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--teal);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1rem 1.2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+.manga-teaser:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.manga-teaser img {
+  width: 100%;
+  aspect-ratio: 896 / 1080;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--white);
+}
+.manga-teaser__tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  color: var(--teal-dark);
+  background: var(--bg-soft);
+  border-radius: 999px;
+  padding: .16rem .7rem;
+  margin-bottom: .4rem;
+}
+.manga-teaser b { display: block; font-size: .98rem; font-weight: 900; line-height: 1.5; margin-bottom: .3rem; }
+.manga-teaser__lead { display: block; font-size: .8rem; line-height: 1.8; color: var(--text-sub); margin-bottom: .5rem; }
+.manga-teaser__go { display: inline-block; font-size: .82rem; font-weight: 700; color: var(--coral); }
+@media (max-width: 480px) {
+  .manga-teaser { grid-template-columns: 72px 1fr; gap: .8rem; padding: .9rem 1rem; }
+}
