@@ -206,6 +206,13 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   アセット変換 `scripts/build_assets.py`（pages/og/video）と機械検収 `scripts/preflight.py`（slug照合・ページ数三点照合・alt・相互リンク・sitemap・統計・動画対応）がある。
   **preflightがALL PASSになるまでデプロイしない。** 制作側スキル（ai-manga-creator / short-video-maker）の末尾にも公開フローへの導線を追記済み。
 
+## AI検索向け `llms.txt`（2026-08-10 新設・PR #50）
+
+- ルートの `llms.txt` はAI検索（ChatGPT・Perplexity・Claude等）向けのサイト概要。robots.txt からもコメントで案内している。
+- 事業概要・コース料金・特典・主要ページ・FAQ要約を1枚に集約。**料金や特典を変えたら必ずここも更新する**（「2026年8月現在」の日付表記も上げる）。
+- ⚠ **賞味期限**: 「夏のLINE特典（9/30まで）」の記載あり。10月に入ったら、まんがP11の差し替えと同じタイミングで夏割の行を削除すること。
+- 新しいページ（まんが新作・特典ページ等）を公開したら「主要ページ」節にも足す。
+
 ## 実装済みコンポーネント
 
 - `.navi-bubble`（クラゲちゃん吹き出し）: trial-diving と beginner-guide の各`<style>`内に同一CSSあり。アバター+吹き出し+左向き三角。新ページに使うときはコピーする。
