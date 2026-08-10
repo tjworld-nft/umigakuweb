@@ -202,9 +202,9 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - ⚠ **賞味期限**: 第1話P11と第3話P11、および**第1話・第3話の動画版の終盤**に「9/30までの夏割」が入っている。10月に入ったら
   原稿側のP11を差し替え→`cwebp`で `image/manga/*/p11.webp` を作り直し→各ページの `.mr-note` を消す（2作まとめて）。
   **動画版はshort-factory側で末尾コマを差し替えて再レンダ→再エンコードが必要**（それまでの間は該当2話の`.mr-video`ブロックを外す手もある）。第2話は期限なし。
-- 新作を足す手順: ①`cwebp -q 80 -m 6` で `image/manga/<slug>/` にp01〜とcover（`-resize 560 0`）を作る
-  ②`manga/<既存話>/index.html` をコピーして要約・要点・alt・CTAを書き換える ③一覧 `manga/index.html` にカードを足す（話数・合計ページ数も更新）
-  ④他の話の「ほかのまんが」に足す ⑤`sitemap.xml`・トップの`.home-manga`帯を更新。
+- **新作の公開・動画の追加・P11差し替えは `manga-publish` スキルで行う**（ローカル `.claude/skills/manga-publish/`・git外・このMacのみ）。
+  アセット変換 `scripts/build_assets.py`（pages/og/video）と機械検収 `scripts/preflight.py`（slug照合・ページ数三点照合・alt・相互リンク・sitemap・統計・動画対応）がある。
+  **preflightがALL PASSになるまでデプロイしない。** 制作側スキル（ai-manga-creator / short-video-maker）の末尾にも公開フローへの導線を追記済み。
 
 ## 実装済みコンポーネント
 
