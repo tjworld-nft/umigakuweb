@@ -62,6 +62,22 @@
   }
   </script>
 
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "動画版「決めるのは、潜ってからでいい」",
+    "description": "まんが第4話のダイジェスト動画。ライセンスなしでその日のうちに海の中を1回潜れる体験ダイビングを、約88秒で紹介します。",
+    "thumbnailUrl": "https://miura-diving.com/video/manga/trial-diving-poster.jpg",
+    "contentUrl": "https://miura-diving.com/video/manga/trial-diving.mp4",
+    "uploadDate": "2026-08-11",
+    "duration": "PT1M28S",
+    "inLanguage": "ja",
+    "publisher": { "@type": "Organization", "name": "三浦 海の学校", "url": "https://miura-diving.com/" }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -116,7 +132,7 @@
         <h1>決めるのは、潜ってからでいい</h1>
         <p class="mr-head__msg">Cカードを取るかどうかは、1回潜ってから決めればいい。</p>
         <p class="mr-meta">
-          <span>全10ページ</span><span>読むのに約3分</span><span>案内役：クララ</span>
+          <span>全10ページ</span><span>読むのに約3分</span><span>案内役：クララ</span><span><a href="#manga-video" style="color:inherit;">動画版 約88秒</a></span>
         </p>
       </div>
     </div>
@@ -200,6 +216,18 @@
               loading="lazy" decoding="async">
             <span class="mr-page__no">10 / 10</span>
           </button>
+        </div>
+
+        <!-- 動画版 -->
+        <div class="mr-video" id="manga-video">
+          <h2>動画でも見られます</h2>
+          <p class="mr-video__lead">このまんがのダイジェストを、クララの語りつきの動画（約88秒）にしています。おさらいや、お友達に送るのに便利です。</p>
+          <video controls playsinline preload="none"
+            poster="../../video/manga/trial-diving-poster.jpg" width="720" height="1280">
+            <source src="../../video/manga/trial-diving.mp4" type="video/mp4">
+            お使いのブラウザは動画の再生に対応していません。
+          </video>
+          <p class="mr-video__cap">語り：クララ（イラストと声はAIで生成しています）・音が出ます</p>
         </div>
 
         <!-- 読み終わったあと -->
