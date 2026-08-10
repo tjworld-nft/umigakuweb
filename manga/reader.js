@@ -88,7 +88,7 @@
     var target = pages[index];
     if (target) {
       var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({ top: top, behavior: 'instant' in document.documentElement.style ? 'auto' : 'auto' });
+      window.scrollTo({ top: top, behavior: 'auto' });
       target.focus({ preventScroll: true });
     }
   }
