@@ -112,6 +112,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- まんが 第4話: 決めるのは、潜ってからでいい -->
+  <url>
+    <loc>https://miura-diving.com/manga/trial-diving/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- ダイビングポイント: 城ヶ島 梶の浜ビーチ -->
   <url>
     <loc>https://miura-diving.com/diving-point/jogashima-kajinohama/</loc>
