@@ -183,7 +183,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 解説まんがを読ませる場所。ブログ（別リポジトリ）や図鑑と並ぶ、独立したコンテンツハブ。
 
 - **一覧**: `manga/index.html`（https://miura-diving.com/manga/ ）。
-  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）。
+  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）／`trial-diving`（第4話・10P・2026-08-11公開）。
 - 共通アセットは **`manga/manga.css`**（一覧・読みページ・ビューア）と **`manga/reader.js`**（拡大ビューア）。
   ホーム/各ページに置く導線の`.home-manga` `.manga-teaser`だけは `css/style.css` の末尾にある（他ページから使うため）。
 - 画像は **`image/manga/<slug>/p01〜.webp`**（原寸896x1200・cwebp q80で1枚120KB前後）＋ **`cover.webp`**（幅560）。
@@ -195,13 +195,14 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - 導線: トップの `.home-manga` 帯（BEGINNER ENTRY の直後）／主要15ページの `footer-nav`／
   `license/`・`beginner-guide/`（第1話）と `fun-diving/`（第2話）の `.manga-teaser`。
   **グローバルナビには入れていない**（既に幅いっぱいで、まんがを足すと折り返す。実測でnav幅1108px/1280px）。
-- **動画版（2026-08-10追加）**: 各話ページの末尾に約70〜91秒のダイジェスト動画を埋め込んでいる（`.mr-video`・`preload="none"`なので開いただけでは読み込まない）。
+- **動画版（2026-08-10追加）**: 第1〜3話の各ページ末尾に約70〜91秒のダイジェスト動画を埋め込んでいる（`.mr-video`・`preload="none"`なので開いただけでは読み込まない）。
+  **第4話は動画版を準備中**（完成したら manga-publish 工程Bで `.mr-video`＋VideoObject＋一覧カードの「動画版あり」を追加する）。
   ファイルは **`video/manga/<slug>.mp4`**（720x1280・H.264 crf26・6.5〜8.9MB）と `<slug>-poster.jpg`。
   原本はショート動画工場 `~/Documents/short-factory/out/clara-<slug>.mp4`（47〜68MB）で、ffmpegで縮めてコミットしている。
   構造化データは `VideoObject`。語りはクララ（MiniMaxシステム音声・AI開示は動画に焼き込み済み）。
 - ⚠ **賞味期限**: 第1話P11と第3話P11、および**第1話・第3話の動画版の終盤**に「9/30までの夏割」が入っている。10月に入ったら
   原稿側のP11を差し替え→`cwebp`で `image/manga/*/p11.webp` を作り直し→各ページの `.mr-note` を消す（2作まとめて）。
-  **動画版はshort-factory側で末尾コマを差し替えて再レンダ→再エンコードが必要**（それまでの間は該当2話の`.mr-video`ブロックを外す手もある）。第2話は期限なし。
+  **動画版はshort-factory側で末尾コマを差し替えて再レンダ→再エンコードが必要**（それまでの間は該当2話の`.mr-video`ブロックを外す手もある）。第2話・第4話は期限なし。
 - **新作の公開・動画の追加・P11差し替えは `manga-publish` スキルで行う**（ローカル `.claude/skills/manga-publish/`・git外・このMacのみ）。
   アセット変換 `scripts/build_assets.py`（pages/og/video）と機械検収 `scripts/preflight.py`（slug照合・ページ数三点照合・alt・相互リンク・sitemap・統計・動画対応）がある。
   **preflightがALL PASSになるまでデプロイしない。** 制作側スキル（ai-manga-creator / short-video-maker）の末尾にも公開フローへの導線を追記済み。
