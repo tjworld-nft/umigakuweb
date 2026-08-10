@@ -195,8 +195,13 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - 導線: トップの `.home-manga` 帯（BEGINNER ENTRY の直後）／主要15ページの `footer-nav`／
   `license/`・`beginner-guide/`（第1話）と `fun-diving/`（第2話）の `.manga-teaser`。
   **グローバルナビには入れていない**（既に幅いっぱいで、まんがを足すと折り返す。実測でnav幅1108px/1280px）。
-- ⚠ **賞味期限**: 第1話P11と第3話P11に「9/30までの夏割」が入っている。10月に入ったら
+- **動画版（2026-08-10追加）**: 各話ページの末尾に約70〜91秒のダイジェスト動画を埋め込んでいる（`.mr-video`・`preload="none"`なので開いただけでは読み込まない）。
+  ファイルは **`video/manga/<slug>.mp4`**（720x1280・H.264 crf26・6.5〜8.9MB）と `<slug>-poster.jpg`。
+  原本はショート動画工場 `~/Documents/short-factory/out/clara-<slug>.mp4`（47〜68MB）で、ffmpegで縮めてコミットしている。
+  構造化データは `VideoObject`。語りはクララ（MiniMaxシステム音声・AI開示は動画に焼き込み済み）。
+- ⚠ **賞味期限**: 第1話P11と第3話P11、および**第1話・第3話の動画版の終盤**に「9/30までの夏割」が入っている。10月に入ったら
   原稿側のP11を差し替え→`cwebp`で `image/manga/*/p11.webp` を作り直し→各ページの `.mr-note` を消す（2作まとめて）。
+  **動画版はshort-factory側で末尾コマを差し替えて再レンダ→再エンコードが必要**（それまでの間は該当2話の`.mr-video`ブロックを外す手もある）。第2話は期限なし。
 - 新作を足す手順: ①`cwebp -q 80 -m 6` で `image/manga/<slug>/` にp01〜とcover（`-resize 560 0`）を作る
   ②`manga/<既存話>/index.html` をコピーして要約・要点・alt・CTAを書き換える ③一覧 `manga/index.html` にカードを足す（話数・合計ページ数も更新）
   ④他の話の「ほかのまんが」に足す ⑤`sitemap.xml`・トップの`.home-manga`帯を更新。

@@ -62,6 +62,22 @@
   }
   </script>
 
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "動画版「「ついて回る側」から抜ける」",
+    "description": "まんが第3話のダイジェスト動画。AOWが上級者の証ではなく「ついて回る側」から抜けるための講習であることを約91秒で紹介します。",
+    "thumbnailUrl": "https://miura-diving.com/video/manga/aow-poster.jpg",
+    "contentUrl": "https://miura-diving.com/video/manga/aow.mp4",
+    "uploadDate": "2026-08-08",
+    "duration": "PT1M31S",
+    "inLanguage": "ja",
+    "publisher": { "@type": "Organization", "name": "三浦 海の学校", "url": "https://miura-diving.com/" }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -116,7 +132,7 @@
         <h1>「ついて回る側」から抜ける</h1>
         <p class="mr-head__msg">AOWは上級者の証じゃない。自分で海を組み立てるための講習。</p>
         <p class="mr-meta">
-          <span>全12ページ</span><span>読むのに約3分</span><span>案内役：クララ</span>
+          <span>全12ページ</span><span>読むのに約3分</span><span>案内役：クララ</span><span><a href="#manga-video" style="color:inherit;">動画版 約91秒</a></span>
         </p>
       </div>
     </div>
@@ -211,7 +227,19 @@
             <span class="mr-page__no">12 / 12</span>
           </button>
         </div>
-        <p class="mr-note">※ 11ページ目に出てくるLINE特典（アドバンス夏割・総額¥65,300）は、2026年9月30日までのお申し込みが対象です。</p>
+        <p class="mr-note">※ 11ページ目と動画版の終盤に出てくるLINE特典（アドバンス夏割・総額¥65,300）は、2026年9月30日までのお申し込みが対象です。</p>
+
+        <!-- 動画版 -->
+        <div class="mr-video" id="manga-video">
+          <h2>動画でも見られます</h2>
+          <p class="mr-video__lead">このまんがのダイジェストを、クララの語りつきの動画（約91秒）にしています。おさらいや、お友達に送るのに便利です。</p>
+          <video controls playsinline preload="none"
+            poster="../../video/manga/aow-poster.jpg" width="720" height="1280">
+            <source src="../../video/manga/aow.mp4" type="video/mp4">
+            お使いのブラウザは動画の再生に対応していません。
+          </video>
+          <p class="mr-video__cap">語り：クララ（イラストと声はAIで生成しています）・音が出ます</p>
+        </div>
 
         <!-- 読み終わったあと -->
         <div class="mr-end">

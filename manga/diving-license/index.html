@@ -62,6 +62,22 @@
   }
   </script>
 
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "動画版「Cカードって、なんですか？」",
+    "description": "まんが第1話のダイジェスト動画。Cカードが世界中の海への入場券であること、三浦なら日帰りで取れることを約70秒で紹介します。",
+    "thumbnailUrl": "https://miura-diving.com/video/manga/license-poster.jpg",
+    "contentUrl": "https://miura-diving.com/video/manga/license.mp4",
+    "uploadDate": "2026-08-06",
+    "duration": "PT1M10S",
+    "inLanguage": "ja",
+    "publisher": { "@type": "Organization", "name": "三浦 海の学校", "url": "https://miura-diving.com/" }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -116,7 +132,7 @@
         <h1>Cカードって、なんですか？</h1>
         <p class="mr-head__msg">世界中の海への入場券。しかも三浦なら、日帰りで取れる。</p>
         <p class="mr-meta">
-          <span>全12ページ</span><span>読むのに約3分</span><span>案内役：クララ</span>
+          <span>全12ページ</span><span>読むのに約3分</span><span>案内役：クララ</span><span><a href="#manga-video" style="color:inherit;">動画版 約70秒</a></span>
         </p>
       </div>
     </div>
@@ -211,7 +227,19 @@
             <span class="mr-page__no">12 / 12</span>
           </button>
         </div>
-        <p class="mr-note">※ 11ページ目に出てくるLINE特典（夏割・総額¥59,400）は、2026年9月30日までのお申し込みが対象です。それ以外のページの金額は通年の料金です。</p>
+        <p class="mr-note">※ 11ページ目と動画版の終盤に出てくるLINE特典（夏割・総額¥59,400）は、2026年9月30日までのお申し込みが対象です。それ以外のページの金額は通年の料金です。</p>
+
+        <!-- 動画版 -->
+        <div class="mr-video" id="manga-video">
+          <h2>動画でも見られます</h2>
+          <p class="mr-video__lead">このまんがのダイジェストを、クララの語りつきの動画（約70秒）にしています。おさらいや、お友達に送るのに便利です。</p>
+          <video controls playsinline preload="none"
+            poster="../../video/manga/license-poster.jpg" width="720" height="1280">
+            <source src="../../video/manga/license.mp4" type="video/mp4">
+            お使いのブラウザは動画の再生に対応していません。
+          </video>
+          <p class="mr-video__cap">語り：クララ（イラストと声はAIで生成しています）・音が出ます</p>
+        </div>
 
         <!-- 読み終わったあと -->
         <div class="mr-end">

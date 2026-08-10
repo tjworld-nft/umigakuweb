@@ -579,3 +579,40 @@
 }
 .mv__hint.is-hidden { opacity: 0; }
 body.mv-open { overflow: hidden; }
+
+/* ============================================================
+   動画版（各話ページ）
+   ============================================================ */
+.mr-video {
+  max-width: 840px;
+  margin: clamp(2rem, 5vw, 3rem) auto 0;
+  text-align: center;
+}
+.mr-video h2 {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--ink);
+  margin-bottom: .4rem;
+}
+.mr-video__lead {
+  font-size: .82rem;
+  line-height: 1.9;
+  color: var(--text-sub);
+  margin-bottom: 1rem;
+}
+.mr-video video {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto; /* width/height属性を上書きしないとaspect-ratioが効かない */
+  margin: 0 auto;
+  aspect-ratio: 9 / 16;
+  border-radius: 16px;
+  background: #0d1a21;
+  box-shadow: 0 10px 30px rgba(13, 26, 33, .25);
+}
+.mr-video__cap {
+  font-size: .74rem;
+  color: var(--text-light);
+  margin-top: .7rem;
+}
