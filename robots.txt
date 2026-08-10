@@ -34,6 +34,9 @@ Disallow: /3d-maze-simple-backup.html
 Sitemap: https://miura-diving.com/sitemap.xml
 Sitemap: https://miura-diving.com/ai-sitemap.xml
 
+# AI検索エンジン向けサイト概要（LLM向けサマリー）
+# https://miura-diving.com/llms.txt
+
 # AI検索エンジン向け設定
 User-agent: GPTBot
 Allow: /
