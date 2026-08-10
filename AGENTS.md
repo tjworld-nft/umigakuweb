@@ -178,6 +178,29 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - 名簿 `~/.config/line/roster.json` と除外リスト `~/.config/line/exclude-list.json` は顧客の表示名・userIdを含む個人情報。
   git外・600で保存。**このリポジトリはpublicなのでコミット厳禁**。
 
+## まんが（`/manga/`・2026-08-10 新設）
+
+解説まんがを読ませる場所。ブログ（別リポジトリ）や図鑑と並ぶ、独立したコンテンツハブ。
+
+- **一覧**: `manga/index.html`（https://miura-diving.com/manga/ ）。
+  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）。
+- 共通アセットは **`manga/manga.css`**（一覧・読みページ・ビューア）と **`manga/reader.js`**（拡大ビューア）。
+  ホーム/各ページに置く導線の`.home-manga` `.manga-teaser`だけは `css/style.css` の末尾にある（他ページから使うため）。
+- 画像は **`image/manga/<slug>/p01〜.webp`**（原寸896x1200・cwebp q80で1枚120KB前後）＋ **`cover.webp`**（幅560）。
+  OGPは `image/manga/og-<slug>.jpg`（1200x630）。原稿PNGは `~/.claude/skills/ai-manga-creator/works/<日付>_<slug>/pages/`。
+- **ビューア**: ページをクリック/タップで全画面。← → ・スワイプでページ送り、画像タップまたは＋で 1x→2x→3.2x 拡大、ドラッグで移動、Escで閉じる。
+  JSが無くてもページ画像は縦に読める（reader.jsは拡張であって前提ではない）。
+- **SEOのため各話に本文テキストを置いている**（`.mr-summary` の要約＋要点リスト、全ページのalt）。まんが画像だけでは検索に何も残らないため、
+  新作を足すときも必ず要約・要点・altを書くこと。構造化データは `ComicStory` ＋ `BreadcrumbList`。
+- 導線: トップの `.home-manga` 帯（BEGINNER ENTRY の直後）／主要15ページの `footer-nav`／
+  `license/`・`beginner-guide/`（第1話）と `fun-diving/`（第2話）の `.manga-teaser`。
+  **グローバルナビには入れていない**（既に幅いっぱいで、まんがを足すと折り返す。実測でnav幅1108px/1280px）。
+- ⚠ **賞味期限**: 第1話P11と第3話P11に「9/30までの夏割」が入っている。10月に入ったら
+  原稿側のP11を差し替え→`cwebp`で `image/manga/*/p11.webp` を作り直し→各ページの `.mr-note` を消す（2作まとめて）。
+- 新作を足す手順: ①`cwebp -q 80 -m 6` で `image/manga/<slug>/` にp01〜とcover（`-resize 560 0`）を作る
+  ②`manga/<既存話>/index.html` をコピーして要約・要点・alt・CTAを書き換える ③一覧 `manga/index.html` にカードを足す（話数・合計ページ数も更新）
+  ④他の話の「ほかのまんが」に足す ⑤`sitemap.xml`・トップの`.home-manga`帯を更新。
+
 ## 実装済みコンポーネント
 
 - `.navi-bubble`（クラゲちゃん吹き出し）: trial-diving と beginner-guide の各`<style>`内に同一CSSあり。アバター+吹き出し+左向き三角。新ページに使うときはコピーする。

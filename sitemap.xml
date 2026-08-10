@@ -80,6 +80,38 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- まんが（一覧） -->
+  <url>
+    <loc>https://miura-diving.com/manga/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- まんが 第1話: Cカードって、なんですか？ -->
+  <url>
+    <loc>https://miura-diving.com/manga/diving-license/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- まんが 第2話: ブランクは、1日で戻る -->
+  <url>
+    <loc>https://miura-diving.com/manga/refresh/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- まんが 第3話: 「ついて回る側」から抜ける -->
+  <url>
+    <loc>https://miura-diving.com/manga/aow/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- ダイビングポイント: 城ヶ島 梶の浜ビーチ -->
   <url>
     <loc>https://miura-diving.com/diving-point/jogashima-kajinohama/</loc>
