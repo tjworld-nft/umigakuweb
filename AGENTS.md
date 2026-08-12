@@ -183,7 +183,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 解説まんがを読ませる場所。ブログ（別リポジトリ）や図鑑と並ぶ、独立したコンテンツハブ。
 
 - **一覧**: `manga/index.html`（https://miura-diving.com/manga/ ）。
-  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）／`trial-diving`（第4話・10P）／`fun-diving-debut`（第5話・10P・2026-08-11公開・PR #59）。
+  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）／`trial-diving`（第4話・10P）／`fun-diving-debut`（第5話・10P・2026-08-11公開・PR #59）／`jpyc-payment`（第6話・12P・2026-08-12公開・PR #61・**動画版なし**）。
 - 共通アセットは **`manga/manga.css`**（一覧・読みページ・ビューア）と **`manga/reader.js`**（拡大ビューア）。
   ホーム/各ページに置く導線の`.home-manga` `.manga-teaser`だけは `css/style.css` の末尾にある（他ページから使うため）。
 - 画像は **`image/manga/<slug>/p01〜.webp`**（原寸896x1200・cwebp q80で1枚120KB前後）＋ **`cover.webp`**（幅560）。
@@ -199,6 +199,10 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   ファイルは **`video/manga/<slug>.mp4`**（720x1280・H.264 crf26・6.5〜8.9MB）と `<slug>-poster.jpg`。
   原本はショート動画工場 `~/Documents/short-factory/out/clara-<slug>.mp4`（47〜68MB）で、ffmpegで縮めてコミットしている。
   構造化データは `VideoObject`。語りはクララ（MiniMaxシステム音声・AI開示は動画に焼き込み済み）。
+- ⚠ **差し替え対象（第6話・時点表記）**: 第6話P9の「公式のお店マップを見たかぎり いまのところ うちだけみたい／※2026年8月時点・当店調べ」は、
+  JPYCの対応店マップ（jpyc-map.jp・jpyc-map.com）にほかのダイビング事業者が掲載されたら差し替える。**月1回マップを確認する**。
+  該当ページの `.mr-note` にも明記済み。なお両マップの当店の掲載住所が**旧・諸磯住所**のままで、修正はオーナー側で対応予定
+  （そのため第6話からマップへの直リンクは張っていない）。
 - ⚠ **賞味期限**: 第1話P11と第3話P11、および**第1話・第3話の動画版の終盤**に「9/30までの夏割」が入っている。10月に入ったら
   原稿側のP11を差し替え→`cwebp`で `image/manga/*/p11.webp` を作り直し→各ページの `.mr-note` を消す（2作まとめて）。
   **動画版はshort-factory側で末尾コマを差し替えて再レンダ→再エンコードが必要**（それまでの間は該当2話の`.mr-video`ブロックを外す手もある）。第2話・第4話は期限なし。
