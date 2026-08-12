@@ -122,6 +122,12 @@
 
   <!-- まんが 第5話: 講習は練習、ファンダイビングが本編 -->
   <url>
+    <loc>https://miura-diving.com/manga/jpyc-payment/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://miura-diving.com/manga/fun-diving-debut/</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>monthly</changefreq>
