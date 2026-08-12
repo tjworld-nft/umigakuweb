@@ -183,7 +183,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 解説まんがを読ませる場所。ブログ（別リポジトリ）や図鑑と並ぶ、独立したコンテンツハブ。
 
 - **一覧**: `manga/index.html`（https://miura-diving.com/manga/ ）。
-  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）／`trial-diving`（第4話・10P）／`fun-diving-debut`（第5話・10P・2026-08-11公開・PR #59）／`jpyc-payment`（第6話・12P・2026-08-12公開・PR #61・**動画版なし**）。
+  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）／`trial-diving`（第4話・10P）／`fun-diving-debut`（第5話・10P・2026-08-11公開・PR #59）／`jpyc-payment`（第6話・12P・2026-08-12公開・PR #61／動画版PR #63）。
 - 共通アセットは **`manga/manga.css`**（一覧・読みページ・ビューア）と **`manga/reader.js`**（拡大ビューア）。
   ホーム/各ページに置く導線の`.home-manga` `.manga-teaser`だけは `css/style.css` の末尾にある（他ページから使うため）。
 - 画像は **`image/manga/<slug>/p01〜.webp`**（原寸896x1200・cwebp q80で1枚120KB前後）＋ **`cover.webp`**（幅560）。
@@ -195,7 +195,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - 導線: トップの `.home-manga` 帯（BEGINNER ENTRY の直後）／主要15ページの `footer-nav`／
   `license/`・`beginner-guide/`（第1話）と `fun-diving/`（第5話・2026-08-11に第2話から差し替え）の `.manga-teaser`。
   **グローバルナビには入れていない**（既に幅いっぱいで、まんがを足すと折り返す。実測でnav幅1108px/1280px）。
-- **動画版（2026-08-10追加・全5話そろい 2026-08-11）**: 各話ページの末尾に約70〜91秒のダイジェスト動画を埋め込んでいる（`.mr-video`・`preload="none"`なので開いただけでは読み込まない）。
+- **動画版（2026-08-10追加・全6話そろい 2026-08-12）**: 各話ページの末尾に約70〜91秒のダイジェスト動画を埋め込んでいる（`.mr-video`・`preload="none"`なので開いただけでは読み込まない）。
   ファイルは **`video/manga/<slug>.mp4`**（720x1280・H.264 crf26・6.5〜8.9MB）と `<slug>-poster.jpg`。
   原本はショート動画工場 `~/Documents/short-factory/out/clara-<slug>.mp4`（47〜68MB）で、ffmpegで縮めてコミットしている。
   構造化データは `VideoObject`。語りはクララ（MiniMaxシステム音声・AI開示は動画に焼き込み済み）。
