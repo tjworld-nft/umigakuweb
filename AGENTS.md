@@ -183,7 +183,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 解説まんがを読ませる場所。ブログ（別リポジトリ）や図鑑と並ぶ、独立したコンテンツハブ。
 
 - **一覧**: `manga/index.html`（https://miura-diving.com/manga/ ）。
-  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）／`trial-diving`（第4話・10P）／`fun-diving-debut`（第5話・10P・2026-08-11公開・PR #59）／`jpyc-payment`（第6話・12P・2026-08-12公開・PR #61／動画版PR #63）。
+  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）／`trial-diving`（第4話・10P）／`fun-diving-debut`（第5話・10P・2026-08-11公開・PR #59）／`jpyc-payment`（第6話・12P・2026-08-12公開・PR #61／動画版PR #63）／`owd-aow-set`（第7話・12P・2026-08-13公開）。
 - 共通アセットは **`manga/manga.css`**（一覧・読みページ・ビューア）と **`manga/reader.js`**（拡大ビューア）。
   ホーム/各ページに置く導線の`.home-manga` `.manga-teaser`だけは `css/style.css` の末尾にある（他ページから使うため）。
 - 画像は **`image/manga/<slug>/p01〜.webp`**（原寸896x1200・cwebp q80で1枚120KB前後）＋ **`cover.webp`**（幅560）。
@@ -203,9 +203,17 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   JPYCの対応店マップ（jpyc-map.jp・jpyc-map.com）にほかのダイビング事業者が掲載されたら差し替える。**月1回マップを確認する**。
   該当ページの `.mr-note` にも明記済み。なお両マップの当店の掲載住所が**旧・諸磯住所**のままで、修正はオーナー側で対応予定
   （そのため第6話からマップへの直リンクは張っていない）。
-- ⚠ **賞味期限**: 第1話P11と第3話P11、および**第1話・第3話の動画版の終盤**に「9/30までの夏割」が入っている。10月に入ったら
-  原稿側のP11を差し替え→`cwebp`で `image/manga/*/p11.webp` を作り直し→各ページの `.mr-note` を消す（2作まとめて）。
+- ⚠ **賞味期限**: 第1話P11・第3話P11・**第7話P11**、および**第1話・第3話の動画版の終盤**に「9/30までの夏割」が入っている。10月に入ったら
+  原稿側のP11を差し替え→`cwebp`で `image/manga/*/p11.webp` を作り直し→各ページの `.mr-note` を消す（**3作まとめて**）。
+  第7話はP9が夏割抜きの常設ページ（セット総額¥130,700）なので、P11を落としてもページ全体が嘘にならない設計。
   **動画版はshort-factory側で末尾コマを差し替えて再レンダ→再エンコードが必要**（それまでの間は該当2話の`.mr-video`ブロックを外す手もある）。第2話・第4話は期限なし。
+- ⚠ **第7話の申し送り（2026-08-13）**: 本文で使っている**セット受講の料金（別々¥135,700 → セット¥130,700・講習費−¥5,000）は
+  広告専用LP（`lp/owd/` `lp/aow/`）にしか載っていない**。常設ページ（`license/`）にセット受講の案内がないため、まんがのCTAは
+  `license/` とLINEに向けている（LPへ直リンクすると広告の計測が混ざるため）。**常設ページへのセット受講の追記を検討すること。**
+  また**「アドバンス分は期限なしで後日に繰り越せる」はサイトに未記載**でまんがが先行している状態。LPかFAQへの追記が望ましい。
+  なお両LPの「合計¥16,000おトク」は「セット＋夏割」対「別々＋通常」の比較で割引条件がそろっていない
+  （夏割は別々でも各1回ずつ効くので、同条件の差は¥5,000）。**まんが側はこの比較を使っていない。**
+
 - **新作の公開・動画の追加・P11差し替えは `manga-publish` スキルで行う**（ローカル `.claude/skills/manga-publish/`・git外・このMacのみ）。
   アセット変換 `scripts/build_assets.py`（pages/og/video）と機械検収 `scripts/preflight.py`（slug照合・ページ数三点照合・alt・相互リンク・sitemap・統計・動画対応）がある。
   **preflightがALL PASSになるまでデプロイしない。** 制作側スキル（ai-manga-creator / short-video-maker）の末尾にも公開フローへの導線を追記済み。
