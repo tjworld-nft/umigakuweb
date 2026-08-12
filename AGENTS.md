@@ -216,6 +216,12 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   なお両LPの「合計¥16,000おトク」は「セット＋夏割」対「別々＋通常」の比較で割引条件がそろっていない
   （夏割は別々でも各1回ずつ効くので、同条件の差は¥5,000）。**まんが側はこの比較を使っていない。**
 
+- 🔴 **動画を差し替えたら必ずURLにバージョンを付ける**（2026-08-13に実際に事故った）。
+  サーバーは `video/manga/*.mp4` に **`cache-control: max-age=604800`（7日）** を返すので、
+  ファイル名を据え置いて中身だけ差し替えると、**一度見たブラウザは7日間サーバーに問い合わせずに古い動画を再生し続ける**
+  （ページのHTMLにはこのヘッダが無いため、「約NN秒」の文字だけ新しく音声は古い、という食い違いが起きる）。
+  → 差し替えのたびに `<source src="...mp4?v=N">` と `poster="...jpg?v=N"` の N を上げる。
+  JSON-LDの `contentUrl` / `thumbnailUrl` はクエリなしのまま（正規URL）。preflightはクエリを無視するよう対応済み。
 - **新作の公開・動画の追加・P11差し替えは `manga-publish` スキルで行う**（ローカル `.claude/skills/manga-publish/`・git外・このMacのみ）。
   アセット変換 `scripts/build_assets.py`（pages/og/video）と機械検収 `scripts/preflight.py`（slug照合・ページ数三点照合・alt・相互リンク・sitemap・統計・動画対応）がある。
   **preflightがALL PASSになるまでデプロイしない。** 制作側スキル（ai-manga-creator / short-video-maker）の末尾にも公開フローへの導線を追記済み。
