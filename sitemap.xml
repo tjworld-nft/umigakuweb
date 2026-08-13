@@ -130,6 +130,12 @@
 
   <!-- まんが 第7話: 2枚目は、忘れないうちに -->
   <url>
+    <loc>https://miura-diving.com/manga/age-no-limit/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://miura-diving.com/manga/owd-aow-set/</loc>
     <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
