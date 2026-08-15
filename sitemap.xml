@@ -128,7 +128,15 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- まんが 第7話: 2枚目は、忘れないうちに -->
+  <!-- まんが 第10話: 器材は、レンタルでいい -->
+  <url>
+    <loc>https://miura-diving.com/manga/gear-rental/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- まんが 第9話: 今年の海は、今年しかない -->
   <url>
     <loc>https://miura-diving.com/manga/this-years-sea/</loc>
     <lastmod>2026-08-14</lastmod>
