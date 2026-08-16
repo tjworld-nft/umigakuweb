@@ -183,7 +183,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 解説まんがを読ませる場所。ブログ（別リポジトリ）や図鑑と並ぶ、独立したコンテンツハブ。
 
 - **一覧**: `manga/index.html`（https://miura-diving.com/manga/ ）。
-  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）／`trial-diving`（第4話・10P）／`fun-diving-debut`（第5話・10P・2026-08-11公開・PR #59）／`jpyc-payment`（第6話・12P・2026-08-12公開・PR #61／動画版PR #63）／`owd-aow-set`（第7話・12P・2026-08-13公開／動画版も同日）／`age-no-limit`（第8話・12P・2026-08-14公開・PR #69／動画版PR #70）／`this-years-sea`（第9話・12P・2026-08-14公開・PR #71／動画版PR #72）／`gear-rental`（第10話・12P・2026-08-15公開・PR #74／動画版PR #75）／`overseas-diving`（**第11話**・12P・2026-08-16公開・PR #77／**動画版はまだ無い**）。
+  **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）／`trial-diving`（第4話・10P）／`fun-diving-debut`（第5話・10P・2026-08-11公開・PR #59）／`jpyc-payment`（第6話・12P・2026-08-12公開・PR #61／動画版PR #63）／`owd-aow-set`（第7話・12P・2026-08-13公開／動画版も同日）／`age-no-limit`（第8話・12P・2026-08-14公開・PR #69／動画版PR #70）／`this-years-sea`（第9話・12P・2026-08-14公開・PR #71／動画版PR #72）／`gear-rental`（第10話・12P・2026-08-15公開・PR #74／動画版PR #75）／`overseas-diving`（**第11話**・12P・2026-08-16公開・PR #77／動画版PR #79）。
 - 共通アセットは **`manga/manga.css`**（一覧・読みページ・ビューア）と **`manga/reader.js`**（拡大ビューア）。
   ホーム/各ページに置く導線の`.home-manga` `.manga-teaser`だけは `css/style.css` の末尾にある（他ページから使うため）。
 - 画像は **`image/manga/<slug>/p01〜.webp`**（原寸896x1200・cwebp q80で1枚120KB前後）＋ **`cover.webp`**（幅560）。
@@ -195,8 +195,8 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - 導線: トップの `.home-manga` 帯（BEGINNER ENTRY の直後）／主要15ページの `footer-nav`／
   `license/`・`beginner-guide/`（第1話）と `fun-diving/`（第5話・2026-08-11に第2話から差し替え）の `.manga-teaser`。
   **グローバルナビには入れていない**（既に幅いっぱいで、まんがを足すと折り返す。実測でnav幅1108px/1280px）。
-- **動画版（2026-08-10追加）**: 第1〜10話にあり、**第11話だけまだ無い**（追加はmanga-publishの工程B）。 各話ページの末尾に約70〜92秒のダイジェスト動画を埋め込んでいる（`.mr-video`・`preload="none"`なので開いただけでは読み込まない）。
-  ファイルは **`video/manga/<slug>.mp4`**（720x1280・H.264 crf26・5.7〜8.9MB）と `<slug>-poster.jpg`。
+- **動画版（2026-08-10追加・全11話そろい 2026-08-16）**: 各話ページの末尾に約70〜92秒のダイジェスト動画を埋め込んでいる（`.mr-video`・`preload="none"`なので開いただけでは読み込まない）。
+  ファイルは **`video/manga/<slug>.mp4`**（720x1280・H.264 crf26・5.7〜9.8MB）と `<slug>-poster.jpg`。
   **第7話の動画には期間限定要素を入れていない**（まんが本体P11の9/30特典はあえて動画に載せていない）。
   **第8話（`age-no-limit`・約84秒）・第9話（`this-years-sea`・約90秒）・第10話（`gear-rental`・約92秒）も期間限定要素ゼロ**なので、10月の差し替え作業の対象外。
   **第9話・第10話の動画はまんが本体P11（夏割）のコマを1枚も使っていない**——尺の都合ではなく、10月の再レンダ負債を作らないための設計。
