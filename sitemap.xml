@@ -128,6 +128,13 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- まんが 第12話: みうら海王 -->
+  <url>
+    <loc>https://miura-diving.com/manga/miura-kaiou/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- まんが 第10話: 器材は、レンタルでいい -->
   <url>
     <loc>https://miura-diving.com/manga/overseas-diving/</loc>
