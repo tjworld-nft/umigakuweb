@@ -130,6 +130,12 @@
 
   <!-- まんが 第12話: みうら海王 -->
   <url>
+    <loc>https://miura-diving.com/manga/dive-a-lot/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://miura-diving.com/manga/miura-kaiou/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
