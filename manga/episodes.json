@@ -1,0 +1,246 @@
+{
+  "_comment": "まんが（/manga/）の話カタログ。manga-publish スキルの sync_episodes.py がこれを読んで各話ページの <title>・description・関連話（.mr-more）・公開日・監修行・JSON-LD を同期する。新作を足したら必ずここにも1件追加すること。published=ページを本番に出した日（動画のuploadDateではない）。related=テーマで近い話（前後話は自動で付くので書かない）。 updated=内容を大きく直した日（sitemapのlastmodに使う。無ければpublished）。",
+  "site": {
+    "base": "https://miura-diving.com",
+    "org": "三浦 海の学校",
+    "sameAs": [
+      "https://www.instagram.com/tj_official_umigaku/",
+      "https://www.facebook.com/miuraumigaku/",
+      "https://x.com/miura_diving"
+    ],
+    "reviewer": {
+      "name": "吉田 哲司",
+      "jobTitle": "三浦 海の学校 代表・PADIコースディレクター",
+      "url": "https://miura-diving.com/instructor/"
+    }
+  },
+  "episodes": [
+    {
+      "slug": "diving-license",
+      "ep": 1,
+      "published": "2026-08-10",
+      "updated": "2026-08-19",
+      "short": "Cカードって、なんですか？",
+      "title": "Cカードとは？ダイビングライセンスの基本をまんがで｜三浦 海の学校",
+      "related": [
+        "owd-aow-set",
+        "gear-rental",
+        "age-no-limit",
+        "trial-diving"
+      ],
+      "sources": []
+    },
+    {
+      "slug": "refresh",
+      "ep": 2,
+      "published": "2026-08-10",
+      "updated": "2026-08-19",
+      "short": "ブランクは、1日で戻る",
+      "title": "ブランクダイバーのリフレッシュダイビングをまんがで｜三浦 海の学校",
+      "related": [
+        "dive-a-lot",
+        "fun-diving-debut",
+        "this-years-sea"
+      ],
+      "sources": []
+    },
+    {
+      "slug": "aow",
+      "ep": 3,
+      "published": "2026-08-10",
+      "updated": "2026-08-19",
+      "short": "「ついて回る側」から抜ける",
+      "title": "AOW（アドバンス）を取る意味をまんがで｜三浦 海の学校",
+      "related": [
+        "owd-aow-set",
+        "overseas-diving",
+        "winter-drysuit"
+      ],
+      "sources": [],
+      "cta_replace": {
+        "from": "../../lp/aow/",
+        "to": "../../license/#courses",
+        "text_from": "AOW講習を見る",
+        "text_to": "AOW講習（開講コース一覧）を見る"
+      }
+    },
+    {
+      "slug": "trial-diving",
+      "ep": 4,
+      "published": "2026-08-11",
+      "updated": "2026-08-19",
+      "short": "決めるのは、潜ってからでいい",
+      "title": "体験ダイビングってどんな感じ？1日の流れをまんがで｜三浦 海の学校",
+      "related": [
+        "diving-license",
+        "age-no-limit",
+        "jpyc-payment"
+      ],
+      "sources": []
+    },
+    {
+      "slug": "fun-diving-debut",
+      "ep": 5,
+      "published": "2026-08-11",
+      "updated": "2026-08-19",
+      "short": "講習は練習、ファンダイビングが本編",
+      "title": "Cカード取得後の初ファンダイビング、不安をまんがで｜三浦 海の学校",
+      "description": "ファンダイビングのデビュー（三浦・城ヶ島）を全10ページのまんがで。参加に要るのはCカードだけで経験本数の決まりはなし、持ちものは4つ、ビーチ2ダイブ¥13,200＋レンタル¥5,500＝総額¥18,700。ブランク半年以上ならリフレッシュから。",
+      "related": [
+        "refresh",
+        "gear-rental",
+        "dive-a-lot"
+      ],
+      "sources": []
+    },
+    {
+      "slug": "jpyc-payment",
+      "ep": 6,
+      "published": "2026-08-12",
+      "updated": "2026-08-19",
+      "short": "財布は、海に連れていけない",
+      "title": "JPYCでダイビング料金を支払う話をまんがで｜三浦 海の学校",
+      "description": "三浦 海の学校で使える日本円ステーブルコイン「JPYC」を全12ページのまんがで。暗号資産ではなく資金決済法上の電子決済手段で、1JPYC＝1円のまま値動きしない。QRを読んで送るだけで数秒、現金もこれまでどおり使えます。",
+      "related": [
+        "trial-diving",
+        "gear-rental"
+      ],
+      "sources": []
+    },
+    {
+      "slug": "owd-aow-set",
+      "ep": 7,
+      "published": "2026-08-13",
+      "updated": "2026-08-19",
+      "short": "2枚目は、忘れないうちに",
+      "title": "OWDとAOWのセット受講（同時申込）をまんがで｜三浦 海の学校",
+      "description": "ライセンス（OWD）とアドバンス（AOW）をまとめて申し込むのは気が早い？ 受講条件・上達の連続性・日数・料金の4点から全12ページのまんがで答えます。AOWの受講条件はライセンスを持っていることだけで、本数の決まりはありません。",
+      "related": [
+        "diving-license",
+        "aow"
+      ],
+      "sources": []
+    },
+    {
+      "slug": "age-no-limit",
+      "ep": 8,
+      "published": "2026-08-14",
+      "updated": "2026-08-19",
+      "short": "上に、線はない",
+      "title": "ダイビングに年齢の上限はある？健康条件をまんがで｜三浦 海の学校",
+      "description": "ダイビングに年齢の上限はあるのか。指導団体の決まりに上限の規定はなく、下限の10歳だけが決まっています。入口で見られるのは年齢ではなく、健康を10個たずねる参加者チェックシート。全12ページのまんが。",
+      "related": [
+        "trial-diving",
+        "diving-license"
+      ],
+      "sources": []
+    },
+    {
+      "slug": "this-years-sea",
+      "ep": 9,
+      "published": "2026-08-14",
+      "updated": "2026-08-19",
+      "short": "今年の海は、今年しかない",
+      "title": "秋のダイビング—9月・10月の相模湾の水温をまんがで｜三浦 海の学校",
+      "description": "9月・10月はもう海のシーズン終わり？ 気象庁の平年値では9月30日の相模湾は24度くらいで7月16日とほぼ同じ、10月31日でも6月18日と同じ温かさ。海の季節は暦よりあとから来ます。秋の季節来遊魚の話も。全12ページのまんが。",
+      "related": [
+        "dive-a-lot",
+        "winter-drysuit",
+        "refresh"
+      ],
+      "sources": [
+        {
+          "name": "気象庁 沿岸域の海面水温情報（相模湾）",
+          "url": "https://www.data.jma.go.jp/kaiyou/data/db/kaikyo/series/engan/engan306.html"
+        }
+      ]
+    },
+    {
+      "slug": "gear-rental",
+      "ep": 10,
+      "published": "2026-08-15",
+      "updated": "2026-08-19",
+      "short": "器材は、レンタルでいい",
+      "title": "ダイビング器材はレンタルでいい？費用と揃え方をまんがで｜三浦 海の学校",
+      "description": "ダイビングを始めるのに買う器材はひとつもありません。講習の道具はすべてレンタルでき、フルセット1日¥5,500。講習総額¥64,900のうち器材代は¥11,000（2日分）だけ。タンクとウエイトは料金に含まれています。全12ページのまんが。",
+      "related": [
+        "diving-license",
+        "winter-drysuit"
+      ],
+      "sources": []
+    },
+    {
+      "slug": "overseas-diving",
+      "ep": 11,
+      "published": "2026-08-16",
+      "updated": "2026-08-19",
+      "short": "海外の海は、上級者になってからじゃない",
+      "title": "海外ダイビングは上級者だけ？初心者の疑問をまんがで｜三浦 海の学校",
+      "description": "海外は上級者になってから、と止まっている方へ。パラオは成田から直行約4時間55分で時差ゼロ。Cカードは世界中で通用し有効期限もなし。現地が見るのは本数ではなくCカードとログブック。「アドバンス以上」条件のツアーは事前確認を。全12ページ。",
+      "related": [
+        "aow",
+        "fun-diving-debut"
+      ],
+      "sources": []
+    },
+    {
+      "slug": "miura-kaiou",
+      "ep": 12,
+      "published": "2026-08-17",
+      "updated": "2026-08-19",
+      "short": "筏の下を見てきたから言える。三崎の海上釣り堀・みうら海王",
+      "title": "三崎の海上釣り堀・みうら海王を筏の下から紹介するまんが｜三浦 海の学校",
+      "description": "神奈川・三崎港の海上釣り堀「みうら海王」を三浦 海の学校の視点で紹介するまんが。竿もエサも現地でそろい、釣った魚は全部持ち帰り。海の学校のインストラクターは頼まれて筏の下に潜っているので、網の中を実際に見てきました。全12ページ。",
+      "related": [
+        "trial-diving",
+        "fun-diving-debut"
+      ],
+      "sources": [
+        {
+          "name": "みうら海王 公式サイト",
+          "url": "https://www.miura-kaiou.com/"
+        }
+      ]
+    },
+    {
+      "slug": "dive-a-lot",
+      "ep": 13,
+      "published": "2026-08-18",
+      "updated": "2026-08-19",
+      "short": "ウェットの海は、あと少し。まとめて潜ると、ぐんとうまくなる",
+      "title": "ウェットスーツは何月まで？秋にまとめて潜る話をまんがで｜三浦 海の学校",
+      "description": "年に1〜2回しか潜っていない人へ。三浦 海の学校は10月からドライスーツなので、5mmウェットで潜れるのは10月の初めごろまで（相模湾の平均で24度くらい）。残りの土日を2回3回と使うと上達が早い。次回¥800引きの「つづける割」の使い方も。全12ページ。",
+      "related": [
+        "winter-drysuit",
+        "this-years-sea",
+        "refresh"
+      ],
+      "sources": [
+        {
+          "name": "気象庁 沿岸域の海面水温情報（相模湾）",
+          "url": "https://www.data.jma.go.jp/kaiyou/data/db/kaikyo/series/engan/engan306.html"
+        }
+      ]
+    },
+    {
+      "slug": "winter-drysuit",
+      "ep": 14,
+      "published": "2026-08-19",
+      "updated": "2026-08-19",
+      "short": "冬の海は、いちばん青い。ドライスーツで、海の季節は終わらない",
+      "title": "冬のダイビングとドライスーツをまんがで｜三浦の海は冬が青い｜三浦 海の学校",
+      "description": "「ダイビングは夏のもの」と思っていませんか。三浦 海の学校は10月半ば〜6月半ばがドライスーツの季節。三浦の海は冬がいちばん澄み、透明度は1〜2月がピーク。冬の水温は12度くらいまで下がりますが、ドライスーツなら体はぬれません。ダンゴウオの話も。全12ページ。",
+      "related": [
+        "dive-a-lot",
+        "this-years-sea",
+        "gear-rental"
+      ],
+      "sources": [
+        {
+          "name": "気象庁 沿岸域の海面水温情報（相模湾）",
+          "url": "https://www.data.jma.go.jp/kaiyou/data/db/kaikyo/series/engan/engan306.html"
+        }
+      ]
+    }
+  ]
+}

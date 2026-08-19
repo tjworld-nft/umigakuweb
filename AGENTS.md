@@ -191,10 +191,24 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - **ビューア**: ページをクリック/タップで全画面。← → ・スワイプでページ送り、画像タップまたは＋で 1x→2x→3.2x 拡大、ドラッグで移動、Escで閉じる。
   JSが無くてもページ画像は縦に読める（reader.jsは拡張であって前提ではない）。
 - **SEOのため各話に本文テキストを置いている**（`.mr-summary` の要約＋要点リスト、全ページのalt）。まんが画像だけでは検索に何も残らないため、
-  新作を足すときも必ず要約・要点・altを書くこと。構造化データは `ComicStory` ＋ `BreadcrumbList`。
-- 導線: トップの `.home-manga` 帯（BEGINNER ENTRY の直後）／主要15ページの `footer-nav`／
-  `license/`・`beginner-guide/`（第1話）と `fun-diving/`（第5話・2026-08-11に第2話から差し替え）の `.manga-teaser`。
-  **グローバルナビには入れていない**（既に幅いっぱいで、まんがを足すと折り返す。実測でnav幅1108px/1280px）。
+  新作を足すときも必ず要約・要点・altを書くこと。構造化データは `ComicStory` ＋ `BreadcrumbList`（＋動画があれば `VideoObject`）。
+- 🔴 **話カタログ `manga/episodes.json` が正（2026-08-19 SEO整備で新設）**。各話の `<title>`（「検索語をまんがで｜見出し｜三浦 海の学校」型・42字以内・「まんが｜」始まり禁止）、
+  description（130字以内）、公開日、関連話、出典、CTA差し替えをここに書き、`manga-publish` スキルの `scripts/sync_episodes.py` を走らせると
+  全話の `.mr-more`（**前の話・次の話・関連2話**の4枚。旧「最新4件」はやめた）、`.mr-credit`（公開日・最終更新・監修=吉田哲司→`/instructor/`・AI開示・出典）、
+  JSON-LD（datePublished/dateModified/author sameAs/reviewedBy/mainEntityOfPage/text=全ページaltの書き起こし/keywords）、`article:published_time`、
+  `sitemap.xml`（まんが部分・lastmod）、`ai-sitemap.xml`（各話）、`llms.txt`（主要ページのまんが行＋「解説まんが（各話）」節）が同期される（冪等）。
+  **新作を公開したら episodes.json に1件足して sync → preflight**（preflight は sync 差分・title/description・日付・監修行・llms/ai-sitemap も検査する）。
+  og:title は従来どおり「まんが｜見出し」（SNS向け）。h1 は情緒的な見出しのまま。
+- 各話ページと一覧は **Google Fonts を非同期読み込み（Zen Maru 400/700・Montserrat 600/700）**、**Font Awesome を外してインラインSVG**（sync が変換）。
+  `manga.css?v=` / `style.css?v=` のキャッシュ破棄クエリあり（sync の `CSS_VER`）。**画像を差し替えるときは `<img src="...webp?v=N">`**（webpも7日キャッシュ）。
+- 導線: トップの `.home-manga` 帯（BEGINNER ENTRY の直後）／主要ページの `footer-nav`／**全ページのモバイルナビ「まんがで読むダイビング」（2026-08-19）**／
+  `license/`・`beginner-guide/`（第1話）・`fun-diving/`（第5話）・`trial-diving/`（第4話）の `.manga-teaser`／
+  **`.manga-links`（関連するまんが・4本まで・CSSは `css/style.css` 末尾）を license / fun-diving / trial-diving / beginner-guide に、インラインCSS版を tsuzukeru / buddy に設置（2026-08-19）**／
+  **ブログ（別リポジトリ）の記事末尾「関連するまんが」（`src/lib/relatedManga.ts` のキーワード一致で最大2話・ヘッダー/フッターにも「まんが」）**。
+  **デスクトップのグローバルナビには入れていない**（既に幅いっぱいで、まんがを足すと折り返す。実測でnav幅1108px/1280px）。
+  役割分担は **ブログ＝テキストで検索順位を取る／まんが＝商用ページとブログから張られる視覚的な補助＋指名・LINE回遊**。情報系クエリで
+  ブログ記事とまんがが同じ意図なら、まんが側に長文を足すのではなくブログ→まんがのリンクで受ける。
+- 第3話（aow）のCTAは広告LP `lp/aow/`（noindex・夏割期限入り）から `license/#courses` に変更（2026-08-19）。
 - **動画版（2026-08-10追加・全12話そろい 2026-08-17）**: 各話ページの末尾に約70〜92秒のダイジェスト動画を埋め込んでいる（`.mr-video`・`preload="none"`なので開いただけでは読み込まない）。
   ファイルは **`video/manga/<slug>.mp4`**（720x1280・H.264 crf26・5.7〜9.8MB）と `<slug>-poster.jpg`。
   **第7話の動画には期間限定要素を入れていない**（まんが本体P11の9/30特典はあえて動画に載せていない）。
@@ -287,7 +301,9 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - ルートの `llms.txt` はAI検索（ChatGPT・Perplexity・Claude等）向けのサイト概要。robots.txt からもコメントで案内している。
 - 事業概要・コース料金・特典・主要ページ・FAQ要約を1枚に集約。**料金や特典を変えたら必ずここも更新する**（「2026年8月現在」の日付表記も上げる）。
 - ⚠ **賞味期限**: 「夏のLINE特典（9/30まで）」の記載あり。10月に入ったら、まんがP11の差し替えと同じタイミングで夏割の行を削除すること。
-- 新しいページ（まんが新作・特典ページ等）を公開したら「主要ページ」節にも足す。
+- 新しいページ（まんが新作・特典ページ等）を公開したら「主要ページ」節にも足す。**まんがの各話一覧（「解説まんが（各話）」節）と主要ページのまんが行は `sync_episodes.py` が自動生成する**ので手で書かない。
+- `ai-sitemap.xml` のまんが各話も sync が `<!-- manga:episodes:start/end -->` の間に生成する。
+- robots.txt の AI クローラ節に ClaudeBot / Claude-User / Claude-SearchBot / OAI-SearchBot / Google-Extended を追加（2026-08-19）。
 
 ## 実装済みコンポーネント
 
@@ -296,6 +312,9 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - 画像は必ず `width`/`height` 属性・`loading="lazy"`・意味のあるalt（SEOキーワード自然に）を付ける。
 
 ## サイト共通ルール
+
+- `.htaccess` 先頭で **http→https / www→非www / どのディレクトリでも `index.html`→末尾スラッシュ** を301している（2026-08-19）。内部リンクは
+  `https://miura-diving.com/…/` 形式か相対の `../` で書き、`index.html` を付けない（付けても301するが1回転送が増える）。
 
 - 旧諸磯住所・旧固定電話は本文・フッター・メール・構造化データのどこにも出さない（非公開）。所在地表現は「神奈川県三浦市」「開催場所・集合場所はご予約時にご案内します」。
 - 開催地は城ヶ島・宮川湾。体験ダイビング正価は¥19,800（税込）。

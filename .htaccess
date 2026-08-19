@@ -4,6 +4,15 @@ DirectoryIndex index.html
 # RewriteEngine On
 RewriteEngine On
 
+# Canonical URL (2026-08-19): http→https / www→non-www / どのディレクトリでも index.html→末尾スラッシュ
+# Xserver（nginx前段＋Apache）では %{HTTPS} が使える（公式案内のスニペットと同じ書き方）
+RewriteCond %{HTTPS} !on [OR]
+RewriteCond %{HTTP_HOST} ^www\.miura-diving\.com$ [NC]
+RewriteRule ^(.*)$ https://miura-diving.com/$1 [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
+
 # Make /blog unaffected by WP rules (if any)
 RewriteRule ^blog($|/) - [L]
 
