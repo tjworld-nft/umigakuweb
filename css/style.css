@@ -1281,3 +1281,74 @@ body.is-ocean .hero-bubble { display: none; }
 @media (max-width: 480px) {
   .manga-teaser { grid-template-columns: 72px 1fr; gap: .8rem; padding: .9rem 1rem; }
 }
+
+/* ============================================================
+   関連するまんが（サービスページ→/manga/ の文脈リンク・2026-08-19）
+   ============================================================ */
+.manga-links {
+  max-width: 880px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem 1.4rem 1.1rem;
+  box-shadow: var(--shadow-sm);
+}
+.manga-links__title {
+  font-size: .95rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 .8rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.manga-links__title::before {
+  content: "まんが";
+  font-size: .68rem;
+  font-weight: 700;
+  color: var(--coral);
+  border: 1px solid var(--coral);
+  border-radius: 999px;
+  padding: .1rem .55rem;
+}
+.manga-links__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: .7rem;
+}
+.manga-links__list a {
+  display: flex;
+  gap: .7rem;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: .45rem .5rem;
+  border-radius: var(--radius-md);
+  transition: background var(--ease);
+}
+.manga-links__list a:hover { background: var(--bg-soft); }
+.manga-links__list img {
+  width: 44px;
+  flex: 0 0 44px;
+  aspect-ratio: 896 / 1080;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+}
+.manga-links__list b { display: block; font-size: .84rem; font-weight: 800; line-height: 1.45; color: var(--text-dark); }
+.manga-links__list small { display: block; font-size: .74rem; color: var(--text-sub); line-height: 1.5; margin-top: .1rem; }
+.manga-links__all {
+  display: inline-block;
+  margin-top: .8rem;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--teal-dark);
+}
+@media (max-width: 640px) {
+  .manga-links { padding: 1rem 1rem .9rem; }
+}

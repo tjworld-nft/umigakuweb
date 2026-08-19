@@ -616,3 +616,44 @@ body.mv-open { overflow: hidden; }
   color: var(--text-light);
   margin-top: .7rem;
 }
+
+/* ============================================================
+   2026-08-19 SEO整備: 監修行・つづけて読む・インラインSVGアイコン
+   ============================================================ */
+.mr-credit {
+  max-width: 880px;
+  margin: 1rem auto 0;
+  font-size: .76rem;
+  line-height: 1.9;
+  color: var(--text-light);
+}
+.mr-credit a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: 2px; }
+.mr-more__lead {
+  text-align: center;
+  font-size: .8rem;
+  color: var(--text-sub);
+  margin: -.6rem 0 1.1rem;
+}
+.mr-more__lead a { color: var(--teal-dark); }
+.fa-svg {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+.mh-list-title {
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-weight: 900;
+  color: var(--ink);
+  text-align: center;
+  margin: 0 0 .5rem;
+}
+.mh-list-lead {
+  text-align: center;
+  font-size: .86rem;
+  line-height: 1.9;
+  color: var(--text-sub);
+  max-width: 720px;
+  margin: 0 auto 1.6rem;
+}
