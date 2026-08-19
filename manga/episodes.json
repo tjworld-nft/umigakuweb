@@ -241,6 +241,34 @@
           "url": "https://www.data.jma.go.jp/kaiyou/data/db/kaikyo/series/engan/engan306.html"
         }
       ]
+    },
+    {
+      "slug": "autumn-tropical",
+      "ep": 15,
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "short": "秋の三浦は、海がいちばん南国になる。南の魚は、向こうから来る",
+      "title": "秋のダイビングと季節来遊魚をまんがで｜秋の三浦は海がいちばん南国｜三浦 海の学校",
+      "description": "「夏が終わると海も終わり」と思っていませんか。秋の三浦は、黒潮が運ぶ季節来遊魚で海がいちばん南国になります。ぼくらの感覚だと9〜10月がいちばんにぎやか。ツノダシ・ムレハタタテダイなど図鑑の魚、台風の季節、秋の水温、体験ダイビングでも見えること。全12ページ。",
+      "related": [
+        "this-years-sea",
+        "dive-a-lot",
+        "trial-diving"
+      ],
+      "sources": [
+        {
+          "name": "気象庁 沿岸域の海面水温情報（相模湾）",
+          "url": "https://www.data.jma.go.jp/kaiyou/data/db/kaikyo/series/engan/engan306.html"
+        },
+        {
+          "name": "新江ノ島水族館 トリーター日誌「季節来遊魚」",
+          "url": "https://www.enosui.com/diaryentry.php?eid=06176"
+        },
+        {
+          "name": "三浦 海の学校 海の生き物図鑑",
+          "url": "https://miura-diving.com/sea-life/"
+        }
+      ]
     }
   ]
 }
