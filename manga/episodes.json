@@ -269,6 +269,38 @@
           "url": "https://miura-diving.com/sea-life/"
         }
       ]
+    },
+    {
+      "slug": "dream-seas",
+      "ep": 16,
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "short": "Cカードは、世界の海への切符",
+      "title": "海外ダイビングのおすすめの海をまんがで｜Cカードで世界へ｜三浦 海の学校",
+      "description": "Cカードを取ったら、次はどこを潜る？パラオは成田から直行約5時間・時差なし。イワシの大群のセブ、マンタを狙うモルディブ、光のカーテンのセノーテ、ドライスーツで潜る氷河の泉シルフラまで。レベル別の海の選び方をまんがで。全12ページ。",
+      "related": [
+        "overseas-diving",
+        "aow",
+        "winter-drysuit"
+      ],
+      "sources": [
+        {
+          "name": "成田国際空港 ユナイテッド航空 成田＝コロール線就航",
+          "url": "https://www.narita-airport.jp/ja/topics/20251029_UAL/"
+        },
+        {
+          "name": "DIVE.IS FAQ（シルフラの参加条件・水温）",
+          "url": "https://www.dive.is/faq"
+        },
+        {
+          "name": "Marine Diving web モアルボアル",
+          "url": "https://marinediving.com/area/philippines/moalboal/"
+        },
+        {
+          "name": "トラベルタウンズ 日本からモルディブへの飛行時間",
+          "url": "https://www.traveltowns.jp/flighttime/maldives/"
+        }
+      ]
     }
   ]
 }

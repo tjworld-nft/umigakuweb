@@ -182,6 +182,12 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 
 解説まんがを読ませる場所。ブログ（別リポジトリ）や図鑑と並ぶ、独立したコンテンツハブ。
 
+- 🔴 **制作中: 第16話 `dream-seas`「Cカードは、世界の海への切符」**（ブランチ `claude/diving-manga-overseas-y9f9jc`・2026-08-20）。
+  各話ページHTML・episodes.json・一覧ページのカードまで作成済み。**画像（p01〜p12・cover・OG）と動画は未制作**。
+  ネームは `.agents/manga-dream-seas-name.md`（裏取り済み事実カード付き）、企画・縛りは `.agents/manga-dream-seas-plan.md`。
+  Mac側で ai-manga-creator で作画 → build_assets → sync_episodes.py → preflight ALL PASS の順。**それまで main にマージしないこと**（画像が無いままデプロイされる）。
+  期間限定要素ゼロ設計（P11差し替えリスト対象外）。ダイブナビ紹介はP11（第11話P10と同じ事実の範囲）。
+
 - **一覧**: `manga/index.html`（https://miura-diving.com/manga/ ）。
   **各話**: `manga/<slug>/index.html` — `diving-license`（第1話・12P）／`refresh`（第2話・10P）／`aow`（第3話・12P）／`trial-diving`（第4話・10P）／`fun-diving-debut`（第5話・10P・2026-08-11公開・PR #59）／`jpyc-payment`（第6話・12P・2026-08-12公開・PR #61／動画版PR #63）／`owd-aow-set`（第7話・12P・2026-08-13公開／動画版も同日）／`age-no-limit`（第8話・12P・2026-08-14公開・PR #69／動画版PR #70）／`this-years-sea`（第9話・12P・2026-08-14公開・PR #71／動画版PR #72）／`gear-rental`（第10話・12P・2026-08-15公開・PR #74／動画版PR #75）／`overseas-diving`（第11話・12P・2026-08-16公開・PR #77／動画版PR #79）／`miura-kaiou`（第12話・12P・2026-08-17公開・PR #81／動画版PR #82・約90秒）／`dive-a-lot`（第13話・12P・2026-08-18公開・PR #84／動画版PR #85・約97秒）／`winter-drysuit`（第14話・12P・2026-08-19公開・PR #86／動画版PR #87・約105秒・ドライスーツ3部作の①）／`autumn-tropical`（**第15話**・12P・2026-08-20公開・PR #90・動画版同梱・約106秒・秋の季節来遊魚）。
 - 共通アセットは **`manga/manga.css`**（一覧・読みページ・ビューア）と **`manga/reader.js`**（拡大ビューア）。
