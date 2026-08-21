@@ -16,6 +16,34 @@
   },
   "episodes": [
     {
+      "slug": "dream-seas",
+      "ep": 16,
+      "published": "2026-08-21",
+      "updated": "2026-08-21",
+      "short": "Cカードを取ったら、世界の海が待ってる",
+      "title": "海外ダイビングの人気スポットをまんがで｜Cカードで行ける世界の海｜三浦 海の学校",
+      "description": "Cカードを取ったら、行き先は世界中の海になります。グアム・サイパン、セブのイワシの大群、パラオ、モルディブのマンタ、グレートバリアリーフ、ガラパゴスまで6つの海と、参加条件の目安、ダイビング専門旅行会社ダイブナビ。全12ページ。",
+      "related": [
+        "overseas-diving",
+        "diving-license",
+        "aow"
+      ],
+      "sources": [
+        {
+          "name": "フィリピン政府観光省 モアルボアル",
+          "url": "https://philippinetravel.jp/moalboal-diving/"
+        },
+        {
+          "name": "ダイブナビ（エス・ティー・ワールド）海外ダイビングツアー",
+          "url": "https://www.divenavi.com/"
+        },
+        {
+          "name": "JTB 世界遺産 グレートバリアリーフ",
+          "url": "https://www.jtb.co.jp/kaigai/world-heritage/oceania/australia/greatbarrierreef/"
+        }
+      ]
+    },
+    {
       "slug": "diving-license",
       "ep": 1,
       "published": "2026-08-10",
