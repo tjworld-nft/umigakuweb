@@ -46,12 +46,18 @@
 
     <url>
         <loc>https://miura-diving.com/manga/</loc>
-        <lastmod>2026-08-21</lastmod>
+        <lastmod>2026-08-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <!-- manga:episodes:start -->
+    <url>
+        <loc>https://miura-diving.com/manga/ccard-is-start/</loc>
+        <lastmod>2026-08-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
     <url>
         <loc>https://miura-diving.com/manga/dream-seas/</loc>
         <lastmod>2026-08-21</lastmod>
