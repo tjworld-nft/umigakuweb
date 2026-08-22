@@ -16,6 +16,30 @@
   },
   "episodes": [
     {
+      "slug": "ccard-is-start",
+      "ep": 17,
+      "published": "2026-08-22",
+      "updated": "2026-08-22",
+      "short": "Cカードは、取った日がスタート",
+      "title": "Cカード取得後の楽しみ方をまんがで｜取った日がスタート｜三浦 海の学校",
+      "description": "Cカードは取った日がスタート。月1くらいで潜りつづけると、器材の感覚が体に残り、1本目から海を見る余裕が生まれ、三浦の海の季節が見えてきます。続かない理由は意志ではなく仕組み。潜った当日に次の日付を決める「つづける割」も紹介。全12ページ。",
+      "related": [
+        "dive-a-lot",
+        "refresh",
+        "fun-diving-debut"
+      ],
+      "sources": [
+        {
+          "name": "PADI「Cカードとは」",
+          "url": "https://www.padi.co.jp/scuba-diving/c-card/whats-c-card/"
+        },
+        {
+          "name": "PADI リアクティベート（復習の目安）",
+          "url": "https://www.padi.co.jp/scuba-diving/padi-courses/course-catalog/reactivate/"
+        }
+      ]
+    },
+    {
       "slug": "dream-seas",
       "ep": 16,
       "published": "2026-08-21",
