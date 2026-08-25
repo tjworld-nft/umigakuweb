@@ -321,6 +321,31 @@
           "url": "https://miura-diving.com/sea-life/"
         }
       ]
+    },
+    {
+      "slug": "women-diving",
+      "ep": 18,
+      "published": "2026-08-25",
+      "updated": "2026-08-25",
+      "short": "気になることは、ぜんぶ先に答えておくね",
+      "title": "女性のダイビングの疑問をまんがで｜メイクも髪も生理も｜三浦 海の学校",
+      "description": "メイクは落とす？髪はどう結ぶ？日焼け対策は？生理と重なったら？——女性がダイビングの前に気になる実務の疑問に先回りして答える回。生徒さんの約6割が女性・一人参加も普通。更衣室・シャワー・女性サイズの器材もそろっています。全12ページ。",
+      "related": [
+        "trial-diving",
+        "diving-license",
+        "gear-rental",
+        "age-no-limit"
+      ],
+      "sources": [
+        {
+          "name": "DAN \"Women's Health and Diving\"（女性の健康とダイビング）",
+          "url": "https://dan.org/health-medicine/health-resources/diseases-conditions/womens-health-and-diving/"
+        },
+        {
+          "name": "Scuba Monsters「正しいマスクの装着方法」",
+          "url": "https://scuba-monsters.com/put-on-mask/"
+        }
+      ]
     }
   ]
 }
