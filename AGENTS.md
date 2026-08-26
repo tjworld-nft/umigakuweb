@@ -147,6 +147,9 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - **凍結中の手動デプロイ**: FTPS（ホスト `sv8718.xserver.jp`・メインFTPアカウント `yokosukatj`・パスワードは「サーバーパスワード」でユーザーが把握）。Python ftplib(FTP_TLS) でアップ・削除とも実績あり。アップ先は `/miura-diving.com/public_html/`。
 - 反映前に必ずコンフリクトマーカー（`<<<<<<<`）を検索すること。
 - 手動デプロイした変更も**必ずローカルでgitコミット**して本番とリポジトリの同期を保つこと。
+- 🔴 **`logbook.miura-diving.com/` ディレクトリをリポジトリから削除してはいけない**。サブドメイン logbook.miura-diving.com（Blue Logbook PWA）のドキュメントルートで、本番にはFTP手動アップロードのPWA一式（リポジトリ未管理）が置いてある。リポジトリ内の中身は `.htaccess` 1枚だけなので、それを消すとgit上ディレクトリごと消え、FTP-Deploy-Actionが本番ディレクトリを**中身ごと再帰削除**する（=ログブック全損）。どうしても消す場合は同じコミットで deploy.yml の exclude に `**/logbook.miura-diving.com/**` を追加してから。
+- 🔴 **deploy.yml に `dangerous-clean-slate` を絶対に追加しない**（public_html全体を消してから上げ直す挙動＝手動アップロード物が全損）。同期がおかしい時はサーバ上の `.ftp-deploy-sync-state.json` を退避→削除して次回push（削除なしのフル再アップロードに落ちるだけで安全）。
+- メイン `.htaccess` の正規化301（https化・index.html→/）には**本体ドメイン限定のホスト条件**が入っている（2026-08-26）。外すとサブドメインに誤爆して logbook のPWA（start_url=/index.html）が404になる事故が再発する。
 
 ## マスコットキャラ「クラゲ女子」
 

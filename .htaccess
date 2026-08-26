@@ -1,17 +1,35 @@
 # Directory index configuration
 DirectoryIndex index.html
 
+# FTPデプロイの同期記録（全ファイル一覧+ハッシュ）を外部から読めなくする。
+# ファイル自体は消さないこと（消すと次回デプロイがフル再アップロードになる）。
+<Files ".ftp-deploy-sync-state.json">
+  Require all denied
+</Files>
+
 # RewriteEngine On
 RewriteEngine On
 
 # Canonical URL (2026-08-19): http→https / www→non-www / どのディレクトリでも index.html→末尾スラッシュ
 # Xserver（nginx前段＋Apache）では %{HTTPS} が使える（公式案内のスニペットと同じ書き方）
+# 注意(2026-08-26): サブドメイン（logbook.miura-diving.com 等）のドキュメントルートは
+# public_html 配下のディレクトリで、この .htaccess のルールを継承する。
+# ホスト条件で本体ドメインに限定しないと、logbook の /index.html（PWAのstart_url）が
+# 存在しないURLへ301されて404になる。以下の2ブロックのホスト条件は外さないこと。
+RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
 RewriteCond %{HTTPS} !on [OR]
 RewriteCond %{HTTP_HOST} ^www\.miura-diving\.com$ [NC]
 RewriteRule ^(.*)$ https://miura-diving.com/$1 [R=301,L]
 
+RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
 RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
+
+# 本体ドメイン経由でサブドメインdocrootに直アクセスされたら本来のサブドメインへ戻す。
+# 上記の誤爆301がSafariに永続キャッシュされた端末の受け皿（301だと再汚染するので302）。
+# 別オリジンでログブックが開くとlocalStorageが空に見える事故の防止も兼ねる。
+RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
+RewriteRule ^logbook\.miura-diving\.com(?:/(.*))?$ https://logbook.miura-diving.com/$1 [R=302,L]
 
 # Make /blog unaffected by WP rules (if any)
 RewriteRule ^blog($|/) - [L]
