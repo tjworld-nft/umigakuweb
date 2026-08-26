@@ -1,0 +1,18 @@
+# logbook.miura-diving.com（Blue Logbook・PWA）のドキュメントルート用
+# 親 public_html/.htaccess のRewriteルールはこの階層に RewriteEngine On が
+# あるだけで継承されなくなる（盾）。親側で index.html→/ の301を入れた際、
+# PWAのstart_url(./index.html)が存在しないURLへ301されて404になったため。
+RewriteEngine On
+
+# http→https はこのサブドメイン内で完結させる
+RewriteCond %{HTTPS} !on
+RewriteRule ^(.*)$ https://logbook.miura-diving.com/$1 [R=301,L]
+
+# miura-diving.com/logbook.miura-diving.com/… と別オリジンで開かれたら
+# 正しいサブドメインへ302で戻す（誤爆301がSafariにキャッシュされた端末の受け皿。
+# 別オリジンだとlocalStorageが空でログが消えたように見えるため放置しない）。
+RewriteCond %{HTTP_HOST} !^logbook\.miura-diving\.com$ [NC]
+RewriteRule ^(.*)$ https://logbook.miura-diving.com/$1 [R=302,L]
+
+# logbook.miura-diving.com/logbook.miura-diving.com/… の二重パス形も同様に戻す
+RewriteRule ^logbook\.miura-diving\.com(?:/(.*))?$ /$1 [R=302,L]
