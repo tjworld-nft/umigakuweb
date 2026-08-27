@@ -346,6 +346,20 @@
           "url": "https://scuba-monsters.com/put-on-mask/"
         }
       ]
+    },
+    {
+      "slug": "ai-consult",
+      "ep": 19,
+      "published": "2026-08-27",
+      "updated": "2026-08-27",
+      "short": "お店に聞く前に、AIに聞いていい",
+      "title": "ダイビングの不安をAIに相談｜お店に聞く前に聞いていい｜三浦 海の学校",
+      "description": "問い合わせたら断りにくい、営業されそうで聞きにくい——その手前に、気兼ねなく相談できる相手を置きました。HPの全ページのいちばん下にある「AIに相談する」ボタンの使い方をまんがで紹介。あなたのAIが公式情報を読み、状況を聞いてから率直に答えます。全12ページ。",
+      "related": [
+        "women-diving",
+        "trial-diving",
+        "diving-license"
+      ]
     }
   ]
 }
