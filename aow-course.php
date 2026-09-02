@@ -233,7 +233,7 @@ get_header(); // ヘッダーを読み込む
                     <p>レンタル器材：</p>
                     <ul class="feature-list">
                         <li><span class="highlight">フルセット（ウェット）：5,500円（税込）</span></li>
-                        <li><span class="highlight">フルセット（ドライスーツ）：8,800円（税込）</span></li>
+                        <li><span class="highlight">フルセット（ドライスーツ）：5,500円（税込）</span></li>
                     </ul>
                 </div>
             </div>

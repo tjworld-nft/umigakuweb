@@ -83,9 +83,15 @@
   <!-- まんが（一覧＋各話・新しい順。manga/episodes.json から sync_episodes.py が生成） -->
   <url>
     <loc>https://miura-diving.com/manga/</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://miura-diving.com/manga/drysuit-prep/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://miura-diving.com/manga/logbook-app/</loc>
