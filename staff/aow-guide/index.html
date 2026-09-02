@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>AOW指導ノート｜三浦 海の学校 スタッフ用</title>
+<meta name="description" content="三浦 海の学校スタッフ向け。PPB・魚の見分け方・ナビゲーションの3本のアドベンチャー・ダイブを、ブリーフィングから達成条件の評価、デブリーフィングまで通して運ぶための指導ノート。">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@500;600&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap">
+<style>
+:root{
+  --bg:#F2F6F7; --surface:#FFFFFF; --surface-2:#E8EFF2; --line:#CBD9DF; --ink:#12272F; --muted:#56707A;
+  --sea:#1B6A88; --sea-soft:#D8EAF1; --accent:#E4572E; --accent-soft:#FBE4DB;
+  --ok:#2E7D5B; --ok-soft:#DCF0E6; --warn:#A8701A; --warn-soft:#FBEFD3; --slate:#FBFCFA; --slate-line:#E3EAEC;
+  --shadow:0 1px 2px rgba(18,39,47,.06),0 6px 20px rgba(18,39,47,.06);
+  --ff-display:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",YuGothic,sans-serif;
+  --ff-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",sans-serif;
+  --ff-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C171D; --surface:#132229; --surface-2:#1A2E36; --line:#2B454F; --ink:#E6EEF1; --muted:#9DB2BA;
+    --sea:#6FC2DF; --sea-soft:#163A47; --accent:#FF8258; --accent-soft:#3B211A;
+    --ok:#63C495; --ok-soft:#173327; --warn:#E3AC4C; --warn-soft:#3A2D12; --slate:#10202A; --slate-line:#233842;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.28);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C171D; --surface:#132229; --surface-2:#1A2E36; --line:#2B454F; --ink:#E6EEF1; --muted:#9DB2BA;
+  --sea:#6FC2DF; --sea-soft:#163A47; --accent:#FF8258; --accent-soft:#3B211A;
+  --ok:#63C495; --ok-soft:#173327; --warn:#E3AC4C; --warn-soft:#3A2D12; --slate:#10202A; --slate-line:#233842;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.28);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ff-body);font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--sea)}
+h1,h2,h3,h4{font-family:var(--ff-display);line-height:1.35;text-wrap:balance;margin:0}
+p{margin:0}
+.app{max-width:760px;margin:0 auto;padding:0 16px 80px}
+.eyebrow{font-family:var(--ff-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sea);font-weight:600}
+.mono{font-family:var(--ff-mono);font-variant-numeric:tabular-nums}
+
+/* header */
+.masthead{padding:26px 0 18px;border-bottom:1px solid var(--line)}
+.masthead h1{font-size:clamp(28px,7vw,40px);font-weight:900;letter-spacing:-.01em;margin-top:6px}
+.masthead .lead{margin-top:12px;color:var(--muted);font-size:15px;max-width:38em}
+.dives{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.dives span{font-family:var(--ff-display);font-weight:700;font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.dives span b{font-family:var(--ff-mono);color:var(--accent);margin-right:6px;font-weight:600}
+.overall{margin-top:16px;display:flex;align-items:center;gap:14px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.overall .bar{flex:1;height:8px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.overall .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .35s ease}
+.overall b{font-family:var(--ff-mono);font-weight:600;font-size:14px;min-width:4.5em;text-align:right}
+.overall small{color:var(--muted);font-size:12px}
+
+/* tabs */
+.tabs{position:sticky;top:0;z-index:20;margin:0 -16px;padding:8px 10px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:1 0 auto;appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 14px/1 var(--ff-display);padding:11px 9px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.tab .dot{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.tab .dot.part{background:var(--warn)}
+.tab .dot.done{background:var(--ok)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* panels & sections */
+.panel{padding-top:8px}
+.section{margin-top:28px}
+.section>.eyebrow{display:block;margin-bottom:6px}
+.section>h2{font-size:22px;font-weight:900}
+.section>h3{font-size:18px;font-weight:700;margin-top:18px}
+.section>p{margin-top:10px}
+.section>p+p{margin-top:8px}
+.intro{margin-top:22px;padding:16px 18px;background:var(--sea-soft);border-radius:14px;font-size:15px}
+.intro b{font-family:var(--ff-display)}
+.card{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+.card h3{font-size:17px;font-weight:700}
+.card h3+p{margin-top:8px}
+.card p{font-size:15px}
+.card ul,.card ol{margin:8px 0 0;padding-left:1.3em;font-size:15px}
+.card li{margin:4px 0}
+.card li b{font-family:var(--ff-display)}
+
+/* stat grid */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.stat span{display:block;font-size:11px;letter-spacing:.06em;color:var(--muted);font-family:var(--ff-display);font-weight:700}
+.stat b{display:block;font-family:var(--ff-mono);font-weight:600;font-size:22px;line-height:1.2;margin-top:4px;color:var(--ink)}
+.stat b em{font-style:normal;font-size:13px;color:var(--muted);font-family:var(--ff-body);margin-left:4px}
+.stat small{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5}
+.stat.hot b{color:var(--accent)}
+
+/* checklist */
+.checklist{list-style:none;margin:12px 0 0;padding:0;counter-reset:req}
+.checklist li{border-top:1px solid var(--line)}
+.checklist li:first-child{border-top:0}
+.checklist label{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;padding:12px 2px;cursor:pointer;font-size:15px}
+.checklist input{appearance:none;width:24px;height:24px;margin:2px 0 0;border:2px solid var(--line);border-radius:7px;background:var(--surface);position:relative;cursor:pointer;flex:none}
+.checklist input:checked{background:var(--accent);border-color:var(--accent)}
+.checklist input:checked::after{content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg)}
+.checklist .n{font-family:var(--ff-mono);color:var(--accent);font-weight:600;margin-right:6px}
+.checklist .sub{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.checklist input:checked+span{color:var(--muted)}
+.checklist.req label{grid-template-columns:28px 1fr}
+
+/* slate (briefing script) */
+.slate{margin-top:14px;background-color:var(--slate);border:1px solid var(--line);border-radius:14px;padding:16px 18px 18px;background-image:radial-gradient(var(--slate-line) 1px,transparent 1.5px);background-size:18px 18px;background-position:-4px -4px}
+.slate .eyebrow{display:block;margin-bottom:4px}
+.slate h3{font-size:17px;font-weight:700}
+.slate ol{margin:10px 0 0;padding-left:1.4em;font-size:15px}
+.slate li{margin:6px 0}
+.slate li b{font-family:var(--ff-display)}
+.slate q{quotes:"「" "」";color:var(--sea);font-weight:700}
+.slate .note{margin-top:10px;font-size:13px;color:var(--muted)}
+
+/* steps (real sequence) */
+.steps{list-style:none;margin:12px 0 0;padding:0}
+.steps li{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.steps li:first-child{border-top:0;padding-top:4px}
+.steps .num{font-family:var(--ff-mono);font-weight:600;color:var(--accent);font-size:15px;padding-top:2px}
+.steps b{font-family:var(--ff-display);display:block;font-size:15px}
+.steps p{font-size:14px;color:var(--muted);margin-top:2px}
+.steps .watch{display:inline-block;margin-top:6px;padding:4px 9px;border-radius:6px;background:var(--sea-soft);color:var(--sea);font-size:12px;font-weight:700;font-family:var(--ff-display)}
+
+/* callouts */
+.callout{margin-top:14px;padding:14px 16px;border-radius:12px;font-size:14px;border-left:4px solid var(--sea);background:var(--sea-soft)}
+.callout b{font-family:var(--ff-display);display:block;margin-bottom:2px}
+.callout.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.callout.ask{border-left-color:var(--accent);background:var(--accent-soft)}
+.callout.ok{border-left-color:var(--ok);background:var(--ok-soft)}
+.callout ul{margin:6px 0 0;padding-left:1.2em}
+.callout li{margin:3px 0}
+
+/* two-col mini table */
+.table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+.table th,.table td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.table th{font-family:var(--ff-display);font-weight:700;font-size:13px;color:var(--muted)}
+.table td.mono{font-family:var(--ff-mono);font-weight:600;white-space:nowrap}
+.table-wrap{overflow-x:auto;margin-top:4px}
+
+/* pitfalls */
+.pit{margin-top:12px;display:grid;gap:8px}
+.pit div{display:grid;grid-template-columns:1fr;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-size:14px}
+.pit b{font-family:var(--ff-display);color:var(--ink)}
+.pit b::before{content:"つまずき　";font-size:11px;color:var(--warn);letter-spacing:.06em}
+.pit span::before{content:"対処　";font-size:11px;color:var(--ok);letter-spacing:.06em;font-weight:700}
+.pit span{color:var(--muted)}
+
+/* tools */
+.tool{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.tool h3{font-size:16px;font-weight:700}
+.tool .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.tool label{display:block;font-size:12px;color:var(--muted);font-family:var(--ff-display);font-weight:700}
+.tool input,.tool select{width:100%;margin-top:4px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:600 18px var(--ff-mono)}
+.tool select{font:700 15px var(--ff-display)}
+.tool .out{margin-top:12px;padding:12px 14px;background:var(--sea-soft);border-radius:10px;font-size:14px}
+.tool .out b{font-family:var(--ff-mono);font-size:20px;color:var(--sea);font-weight:600}
+.tool .out small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chips span{font-family:var(--ff-mono);font-weight:600;font-size:14px;padding:5px 10px;border-radius:8px;background:var(--surface-2)}
+
+/* fish groups */
+.fgroup{margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.fgroup summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:12px 14px}
+.fgroup summary::-webkit-details-marker{display:none}
+.fgroup summary .g{font-family:var(--ff-mono);font-weight:600;color:var(--accent);font-size:14px}
+.fgroup summary b{font-family:var(--ff-display);font-size:15px;display:block}
+.fgroup summary small{display:block;color:var(--muted);font-size:12px;line-height:1.5}
+.fgroup summary .arrow{color:var(--muted);transition:transform .2s}
+.fgroup[open] summary .arrow{transform:rotate(90deg)}
+.fgroup .body{padding:0 14px 14px;font-size:14px}
+.fgroup .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.fgroup figure{margin:0}
+.fgroup img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;background:var(--surface-2)}
+.fgroup figcaption{font-size:12px;margin-top:4px;line-height:1.4}
+.fgroup .more{color:var(--muted);font-size:13px;margin-top:8px}
+.fgroup .more b{font-family:var(--ff-display);color:var(--ink)}
+
+/* quiz */
+.quiz{margin-top:14px}
+.q{margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.q p.qt{font-size:15px;font-weight:700;font-family:var(--ff-display)}
+.q p.qt span{font-family:var(--ff-mono);color:var(--sea);font-weight:600;margin-right:8px}
+.q .opts{display:grid;gap:8px;margin-top:10px}
+.q button{appearance:none;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:400 14px/1.6 var(--ff-body);padding:10px 12px;border-radius:10px;cursor:pointer}
+.q button.correct{border-color:var(--ok);background:var(--ok-soft)}
+.q button.wrong{border-color:var(--warn);background:var(--warn-soft)}
+.q .fb{margin-top:10px;font-size:13px;padding:10px 12px;border-radius:8px;background:var(--surface-2);color:var(--muted)}
+.q .fb.good{background:var(--ok-soft);color:var(--ok)}
+.q .fb.bad{background:var(--warn-soft);color:var(--warn)}
+
+/* misc */
+.btn{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 14px var(--ff-display);padding:10px 16px;border-radius:10px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.hint{font-size:13px;color:var(--muted);margin-top:8px}
+.footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.footer b{font-family:var(--ff-display);color:var(--ink)}
+.footer ul{margin:6px 0 0;padding-left:1.2em}
+.signal{display:grid;grid-template-columns:1fr;gap:6px;margin-top:10px}
+.signal div{display:grid;grid-template-columns:8em 1fr;gap:10px;font-size:14px;padding:8px 10px;background:var(--surface-2);border-radius:8px}
+.signal b{font-family:var(--ff-display)}
+@media (max-width:420px){.stats{grid-template-columns:1fr 1fr}.fgroup .thumbs{grid-template-columns:repeat(3,1fr)}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<div class="app">
+<header class="masthead">
+  <span class="eyebrow">三浦 海の学校 / Advanced Open Water</span>
+  <h1>AOW指導ノート</h1>
+  <p class="lead">下山インストラクターへ。PPB・魚の見分け方・ナビゲーションの3本を、ブリーフィングから達成条件の評価、デブリーフィングまで通して運べるようにまとめました。前日までに全体を読んで、当日は「当日」タブと各ダイブの台本だけ開けば足ります。</p>
+  <div class="dives">
+    <span><b>1</b>PPB（中性浮力）</span>
+    <span><b>2</b>魚の見分け方</span>
+    <span><b>3</b>ナビゲーション</span>
+  </div>
+  <div class="overall"><small>読み込み・チェック</small><div class="bar"><i id="overallBar"></i></div><b id="overallPct">0%</b></div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="セクション">
+  <button class="tab" role="tab" data-tab="common" aria-selected="true"><span class="dot" data-dot="common"></span>共通</button>
+  <button class="tab" role="tab" data-tab="ppb" aria-selected="false"><span class="dot" data-dot="ppb"></span>PPB</button>
+  <button class="tab" role="tab" data-tab="fish" aria-selected="false"><span class="dot" data-dot="fish"></span>魚</button>
+  <button class="tab" role="tab" data-tab="nav" aria-selected="false"><span class="dot" data-dot="nav"></span>ナビ</button>
+  <button class="tab" role="tab" data-tab="day" aria-selected="false"><span class="dot" data-dot="day"></span>当日</button>
+</nav>
+
+<!-- ============ 共通 ============ -->
+<section class="panel" id="panel-common" role="tabpanel">
+  <div class="intro"><b>このノートの立場。</b>正はPADIインストラクターマニュアル（AOWセクション）と各スペシャルティ・インストラクターガイドです。ここはそれを「当日の順番」に並べ直したもので、規準の数字はマニュアルから写しています。迷ったらマニュアル、判断に迷ったら吉田に連絡してください。</div>
+
+  <div class="section">
+    <span class="eyebrow">AOWの骨格</span>
+    <h2>3本とも「アドベンチャー・ダイブ」。ルールは共通です</h2>
+    <p>AOW認定は、ディープとナビゲーションを含む5本のアドベンチャー・ダイブ＋各ナレッジリビュー＋「Thinking Like a Diver」の知識開発で成立します。今回の3本のうちナビゲーションは必須ダイブ、PPBと魚の見分け方は選択ダイブです。</p>
+    <div class="stats">
+      <div class="stat"><span>人数比（一般規準）</span><b>8<em>:1</em></b><small>認定アシスタント1名につき生徒4名まで追加可</small></div>
+      <div class="stat"><span>監督</span><b>18m<em>が境目</em></b><small>18m以内は間接的監督可。18m超は直接的監督（全員がDeep修了者なら除く）</small></div>
+      <div class="stat"><span>最大深度（15歳以上）</span><b>30m</b><small>ただし今回の3本はどれも浅場推奨。深く行く理由がない</small></div>
+      <div class="stat hot"><span>1ダイブ＝1つの達成条件セット</span><b>混ぜない</b><small>複数のアドベンチャー・ダイブの達成条件を1本にまとめて行なうことはできない</small></div>
+    </div>
+    <div class="card">
+      <h3>生徒の必要器材・教材・書式</h3>
+      <ul>
+        <li><b>器材：</b>OWDの必要器材に加えて、ナイフ／ダイバー用ツール、コンパス、ダイブコンピューター（または時計＋eRDPML／RDP）。魚の見分け方は<b>スレートまたは水中ノートを各自必携</b>。</li>
+        <li><b>教材：</b>AOW eLearningまたはマニュアル、ログブック。オープンウォーター・ダイブ中はAOWマルチパーパス・データキャリア（69230J）を使う。</li>
+        <li><b>書式（必須）：</b>継続教育専用書式（10038J）、ダイバーメディカル／参加者チェックシート（10346J）。<b>推奨：</b>AOWコース記録ワークシート（10090J）。</li>
+        <li><b>インストラクター資格：</b>この3本はAOW教材で実施できるので、スペシャルティ・インストラクター資格は不要（チャート上、PPBとナビはAOW教材／SP教材のどちらでも可、魚の見分け方はAOW教材）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">知識開発</span>
+    <h2>ナレッジリビューが終わっていないと、ダイブのクレジットは出せない</h2>
+    <p>各アドベンチャー・ダイブの前に、そのダイブを安全に終えるための知識を復習します。方法は3つのどれでもよい。①プレダイブ・ブリーフィングで復習 ②体系的なディスカッション ③該当するナレッジリビューを修了させる。</p>
+    <div class="callout warn"><b>署名の条件</b>生徒がナレッジリビューを修了し、それを復習した場合のみクレジットを認める。アドベンチャー・ダイブ・トレーニング・レコードに記入して署名するか、別の方法でナレッジリビューとダイブの両方の修了を記録する。アンサーキーはPADI Pros' Siteにある。</div>
+    <div class="callout"><b>当日の運びかた</b>eLearningで該当セクション（Peak Performance Buoyancy／Fish Identification／Underwater Navigation）が終わっているかを集合時に確認。未修了ならダイブ前にブリーフィングで要点を復習し、ナレッジリビューをその場で終えてもらってから潜る。「Thinking Like a Diver」は理想は最初のダイブ前、遅くとも認定前に修了していればよい。</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">Thinking Like a Diver</span>
+    <h2>毎回のダイブに「経験豊富なダイバーの視点」を織り込む</h2>
+    <p>マニュアルはこれを「ダイブ前・最中・後にあてはめる」と書いています。やることは3つに分けると簡単です。</p>
+    <div class="card">
+      <ul>
+        <li><b>ブリーフィングで：</b>状況認識・タスクの管理・よいダイバーとしての行動、この3つに関するリマインダーを入れる。<br><span class="hint">例「ホバリング中も30秒に1回はバディを見る」「コンパスを担当する人は深度と残圧を相方に任せる。任せると決めたことを潜降前に言い合う」「砂地は膝をつかない。フィンを上げる」</span></li>
+        <li><b>ダイブ中で：</b>自分がその行動をデモンストレーションする。生徒はインストラクターの動きをそのまま真似します。</li>
+        <li><b>デブリーフィングで：</b>質問を投げかけて、生徒自身に理念をあてはめさせる。答えを言うのではなく訊く。</li>
+      </ul>
+    </div>
+    <div class="callout ask"><b>デブリーフィングの質問ストック</b>
+      <ul>
+        <li>状況認識：「バディの残圧を最初に確認したのはいつ？」「深度がずれたと気づいたきっかけは？」</li>
+        <li>タスク管理：「数えること・方位・バディ、3つをどんな順番で回した？」「一番おろそかになったのはどれ？」</li>
+        <li>よいダイバーの行動：「水底や生き物に近づきすぎた場面はあった？」「次のダイブで1つだけ変えるなら何？」</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">ブリーフィングの型</span>
+    <h2>8項目を、この順番で。5〜8分</h2>
+    <p>スペシャルティ・インストラクターガイドのブリーフィング項目は3本とも同じ骨格です。固有の部分（7番）だけ各ダイブのタブに台本があります。</p>
+    <div class="slate">
+      <span class="eyebrow">Briefing outline</span>
+      <h3>共通の台本</h3>
+      <ol>
+        <li><b>コンディションの評価。</b>波・うねり・流れ・透明度・水温・潮汐。<q>今日は◯◯なので、ここに注意します</q>と、生徒にも判断を見せる。</li>
+        <li><b>施設の確認。</b>器材の置き場、シャワー・トイレ、集合場所、エントリー階段までの動線。</li>
+        <li><b>ポイントの説明。</b>水底の地形（岩場と砂地）、水底の構成、水深の範囲、目印になるブイやライン。マップがあれば使う。</li>
+        <li><b>エントリーとエキジットの方法。</b>階段の使い方、波を見るタイミング、フィンの着脱位置。</li>
+        <li><b>ガス計画はバディチームに決めさせる。</b>ガス供給量の制限をもとに、ターン・プレッシャー、浮上開始残圧、予備の残圧。<q>スタート圧とターン圧はスレートに書いておいてください</q></li>
+        <li><b>最大深度とダイブタイムもバディチームが決める。</b>計画より深く・長くなってしまったときの対応（問題発生時のプロファイル）も決めさせる。</li>
+        <li><b>ダイブの順序と達成条件。</b>このダイブで何をどの順で行い、何ができれば達成か。数字（60秒・±1m、15m／6m／8m以内など）を口に出す。→各タブの台本へ。</li>
+        <li><b>通信と緊急手順。</b>使うハンドシグナル、はぐれたら1分探して浮上、緊急時の合図、現地の規制で必要な事項。</li>
+      </ol>
+      <p class="note">＋ Thinking Like a Diverのリマインダーを3つ（上の枠）。最後に<q>質問は？</q>で締める。</p>
+    </div>
+    <div class="callout"><b>生徒に決めさせる、が大事な理由</b>AOWは「インストラクターに連れて行かれるダイブ」から「自分で計画するダイブ」へ移す段階です。ガス計画・最大深度・ダイブタイムを生徒に言わせることが、そのまま知識の復習にもなります。</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">デブリーフィングの型</span>
+    <h2>肯定 → 自己評価 → 講評 → 質問 → ログ</h2>
+    <div class="card">
+      <ol>
+        <li><b>肯定的な補強。</b>できたことを具体的に言う。「60秒、上下50cmに収まっていました」</li>
+        <li><b>自己批評。</b>生徒に自分のパフォーマンスを言わせる。必要ならインストラクターの感想を足す。</li>
+        <li><b>達成条件の確認。</b>未達の項目があれば、どこが足りないかと、いつ再挑戦するかを決める。</li>
+        <li><b>Thinking Like a Diverの質問。</b>上のストックから2つ。</li>
+        <li><b>ログブック記入と署名。</b>デジタルログなら承認。トレーニングレコードにも記録。</li>
+      </ol>
+    </div>
+    <div class="callout warn"><b>マスタリー（熟達）で判断する</b>達成条件は「一応やった」ではなく「できた」で見ます。満たせなかった項目を残したまま署名しない。同じダイブ内で繰り返すか、インストラクターの判断でダイブを追加できます。</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">オープンウォーターの原則</span>
+    <h2>3本に共通する禁止事項と前提</h2>
+    <ul class="checklist" data-group="common">
+      <li><label><input type="checkbox" data-key="c-mix"><span>複数のアドベンチャー・ダイブの達成条件を1回のダイブに組み合わせない。<span class="sub">PPBとナビを1本で済ませる、はできない</span></span></label></li>
+      <li><label><input type="checkbox" data-key="c-ascent"><span>直接水面へ浮上できない環境では、アドベンチャー・ダイブを実施しない。</span></label></li>
+      <li><label><input type="checkbox" data-key="c-sp"><span>スペシャルティのダイブ1として実施するときは、そのインストラクターガイドの深度制限・人数比・その他の条件に従う。<span class="sub">PPB：推奨9〜12m／ナビ：推奨6〜12m、最大18m推奨</span></span></label></li>
+      <li><label><input type="checkbox" data-key="c-tld"><span>毎回のダイブで、ブリーフィング＝リマインダー、ダイブ中＝デモ、デブリーフィング＝質問、の形でThinking Like a Diverを扱う。</span></label></li>
+      <li><label><input type="checkbox" data-key="c-record"><span>ナレッジリビューとダイブの両方の修了を記録し、署名する。</span></label></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">Self check</span>
+    <h2>共通ルールの確認</h2>
+    <div class="quiz" data-quiz="common">
+      <div class="q" data-answer="1"><p class="qt"><span>Q1</span>認定アシスタントが1名つくと、AOWの人数比はどうなる？</p><div class="opts"><button>8:1のまま増やせない</button><button>生徒を4名まで追加できる（12:1）</button><button>生徒を8名追加できる（16:1）</button></div><div class="fb" hidden></div><p class="exp" hidden>一般規準は8:1で、認定アシスタント1名につき生徒4名まで追加可。ただしディープ・ダイブではアシスタントを使っても増やせません。</p></div>
+      <div class="q" data-answer="2"><p class="qt"><span>Q2</span>19mで実施するダイブに必要な監督は？</p><div class="opts"><button>18m以内と同じく間接的監督でよい</button><button>アシスタントがいれば間接的監督でよい</button><button>直接的監督（全員がDeep Adventure Dive修了者の場合を除く）</button></div><div class="fb" hidden></div><p class="exp" hidden>18mを超える深度は直接的監督。今回の3本は浅場推奨なので、そもそも18mを超える計画にしないのが正解です。</p></div>
+      <div class="q" data-answer="0"><p class="qt"><span>Q3</span>時間が押している。PPBのホバリングとナビの四角形を1本のダイブで終わらせてよい？</p><div class="opts"><button>できない。1本には1つのアドベンチャー・ダイブの達成条件だけ</button><button>両方の達成条件を満たせばよい</button><button>インストラクターの判断で可</button></div><div class="fb" hidden></div><p class="exp" hidden>マニュアルの一般的注意事項に明記されています。どうしても時間がなければ、ダイブを1本減らして別日に回す判断を吉田と共有してください。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PPB ============ -->
+<section class="panel" id="panel-ppb" role="tabpanel" hidden>
+  <div class="intro"><b>このダイブの目的。</b>生徒に自分のウエイトを見積もらせ、ホバリングとトリムを練習させること。PPBスペシャルティの「ダイブ1」と同じ内容です。教えるのは技ではなく、「頑張って沈む」のをやめて「必要な重さを確かめる」習慣です。</div>
+
+  <div class="section">
+    <span class="eyebrow">規準</span>
+    <h2>数字で押さえる</h2>
+    <div class="stats">
+      <div class="stat"><span>最大深度</span><b>30m</b><small>推奨は9〜12m。浅いほど浮力の変化が大きく、練習になる</small></div>
+      <div class="stat hot"><span>ホバリング</span><b>60<em>秒</em></b><small>呼吸コントロールだけで、1m以上浮き沈みしない</small></div>
+      <div class="stat"><span>人数比</span><b>8<em>:1</em></b><small>一般規準どおり</small></div>
+      <div class="stat"><span>水底</span><b>砂地</b><small>ピボットやホバリングで生物を傷つけない場所を選ぶ</small></div>
+    </div>
+    <div class="callout"><b>SPガイドが勧める準備</b>潜降／浮上ラインがあると速度確認に使える（修了時にはライン無しでできるように）。ホバリング練習でも目印や目視基準としてラインが役立つ。ボトムタイムはノンストップ・リミット内で余裕をもって終える。</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">達成条件</span>
+    <h2>この9つが「できた」を確認して署名する</h2>
+    <p>インストラクターマニュアルのPeak Performance Buoyancy Adventure Diveの達成条件。順番はダイブ内で入れ替えてよい。</p>
+    <ul class="checklist req" data-group="ppb">
+      <li><label><input type="checkbox" data-key="p-1"><span><span class="n">1</span>ウエイト・システムを組む。<span class="sub">a. PADIベーシック・ウエイト・ガイドライン、または同様の環境・器材での経験から見積もる　b. 望む姿勢（トリム）が取れるようウエイトの配分と位置を決める</span></span></label></li>
+      <li><label><input type="checkbox" data-key="p-2"><span><span class="n">2</span>ホース・ゲージ・アクセサリーをすべて固定・装着して、器材を流線形にする。</span></label></li>
+      <li><label><input type="checkbox" data-key="p-3"><span><span class="n">3</span>適正ウエイトの調整。<span class="sub">通常の肺の大きさで息を止め、BCDに空気が入っていない状態で目の高さで浮くようにウエイトを調整</span></span></label></li>
+      <li><label><input type="checkbox" data-key="p-4"><span><span class="n">4</span>水底へ向かってゆっくりコントロールされた潜降を行ない、中性浮力をとる。</span></label></li>
+      <li><label><input type="checkbox" data-key="p-5"><span><span class="n">5</span>あらかじめ決めておいた深度で中性浮力をとる。</span></label></li>
+      <li><label><input type="checkbox" data-key="p-6"><span><span class="n">6</span>呼吸コントロールだけで深度を微調整し、1m以上浮き沈みせずに60秒間ホバリングする。</span></label></li>
+      <li><label><input type="checkbox" data-key="p-7"><span><span class="n">7</span>ダイブ中、水底にぶつからず、身体や器材を水面から出さず、必要なら少しずつ頻繁に調整しながら、リラックスした水平姿勢で中性浮力を維持する。</span></label></li>
+      <li><label><input type="checkbox" data-key="p-8"><span><span class="n">8</span>ウエイトを調節して、垂直・水平・足が上・頭が上など様々な姿勢でホバリングを練習する。</span></label></li>
+      <li><label><input type="checkbox" data-key="p-9"><span><span class="n">9</span>ポストダイブ浮力チェックを行ない、付けているウエイト量が適正か確認する。</span></label></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">知識の補強</span>
+    <h2>生徒に押さえてもらう5つ（自分も言えるように）</h2>
+    <div class="card">
+      <h3>① 浮力チェックの5ステップ</h3>
+      <ol>
+        <li>器材一式を装着して、足のつかない深さへ。レギュレーターで呼吸し、重すぎた場合に備えてBCDに空気を入れておく。</li>
+        <li>BCDから完全に空気を抜く（ドライスーツなら排気バルブはオート）。</li>
+        <li>通常の呼吸を続けながら垂直に浮く。<b>テストポイント：通常の肺の大きさで息を止めると目の高さで浮く。</b></li>
+        <li>目の高さで浮くようにウエイトを加減する。決まるまで小さいウエイトを手に持つ、または誰かが手渡す。</li>
+        <li>最終チェック：息を吐くとゆっくり沈み始める。</li>
+      </ol>
+      <p class="hint">ダイブ前に浮力チェックが必要な3つの状況：器材を変えた／環境が変わった（淡水⇄海水）／久しぶりに潜る（体の変化）。</p>
+    </div>
+    <div class="card">
+      <h3>② ベーシック・ウエイト・ガイドライン（海水・平均体型）</h3>
+      <div class="table-wrap"><table class="table">
+        <tr><th>保護スーツ</th><th>スタート時のウエイト</th></tr>
+        <tr><td>水着／スキンスーツ</td><td class="mono">0.5〜2kg</td></tr>
+        <tr><td>薄手3mmワンピース・ショーティ・ジャンプスーツ</td><td class="mono">体重の5%</td></tr>
+        <tr><td>5mmツーピース・ウェットスーツ</td><td class="mono">体重の10%</td></tr>
+        <tr><td>7mm冷水用＋フード・グローブ</td><td class="mono">10%＋1.5〜3kg</td></tr>
+        <tr><td>ネオプレン・ドライスーツ</td><td class="mono">10%＋3〜5kg</td></tr>
+        <tr><td>シェル・ドライ（薄手インナー）</td><td class="mono">10%＋1.5〜3kg</td></tr>
+        <tr><td>シェル・ドライ（厚手インナー）</td><td class="mono">10%＋3〜7kg</td></tr>
+      </table></div>
+      <p class="hint">ガス消費で終盤は約2kg軽くなる（12L／80cf）。フル充填で浮力チェックするなら、その分を足しておくと安全停止が楽。細身の人は少なめ、体重の多い人は多め。淡水では体重に応じて2〜3.2kg減らす。</p>
+    </div>
+    <div class="tool">
+      <h3>ウエイト見積もり（ブリーフィングでの目安づくり）</h3>
+      <div class="row">
+        <div><label for="wtBody">体重 kg</label><input id="wtBody" type="number" inputmode="decimal" placeholder="60"></div>
+        <div><label for="wtSuit">保護スーツ</label><select id="wtSuit">
+          <option value="skin">水着／スキン</option>
+          <option value="3mm">3mmワンピース</option>
+          <option value="5mm" selected>5mmツーピース</option>
+          <option value="7mm">7mm＋フード・グローブ</option>
+          <option value="neo">ネオプレン・ドライ</option>
+          <option value="shell1">シェル・ドライ（薄手）</option>
+          <option value="shell2">シェル・ドライ（厚手）</option>
+        </select></div>
+      </div>
+      <div class="out" id="wtOut">体重を入れると目安が出ます。<small>浮力チェックで確定するための出発点。この数字を正解にしない。</small></div>
+    </div>
+    <div class="card">
+      <h3>③ 浮力調整が必要になる3つの変動要素</h3>
+      <ul>
+        <li><b>スーツの圧縮：</b>潜降で気泡が圧縮→浮力が減る→BCDに足す。</li>
+        <li><b>ガスの消費：</b>徐々に浮力が増える→BCDから抜く。</li>
+        <li><b>水深の変化：</b>浮上中は入れた空気が膨張→早めに抜く。</li>
+      </ul>
+      <p class="hint">適正ウエイトで薄いスーツなら、必要な調整は「消費したガスの分を少し抜く」だけ。浮力の変更が頻繁に必要なら、おそらくオーバーウエイト。<b>BCDをエレベーターにしない</b>：浮上は泳ぎ出すだけ、潜降は息を吐くだけ。</p>
+    </div>
+    <div class="card">
+      <h3>④ 呼吸で微調整、息は止めない</h3>
+      <p>BCDは粗い調整、肺は微調整。吸うと少し浮き、吐くと少し沈む。反応には時間差があるので、連続して操作すると行き過ぎる。目いっぱい吸った状態や吐き切った状態で呼吸を続けることはあっても、<b>絶対に息を止めない</b>。</p>
+    </div>
+    <div class="card">
+      <h3>⑤ 配置がトリムを決める。流線形の8項目</h3>
+      <p>浮力を決めるのはウエイト量、水中の自然な姿勢を決めるのはウエイトの配置。基本はできるだけ水平に泳げる配置（脇腹やお腹の前方）。足が沈むなら重心を頭側へ（スチールタンクを少し上に付ける）、足が浮くなら重心を下へ。</p>
+      <ul>
+        <li>器材がフィットして調整されている</li><li>正しいウエイト量（BCDが余計に膨らんでいない）</li><li>水中で水平</li><li>ムダのないキック</li><li>ホース類はBCDに固定、残圧計は胸近く、予備空気源は見える位置に</li><li>アクセサリーはポケットへ</li><li>留め具で固定して、ぶらぶらしない</li><li>姿勢を変えても見た目が変わらない</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">ブリーフィング台本</span>
+    <h2>共通8項目の「7番」に差し込む</h2>
+    <div class="slate">
+      <span class="eyebrow">PPB — sequence &amp; performance</span>
+      <h3>順序と達成条件（このまま話せる）</h3>
+      <ol>
+        <li><q>今日は自分のウエイトを見積もって、確かめて、浮いていられる練習をします。目標は2つ。呼吸だけで60秒、上下1m以内にとどまること。それと、ダイブの最初と最後に浮力チェックをすること。</q></li>
+        <li><q>器材を着ける前に、ホースとゲージを体に寄せます。ぶら下がっているものはゼロにしましょう。</q>（達成条件2）</li>
+        <li><q>エントリーしたら、水面でBCDを空にして、普通に吸って止めて、目の高さで浮くかを見ます。吐いてゆっくり沈み始めたら合格。ウエイトは私が渡したり抜いたりします。</q>（達成条件3）</li>
+        <li><q>潜降はフィンを動かさず、息を吐くだけで沈みます。ゆっくり。3〜6mでいったん止まってバブルチェックと慣らし。</q>（達成条件4）</li>
+        <li><q>私が指した深度で止まります。フィンピボットで中性浮力を取ってから、手もフィンも使わずに60秒。私が時間と深度を見ています。</q>（達成条件5・6）</li>
+        <li><q>そのあと、水底ぎりぎりを触らずに泳ぐ、指1本で押して浮き出す、前後に動く、を遊びながらやります。ウエイトの位置を変えて、縦・横・足上・頭上の姿勢も試します。</q>（達成条件7・8）</li>
+        <li><q>浮上は1分に18m以下、5mで3分。安全停止中も中性浮力のまま。水面でプラス浮力にしてから、残圧が少ない状態でもう一度浮力チェックをします。</q>（達成条件9）</li>
+      </ol>
+      <p class="note">ハンドシグナルを決めておく：「ホバリング開始」（手のひらを下に水平）「ゆっくり」「息を吐いて」（胸を押さえて手を下げる）「止まって見て」。</p>
+    </div>
+    <div class="callout"><b>Thinking Like a Diverのリマインダー例</b>「ホバリング中も30秒に1回はバディを見る」「小さく直して、数秒待って、結果を見る。大きく直さない」「砂地でも膝をつかない。フィンは上げる」</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">水中の進行</span>
+    <h2>順番と、インストラクターが見るポイント</h2>
+    <ol class="steps">
+      <li><span class="num">01</span><div><b>プレダイブ・セーフティ・チェック（バディで）</b><p>間違いに気づかせて修正させる。ダンプバルブの位置を全部触らせておく。</p></div></li>
+      <li><span class="num">02</span><div><b>エントリー → 水面で浮力チェック</b><p>全装備・BCD空・静止・通常呼吸で目の高さ。吐いて沈み始めるか。フルタンクなら約2kg分の余裕を頭に置く。</p><span class="watch">見る：BCDに空気が残っていないか／フィンで踏ん張っていないか</span></div></li>
+      <li><span class="num">03</span><div><b>ガス管理の確認</b><p>スタート圧とターン圧をスレートに書いたか。ダイブ中も不定期に残圧を確認させる。</p></div></li>
+      <li><span class="num">04</span><div><b>5ポイント潜降、息を吐くだけで沈む</b><p>足を動かさずに沈めるか。3〜6mでバブルチェックと順応。潜降に合わせてBCDに少量ずつ。</p><span class="watch">見る：吐き切れているか／潜降が速すぎないか</span></div></li>
+      <li><span class="num">05</span><div><b>指定深度で中性浮力（フィンピボット可）</b><p>適正ウエイトならフィンピボットで取れる。取れないなら、ウエイトかBCD残気を疑う。</p></div></li>
+      <li><span class="num">06</span><div><b>ホバリング60秒</b><p>手とフィンを使わず、呼吸で微調整。自分の深度計を基準に±1mを測る。岩やラインを目視基準に使ってよい。</p><span class="watch">見る：息を止めていないか（気泡が途切れたら止めている）／体が立っていないか</span></div></li>
+      <li><span class="num">07</span><div><b>浮力ゲーム</b><p>ホバリングからそのまま水底ぎりぎりを触らずに泳ぐ／障害物があれば通り抜ける／指1本で押して浮き出す／手とフィンを最小にして前後に動く。</p></div></li>
+      <li><span class="num">08</span><div><b>姿勢とトリムの実験</b><p>中性浮力で完全に脱力させ、体が回るなら回らせる。どこに重さを置き直せば楽になるかを本人に考えさせる。垂直・水平・足上・頭上でホバリング。</p></div></li>
+      <li><span class="num">09</span><div><b>浮上と安全停止</b><p>1分に18m以下、または計器の指示。中性浮力を保つために少しずつ排気。5mで3分、停止中も中性浮力。水面でプラス浮力。</p><span class="watch">見る：浮上の途中で浮力が「先に」増えていないか</span></div></li>
+      <li><span class="num">10</span><div><b>ポストダイブ浮力チェック → エキジット</b><p>残圧が少なくても中性浮力が保てていたか。結果をログに書かせる（このウエイトでこのスーツ、と）。</p></div></li>
+    </ol>
+    <div class="callout ok"><b>立ち位置</b>生徒の斜め前、やや下。全身のトリムと気泡が見える位置で、手を伸ばせば届く距離。ホバリングの評価中は自分の深度を一定にして、生徒の上下を自分の深度計で測る。</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">つまずきと対処</span>
+    <h2>よく起きる6つ</h2>
+    <div class="pit">
+      <div><b>BCDに何度も給排気している</b><span>オーバーウエイトを疑う。まずキックを止めさせ、次のダイブ（またはその場）でウエイトを1kg抜いて再チェック。</span></div>
+      <div><b>ホバリング中に体が立つ</b><span>ウエイトが下に集まっている。腰ベルトからBCDポケットへ、またはタンクを上へ。頭が上がると足が落ちて踏ん張り始める。</span></div>
+      <div><b>気泡が途切れる（息を止めている）</b><span>「吐き続けて」のシグナル。吸った状態で呼吸を続ける・吐いた状態で呼吸を続ける、を陸で真似させる。</span></div>
+      <div><b>潜降できない（足から沈まない）</b><span>吐き切れていないか、BCDに残気。ダンプバルブを全部確認。それでも沈まなければ浮力チェックに戻る。</span></div>
+      <div><b>浮上中に浮きすぎる</b><span>膨張が次の浮上を招く。「早めに少しずつ」。浮上開始前に一度排気させてから泳ぎ出す。</span></div>
+      <div><b>ゲージが水底に垂れている</b><span>達成条件2に戻す。安全・環境・抵抗の3つが同時に悪くなると説明。</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">Self check</span>
+    <h2>PPBの確認</h2>
+    <div class="quiz" data-quiz="ppb">
+      <div class="q" data-answer="1"><p class="qt"><span>Q1</span>水面での浮力チェック、適正ウエイトの状態は？</p><div class="opts"><button>BCDを少し膨らませ、吐いた状態で肩が水面に出る</button><button>全装備でBCDを空にし、通常の肺の大きさで息を止めて目の高さ。吐くとゆっくり沈み始める</button><button>フィンを動かしながら口が水面より上にくる</button></div><div class="fb" hidden></div><p class="exp" hidden>達成条件3そのものです。BCDの空気とフィンキックはチェックを不正確にします。</p></div>
+      <div class="q" data-answer="2"><p class="qt"><span>Q2</span>ダイブ1のホバリングの達成条件は？</p><div class="opts"><button>息を止めて30秒静止</button><button>手を使って水底から離れ2分保つ</button><button>呼吸コントロールだけで、1m以上浮き沈みせずに60秒</button></div><div class="fb" hidden></div><p class="exp" hidden>オープン・サーキットは呼吸だけ。息止めや手・フィンの補助は不可です。</p></div>
+      <div class="q" data-answer="0"><p class="qt"><span>Q3</span>生徒が同じ深度で頻繁にBCDの給排気を繰り返している。最初に疑うのは？</p><div class="opts"><button>オーバーウエイト</button><button>レギュレーターの不調</button><button>ダイブコンピューターの誤差</button></div><div class="fb" hidden></div><p class="exp" hidden>SPガイドの記述どおり「浮力の変更が頻繁に必要であれば、おそらくオーバーウエイト」。</p></div>
+      <div class="q" data-answer="1"><p class="qt"><span>Q4</span>PPBダイブ1の推奨深度は？</p><div class="opts"><button>18〜30m</button><button>9〜12m（最大30m）</button><button>5m以内</button></div><div class="fb" hidden></div><p class="exp" hidden>浅いほど圧力変化が大きく、浮力の変化を体感しやすい。今回はディープの要素を混ぜないので浅場で十分です。</p></div>
+      <div class="q" data-answer="2"><p class="qt"><span>Q5</span>ダイブ終了時に約2kg軽くなる理由は？</p><div class="opts"><button>スーツが水を吸って軽くなる</button><button>体温で肺が大きくなる</button><button>消費したガスの重さの分、シリンダーが軽くなる</button></div><div class="fb" hidden></div><p class="exp" hidden>スチールでもアルミでも、中のガスの重さは同じ。だからフル充填でチェックしたら終盤の分を考慮する必要があります。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 魚の見分け方 ============ -->
+<section class="panel" id="panel-fish" role="tabpanel" hidden>
+  <div class="intro"><b>このダイブの目的。</b>魚を「科（見た目のグループ）」で分けて識別し、見たものをスレートに記録して、知らない魚は特徴を残して陸で調べる。AOW教材だけで実施できるダイブで、スペシャルティ・インストラクター資格は不要です。三浦の海はこのダイブに向いています。根の周りにグループが揃っています。</div>
+
+  <div class="section">
+    <span class="eyebrow">規準</span>
+    <h2>数字で押さえる</h2>
+    <div class="stats">
+      <div class="stat hot"><span>必携</span><b>スレート</b><small>生徒は各自がスレートまたは水中ノートを携帯しなければならない</small></div>
+      <div class="stat"><span>達成条件</span><b>4<em>項目</em></b><small>グループ分け／記録／不明種の調べ方／責任ある行動</small></div>
+      <div class="stat"><span>深度</span><b>浅場</b><small>固有の深度制限はなくAOW一般規準（30m）。根の周りの浅場が最も種類が多い</small></div>
+      <div class="stat"><span>人数比</span><b>8<em>:1</em></b><small>一般規準どおり</small></div>
+    </div>
+    <div class="callout"><b>陸で使うもの</b>フィールドガイド（図鑑）、魚の分類スレート、オンラインの参考文献。海の学校の<a href="https://miura-diving.com/sea-life/">海の生き物図鑑</a>は三浦で実際に撮った写真なので、ダイブ後の照合に使いやすい。</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">達成条件</span>
+    <h2>この4つが「できた」を確認して署名する</h2>
+    <ul class="checklist req" data-group="fish">
+      <li><label><input type="checkbox" data-key="f-1"><span><span class="n">1</span>魚を正しい科にグループ分けして識別し、種類を特定する。</span></label></li>
+      <li><label><input type="checkbox" data-key="f-2"><span><span class="n">2</span>できれば数や生息環境を含めて、見たものをスレートに記録する。</span></label></li>
+      <li><label><input type="checkbox" data-key="f-3"><span><span class="n">3</span>名前を知らない魚の形をスケッチ／写真に撮り、特徴を書き留め、ダイビング後にフィールドガイド・魚の分類スレート・オンラインの参考文献で名前を調べる。</span></label></li>
+      <li><label><input type="checkbox" data-key="f-4"><span><span class="n">4</span>環境への悪影響を最小限に抑えるために、適切かつ責任あるダイビングと行動をデモンストレーションする。</span></label></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">知識の補強</span>
+    <h2>生徒に押さえてもらう5つ</h2>
+    <div class="card">
+      <h3>① なぜ「科」で見るのか</h3>
+      <p>魚は種類が多すぎて、いきなり種名では覚えられない。同じ科の魚は体形・ヒレの位置・泳ぎ方・暮らす場所が似ている。まず「どのグループか」を決めてから、色や模様で種を絞る。この順番なら、初めて見る魚でも図鑑のどのページを開けばいいかが分かる。</p>
+    </div>
+    <div class="card">
+      <h3>② 観察の5ポイント</h3>
+      <ul>
+        <li><b>大きさ：</b>手のひら、フィン1枚、など自分の物差しで。</li>
+        <li><b>形：</b>円盤状か紡錘形か細長いか。尾の形（二叉・丸・角ばる）、ヒレの位置。</li>
+        <li><b>色と模様：</b>縞は向きで呼び分ける。<b>バー</b>＝背から腹へ走る縞、<b>ストライプ</b>＝頭から尾へ走る縞。スポット、目の周りの線、尾の付け根の模様。</li>
+        <li><b>行動：</b>群れる／単独、中層でホバリング／底に座る、岩の穴から顔を出す、砂に潜る、掃除する。</li>
+        <li><b>生息場所：</b>砂地・岩場・海藻の間・中層・穴の中、そして水深。</li>
+      </ul>
+      <p class="hint">注意：幼魚と成魚、オスとメスで色が全く違う種がある（ブダイ・ベラ類、コロダイの幼魚など）。深度で色が消えるので、色だけで決めない。</p>
+    </div>
+    <div class="card">
+      <h3>③ スレートの記録法</h3>
+      <p>1行1種で「グループ → 種名（分かれば） → 数 → 場所」。数は数える必要はなく、<span class="mono">1／2〜10／11〜100／100超</span>の4段階でよい。知らない魚は<b>体形の輪郭をスケッチ</b>して、ヒレの位置・尾の形・目立つ模様・大きさ・見た場所を書く。「白いウミウシ」より「岩の赤いカイメンの上」のほうが、あとで調べる材料になる。</p>
+    </div>
+    <div class="card">
+      <h3>④ 責任ある行動（達成条件4）</h3>
+      <ul>
+        <li>触らない・持たない・追わない・囲まない・餌を与えない。</li>
+        <li>中性浮力を保ち、水底に着かない。砂を巻き上げない（フィンを上げる）。</li>
+        <li>器材をまとめる。垂れたゲージが岩に当たらないように。</li>
+        <li>逃げる・威嚇するはこちらが近づきすぎたサイン。止まって距離を取る。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>⑤ 三浦らしさを入れる</h3>
+      <p>城ヶ島の岩場と砂地は、グループがひと通り揃う。岩の隙間にウツボやコケギンポ、岩肌にウミウシ、砂地にエイやハゼ。秋は季節来遊魚（ツノダシ・ムレハタタテダイ・ミツボシクロスズメダイの幼魚など）が加わって、円盤状グループが一気ににぎやかになる。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">12の見た目グループ</span>
+    <h2>三浦の魚で覚える</h2>
+    <p>PADIの魚の見分け方で使う体形グループに、海の学校の図鑑にいる魚を当てはめました。写真は三浦で撮ったもの。当日はこの中から生徒が見つけたものを分類させます。</p>
+
+    <details class="fgroup"><summary><span class="g">01</span><div><b>円盤状で薄い体</b><small>チョウチョウウオ・キンチャクダイ・ニザダイなど</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/tunodashi.webp" alt="ツノダシ" loading="lazy"><figcaption>ツノダシ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/murehatatatedai.webp" alt="ムレハタタテダイ" loading="lazy"><figcaption>ムレハタタテダイ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/kagokakidai.webp" alt="カゴカキダイ" loading="lazy"><figcaption>カゴカキダイ</figcaption></figure>
+      </div>
+      <p class="more"><b>ほかに：</b>ツバメウオ（幼魚）。横から見ると丸く、正面から見ると薄い。ヒラヒラと泳ぐ。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">02</span><div><b>銀色で紡錘形、尾が二叉</b><small>アジ・カマス・タイ・イスズミなど</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/koganeaji.webp" alt="コガネアジ" loading="lazy"><figcaption>コガネアジ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/ishidai.webp" alt="イシダイ" loading="lazy"><figcaption>イシダイ</figcaption></figure>
+      </div>
+      <p class="more"><b>見分けの軸：</b>速く泳ぐ中層の魚。群れやすい。イシダイは縞（バー）が目印だが、大きくなると縞が消えて口先が黒くなる。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">03</span><div><b>頭が傾斜し、先細りの体</b><small>フエダイ・イサキなど</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/korodaiyg.webp" alt="コロダイ（幼魚）" loading="lazy"><figcaption>コロダイ（幼魚）</figcaption></figure>
+      </div>
+      <p class="more"><b>見分けの軸：</b>コロダイの幼魚はイサキ科。体をくねらせて泳ぐ独特の動き。成魚とは模様が全く違う「幼魚と成魚」の教材にちょうどいい。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">04</span><div><b>小さな楕円</b><small>スズメダイの仲間</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/suzumedai.webp" alt="スズメダイ" loading="lazy"><figcaption>スズメダイ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/nagasakisuzumedai.webp" alt="ナガサキスズメダイ" loading="lazy"><figcaption>ナガサキスズメダイ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/mituboshikurosuzumedaiyg.webp" alt="ミツボシクロスズメダイ（幼魚）" loading="lazy"><figcaption>ミツボシクロスズメダイ（幼魚）</figcaption></figure>
+      </div>
+      <p class="more"><b>見分けの軸：</b>岩の上でホバリングして、縄張りを守る。近づくと向かってくるのは防御行動。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">05</span><div><b>ずんぐりした体と大きな口</b><small>ハタ・ハナダイの仲間</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/kingyohanadai.webp" alt="キンギョハナダイ" loading="lazy"><figcaption>キンギョハナダイ</figcaption></figure>
+      </div>
+      <p class="more"><b>見分けの軸：</b>キンギョハナダイはハタ科。オス（赤紫）とメス（オレンジ）で色が違う、雌雄差の教材。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">06</span><div><b>胸びれで泳ぐ</b><small>ブダイ・ベラの仲間</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/bidai.webp" alt="ブダイ" loading="lazy"><figcaption>ブダイ</figcaption></figure>
+      </div>
+      <p class="more"><b>ほかに：</b>キュウセン、ホンベラ、ニシキベラ、ササノハベラ（図鑑未掲載だが三浦の岩場で最も目にするグループ）。胸びれをパタパタ動かして泳ぐのが決め手。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">07</span><div><b>赤っぽく、目が大きい</b><small>イットウダイ・キントキダイ・テンジクダイなど</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/kurohoshiishimochi.webp" alt="クロホシイシモチ" loading="lazy"><figcaption>クロホシイシモチ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/kuroishimochi.webp" alt="クロイシモチ" loading="lazy"><figcaption>クロイシモチ</figcaption></figure>
+      </div>
+      <p class="more"><b>見分けの軸：</b>岩の陰や穴の入り口で群れる。夜行性なので昼は暗い所にいる。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">08</span><div><b>小さく細長い底生</b><small>ギンポ・ハゼ・アゴアマダイなど</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/datehaze.webp" alt="ダテハゼ" loading="lazy"><figcaption>ダテハゼ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/kokeginpo.webp" alt="コケギンポ" loading="lazy"><figcaption>コケギンポ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/nijiginpo.webp" alt="ニジギンポ" loading="lazy"><figcaption>ニジギンポ</figcaption></figure>
+      </div>
+      <p class="more"><b>ほかに：</b>ハナハゼ、オトメハゼ、ホシハゼ、ガラスハゼ、ミナミギンポ。ハゼは砂地の穴、ギンポは岩の穴。「どこにいたか」で科が分かれる典型。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">09</span><div><b>変わった形の底生</b><small>ヒラメ・カレイ・カサゴ・エソ・カエルアンコウなど</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/minokasago.webp" alt="ミノカサゴ" loading="lazy"><figcaption>ミノカサゴ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/kaeruankou.webp" alt="カエルアンコウ" loading="lazy"><figcaption>カエルアンコウ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/houbou.webp" alt="ホウボウ" loading="lazy"><figcaption>ホウボウ</figcaption></figure>
+      </div>
+      <p class="more"><b>ほかに：</b>ヒラメ、シマウシノシタ、オニオコゼ、メバル、キアンコウ、セミホウボウ。じっとしている＝擬態。近づきすぎない教材。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">10</span><div><b>変わった形で泳ぐ</b><small>カワハギ・フグ・ハコフグ・ヒメジ・ヤガラ・ヨウジウオなど</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/kawahagi.webp" alt="カワハギ" loading="lazy"><figcaption>カワハギ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/umisuzume.webp" alt="ウミスズメ" loading="lazy"><figcaption>ウミスズメ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/aoyagara.webp" alt="アオヤガラ" loading="lazy"><figcaption>アオヤガラ</figcaption></figure>
+      </div>
+      <p class="more"><b>ほかに：</b>アオサハギ（幼魚）、タツノオトシゴ、タツノイトコ、ノコギリヨウジ、カミソリウオ、ゴンズイ、タカノハダイ、ミギマキ。「他のどれにも当てはまらない泳ぐ魚」がここ。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">11</span><div><b>ウナギ型</b><small>ウツボ・アナゴ・ウミヘビ（魚類）</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/utsubo.webp" alt="ウツボ" loading="lazy"><figcaption>ウツボ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/hanaanago.webp" alt="ハナアナゴ" loading="lazy"><figcaption>ハナアナゴ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/hotateumihebi.webp" alt="ホタテウミヘビ" loading="lazy"><figcaption>ホタテウミヘビ</figcaption></figure>
+      </div>
+      <p class="more"><b>見分けの軸：</b>ウツボは岩の穴、ハナアナゴとホタテウミヘビは砂から顔を出す。口を開けているのは呼吸で、威嚇ではない。</p>
+    </div></details>
+
+    <details class="fgroup"><summary><span class="g">12</span><div><b>サメ・エイ</b><small>軟骨魚類</small></div><span class="arrow">›</span></summary><div class="body">
+      <div class="thumbs">
+        <figure><img src="/image/fish/thumbs/nekozame.webp" alt="ネコザメ" loading="lazy"><figcaption>ネコザメ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/akaei.webp" alt="アカエイ" loading="lazy"><figcaption>アカエイ</figcaption></figure>
+        <figure><img src="/image/fish/thumbs/hirataei.webp" alt="ヒラタエイ" loading="lazy"><figcaption>ヒラタエイ</figcaption></figure>
+      </div>
+      <p class="more"><b>ほかに：</b>ツバクロエイ。エイは砂に埋まっている。砂地では着底しない理由がここにもある。</p>
+    </div></details>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">ブリーフィング台本</span>
+    <h2>共通8項目の「7番」に差し込む</h2>
+    <div class="slate">
+      <span class="eyebrow">Fish ID — sequence &amp; performance</span>
+      <h3>順序と達成条件（このまま話せる）</h3>
+      <ol>
+        <li><q>今日は魚を「名前」ではなく「グループ」で見ます。ゴールは3つ。見た魚をグループ分けして、できれば種名まで。スレートに数と場所も書く。名前が分からない魚は形をスケッチして、上がってから図鑑で調べる。</q></li>
+        <li><q>スレートは1行1種。左からグループ番号、名前か絵、数は「1・2〜10・11〜100・100超」のどれか、最後に「砂・岩・穴・中層」。</q>（達成条件1・2）</li>
+        <li><q>私が指さした魚は、まず「どのグループ？」を自分で決めてから書いてください。答え合わせは陸でします。</q></li>
+        <li><q>知らない魚は、輪郭と尾の形、目立つ模様、大きさ、いた場所。色は深さで変わるので、色だけで決めない。</q>（達成条件3）</li>
+        <li><q>観察のルール。触らない、追わない、餌をあげない、着底しない。魚が逃げたり向かってきたりしたら、こちらが下がります。フィンは砂から離して。</q>（達成条件4）</li>
+        <li><q>ルートは根の周りをゆっくり。止まる時間が長いので、深度・残圧・バディの確認を自分の担当として続けてください。</q></li>
+        <li><q>上がったら図鑑で照合して、ログに種名を書きます。</q></li>
+      </ol>
+      <p class="note">ハンドシグナルを決めておく：「魚」（手を横にひらひら）「書いて」（手のひらに書く仕草）「大きさ」（両手の幅）「グループは？」（指で数字）。</p>
+    </div>
+    <div class="callout"><b>Thinking Like a Diverのリマインダー例</b>「書くときは一度止まって中性浮力を取ってから。泳ぎながら書かない」「観察の優先順位は、深度・残圧・バディ → 中性浮力と距離 → 魚」「逃げたら追わない。それが観察の質を守る」</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">水中の進行</span>
+    <h2>順番と、インストラクターが見るポイント</h2>
+    <ol class="steps">
+      <li><span class="num">01</span><div><b>プレダイブ・セーフティ・チェック</b><p>スレートと鉛筆が各自にあるか。ゲージが垂れていないか。</p></div></li>
+      <li><span class="num">02</span><div><b>エントリー → 潜降 → 観察ゾーンへ</b><p>根の周りの浅場を1周するルート。急がない。</p></div></li>
+      <li><span class="num">03</span><div><b>最初の1匹はインストラクターが指す</b><p>スズメダイでもよい。「グループは？」と指で数字を訊いて、書かせる。ここで記録の型を作る。</p><span class="watch">見る：止まって書けているか／書きながら沈んでいないか</span></div></li>
+      <li><span class="num">04</span><div><b>生徒が自分で見つけて記録する時間</b><p>グループ・種名・数・場所。数は4段階でよいと再確認。</p><span class="watch">見る：着底・接触・砂の巻き上げ（達成条件4はここで評価）</span></div></li>
+      <li><span class="num">05</span><div><b>知らない魚が出たら、スケッチさせる</b><p>輪郭・尾・模様・大きさ・場所。カメラがあれば撮影でも可。</p></div></li>
+      <li><span class="num">06</span><div><b>浮上・安全停止・エキジット</b><p>5mで3分。安全停止中も浅場の魚を1種記録させると、待ち時間が観察になる。</p></div></li>
+      <li><span class="num">07</span><div><b>陸で図鑑と照合 → ログ記入</b><p>グループの当たり外れを一緒に見る。間違いは「なぜそう見えたか」を訊く。ログに種名を書いて署名。</p></div></li>
+    </ol>
+    <div class="callout ok"><b>立ち位置</b>生徒の視線の先が見える少し後ろ・上。生徒が魚に近づきすぎるより先に、自分がその魚との距離を体で示す（達成条件4のデモンストレーション）。</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">つまずきと対処</span>
+    <h2>よく起きる6つ</h2>
+    <div class="pit">
+      <div><b>色だけで決める</b><span>深度とライトで色は変わる。形・ヒレ・尾・場所を先に。</span></div>
+      <div><b>幼魚を別種だと思う</b><span>コロダイ幼魚、ブダイ・ベラ類、キンギョハナダイの雌雄。「同じ種でも色が変わる」を陸で見せる。</span></div>
+      <div><b>魚を追いかける</b><span>達成条件4に触れる。止まらせて、こちらから距離を取る。</span></div>
+      <div><b>書いている間に沈む・着底する</b><span>「止まって、中性浮力、それから書く」。PPBで覚えたことをここで使わせる。</span></div>
+      <div><b>数を書き忘れる</b><span>4段階でいいと最初に言う。1匹でも「1」と書く。</span></div>
+      <div><b>種名が分からず記録をあきらめる</b><span>スケッチと特徴で十分と伝える。名前は陸で調べるのが達成条件3。</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">Self check</span>
+    <h2>魚の見分け方の確認</h2>
+    <div class="quiz" data-quiz="fish">
+      <div class="q" data-answer="1"><p class="qt"><span>Q1</span>魚の見分け方アドベンチャー・ダイブで、生徒各自に必須の携行品は？</p><div class="opts"><button>水中カメラ</button><button>スレートまたは水中ノート</button><button>ライト</button></div><div class="fb" hidden></div><p class="exp" hidden>インストラクターマニュアルの注意事項に明記。カメラはあれば使えるが必須ではありません。</p></div>
+      <div class="q" data-answer="0"><p class="qt"><span>Q2</span>魚を「科」で覚える理由として正しいのは？</p><div class="opts"><button>同じ科は体形や特徴が似ていて、グループ→種の順で絞れるから</button><button>科が分かれば種名は書かなくてよいから</button><button>科の数が種の数より多いから</button></div><div class="fb" hidden></div><p class="exp" hidden>グループを決めてから色・模様で種を絞る。図鑑のどこを開くかが決まります。</p></div>
+      <div class="q" data-answer="2"><p class="qt"><span>Q3</span>名前が分からない魚に出会ったとき、達成条件として求める行動は？</p><div class="opts"><button>近づいて色を確認する</button><button>記録せず、分かる魚だけ書く</button><button>形をスケッチ／撮影して特徴を書き留め、ダイブ後に図鑑などで調べる</button></div><div class="fb" hidden></div><p class="exp" hidden>達成条件3。分からないことが前提の課題です。</p></div>
+      <div class="q" data-answer="1"><p class="qt"><span>Q4</span>スズメダイ／ダテハゼ／ウツボの見た目グループの組み合わせは？</p><div class="opts"><button>円盤状／変わった形の底生／サメ・エイ</button><button>小さな楕円／小さく細長い底生／ウナギ型</button><button>銀色紡錘形／変わった形で泳ぐ／頭が傾斜</button></div><div class="fb" hidden></div><p class="exp" hidden>三浦の定番3種。当日はこの3グループから記録が始まることが多いです。</p></div>
+      <div class="q" data-answer="0"><p class="qt"><span>Q5</span>魚の背から腹へ走る縞は何と呼ぶ？</p><div class="opts"><button>バー</button><button>ストライプ</button><button>スポット</button></div><div class="fb" hidden></div><p class="exp" hidden>バー＝背腹方向（縦縞）、ストライプ＝頭尾方向（横縞）。図鑑の説明文はこの区別で書かれています。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ナビゲーション ============ -->
+<section class="panel" id="panel-nav" role="tabpanel" hidden>
+  <div class="intro"><b>このダイブの目的。</b>自分の「距離の物差し」（30mを泳ぐキック数と時間）を作り、自然の手がかりとコンパスでスタート地点に戻る。アンダーウォーター・ナビゲーターSPの「ダイブ1」と同じで、AOWでは必須ダイブです。準備物が一番多いダイブでもあります。</div>
+
+  <div class="section">
+    <span class="eyebrow">規準</span>
+    <h2>数字で押さえる</h2>
+    <div class="stats">
+      <div class="stat"><span>深度</span><b>6〜12m</b><small>推奨。推奨される最大深度は18m</small></div>
+      <div class="stat hot"><span>許容誤差</span><b>15<em>/</em>6<em>/</em>8<em>m</em></b><small>自然ナビ15m以内／コンパス往復6m以内／四角形8m以内</small></div>
+      <div class="stat"><span>距離の校正</span><b>30m</b><small>ラインで結んだ2つのブイでコースを設置。往路キック数、復路時間</small></div>
+      <div class="stat"><span>四角形</span><b>30m<em>×4辺</em></b><small>または4辺合計120mが望ましい</small></div>
+    </div>
+    <div class="callout"><b>SPガイドの一般的注意</b>生徒をダイブ計画に参加させ、視標ライン付きの水面フロートを準備させる。砂地を選ぶ。ダイブ1の前に30mのコースをアシスタントに設置させる。インストラクターは水面にいたほうが生徒のパフォーマンスを最もよく判断できる（バディチーム別に色分けしたブイとライン）。</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">達成条件</span>
+    <h2>この6つが「できた」を確認して署名する</h2>
+    <ul class="checklist req" data-group="nav">
+      <li><label><input type="checkbox" data-key="n-1"><span><span class="n">1</span>中性浮力を維持する。</span></label></li>
+      <li><label><input type="checkbox" data-key="n-2"><span><span class="n">2</span>約30mを普通のリラックスしたペースで泳ぐのに必要なキックサイクルの平均回数と平均時間を測定する。</span></label></li>
+      <li><label><input type="checkbox" data-key="n-3"><span><span class="n">3</span>自然の目標物と距離測定（キックサイクルまたは時間）を使ってあらかじめ決めた場所へナビゲーションし、スタート地点の15m以内に戻る。<span class="sub">浮上は方向確認に必要なときのみ</span></span></label></li>
+      <li><label><input type="checkbox" data-key="n-4"><span><span class="n">4</span>コンパスを正しい位置に持ち、泳ぎながら正確な方向を維持する。</span></label></li>
+      <li><label><input type="checkbox" data-key="n-5"><span><span class="n">5</span>コンパスと距離測定を使って、あらかじめ決めた場所へ浮上せずにナビゲーションし、スタート地点の6m以内に戻る。</span></label></li>
+      <li><label><input type="checkbox" data-key="n-6"><span><span class="n">6</span>一定の場所からスタートし、コンパスで四角形または長方形のパターンを泳ぎ、スタート地点の8m以内に戻る。<span class="sub">一辺30m、または4辺合計120mが望ましい</span></span></label></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">知識の補強</span>
+    <h2>生徒に押さえてもらう5つ</h2>
+    <div class="card">
+      <h3>① 距離を見積もる5つの方法</h3>
+      <ul>
+        <li><b>キックサイクル：</b>片足の上下1回を1サイクル。30m÷キック数＝1キックの距離。うねりがあってもフィンのストロークが一定なら使える。フィンが変わると変わる。</li>
+        <li><b>経過時間：</b>30m÷秒数＝1秒の距離。途中で止まると狂う。ラップ機能付きの時計が最適。</li>
+        <li><b>シリンダー圧力：</b>消費量を区間で割る。深度や運動量で変わるので目安。</li>
+        <li><b>アームスパン：</b>両腕を広げた長さ≒身長。視界が悪いときや短距離で正確。</li>
+        <li><b>目盛り付きライン・メジャー：</b>最も正確だが長距離や凹凸には向かない。</li>
+      </ul>
+      <p class="hint">測るときは通常使う器材で、リラックスしたペース、水中で。往路と復路の平均を取ると流れの影響が相殺される。</p>
+    </div>
+    <div class="tool">
+      <h3>距離の物差し（デブリーフィングで一緒に計算）</h3>
+      <div class="row">
+        <div><label for="kicks">30mのキックサイクル数</label><input id="kicks" type="number" inputmode="numeric" placeholder="40"></div>
+        <div><label for="secs">30mの秒数</label><input id="secs" type="number" inputmode="numeric" placeholder="20"></div>
+      </div>
+      <div class="out" id="distOut">数字を入れると、1キックと1秒あたりの距離、そして四角形の一辺30mに必要なキック数が出ます。</div>
+    </div>
+    <div class="card">
+      <h3>② ダイブ前の観察4つ、潜降の向き、自然の手がかり6つ</h3>
+      <p><b>ダイブ前に見る：</b>風・潮流・潮汐による水の動き／太陽の角度と光の方向／沖合の物体と地形（岩・桟橋・ブイ・波が砕ける浅瀬）／水底の地形と深度プロファイル（地図があれば）。</p>
+      <p><b>潜降：</b>バディの一人が進む予定の方向に顔を向けて潜降する。水底に着いたら出発前に一息ついて、自分を支点に周りを見渡す。</p>
+      <p><b>水中の手がかり：</b>光と影／水の動き（流れ・サージ）／水底の構成（砂紋は海岸線に平行が多い。深くなる＝沖）／水底の傾斜／動植物の分布（イソバナは流れに直角）／音（船・波打ち際）。</p>
+    </div>
+    <div class="card">
+      <h3>③ 4つのパターンと、6つのコツ</h3>
+      <p><b>パターン：</b>直線の往復／正方形・長方形／三角形／円形（目標物に欠けるので最も勧めない）。</p>
+      <p><b>コツ：</b>ダイブ前にバディと決める／イメージする／パターンは小さめ、常にゆっくり／外れたら目的地までのおおよその方角を思い出す／一方がナビを担当／時々浮上して位置確認。</p>
+    </div>
+    <div class="card">
+      <h3>④ コンパスの持ち方と、方位のセット</h3>
+      <ul>
+        <li><b>腕に付ける：</b>付けた腕を曲げ、中指をもう一方の伸ばした腕の肘のくぼみに置く。</li>
+        <li><b>両手で持つ：</b>顔の前で両腕を伸ばし、体の中心でお椀状の手に置く。最も正確。</li>
+        <li><b>コンソール：</b>ラバーラインを進行方向に向け、両ひじを脇に付けて両手で持つ。</li>
+      </ul>
+      <p><b>方位を取る：</b>ラバーラインを目的地に向け、インデックスマークで磁針の北を挟むようにベゼルを回す。<b>戻る：</b>180°反対にベゼルを合わせ、体ごと反対を向いて針をマークの間に入れる。<b>四角形：</b>右（時計回り）は＋90°、左は−90°。<b>三角形：</b>120°ずつ（360÷辺の数）。</p>
+      <p><b>泳ぎながら維持：</b>ラバーラインを体の中央に／コンパス越しに前を見る／金属に近づけない／水平に保つ。</p>
+    </div>
+    <div class="tool">
+      <h3>方位の計算（陸のリハーサル用）</h3>
+      <div class="row">
+        <div><label for="hdg">往路の方位（°）</label><input id="hdg" type="number" inputmode="numeric" placeholder="60" min="0" max="360"></div>
+        <div><label for="turn">四角形の回り方</label><select id="turn"><option value="1">右回り（＋90°）</option><option value="-1">左回り（−90°）</option></select></div>
+      </div>
+      <div class="out" id="hdgOut">方位を入れると、戻りの方位と四角形4辺の方位が出ます。</div>
+    </div>
+    <div class="card">
+      <h3>⑤ エラーを防ぐ7つと、流れの補正</h3>
+      <ul>
+        <li>コンパスを信頼するが、全面的には信頼しない。おかしいと思ったら確認。</li>
+        <li>自然の手がかりでおよその方向、コンパスで微調整。</li>
+        <li>陸で練習してからエントリーする。</li>
+        <li>バディと分担。一方が深度と時間、もう一方がナビ。</li>
+        <li>流れを考慮する。</li>
+        <li>ゆっくり、一定のペースで。コンパスボードを使うと精度が上がる。</li>
+        <li>ナビの限界を知る。比較的小さな範囲でのみ効く。</li>
+      </ul>
+      <p class="hint">流れの補正5つ：流れを無視して最後に目的地へ修正／スタート地点を補正／方位を調整／意図的に片側へずらす／ポイントからポイントへ。AOWの1本では「意図的に片側へずらす」と「ポイントからポイント」を紹介するだけで十分。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">ブリーフィング台本</span>
+    <h2>共通8項目の「7番」に差し込む</h2>
+    <div class="slate">
+      <span class="eyebrow">Navigation — sequence &amp; performance</span>
+      <h3>順序と達成条件（このまま話せる）</h3>
+      <ol>
+        <li><q>今日は4つやります。①自分の物差しを作る、②自然の目印で戻る、③コンパスで往復する、④コンパスで四角く泳ぐ。合格ラインはスタート地点から②15m以内、③6m以内、④8m以内。ずっと中性浮力で。</q></li>
+        <li><q>まず30mのライン。片道はキック数を数え、帰りは時間を測る。普段のリラックスしたペースで。速く泳いで数字を良くしても意味がない。スレートに書く。</q>（達成条件2）</li>
+        <li><q>次に自然ナビ。目標のブイまで、一人が距離を数え、もう一人が帰りの目印を覚える係。行きは浮上して確認してよい。帰りは1回だけ浮上OK。</q>（達成条件3）</li>
+        <li><q>コンパス往復。水面で方位を合わせてから潜降。数えた距離だけ進んだら、浮上せずに180°反対に合わせて戻る。役割を交代して2回。</q>（達成条件4・5）</li>
+        <li><q>四角形。30m進んだら止まって、右に90°足して、体ごと向きを変えて、また30m。それを4回。角では必ず止まる。</q>（達成条件6）</li>
+        <li><q>コンパスの持ち方は今から陸でやります。腕を伸ばして、ラバーラインが体の真ん中。針を見ないで、コンパス越しに前を見る。</q></li>
+        <li><q>役割を決めてください。コンパス係と距離係。距離係は深度と残圧も見る。数えている人はバディを見失いやすいので、コンパス係は数秒に1回、相方を見る。</q></li>
+      </ol>
+      <p class="note">ハンドシグナルを決めておく：「方位セット」（コンパスを指す）「数え始め」（指でカウント）「止まって」「上がって確認」「戻る」（親指で後ろ）。</p>
+    </div>
+    <div class="callout"><b>Thinking Like a Diverのリマインダー例</b>「コンパスを見るタイミングは3つ。出発前、方向転換前、違和感を覚えた瞬間」「違和感があったら、止まる→中性浮力→バディに知らせる→方位・深度・距離・目印を照合。分からないまま速く泳がない」「担当を分けても、自分の深度と残圧は自分で見る」</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">水中の進行</span>
+    <h2>順番と、インストラクターが見るポイント</h2>
+    <ol class="steps">
+      <li><span class="num">00</span><div><b>コース設置（ダイブ前）</b><p>30mのラインで2つのブイを結ぶ。自然ナビ用の目標ブイをスタートから30〜90m先に。生徒が水中で読める位置に。潮汐と太陽の向きを確認しておく。</p></div></li>
+      <li><span class="num">01</span><div><b>プレダイブ・セーフティ・チェック</b><p>コンパスは全員が持っているか。スレートにスタート圧・ターン圧・最大深度・時間を書いたか。</p></div></li>
+      <li><span class="num">02</span><div><b>距離の見積もり（30mコース）</b><p>片道はキック数、復路は時間。スレートに記録。2回の平均を取ってもよい。</p><span class="watch">見る：ペースが普段どおりか／ラインの真上を泳いでいるか</span></div></li>
+      <li><span class="num">03</span><div><b>自然ナビゲーションの直線往復</b><p>一人が距離係、一人がマップ係（帰りの目印を記録）。行きは必要な頻度で浮上可。目標に着いたら方向確認で1回だけ浮上して、来た道を戻る。15m以内で合格。</p><span class="watch">見る：目印を「組み合わせ」で覚えているか（右に岩壁・水深8m・30キック）</span></div></li>
+      <li><span class="num">04</span><div><b>コンパスの直線往復</b><p>水面で方位を合わせ、距離係と役割分担して潜降。推定距離を泳ぎ、浮上せずに逆方位で戻る。浮上して精度確認。6m以内になるまで繰り返し、達成したら役割交代。</p><span class="watch">見る：コンパスが水平か／手首だけ回していないか／体ごと向きを変えているか</span></div></li>
+      <li><span class="num">05</span><div><b>四角形（または長方形）</b><p>30mを所定方位で泳ぎ、右か左へ90°転換して30m、を3回繰り返す。浮上して精度確認。8m以内になるまで繰り返し、役割交代。</p><span class="watch">見る：角で完全に止まってから方位をセットしているか</span></div></li>
+      <li><span class="num">06</span><div><b>浮上・安全停止・エキジット</b><p>1分に18m以下、5mで3分。水面でプラス浮力。</p></div></li>
+      <li><span class="num">07</span><div><b>デブリーフィング</b><p>距離見積もりのテクニック、自然ナビの目印、コンパスのテクニック、できた・できなかった・次回どうする、を話し合わせる。ログ署名。</p></div></li>
+    </ol>
+    <div class="callout ok"><b>立ち位置（2案）</b><ul><li><b>SPガイドの標準：</b>インストラクターは水面。バディチーム別に色分けしたフロートを曳かせ、水面のブイの動きで進行と間違いを判断する。誤差の判定が客観的。</li><li><b>水中で同行する場合：</b>チームの斜め後ろ・少し上に付いて、スタート地点に重りを付けたフロートを置いておく。戻った地点で浮上させ、フロートからの距離で判定。</li></ul><p class="hint">どちらで運用するかは、当日の人数と海況で吉田と決めてください。</p></div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">つまずきと対処</span>
+    <h2>よく起きる7つ</h2>
+    <div class="pit">
+      <div><b>設定した方位なのに少しずつ曲がる</b><span>コンパスの水平と、ラバーラインが体の中心にあるかを最初に確認。針だけを見ている。</span></div>
+      <div><b>角で止まらずに手首だけ回す</b><span>距離と角度の両方に誤差。「止まる→セット→体を回す→進む」を陸で3回やらせる。</span></div>
+      <div><b>流れでキック数がずれる</b><span>往復の平均を使う。流れに向かう辺は時間で補う。数字を「正解」にしない。</span></div>
+      <div><b>数えるのに集中してバディを見失う</b><span>コンパス係は数秒に1回、相方を見るルール。距離係が深度と残圧を持つ。</span></div>
+      <div><b>浮上して確認しすぎる</b><span>コンパス往復と四角形は「浮上せず」が条件。自然ナビだけが例外と再確認。</span></div>
+      <div><b>コンパスが傾いて針が引っかかる</b><span>両手持ちに変える。腕をまっすぐ、視線はコンパス越しに前。</span></div>
+      <div><b>深度が上下してキックの距離が変わる</b><span>達成条件1（中性浮力の維持）に戻す。PPBの成果をここで確認できる。</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">Self check</span>
+    <h2>ナビゲーションの確認</h2>
+    <div class="quiz" data-quiz="nav">
+      <div class="q" data-answer="1"><p class="qt"><span>Q1</span>距離の見積もりで、生徒に求める測定は？</p><div class="opts"><button>10mを全力で泳ぐ秒数</button><button>約30mをリラックスしたペースで泳ぐキックサイクルの平均回数と平均時間</button><button>50mの残圧消費量</button></div><div class="fb" hidden></div><p class="exp" hidden>達成条件2。ペースは普段どおり、器材も普段どおり。</p></div>
+      <div class="q" data-answer="2"><p class="qt"><span>Q2</span>コンパス往復の合格ラインは？</p><div class="opts"><button>15m以内・浮上可</button><button>8m以内・1回浮上可</button><button>6m以内・浮上なし</button></div><div class="fb" hidden></div><p class="exp" hidden>自然ナビ15m（浮上は必要時のみ）、コンパス往復6m（浮上なし）、四角形8m。3つの数字を口に出して言えるように。</p></div>
+      <div class="q" data-answer="1"><p class="qt"><span>Q3</span>往路の方位が40°。戻りは？</p><div class="opts"><button>140°</button><button>220°</button><button>320°</button></div><div class="fb" hidden></div><p class="exp" hidden>40＋180＝220。360を超えたら360を引く。</p></div>
+      <div class="q" data-answer="0"><p class="qt"><span>Q4</span>右回りの四角形。最初の辺が120°なら、2辺目は？</p><div class="opts"><button>210°</button><button>30°</button><button>300°</button></div><div class="fb" hidden></div><p class="exp" hidden>右（時計回り）は＋90°。120→210→300→30。</p></div>
+      <div class="q" data-answer="2"><p class="qt"><span>Q5</span>ナビゲーション・ダイブの推奨深度は？</p><div class="opts"><button>18〜30m</button><button>できるだけ浅く、3m以内</button><button>6〜12m（推奨される最大深度は18m）</button></div><div class="fb" hidden></div><p class="exp" hidden>浅い砂地が理想。中性浮力を保ったまま数えられる深度を選ぶ。</p></div>
+      <div class="q" data-answer="0"><p class="qt"><span>Q6</span>四角形の角に着いたときの正しい操作は？</p><div class="opts"><button>止まって90°先の方位をセットし、体ごと向きを変えてから進む</button><button>泳ぎながら手首を90°回す</button><button>自然に曲がるまで同じ方位で泳ぐ</button></div><div class="fb" hidden></div><p class="exp" hidden>角ごとに止まって方位を確定する。泳ぎながらの設定は距離と角度の両方に誤差を生みます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 当日 ============ -->
+<section class="panel" id="panel-day" role="tabpanel" hidden>
+  <div class="intro"><b>当日はこのタブだけ。</b>前日の準備、当日の流れ、各ダイブの3行チェックです。チェックはこの端末に保存されます。</div>
+
+  <div class="section">
+    <span class="eyebrow">前日まで</span>
+    <h2>準備チェック</h2>
+    <ul class="checklist" data-group="day">
+      <li><label><input type="checkbox" data-key="d-forms"><span>書類：継続教育専用書式（10038J）、ダイバーメディカル／参加者チェックシート（10346J）。<span class="sub">医療で「はい」があれば医師の署名が必要。当日に発覚すると潜れない</span></span></label></li>
+      <li><label><input type="checkbox" data-key="d-kr"><span>eLearningの該当セクション（PPB／Fish ID／Navigation）とナレッジリビューが終わっているか、お客様に確認。</span></label></li>
+      <li><label><input type="checkbox" data-key="d-record"><span>AOWコース記録ワークシート（10090J）またはトレーニングレコード、データキャリア（69230J）。</span></label></li>
+      <li><label><input type="checkbox" data-key="d-gear"><span>生徒の器材：コンパス、ダイブコンピューター、スレート＋鉛筆（魚は必須）、ナイフ／ツール。レンタルの有無を確認。</span></label></li>
+      <li><label><input type="checkbox" data-key="d-line"><span>ナビ用：30mのライン、ブイ2〜3個（コース用と目標用）、重り、チーム別のフロート。</span></label></li>
+      <li><label><input type="checkbox" data-key="d-weight"><span>PPB用：手渡し用の小さいウエイト（0.5〜1kg）を数個、予備のウエイト。</span></label></li>
+      <li><label><input type="checkbox" data-key="d-sea"><span>海況・潮汐・太陽の向き・水温を確認。ポイントの地形と深度の範囲を自分の言葉で言えるように。</span></label></li>
+      <li><label><input type="checkbox" data-key="d-read"><span>3本の達成条件（9・4・6項目）を読み直して、数字（60秒・±1m／15・6・8m）を暗記。</span></label></li>
+      <li><label><input type="checkbox" data-key="d-eap"><span>現地の緊急手順（連絡先・酸素・AEDの場所・搬送）を吉田と確認。</span></label></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">当日の流れ</span>
+    <h2>集合から署名まで</h2>
+    <ol class="steps">
+      <li><span class="num">01</span><div><b>集合・体調・書類</b><p>メディカル、継続教育書式、ナレッジリビューの確認。今日の3本と順番を伝える。</p></div></li>
+      <li><span class="num">02</span><div><b>器材準備 → ウエイト見積もり</b><p>PPBの達成条件1はここから始まっている。ガイドラインで見積もらせ、配置も考えさせる。</p></div></li>
+      <li><span class="num">03</span><div><b>ブリーフィング（共通8項目＋固有の台本）</b><p>5〜8分。ガス計画・最大深度・時間は生徒に言わせる。Thinking Like a Diverのリマインダー3つ。</p></div></li>
+      <li><span class="num">04</span><div><b>ダイブ</b><p>各タブの「水中の進行」どおり。達成条件を1つずつ見る。</p></div></li>
+      <li><span class="num">05</span><div><b>デブリーフィング</b><p>肯定 → 自己評価 → 達成条件の確認 → 質問 → ログ署名。</p></div></li>
+      <li><span class="num">06</span><div><b>記録</b><p>ナレッジリビューとダイブの修了をトレーニングレコードに記入・署名。吉田に結果を共有。</p></div></li>
+    </ol>
+    <div class="callout"><b>順番の考え方</b>浮力が整うと他の2本が楽になるので、PPB → ナビ → 魚の順が運びやすい。魚の見分け方は最後に置くと、疲れた体でも「ゆっくり見る」ダイブになる。最終的な順番は吉田の計画に従ってください。</div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">各ダイブ 3行チェック</span>
+    <h2>ダイブ直前に見るところ</h2>
+    <div class="card">
+      <h3>PPB</h3>
+      <ul class="checklist" data-group="day">
+        <li><label><input type="checkbox" data-key="dp-1"><span>水面浮力チェック：BCD空・通常呼吸で目の高さ・吐いて沈む</span></label></li>
+        <li><label><input type="checkbox" data-key="dp-2"><span>ホバリング60秒・±1m、手もフィンも使わない。自分の深度計で測る</span></label></li>
+        <li><label><input type="checkbox" data-key="dp-3"><span>姿勢4種 → 浮上18m/分以下・5m3分 → ポストダイブ浮力チェック</span></label></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>魚の見分け方</h3>
+      <ul class="checklist" data-group="day">
+        <li><label><input type="checkbox" data-key="df-1"><span>全員スレート携帯。記録の型（グループ・名前・数・場所）を陸で1回書かせる</span></label></li>
+        <li><label><input type="checkbox" data-key="df-2"><span>最初の1匹は自分が指す。止まって中性浮力を取ってから書かせる</span></label></li>
+        <li><label><input type="checkbox" data-key="df-3"><span>接触・着底・砂の巻き上げ・追跡なし（達成条件4）→ 陸で図鑑照合</span></label></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>ナビゲーション</h3>
+      <ul class="checklist" data-group="day">
+        <li><label><input type="checkbox" data-key="dn-1"><span>30mコースと目標ブイを設置済み。役割（コンパス係・距離係）を決めた</span></label></li>
+        <li><label><input type="checkbox" data-key="dn-2"><span>自然ナビ15m／コンパス往復6m（浮上なし）／四角形8m。達成まで繰り返す</span></label></li>
+        <li><label><input type="checkbox" data-key="dn-3"><span>コンパスの持ち方を陸でデモ。角では止まる。数えても相方を見る</span></label></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">合図の共通セット</span>
+    <h2>ブリーフィングで毎回見せる</h2>
+    <div class="signal">
+      <div><b>止まって</b><span>手のひらを相手に向ける。すべての評価はここから始まる</span></div>
+      <div><b>中性浮力を取って</b><span>手のひらを下にして水平に小さく揺らす</span></div>
+      <div><b>息を吐いて</b><span>胸に手を当てて下へ下ろす（PPB）</span></div>
+      <div><b>書いて</b><span>手のひらに書く仕草（魚）</span></div>
+      <div><b>方位セット／数え始め</b><span>コンパスを指す／指でカウント（ナビ）</span></div>
+      <div><b>上がって確認</b><span>親指を上にして目を指す（自然ナビの往路のみ）</span></div>
+      <div><b>バディを見て</b><span>自分の目を指してから相手を指す</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="card">
+      <h3>進み具合をリセット</h3>
+      <p>この端末に保存されたチェックとクイズの結果を消します。別のお客様のときに。</p>
+      <p style="margin-top:10px"><button class="btn" id="resetBtn">リセットする</button></p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <b>出典</b>
+  <ul>
+    <li>PADIインストラクターマニュアル「Advanced Open Water Diverコース」セクション1〜3（規準・知識開発・各アドベンチャー・ダイブの注意事項と達成条件）</li>
+    <li>PADI Peak Performance Buoyancy Diver Specialty Course Instructor Guide（知識開発、ダイブ1、ベーシック・ウエイト・ガイドライン）</li>
+    <li>PADI Underwater Navigator Specialty Course Instructor Guide（知識開発、ダイブ1）</li>
+    <li>魚のグループ分けはPADIの魚の見分け方で用いる体形グループに、三浦 海の学校の海の生き物図鑑の掲載種を当てはめたもの</li>
+  </ul>
+  <p style="margin-top:10px">規準は改訂されることがあります。実施前に最新のインストラクターマニュアルと照合してください。このページは海の学校スタッフ向けの内部資料です。</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='aowguide:';
+  function load(k){try{return localStorage.getItem(KEY+k)}catch(e){return null}}
+  function save(k,v){try{localStorage.setItem(KEY+k,v)}catch(e){}}
+  function del(k){try{localStorage.removeItem(KEY+k)}catch(e){}}
+
+  /* tabs */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  var panels={};
+  tabs.forEach(function(t){panels[t.dataset.tab]=document.getElementById('panel-'+t.dataset.tab)});
+  function show(id,push){
+    if(!panels[id]) id='common';
+    tabs.forEach(function(t){var on=t.dataset.tab===id;t.setAttribute('aria-selected',on?'true':'false');panels[t.dataset.tab].hidden=!on});
+    if(push){try{history.replaceState(null,'','#'+id)}catch(e){}}
+    window.scrollTo({top:0,behavior:'auto'});
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true)})});
+  var h=(location.hash||'').replace('#','');
+  show(h||'common',false);
+  window.addEventListener('hashchange',function(){show((location.hash||'').replace('#',''),false)});
+
+  /* checkboxes */
+  var boxes=[].slice.call(document.querySelectorAll('input[type=checkbox][data-key]'));
+  boxes.forEach(function(b){
+    b.checked=load('chk:'+b.dataset.key)==='1';
+    b.addEventListener('change',function(){save('chk:'+b.dataset.key,b.checked?'1':'0');progress()});
+  });
+
+  /* quiz */
+  var qs=[].slice.call(document.querySelectorAll('.q'));
+  qs.forEach(function(q,i){
+    var id='q'+i;
+    var opts=[].slice.call(q.querySelectorAll('.opts button'));
+    var fb=q.querySelector('.fb'); var exp=q.querySelector('.exp');
+    var ans=parseInt(q.dataset.answer,10);
+    function mark(chosen,persist){
+      opts.forEach(function(o,j){o.classList.remove('correct','wrong');if(j===ans)o.classList.add('correct');else if(j===chosen)o.classList.add('wrong')});
+      fb.hidden=false;
+      if(chosen===ans){fb.className='fb good';fb.textContent='正解。'+exp.textContent;}
+      else{fb.className='fb bad';fb.textContent='正解は「'+opts[ans].textContent+'」。'+exp.textContent;}
+      if(persist)save('quiz:'+id,String(chosen));
+      progress();
+    }
+    var saved=load('quiz:'+id);
+    if(saved!==null)mark(parseInt(saved,10),false);
+    opts.forEach(function(o,j){o.addEventListener('click',function(){mark(j,true)})});
+  });
+
+  /* progress per tab + overall */
+  function progress(){
+    var total=0,done=0;
+    Object.keys(panels).forEach(function(id){
+      var p=panels[id];
+      var b=[].slice.call(p.querySelectorAll('input[type=checkbox][data-key]'));
+      var qq=[].slice.call(p.querySelectorAll('.q'));
+      var t=b.length+qq.length;
+      var d=b.filter(function(x){return x.checked}).length+qq.filter(function(q){return q.querySelector('.opts .correct')&&!q.querySelector('.fb').hidden&&q.querySelector('.fb').classList.contains('good')}).length;
+      total+=t;done+=d;
+      var dot=document.querySelector('[data-dot="'+id+'"]');
+      if(dot){dot.className='dot'+(t&&d===t?' done':(d?' part':''))}
+    });
+    var pct=total?Math.round(done/total*100):0;
+    document.getElementById('overallBar').style.width=pct+'%';
+    document.getElementById('overallPct').textContent=pct+'%';
+  }
+  progress();
+
+  /* weight estimator */
+  var wtBody=document.getElementById('wtBody'),wtSuit=document.getElementById('wtSuit'),wtOut=document.getElementById('wtOut');
+  function fmt(n){return (Math.round(n*2)/2).toString()}
+  function weight(){
+    var w=parseFloat(wtBody.value);
+    if(!w||w<20){wtOut.innerHTML='体重を入れると目安が出ます。<small>浮力チェックで確定するための出発点。この数字を正解にしない。</small>';return}
+    var s=wtSuit.value,lo,hi,label;
+    if(s==='skin'){lo=0.5;hi=2;label='水着／スキン'}
+    else if(s==='3mm'){lo=hi=w*0.05;label='3mmワンピース：体重の5%'}
+    else if(s==='5mm'){lo=hi=w*0.10;label='5mmツーピース：体重の10%'}
+    else if(s==='7mm'){lo=w*0.10+1.5;hi=w*0.10+3;label='7mm＋フード・グローブ：10%＋1.5〜3kg'}
+    else if(s==='neo'){lo=w*0.10+3;hi=w*0.10+5;label='ネオプレン・ドライ：10%＋3〜5kg'}
+    else if(s==='shell1'){lo=w*0.10+1.5;hi=w*0.10+3;label='シェル・ドライ（薄手）：10%＋1.5〜3kg'}
+    else {lo=w*0.10+3;hi=w*0.10+7;label='シェル・ドライ（厚手）：10%＋3〜7kg'}
+    var range=(fmt(lo)===fmt(hi))?fmt(lo)+'kg':fmt(lo)+'〜'+fmt(hi)+'kg';
+    wtOut.innerHTML='スタート時の目安 <b>'+range+'</b><small>'+label+'（海水・平均体型）。フル充填で浮力チェックするなら、終盤の約2kg分を足して考える。細身なら少なめ、体重が多めなら多め。</small>';
+  }
+  wtBody.addEventListener('input',weight);wtSuit.addEventListener('change',weight);
+
+  /* distance calculator */
+  var kicks=document.getElementById('kicks'),secs=document.getElementById('secs'),distOut=document.getElementById('distOut');
+  function dist(){
+    var k=parseFloat(kicks.value),s=parseFloat(secs.value),out=[];
+    if(k>0){out.push('1キック＝<b>'+(30/k).toFixed(2)+'m</b>　→ 30mは<b>'+Math.round(k)+'キック</b>、60mは<b>'+Math.round(k*2)+'キック</b>')}
+    if(s>0){out.push('1秒＝<b>'+(30/s).toFixed(2)+'m</b>　→ 30mは<b>'+Math.round(s)+'秒</b>、60mは<b>'+Math.round(s*2)+'秒</b>')}
+    distOut.innerHTML=out.length?out.join('<br>')+'<small>SPガイドの例：30mを40キックなら0.75m／キック、20秒なら1.5m／秒。往路と復路の平均を使うと流れの影響が相殺される。</small>':'数字を入れると、1キックと1秒あたりの距離、そして四角形の一辺30mに必要なキック数が出ます。';
+  }
+  kicks.addEventListener('input',dist);secs.addEventListener('input',dist);
+
+  /* heading calculator */
+  var hdg=document.getElementById('hdg'),turn=document.getElementById('turn'),hdgOut=document.getElementById('hdgOut');
+  function norm(d){d=d%360;if(d<0)d+=360;return d}
+  function heading(){
+    var v=parseFloat(hdg.value);
+    if(isNaN(v)){hdgOut.textContent='方位を入れると、戻りの方位と四角形4辺の方位が出ます。';return}
+    var t=parseInt(turn.value,10);
+    var sq=[0,1,2,3].map(function(i){return norm(v+i*90*t)});
+    hdgOut.innerHTML='戻り（180°反対）＝<b>'+norm(v+180)+'°</b><br>四角形 '+(t>0?'右回り':'左回り')+'：<span class="chips"><span>'+sq.join('°</span><span>')+'°</span></span><small>右は＋90、左は−90。360を超えたら360を引く。三角形なら120°ずつ。</small>';
+  }
+  hdg.addEventListener('input',heading);turn.addEventListener('change',heading);
+
+  /* reset */
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(!confirm('チェックとクイズの結果を消します。よろしいですか？'))return;
+    try{Object.keys(localStorage).filter(function(k){return k.indexOf(KEY)===0}).forEach(function(k){localStorage.removeItem(k)})}catch(e){}
+    boxes.forEach(function(b){b.checked=false});
+    qs.forEach(function(q){q.querySelectorAll('.opts button').forEach(function(o){o.classList.remove('correct','wrong')});var fb=q.querySelector('.fb');fb.hidden=true;fb.className='fb';fb.textContent=''});
+    progress();
+  });
+})();
+</script>
+
+</body>
+</html>
