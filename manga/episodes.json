@@ -16,6 +16,35 @@
   },
   "episodes": [
     {
+      "slug": "drysuit-prep",
+      "ep": 21,
+      "published": "2026-09-03",
+      "updated": "2026-09-03",
+      "short": "ウェットの海を、潜り切ろう。ドライの支度は、いまのうちに",
+      "title": "ドライスーツの選び方と準備をまんがで｜支度はウェットのうちに｜三浦 海の学校",
+      "description": "9月の三浦 海の学校はまだ潜る月。講習も続き、1日3本潜る人が増えました。10月に入るとウェットからドライへ衣替え。冬も潜るなら、ドライスーツは自分に合うものを——採寸はメーカーさんが。作るのに時間がかかるので支度はウェットのうちに。全12ページ。",
+      "related": [
+        "winter-drysuit",
+        "dive-a-lot",
+        "gear-rental",
+        "this-years-sea"
+      ],
+      "sources": [
+        {
+          "name": "PADI「ドライスーツ・ダイバー・スペシャルティ・コース」",
+          "url": "https://blog.padi.com/jp/padi-sp-special-drysuit-diver-specialty-course/"
+        },
+        {
+          "name": "PADI「ウェットスーツとドライスーツの違いは？」",
+          "url": "https://blog.padi.com/jp/jp_whats-the-difference-between-a-wetsuit-and-a-dry-suit/"
+        },
+        {
+          "name": "気象庁「沿岸域の海面水温情報 相模湾」日別平年値",
+          "url": "https://www.data.jma.go.jp/kaiyou/data/db/kaikyo/series/engan/engan306.html"
+        }
+      ]
+    },
+    {
       "slug": "logbook-app",
       "ep": 20,
       "published": "2026-08-28",
