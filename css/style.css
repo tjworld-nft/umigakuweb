@@ -175,6 +175,27 @@ a:hover { color: var(--coral); }
   background: rgba(255,255,255,.25);
   color: var(--white);
 }
+/* 濃い帯（CONTACTのグラデーション等）の上に置く白いボタン。
+   以前は定義が無く、teal の文字が teal の帯に溶けて読めなかった */
+.btn--white {
+  background: var(--white);
+  color: var(--teal-dark);
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+}
+.btn--white:hover {
+  background: #f2fbfb;
+  color: var(--teal-dark);
+}
+
+/* Font Awesome を読まないページ用のインラインSVGアイコン（manga.css と同じ定義）。
+   これが無いと <svg class="fa-svg"> が箱いっぱいに広がる（bluelogbook の下部バーで実際に踏んだ） */
+.fa-svg {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -.125em;
+  fill: currentColor;
+}
 
 /* ================================================================
    HEADER
@@ -536,6 +557,11 @@ a:hover { color: var(--coral); }
   .hero-content {
     width: min(100%, 420px);
     padding: 0 1.25rem calc(5.75rem + env(safe-area-inset-bottom));
+  }
+  /* iPad mini 縦（768px）もこのブロックに入る。スマホ用の420px幅のままだと
+     見出しが「初心者ガ／イド」のように単語の途中で折れるので、600px以上では広げる */
+  @media (min-width: 600px) {
+    .hero-content { width: min(100%, 640px); }
   }
 
   .hero-badge {

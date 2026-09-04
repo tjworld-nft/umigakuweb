@@ -36,7 +36,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Montserrat:wght@600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css?v=20260905">
     <style>
         .subpage-hero {
             min-height: 40vh;
@@ -105,6 +105,16 @@
             color: var(--text-dark);
             background: var(--white);
             transition: border-color .2s, box-shadow .2s;
+        }
+
+        /* iPhoneのSafariは16px未満の入力欄をタップすると画面全体をズームしてしまう（戻らない）。
+           スマホ幅では16pxにしてズームを起こさない */
+        @media (max-width: 768px) {
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px;
+            }
         }
 
         .form-group input:focus,

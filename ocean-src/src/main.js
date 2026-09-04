@@ -328,6 +328,7 @@ export async function start({ host, hero, webgpu, cores, memory }) {
   let running = false;
   let disposed = false;
   let half = 0;
+  let frames = 0;   /* 実際に描けたフレーム数。帯の背景をcanvasへ渡す判断に使う */
 
   if (useCompute && ripple.computeInit) await renderer.computeAsync(ripple.computeInit);
 
@@ -366,6 +367,7 @@ export async function start({ host, hero, webgpu, cores, memory }) {
     if (useCompute) for (const step of ripple.computeSteps) renderer.compute(step);
     ripple.tick(Math.min(raw, 50) / 1000);
     renderer.render(scene, camera);
+    frames++;
 
     if (hud.visible) {
       hud.update({
@@ -455,8 +457,16 @@ export async function start({ host, hero, webgpu, cores, memory }) {
       handed = true;
       panelEl.classList.add('is-watered');
     };
-    canvas.addEventListener('transitionend', handOver, { once: true });
-    setTimeout(handOver, 2200);
+    /* ただし、実際に何フレームか描けていて、タブが表に出ているときだけ渡す。
+       裏タブで開かれた・GPUが初期化のあと描けなくなった、などで1枚も描けていない
+       canvasに渡すと、帯の白い文字が白地の上に乗って読めなくなる。 */
+    const ready = () => frames >= 12 && !document.hidden;
+    const tryHandOver = () => {
+      if (handed || disposed) return;
+      if (ready()) handOver(); else setTimeout(tryHandOver, 250);
+    };
+    canvas.addEventListener('transitionend', tryHandOver, { once: true });
+    setTimeout(tryHandOver, 2200);
   }
 
   /* ---------- 触って遊べるように置いておく ---------- */
