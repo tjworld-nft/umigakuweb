@@ -3,6 +3,15 @@
 新しいチャット・Codex・他のAIツールで続きを作業するときは、まずこのファイルを読むこと。
 （このファイルは deploy.yml で本番アップロード対象外。サーバーに上げないこと）
 
+## スマホ/iPadのレイアウト点検（2026-09-05・PR fix/mobile-layout-2026-09）
+
+- 全44ページ×4幅（375/430/768/1024）をヘッドレスChromeで全画面撮影し、iOS 26.5シミュレータ（iPhone 17 Pro / iPad Air）でも実機WebKitを確認した。横スクロールが出るページは無し。
+- 直した崩れ: `bluelogbook/` の下部固定バーのSVGアイコンが箱いっぱいに巨大化（`.fa-svg` の寸法定義が manga.css にしか無かった→ **css/style.css に共通定義を追加**。Font Awesome を読まないページでインラインSVGを使うときは必ず `class="fa-svg"`）／`privacy-policy/` のヘッダー6リンクがスマホ幅で縦1文字ずつに潰れる／`license/` `fun-diving/` `sea-life/` `diving-point/` `beginner-guide/` が Font Awesome を読まないのに `<i class="fab …">` を使っていてアイコンが空白（インラインSVGに置換）／`.btn--white` が未定義で CONTACT 帯の「コース・料金を見る」が teal on teal（定義追加）／`beginner-guide/` 費用表がスマホで1文字ずつ折れる（横スクロール化）／iPad mini 縦（768px）でヒーロー見出しが単語の途中で折れる（600px以上は `.hero-content` を640pxに）。
+- **iPhone Safari は 16px 未満の入力欄をタップすると画面全体をズームして戻らない。** `contact/` と `sea-life/` の入力欄はスマホ幅で 16px にした。フォームを新設するときも同じにする。`maximum-scale=1` で封じるのは不可（拡大できなくなる）。
+- **css/style.css はサーバーが7日キャッシュする（max-age=604800）。** 変更したら全ページの `css/style.css?v=YYYYMMDD` を上げること（今回 20260905 に統一。以前は11ページが `?v=` 無しだった）。
+- トップの水面: 帯（`.summer-campaign`）の背景をcanvasへ渡す `is-watered` は、**実際に12フレーム以上描けて、かつタブが表に出ているときだけ**付くようにした（`ocean-src/src/main.js`）。裏タブで開かれて1枚も描けていないのに透かすと、白い文字が白地に乗って読めなくなる。
+- 未対応（報告のみ）: `tokusho/` はスマホで9本のナビが縦積みになり最初の1画面を占める（旧テンプレの意図した挙動）。ブログ（別リポジトリ・Astro）はiPad幅でカード見出しの `line-clamp-2` の下に3行目が漏れる。
+
 ## 現在の状態（2026-07-18 更新）
 
 - **GitHub凍結は2026-07-17に解除確認済み**。通常フロー「`feature/site-polish` にコミット→push→PR→mainマージ→Actions FTP自動デプロイ」に復帰している。手動FTPSデプロイは不要（緊急時のバックアップ手段としてのみ）。

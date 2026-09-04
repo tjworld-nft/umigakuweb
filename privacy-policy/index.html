@@ -202,13 +202,23 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            /* スマホ幅では6つのリンクが1列ずつ縦1文字に潰れていたので、折り返して並べる */
+            .header-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+
             .nav-links {
-                gap: 1rem;
+                flex-wrap: wrap;
+                gap: 0.35rem 0.4rem;
             }
 
             .nav-links a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
+                display: inline-block;
+                white-space: nowrap;
+                padding: 0.3rem 0.7rem;
+                font-size: 0.85rem;
             }
 
             .hero h1 {
