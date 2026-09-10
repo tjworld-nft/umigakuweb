@@ -414,6 +414,31 @@
         "trial-diving",
         "diving-license"
       ]
+    },
+    {
+      "slug": "solo-diving",
+      "ep": 22,
+      "published": "2026-09-11",
+      "updated": "2026-09-11",
+      "short": "ひとりで来ていいの？",
+      "title": "ダイビングに一人で参加できる？不安をまんがで｜ひとりで来ていいの｜三浦 海の学校",
+      "description": "「一人で来ていいですか？」は申し込む前にいちばんよく聞かれる質問。三浦 海の学校は一人で来る人が多い店。当日はインストラクターがそばにつき、少人数で進み、三崎口駅から無料送迎（要予約）。一人参加の不安に店の実際の運用で答えます。全12ページ。",
+      "related": [
+        "women-diving",
+        "trial-diving",
+        "diving-license",
+        "fun-diving-debut"
+      ],
+      "sources": [
+        {
+          "name": "三浦 海の学校「初心者ガイド」（一人参加・持ち物・送迎のFAQ）",
+          "url": "https://miura-diving.com/beginner-guide/"
+        },
+        {
+          "name": "三浦 海の学校「体験ダイビング」（インストラクターがずっと横につく）",
+          "url": "https://miura-diving.com/trial-diving/"
+        }
+      ]
     }
   ]
 }
