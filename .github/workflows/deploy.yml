@@ -53,3 +53,4 @@ jobs:
           **/.agents/**
           **/deploy-instructions.md
           **/aow-learning/access-config.php
+          **/app.miura-diving.com/**
