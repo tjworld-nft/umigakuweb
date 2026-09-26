@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>「海学」アプリ プライバシーポリシー｜三浦 海の学校</title>
+  <meta name="description" content="三浦 海の学校のiPhoneアプリ「海学」のプライバシーポリシー。アカウント登録なし・個人情報の取得なし。相棒・ガチャ・歩数・占いの記録はiPhoneの中だけに保存し、外部へ送りません。広告・トラッキングもありません。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://miura-diving.com/umigaku-app/privacy/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="三浦 海の学校">
+  <meta property="og:title" content="「海学」アプリ プライバシーポリシー｜三浦 海の学校">
+  <meta property="og:description" content="アカウント登録なし・個人情報の取得なし。遊んだ記録はiPhoneの中だけに保存し、外部へ送りません。">
+  <meta property="og:url" content="https://miura-diving.com/umigaku-app/privacy/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Montserrat:wght@600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Montserrat:wght@600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Montserrat:wght@600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="../../css/style.css?v=20260905">
+
+  <style>
+    /* ---- 「海学」アプリのページだけのスタイル（style.css は触らない） ---- */
+    .ua-hero{background:linear-gradient(180deg,#0B5F73 0%,#063A4A 100%);color:#fff;padding:5.6rem 0 2.6rem;text-align:center}
+    .ua-hero__tag{display:inline-block;border:1.5px solid rgba(255,255,255,.7);background:rgba(255,255,255,.12);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:1rem}
+    .ua-hero h1{font-size:clamp(1.4rem,4.6vw,2rem);line-height:1.4;margin:0 0 .6rem;color:#fff}
+    .ua-hero p{font-size:clamp(.92rem,2.4vw,1rem);line-height:1.9;opacity:.92;max-width:600px;margin:0 auto}
+
+    .ua-main{padding:2.4rem 0 3.2rem;background:var(--bg-soft,#F0F7FA)}
+    .ua-doc{max-width:760px;margin:0 auto}
+    .ua-summary{background:#fff;border-radius:18px;padding:1.2rem 1.3rem;box-shadow:var(--shadow-md,0 8px 30px rgba(0,0,0,.08));margin-bottom:1.6rem}
+    .ua-summary h2{font-size:1.05rem;color:#0B5F73;margin:0 0 .5rem}
+    .ua-summary ul{margin:0;padding-left:1.3em}
+    .ua-summary li{font-size:.95rem;line-height:1.85;margin-bottom:.25rem}
+    .ua-card{background:#fff;border-radius:18px;padding:1.3rem 1.3rem 1.1rem;box-shadow:var(--shadow-md,0 8px 30px rgba(0,0,0,.08));margin-bottom:1rem}
+    .ua-card h2{font-size:1.08rem;line-height:1.5;color:#0B5F73;margin:0 0 .6rem;padding-left:.7rem;border-left:4px solid var(--teal,#4ECDC4)}
+    .ua-card p{font-size:.95rem;line-height:1.95;margin:0 0 .75rem}
+    .ua-card ul{margin:0 0 .75rem;padding-left:1.3em}
+    .ua-card li{font-size:.95rem;line-height:1.85;margin-bottom:.2rem}
+    .ua-card a{color:var(--teal-dark,#38AFA7);text-decoration:underline}
+    .ua-table{width:100%;border-collapse:collapse;font-size:.93rem;line-height:1.8}
+    .ua-table th,.ua-table td{border-top:1px solid var(--border,#E5EDF2);padding:.6rem .4rem;text-align:left;vertical-align:top}
+    .ua-table th{width:32%;color:var(--text-sub,#636E72);font-weight:700;white-space:nowrap}
+    @media (max-width:480px){.ua-table th{white-space:normal}}
+    .ua-date{text-align:right;font-size:.88rem;color:var(--text-sub,#636E72);margin:1.4rem 0 0}
+    .ua-links{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.6rem 0 0}
+    .ua-links a{display:inline-block;background:#fff;border:1px solid var(--border,#E5EDF2);border-radius:999px;padding:.55rem 1.1rem;font-size:.88rem;font-weight:700;color:#0B5F73;text-decoration:none}
+    .ua-links a:hover{border-color:var(--teal,#4ECDC4)}
+    /* 下部バーのアイコン寸法。共通CSSにも同じ定義があるが、古いCSSがキャッシュされていても崩れないよう当ページにも持つ */
+    .fa-svg{width:1em;height:1em;display:inline-block;vertical-align:-.125em;fill:currentColor}
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="../../" class="header-logo" aria-label="三浦 海の学校 ホーム">三浦 海の学校</a>
+      <nav class="desktop-nav" role="navigation" aria-label="メインナビゲーション">
+        <a href="../../beginner-guide/">初心者ガイド</a>
+        <a href="../../trial-diving/">体験ダイビング</a>
+        <a href="../../license/">ダイビングライセンス</a>
+        <a href="../../fun-diving/">ファンダイビング</a>
+        <a href="../../sea-life/">海の生き物図鑑</a>
+        <a href="../../manga/">まんが</a>
+        <a href="https://miura-diving.com/blog/">ブログ</a>
+        <a href="../../contact/" class="btn btn--coral" style="padding:.6rem 1.4rem; font-size:.85rem;">お問い合わせ</a>
+      </nav>
+      <button class="hamburger" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav" role="dialog" aria-modal="true" aria-label="ナビゲーションメニュー">
+    <div class="mobile-nav-panel">
+      <a href="../../">ホーム</a>
+      <a href="../../beginner-guide/">初心者ガイド</a>
+      <a href="../../trial-diving/">体験ダイビング</a>
+      <a href="../../license/">ダイビングライセンス</a>
+      <a href="../../fun-diving/">ファンダイビング</a>
+      <a href="../../marine-activity/">マリンアクティビティ</a>
+      <a href="../../sea-life/">海の生き物図鑑</a>
+      <a href="../../manga/">まんが</a>
+      <a href="https://miura-diving.com/blog/">ブログ</a>
+      <div class="mobile-nav-cta"><a href="../../contact/" class="btn btn--coral">お問い合わせ</a></div>
+    </div>
+  </div>
+
+  <main>
+
+    <section class="ua-hero" aria-labelledby="ua-title">
+      <div class="container">
+        <span class="ua-hero__tag">iPhoneアプリ「海学」</span>
+        <h1 id="ua-title">「海学」アプリ プライバシーポリシー</h1>
+        <p>相棒と歩く海のゲームアプリ「海学」での、情報の取り扱いについてご説明します。</p>
+      </div>
+    </section>
+
+    <section class="ua-main">
+      <div class="container">
+        <div class="ua-doc">
+
+          <div class="ua-summary">
+            <h2>かんたんに言うと</h2>
+            <ul>
+              <li>アカウント登録やログインはありません。氏名やメールアドレスなどの個人情報はいただきません。</li>
+              <li>相棒・ガチャ・歩数・占いの記録は、お使いのiPhoneの中だけに保存します。当店のサーバーやほかの会社へは送りません。</li>
+              <li>広告・アクセス解析・トラッキングは使っていません。</li>
+            </ul>
+          </div>
+
+          <div class="ua-card">
+            <p>このプライバシーポリシー（以下「本ポリシー」）は、三浦 海の学校（以下「当店」）が提供するiPhoneアプリ「海学」（以下「本アプリ」）における、利用者の情報の取り扱いを定めるものです。本アプリは、相棒といっしょに歩いて育てる海のゲームアプリです。ダイビングやスノーケリングのご予約・ご相談は、本アプリの外（当店の公式LINE・公式サイト）で受け付けています。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>1. 事業者</h2>
+            <table class="ua-table">
+              <tr><th scope="row">事業者名</th><td>三浦 海の学校（AquaBit LAB）</td></tr>
+              <tr><th scope="row">代表者</th><td>吉田 哲司</td></tr>
+              <tr><th scope="row">所在地</th><td>神奈川県三浦市</td></tr>
+              <tr><th scope="row">お問い合わせ</th><td><a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer">公式LINE</a>／<a href="../../contact/?from=umigaku-app">お問い合わせフォーム</a>／メール：<a href="mailto:info@miura-diving.com">info@miura-diving.com</a></td></tr>
+            </table>
+            <p>事業者の連絡先は、<a href="../../tokusho/">特定商取引法に基づく表記</a>にも掲載しています。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>2. 個人情報の取得について</h2>
+            <p>本アプリには、アカウント登録やログインの機能はありません。本アプリが、氏名・メールアドレス・電話番号・住所・生年月日などの個人情報を取得することはありません。今日の占いも、誕生日などを入力せずに楽しめます。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>3. iPhoneの中に保存する記録</h2>
+            <p>本アプリで遊んだ記録は、お使いのiPhoneの中だけに保存します。</p>
+            <ul>
+              <li>相棒の記録（相棒につけた名前、成長のようす）</li>
+              <li>ガチャ・チケット・図鑑・背景・海の思い出などの記録</li>
+              <li>毎日の歩数とおさんぽの記録</li>
+              <li>今日の占いの記録</li>
+              <li>音などの設定</li>
+            </ul>
+            <p>これらの記録を、当店のサーバーやほかの会社へ送ることはありません。当店がこれらの記録を見ることもできません。</p>
+            <p>なお、iPhoneのバックアップ（iCloudなど）をお使いの場合、占い・海の旅の記録や設定など一部の記録が、利用者ご自身のバックアップに含まれることがあります。当店がそのバックアップを見ることはできません。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>4. 歩数の読み取り（モーションとフィットネス）</h2>
+            <p>本アプリは、利用者が許可した場合に限り、iPhoneの「モーションとフィットネス」の機能を使って、歩数と歩く速さを読み取ります。読み取った歩数は、相棒の成長・毎日の歩数の目標・ゲーム内のチケットなどに使い、iPhoneの中だけで扱います。歩数を本アプリの外へ送ることはありません。</p>
+            <p>許可は、iPhoneの「設定」＞「プライバシーとセキュリティ」＞「モーションとフィットネス」で、いつでも変更できます。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>5. 位置情報・カメラなどについて</h2>
+            <p>本アプリは、位置情報・カメラ・写真・連絡先・マイクの許可を求めることはなく、これらを使いません。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>6. 広告・アクセス解析・トラッキング</h2>
+            <p>本アプリには、広告を表示する仕組みやアクセス解析のツールは入っていません。他社のアプリやウェブサイトをまたいで利用者を追跡する「トラッキング」も行いません。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>7. 外部のサービスを開いたとき</h2>
+            <p>本アプリには、当店の公式LINE・公式サイト・Facebook・Instagram・X を開くボタンがあります。ボタンを押すと、それぞれのアプリまたはブラウザが開きます。開いた先での情報の取り扱いは、各サービスの利用規約・プライバシーポリシーによります。</p>
+            <p>公式LINEやお問い合わせフォームからご予約・ご相談をいただいた場合、そこでお知らせいただいた情報は、当店の<a href="../../privacy-policy/">プライバシーポリシー</a>にしたがって取り扱います。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>8. 不具合の情報（Appleを通じた共有）</h2>
+            <p>iPhoneの設定で「App デベロッパと共有」をオンにしている場合、Appleを通じて、本アプリの不具合の情報（アプリが止まったときの記録など）が当店に届くことがあります。これはAppleの仕組みによるもので、当店は本アプリの不具合を直すためだけに使います。この設定は、iPhoneの「設定」＞「プライバシーとセキュリティ」＞「解析および改善」で変更できます。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>9. 記録の削除</h2>
+            <p>本アプリの「マイページ」にある「この端末のデータを削除する」から、相棒・ガチャ・歩数・占いなどの記録を削除できます。本アプリを削除した場合も、iPhoneの中の記録は消えます。当店の側には記録が残っていないため、消えた記録を元に戻すことはできません。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>10. お問い合わせ</h2>
+            <p>本ポリシーや本アプリについてのお問い合わせは、当店の<a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer">公式LINE</a>または<a href="../../contact/?from=umigaku-app">お問い合わせフォーム</a>からお願いします。メール（<a href="mailto:info@miura-diving.com">info@miura-diving.com</a>）でも受け付けています。</p>
+          </div>
+
+          <div class="ua-card">
+            <h2>11. 改定について</h2>
+            <p>本ポリシーは、必要に応じて改定することがあります。改定したときは、このページでお知らせします。</p>
+            <p>今後、本アプリにご予約や会員の機能を追加する場合は、その機能を公開する前に本ポリシーを改定し、いただく情報とその使い道をこのページでお知らせします。</p>
+          </div>
+
+          <p class="ua-date">制定日：2026年9月27日</p>
+
+          <div class="ua-links">
+            <a href="../support/">「海学」アプリ サポート →</a>
+            <a href="../../privacy-policy/">三浦 海の学校 プライバシーポリシー</a>
+            <a href="../../">三浦 海の学校 トップへ</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand"><strong style="color:#fff; font-size:1.1rem;">三浦 海の学校</strong>
+          <p>開催場所・集合場所はご予約時にご案内します<br>営業時間: 9:00〜16:00（不定休）</p>
+        </div>
+        <div class="footer-nav">
+          <h4>メニュー</h4>
+          <a href="../../">ホーム</a>
+          <a href="../../trial-diving/">体験ダイビング</a>
+          <a href="../../license/">ダイビングライセンス</a>
+          <a href="../../fun-diving/">ファンダイビング</a>
+          <a href="../../marine-activity/">マリンアクティビティ</a>
+          <a href="../../sea-life/">海の生き物図鑑</a>
+          <a href="https://miura-diving.com/manga/">まんがで読むダイビング</a>
+          <a href="https://miura-diving.com/buddy/">お友達紹介（バディ割）</a>
+          <a href="https://miura-diving.com/tsuzukeru/">つづける割（次回¥800引き）</a>
+        </div>
+        <div class="footer-social">
+          <h4>SNS</h4>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/tj_official_umigaku/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="fa-svg" style="width:1.4rem;height:1.4rem" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+            <a href="https://www.facebook.com/miuraumigaku/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="fa-svg" style="width:1.4rem;height:1.4rem" viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
+            <a href="https://x.com/miura_diving" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><svg class="fa-svg" style="width:1.4rem;height:1.4rem" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 三浦 海の学校 All rights reserved.｜神奈川県三浦市・三浦半島のダイビングスクール</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile fixed CTA -->
+  <div class="mobile-cta-bar" role="navigation" aria-label="お問い合わせ">
+    <a class="cta-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer"><svg class="fa-svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M311 196.8v81.3c0 2.1-1.6 3.7-3.7 3.7h-13c-1.3 0-2.4-.7-3-1.5l-37.3-50.3v48.2c0 2.1-1.6 3.7-3.7 3.7h-13c-2.1 0-3.7-1.6-3.7-3.7V196.9c0-2.1 1.6-3.7 3.7-3.7h12.9c1.1 0 2.4 .6 3 1.6l37.3 50.3v-48.2c0-2.1 1.6-3.7 3.7-3.7h13c2.1-.1 3.8 1.6 3.8 3.5zm-93.7-3.7h-13c-2.1 0-3.7 1.6-3.7 3.7v81.3c0 2.1 1.6 3.7 3.7 3.7h13c2.1 0 3.7-1.6 3.7-3.7V196.8c0-1.9-1.6-3.7-3.7-3.7zm-31.4 68.1H150.3V196.8c0-2.1-1.6-3.7-3.7-3.7h-13c-2.1 0-3.7 1.6-3.7 3.7v81.3c0 1 .3 1.8 1 2.5c.7 .6 1.5 1 2.5 1h52.2c2.1 0 3.7-1.6 3.7-3.7v-13c0-1.9-1.6-3.7-3.5-3.7zm193.7-68.1H327.3c-1.9 0-3.7 1.6-3.7 3.7v81.3c0 1.9 1.6 3.7 3.7 3.7h52.2c2.1 0 3.7-1.6 3.7-3.7V265c0-2.1-1.6-3.7-3.7-3.7H344V247.7h35.5c2.1 0 3.7-1.6 3.7-3.7V230.9c0-2.1-1.6-3.7-3.7-3.7H344V213.5h35.5c2.1 0 3.7-1.6 3.7-3.7v-13c-.1-1.9-1.7-3.7-3.7-3.7zM512 93.4V419.4c-.1 51.2-42.1 92.7-93.4 92.6H92.6C41.4 511.9-.1 469.8 0 418.6V92.6C.1 41.4 42.2-.1 93.4 0H419.4c51.2 .1 92.7 42.1 92.6 93.4zM441.6 233.5c0-83.4-83.7-151.3-186.4-151.3s-186.4 67.9-186.4 151.3c0 74.7 66.3 137.4 155.9 149.3c21.8 4.7 19.3 12.7 14.4 42.1c-.8 4.7-3.8 18.4 16.1 10.1s107.3-63.2 146.5-108.2c27-29.7 39.9-59.8 39.9-93.1z"/></svg><span>LINEで相談</span></a>
+    <a class="cta-form" href="../../contact/?from=umigaku-app"><svg class="fa-svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg><span>フォームで問い合わせ</span></a>
+  </div>
+
+  <script src="../../js/main.js" defer></script>
+</body>
+
+</html>
