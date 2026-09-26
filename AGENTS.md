@@ -121,7 +121,12 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   **WebGPUのcanvasは描いた直後にしか読めない**ので、`setAnimationLoop(null)` で止めてから
   自分で `renderAsync` して、その場で `drawImage` すること（preview.html の `?frames=N` と同じ手順）。
 
-### 夏割の帯（2026-08-05に追加）
+### 夏割の帯（2026-08-05に追加）→ 2026-09-27 から「映像の帯」 `#film` に移った
+
+- ⚠ **2026-09-27 のトップ刷新で、水の中の帯（`data-ocean-panel`）は `#film`（PVの帯・常設）に移した。**
+  夏割は `#film` の中の `#summer-campaign`（`data-expires="2026-10-01"`）に入っていて、10/1になるとJSが自動で外す。
+  下の記述の「帯」は `#film` と読み替える（仕組み・配色・`.sc-waterline`・`data-ocean-guard` はそのまま使っている）。
+  エンジン（ocean-src）は作り直していないので `boot.js?v=` は据え置き。
 
 - トップの `#summer-campaign` は**水の中**。ヒーロー写真が海を外から見ているので、
   その真下のこの帯では読者が水の中にいて、水面を下から見上げている（スクロールで潜る）。
@@ -149,6 +154,28 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   光を強めるときは必ず測り直すこと。
 - ⚠ **smoothstepの2つの境目は必ず増加方向に。** WGSLでは `edge0 >= edge1` は未定義動作。
   「内側を1にしたい」ときは `1 - smoothstep(a, b, x)` と書く。
+
+## トップページ（2026-09-27 全面リニューアル・`index.html` / `css/home.css` / `js/home.js`）
+
+- 構成は「潜る」：ヒーロー（写真＋WebGPUの水・写真は差し替えない）→ 数字の帯 → **映像の帯 `#film`（水の中・PV）** → コース選び `#finder`（4つの入口＝PVの4章と同じ）→
+  **城ヶ島と宮川湾 `#sea`（空撮PVを章ごとの区間だけ無音ループ・スクロールで切替）** → コースと料金 `#courses`（総額表示）→ 代表 `#instructor` → 声 `#voice` →
+  まんが（`.home-manga`・manga-publish が最新3話を差し替える書式は不変）→ アプリと本 → 海況 `#condition` → FAQ `#faq` → 相談 `#contact` → SNS（縦CMをスマホ枠で再生）。
+  デスクトップ（1400px以上）は右端に水深計（ページ内目次）。
+- **共通の `css/style.css` は触っていない**（トップ専用は `css/home.css?v=`）。Font Awesome はトップだけ外してインラインSVG（`<symbol id="i-…">`）。
+  Webフォントは非同期＋`display=optional`（表示を止めない・文字がずれない）。
+- **期限つきの表示は `data-expires="YYYY-MM-DD"`**（日本時間でその日になったらJSが要素ごと外す）。夏割は 2026-10-01。
+  **10月に入ったら `#summer-campaign` と `data-expires` の付いた要素をHTMLからも削除**する（JSで隠れるが、検索エンジンにはHTMLが残るため）。
+- 映像は `video/home/`（すべて `?v=1` 付き。**差し替えたら ?v= を上げる**＝サーバーが7日キャッシュ）：
+  PV `umigaku-pv-2026-720.mp4`（H.264・全端末）＋ `umigaku-pv-2026-1080-hevc.mp4`（幅1000px以上で対応ブラウザだけ）＋字幕 `umigaku-pv-2026-ja.vtt`／
+  PVの無音ループ `umigaku-pv-2026-teaser.mp4`（見えている間だけ再生）／空撮 `jogashima-miyagawa-720.mp4`（章の境目にキーフレームを入れてある。区間は `data-start/end`）／
+  縦CM `umigaku-sea-cm-2026.mp4`。**最初の表示では動画を1バイトも読まない**（近づいてから・動きを減らす設定と省データでは読まない）。
+  元の書き出しは `~/Desktop/umigaku-pv-20260926/`・`~/Desktop/umigaku-sites-pv-20260926/`・`output/2026-09-25-sea-cm/`。
+- LINEボタンは友だち追加（lin.ee）のまま。文脈のあるボタン（`data-line-msg`）は押すと送る文面をコピーしてからLINEを開く。
+  フォームは `/contact/?from=home…&category=…&date=YYYY-MM-DD` で事前入力できる（contact/index.html に追加）。
+- 文字色は AA を満たす「文字用」の色（`--line:#00873C` `--coral-ink:#D12F6A` `--teal-ink:#0F766E` `--sky-ink:#1A7898`）。パステルは面と飾りだけ。
+- 検証（2026-09-27・ローカル）：Lighthouse モバイル 性能81（旧55）・FCP 1.8s（旧11.6s）・LCP 2.9s（旧13.8s）・CLS 0.003、デスクトップ 100/100/100/100（水オフ時のアクセシビリティ100）。
+  320〜1440px で横はみ出しなし。※水（WebGPU）が載ると帯の背景が透明になるため、Lighthouse は帯の白文字を白地と誤判定する（実際は水の上）。
+- SUP・シーカヤックは受け入れ中止中なのでトップからは外した（スノーケリングのみ案内）。
 
 ## デプロイ方法
 
