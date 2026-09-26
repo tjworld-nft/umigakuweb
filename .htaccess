@@ -7,6 +7,9 @@ DirectoryIndex index.html
   Require all denied
 </Files>
 
+# 字幕（トップのPV・2026-09-27）。nginx/Apache の既定の型表に無いことがあるので明示する
+AddType text/vtt .vtt
+
 # RewriteEngine On
 RewriteEngine On
 

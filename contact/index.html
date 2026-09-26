@@ -479,6 +479,16 @@
             // 流入元(?from=)をhiddenに引き継ぎ（英数字とハイフンのみ許可）
             var from = (params.get('from') || '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 32);
             if (from) document.getElementById('refSource').value = from;
+            // トップページなどからの事前入力（?category=体験ダイビング&date=2026-10-04）
+            var cat = params.get('category');
+            var sel = document.getElementById('category');
+            if (cat && sel) {
+                for (var i = 0; i < sel.options.length; i++) {
+                    if (sel.options[i].value === cat) { sel.value = cat; break; }
+                }
+            }
+            var d = params.get('date') || '';
+            if (/^\d{4}-\d{2}-\d{2}$/.test(d)) document.getElementById('date').value = d;
             var status = params.get('status');
             if (status === 'success') {
                 document.getElementById('contactForm').style.display = 'none';
