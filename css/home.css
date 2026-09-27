@@ -321,6 +321,36 @@
 .sc-cta__note { display: inline-block; max-width: 620px; font-size: .82rem; margin-top: .9rem; line-height: 1.8; color: var(--text-sub); background: rgba(255, 255, 255, .96); border-radius: var(--radius-md); padding: .7rem 1.1rem; }
 .sc-cta__note strong { color: var(--ink); background: #FFE66D; border-radius: 5px; padding: .05rem .3rem; }
 
+/* ---- 秋冬（帯の中・常設。夏のLINE特典が外れたあとの、この帯の季節の枠）
+        映像の本体ページは /winter-diving/ ---- */
+.wf { max-width: 1080px; margin: clamp(2.8rem, 6vw, 4rem) auto 0; padding: 0 1.25rem; }
+.wf-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1.2rem, 3vw, 2.2rem); align-items: center;
+  background: rgba(3, 30, 46, .55); border: 1px solid rgba(207, 243, 255, .22); border-radius: 26px;
+  padding: clamp(1.1rem, 3vw, 2rem);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+.wf-label { display: block; font-family: var(--ff-accent); font-size: .74rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #CFF3FF; margin-bottom: .45rem; }
+.wf-text h2 { font-size: clamp(1.35rem, 3.6vw, 1.9rem); font-weight: 700; line-height: 1.5; color: #fff; margin-bottom: .7rem; }
+.wf-text h2 .nw { display: inline-block; }
+.wf-lead { font-size: clamp(.9rem, 2.4vw, 1rem); line-height: 1.9; color: rgba(255, 255, 255, .94); }
+.wf-lead b { color: #fff; background: rgba(111, 233, 247, .2); border-radius: 6px; padding: 0 .25rem; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.wf-facts { list-style: none; margin: 1rem 0 1.2rem; padding: 0; display: grid; gap: .5rem; }
+.wf-facts li { display: flex; align-items: baseline; gap: .8rem; border-top: 1px solid rgba(207, 243, 255, .18); padding-top: .5rem; }
+.wf-facts b { flex: 0 0 auto; min-width: 8.2em; font-family: var(--ff-accent); font-size: 1.02rem; color: #6FE9F7; white-space: nowrap; }
+.wf-facts b small { font-family: var(--ff-body); font-size: .7em; margin-left: .1em; }
+.wf-facts span { font-size: .8rem; line-height: 1.6; color: rgba(255, 255, 255, .88); }
+.wf-more {
+  display: inline-flex; align-items: center; gap: .4rem; background: #fff; color: var(--deep-2); text-decoration: none;
+  font-weight: 700; font-size: .92rem; padding: .75rem 1.3rem; border-radius: 999px;
+  box-shadow: 0 10px 26px rgba(1, 16, 26, .35); transition: transform var(--ease);
+}
+.wf-more:hover { transform: translateY(-2px); color: var(--deep-3); }
+.wf-stage { border-radius: 18px; }
+.wf-film .film-note { text-align: left; }
+@media (max-width: 860px) { .wf-grid { grid-template-columns: 1fr; } .wf-film { order: -1; } }
+@media (max-width: 420px) { .wf-facts li { flex-direction: column; gap: .1rem; } }
+
 .hero-campaign-pill {
   display: inline-flex; align-items: center; flex-wrap: wrap; gap: .5rem;
   background: var(--coral-ink); color: #fff; text-decoration: none;
