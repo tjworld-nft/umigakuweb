@@ -38,7 +38,7 @@
   <!-- 最初の表示に要るものを先に。写真はヒーローのLCP候補 -->
   <link rel="preload" as="image" href="image/optimized/home-hero-soft-diving.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css?v=20260905">
-  <link rel="stylesheet" href="css/home.css?v=20260927">
+  <link rel="stylesheet" href="css/home.css?v=2026092702">
 
   <!-- Webフォントは表示を止めない（display=optional：間に合わなければ端末の丸ゴシックで描き、
        文字の組み替え＝レイアウトのずれを起こさない。2回目以降はキャッシュ済みのZen Maruで出る） -->
@@ -165,6 +165,7 @@
           {"@type": "Question", "name": "一人参加でも大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "大丈夫です。お一人で参加される方も多く、インストラクター1名につき最大4名の少人数制なので、質問もしやすい雰囲気です。"}},
           {"@type": "Question", "name": "料金には何が含まれていますか？", "acceptedAnswer": {"@type": "Answer", "text": "体験ダイビングはレンタル器材まで込みの¥19,800です。オープンウォーター講習は講習費¥53,900にeラーニング・ログブック・実習費・申請料・保険が含まれ、レンタル器材（1日¥5,500）が別途かかります（総額¥64,900）。ファンダイビングとリフレッシュはガイド・タンク・ウエイト・施設使用料・保険込みで、レンタル器材は別途です。"}},
           {"@type": "Question", "name": "東京や横浜から日帰りで参加できますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。最寄りの京急三崎口駅までは品川から約70分、横浜から約55分です。三崎口駅から開催地までは無料で送迎しています（要予約）。車の場合は横浜横須賀道路の衣笠ICから約20〜30分です。"}},
+          {"@type": "Question", "name": "寒い季節でも潜れますか？", "acceptedAnswer": {"@type": "Answer", "text": "潜れます。三浦の海は10月上旬ごろから、昼間の気温より海のほうがあたたかくなります（気象庁の平年値）。10月中旬〜6月中旬はドライスーツで潜っていて、冬は透明度が上がり、海がいちばん青くなる季節です。"}},
           {"@type": "Question", "name": "どこで潜りますか？", "acceptedAnswer": {"@type": "Answer", "text": "城ヶ島（ビーチ・ボート）と宮川湾（ボート）が中心です。当日の海況を見て、いちばん合うポイントを選びます。開催場所・集合場所はご予約時にご案内します。"}},
           {"@type": "Question", "name": "何歳から参加できますか？", "acceptedAnswer": {"@type": "Answer", "text": "体験ダイビングとオープンウォーター講習は10歳から参加でき、年齢の上限はありません。アドバンス講習は12歳からです。健康面で気になることがあれば、事前にご相談ください。"}},
           {"@type": "Question", "name": "キャンセル料はかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "開催日の前日17時までは無料です。前日17時以降は料金の50%、当日または無連絡の不参加は100%です。悪天候・海況不良で当方が開催を中止した場合、キャンセル料はいただきません。日程変更は空きがあれば無料で承ります。"}},
@@ -370,6 +371,35 @@
         <div class="sc-cta">
           <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで空き状況を聞く</a>
           <p class="sc-cta__note">友だち追加後、OWDは「<strong>夏割</strong>」、AOWは「<strong>アドバンス夏割</strong>」と一言送るだけでOKです。</p>
+        </div>
+      </div>
+
+      <!-- 秋冬（常設）。夏のLINE特典が10/1に外れたあとは、この帯の季節の枠になる。
+           映像の本体ページは /winter-diving/（検索に映像を出すための視聴ページ） -->
+      <div id="autumn-winter" class="wf">
+        <div class="wf-grid">
+          <div class="wf-text" data-ocean-guard>
+            <span class="wf-label">Autumn &amp; Winter</span>
+            <h2 id="wf-title">寒くなっても、<span class="nw">海の季節は終わらない。</span></h2>
+            <p class="wf-lead">三浦の海は、10月上旬から<b>昼間の気温よりあたたかく</b>なります。冬は透明度が上がって、海がいちばん青くなる季節。ドライスーツなら、服を着たまま潜れます。</p>
+            <ul class="wf-facts" role="list">
+              <li><b>10/5<small>ごろ</small>〜4/1<small>ごろ</small></b><span>最高気温より海のほうがあたたかい（気象庁の平年値）</span></li>
+              <li><b>20〜25<small>m</small></b><span>1〜2月のよく見える日の透明度（当店の感覚）</span></li>
+              <li><b>10月中旬〜6月中旬</b><span>ドライスーツで潜る季節（レンタル¥5,500／日）</span></li>
+            </ul>
+            <a class="wf-more" href="/winter-diving/">秋冬のダイビングをくわしく見る <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="wf-film">
+            <button type="button" class="film-stage wf-stage" data-film="winter">
+              <picture>
+                <source srcset="image/winter/winter-card-640.webp 640w, image/winter/winter-card-1280.webp 1280w" sizes="(min-width: 1000px) 600px, 100vw" type="image/webp">
+                <img src="image/winter/winter-card-1280.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+              </picture>
+              <span class="film-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="film-meta"><b>音ありで観る</b><span>AUTUMN &amp; WINTER ・ 1:02</span><span class="sr-only">（映像「海の季節は、終わらない。」三浦の秋冬のダイビングを再生・1分2秒・字幕あり）</span></span>
+            </button>
+            <p class="film-note">データは気象庁の平年値。ナレーションと音楽はAIで生成しています。</p>
+          </div>
         </div>
       </div>
     </section>
@@ -840,6 +870,10 @@
             <div class="faq-answer">はい。最寄りの京急三崎口駅までは品川から約70分、横浜から約55分です。三崎口駅から開催地までは無料で送迎しています（要予約）。車の場合は横浜横須賀道路の衣笠ICから約20〜30分です。</div>
           </details>
           <details class="faq-item">
+            <summary>寒い季節でも潜れますか？</summary>
+            <div class="faq-answer">潜れます。三浦の海は10月上旬ごろから、昼間の気温より海のほうがあたたかくなります（気象庁の平年値）。10月中旬〜6月中旬はドライスーツで潜っていて、冬は透明度が上がり、海がいちばん青くなる季節です。映像とくわしい説明は<a href="/winter-diving/">秋冬のダイビング</a>へ。</div>
+          </details>
+          <details class="faq-item">
             <summary>どこで潜りますか？</summary>
             <div class="faq-answer">城ヶ島（ビーチ・ボート）と宮川湾（ボート）が中心です。当日の海況を見て、いちばん合うポイントを選びます。開催場所・集合場所はご予約時にご案内します。</div>
           </details>
@@ -1047,7 +1081,7 @@
   </div>
 
   <script src="js/main.js" defer></script>
-  <script src="js/home.js?v=20260927" defer></script>
+  <script src="js/home.js?v=2026092702" defer></script>
   <!-- サイト全体に敷く水。端末を見て、描ける環境にだけ本体を取りに行く -->
   <!-- ⚠ js/ocean/* はサーバが7日キャッシュする（max-age=604800）。
        ocean-src を作り直したら、必ずこの ?v= を上げること。

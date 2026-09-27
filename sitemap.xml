@@ -50,6 +50,12 @@
 
   <!-- つづける割（ファンダイビング継続特典） -->
   <url>
+    <loc>https://miura-diving.com/winter-diving/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://miura-diving.com/tsuzukeru/</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -59,7 +65,7 @@
   <!-- ファンダイビングページ -->
   <url>
     <loc>https://miura-diving.com/fun-diving/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

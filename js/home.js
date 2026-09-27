@@ -103,6 +103,17 @@
       base: ['video/home/jogashima-miyagawa-720.mp4?v=1', 'video/mp4'],
       chapters: [['はじめから', 0], ['城ヶ島ビーチ', 12.32], ['宮川湾ボート', 19.52], ['城ヶ島ボート', 26.72]]
     },
+    winter: {
+      title: '海の季節は、終わらない。三浦の秋冬のダイビング（1分2秒）',
+      poster: 'image/winter/winter-poster-1280.jpg',
+      track: 'video/winter/umigaku-winter-2026-ja.vtt?v=1',
+      hi: [['video/winter/umigaku-winter-2026-1080-hevc.mp4?v=1', 'video/mp4; codecs="hvc1.1.6.L120.90, mp4a.40.2"']],
+      base: ['video/winter/umigaku-winter-2026-720.mp4?v=1', 'video/mp4'],
+      /* 縦に持ったスマホでは縦の版を画面いっぱいに */
+      portrait: { src: 'video/winter/umigaku-winter-2026-vertical-720.mp4?v=1', poster: 'image/winter/winter-poster-vertical-720.jpg' },
+      more: ['/winter-diving/', '秋冬のダイビングをくわしく見る →'],
+      chapters: [['はじめから', 0], ['陸と海', 6.6], ['10月上旬', 16.2], ['冬の青', 20.7], ['夏と冬', 26.3], ['季節の生き物', 31.3], ['ドライスーツ', 41.3]]
+    },
     cm: {
       title: '三浦 海の学校の海（28秒）',
       vertical: true,
@@ -117,7 +128,10 @@
   var tTitle = dlg && $('#theater-title');
   var tChapters = dlg && $('.theater__chapters', dlg);
   var opener = null;
-  var ambient = [];   /* 開いている間は止めておく、ページ内の自動再生映像 */
+  var ambient = [];
+  /* シアター下の「サブの導線」は映像ごとに差し替える（既定はコース探し） */
+  var tMore = dlg && $('.theater__cta .sub', dlg);
+  var moreDefault = tMore ? [tMore.getAttribute('href'), tMore.textContent] : null;   /* 開いている間は止めておく、ページ内の自動再生映像 */
 
   function pauseAmbient() {
     ambient = $$('video.film-teaser, video.sea-video, video.phone-video').filter(function (v) { return !v.paused; });
@@ -145,7 +159,8 @@
     tVideo.pause();
     while (tVideo.firstChild) tVideo.removeChild(tVideo.firstChild);
     var frag = '#t=' + startAt.toFixed(2);
-    var list = (WIDE() && f.hi) ? f.hi.concat([f.base]) : [f.base];
+    var portrait = !!(f.portrait && window.matchMedia && window.matchMedia('(orientation: portrait) and (max-width: 767px)').matches);
+    var list = portrait ? [[f.portrait.src, 'video/mp4']] : ((WIDE() && f.hi) ? f.hi.concat([f.base]) : [f.base]);
     list.forEach(function (s) {
       var el = document.createElement('source');
       el.src = s[0] + (startAt ? frag : ''); el.type = s[1];
@@ -156,10 +171,14 @@
       tr.kind = 'captions'; tr.srclang = 'ja'; tr.label = '日本語'; tr.src = f.track;
       tVideo.appendChild(tr);
     }
-    tVideo.poster = f.poster;
+    tVideo.poster = portrait ? f.portrait.poster : f.poster;
     tVideo.muted = false;
     tTitle.textContent = f.title;
-    dlg.classList.toggle('theater--vertical', !!f.vertical);
+    dlg.classList.toggle('theater--vertical', !!(f.vertical || portrait));
+    if (tMore && moreDefault) {
+      var mo = f.more || moreDefault;
+      tMore.setAttribute('href', mo[0]); tMore.textContent = mo[1];
+    }
 
     tChapters.innerHTML = '';
     (f.chapters || []).forEach(function (c) {
