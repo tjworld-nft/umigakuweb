@@ -1,0 +1,513 @@
+<!--META
+{
+  "path": "sea-life/",
+  "current": "sea-life",
+  "from": "sealife",
+  "pageType": "CollectionPage",
+  "title": "三浦の海の生き物図鑑｜城ヶ島・宮川湾で出会える水中生物｜三浦 海の学校",
+  "desc": "神奈川・三浦半島の城ヶ島と宮川湾で、三浦 海の学校のダイビング中に出会える生き物を写真で紹介。ウミウシ・魚・エビやカニの仲間を名前で検索、分類で絞り込み。見つけ方のコツとログ付けのポイントつきで、初心者ダイバーのログ付けにも。",
+  "ogTitle": "三浦の海の生き物図鑑｜城ヶ島・宮川湾で出会える生き物",
+  "ogDesc": "ウミウシ・魚・エビ・カニ——三浦の海で出会える生き物を写真で。見つけ方のコツとログ付けのポイントつき。",
+  "og": "/image/og-sea-life.jpg",
+  "ogAlt": "岩の上で触角を広げる、ピンクと白のウミウシと「三浦の海の生き物図鑑」の文字",
+  "crumbs": [["海の生き物図鑑", "/sea-life/"]],
+  "ask": {
+    "title": "この生き物たちに、<span class=\"nw\">会いに行こう。</span>",
+    "lead": "三浦 海の学校のファンダイビングで、実際に水中生物を観察できます。空き日程や、見てみたい生き物のことも、LINEで気軽にどうぞ。",
+    "msg": "図鑑を見ました。ファンダイビングの空き日程を知りたいです。",
+    "cat": "ファンダイビング"
+  }
+}
+META-->
+
+  <main id="main">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="ph ph--short" aria-labelledby="page-title" style="--pos: 62% 45%">
+      <picture class="ph__bg">
+        <img src="/image/fish/thumbs/ao-umiushi-hero.webp"
+          alt="赤い海藻の上をはう、青い体に黄色いすじのアオウミウシ" width="1600" height="1200" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="ph__inner">
+        <nav class="crumbs" aria-label="パンくずリスト">
+          <ol><li><a href="/">ホーム</a></li><li aria-current="page">海の生き物図鑑</li></ol>
+        </nav>
+        <p class="ph__eyebrow"><span>城ヶ島・宮川湾で出会える生き物</span></p>
+        <h1 id="page-title"><span class="ln">三浦の海の</span><span class="ln">生き物図鑑</span><small>神奈川・三浦半島で出会える水中生物</small></h1>
+        <p class="ph__lead">三浦 海の学校のダイビングで出会える水中生物たち。初心者ダイバーにも分かりやすく、見つけ方のコツやログ付けに役立つ観察ポイントを紹介します。</p>
+        <div class="ph__cta">
+          <a class="btn-glass" href="#zukan">図鑑をひらく ↓</a>
+          <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-line-msg="図鑑を見ました。ファンダイビングの空き日程を知りたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで空きを聞く</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts" aria-label="図鑑の要点">
+      <ul class="facts__card" role="list">
+        <li><span class="facts__num">80<em>種以上</em></span><span class="facts__txt">ウミウシ・魚・<br><b>エビやカニの仲間</b></span></li>
+        <li><span class="facts__num">2<em>エリア</em></span><span class="facts__txt">城ヶ島のビーチと<br><b>宮川湾のボート</b></span></li>
+        <li><span class="facts__num">名前<em>で</em>検索</span><span class="facts__txt">分類でも絞り込める<br><b>写真をタップで詳しく</b></span></li>
+        <li><span class="facts__num">4<em>季節</em></span><span class="facts__txt">季節ごとの見ごろと<br><b>見つけ方のコツつき</b></span></li>
+      </ul>
+    </section>
+
+    <nav class="lnav" aria-label="このページの目次" data-depth="18">
+      <div class="lnav__in">
+        <ul class="lnav__list">
+          <li><a href="#zukan">図鑑</a></li>
+          <li><a href="#go">会いに行く</a></li>
+          <li><a href="#contact">予約・相談</a></li>
+        </ul>
+        <span class="lnav__depth" aria-hidden="true">このページの水深 <b>0.0m</b></span>
+      </div>
+      <i class="lnav__bar" aria-hidden="true"></i>
+    </nav>
+
+    <!-- ============================================================
+         ZUKAN — 図鑑（creatures.json を読んで一覧を描く。検索・絞り込み・モーダルの仕組みは旧ページのまま）
+         ============================================================ -->
+
+    <style>
+        /* Intro */
+        .sealife-intro { font-size:.95rem; color:var(--text-sub); line-height:1.8; max-width:750px; margin:0 auto 2rem; text-align:center; }
+
+        /* Filter */
+        .filter-bar { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+        .filter-btn {
+            padding:.5rem 1.2rem; border-radius:50px; border:2px solid var(--border);
+            background:var(--white); color:var(--text-sub); font-size:.85rem; font-weight:500;
+            cursor:pointer; transition:all var(--ease); font-family:var(--ff-body);
+        }
+        .filter-btn:hover { border-color:var(--teal); color:var(--teal-dark); }
+        .filter-btn.active { background:var(--teal); border-color:var(--teal); color:var(--white); }
+
+        /* Grid */
+        .creature-grid {
+            display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;
+        }
+        @media(min-width:640px) { .creature-grid { grid-template-columns:repeat(3,1fr); gap:1.25rem; } }
+        @media(min-width:1024px) { .creature-grid { grid-template-columns:repeat(4,1fr); gap:1.5rem; } }
+
+        /* Card */
+        .creature-card {
+            background:var(--white); border-radius:var(--radius-md); overflow:hidden;
+            box-shadow:var(--shadow-sm); border:1px solid var(--border);
+            cursor:pointer; transition:all var(--ease);
+        }
+        .creature-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+        .creature-card-img {
+            width:100%; aspect-ratio:1/1; object-fit:cover; display:block;
+        }
+        .creature-card-body { padding:.75rem 1rem 1rem; }
+        .creature-card-body h3 { font-size:.95rem; font-weight:700; margin-bottom:.15rem; }
+        .creature-card-body .sci-name { font-size:.7rem; color:var(--text-sub); font-style:italic; margin-bottom:.4rem; }
+        .creature-card-meta { display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; }
+        .creature-tag {
+            font-size:.65rem; padding:.15rem .5rem; border-radius:50px;
+            background:var(--bg-soft); color:var(--teal-ink); font-weight:700;
+        }
+        .creature-rarity { font-size:.7rem; color:var(--yellow); letter-spacing:-1px; }
+
+        /* Search */
+        .search-bar {
+            max-width:400px; margin:0 auto 1.5rem; position:relative;
+        }
+        .search-bar input {
+            width:100%; padding:.7rem 1rem .7rem 2.5rem; border-radius:50px;
+            border:2px solid var(--border); font-size:.9rem; font-family:var(--ff-body);
+            background:var(--white); transition:border-color var(--ease); outline:none;
+        }
+        .search-bar input:focus { border-color:var(--teal); }
+        /* iPhoneのSafariは16px未満の入力欄をタップすると画面全体をズームする。スマホ幅では16pxに */
+        @media (max-width:768px) { .search-bar input { font-size:16px; } }
+        .search-bar::before {
+            content:''; position:absolute; left:.95rem; top:50%; transform:translateY(-50%);
+            width:1rem; height:1rem; pointer-events:none;
+            background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23636E72' d='M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.41 1.4-5.4-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z'/%3E%3C/svg%3E") center / contain no-repeat;
+        }
+
+        /* Count */
+        .creature-count { text-align:center; font-size:.85rem; color:var(--text-light); margin-bottom:1.5rem; }
+        .no-results { text-align:center; color:var(--text-light); padding:3rem 0; font-size:.95rem; }
+
+        /* Modal */
+        .modal-overlay {
+            display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,.6); z-index:9999; align-items:center; justify-content:center;
+            padding:1rem; backdrop-filter:blur(4px);
+        }
+        .modal-overlay.open { display:flex; }
+        .modal-content {
+            background:var(--white); border-radius:var(--radius-lg); max-width:700px; width:100%;
+            max-height:90vh; overflow-y:auto; position:relative;
+            box-shadow:0 24px 64px rgba(0,0,0,.2);
+        }
+        .modal-close {
+            position:sticky; top:0; float:right; background:rgba(255,255,255,.9); border:none;
+            font-size:1.5rem; cursor:pointer; padding:.5rem .75rem; border-radius:0 var(--radius-lg) 0 var(--radius-sm);
+            z-index:1; color:var(--text-sub); backdrop-filter:blur(4px);
+        }
+        .modal-close:hover { color:var(--text-dark); }
+        .modal-img { width:100%; max-height:400px; object-fit:cover; display:block; border-radius:var(--radius-lg) var(--radius-lg) 0 0; }
+        /* Gallery */
+        .modal-gallery { position:relative; }
+        .modal-gallery-nav {
+            position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.85);
+            border:none; font-size:1.4rem; cursor:pointer; padding:.3rem .6rem; border-radius:50%;
+            color:var(--text-dark); box-shadow:var(--shadow-sm); z-index:2; line-height:1;
+        }
+        .modal-gallery-nav:hover { background:var(--white); }
+        .modal-gallery-nav.prev { left:.5rem; }
+        .modal-gallery-nav.next { right:.5rem; }
+        .modal-thumbs {
+            display:flex; gap:.4rem; padding:.5rem 1rem; overflow-x:auto; background:var(--bg-cream);
+        }
+        .modal-thumbs img {
+            width:56px; height:56px; object-fit:cover; border-radius:8px; cursor:pointer;
+            border:2px solid transparent; transition:border-color var(--ease); flex-shrink:0;
+        }
+        .modal-thumbs img.active { border-color:var(--teal); }
+        .modal-thumbs img:hover { border-color:var(--teal-light); }
+        .modal-photo-credit {
+            font-size:.7rem; color:var(--text-light); text-align:right; padding:.25rem 1rem .5rem;
+            background:var(--bg-cream);
+        }
+        .modal-body { padding:1.5rem 2rem 2rem; }
+        .modal-body h2 { font-size:1.4rem; margin-bottom:.1rem; }
+        .modal-body .sci-name { font-size:.85rem; color:var(--text-light); font-style:italic; margin-bottom:1rem; }
+        .modal-info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.5rem; margin-bottom:1.25rem; }
+        @media(min-width:480px) { .modal-info-grid { grid-template-columns:repeat(4,1fr); } }
+        .modal-info-item {
+            background:var(--bg-soft); border-radius:var(--radius-sm); padding:.6rem .75rem; text-align:center;
+        }
+        .modal-info-item .label { font-size:.65rem; color:var(--text-light); margin-bottom:.15rem; }
+        .modal-info-item .value { font-size:.8rem; font-weight:700; color:var(--text-dark); }
+        .modal-section { margin-bottom:1rem; }
+        .modal-section h4 {
+            font-size:.8rem; font-weight:700; color:var(--teal-dark);
+            margin-bottom:.35rem; display:flex; align-items:center; gap:.35rem;
+        }
+        .modal-section p { font-size:.88rem; color:var(--text-sub); line-height:1.7; }
+        .modal-credit { font-size:.75rem; color:var(--text-light); text-align:right; margin-top:.75rem; }
+        .modal-season { display:flex; gap:.35rem; flex-wrap:wrap; }
+        .modal-season span {
+            font-size:.7rem; padding:.2rem .6rem; border-radius:50px;
+            background:var(--bg-soft); color:var(--text-sub);
+        }
+        .modal-season span.current { background:var(--teal-light); color:var(--teal-dark); font-weight:600; }
+        .modal-spot {
+            display:inline-block; font-size:.75rem; padding:.25rem .7rem; border-radius:50px;
+            background:linear-gradient(135deg, var(--teal), var(--sky)); color:var(--white); font-weight:500;
+        }
+
+        /* Tip box */
+        .tip-box {
+            background:linear-gradient(135deg, #FFF9E6, #FFF3CC); border-radius:var(--radius-sm);
+            padding:1rem 1.15rem; margin-bottom:1rem; border-left:3px solid var(--yellow);
+        }
+        .tip-box h4 { color:#B8860B; }
+        .tip-box p { color:#6B5B00; }
+
+        .log-box {
+            background:linear-gradient(135deg, #EFF8FF, #DBEEFF); border-radius:var(--radius-sm);
+            padding:1rem 1.15rem; border-left:3px solid var(--sky);
+        }
+        .log-box h4 { color:#1E6FA0; }
+        .log-box p { color:#2A5F7A; }
+
+        @media(max-width:480px) {
+            .modal-body { padding:1rem 1.25rem 1.5rem; }
+            .modal-info-grid { grid-template-columns:repeat(2,1fr); }
+        }
+
+        /* ---- 新デザイン（css/page.css）との整合（2026-09） ---- */
+        /* page.css の .next（次に読むページのグリッド）と名前がぶつかり、「›」ボタンがグリッドになってしまうのを戻す */
+        .modal-gallery-nav.prev, .modal-gallery-nav.next { display:block; }
+        /* 選択中の絞り込みボタン：白い文字が読める濃さに（旧 #4ECDC4 は約1.9:1） */
+        .filter-btn.active { background:var(--teal-ink); border-color:var(--teal-ink); }
+        /* 薄すぎた灰色の文字を読める濃さに */
+        .creature-card-body .sci-name, .modal-body .sci-name, .creature-count, .no-results { color:var(--text-sub); }
+    </style>
+
+    <section id="zukan" class="sec" aria-labelledby="zukan-title">
+      <div class="h-wrap">
+        <div class="sec-head h-center">
+          <span class="h-label">Sea life index <small>図鑑</small></span>
+          <h2 id="zukan-title" class="h-title">名前で探して、<span class="nw">写真で出会う。</span></h2>
+        </div>
+        <p class="sealife-intro">三浦半島の海には、カラフルなウミウシから迫力あるエイまで、四季折々のさまざまな生き物が暮らしています。<br>ダイビングで実際に出会える生き物たちを、見つけ方のコツや豆知識と一緒にご紹介します。</p>
+
+        <!-- Search -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="生き物の名前で検索..." autocomplete="off" aria-label="生き物の名前で検索">
+        </div>
+
+        <!-- Filter -->
+        <div class="filter-bar" id="filterBar">
+            <button class="filter-btn active" data-filter="all">すべて</button>
+        </div>
+
+        <p class="creature-count" id="creatureCount"></p>
+        <p style="text-align:center; font-size:.8rem; color:var(--text-sub); margin-bottom:1.5rem;">※ 掲載する生き物は、ダイビングで出会うたびに少しずつ増やしていきます。お楽しみに！</p>
+
+        <!-- Grid -->
+        <div class="creature-grid" id="creatureGrid"></div>
+        <noscript><p class="no-results">図鑑の一覧はJavaScriptで表示しています。ブラウザの設定でJavaScriptをオンにしてご覧ください。</p></noscript>
+      </div>
+    </section>
+
+    <!-- Modal（図鑑の詳細） -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <script>
+    (function() {
+        var pageDir = document.querySelector('script[src*="main.js"]') ? '../' : '/';
+        var jsonUrl = (window.location.pathname.indexOf('/sea-life/') !== -1) ? 'creatures.json' : '/sea-life/creatures.json';
+        var imgBase = (window.location.pathname.indexOf('/sea-life/') !== -1) ? '../image/fish/' : '/image/fish/';
+        var thumbBase = imgBase + 'thumbs/';
+        var MONTH_TO_SEASON = ['冬','冬','春','春','春','夏','夏','夏','秋','秋','秋','冬'];
+        var currentSeason = MONTH_TO_SEASON[new Date().getMonth()];
+        var creatures = [];
+        var currentFilter = 'all';
+        var currentSearch = '';
+        var galleryIndex = 0;
+        var galleryPhotos = [];
+
+        function renderStars(n) {
+            return '<span class="creature-rarity">' + '★'.repeat(n) + '☆'.repeat(5 - n) + '</span>';
+        }
+
+        function webpName(file) {
+            return file.replace(/\.[^.]+$/, '.webp');
+        }
+
+        function matchesSearch(c, q) {
+            if (!q) return true;
+            q = q.toLowerCase();
+            return c.name_ja.toLowerCase().indexOf(q) !== -1 ||
+                   c.name_en.toLowerCase().indexOf(q) !== -1 ||
+                   c.name_sci.toLowerCase().indexOf(q) !== -1 ||
+                   c.family.toLowerCase().indexOf(q) !== -1 ||
+                   c.category.toLowerCase().indexOf(q) !== -1;
+        }
+
+        function buildCard(c) {
+            var photo = c.photos && c.photos[0] ? c.photos[0].file : '';
+            var div = document.createElement('div');
+            div.className = 'creature-card';
+            div.dataset.category = c.category;
+            var photoCount = c.photos ? c.photos.length : 0;
+            var badge = photoCount > 1 ? '<span style="position:absolute;top:.5rem;right:.5rem;background:rgba(0,0,0,.6);color:#fff;font-size:.65rem;padding:.15rem .45rem;border-radius:50px;">📷 ' + photoCount + '</span>' : '';
+            div.innerHTML =
+                '<div style="position:relative;">' +
+                    '<img class="creature-card-img" src="' + thumbBase + webpName(photo) + '" alt="' + c.name_ja + '" loading="lazy" decoding="async" width="480" height="480">' +
+                    badge +
+                '</div>' +
+                '<div class="creature-card-body">' +
+                    '<h3>' + c.name_ja + '</h3>' +
+                    '<p class="sci-name">' + c.name_sci + '</p>' +
+                    '<div class="creature-card-meta">' +
+                        '<span class="creature-tag">' + c.category + '</span>' +
+                        renderStars(c.rarity) +
+                    '</div>' +
+                '</div>';
+            div.addEventListener('click', function() { openModal(c); });
+            return div;
+        }
+
+        function buildSeasonTags(seasons) {
+            return '<div class="modal-season">' +
+                seasons.map(function(s) {
+                    return '<span' + (s === currentSeason ? ' class="current"' : '') + '>' + s + '</span>';
+                }).join('') + '</div>';
+        }
+
+        function buildGallery(photos, name) {
+            if (!photos || photos.length === 0) return '';
+            galleryPhotos = photos;
+            galleryIndex = 0;
+            var navPrev = photos.length > 1 ? '<button class="modal-gallery-nav prev" onclick="window._gallery(-1)">‹</button>' : '';
+            var navNext = photos.length > 1 ? '<button class="modal-gallery-nav next" onclick="window._gallery(1)">›</button>' : '';
+            var thumbs = '';
+            if (photos.length > 1) {
+                thumbs = '<div class="modal-thumbs">' +
+                    photos.map(function(p, i) {
+                        return '<img src="' + thumbBase + webpName(p.file) + '" alt="' + name + '" data-idx="' + i + '" loading="lazy" decoding="async"' +
+                            (i === 0 ? ' class="active"' : '') + ' onclick="window._galleryTo(' + i + ')">';
+                    }).join('') + '</div>';
+            }
+            var credit = photos[0].credit ? '<div class="modal-photo-credit">📸 Photo by ' + photos[0].credit + '</div>' : '';
+            return '<div class="modal-gallery">' +
+                navPrev + navNext +
+                '<img class="modal-img" id="galleryMain" src="' + imgBase + photos[0].file + '" alt="' + name + '" decoding="async">' +
+                '</div>' + thumbs + '<div class="modal-photo-credit" id="galleryCredit">' + (photos[0].credit ? '📸 Photo by ' + photos[0].credit : '') + '</div>';
+        }
+
+        window._galleryTo = function(idx) {
+            galleryIndex = idx;
+            var main = document.getElementById('galleryMain');
+            var creditEl = document.getElementById('galleryCredit');
+            if (!main) return;
+            main.src = imgBase + galleryPhotos[idx].file;
+            if (creditEl) creditEl.textContent = galleryPhotos[idx].credit ? '📸 Photo by ' + galleryPhotos[idx].credit : '';
+            document.querySelectorAll('.modal-thumbs img').forEach(function(t, i) {
+                t.classList.toggle('active', i === idx);
+            });
+        };
+
+        window._gallery = function(dir) {
+            var newIdx = galleryIndex + dir;
+            if (newIdx < 0) newIdx = galleryPhotos.length - 1;
+            if (newIdx >= galleryPhotos.length) newIdx = 0;
+            window._galleryTo(newIdx);
+        };
+
+        function openModal(c) {
+            var gallery = buildGallery(c.photos, c.name_ja);
+            document.getElementById('modalContent').innerHTML =
+                '<button class="modal-close" aria-label="閉じる">&times;</button>' +
+                gallery +
+                '<div class="modal-body">' +
+                    '<h2>' + c.name_ja + '</h2>' +
+                    '<p class="sci-name">' + c.name_en + '（' + c.name_sci + '）</p>' +
+                    '<div class="modal-info-grid">' +
+                        '<div class="modal-info-item"><div class="label">分類</div><div class="value">' + c.family + '</div></div>' +
+                        '<div class="modal-info-item"><div class="label">大きさ</div><div class="value">' + c.size + '</div></div>' +
+                        '<div class="modal-info-item"><div class="label">水深</div><div class="value">' + c.depth + '</div></div>' +
+                        '<div class="modal-info-item"><div class="label">ポイント</div><div class="value"><span class="modal-spot">' + c.spot + '</span></div></div>' +
+                    '</div>' +
+                    '<div class="modal-section"><h4>シーズン</h4>' + buildSeasonTags(c.season) + '</div>' +
+                    '<div class="modal-section"><h4>生態</h4><p>' + c.description + '</p></div>' +
+                    '<div class="modal-section tip-box"><h4>💡 見つけ方のコツ</h4><p>' + c.beginner_tips + '</p></div>' +
+                    '<div class="modal-section log-box"><h4>📓 ログ付けポイント</h4><p>' + c.log_point + '</p></div>' +
+                '</div>';
+            document.getElementById('modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            document.querySelector('.modal-close').addEventListener('click', closeModal);
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+            if (document.getElementById('modal').classList.contains('open')) {
+                if (e.key === 'ArrowLeft') window._gallery(-1);
+                if (e.key === 'ArrowRight') window._gallery(1);
+            }
+        });
+
+        function renderGrid() {
+            var grid = document.getElementById('creatureGrid');
+            grid.innerHTML = '';
+            var count = 0;
+            creatures.forEach(function(c) {
+                if ((currentFilter === 'all' || c.category === currentFilter) && matchesSearch(c, currentSearch)) {
+                    grid.appendChild(buildCard(c));
+                    count++;
+                }
+            });
+            document.getElementById('creatureCount').textContent = count + '種の生き物';
+            if (count === 0) {
+                grid.innerHTML = '<p class="no-results">該当する生き物が見つかりませんでした。</p>';
+            }
+        }
+
+        function buildFilters() {
+            var cats = [];
+            creatures.forEach(function(c) {
+                if (cats.indexOf(c.category) === -1) cats.push(c.category);
+            });
+            var bar = document.getElementById('filterBar');
+            cats.forEach(function(cat) {
+                var btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                btn.dataset.filter = cat;
+                btn.textContent = cat;
+                bar.appendChild(btn);
+            });
+
+            bar.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('filter-btn')) return;
+                bar.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.filter;
+                renderGrid();
+            });
+        }
+
+        // Search
+        var searchTimer;
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(function() {
+                currentSearch = e.target.value.trim();
+                renderGrid();
+            }, 200);
+        });
+
+        // Load data
+        fetch(jsonUrl)
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                creatures = data;
+                buildFilters();
+                renderGrid();
+            });
+    })();
+    </script>
+
+    <!-- ============================================================
+         GO — この生き物たちに会いに行こう
+         ============================================================ -->
+    <section id="go" class="sec sec--soft" aria-labelledby="go-title">
+      <div class="h-wrap">
+        <div class="sec-head">
+          <span class="h-label">Diving <small>会いに行く</small></span>
+          <h2 id="go-title" class="h-title">この生き物たちに、<span class="nw">会いに行こう。</span></h2>
+          <p class="h-lead">三浦 海の学校のファンダイビングで、実際に水中生物を観察できます。何に会えたかは、潜ったあとに一緒に図鑑で確かめましょう。</p>
+        </div>
+        <div class="grid grid--3">
+          <a class="card" href="/fun-diving/">
+            <span class="card__img"><img src="/image/sub/fish-school-960.webp" alt="宮川湾の根のまわりを群れて泳ぐ魚たち" width="960" height="720" loading="lazy" decoding="async"></span>
+            <span class="tag">Cカードをお持ちの方</span>
+            <h3>ファンダイビング<small>ビーチ2本 ¥13,200／ボート2本 ¥19,800（税込・レンタル器材別）</small></h3>
+            <p>城ヶ島のビーチと、宮川湾・城ヶ島のボートへ。インストラクター1名につき最大4名、一人参加も歓迎です。</p>
+            <span class="go">ファンダイビングを見る</span>
+          </a>
+          <a class="card" href="/diving-point/jogashima-kajinohama/">
+            <span class="card__img"><img src="/image/optimized/miura-hero2.webp" alt="城ヶ島の岩場に囲まれた浅い入り江で、エントリーの準備をするダイバーたち" width="1600" height="667" loading="lazy" decoding="async"></span>
+            <span class="tag">ビーチのポイント</span>
+            <h3>城ヶ島・梶の浜ビーチ<small>ポイントマップと、会える生き物</small></h3>
+            <p>エントリー階段、岩盤、砂地、目印ブイ。ビーチで観察しやすい生き物も紹介しています。</p>
+            <span class="go">ポイントマップを見る</span>
+          </a>
+          <a class="card" href="/trial-diving/">
+            <span class="card__img"><img src="/image/sub/trial-hero-800.webp" alt="晴れた日の三浦の海で、水面に浮かんでエントリーを待つダイバー" width="800" height="600" loading="lazy" decoding="async"></span>
+            <span class="tag">ライセンスがなくても</span>
+            <h3>体験ダイビング<small>¥19,800（税込・レンタル器材込み）</small></h3>
+            <p>Cカードがなくても、インストラクターと一緒に三浦の海へ。10歳から、年齢の上限はありません。</p>
+            <span class="go">体験ダイビングを見る</span>
+          </a>
+        </div>
+        <p class="note mt-1">※ 生き物は野生のため、季節や海況によって出会える顔ぶれが変わります。レンタル器材はフルセット1日¥5,500（税込）。</p>
+      </div>
+    </section>
+
+    <!-- 検索向けの補足（読み物として） -->
+    <section class="about" aria-labelledby="about-title">
+      <div class="h-wrap">
+        <h2 id="about-title">三浦半島の海の生き物を、写真で調べる</h2>
+        <p>三浦の海の生き物図鑑は、三浦半島・三浦 海の学校のダイビングで出会える水中生物の図鑑です。神奈川県三浦市の城ヶ島のビーチと、宮川湾のボートポイントで出会える生き物を、初心者ダイバー向けに生態や見つけ方と一緒に紹介しています。ウミウシ、魚、エビやカニの仲間などを名前で検索したり、分類で絞り込んだりでき、写真をタップすると大きさ・水深・シーズン・生態、見つけ方のコツ、ログ付けのポイントが読めます。</p>
+        <p>掲載する生き物は、ダイビングで出会うたびに少しずつ増やしています。潜ったあとのログ付けや、次に潜る日の楽しみ探しにどうぞ。ファンダイビングはビーチ2本¥13,200、ボート2本¥19,800（いずれも税込・レンタル器材別）。京急「三崎口駅」から開催地までは無料で送迎します（要予約）。</p>
+      </div>
+    </section>

@@ -1,0 +1,25 @@
+[
+  {
+    "@type": "Service",
+    "@id": "https://miura-diving.com/fun-diving/#service",
+    "name": "ファンダイビング・リフレッシュダイビング（城ヶ島・宮川湾）",
+    "serviceType": "スクーバダイビングのガイドサービス",
+    "description": "Cカードをお持ちの方のガイド付きダイビング。城ヶ島のビーチ、宮川湾（カサゴ根・トビ根）と城ヶ島のボートポイントで、インストラクター1名につき最大4名の少人数制。ブランクのある方にはスキルの復習つきのリフレッシュダイビング。",
+    "provider": {"@type": "SportsActivityLocation", "@id": "https://miura-diving.com/#school", "name": "三浦 海の学校", "url": "https://miura-diving.com/"},
+    "areaServed": {"@type": "AdministrativeArea", "name": "神奈川県"},
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "ファンダイビングの料金（税込・レンタル器材別）",
+      "itemListElement": [
+        {"@type": "Offer", "name": "ビーチダイビング（2ダイブ・城ヶ島）", "price": "13200", "priceCurrency": "JPY", "description": "ガイド・タンク・ウエイト・施設使用料・保険込み"},
+        {"@type": "Offer", "name": "ビーチダイビング（3ダイブ）", "price": "18700", "priceCurrency": "JPY"},
+        {"@type": "Offer", "name": "ビーチダイビング（4ダイブ）", "price": "24200", "priceCurrency": "JPY"},
+        {"@type": "Offer", "name": "ボートダイビング（2ダイブ・宮川湾／城ヶ島）", "price": "19800", "priceCurrency": "JPY", "description": "ガイド・タンク・ウエイト・乗船料・施設使用料・保険込み"},
+        {"@type": "Offer", "name": "ボートダイビング（3ダイブ）", "price": "28600", "priceCurrency": "JPY"},
+        {"@type": "Offer", "name": "ボート2ダイブ＋ビーチ1ダイブ", "price": "25300", "priceCurrency": "JPY"},
+        {"@type": "Offer", "name": "リフレッシュダイビング（スキルの復習＋1ダイブ）", "price": "19800", "priceCurrency": "JPY"},
+        {"@type": "Offer", "name": "レンタル器材フルセット（1日）", "price": "5500", "priceCurrency": "JPY"}
+      ]
+    }
+  }
+]
