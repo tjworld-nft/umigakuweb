@@ -570,7 +570,7 @@ a.card:hover .card__img img { transform: scale(1.04); }
    PLACES — 海洋実習・ダイビングの場所（写真カード）
    ================================================================ */
 .places { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-.place { position: relative; border-radius: 24px; overflow: hidden; color: #fff; min-height: 300px; display: flex; flex-direction: column; justify-content: flex-end; text-decoration: none; background: var(--deep-3); isolation: isolate; }
+.place { position: relative; border-radius: 24px; overflow: hidden; color: #fff; min-height: 370px; display: flex; flex-direction: column; justify-content: flex-end; text-decoration: none; background: var(--deep-3); isolation: isolate; }
 .place img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .7s ease; }
 .place::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(4, 38, 58, 0) 30%, rgba(4, 38, 58, .88) 100%); }
 a.place:hover img { transform: scale(1.05); }
@@ -581,7 +581,7 @@ a.place:hover { color: #fff; }
 .place p { font-size: .85rem; line-height: 1.75; opacity: .94; }
 .place .chips li { background: rgba(255, 255, 255, .16); color: #fff; }
 @media (max-width: 959px) { .places { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 640px) { .places { grid-template-columns: minmax(0, 1fr); } .place { min-height: 260px; } }
+@media (max-width: 640px) { .places { grid-template-columns: minmax(0, 1fr); } .place { min-height: 400px; } }
 
 /* ---------- 地図（手描きのポイントマップ） ---------- */
 .maps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
@@ -594,6 +594,8 @@ a.place:hover { color: #fff; }
 .map-card__body .depth { display: inline-block; font-size: .76rem; font-weight: 700; color: #fff; background: var(--sky-ink); border-radius: 999px; padding: .15rem .7rem; margin-bottom: .5rem; }
 .map-card__body p { font-size: .9rem; line-height: 1.85; color: var(--text-sub); }
 .map-card__body .chips { margin-top: .7rem; }
+@media (min-width: 960px) { .maps--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 768px) and (max-width: 959px) { .maps--3 .map-card:first-child { grid-column: 1 / -1; } .maps--3 .map-card:first-child figure img { max-height: 460px; } }
 @media (max-width: 767px) { .maps { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- 生き物のギャラリー ---------- */

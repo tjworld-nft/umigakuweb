@@ -12,7 +12,6 @@ JOBS = {
   'owd-skill':      ('20260906/owdyouheiminano2.JPG', (960,), None, True),
   'owd-frame':      ('20260906/owdkatayama2.JPG', (960,), None, True),
   'boat-tank':      ('20260910/P9108194.JPG', (960,), None, False),
-  'boat-entry':     ('20260917/P9178296.JPG', (960,), None, False),
   'fish-school':    ('20260917/P9178293.JPG', (960,), None, True),
   'fish-red':       ('20260905/P9058102.JPG', (960,), None, True),
   'fish-banner':    ('20260908/P9088190.JPG', (960,), None, True),
@@ -32,6 +31,10 @@ JOBS = {
   'kanagawa-hero':  ('20260913/P9138236.JPG', (800, 1600), None, True),
   'contact-hero':   ('20260913/P9138214.JPG', (800, 1600), None, True),
   'fish-school2':   ('20260913/P9138238.JPG', (960,), None, True),
+  # 2026-09-27 吉田さん確認：P9248333（trial-hero・surface-blue）＝城ヶ島・梶の浜ビーチ（白い灯台の堤防）／P9108194（boat-tank）＝城ヶ島ボート。P9088189 も同じ堤防が写る梶の浜
+  'beach-surface':  ('20260908/P9088189.JPG', (960,), None, False),
+  'kajinohama-card':('20260924/P9248333.JPG', (960,), (0, .22, 1, 1), False),   # 写真カード用：人物が上寄りになるよう空を切る
+  'boat-divers':    ('20260913/P9138220.JPG', (960,), None, True),
 }
 import sys
 if len(sys.argv) > 1: JOBS = {k: v for k, v in JOBS.items() if k in sys.argv[1:]}

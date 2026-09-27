@@ -205,6 +205,8 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   `?from=` `?category=` `?date=` の事前入力と、成功・エラーの表示は `js/contact.js`。`name="csrf_token" id="csrfToken" value=""` の並びは contact/index.php が置換するので変えない。
   🔴 **ローカルで send_mail.php を POST して試さない**（2026-09-27、php -S で試したら Mac の postfix に本物の通知メールが2通積まれた）。
 - 写真：`image/sub/`（2026年9月に撮った実写をPILでWebP化・EXIFの回転を反映済み）。ページごとのOGPは `image/og-<ページ>.jpg`（写真＋見出し・PILで作成）。
+  **場所の写真は吉田さん確認済みのものだけ**（2026-09-27）：城ヶ島・梶の浜ビーチ＝`trial-hero-*`・`surface-blue-960`・`kajinohama-card-960`（元 P9248333・白い灯台の堤防）と `beach-surface-960`（P9088189・同じ堤防）／城ヶ島ボート＝`boat-tank-960`（P9108194）／宮川湾＝9/13撮影分（`fun-hero-*`・`descent-rope-960`・`boat-divers-960`）。
+  `image/optimized/miura-hero2.webp`（岩場の写真）は**梶の浜ではない**ので、城ヶ島・梶の浜のラベルで使わない。ファンダイビングの「潜る場所」には梶の浜・カサゴ根・トビ根の3枚のポイントマップを並べている。
 - お客様の声は、トップと同じ3件だけ（Y.Sさん20代女性／60代男性／T.Hさん40代男性）。**名前・在住地・★評価（AggregateRating）を足さない**
   （地域ページにあった架空の口コミ12件と★5は削除した）。
 - 事実の直し（2026-09-27）：品川から約70分・横浜から約55分（旧「品川60分」「京急1本45分」は誤り）／OWDの実技は「最短2日」／電話番号は contact・tokusho・privacy-policy だけ／
