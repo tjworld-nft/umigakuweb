@@ -1,0 +1,82 @@
+[
+  {
+    "@type": "Person",
+    "@id": "https://miura-diving.com/instructor/#person",
+    "name": "吉田 哲司",
+    "alternateName": "よしだ てつじ",
+    "jobTitle": "PADIコースディレクター / 代表インストラクター",
+    "description": "三浦 海の学校 代表。1997年にオーストラリアでプロダイバーの資格を取得。以来、初心者の講習からプロの養成まで、ダイビング講習を中心に活動。PADIコースディレクター（インストラクターを育てることができるPADIのプロ資格の最高位）。三浦の海は約14年。ダイビング関連の書籍など12冊以上を出版。",
+    "image": "https://miura-diving.com/image/optimized/instructor.webp",
+    "url": "https://miura-diving.com/instructor/",
+    "mainEntityOfPage": {
+      "@id": "https://miura-diving.com/instructor/#webpage"
+    },
+    "worksFor": {
+      "@id": "https://miura-diving.com/#org"
+    },
+    "knowsAbout": [
+      "スクーバダイビング",
+      "PADIダイビング講習",
+      "体験ダイビング",
+      "ダイビングインストラクターの養成",
+      "三浦半島の海（城ヶ島・宮川湾）",
+      "ブランクダイバーのリフレッシュ",
+      "シニアのダイビング"
+    ],
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "PADIコースディレクター",
+      "credentialCategory": "ダイビング指導者のプロ資格",
+      "description": "インストラクターを育てることができる、PADIのプロ資格の最高位",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "PADI",
+        "url": "https://www.padi.com/"
+      }
+    }
+  },
+  {
+    "@type": "Book",
+    "@id": "https://miura-diving.com/instructor/#book-start-diving",
+    "name": "「私にはムリ・・」から「潜りたい」に変わるダイビングのはじめ方",
+    "author": {
+      "@id": "https://miura-diving.com/instructor/#person"
+    },
+    "url": "https://amzn.to/42PdQMh",
+    "image": "https://miura-diving.com/image/home/book-start-diving.webp",
+    "inLanguage": "ja"
+  },
+  {
+    "@type": "Book",
+    "@id": "https://miura-diving.com/instructor/#book-senior-diver",
+    "name": "海に一歩、人生にひと花：60代のためのダイビング入門",
+    "author": {
+      "@id": "https://miura-diving.com/instructor/#person"
+    },
+    "url": "https://amzn.to/42S6WG6",
+    "image": "https://miura-diving.com/image/home/book-senior-diver.webp",
+    "inLanguage": "ja"
+  },
+  {
+    "@type": "Book",
+    "@id": "https://miura-diving.com/instructor/#book-brank-diver",
+    "name": "ブランクダイバー復活ガイド",
+    "author": {
+      "@id": "https://miura-diving.com/instructor/#person"
+    },
+    "url": "https://amzn.to/4kec8Ke",
+    "image": "https://miura-diving.com/image/home/book-brank-diver.webp",
+    "inLanguage": "ja"
+  },
+  {
+    "@type": "Book",
+    "@id": "https://miura-diving.com/instructor/#book-self-diving",
+    "name": "はじめてのセルフ（バディ）ダイビング",
+    "author": {
+      "@id": "https://miura-diving.com/instructor/#person"
+    },
+    "url": "https://amzn.to/3GbkUu1",
+    "image": "https://miura-diving.com/image/home/book-self-diving.webp",
+    "inLanguage": "ja"
+  }
+]

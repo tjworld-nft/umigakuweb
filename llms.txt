@@ -38,19 +38,22 @@
 ## 主要ページ
 
 - [トップページ](https://miura-diving.com/): サイト全体の入口。プロモーション映像（1分38秒・字幕あり）、4つの入口からのコース選び、城ヶ島・宮川湾の空撮映像、コースと料金（総額表示）、代表の紹介、お客様の声、今週の海況の目安、よくある質問
-- [初心者ガイド](https://miura-diving.com/beginner-guide/): 体験とライセンスの違い、不安別の始め方
-- [体験ダイビング](https://miura-diving.com/trial-diving/): ライセンス不要の1日コース詳細
-- [ダイビングライセンス取得](https://miura-diving.com/license/): OWD・AOWの内容・料金・日程
-- [ファンダイビング](https://miura-diving.com/fun-diving/): Cカード保持者向けのガイド付きダイビング
+- [初心者ガイド](https://miura-diving.com/beginner-guide/): 体験とライセンスの違い、費用（総額）と日数、持ち物、泳げない・一人参加・年齢などの不安Q&A、東京・横浜・横須賀からの通い方
+- [体験ダイビング](https://miura-diving.com/trial-diving/): ライセンス不要・半日・¥19,800（レンタル器材込み）。当日の流れ、持ち物、よくある質問
+- [ダイビングライセンス取得](https://miura-diving.com/license/): オープンウォーター（総額¥64,900）・アドバンス（総額¥70,800）・まとめて受講（総額¥130,700）の総額シミュレーター、取るまでの流れ、実習の海、スペシャルティ・レスキュー・プロコースの料金、FAQ
+- [ファンダイビング・リフレッシュ](https://miura-diving.com/fun-diving/): Cカード保持者向けのガイド付きダイビング。ビーチ2本¥13,200／ボート2本¥19,800、1日3〜4本の料金、ブランク明けのリフレッシュ、宮川湾（カサゴ根・トビ根）のポイントマップ、レンタル器材、FAQ
 - [秋冬のダイビング（映像「海の季節は、終わらない。」）](https://miura-diving.com/winter-diving/): 寒くなってもダイビングは続けられることを、気象庁の平年値と実写でまとめた1分2秒の映像と解説。三浦の1日の最高気温が相模湾の海面水温を下まわるのは10月5日ごろ〜4月1日ごろ（平年値）、1月の平年値は海16.4℃／平均気温6.6℃。冬は透明度が上がり、1〜2月のよく見える日は20〜25m（当店の感覚）。10月中旬〜6月中旬はドライスーツで潜る（当店の運用）。ドライスーツのレンタル¥5,500／日、ドライスーツ・ダイバーSP¥27,500。季節の生き物（秋の季節来遊魚・冬〜春のウミウシ）・FAQ・ナレーションの書き起こしあり
-- [マリンアクティビティ](https://miura-diving.com/marine-activity/): スノーケリング（シュノーケリング）などダイビング以外の海遊び
+- [スノーケリング](https://miura-diving.com/marine-activity/): 城ヶ島または三戸浜で半日のスノーケリング（大人¥7,700／子ども¥5,500／親子ペア¥13,000・器材込み）。SUP・シーカヤックは受け入れ一時中止中
 - [海の生き物図鑑](https://miura-diving.com/sea-life/): 城ヶ島・宮川湾で実際に会える生き物の写真図鑑
 - [まんがでわかるダイビング](https://miura-diving.com/manga/): ダイビングのはじめ方・Cカード・体験・ブランク復帰・AOW・器材レンタル・年齢の条件・秋冬の海とドライスーツ・海外ダイビング・JPYC決済などを解説まんがで紹介（全22話・各話に約70〜105秒の動画版あり。各話の一覧は下の「解説まんが（各話）」）
 - [ブログ](https://miura-diving.com/blog/): 海況レポート・ダイビング知識・お知らせ
 - [Blue Logbook（ダイビングのログブックアプリ）](https://miura-diving.com/bluelogbook/): 三浦 海の学校がつくった iPhone / iPad 向けの無料ログブックアプリ（2026-09-03 App Store公開）。アカウント登録なし・記録は端末の中・書き出しで機種変更やブラウザ版との引っ越しが可能。ログ・マイ図鑑（三浦で会える89種）・Cカードと器材・海ごよみ。入れ方・FAQ・サポートとプライバシーポリシーへの導線あり。Androidはブラウザ版（logbook.miura-diving.com）
-- [お問い合わせ](https://miura-diving.com/contact/): フォームでの予約・問い合わせ（24時間受付）
+- [予約・お問い合わせ](https://miura-diving.com/contact/): LINEに送る文面を選べるボタンと、フォームでの予約・問い合わせ（24時間受付・通常1営業日以内に返信）
+- [インストラクター紹介](https://miura-diving.com/instructor/): 代表 吉田哲司（PADIコースディレクター）の経歴・教えるときに決めていること・著書
+- [城ヶ島・梶の浜ビーチ](https://miura-diving.com/diving-point/jogashima-kajinohama/): ビーチダイビング・講習で使うポイントのマップと注意点
 - [横須賀からのダイビング案内](https://miura-diving.com/yokosuka-diving/)
 - [横浜からのライセンス取得案内](https://miura-diving.com/yokohama-diving-license/)
+- [神奈川でダイビングライセンスを取るときの選び方](https://miura-diving.com/kanagawa-diving-license/)
 - [東京からのライセンス取得案内](https://miura-diving.com/tokyo-diving-license/)
 - [プライバシーポリシー](https://miura-diving.com/privacy-policy/)
 - [特定商取引法に基づく表記](https://miura-diving.com/tokusho/)

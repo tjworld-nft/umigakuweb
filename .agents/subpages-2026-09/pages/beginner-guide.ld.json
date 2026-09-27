@@ -1,0 +1,30 @@
+[
+  {
+    "@type": "Article",
+    "@id": "https://miura-diving.com/beginner-guide/#article",
+    "headline": "ダイビング初心者ガイド｜始め方・費用・体験とライセンスの違い",
+    "description": "これからダイビングを始める初心者の方へ。体験ダイビングとライセンス取得（PADIオープンウォーター）の違い、費用、日数、持ち物、泳げない・一人参加・年齢などのよくある不安を、神奈川・三浦のPADIコースディレクターがまとめたガイドです。",
+    "url": "https://miura-diving.com/beginner-guide/",
+    "mainEntityOfPage": {"@id": "https://miura-diving.com/beginner-guide/#webpage"},
+    "inLanguage": "ja",
+    "image": [
+      "https://miura-diving.com/image/og-beginner-guide.jpg",
+      "https://miura-diving.com/image/sub/beginner-hero-1600.webp"
+    ],
+    "dateModified": "2026-09-27",
+    "author": {
+      "@type": "Person",
+      "@id": "https://miura-diving.com/instructor/#person",
+      "name": "吉田 哲司",
+      "jobTitle": "PADIコースディレクター / 代表インストラクター",
+      "url": "https://miura-diving.com/instructor/"
+    },
+    "publisher": {"@id": "https://miura-diving.com/#org"},
+    "about": [
+      {"@type": "Thing", "name": "スクーバダイビングの始め方"},
+      {"@type": "Thing", "name": "体験ダイビング"},
+      {"@type": "Thing", "name": "ダイビングライセンス（PADI Cカード）"}
+    ],
+    "keywords": "ダイビング 初心者, ダイビング 始め方, 体験ダイビング ライセンス 違い, ダイビング 泳げない, ダイビング 費用, 神奈川, 三浦"
+  }
+]

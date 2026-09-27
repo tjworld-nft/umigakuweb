@@ -1,0 +1,18 @@
+[
+  {
+    "@type": "Service",
+    "@id": "https://miura-diving.com/trial-diving/#service",
+    "name": "体験ダイビング（三浦・城ヶ島）",
+    "serviceType": "体験ダイビング（ライセンス不要のスクーバダイビング体験）",
+    "description": "神奈川県三浦市の城ヶ島で開催する、ライセンス不要・10歳から参加できる半日（約4〜5時間）の体験ダイビング。足の着く穏やかな浅場（限定水域）で呼吸の練習をしてから、インストラクターと一緒に海の中を1ダイブ。インストラクター1名につき最大4名の少人数制。",
+    "url": "https://miura-diving.com/trial-diving/",
+    "image": "https://miura-diving.com/image/sub/trial-hero-1600.webp",
+    "provider": {"@type": "SportsActivityLocation", "@id": "https://miura-diving.com/#school", "name": "三浦 海の学校", "url": "https://miura-diving.com/"},
+    "areaServed": {"@type": "AdministrativeArea", "name": "神奈川県"},
+    "audience": {"@type": "PeopleAudience", "suggestedMinAge": 10},
+    "offers": [
+      {"@type": "Offer", "name": "体験ダイビング（半日・1ダイブ）", "price": "19800", "priceCurrency": "JPY", "description": "浅場での基本練習・海での1ダイブ・レンタル器材込み。当日の追加料金なし（税込）", "availability": "https://schema.org/InStock", "url": "https://miura-diving.com/trial-diving/#price"},
+      {"@type": "Offer", "name": "体験ダイビング 追加1ダイブ", "price": "6600", "priceCurrency": "JPY", "description": "希望する方のみ（税込）", "url": "https://miura-diving.com/trial-diving/#price"}
+    ]
+  }
+]

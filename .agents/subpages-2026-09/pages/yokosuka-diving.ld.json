@@ -1,0 +1,20 @@
+[
+  {
+    "@type": "Service",
+    "@id": "https://miura-diving.com/yokosuka-diving/#service",
+    "name": "横須賀から通うダイビング（体験・ライセンス取得・ファンダイビング／三浦・城ヶ島・宮川湾）",
+    "serviceType": "スクーバダイビングの講習とガイド",
+    "description": "横須賀市のお隣・三浦市の城ヶ島と宮川湾で、体験ダイビング、PADIのライセンス取得講習、Cカードをお持ちの方のファンダイビングを少人数制（インストラクター1名につき最大4名）で行います。京急久里浜駅から三崎口駅まで約11分、三崎口駅から無料送迎（要予約）。",
+    "provider": {"@type": "SportsActivityLocation", "@id": "https://miura-diving.com/#school", "name": "三浦 海の学校", "url": "https://miura-diving.com/"},
+    "areaServed": {"@type": "City", "name": "横須賀市"},
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "横須賀から通えるダイビングの料金（税込）",
+      "itemListElement": [
+        {"@type": "Offer", "name": "体験ダイビング（半日・1ダイブ）", "price": "19800", "priceCurrency": "JPY", "description": "レンタル器材込み・当日の追加料金なし", "url": "https://miura-diving.com/trial-diving/"},
+        {"@type": "Offer", "name": "PADIオープンウォーター講習（総額）", "price": "64900", "priceCurrency": "JPY", "description": "講習費¥53,900＋レンタル器材2日分¥11,000", "url": "https://miura-diving.com/license/#price", "itemOffered": {"@id": "https://miura-diving.com/license/#owd-course"}},
+        {"@type": "Offer", "name": "ファンダイビング（ビーチ2ダイブ・城ヶ島）", "price": "13200", "priceCurrency": "JPY", "description": "ガイド・タンク・ウエイト・施設使用料・保険込み。レンタル器材別（1日¥5,500）", "url": "https://miura-diving.com/fun-diving/"}
+      ]
+    }
+  }
+]

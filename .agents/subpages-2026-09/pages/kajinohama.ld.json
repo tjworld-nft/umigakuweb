@@ -1,0 +1,16 @@
+[
+  {
+    "@type": "TouristAttraction",
+    "@id": "https://miura-diving.com/diving-point/jogashima-kajinohama/#place",
+    "name": "城ヶ島 梶の浜ビーチ（ダイビングポイント）",
+    "alternateName": ["梶の浜ビーチポイント", "城ヶ島 梶の浜ビーチ"],
+    "description": "神奈川県三浦市・城ヶ島のビーチダイビングポイント。エントリー階段から岩場・砂地へアクセスでき、浅場から少しずつ深くなる遠浅の海。三浦 海の学校のビーチダイビングやダイビングライセンス講習で、海況に合わせて利用することがある。",
+    "url": "https://miura-diving.com/diving-point/jogashima-kajinohama/",
+    "image": "https://miura-diving.com/image/optimized/miura-hero2.webp",
+    "hasMap": {"@type": "Map", "mapType": "https://schema.org/VenueMap", "url": "https://miura-diving.com/image/jogashima-kajinohama-map.webp", "name": "城ヶ島 梶の浜ビーチポイントマップ"},
+    "touristType": ["スクーバダイビング", "ビーチダイビング", "ダイビング講習"],
+    "address": {"@type": "PostalAddress", "addressLocality": "三浦市", "addressRegion": "神奈川県", "addressCountry": "JP"},
+    "containedInPlace": {"@type": "Place", "name": "城ヶ島（神奈川県三浦市）"},
+    "subjectOf": {"@id": "https://miura-diving.com/diving-point/jogashima-kajinohama/#webpage"}
+  }
+]

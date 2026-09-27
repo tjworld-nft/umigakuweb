@@ -186,6 +186,30 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   320〜1440px で横はみ出しなし。※水（WebGPU）が載ると帯の背景が透明になるため、Lighthouse は帯の白文字を白地と誤判定する（実際は水の上）。
 - SUP・シーカヤックは受け入れ中止中なのでトップからは外した（スノーケリングのみ案内）。
 
+## 下層ページ（2026-09-27 全面リニューアル・`css/page.css` / `js/page.js`）
+
+- 対象：license・fun-diving・trial-diving・marine-activity（中身はスノーケリング）・beginner-guide・instructor・contact・sea-life・
+  diving-point/jogashima-kajinohama・tokusho・privacy-policy・地域ページ4つ（tokyo- / yokohama- / kanagawa-diving-license・yokosuka-diving）。
+  トップと同じ色・見出し・ボタン・ヘッダー・フッター・相談帯（`.ask`）・スマホ下部バー。**Font Awesome は使わない**（ページ先頭のインラインSVG `<symbol id="i-…">`）。
+- 骨組みはどのページも同じ順：`.ph`（写真のヒーロー＋パンくず）→ `.facts`（数字4つ・ヒーローに重なる）→（期間限定 `.camp`）→
+  `.lnav`（ページ内の目次・追従。右端の「このページの水深」は `data-depth` の最大mまで進む）→ `.sec` の並び → FAQ → `.about`（検索向けの読み物）→ `.ask`。
+- 部品は `css/page.css` にまとめてある（`.est` 総額シミュレーター／`.tbl--stack` スマホで縦に積む表（セルに `data-label`）／`.steps` タイムライン／
+  `.split` 写真＋文章／`.places` 写真カード／`.maps` 手描きマップ／`.gallery`／`.mgs` 関連まんが／`.eg` 総額の例／`.deal` 割引の一言／`.reads` 次に読むページ／
+  `.cform` 予約フォーム）。**新しいページもこの部品で組む**（ページごとの `<style>` を増やさない）。`page.css` を変えたら全ページの `page.css?v=` を上げる（7日キャッシュ）。
+- `js/page.js`：`data-expires`（夏割などの自動消去）・`data-deadline`（あと◯日）・`data-line-msg`（押すと文面をコピーしてLINEを開く）・目次の追従と進み具合・
+  総額シミュレーター（料金は HTML のラジオの `data-fee` / `data-days` / `data-disc`・`data-rent-per-day` が正。JSに金額を書かない）。
+- **ライセンスの総額シミュレーター**（`license/#price`）：OWD¥53,900＋レンタル2日＝¥64,900／AOW¥59,800＋2日＝¥70,800／まとめて受講 講習費¥113,700−¥5,000＋4日＝¥130,700、
+  自分の器材なら講習費のみ。**料金を変えたらラジオの data 属性・下の料金表・FAQ・構造化データ（license.ld の Course の Offer）を一緒に直す。**
+- 旧アンカーは残してある：`license/#courses`（まんが第3話のCTA・AOWの節の直前）・`license/#sp-title`・`fun-diving/#plans`・`beginner-guide/#difference` ほか。
+- 予約フォーム（`contact/`）：種別はラジオ（value は send_mail.php に渡る値。**変えない**：体験ダイビング／OWDライセンス／AOWライセンス／ファンダイビング／リフレッシュ／マリンアクティビティ／書籍・講座／その他）。
+  `?from=` `?category=` `?date=` の事前入力と、成功・エラーの表示は `js/contact.js`。`name="csrf_token" id="csrfToken" value=""` の並びは contact/index.php が置換するので変えない。
+  🔴 **ローカルで send_mail.php を POST して試さない**（2026-09-27、php -S で試したら Mac の postfix に本物の通知メールが2通積まれた）。
+- 写真：`image/sub/`（2026年9月に撮った実写をPILでWebP化・EXIFの回転を反映済み）。ページごとのOGPは `image/og-<ページ>.jpg`（写真＋見出し・PILで作成）。
+- お客様の声は、トップと同じ3件だけ（Y.Sさん20代女性／60代男性／T.Hさん40代男性）。**名前・在住地・★評価（AggregateRating）を足さない**
+  （地域ページにあった架空の口コミ12件と★5は削除した）。
+- 事実の直し（2026-09-27）：品川から約70分・横浜から約55分（旧「品川60分」「京急1本45分」は誤り）／OWDの実技は「最短2日」／電話番号は contact・tokusho・privacy-policy だけ／
+  「数千人」「神奈川県内でも数少ない」「人気No.1」など裏付けのない表現を削除／横須賀ページの旧特典（写真データ無料・2名同時¥98,000・紹介¥3,000引き）は現行の特典ではないので削除。
+
 ## デプロイ方法
 
 - **通常時**: mainへpushすると `.github/workflows/deploy.yml` がFTPで自動反映。
@@ -366,8 +390,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 
 ## 実装済みコンポーネント
 
-- `.navi-bubble`（クラゲちゃん吹き出し）: trial-diving と beginner-guide の各`<style>`内に同一CSSあり。アバター+吹き出し+左向き三角。新ページに使うときはコピーする。
-- `.flow-illust`（trial-divingの流れカード画像）/ `.guide-illust`（beginner-guideの本文イラスト）。
+- 下層ページの部品は `css/page.css`（上の「下層ページ」の節）。旧 `.navi-bubble`（クラゲの吹き出し）と `.flow-illust` / `.guide-illust` は2026-09-27のリニューアルで使わなくなった（イラスト自体は `.steps` の画像として使っている）。
 - 画像は必ず `width`/`height` 属性・`loading="lazy"`・意味のあるalt（SEOキーワード自然に）を付ける。
 
 ## サイト共通ルール

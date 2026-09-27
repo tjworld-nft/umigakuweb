@@ -1,0 +1,12 @@
+[
+  {
+    "@type": "Service",
+    "@id": "https://miura-diving.com/yokohama-diving-license/#service",
+    "name": "横浜から通うダイビングライセンス取得（三浦・城ヶ島／宮川湾）",
+    "serviceType": "ダイビングライセンス（PADI Cカード）取得講習",
+    "description": "横浜駅から京急線で三崎口駅（約55分）＋無料送迎（要予約）で通うPADIオープンウォーター講習。学科はeラーニング、実技は最短2日で週末に。インストラクター1名につき最大4名の少人数制。",
+    "provider": {"@type": "SportsActivityLocation", "@id": "https://miura-diving.com/#school", "name": "三浦 海の学校", "url": "https://miura-diving.com/"},
+    "areaServed": {"@type": "City", "name": "横浜市"},
+    "offers": {"@type": "Offer", "price": "64900", "priceCurrency": "JPY", "category": "総額（講習費¥53,900＋レンタル器材2日分¥11,000・税込）", "url": "https://miura-diving.com/license/#price", "itemOffered": {"@id": "https://miura-diving.com/license/#owd-course"}}
+  }
+]

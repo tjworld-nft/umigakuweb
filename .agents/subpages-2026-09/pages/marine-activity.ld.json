@@ -1,0 +1,22 @@
+[
+  {
+    "@type": "Service",
+    "@id": "https://miura-diving.com/marine-activity/#service",
+    "name": "スノーケリング半日プラン（三浦・城ヶ島／三戸浜）",
+    "serviceType": "スノーケリング（シュノーケリング）",
+    "description": "神奈川県三浦市の城ヶ島または三戸浜で開催する、半日のスノーケリング。ライセンス不要・初心者OK。スノーケリング器材とライフジャケット込みで、浅場で練習してから海に入ります。午前の部 9:00〜12:00／午後の部 13:00〜16:00。最少2名から。小学生は保護者同伴。",
+    "url": "https://miura-diving.com/marine-activity/",
+    "image": "https://miura-diving.com/image/sub/snorkel-hero-1600.webp",
+    "provider": {"@type": "SportsActivityLocation", "@id": "https://miura-diving.com/#school", "name": "三浦 海の学校", "url": "https://miura-diving.com/"},
+    "areaServed": {"@type": "AdministrativeArea", "name": "神奈川県"},
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "スノーケリング半日プランの料金（税込・スノーケリング器材とライフジャケット込み）",
+      "itemListElement": [
+        {"@type": "Offer", "name": "スノーケリング半日プラン 大人", "price": "7700", "priceCurrency": "JPY", "availability": "https://schema.org/InStock"},
+        {"@type": "Offer", "name": "スノーケリング半日プラン 子ども（小学生〜中学生）", "price": "5500", "priceCurrency": "JPY", "availability": "https://schema.org/InStock"},
+        {"@type": "Offer", "name": "スノーケリング半日プラン 親子ペア", "price": "13000", "priceCurrency": "JPY", "availability": "https://schema.org/InStock"}
+      ]
+    }
+  }
+]
