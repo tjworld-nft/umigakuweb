@@ -118,10 +118,11 @@
        サイトで流すのは、最後の誘導が「このサイトから、公式LINEへ」の版（SNS版の「プロフィールのリンクから」は使わない） */
     seaglass: {
       title: 'この画面の向こうは、海。（20秒）',
-      poster: 'image/sea-glass/sg-poster-1280.jpg',
+      poster: 'image/sea-glass/sg-poster-1280.jpg?v=1',
+      line: '20秒の映像を見ました。自分に合うコースを相談したいです。',
       hi: [['video/sea-glass/sea-glass-2026-1080-hevc.mp4?v=1', 'video/mp4; codecs="hvc1.1.6.L120.90, mp4a.40.2"']],
       base: ['video/sea-glass/sea-glass-2026-720.mp4?v=1', 'video/mp4'],
-      portrait: { src: 'video/sea-glass/sea-glass-2026-vertical-720.mp4?v=1', poster: 'image/sea-glass/sg-poster-vertical-720.jpg' }
+      portrait: { src: 'video/sea-glass/sea-glass-2026-vertical-720.mp4?v=1', poster: 'image/sea-glass/sg-poster-vertical-720.jpg?v=1' }
     },
     cm: {
       title: '三浦 海の学校の海（28秒）',
@@ -141,13 +142,19 @@
   /* シアター下の「サブの導線」は映像ごとに差し替える（既定はコース探し） */
   var tMore = dlg && $('.theater__cta .sub', dlg);
   var moreDefault = tMore ? [tMore.getAttribute('href'), tMore.textContent] : null;   /* 開いている間は止めておく、ページ内の自動再生映像 */
+  /* シアター下のLINEボタン：映像ごとに「最初のひと言」（FILMS の line）を付け替える（無い映像は付けない） */
+  var tLine = dlg && $('.theater__cta .btn-line', dlg);
+  /* 縦に持ったスマホかどうか。開いたあとに向きを変えたら、縦の版と横の版を入れ替える */
+  var PORTRAIT = window.matchMedia ? window.matchMedia('(orientation: portrait) and (max-width: 767px)') : null;
+  var curKey = null, curPortrait = false;
 
   function pauseAmbient() {
     ambient = $$('video.film-teaser, video.sea-video, video.phone-video').filter(function (v) { return !v.paused; });
     ambient.forEach(function (v) { v.pause(); });
   }
   function resumeAmbient() {
-    ambient.forEach(function (v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); });
+    /* 閉じたときに画面の外にあるループは再開しない（開いている間に向きが変わって外れたときなど） */
+    ambient.forEach(function (v) { if (v._inView === false) return; var p = v.play(); if (p && p.catch) p.catch(function () {}); });
     ambient = [];
   }
 
@@ -166,27 +173,17 @@
 
     /* 映像の差し替え（前の再生を完全に止めてから） */
     tVideo.pause();
-    while (tVideo.firstChild) tVideo.removeChild(tVideo.firstChild);
-    var frag = '#t=' + startAt.toFixed(2);
-    var portrait = !!(f.portrait && window.matchMedia && window.matchMedia('(orientation: portrait) and (max-width: 767px)').matches);
-    var list = portrait ? [[f.portrait.src, 'video/mp4']] : ((WIDE() && f.hi) ? f.hi.concat([f.base]) : [f.base]);
-    list.forEach(function (s) {
-      var el = document.createElement('source');
-      el.src = s[0] + (startAt ? frag : ''); el.type = s[1];
-      tVideo.appendChild(el);
-    });
-    if (f.track) {
-      var tr = document.createElement('track');
-      tr.kind = 'captions'; tr.srclang = 'ja'; tr.label = '日本語'; tr.src = f.track;
-      tVideo.appendChild(tr);
-    }
-    tVideo.poster = portrait ? f.portrait.poster : f.poster;
+    var portrait = !!(f.portrait && PORTRAIT && PORTRAIT.matches);
+    setSources(f, portrait, startAt);
+    curKey = key; curPortrait = portrait;
     tVideo.muted = false;
     tTitle.textContent = f.title;
-    dlg.classList.toggle('theater--vertical', !!(f.vertical || portrait));
     if (tMore && moreDefault) {
       var mo = f.more || moreDefault;
       tMore.setAttribute('href', mo[0]); tMore.textContent = mo[1];
+    }
+    if (tLine) {
+      if (f.line) tLine.setAttribute('data-line-msg', f.line); else tLine.removeAttribute('data-line-msg');
     }
 
     tChapters.innerHTML = '';
@@ -230,8 +227,51 @@
     return true;
   }
 
+  /* 版（縦／横・高画質／標準）を選んで source を入れ直す */
+  function setSources(f, portrait, startAt) {
+    while (tVideo.firstChild) tVideo.removeChild(tVideo.firstChild);
+    var frag = '#t=' + (startAt || 0).toFixed(2);
+    var list = portrait ? [[f.portrait.src, 'video/mp4']] : ((WIDE() && f.hi) ? f.hi.concat([f.base]) : [f.base]);
+    list.forEach(function (s) {
+      var el = document.createElement('source');
+      el.src = s[0] + (startAt ? frag : ''); el.type = s[1];
+      tVideo.appendChild(el);
+    });
+    if (f.track) {
+      var tr = document.createElement('track');
+      tr.kind = 'captions'; tr.srclang = 'ja'; tr.label = '日本語'; tr.src = f.track;
+      tVideo.appendChild(tr);
+    }
+    tVideo.poster = portrait ? f.portrait.poster : f.poster;
+    dlg.classList.toggle('theater--vertical', !!(f.vertical || portrait));
+  }
+
+  /* 開いたまま向きを変えたら、同じ位置から縦／横の版に入れ替える（縦の版を持つ映像だけ） */
+  function onOrientation() {
+    if (!dlg || !dlg.open || !curKey) return;
+    var f = FILMS[curKey];
+    if (!f || !f.portrait) return;
+    var portrait = PORTRAIT.matches;
+    if (portrait === curPortrait) return;
+    curPortrait = portrait;
+    var t = tVideo.currentTime || 0, playing = !tVideo.paused && !tVideo.ended;
+    tVideo.pause();
+    setSources(f, portrait, 0);
+    tVideo.load();
+    tVideo.addEventListener('loadedmetadata', function once() {
+      tVideo.removeEventListener('loadedmetadata', once);
+      try { tVideo.currentTime = t; } catch (e) { /* noop */ }
+      if (playing) { var p = tVideo.play(); if (p && p.catch) p.catch(function () {}); }
+    });
+  }
+  if (PORTRAIT) {
+    if (PORTRAIT.addEventListener) PORTRAIT.addEventListener('change', onOrientation);
+    else if (PORTRAIT.addListener) PORTRAIT.addListener(onOrientation);
+  }
+
   function closeFilm() {
     if (!dlg || !dlg.open) return;
+    curKey = null;
     tVideo.pause();
     /* ダウンロードも止める */
     while (tVideo.firstChild) tVideo.removeChild(tVideo.firstChild);
@@ -263,16 +303,20 @@
      ========================================================================== */
   function lazyLoop(video, threshold) {
     if (!video || CALM || !('IntersectionObserver' in window)) return;
+    var t = threshold || 0.25;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting && !root.classList.contains('is-theater')) {
+        /* 端が1pxのぞいただけでは読み込まない（しきい値 t まで見えたら読み込んで再生、下回ったら止める） */
+        var vis = en.isIntersecting && en.intersectionRatio >= t * 0.98;
+        video._inView = vis;
+        if (vis && !root.classList.contains('is-theater')) {
           if (!video.getAttribute('src')) video.src = video.getAttribute('data-src');
           var p = video.play(); if (p && p.catch) p.catch(function () {});
-        } else if (!en.isIntersecting) {
+        } else if (!vis) {
           video.pause();
         }
       });
-    }, { threshold: threshold || 0.25 });
+    }, { threshold: [0, t] });
     io.observe(video);
     video.addEventListener('playing', function () { video.classList.add('is-playing'); });
   }
