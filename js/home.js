@@ -120,6 +120,7 @@
       title: 'この画面の向こうは、海。（20秒）',
       poster: 'image/sea-glass/sg-poster-1280.jpg?v=1',
       line: '20秒の映像を見ました。自分に合うコースを相談したいです。',
+      lineLabel: 'LINEで相談する',
       hi: [['video/sea-glass/sea-glass-2026-1080-hevc.mp4?v=1', 'video/mp4; codecs="hvc1.1.6.L120.90, mp4a.40.2"']],
       base: ['video/sea-glass/sea-glass-2026-720.mp4?v=1', 'video/mp4'],
       portrait: { src: 'video/sea-glass/sea-glass-2026-vertical-720.mp4?v=1', poster: 'image/sea-glass/sg-poster-vertical-720.jpg?v=1' }
@@ -144,9 +145,16 @@
   var moreDefault = tMore ? [tMore.getAttribute('href'), tMore.textContent] : null;   /* 開いている間は止めておく、ページ内の自動再生映像 */
   /* シアター下のLINEボタン：映像ごとに「最初のひと言」（FILMS の line）を付け替える（無い映像は付けない） */
   var tLine = dlg && $('.theater__cta .btn-line', dlg);
+  var tLineText = tLine && tLine.lastChild && tLine.lastChild.nodeType === 3 ? tLine.lastChild : null;
+  var lineLabelDefault = tLineText ? tLineText.textContent : '';
   /* 縦に持ったスマホかどうか。開いたあとに向きを変えたら、縦の版と横の版を入れ替える */
   var PORTRAIT = window.matchMedia ? window.matchMedia('(orientation: portrait) and (max-width: 767px)') : null;
   var curKey = null, curPortrait = false;
+  var pendingRestore = null, pendingT = null, pendingPlaying = false;
+  function clearRestore() {
+    if (pendingRestore) tVideo.removeEventListener('loadedmetadata', pendingRestore);
+    pendingRestore = null; pendingT = null; pendingPlaying = false;
+  }
 
   function pauseAmbient() {
     ambient = $$('video.film-teaser, video.sea-video, video.phone-video').filter(function (v) { return !v.paused; });
@@ -173,6 +181,7 @@
 
     /* 映像の差し替え（前の再生を完全に止めてから） */
     tVideo.pause();
+    clearRestore();
     var portrait = !!(f.portrait && PORTRAIT && PORTRAIT.matches);
     setSources(f, portrait, startAt);
     curKey = key; curPortrait = portrait;
@@ -184,7 +193,10 @@
     }
     if (tLine) {
       if (f.line) tLine.setAttribute('data-line-msg', f.line); else tLine.removeAttribute('data-line-msg');
+      if (tLineText) tLineText.textContent = f.lineLabel || lineLabelDefault;
     }
+    /* 「文面をコピーしました」の表示は、開いている間はシアターの中に（モーダルの下に隠れないように） */
+    if (toastEl && toastEl.parentNode !== dlg) dlg.appendChild(toastEl);
 
     tChapters.innerHTML = '';
     (f.chapters || []).forEach(function (c) {
@@ -254,15 +266,21 @@
     var portrait = PORTRAIT.matches;
     if (portrait === curPortrait) return;
     curPortrait = portrait;
-    var t = tVideo.currentTime || 0, playing = !tVideo.paused && !tVideo.ended;
+    /* 入れ替えの読み込み中にもう一度回したときは、最初に覚えた位置と再生状態を使う */
+    var t = pendingRestore ? pendingT : (tVideo.currentTime || 0);
+    var playing = pendingRestore ? pendingPlaying : (!tVideo.paused && !tVideo.ended);
+    clearRestore();
+    pendingT = t; pendingPlaying = playing;
     tVideo.pause();
     setSources(f, portrait, 0);
     tVideo.load();
-    tVideo.addEventListener('loadedmetadata', function once() {
-      tVideo.removeEventListener('loadedmetadata', once);
-      try { tVideo.currentTime = t; } catch (e) { /* noop */ }
-      if (playing) { var p = tVideo.play(); if (p && p.catch) p.catch(function () {}); }
-    });
+    pendingRestore = function () {
+      var tt = pendingT, pl = pendingPlaying;
+      clearRestore();
+      try { tVideo.currentTime = tt; } catch (e) { /* noop */ }
+      if (pl) { var p = tVideo.play(); if (p && p.catch) p.catch(function () {}); }
+    };
+    tVideo.addEventListener('loadedmetadata', pendingRestore);
   }
   if (PORTRAIT) {
     if (PORTRAIT.addEventListener) PORTRAIT.addEventListener('change', onOrientation);
@@ -272,6 +290,8 @@
   function closeFilm() {
     if (!dlg || !dlg.open) return;
     curKey = null;
+    clearRestore();
+    if (toastEl && toastEl.parentNode === dlg) dlg.parentNode.insertBefore(toastEl, dlg.nextSibling);
     tVideo.pause();
     /* ダウンロードも止める */
     while (tVideo.firstChild) tVideo.removeChild(tVideo.firstChild);
