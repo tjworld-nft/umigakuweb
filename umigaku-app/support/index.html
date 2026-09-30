@@ -61,7 +61,7 @@
     .ua-contact{display:flex;flex-wrap:wrap;gap:.7rem;margin:.4rem 0 .9rem}
     .ua-contact a{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:48px;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;color:#fff}
     .ua-contact .ua-line{background:#00873C}
-    .ua-contact .ua-form{background:linear-gradient(135deg,var(--coral,#FF6B9D),#FF8E7A)}
+    .ua-contact .ua-form{background:#D12F6A}
     .ua-contact a:hover{color:#fff;opacity:.92}
     .ua-links{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.6rem 0 0}
     .ua-links a{display:inline-block;background:#fff;border:1px solid var(--border,#E5EDF2);border-radius:999px;padding:.55rem 1.1rem;font-size:.88rem;font-weight:700;color:#0B5F73;text-decoration:none}
@@ -77,6 +77,17 @@
     .mobile-cta-bar .cta-line{background:#00873C;box-shadow:0 4px 14px rgba(0,110,50,.3)}
     /* 下部バーのアイコン寸法。共通CSSにも同じ定義があるが、古いCSSがキャッシュされていても崩れないよう当ページにも持つ */
     .fa-svg{width:1em;height:1em;display:inline-block;vertical-align:-.125em;fill:currentColor}
+    /* フォームのボタンは下層ページと同じ単色の濃いピンク（白文字 4.9:1。ピンクのグラデーションは 2.2〜2.7:1） */
+    .mobile-cta-bar .cta-form{background:#D12F6A;box-shadow:0 4px 14px rgba(209,47,106,.25)}
+    /* 文字を大きくしても下部バーの文字が画面の外へ出ないように。細い画面では少し小さく */
+    .mobile-cta-bar a{white-space:normal;line-height:1.3;text-align:center}
+    /* 1行に入らない幅では「フォームで／問い合わせ」の2行にし、アイコンが丸い角で欠けないよう左右に余白 */
+    @media (max-width:389px){.mobile-cta-bar a{padding-inline:.5rem}}
+    @media (max-width:340px){.mobile-cta-bar a{font-size:.85rem}}
+    /* フッターの文字を下層ページと同じ明るさに */
+    .footer-nav a{color:rgba(255,255,255,.78)}
+    /* 見出しを句で折り返す（Safari は word-break:auto-phrase 未対応） */
+    .nw{display:inline-block;max-width:100%}
   </style>
 </head>
 
@@ -168,21 +179,21 @@
             </details>
 
             <details>
-              <summary>Q. 機種変更をしたら、記録は引き継げますか？</summary>
+              <summary>Q. 機種変更をしたら、<span class="nw">記録は引き継げますか？</span></summary>
               <div>
                 <p>引き継ぎには対応していません。「海学」にはアカウント登録がなく、記録はお使いのiPhoneの中だけに保存しています。相棒・チケット・図鑑などの主な記録はiPhoneのバックアップ（iCloudなど）の対象外で、新しいiPhoneでは、はじめからのスタートになります。占い・海の旅の記録や設定など一部の記録がバックアップに含まれて新しいiPhoneに移ることはありますが、引き継ぎの機能としては対応していません。アプリを削除した場合も、記録は消えます。</p>
               </div>
             </details>
 
             <details>
-              <summary>Q. アプリから予約できますか？</summary>
+              <summary>Q. アプリから<span class="nw">予約できますか？</span></summary>
               <div>
                 <p>アプリからのご予約は受け付けていません。アプリの「海学で潜る」にある公式LINEのボタンから、ご予約・ご相談ください。<a href="../../contact/?from=umigaku-app">お問い合わせフォーム</a>からも受け付けています。</p>
               </div>
             </details>
 
             <details>
-              <summary>Q. 料金やコースの内容はどこで見られますか？</summary>
+              <summary>Q. 料金やコースの内容は<span class="nw">どこで見られますか？</span></summary>
               <div>
                 <p>公式サイトの各ページでご案内しています（アプリには料金を載せていません）。</p>
                 <ul>
@@ -196,14 +207,14 @@
             </details>
 
             <details>
-              <summary>Q. ガチャにお金はかかりますか？</summary>
+              <summary>Q. ガチャにお金は<span class="nw">かかりますか？</span></summary>
               <div>
                 <p>かかりません。「海学」にアプリ内課金はありません。ガチャのチケットは、アプリを毎日ひらいたときや、歩数の目標を達成したときなどにもらえます。</p>
               </div>
             </details>
 
             <details>
-              <summary>Q. ゲームのポイントやチケットは、お店の割引に使えますか？</summary>
+              <summary>Q. ゲームのポイントや<span class="nw">チケットは、</span><span class="nw">お店の割引に</span><span class="nw">使えますか？</span></summary>
               <div>
                 <p>使えません。ゲーム内ポイントやチケットは、アプリの中で遊ぶためのものです。お金やお店の割引と交換することはできません。</p>
               </div>
@@ -217,7 +228,7 @@
             </details>
 
             <details>
-              <summary>Q. 個人情報はどう扱われますか？</summary>
+              <summary>Q. 個人情報は<span class="nw">どう扱われますか？</span></summary>
               <div>
                 <p>「海学」は、氏名やメールアドレスなどの個人情報をいただきません。遊んだ記録はiPhoneの中だけに保存し、外部へ送りません。くわしくは<a href="../privacy/">プライバシーポリシー</a>をご覧ください。</p>
               </div>
@@ -316,7 +327,7 @@
   <!-- Mobile fixed CTA -->
   <div class="mobile-cta-bar" role="navigation" aria-label="お問い合わせ">
     <a class="cta-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer"><svg class="fa-svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M311 196.8v81.3c0 2.1-1.6 3.7-3.7 3.7h-13c-1.3 0-2.4-.7-3-1.5l-37.3-50.3v48.2c0 2.1-1.6 3.7-3.7 3.7h-13c-2.1 0-3.7-1.6-3.7-3.7V196.9c0-2.1 1.6-3.7 3.7-3.7h12.9c1.1 0 2.4 .6 3 1.6l37.3 50.3v-48.2c0-2.1 1.6-3.7 3.7-3.7h13c2.1-.1 3.8 1.6 3.8 3.5zm-93.7-3.7h-13c-2.1 0-3.7 1.6-3.7 3.7v81.3c0 2.1 1.6 3.7 3.7 3.7h13c2.1 0 3.7-1.6 3.7-3.7V196.8c0-1.9-1.6-3.7-3.7-3.7zm-31.4 68.1H150.3V196.8c0-2.1-1.6-3.7-3.7-3.7h-13c-2.1 0-3.7 1.6-3.7 3.7v81.3c0 1 .3 1.8 1 2.5c.7 .6 1.5 1 2.5 1h52.2c2.1 0 3.7-1.6 3.7-3.7v-13c0-1.9-1.6-3.7-3.5-3.7zm193.7-68.1H327.3c-1.9 0-3.7 1.6-3.7 3.7v81.3c0 1.9 1.6 3.7 3.7 3.7h52.2c2.1 0 3.7-1.6 3.7-3.7V265c0-2.1-1.6-3.7-3.7-3.7H344V247.7h35.5c2.1 0 3.7-1.6 3.7-3.7V230.9c0-2.1-1.6-3.7-3.7-3.7H344V213.5h35.5c2.1 0 3.7-1.6 3.7-3.7v-13c-.1-1.9-1.7-3.7-3.7-3.7zM512 93.4V419.4c-.1 51.2-42.1 92.7-93.4 92.6H92.6C41.4 511.9-.1 469.8 0 418.6V92.6C.1 41.4 42.2-.1 93.4 0H419.4c51.2 .1 92.7 42.1 92.6 93.4zM441.6 233.5c0-83.4-83.7-151.3-186.4-151.3s-186.4 67.9-186.4 151.3c0 74.7 66.3 137.4 155.9 149.3c21.8 4.7 19.3 12.7 14.4 42.1c-.8 4.7-3.8 18.4 16.1 10.1s107.3-63.2 146.5-108.2c27-29.7 39.9-59.8 39.9-93.1z"/></svg><span>LINEで相談</span></a>
-    <a class="cta-form" href="../../contact/?from=umigaku-app"><svg class="fa-svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg><span>フォームで問い合わせ</span></a>
+    <a class="cta-form" href="../../contact/?from=umigaku-app"><svg class="fa-svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg><span><span class="nw">フォームで</span><span class="nw">問い合わせ</span></span></a>
   </div>
 
   <script src="../../js/main.js" defer></script>
