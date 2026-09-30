@@ -38,7 +38,7 @@
   <!-- 最初の表示に要るものを先に。写真はヒーローのLCP候補 -->
   <link rel="preload" as="image" href="image/optimized/home-hero-soft-diving.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css?v=20260905">
-  <link rel="stylesheet" href="css/home.css?v=2026092702">
+  <link rel="stylesheet" href="css/home.css?v=2026093001">
 
   <!-- Webフォントは表示を止めない（display=optional：間に合わなければ端末の丸ゴシックで描き、
        文字の組み替え＝レイアウトのずれを起こさない。2回目以降はキャッシュ済みのZen Maruで出る） -->
@@ -129,7 +129,7 @@
         "isPartOf": {"@id": "https://miura-diving.com/#website"},
         "about": {"@id": "https://miura-diving.com/#school"},
         "primaryImageOfPage": {"@type": "ImageObject", "url": "https://miura-diving.com/image/optimized/home-hero-soft-diving.webp"},
-        "video": [{"@id": "https://miura-diving.com/#pv"}, {"@id": "https://miura-diving.com/#sites-film"}],
+        "video": [{"@id": "https://miura-diving.com/#pv"}, {"@id": "https://miura-diving.com/#sites-film"}, {"@id": "https://miura-diving.com/#sea-glass-film"}],
         "inLanguage": "ja"
       },
       {
@@ -154,6 +154,19 @@
         "duration": "PT38S",
         "contentUrl": "https://miura-diving.com/video/home/jogashima-miyagawa-720.mp4",
         "inLanguage": "ja",
+        "publisher": {"@id": "https://miura-diving.com/#org"}
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://miura-diving.com/#sea-glass-film",
+        "name": "この画面の向こうは、海。｜三浦 海の学校（20秒）",
+        "description": "スマホの画面の向こうに、三浦の海がある。品川から京急で約70分、京急三崎口駅から無料送迎（要予約）。はじめての人もブランクのある人も、10歳から。教えるのはPADIコースディレクター、少人数制。体験ダイビング・ライセンス講習・リフレッシュの3つのコースを20秒で紹介します。CGを含むイメージ映像（海中の実写映像を使用）。音楽はAIで生成。",
+        "thumbnailUrl": ["https://miura-diving.com/image/sea-glass/sg-poster-1280.jpg", "https://miura-diving.com/image/sea-glass/sg-poster-vertical-720.jpg"],
+        "uploadDate": "2026-09-30T09:00:00+09:00",
+        "duration": "PT20S",
+        "contentUrl": "https://miura-diving.com/video/sea-glass/sea-glass-2026-720.mp4",
+        "inLanguage": "ja",
+        "isFamilyFriendly": true,
         "publisher": {"@id": "https://miura-diving.com/#org"}
       },
       {
@@ -399,6 +412,36 @@
               <span class="film-meta"><b>音ありで観る</b><span>AUTUMN &amp; WINTER ・ 1:02</span><span class="sr-only">（映像「海の季節は、終わらない。」三浦の秋冬のダイビングを再生・1分2秒・字幕あり）</span></span>
             </button>
             <p class="film-note">データは気象庁の平年値。ナレーションと音楽はAIで生成しています。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 20秒の紹介映像「SEA GLASS」（常設）。カードでは文字なし・無音のループを見えている間だけ流し、
+           押すとシアターで音あり版。サイトで流すのは最後の誘導が「このサイトから、公式LINEへ」の版だけ -->
+      <div id="sea-glass" class="wf wf--sg">
+        <div class="wf-grid">
+          <div class="wf-film">
+            <button type="button" class="film-stage wf-stage" data-film="seaglass">
+              <picture>
+                <source srcset="image/sea-glass/sg-card-640.webp?v=1 640w, image/sea-glass/sg-card-1280.webp?v=1 1280w" sizes="(min-width: 1000px) 600px, 100vw" type="image/webp">
+                <img src="image/sea-glass/sg-card-1280.jpg?v=1" alt="" width="1280" height="720" loading="lazy" decoding="async">
+              </picture>
+              <video class="film-teaser" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
+                data-src="video/sea-glass/sea-glass-2026-loop.mp4?v=1"></video>
+              <span class="film-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="film-meta"><b>音ありで観る</b><span>SHORT FILM ・ 0:20</span><span class="sr-only">（20秒の紹介映像「この画面の向こうは、海。」を音ありで再生・ナレーションなし）</span></span>
+            </button>
+            <p class="film-note">CGを含むイメージ映像です（海中の実写映像を使用）。音楽はAIで生成しています。</p>
+            <p class="sr-only">映像の中の文字：三浦 海の学校｜ダイビングスクール／この画面の向こうは、海。／品川から京急で、三浦まで 約70分。／京急三崎口駅から無料送迎（要予約）／はじめてでも。ブランクがあっても。／10歳から／教えるのは、プロを育てるプロ。／PADIコースディレクター｜少人数制／タツノオトシゴ・ウミウシ・ミノカサゴ／実写／えらべる、3つの入口。体験ダイビング・ライセンス講習・リフレッシュ／いま、潜ろう。／公式LINEで、いますぐ相談／このサイトから、公式LINEへ／miura-diving.com／神奈川県三浦市・城ヶ島／宮川湾／※CGを含むイメージ映像です（海中の実写映像を使用）</p>
+          </div>
+          <div class="wf-text">
+            <span class="wf-label">Short Film</span>
+            <h2 id="sg-title">この画面の向こうは、<span class="nw">海。</span></h2>
+            <p class="wf-lead">品川から京急で<b>約70分</b>。はじめてでも、ブランクがあっても。三浦の海を、20秒の映像で。</p>
+            <div class="sg-cta">
+              <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-line-msg="20秒の映像のカードから連絡しました。自分に合うコースを相談したいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで相談する</a>
+              <a class="sg-more" href="#finder">自分に合うコースを探す <span aria-hidden="true">↓</span></a>
+            </div>
           </div>
         </div>
       </div>
@@ -1081,7 +1124,7 @@
   </div>
 
   <script src="js/main.js" defer></script>
-  <script src="js/home.js?v=2026092702" defer></script>
+  <script src="js/home.js?v=2026093001" defer></script>
   <!-- サイト全体に敷く水。端末を見て、描ける環境にだけ本体を取りに行く -->
   <!-- ⚠ js/ocean/* はサーバが7日キャッシュする（max-age=604800）。
        ocean-src を作り直したら、必ずこの ?v= を上げること。

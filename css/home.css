@@ -348,7 +348,20 @@
 .wf-more:hover { transform: translateY(-2px); color: var(--deep-3); }
 .wf-stage { border-radius: 18px; }
 .wf-film .film-note { text-align: left; }
-@media (max-width: 860px) { .wf-grid { grid-template-columns: 1fr; } .wf-film { order: -1; } }
+/* ---- 20秒の紹介映像「SEA GLASS」（帯の最後・常設）。秋冬の枠と左右を入れ替え、映像を左に
+        （HTMLでも映像を先に置いているので、見た目とキーボード・読み上げの順が同じ） ---- */
+.wf--sg .wf-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+.sg-cta { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.2rem; margin-top: 1.2rem; }
+.sg-cta .btn-line { font-size: .98rem; padding: .85rem 1.5rem; }
+.sg-more { display: inline-flex; align-items: center; min-height: 44px; color: #CFF3FF; font-weight: 700; font-size: .92rem; text-decoration: underline; text-underline-offset: .28em; }
+.sg-more:hover { color: #fff; }
+@media (max-width: 860px) { .wf-grid, .wf--sg .wf-grid { grid-template-columns: 1fr; } .wf-film { order: -1; } }
+@media (max-width: 520px) { .sg-cta .btn-line { width: 100%; } }
+/* 幅の狭いスマホでは、映像カードの「音ありで観る」が再生ボタンに重ならないように（秋冬の枠にも効く） */
+@media (max-width: 359px) {
+  .wf-stage .film-play { width: 56px; height: 56px; }
+  .wf-stage .film-meta > span:not(.sr-only) { display: none; }
+}
 @media (max-width: 420px) { .wf-facts li { flex-direction: column; gap: .1rem; } }
 
 .hero-campaign-pill {
