@@ -114,6 +114,15 @@
       more: ['/winter-diving/', '秋冬のダイビングをくわしく見る →'],
       chapters: [['はじめから', 0], ['陸と海', 6.6], ['10月上旬', 16.2], ['冬の青', 20.7], ['夏と冬', 26.3], ['季節の生き物', 31.3], ['ドライスーツ', 41.3]]
     },
+    /* 20秒の紹介映像「SEA GLASS」。字幕は映像に焼き込み済み（音は音楽と効果音だけ）なので track は付けない。
+       サイトで流すのは、最後の誘導が「このサイトから、公式LINEへ」の版（SNS版の「プロフィールのリンクから」は使わない） */
+    seaglass: {
+      title: 'この画面の向こうは、海。（20秒）',
+      poster: 'image/sea-glass/sg-poster-1280.jpg',
+      hi: [['video/sea-glass/sea-glass-2026-1080-hevc.mp4?v=1', 'video/mp4; codecs="hvc1.1.6.L120.90, mp4a.40.2"']],
+      base: ['video/sea-glass/sea-glass-2026-720.mp4?v=1', 'video/mp4'],
+      portrait: { src: 'video/sea-glass/sea-glass-2026-vertical-720.mp4?v=1', poster: 'image/sea-glass/sg-poster-vertical-720.jpg' }
+    },
     cm: {
       title: '三浦 海の学校の海（28秒）',
       vertical: true,
@@ -267,7 +276,8 @@
     io.observe(video);
     video.addEventListener('playing', function () { video.classList.add('is-playing'); });
   }
-  lazyLoop($('.film-teaser'), 0.3);
+  /* 帯の中のループは複数ある（PV・SEA GLASS）。1本ずつ見張る */
+  $$('.film-teaser').forEach(function (v) { lazyLoop(v, 0.3); });
 
   /* ==========================================================================
      6. コース選び（タブ）— JSが無いときは4つとも並んで見える
