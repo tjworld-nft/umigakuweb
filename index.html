@@ -38,7 +38,7 @@
   <!-- 最初の表示に要るものを先に。写真はヒーローのLCP候補 -->
   <link rel="preload" as="image" href="image/optimized/home-hero-soft-diving.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css?v=20260905">
-  <link rel="stylesheet" href="css/home.css?v=2026093001">
+  <link rel="stylesheet" href="css/home.css?v=2026093002">
 
   <!-- Webフォントは表示を止めない（display=optional：間に合わなければ端末の丸ゴシックで描き、
        文字の組み替え＝レイアウトのずれを起こさない。2回目以降はキャッシュ済みのZen Maruで出る） -->
@@ -833,6 +833,19 @@
     <section class="more" aria-label="アプリと書籍">
       <div class="h-wrap">
         <div class="more-grid">
+          <article id="umigaku-app" class="more-card more-card--app more-card--umigaku reveal" aria-labelledby="umigaku-app-title">
+            <a class="umigaku-icon-link" href="umigaku-app/" aria-label="公式アプリ海学の紹介を見る"><img class="icon" src="image/umigaku-app/launch-20260930/icon-192.webp" alt="海学のアプリアイコン。クラゲ帽子の海のなかま" width="128" height="128" loading="lazy" decoding="async"></a>
+            <div>
+              <span class="tag">iPhone・無料・アカウント登録なし</span>
+              <h2 id="umigaku-app-title">三浦 海の学校 公式アプリ「海学」</h2>
+              <p class="umigaku-headline">海に行かない日も、海となかよく。</p>
+              <p>毎日の一歩を楽しむ歩数計、タロットの海占い、ガチャと生き物図鑑。海のなかまが、あなたの日常にもやってきます。</p>
+              <div class="row">
+                <a class="umigaku-store-link" href="https://apps.apple.com/jp/app/id6810276864" target="_blank" rel="noopener noreferrer"><img src="image/bluelogbook/app-store-badge-ja.svg" alt="App Store から海学をダウンロード" width="163" height="56" loading="lazy"></a>
+                <a href="umigaku-app/">入れ方・できることを見る →</a>
+              </div>
+            </div>
+          </article>
           <div class="more-card more-card--app lift reveal">
             <img class="icon" src="image/home/bluelogbook-icon-192.webp" alt="Blue Logbook のアプリアイコン" width="76" height="76" loading="lazy" decoding="async">
             <div>

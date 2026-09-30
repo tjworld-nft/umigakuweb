@@ -414,3 +414,14 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - トップのヒーロー画像 `image/optimized/home-hero-soft-diving.webp` は差し替えない。
 - 公開ページは静的HTML。現役PHPは `contact/send_mail.php` のみ（WPテーマ系phpは配信されない残骸）。
 - LINEリンクは lin.ee/kK3d5p2 と lin.ee/Y3nB18U どちらも同一アカウントに着地するので混在OK。
+
+
+## 海学公式アプリの案内（2026-09-30公開）
+
+- 海学1.0.0（App ID 6810276864）は2026-09-30に日本のApp Store公開。無料・iPhone向け・iOS 15以上・アカウント登録なし。
+- 案内のリンク先は `https://miura-diving.com/umigaku-app/` に統一。トップの「アプリと本」に `.more-card--umigaku`、案内ページのCSSは `css/umigaku-app.css?v=`。共通 `style.css` は触っていない。トップ専用CSSを変えたら `index.html` の `home.css?v=` を上げる。
+- 歩数計と海の相棒育成、1日1枚の海タロット、無料ガチャ、海のなかま図鑑、公式LINEでの予約相談を紹介。歩数計は歩くきっかけとして書き、健康改善・安全を保証しない。
+- 「Move to Earn to Dive（笑）」の店舗割引ポイントは開発中の構想。現在のゲーム内ポイントは店舗割引に使えない。開始時期・条件・比率は確定するまで公開しない。現行のゲームポイントと別物であることを近接表示する。
+- 素材は `image/umigaku-app/launch-20260930/`。公式アイコン、アプリ画面6枚、OGP `og.jpg`、LINE告知 `line-1080.jpg`。画面はシミュレーター撮影なので「アプリ画面」と表記。Apple公式日本語バッジは既存SVGを未改変で流用。新素材は日付入り不変名で追加する。
+- サポート/プライバシーは既存の `umigaku-app/support/`・`umigaku-app/privacy/`。スマホ固定CTAはApp Storeと入れ方。Android版の提供時期は約束しない。
+- 公式LINE原稿はローカル `.agents/line/draft-umigaku-launch-2026-09.txt`（9/30制作・未配信）。配信は既存の明示承認ルールに従い、直前にstatusで残数を確認する。
