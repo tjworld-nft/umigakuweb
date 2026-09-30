@@ -45,7 +45,7 @@
     .ua-card p{font-size:.95rem;line-height:1.95;margin:0 0 .75rem}
     .ua-card ul{margin:0 0 .75rem;padding-left:1.3em}
     .ua-card li{font-size:.95rem;line-height:1.85;margin-bottom:.3rem}
-    .ua-card a{color:var(--teal-dark,#38AFA7);text-decoration:underline}
+    .ua-card a{color:#1F7F79;text-decoration:underline}
     .ua-card b{color:#0B5F73}
     .ua-facts{display:flex;flex-wrap:wrap;gap:.5rem;margin:.2rem 0 .4rem}
     .ua-facts span{background:#E3F3F6;color:#0B5F73;border-radius:999px;padding:.3rem .85rem;font-size:.82rem;font-weight:700}
@@ -60,12 +60,21 @@
 
     .ua-contact{display:flex;flex-wrap:wrap;gap:.7rem;margin:.4rem 0 .9rem}
     .ua-contact a{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:48px;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;color:#fff}
-    .ua-contact .ua-line{background:#06C755}
+    .ua-contact .ua-line{background:#00873C}
     .ua-contact .ua-form{background:linear-gradient(135deg,var(--coral,#FF6B9D),#FF8E7A)}
     .ua-contact a:hover{color:#fff;opacity:.92}
     .ua-links{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.6rem 0 0}
     .ua-links a{display:inline-block;background:#fff;border:1px solid var(--border,#E5EDF2);border-radius:999px;padding:.55rem 1.1rem;font-size:.88rem;font-weight:700;color:#0B5F73;text-decoration:none}
     .ua-links a:hover{border-color:var(--teal,#4ECDC4)}
+    .ua-get{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1rem;margin:.9rem 0 .3rem}
+    .ua-card .ua-get .ua-get__badge{display:inline-flex;text-decoration:none;border-radius:8px}
+    .ua-get .ua-get__badge img{height:48px;width:auto;display:block}
+    .ua-card .ua-get .ua-get__more{font-weight:700}
+    /* 共通フッターの見出し（h2）と最下段の文字色（WCAG 4.5:1 以上） */
+    .footer-nav h2,.footer-social h2{color:#fff;font-size:.9rem;margin-bottom:.75rem}
+    .footer-bottom p{color:rgba(255,255,255,.72)}
+    /* LINEのボタンは下層ページと同じ濃い緑（白文字 4.6:1。#06C755 は 2.3:1） */
+    .mobile-cta-bar .cta-line{background:#00873C;box-shadow:0 4px 14px rgba(0,110,50,.3)}
     /* 下部バーのアイコン寸法。共通CSSにも同じ定義があるが、古いCSSがキャッシュされていても崩れないよう当ページにも持つ */
     .fa-svg{width:1em;height:1em;display:inline-block;vertical-align:-.125em;fill:currentColor}
   </style>
@@ -80,12 +89,13 @@
       <nav class="desktop-nav" role="navigation" aria-label="メインナビゲーション">
         <a href="../../beginner-guide/">初心者ガイド</a>
         <a href="../../trial-diving/">体験ダイビング</a>
-        <a href="../../license/">ダイビングライセンス</a>
+        <a href="../../license/">ライセンス取得</a>
         <a href="../../fun-diving/">ファンダイビング</a>
+        <a href="../../marine-activity/">スノーケリング</a>
         <a href="../../sea-life/">海の生き物図鑑</a>
         <a href="../../manga/">まんが</a>
         <a href="https://miura-diving.com/blog/">ブログ</a>
-        <a href="../../contact/" class="btn btn--coral" style="padding:.6rem 1.4rem; font-size:.85rem;">お問い合わせ</a>
+        <a href="../../contact/" class="btn btn--coral" style="padding:.6rem 1.4rem; font-size:.85rem;">予約・相談</a>
       </nav>
       <button class="hamburger" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -96,12 +106,13 @@
       <a href="../../beginner-guide/">初心者ガイド</a>
       <a href="../../trial-diving/">体験ダイビング</a>
       <a href="../../license/">ダイビングライセンス</a>
-      <a href="../../fun-diving/">ファンダイビング</a>
-      <a href="../../marine-activity/">マリンアクティビティ</a>
+      <a href="../../fun-diving/">ファンダイビング・リフレッシュ</a>
+      <a href="../../marine-activity/">スノーケリング</a>
       <a href="../../sea-life/">海の生き物図鑑</a>
-      <a href="../../manga/">まんが</a>
+      <a href="../../manga/">まんがで読むダイビング</a>
+      <a href="../../instructor/">インストラクター紹介</a>
       <a href="https://miura-diving.com/blog/">ブログ</a>
-      <div class="mobile-nav-cta"><a href="../../contact/" class="btn btn--coral">お問い合わせ</a></div>
+      <div class="mobile-nav-cta"><a href="../../contact/" class="btn btn--coral">予約・お問い合わせ</a></div>
     </div>
   </div>
 
@@ -133,6 +144,10 @@
               <span>iPhone向け（iOS 15 以降）</span>
               <span>無料・アプリ内課金なし</span>
               <span>アカウント登録なし</span>
+            </div>
+            <div class="ua-get">
+              <a class="ua-get__badge" href="https://apps.apple.com/jp/app/id6810276864" target="_blank" rel="noopener noreferrer" aria-label="海学をApp Storeからダウンロード（新しいタブ）"><img src="../../image/bluelogbook/app-store-badge-ja.svg" alt="App Store からダウンロード" width="131" height="48"></a>
+              <a class="ua-get__more" href="../">できること・入れ方を見る →</a>
             </div>
           </div>
 
@@ -226,6 +241,7 @@
           </div>
 
           <div class="ua-links">
+            <a href="../">「海学」アプリの紹介・入れ方 →</a>
             <a href="../privacy/">「海学」アプリ プライバシーポリシー →</a>
             <a href="../../">三浦 海の学校 トップへ</a>
           </div>
@@ -244,25 +260,52 @@
           <p>開催場所・集合場所はご予約時にご案内します<br>営業時間: 9:00〜16:00（不定休）</p>
         </div>
         <div class="footer-nav">
-          <h4>メニュー</h4>
-          <a href="../../">ホーム</a>
+          <h2>メニュー</h2>
+          <a href="../../beginner-guide/">初心者ガイド</a>
           <a href="../../trial-diving/">体験ダイビング</a>
           <a href="../../license/">ダイビングライセンス</a>
           <a href="../../fun-diving/">ファンダイビング</a>
-          <a href="../../marine-activity/">マリンアクティビティ</a>
+          <a href="../../marine-activity/">スノーケリング</a>
+          <a href="../../winter-diving/">秋冬のダイビング</a>
           <a href="../../sea-life/">海の生き物図鑑</a>
-          <a href="https://miura-diving.com/manga/">まんがで読むダイビング</a>
-          <a href="https://miura-diving.com/buddy/">お友達紹介（バディ割）</a>
-          <a href="https://miura-diving.com/tsuzukeru/">つづける割（次回¥800引き）</a>
+          <a href="../../instructor/">インストラクター紹介</a>
+          <a href="https://miura-diving.com/blog/">ブログ</a>
+          <a href="../../manga/">まんがで読むダイビング</a>
+          <a href="../../buddy/">お友達紹介（バディ割）</a>
+          <a href="../../tsuzukeru/">つづける割（次回¥800引き）</a>
+          <a href="../../contact/">予約・お問い合わせ</a>
+          <a href="../../tokusho/">特定商取引法に基づく表記</a>
+          <a href="../../privacy-policy/">プライバシーポリシー</a>
         </div>
         <div class="footer-social">
-          <h4>SNS</h4>
+          <h2>SNS</h2>
           <div class="footer-social-icons">
             <a href="https://www.instagram.com/tj_official_umigaku/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="fa-svg" style="width:1.4rem;height:1.4rem" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
             <a href="https://www.facebook.com/miuraumigaku/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="fa-svg" style="width:1.4rem;height:1.4rem" viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
             <a href="https://x.com/miura_diving" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><svg class="fa-svg" style="width:1.4rem;height:1.4rem" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
           </div>
         </div>
+      </div>
+      <!-- AIに相談する（全ページフッター共通・自己完結ブロック） -->
+      <div class="ai-consult">
+        <style>
+          .ai-consult{background:#16283a;border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:1.2rem 1rem;margin:1.5rem auto;max-width:640px;text-align:center;color:rgba(255,255,255,.85);font-size:.85rem;line-height:1.6}
+          .ai-consult-title{color:#fff;font-weight:700;font-size:1rem;margin:0 0 .3rem}
+          .ai-consult-note{margin:0 0 .8rem}
+          .ai-consult-links{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+          .ai-consult-links a{display:inline-block;padding:.45rem 1rem;border:1px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;text-decoration:none;font-size:.85rem;transition:background .2s}
+          .ai-consult-links a:hover{background:rgba(255,255,255,.12)}
+          .ai-consult-caveat{margin:.8rem 0 0;font-size:.75rem;color:rgba(255,255,255,.55)}
+          .ai-consult-caveat a{color:#4fc3f7;text-decoration:underline}
+        </style>
+        <p class="ai-consult-title">🤖 AIに相談する</p>
+        <p class="ai-consult-note">泳げない・一人参加・ブランクあり——「自分に合うかな？」を、お使いのAIに相談できます。</p>
+        <div class="ai-consult-links">
+          <a href="https://chatgpt.com/?q=%E4%B8%89%E6%B5%A6%20%E6%B5%B7%E3%81%AE%E5%AD%A6%E6%A0%A1%EF%BC%88%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E4%B8%89%E6%B5%A6%E5%B8%82%E3%81%AE%E3%83%80%E3%82%A4%E3%83%93%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%AF%E3%83%BC%E3%83%AB%E3%80%81https%3A%2F%2Fmiura-diving.com%2F%20%EF%BC%89%E3%81%8C%E8%87%AA%E5%88%86%E3%81%AB%E5%90%88%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E7%9B%B8%E8%AB%87%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%E3%81%BE%E3%81%9A%20https%3A%2F%2Fmiura-diving.com%2Fllms.txt%20%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E3%81%9D%E3%81%AE%E3%81%86%E3%81%88%E3%81%A7%E3%80%81%E7%A7%81%E3%81%AE%E7%8A%B6%E6%B3%81%E3%82%84%E4%B8%8D%E5%AE%89%EF%BC%88%E6%B3%B3%E3%81%92%E3%81%AA%E3%81%84%E3%83%BB%E4%B8%80%E4%BA%BA%E5%8F%82%E5%8A%A0%E3%83%BB%E5%B9%B4%E9%BD%A2%E3%83%BB%E3%83%96%E3%83%A9%E3%83%B3%E3%82%AF%E3%83%BB%E4%BD%93%E5%8A%9B%E3%81%AE%E5%BF%83%E9%85%8D%E3%81%AA%E3%81%A9%EF%BC%89%E3%82%92%E8%81%9E%E3%81%84%E3%81%A6%E3%81%8B%E3%82%89%E3%80%81%E5%90%88%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E7%8E%87%E7%9B%B4%E3%81%AB%E7%AD%94%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%96%99%E9%87%91%E3%82%84%E7%89%B9%E5%85%B8%E3%81%AE%E6%9C%9F%E9%99%90%E3%81%AF%E3%82%B5%E3%82%A4%E3%83%88%E8%A8%98%E8%BC%89%E3%81%AE%E6%9C%80%E6%96%B0%E6%83%85%E5%A0%B1%E3%82%92%E5%84%AA%E5%85%88%E3%81%97%E3%80%81%E4%B8%8D%E7%A2%BA%E3%81%8B%E3%81%AA%E3%81%93%E3%81%A8%E3%81%AF%E6%96%AD%E5%AE%9A%E3%81%9B%E3%81%9A%E3%80%81%E4%BA%88%E7%B4%84%E3%82%84%E6%9C%80%E6%96%B0%E7%A2%BA%E8%AA%8D%E3%81%AF%E5%85%AC%E5%BC%8FLINE%EF%BC%88https%3A%2F%2Flin.ee%2FkK3d5p2%EF%BC%89%E3%82%92%E6%A1%88%E5%86%85%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82" target="_blank" rel="noopener noreferrer">ChatGPTで質問</a>
+          <a href="https://claude.ai/new?q=%E4%B8%89%E6%B5%A6%20%E6%B5%B7%E3%81%AE%E5%AD%A6%E6%A0%A1%EF%BC%88%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E4%B8%89%E6%B5%A6%E5%B8%82%E3%81%AE%E3%83%80%E3%82%A4%E3%83%93%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%AF%E3%83%BC%E3%83%AB%E3%80%81https%3A%2F%2Fmiura-diving.com%2F%20%EF%BC%89%E3%81%8C%E8%87%AA%E5%88%86%E3%81%AB%E5%90%88%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E7%9B%B8%E8%AB%87%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%E3%81%BE%E3%81%9A%20https%3A%2F%2Fmiura-diving.com%2Fllms.txt%20%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E3%81%9D%E3%81%AE%E3%81%86%E3%81%88%E3%81%A7%E3%80%81%E7%A7%81%E3%81%AE%E7%8A%B6%E6%B3%81%E3%82%84%E4%B8%8D%E5%AE%89%EF%BC%88%E6%B3%B3%E3%81%92%E3%81%AA%E3%81%84%E3%83%BB%E4%B8%80%E4%BA%BA%E5%8F%82%E5%8A%A0%E3%83%BB%E5%B9%B4%E9%BD%A2%E3%83%BB%E3%83%96%E3%83%A9%E3%83%B3%E3%82%AF%E3%83%BB%E4%BD%93%E5%8A%9B%E3%81%AE%E5%BF%83%E9%85%8D%E3%81%AA%E3%81%A9%EF%BC%89%E3%82%92%E8%81%9E%E3%81%84%E3%81%A6%E3%81%8B%E3%82%89%E3%80%81%E5%90%88%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E7%8E%87%E7%9B%B4%E3%81%AB%E7%AD%94%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%96%99%E9%87%91%E3%82%84%E7%89%B9%E5%85%B8%E3%81%AE%E6%9C%9F%E9%99%90%E3%81%AF%E3%82%B5%E3%82%A4%E3%83%88%E8%A8%98%E8%BC%89%E3%81%AE%E6%9C%80%E6%96%B0%E6%83%85%E5%A0%B1%E3%82%92%E5%84%AA%E5%85%88%E3%81%97%E3%80%81%E4%B8%8D%E7%A2%BA%E3%81%8B%E3%81%AA%E3%81%93%E3%81%A8%E3%81%AF%E6%96%AD%E5%AE%9A%E3%81%9B%E3%81%9A%E3%80%81%E4%BA%88%E7%B4%84%E3%82%84%E6%9C%80%E6%96%B0%E7%A2%BA%E8%AA%8D%E3%81%AF%E5%85%AC%E5%BC%8FLINE%EF%BC%88https%3A%2F%2Flin.ee%2FkK3d5p2%EF%BC%89%E3%82%92%E6%A1%88%E5%86%85%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82" target="_blank" rel="noopener noreferrer">Claudeで質問</a>
+          <a href="https://www.perplexity.ai/search?q=%E4%B8%89%E6%B5%A6%20%E6%B5%B7%E3%81%AE%E5%AD%A6%E6%A0%A1%EF%BC%88%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E4%B8%89%E6%B5%A6%E5%B8%82%E3%81%AE%E3%83%80%E3%82%A4%E3%83%93%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%AF%E3%83%BC%E3%83%AB%E3%80%81https%3A%2F%2Fmiura-diving.com%2F%20%EF%BC%89%E3%81%8C%E8%87%AA%E5%88%86%E3%81%AB%E5%90%88%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E7%9B%B8%E8%AB%87%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%E3%81%BE%E3%81%9A%20https%3A%2F%2Fmiura-diving.com%2Fllms.txt%20%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E3%81%9D%E3%81%AE%E3%81%86%E3%81%88%E3%81%A7%E3%80%81%E7%A7%81%E3%81%AE%E7%8A%B6%E6%B3%81%E3%82%84%E4%B8%8D%E5%AE%89%EF%BC%88%E6%B3%B3%E3%81%92%E3%81%AA%E3%81%84%E3%83%BB%E4%B8%80%E4%BA%BA%E5%8F%82%E5%8A%A0%E3%83%BB%E5%B9%B4%E9%BD%A2%E3%83%BB%E3%83%96%E3%83%A9%E3%83%B3%E3%82%AF%E3%83%BB%E4%BD%93%E5%8A%9B%E3%81%AE%E5%BF%83%E9%85%8D%E3%81%AA%E3%81%A9%EF%BC%89%E3%82%92%E8%81%9E%E3%81%84%E3%81%A6%E3%81%8B%E3%82%89%E3%80%81%E5%90%88%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E7%8E%87%E7%9B%B4%E3%81%AB%E7%AD%94%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%96%99%E9%87%91%E3%82%84%E7%89%B9%E5%85%B8%E3%81%AE%E6%9C%9F%E9%99%90%E3%81%AF%E3%82%B5%E3%82%A4%E3%83%88%E8%A8%98%E8%BC%89%E3%81%AE%E6%9C%80%E6%96%B0%E6%83%85%E5%A0%B1%E3%82%92%E5%84%AA%E5%85%88%E3%81%97%E3%80%81%E4%B8%8D%E7%A2%BA%E3%81%8B%E3%81%AA%E3%81%93%E3%81%A8%E3%81%AF%E6%96%AD%E5%AE%9A%E3%81%9B%E3%81%9A%E3%80%81%E4%BA%88%E7%B4%84%E3%82%84%E6%9C%80%E6%96%B0%E7%A2%BA%E8%AA%8D%E3%81%AF%E5%85%AC%E5%BC%8FLINE%EF%BC%88https%3A%2F%2Flin.ee%2FkK3d5p2%EF%BC%89%E3%82%92%E6%A1%88%E5%86%85%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82" target="_blank" rel="noopener noreferrer">Perplexityで質問</a>
+        </div>
+        <p class="ai-consult-caveat">※回答はAIによる案内です。最新の料金・空き状況・ご予約は<a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer">公式LINE</a>でご確認ください。</p>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 三浦 海の学校 All rights reserved.｜神奈川県三浦市・三浦半島のダイビングスクール</p>
