@@ -124,7 +124,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 ### 夏割の帯（2026-08-05に追加）→ 2026-09-27 から「映像の帯」 `#film` に移った
 
 - ⚠ **2026-09-27 のトップ刷新で、水の中の帯（`data-ocean-panel`）は `#film`（PVの帯・常設）に移した。**
-  夏割は `#film` の中の `#summer-campaign`（`data-expires="2026-10-01"`）に入っていて、10/1になるとJSが自動で外す。
+  夏割は `#film` の中の `#summer-campaign` に入っていたが、**夏割終了に合わせてHTMLから削除済み**（ブランチ `fix/natsuwari-cleanup-2026-10`）。
   下の記述の「帯」は `#film` と読み替える（仕組み・配色・`.sc-waterline`・`data-ocean-guard` はそのまま使っている）。
   エンジン（ocean-src）は作り直していないので `boot.js?v=` は据え置き。
 
@@ -172,8 +172,9 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   デスクトップ（1400px以上）は右端に水深計（ページ内目次）。
 - **共通の `css/style.css` は触っていない**（トップ専用は `css/home.css?v=`）。Font Awesome はトップだけ外してインラインSVG（`<symbol id="i-…">`）。
   Webフォントは非同期＋`display=optional`（表示を止めない・文字がずれない）。
-- **期限つきの表示は `data-expires="YYYY-MM-DD"`**（日本時間でその日になったらJSが要素ごと外す）。夏割は 2026-10-01。
-  **10月に入ったら `#summer-campaign` と `data-expires` の付いた要素をHTMLからも削除**する（JSで隠れるが、検索エンジンにはHTMLが残るため）。
+- **期限つきの表示は `data-expires="YYYY-MM-DD"`**（日本時間でその日になったらJSが要素ごと外す）。仕組みは次のキャンペーン用に残してある。
+  ✅ **夏割（9/30まで）の要素はブランチ `fix/natsuwari-cleanup-2026-10` でHTMLから削除済み**（トップの `#summer-campaign`・ヒーローのピル・ナビの「夏割」・コース選びとコース一覧の夏割の行、下層15本のナビと `.camp`・総額シミュレーターの夏割の行、`pages/` と `build.py`、`llms.txt` の夏割の行）。
+  JSに外させると読み込み中に見出しがずれる（CLS）ので、**次のキャンペーンも終わったらHTMLから消す**。広告LP `lp/owd/` `lp/aow/`・まんが・`buddy/`・`tsuzukeru/` の夏割の記述は別作業で残っている。
 - 映像は `video/home/`（すべて `?v=1` 付き。**差し替えたら ?v= を上げる**＝サーバーが7日キャッシュ）：
   PV `umigaku-pv-2026-720.mp4`（H.264・全端末）＋ `umigaku-pv-2026-1080-hevc.mp4`（幅1000px以上で対応ブラウザだけ）＋字幕 `umigaku-pv-2026-ja.vtt`／
   PVの無音ループ `umigaku-pv-2026-teaser.mp4`（見えている間だけ再生）／空撮 `jogashima-miyagawa-720.mp4`（章の境目にキーフレームを入れてある。区間は `data-start/end`）／
@@ -394,7 +395,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 
 - ルートの `llms.txt` はAI検索（ChatGPT・Perplexity・Claude等）向けのサイト概要。robots.txt からもコメントで案内している。
 - 事業概要・コース料金・特典・主要ページ・FAQ要約を1枚に集約。**料金や特典を変えたら必ずここも更新する**（「2026年8月現在」の日付表記も上げる）。
-- ⚠ **賞味期限**: 「夏のLINE特典（9/30まで）」の記載あり。10月に入ったら、まんがP11の差し替えと同じタイミングで夏割の行を削除すること。
+- ✅ 「夏のLINE特典（9/30まで）」の行は削除済み（`fix/natsuwari-cleanup-2026-10`・見出しは「常設の特典」に・日付表記は2026年10月現在）。
 - 新しいページ（まんが新作・特典ページ等）を公開したら「主要ページ」節にも足す。**まんがの各話一覧（「解説まんが（各話）」節）と主要ページのまんが行は `sync_episodes.py` が自動生成する**ので手で書かない。
 - `ai-sitemap.xml` のまんが各話も sync が `<!-- manga:episodes:start/end -->` の間に生成する。
 - robots.txt の AI クローラ節に ClaudeBot / Claude-User / Claude-SearchBot / OAI-SearchBot / Google-Extended を追加（2026-08-19）。

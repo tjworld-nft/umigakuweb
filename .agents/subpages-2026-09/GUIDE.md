@@ -42,7 +42,7 @@
 - 画像は `width` `height` `loading="lazy"` `decoding="async"`（ヒーローだけ fetchpriority="high"・lazy なし）と、意味のある alt。使える写真は `image/sub/*`（今回撮影分・`tools/prep_images.py` の JOBS に一覧）と `image/optimized/*`、`image/home/*`（ただし `sites-step-*.webp` は文字入りなので使わない）。
 - Font Awesome は使わない（アイコンは build.py の sprite: i-line i-mail i-play i-clock i-pin i-train i-cal i-fb i-x i-ig を `<svg aria-hidden="true"><use href="#i-line"/></svg>` で）。絵文字のアイコンも使わない。
 - LINEボタンは `class="btn-line"` ＋ `data-line-msg="送る文面"`（押すと文面がコピーされる）。
-- 期間限定（夏割・9/30まで）の表示には `data-expires="2026-10-01"` を付ける。
+- 期間限定の表示には `data-expires="終了日の翌日"` を付ける（例：夏割は `2026-10-01`。9/30で終了し、HTMLからも削除済み）。期間が終わったら JS 任せにせず HTML と pages/ からも消す（読み込み中のずれを防ぐ）。
 - 新しいCSSクラスを作らない（page.css を読んで、あるものを使う）。どうしても必要なら style 属性で最小限。
 - 見出しの階層を守る（h1 は1つ、h2 はセクション、h3 はその中）。
 

@@ -156,7 +156,6 @@ def header(cur, cta='#contact'):
 
       <nav class="desktop-nav" aria-label="メインナビゲーション">
 {chr(10).join(d)}
-        <a href="/#summer-campaign" class="nav-campaign" data-expires="2026-10-01">夏割 9/30まで</a>
         <a href="{cta}" class="nav-cta"><svg class="fa-svg" aria-hidden="true"><use href="#i-line"/></svg>予約・相談</a>
       </nav>
 
@@ -169,7 +168,6 @@ def header(cur, cta='#contact'):
   <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="ナビゲーションメニュー">
     <div class="mobile-nav-panel">
 {chr(10).join(mo)}
-      <a href="/#summer-campaign" class="nav-campaign" data-expires="2026-10-01">夏割キャンペーン 9/30まで</a>
       <div class="mobile-nav-cta">
         <a href="{LINE}" class="btn-line" target="_blank" rel="noopener noreferrer"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで空きを聞く</a>
         <a href="/contact/?from={{FROM}}-nav" class="btn btn--coral">予約・お問い合わせフォーム</a>
