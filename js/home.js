@@ -35,9 +35,12 @@
     $$('[data-expires]').forEach(function (el) {
       if (today >= el.getAttribute('data-expires')) el.parentNode && el.parentNode.removeChild(el);
     });
+    /* data-deadline-days="YYYY-MM-DD" の中の .days に「あと◯日」を入れる（締切は要素ごとに書く） */
     var t = jstNow();
-    var days = Math.round((Date.UTC(2026, 8, 30) - Date.UTC(t.getFullYear(), t.getMonth(), t.getDate())) / 86400000);
     $$('[data-deadline-days]').forEach(function (w) {
+      var p = (w.getAttribute('data-deadline-days') || '').split('-');
+      if (p.length !== 3) { w.hidden = true; return; }
+      var days = Math.round((Date.UTC(+p[0], +p[1] - 1, +p[2]) - Date.UTC(t.getFullYear(), t.getMonth(), t.getDate())) / 86400000);
       if (days < 0) { w.hidden = true; return; }
       var slot = $('.days', w);
       if (slot) slot.textContent = days === 0 ? '本日まで' : 'あと' + days + '日';
