@@ -56,6 +56,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://miura-diving.com/mydry/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://miura-diving.com/tsuzukeru/</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
