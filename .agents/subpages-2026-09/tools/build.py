@@ -320,7 +320,7 @@ def build(name):
     webpage = {
         '@type': m.get('pageType', 'WebPage'), '@id': url + '#webpage', 'url': url, 'name': m['title'],
         'description': m['desc'], 'isPartOf': {'@id': BASE + '/#website'}, 'inLanguage': 'ja',
-        'breadcrumb': {'@id': url + '#breadcrumb'}, 'dateModified': MODIFIED,
+        'breadcrumb': {'@id': url + '#breadcrumb'}, 'dateModified': m.get('modified', MODIFIED),
         'primaryImageOfPage': {'@type': 'ImageObject', 'url': BASE + m['og']},
         'publisher': {'@id': BASE + '/#org'},
     }

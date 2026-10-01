@@ -1,0 +1,19 @@
+[
+  {
+    "@type": "Offer",
+    "@id": "https://miura-diving.com/mydry/#offer",
+    "name": "マイドライ割（ドライスーツのご注文特典）",
+    "description": "2026年10月1日〜12月31日に三浦 海の学校でドライスーツ（MOBBY'S）を注文した方は、PADIドライスーツ・ダイバー スペシャルティ講習が半額の13,750円（税込・通常27,500円）。オープンウォーター講習を受ける方は、講習のレンタル器材代（2日分11,000円）も無料。受講は2027年3月31日まで。",
+    "price": "13750",
+    "priceCurrency": "JPY",
+    "validFrom": "2026-10-01",
+    "validThrough": "2026-12-31",
+    "itemOffered": {
+      "@type": "Course",
+      "name": "PADIドライスーツ・ダイバー スペシャルティ講習",
+      "description": "ドライスーツの着方、空気の入れ方と抜き方、浮力の取り方を練習する講習。",
+      "provider": {"@type": "SportsActivityLocation", "@id": "https://miura-diving.com/#school", "name": "三浦 海の学校", "url": "https://miura-diving.com/"}
+    },
+    "seller": {"@type": "SportsActivityLocation", "@id": "https://miura-diving.com/#school", "name": "三浦 海の学校", "url": "https://miura-diving.com/"}
+  }
+]
