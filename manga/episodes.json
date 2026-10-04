@@ -439,6 +439,35 @@
           "url": "https://miura-diving.com/trial-diving/"
         }
       ]
+    },
+    {
+      "slug": "mydry-wari",
+      "ep": 23,
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "short": "冬の海を、自分の一着で。",
+      "title": "ドライスーツは買う？借りる？をまんがで｜冬の海を自分の一着で｜三浦 海の学校",
+      "description": "ドライスーツは買うもの？借りるもの？借りても冬は潜れます。そのうえで、体に合う一着を採寸して作り、届いた一着で講習を受けるのがいちばんの近道。注文から届くまでの流れと、2026年12月31日までのマイドライ割（講習が半額）を全12ページで。",
+      "related": [
+        "drysuit-prep",
+        "winter-drysuit",
+        "gear-rental",
+        "ccard-is-start"
+      ],
+      "sources": [
+        {
+          "name": "三浦 海の学校「マイドライ割」（特典の条件・注文から届くまで）",
+          "url": "https://miura-diving.com/mydry/"
+        },
+        {
+          "name": "三浦 海の学校「秋冬のダイビング」（ドライスーツの季節・レンタル）",
+          "url": "https://miura-diving.com/winter-diving/"
+        },
+        {
+          "name": "MOBBY'S 公式サイト（ドライスーツ）",
+          "url": "https://www.mobby.co.jp/products_cat/drysuits/"
+        }
+      ]
     }
   ]
 }
