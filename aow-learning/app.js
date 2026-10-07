@@ -1,7 +1,30 @@
 (() => {
-  const modules = ["ppb", "navigation", "naturalist", "deep", "boat"];
-  const legacyModules = ["ppb", "navigation", "naturalist"];
-  const labels = { ppb: "PPB", navigation: "ナビゲーション", naturalist: "ナチュラリスト", deep: "ディープ", boat: "ボート" };
+  // 保護ルートが講座情報を渡す。章数や完了表示を講座名の二択にしない。
+  const fallbackConfig = {
+    slug: "aow", curriculumVersion: 2,
+    modules: ["ppb", "navigation", "naturalist", "deep", "boat"],
+    legacyModules: ["ppb", "navigation", "naturalist"],
+    labels: { ppb: "PPB", navigation: "ナビゲーション", naturalist: "ナチュラリスト", deep: "ディープ", boat: "ボート" },
+    instructorReview: false, questionCount: 41
+  };
+  let courseConfig = fallbackConfig;
+  const configContent = document.querySelector('meta[name="course-config"]')?.content;
+  if (configContent) {
+    try {
+      const parsed = JSON.parse(configContent);
+      if (parsed && Array.isArray(parsed.modules) && parsed.modules.length) courseConfig = parsed;
+    } catch (_) {
+      // 旧HTMLと共通JSの組み合わせでもAOWの既存記録は扱える。
+    }
+  }
+  const courseSlug = courseConfig.slug;
+  const curriculumVersion = Number(courseConfig.curriculumVersion);
+  const apiUrl = "api.php?course=" + encodeURIComponent(courseSlug);
+  const modules = courseConfig.modules;
+  const legacyModules = courseConfig.legacyModules || [];
+  const labels = courseConfig.labels;
+  const instructorReview = Boolean(courseConfig.instructorReview);
+  const questionCount = Number(courseConfig.questionCount);
   const csrf = document.querySelector('meta[name="csrf-token"]')?.content || "";
   const adminPreview = document.querySelector('meta[name="admin-preview"]')?.content === "1";
   let learnerId = document.querySelector('meta[name="learner-id"]')?.content || "";
@@ -118,7 +141,7 @@
     saveTimer = undefined;
     if (adminPreview) {
       if (issueCompletion && allReady() && allModulesComplete()) {
-        state.completion = { learnerId, issuedAt: new Date().toISOString(), code: "ADMIN-PREVIEW", curriculumVersion: 2 };
+        state.completion = { learnerId, issuedAt: new Date().toISOString(), code: "ADMIN-PREVIEW", curriculumVersion };
       }
       renderProgress();
       return Promise.resolve();
@@ -131,7 +154,7 @@
     const revision = stateRevision;
     noticeSavingIfSlow();
     const request = saveQueue.catch(() => undefined).then(async () => {
-      const response = await fetch("api.php", {
+      const response = await fetch(apiUrl, {
         method: "POST",
         credentials: "same-origin",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -179,9 +202,9 @@
     clearTimeout(saveTimer);
     saveTimer = undefined;
     const body = buildPayload(false);
-    if (navigator.sendBeacon && navigator.sendBeacon("api.php", new Blob([body], { type: "application/json" }))) return;
+    if (navigator.sendBeacon && navigator.sendBeacon(apiUrl, new Blob([body], { type: "application/json" }))) return;
     try {
-      fetch("api.php", {
+      fetch(apiUrl, {
         method: "POST",
         credentials: "same-origin",
         keepalive: true,
@@ -316,8 +339,8 @@
   }
 
   function requiredModules() {
-    const version = Number(state.completion?.curriculumVersion || state.curriculumVersion || 2);
-    return state.completion && version === 1 ? legacyModules : modules;
+    const version = Number(state.completion?.curriculumVersion || state.curriculumVersion || curriculumVersion);
+    return legacyModules.length > 0 && state.completion && version === 1 ? legacyModules : modules;
   }
 
   function allModulesComplete() {
@@ -325,17 +348,20 @@
   }
 
   function renderCompletion(completed, required) {
-    const legacyCompletion = Boolean(state.completion) && Number(state.completion.curriculumVersion || state.curriculumVersion || 2) === 1;
+    const legacyCompletion = legacyModules.length > 0 && Boolean(state.completion) && Number(state.completion.curriculumVersion || state.curriculumVersion || curriculumVersion) === 1;
     issueCompletionButton.disabled = !loaded || completed !== required.length || !allReady() || Boolean(state.completion);
-    issueCompletionButton.textContent = state.completion ? "修了記録 発行済み ✓" : "事前学科の修了画面を発行";
+    issueCompletionButton.textContent = state.completion ? (instructorReview ? "学習記録 発行済み ✓" : "修了記録 発行済み ✓") : (instructorReview ? "事前学習の完了画面を発行" : "事前学科の修了画面を発行");
     const proof = document.getElementById("completionProof");
     const valid = Boolean(state.completion);
     proof.hidden = !valid;
     if (!valid) return;
+    // SPの見出しと確認待ちの表示は、各教材HTMLの文言を維持する。
     document.getElementById("completionName").textContent = state.completion.learnerId || learnerId;
     document.getElementById("completionDate").textContent = new Intl.DateTimeFormat("ja-JP", { dateStyle: "long", timeStyle: "short" }).format(new Date(state.completion.issuedAt));
     document.getElementById("completionCode").textContent = state.completion.code;
-    document.getElementById("completionSummary").textContent = legacyCompletion
+    document.getElementById("completionSummary").textContent = instructorReview
+      ? `全${modules.length}章・${questionCount}問の知識確認を終えた記録です。正式な知識開発と海洋実習の修了は担当者が確認します。PADI公式eLearningの修了証・SP認定証ではありません。`
+      : legacyCompletion
       ? "PPB・アンダーウォーター・ナビゲーション・アンダーウォーター・ナチュラリストの全21問を修了した旧3科目版の記録です。ディープとボートは追加教材として閲覧できます。"
       : "PPB・アンダーウォーター・ナビゲーション・アンダーウォーター・ナチュラリスト・ディープ・ボートの全41問に正解しました。この画面を講習当日に提示してください。";
   }
@@ -346,7 +372,7 @@
       ? required.length
       : required.filter((name) => moduleState(name).complete).length;
     const percentage = Math.round((completed / required.length) * 100);
-    const legacyCompletion = Boolean(state.completion) && required.length === legacyModules.length;
+    const legacyCompletion = legacyModules.length > 0 && Boolean(state.completion) && required.length === legacyModules.length;
     document.getElementById("progressNumber").textContent = percentage;
     document.getElementById("progressRing").style.setProperty("--progress", percentage);
     document.getElementById("mobileProgress").textContent = `${completed} / ${required.length} 完了`;
@@ -393,8 +419,10 @@
     }
     const checklist = document.getElementById("dayChecklist");
     checklist.hidden = completed !== required.length;
-    document.getElementById("finish-title").textContent = legacyCompletion ? "事前学科は修了済みです。" : "5レッスン全問正解で、事前学科修了。";
-    document.getElementById("finishText").textContent = legacyCompletion
+    document.getElementById("finish-title").textContent = instructorReview ? `${modules.length}章を学び、海へ行く準備を。` : (legacyCompletion ? "事前学科は修了済みです。" : "5レッスン全問正解で、事前学科修了。");
+    document.getElementById("finishText").textContent = instructorReview
+      ? `全${questionCount}問と最終チェックを終えると、事前学習完了の記録を発行できます。担当インストラクターへ提示してください。`
+      : legacyCompletion
       ? "旧3科目版の修了記録はそのまま有効です。ディープとボートは追加教材として学習できます。"
       : completed === required.length
         ? "5科目すべての知識確認が完了しました。最終チェック後に、サーバーで修了記録を発行してください。"
@@ -430,7 +458,7 @@
     }
     setSyncStatus("saving", "進捗を読み込んでいます…");
     try {
-      const response = await fetch("api.php", { credentials: "same-origin", headers: { Accept: "application/json" } });
+      const response = await fetch(apiUrl, { credentials: "same-origin", headers: { Accept: "application/json" } });
       if (response.status === 401) {
         location.href = "login.php";
         return;
@@ -440,7 +468,6 @@
       mergeServerState(payload.state);
       learnerId = payload.learnerId || learnerId;
     } catch (_) {
-      loadFailed = true;
       setSyncStatus("error", "進捗を読み込めませんでした。通信を確認してください。", { label: "再読み込み", href: location.href });
       return;
     }

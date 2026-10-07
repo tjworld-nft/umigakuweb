@@ -22,3 +22,25 @@
 ## Adding courses later
 
 Add the course to the `courses` seed in `lib.php`, create its protected course route and answer key, then set `active = 1` when its content is ready. Existing users can redeem a newly issued course code from their dashboard.
+
+
+## Night Diver SP (2026-10-07)
+
+- Course slug: `night`; protected route: `/aow-learning/course.php?course=night`.
+- Content: `night.html`, `night.css`; six lessons and 30 original questions.
+- The existing admin can issue a code for Night alone or with AOW. Existing learners redeem a new code from their dashboard.
+- Progress and `NIGHT-YYYYMMDD-XXXXXXXX` learning records are independent of AOW. Schema 4 adds the catalog entry without replacing existing student records.
+- Admin previews do not save student progress. Direct `.html` requests remain forbidden by `.htaccess`.
+- Completion means **shop pre-study completed / instructor confirmation pending**. It does not certify completion of official PADI eLearning, knowledge development, practical dives, or a specialty certification.
+- Before formal course use, the responsible instructor must compare all content with the current Night Diver Specialty Instructor Guide, required official learning materials, Knowledge Review, and current Training Bulletins. The dedicated Night SP guide was not available for full verification.
+- Research scope and limitations: `.agents/night-diver-learning.md`.
+- Regression check: `php .agents/tests/learning-courses.php` (uses and removes a temporary SQLite database; never loads production student data).
+
+## Dry Suit Diver SP pre-study (2026-10-07)
+
+- `dry` is a separate protected course at `course.php?course=dry`, with six lessons and 30 original questions.
+- Admin preview, invite-code selection, progress, and `DRY-` learning records use the existing management interface. AOW, night, and dry states remain independent.
+- Schema version 5 adds/enables dry without replacing accounts, enrollments, or course progress. PHP provides the client course configuration and the course-specific CSS version.
+- This records shop pre-study completion, pending instructor review. Verify the current Dry Suit Specialty Instructor Guide, official learning materials and Knowledge Review before using it as formal knowledge development. It does not issue PADI certification.
+- Research evidence stays in `.agents/dry-diver-learning.md`. Student pages have no reference link lists, as requested.
+- Regression: `php .agents/tests/learning-courses.php` runs 49 checks in a disposable isolated database.
