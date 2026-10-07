@@ -1,0 +1,24 @@
+/* Dry Suit Diver lessons share the AOW account and quiz interface. */
+.dry-hero:before{background:radial-gradient(ellipse at 82% 40%,rgba(231,181,105,.2),transparent 52%),linear-gradient(120deg,#102633,#245060)}
+.dry-hero:after{right:8%;bottom:-80px;width:300px;height:300px;border-color:rgba(121,214,207,.2);box-shadow:0 0 0 70px rgba(121,214,207,.04),0 0 0 140px rgba(121,214,207,.02)}
+.dry-hero .hero__inner{align-items:center}.dry-hero h1{font-size:clamp(36px,5.5vw,64px)}
+.lesson-nav a{width:min(16.666%,190px);flex:0 0 min(16.666%,190px)}
+.lesson-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.lesson-card,.lesson-card:first-child,.lesson-card:nth-child(4){grid-column:auto;min-height:310px}
+.lesson-card h3{font-family:inherit;font-size:25px;font-weight:800;margin-top:35px;line-height:1.45}
+.lesson-hero{grid-template-columns:80px 1fr;min-height:220px;gap:32px}.lesson-hero h2{font-size:clamp(32px,4.8vw,52px)}.lesson-hero>div:nth-child(2)>p:last-child{max-width:800px}
+.lesson-body{max-width:980px;padding-top:30px}.objectives{padding:34px 0 44px}
+.dry-topic{margin:0 0 48px}.dry-topic h3,.dry-case h3{font-size:clamp(23px,3vw,31px);line-height:1.5;margin:0 0 18px}.dry-topic p{margin:0 0 18px}.dry-topic .field-steps{margin:24px 0}.dry-topic .field-steps li{grid-template-columns:30px 150px 1fr}
+.dry-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0}.dry-facts>div{padding:24px;background:var(--foam);border-top:3px solid var(--sea)}.dry-facts b{display:block;color:var(--navy);font-size:22px}.dry-facts span{display:block;font-size:14px;margin-top:8px;color:#405965}
+.safety-note{margin:28px 0 44px}.dry-case{margin:44px 0;padding:28px 32px;border:1px solid var(--sea);background:#f8fcfa}.dry-case details{border-top:1px solid var(--line);margin-top:22px;padding-top:16px}.dry-case summary{cursor:pointer;color:var(--sea);font-weight:800}.dry-case details p{margin:16px 0 0}
+.dry-brief{padding:20px 0 65px}.dry-brief h2{font-size:clamp(27px,4vw,40px)}.dry-brief-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:28px 0}.dry-brief-grid>div{padding:24px;background:white;border-bottom:3px solid var(--sea)}.dry-brief-grid b{font-size:18px;color:var(--navy)}.dry-brief-grid p{font-size:14px;margin-bottom:0}
+.dry-pending{display:inline-block;padding:6px 14px;background:#f8edd0;color:#493b18!important;font-size:14px;font-weight:800}.completion-proof strong{font-size:clamp(24px,4vw,34px)}
+@media(max-width:820px){.lesson-nav a{width:auto;flex:0 0 94px}.lesson-cards{grid-template-columns:1fr 1fr}.lesson-card,.lesson-card:first-child,.lesson-card:nth-child(4){grid-column:auto}.lesson-hero{grid-template-columns:44px 1fr;gap:14px;min-height:190px}.lesson-hero__number{font-size:34px}.dry-facts,.dry-brief-grid{grid-template-columns:1fr}.dry-topic .field-steps li{grid-template-columns:30px 1fr}.signal-board figure{display:block}.signal-board figure>div{margin-bottom:14px}.dry-case{padding:24px}.dry-route{gap:12px;padding:20px 14px}.dry-route>span{flex-basis:60px;font-size:12px}}
+@media(max-width:520px){.lesson-cards{grid-template-columns:1fr}.lesson-card{min-height:260px}.dry-topic .field-steps span{grid-column:2}.signal-board{grid-template-columns:1fr}.signal-board figure{display:flex}.signal-board figure>div{margin-bottom:0}.hero__meta{gap:16px}.hero__meta b{font-size:20px}.completion-proof{overflow-wrap:anywhere}}
+
+
+.dry-hero .eyebrow{color:#f4d08c}
+.dry-volume{display:grid;gap:20px;padding:26px;background:#f2f7f5;margin:24px 0}
+.dry-volume>div{display:grid;grid-template-columns:190px 1fr;gap:12px;align-items:center}
+.dry-volume b{font-size:15px}.dry-volume i{display:block;width:var(--volume);height:24px;background:#197f85;border-radius:4px}.dry-volume span{grid-column:2;font-size:13px;color:#405965}
+.dry-caption{font-size:13px;color:#405965}
+@media(max-width:520px){.dry-volume>div{grid-template-columns:1fr}.dry-volume span{grid-column:auto}}

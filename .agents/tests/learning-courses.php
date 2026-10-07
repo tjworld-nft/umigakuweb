@@ -31,7 +31,7 @@ function add_user(PDO $pdo, string $id): int {
 }
 
 $pdo = db();
-check((int)$pdo->query('PRAGMA user_version')->fetchColumn() === 4, 'fresh schema version 4');
+check((int)$pdo->query('PRAGMA user_version')->fetchColumn() === 5, 'fresh schema version 5');
 check(course_available('night') && course_available('aow'), 'night and aow active');
 check(!course_available('deep') && !course_available('../access-config.php'), 'unsupported and inactive courses rejected');
 check(count(course_answer_key('night')) === 6 && array_sum(array_map('count', course_answer_key('night'))) === 30, 'night has six modules and thirty questions');
@@ -49,7 +49,7 @@ $pdo->prepare('INSERT INTO course_progress (user_id, course_slug, state_json, co
 $pdo->exec('DELETE FROM courses WHERE slug = "night"');
 $pdo->exec('PRAGMA user_version = 3');
 migrate($pdo);
-check(course_available('night') && (int)$pdo->query('PRAGMA user_version')->fetchColumn() === 4, 'schema 3 upgrades and adds night');
+check(course_available('night') && (int)$pdo->query('PRAGMA user_version')->fetchColumn() === 5, 'schema 3 upgrades and adds night with current schema');
 $preserved = $pdo->query('SELECT state_json FROM course_progress WHERE user_id = ' . $legacyId)->fetchColumn();
 check($preserved === $legacyJson, 'migration leaves legacy aow progress byte-for-byte');
 $loadedLegacy = load_progress($legacyId);
@@ -100,5 +100,82 @@ check($savedLegacy['completion']['code'] === $legacyCode && $savedLegacy['comple
 $doneAow = save_progress($dualId, complete_input('aow'), true);
 check(str_starts_with($doneAow['completion']['code'], 'AOW-') && $doneAow['completion']['curriculumVersion'] === 2, 'current aow completes with unchanged prefix and version');
 check(course_definition('night')['completion_label'] === '事前学習完了（インストラクター確認待ち）', 'night completion wording requires instructor confirmation');
+
+// Dry SP is independent of both existing courses, including on a v4 database.
+check(course_available('dry') && (int)$pdo->query('SELECT COUNT(*) FROM courses WHERE active = 1')->fetchColumn() === 3, 'three supported courses are active');
+$dryKey = course_answer_key('dry');
+check(array_keys($dryKey) === ['suit', 'prepare', 'buoyancy', 'skills', 'problems', 'care'] && array_sum(array_map('count', $dryKey)) === 30, 'dry has six named modules and thirty questions');
+$expectedDryAnswers = [
+    'suit' => ['b','a','c','b','a'], 'prepare' => ['c','b','a','c','b'],
+    'buoyancy' => ['a','c','b','a','c'], 'skills' => ['b','c','a','b','c'],
+    'problems' => ['c','a','b','c','a'], 'care' => ['a','b','c','a','b'],
+];
+foreach ($dryKey as $module => $answers) {
+    $expected = [];
+    foreach ($expectedDryAnswers[$module] as $index => $answer) $expected[$module . ($index + 1)] = $answer;
+    check($answers === $expected, 'dry answer key and question ids: ' . $module);
+}
+$dryEmpty = load_progress($dualId, 'dry');
+check($dryEmpty['curriculumVersion'] === 1 && json_encode($dryEmpty['modules']['suit']['answers']) === '{}', 'dry empty answers serialize as objects at curriculum one');
+$existingRows = $pdo->query('SELECT * FROM course_progress ORDER BY user_id, course_slug')->fetchAll();
+$existingEnrollments = $pdo->query('SELECT * FROM enrollments ORDER BY user_id, course_slug')->fetchAll();
+$dryVersionFourJson = '{"curriculumVersion":1,"modules":{"suit":{"answers":{"suit1":"b"},"complete":false}},"ready":{}}';
+$pdo->prepare('INSERT INTO course_progress (user_id, course_slug, state_json, updated_at) VALUES (?, ?, ?, ?)')->execute([$dualId, 'dry', $dryVersionFourJson, $legacyDate]);
+$pdo->exec('UPDATE courses SET active = 0, title = "Dry SP（準備中）" WHERE slug = "dry"');
+$pdo->exec('PRAGMA user_version = 4');
+migrate($pdo);
+check((int)$pdo->query('PRAGMA user_version')->fetchColumn() === 5 && course_available('dry') && (int)$pdo->query('SELECT COUNT(*) FROM courses WHERE slug = "dry"')->fetchColumn() === 1, 'schema four activates existing dry catalog row without duplicating it');
+check($pdo->query('SELECT * FROM course_progress WHERE course_slug != "dry" ORDER BY user_id, course_slug')->fetchAll() === $existingRows, 'v4 migration preserves all aow and night records byte-for-byte');
+check($pdo->query('SELECT * FROM enrollments ORDER BY user_id, course_slug')->fetchAll() === $existingEnrollments, 'v4 migration preserves all existing enrollments');
+check($pdo->query('SELECT state_json FROM course_progress WHERE course_slug = "dry"')->fetchColumn() === $dryVersionFourJson, 'activating a prepared dry course preserves its stored answers');
+$dryInviteCode = 'ENR-LOCAL-DRY';
+$pdo->prepare('INSERT INTO invite_codes (code_hash, code_hint, course_slugs, created_at) VALUES (?, ?, ?, ?)')->execute([token_hash($dryInviteCode), 'LOCAL', '["dry"]', now_iso()]);
+$pdo->beginTransaction();
+redeem_invite($pdo, invite_record($dryInviteCode), $dualId);
+$pdo->commit();
+check(has_course($dualId, 'aow') && has_course($dualId, 'night') && has_course($dualId, 'dry') && invite_record($dryInviteCode) === null, 'existing account redeems one-time dry code and keeps three course permissions');
+$beforeDryRows = $pdo->query('SELECT * FROM course_progress WHERE course_slug != "dry" ORDER BY user_id, course_slug')->fetchAll();
+$drySpoofed = ['curriculumVersion' => 999, 'completion' => ['code' => 'DRY-SPOOFED'], 'modules' => [], 'ready' => ['gear' => true, 'condition' => true, 'question' => true]];
+foreach (array_keys($dryKey) as $module) $drySpoofed['modules'][$module] = ['complete' => true];
+$drySaved = save_progress($dualId, $drySpoofed, true, 'dry');
+check($drySaved['completion'] === null && $drySaved['curriculumVersion'] === 1, 'dry rejects forged completion and unanswered complete flags');
+$dryInput = complete_input('dry');
+$dryInput['modules']['suit']['answers']['suit1'] = 'c';
+$drySaved = save_progress($dualId, $dryInput, true, 'dry');
+check(!$drySaved['modules']['suit']['complete'] && $drySaved['completion'] === null, 'dry wrong answer prevents module and completion record');
+$dryInput = complete_input('dry');
+$dryInput['modules']['care']['complete'] = false;
+$drySaved = save_progress($dualId, $dryInput, true, 'dry');
+check($drySaved['completion'] === null, 'dry requires learner to complete all six modules');
+$dryInput = complete_input('dry');
+$dryInput['ready']['gear'] = false;
+$drySaved = save_progress($dualId, $dryInput, true, 'dry');
+check($drySaved['completion'] === null, 'dry requires all final readiness checks');
+$drySaved = save_progress($dualId, complete_input('night'), true, 'dry');
+check($drySaved['completion'] === null && !isset($drySaved['modules']['plan']), 'night answers cannot complete the dry course');
+$dryInput = complete_input('dry');
+$dryInput['modules']['plan'] = ['answers' => ['plan1' => 'b'], 'complete' => true];
+$dryInput['modules']['suit']['answers']['unknown'] = 'b';
+$drySaved = save_progress($dualId, $dryInput, true, 'dry');
+check(str_starts_with($drySaved['completion']['code'], 'DRY-') && $drySaved['completion']['curriculumVersion'] === 1 && !isset($drySaved['modules']['plan']) && !isset($drySaved['modules']['suit']['answers']->unknown), 'dry issues DRY version one record and strips other course modules');
+check($pdo->query('SELECT * FROM course_progress WHERE course_slug != "dry" ORDER BY user_id, course_slug')->fetchAll() === $beforeDryRows, 'all dry saves leave both aow and night rows byte-for-byte unchanged');
+$dryCode = $drySaved['completion']['code'];
+$dryDate = $drySaved['completion']['issuedAt'];
+$drySaved = save_progress($dualId, [], false, 'dry');
+check($drySaved['completion']['code'] === $dryCode && $drySaved['completion']['issuedAt'] === $dryDate, 'dry completion number and date survive a later incomplete save');
+$afterDryRow = $pdo->query('SELECT * FROM course_progress WHERE course_slug = "dry"')->fetchAll();
+$beforeNightRow = $pdo->query('SELECT * FROM course_progress WHERE course_slug = "night"')->fetchAll();
+save_progress($dualId, complete_input('aow'), true, 'aow');
+check($pdo->query('SELECT * FROM course_progress WHERE course_slug = "dry"')->fetchAll() === $afterDryRow && $pdo->query('SELECT * FROM course_progress WHERE course_slug = "night"')->fetchAll() === $beforeNightRow, 'aow save leaves dry and night rows unchanged');
+$beforeAowRows = $pdo->query('SELECT * FROM course_progress WHERE course_slug = "aow" ORDER BY user_id')->fetchAll();
+save_progress($dualId, complete_input('night'), true, 'night');
+check($pdo->query('SELECT * FROM course_progress WHERE course_slug = "dry"')->fetchAll() === $afterDryRow && $pdo->query('SELECT * FROM course_progress WHERE course_slug = "aow" ORDER BY user_id')->fetchAll() === $beforeAowRows, 'night save leaves dry and aow rows unchanged');
+check(load_progress($dualId, 'aow')['completion']['code'] === $doneAow['completion']['code'] && load_progress($dualId, 'night')['completion']['code'] === $nightCode && load_progress($dualId, 'dry')['completion']['code'] === $dryCode, 'three courses reload their independent record numbers');
+$dryConfig = course_client_config('dry');
+$nightConfig = course_client_config('night');
+$aowConfig = course_client_config('aow');
+check($dryConfig['modules'] === array_keys($dryKey) && $dryConfig['instructorReview'] && $dryConfig['legacyModules'] === [] && $dryConfig['completionLabel'] === '事前学習完了（インストラクター確認待ち）', 'dry shared UI configuration requires instructor confirmation and has no aow legacy modules');
+check($nightConfig['instructorReview'] && $nightConfig['legacyModules'] === [] && !$aowConfig['instructorReview'] && $aowConfig['legacyModules'] === ['ppb', 'navigation', 'naturalist'], 'shared UI keeps night independent and retains aow legacy compatibility');
+check(course_definition('dry')['styles'] === ['styles.css', 'dry.css'] && course_definition('night')['styles'] === ['styles.css', 'night.css'], 'course-specific styles remain independently selected');
 
 echo json_encode(['passed' => count($checks), 'checks' => $checks, 'database' => app_config()['database_path']], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . PHP_EOL;

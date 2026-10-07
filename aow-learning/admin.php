@@ -87,7 +87,7 @@ $courseTitles = array_column($courses, 'title', 'slug');
 $invites = $pdo->query('SELECT * FROM invite_codes ORDER BY id DESC LIMIT 30')->fetchAll();
 portal_head('講座管理');
 ?>
-<header class="portal-header"><div class="shell"><a class="brand" href="admin.php">三浦 海の学校｜講座管理</a><div class="header-actions"><a href="course.php?course=aow">AOW教材</a><a href="course.php?course=night">ナイトSP教材</a><a href="admin.php?logout=1">管理画面をログアウト</a></div></div></header>
+<header class="portal-header"><div class="shell"><a class="brand" href="admin.php">三浦 海の学校｜講座管理</a><div class="header-actions"><a href="course.php?course=aow">AOW教材</a><a href="course.php?course=night">ナイトSP教材</a><a href="course.php?course=dry">ドライSP教材</a><a href="admin.php?logout=1">管理画面をログアウト</a></div></div></header>
 <main class="dashboard shell">
   <div class="dashboard-top"><div><p class="eyebrow">LEARNING ADMIN</p><h1>匿名受講アカウント管理</h1><p class="lead">個人情報を保存せず、受講者IDと講座権限だけを管理します。</p></div></div>
   <?php if ($generated): ?><div class="generated-code">今回発行した初回登録コード（この画面でのみ表示）<b><?= h($generated) ?></b></div><?php endif; ?>
@@ -101,6 +101,7 @@ portal_head('講座管理');
   <section class="student-url-card" aria-labelledby="student-url-title"><div><p class="eyebrow">SEND TO STUDENTS</p><h2 id="student-url-title">お客様へ送る受講生サイト</h2><p>初回登録コードと一緒に、このURLをお客様へ送ってください。</p></div><div class="student-url-actions"><label for="studentSiteUrl">受講生サイトURL</label><div><input id="studentSiteUrl" type="text" value="https://miura-diving.com/aow-learning/" readonly><button type="button" data-copy-target="studentSiteUrl" data-copy-message="受講生サイトのURLをコピーしました。お客様へのメッセージに貼り付けられます。">URLをコピー</button><a href="https://miura-diving.com/aow-learning/" target="_blank" rel="noopener">サイトを開く ↗</a></div><p data-copy-status aria-live="polite"></p></div></section>
   <section class="admin-preview-card"><div><p class="eyebrow">CONTENT PREVIEW</p><h2>AOW教材の全内容を確認</h2><p>PPB・ナビゲーション・ナチュラリスト・ディープ・ボート、全41問、修了画面まで管理者専用プレビューで確認できます。操作は受講者記録へ保存されません。</p></div><a href="course.php?course=aow">教材を開く →</a></section>
   <section class="admin-preview-card"><div><p class="eyebrow">NIGHT DIVER / CONTENT PREVIEW</p><h2>ナイトダイバーSPの事前学習</h2><p>計画・ライト・合図・ナビゲーション・トラブル・環境の6レッスン、全30問。完了は「事前学習完了（インストラクター確認待ち）」として記録します。担当インストラクターは現行SPインストラクター・ガイドと公式教材に照合し、必要な知識開発とレビューを確認してください。この教材だけで正式な学科修了やSP認定は成立しません。プレビューの操作は受講者記録へ保存されません。</p></div><a href="course.php?course=night">ナイトSP教材を開く →</a></section>
+  <section class="admin-preview-card"><div><p class="eyebrow">DRY SUIT DIVER / CONTENT PREVIEW</p><h2>ドライスーツダイバーSPの事前学習</h2><p>スーツ・準備・浮力・基本操作・トラブル・手入れの6レッスン、全30問。完了は「事前学習完了（インストラクター確認待ち）」として記録します。担当インストラクターは現行SPインストラクター・ガイドと公式教材に照合し、必要な知識開発とレビューを確認してください。この教材だけで正式な学科修了やSP認定は成立しません。プレビューの操作は受講者記録へ保存されません。</p></div><a href="course.php?course=dry">ドライSP教材を開く →</a></section>
   <div class="admin-grid">
     <section class="panel"><h2>初回登録コードを発行</h2><form method="post"><input type="hidden" name="csrf" value="<?= h(csrf_token()) ?>"><input type="hidden" name="action" value="create_invite"><div class="check-options">
       <?php foreach ($courses as $course): ?><label><input type="checkbox" name="courses[]" value="<?= h((string)$course['slug']) ?>" <?= (int)$course['active'] ? '' : 'disabled' ?>> <?= h((string)$course['title']) ?><?= (int)$course['active'] ? '' : '（準備中）' ?></label><?php endforeach; ?>
@@ -124,7 +125,7 @@ portal_head('講座管理');
           $doneCount = 0;
           foreach ($moduleLabels as $moduleSlug => $_label) if (!empty($rowModules[$moduleSlug]['complete'])) $doneCount++;
         ?>
-        <div class="admin-course-progress"><strong><?= $courseSlug === 'night' ? 'ナイトSP' : 'AOW' ?></strong>
+        <div class="admin-course-progress"><strong><?= h((string)$definition['short_title']) ?></strong>
           <?php if ($record && $record['completion_code']): ?><b><?= h((string)$definition['completion_label']) ?> <?= h(jst_short((string)$record['completed_at'], false)) ?></b><small><?= h((string)$record['completion_code']) ?></small>
           <?php else: ?><b><?= $doneCount ?> / <?= count($moduleLabels) ?> レッスン</b>
             <span class="lesson-dots" aria-label="<?= h(implode('・', array_map(fn($s, $l) => $l . (empty($rowModules[$s]['complete']) ? '未完了' : '完了'), array_keys($moduleLabels), $moduleLabels))) ?>">
