@@ -75,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 $courses = $pdo->query('SELECT * FROM courses ORDER BY sort_order')->fetchAll();
+$enrollableCourses = array_filter($courses, static fn(array $course): bool => (int)$course['active'] === 1);
 $users = $pdo->query('SELECT u.id, u.learner_id, u.status, u.created_at, u.last_login_at,
     GROUP_CONCAT(DISTINCT e.course_slug) AS courses
     FROM users u LEFT JOIN enrollments e ON e.user_id = u.id
@@ -104,7 +105,7 @@ portal_head('講座管理');
   <section class="admin-preview-card"><div><p class="eyebrow">DRY SUIT DIVER / CONTENT PREVIEW</p><h2>ドライスーツダイバーSPの事前学習</h2><p>スーツ・準備・浮力・基本操作・トラブル・手入れの6レッスン、全30問。完了は「事前学習完了（インストラクター確認待ち）」として記録します。担当インストラクターは現行SPインストラクター・ガイドと公式教材に照合し、必要な知識開発とレビューを確認してください。この教材だけで正式な学科修了やSP認定は成立しません。プレビューの操作は受講者記録へ保存されません。</p></div><a href="course.php?course=dry">ドライSP教材を開く →</a></section>
   <div class="admin-grid">
     <section class="panel"><h2>初回登録コードを発行</h2><form method="post"><input type="hidden" name="csrf" value="<?= h(csrf_token()) ?>"><input type="hidden" name="action" value="create_invite"><div class="check-options">
-      <?php foreach ($courses as $course): ?><label><input type="checkbox" name="courses[]" value="<?= h((string)$course['slug']) ?>" <?= (int)$course['active'] ? '' : 'disabled' ?>> <?= h((string)$course['title']) ?><?= (int)$course['active'] ? '' : '（準備中）' ?></label><?php endforeach; ?>
+      <?php foreach ($enrollableCourses as $course): ?><label><input type="checkbox" name="courses[]" value="<?= h((string)$course['slug']) ?>"> <?= h((string)$course['title']) ?></label><?php endforeach; ?>
       </div><div class="field"><label for="valid_days">有効日数</label><input id="valid_days" name="valid_days" type="number" min="1" max="365" value="30"></div><button class="primary" type="submit">1回限りのコードを発行</button></form></section>
     <section class="panel"><h2>発行済みコード</h2><table><thead><tr><th>表示</th><th>講座</th><th>状態</th><th>期限</th></tr></thead><tbody><?php foreach ($invites as $invite): ?><tr><td><?= h((string)$invite['code_hint']) ?></td><td><?= h(implode(', ', json_decode((string)$invite['course_slugs'], true) ?: [])) ?></td><td><?= h((string)$invite['status']) ?></td><td><?= h(jst_short((string)$invite['expires_at'], false)) ?></td></tr><?php endforeach; ?></tbody></table></section>
   </div>
