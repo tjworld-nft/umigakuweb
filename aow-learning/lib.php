@@ -4,7 +4,7 @@ declare(strict_types=1);
 const APP_COURSE = 'aow';
 const COURSE_CURRICULUM_VERSION = 2;
 // テーブル定義や講座カタログを変えたら +1 する。教材版(COURSE_CURRICULUM_VERSION)とは別物。
-const SCHEMA_VERSION = 3;
+const SCHEMA_VERSION = 4;
 
 function app_config(): array
 {
@@ -169,12 +169,14 @@ function migrate(PDO $pdo): void
     $seed->execute(['aow', 'AOW 5ダイブ事前学習', 'PPB・ナビゲーション・ナチュラリスト・ディープ・ボート', 10, 1]);
     $seed->execute(['deep', 'Deep Diver SP（準備中）', 'AOWの1ダイブより先へ進む全4ダイブのスペシャルティ', 20, 0]);
     $seed->execute(['boat', 'Boat Diver SP（準備中）', 'AOWの1ダイブより先へ進む全2ダイブのスペシャルティ', 30, 0]);
+    $seed->execute(['night', 'ナイトダイバーSP 事前学習', '夜の計画・ライト・合図・ナビゲーション・トラブル・環境を学ぶ全30問', 40, 1]);
 
     // 既存DBの講座名も更新する。教材版とDBスキーマ版は混同しない。
     $catalog = $pdo->prepare('UPDATE courses SET title = ?, description = ?, sort_order = ?, active = ? WHERE slug = ?');
     $catalog->execute(['AOW 5ダイブ事前学習', 'PPB・ナビゲーション・ナチュラリスト・ディープ・ボート', 10, 1, 'aow']);
     $catalog->execute(['Deep Diver SP（準備中）', 'AOWの1ダイブより先へ進む全4ダイブのスペシャルティ', 20, 0, 'deep']);
     $catalog->execute(['Boat Diver SP（準備中）', 'AOWの1ダイブより先へ進む全2ダイブのスペシャルティ', 30, 0, 'boat']);
+    $catalog->execute(['ナイトダイバーSP 事前学習', '夜の計画・ライト・合図・ナビゲーション・トラブル・環境を学ぶ全30問', 40, 1, 'night']);
 
     $pdo->exec('PRAGMA user_version = ' . SCHEMA_VERSION);
 }
@@ -339,8 +341,54 @@ function clear_login_failures(string $key): void
     db()->prepare('DELETE FROM login_attempts WHERE attempt_key = ?')->execute([$key]);
 }
 
-function course_answer_key(): array
+// 公開可能な教材だけを定義する。URLの値をそのままファイル名には使わない。
+function course_definition(string $slug): ?array
 {
+    $definitions = [
+        'aow' => [
+            'file' => 'index.html', 'label' => 'AOW PRE-STUDY',
+            'curriculum_version' => COURSE_CURRICULUM_VERSION, 'completion_prefix' => 'AOW',
+            'completion_label' => '修了',
+            'module_labels' => ['ppb' => 'PPB', 'navigation' => 'ナビ', 'naturalist' => '観察', 'deep' => 'ディープ', 'boat' => 'ボート'],
+        ],
+        'night' => [
+            'file' => 'night.html', 'label' => 'NIGHT DIVER / PRE-STUDY',
+            'curriculum_version' => 1, 'completion_prefix' => 'NIGHT',
+            'completion_label' => '事前学習完了（インストラクター確認待ち）',
+            'module_labels' => ['plan' => '計画', 'lights' => 'ライト', 'signals' => '合図', 'navigation' => 'ナビ', 'problems' => 'トラブル', 'environment' => '環境'],
+        ],
+    ];
+    return $definitions[$slug] ?? null;
+}
+
+function course_curriculum_version(string $slug = APP_COURSE): int
+{
+    $definition = course_definition($slug);
+    if (!$definition) throw new InvalidArgumentException('Unsupported course.');
+    return (int)$definition['curriculum_version'];
+}
+
+function course_available(string $slug): bool
+{
+    if (!course_definition($slug)) return false;
+    $stmt = db()->prepare('SELECT active FROM courses WHERE slug = ?');
+    $stmt->execute([$slug]);
+    return (int)$stmt->fetchColumn() === 1;
+}
+
+function course_answer_key(string $slug = APP_COURSE): array
+{
+    if ($slug === 'night') {
+        return [
+            'plan' => ['plan1'=>'b','plan2'=>'c','plan3'=>'a','plan4'=>'b','plan5'=>'c'],
+            'lights' => ['lights1'=>'a','lights2'=>'c','lights3'=>'b','lights4'=>'a','lights5'=>'b'],
+            'signals' => ['signals1'=>'b','signals2'=>'a','signals3'=>'c','signals4'=>'b','signals5'=>'a'],
+            'navigation' => ['navigation1'=>'c','navigation2'=>'b','navigation3'=>'a','navigation4'=>'c','navigation5'=>'b'],
+            'problems' => ['problems1'=>'b','problems2'=>'c','problems3'=>'a','problems4'=>'b','problems5'=>'c'],
+            'environment' => ['environment1'=>'a','environment2'=>'b','environment3'=>'c','environment4'=>'a','environment5'=>'b'],
+        ];
+    }
+    if ($slug !== APP_COURSE) throw new InvalidArgumentException('Unsupported course.');
     return [
         'ppb' => ['ppb1'=>'b','ppb2'=>'a','ppb3'=>'c','ppb4'=>'b','ppb5'=>'c','ppb6'=>'a','ppb7'=>'b'],
         'navigation' => ['nav1'=>'c','nav2'=>'b','nav3'=>'a','nav4'=>'b','nav5'=>'c','nav6'=>'a','nav7'=>'b'],
@@ -350,12 +398,15 @@ function course_answer_key(): array
     ];
 }
 
-function clean_course_state(array $input, int $curriculumVersion = COURSE_CURRICULUM_VERSION): array
+function clean_course_state(array $input, ?int $curriculumVersion = null, string $slug = APP_COURSE): array
 {
-    if (!in_array($curriculumVersion, [1, COURSE_CURRICULUM_VERSION], true)) {
-        $curriculumVersion = COURSE_CURRICULUM_VERSION;
+    $currentVersion = course_curriculum_version($slug);
+    $curriculumVersion ??= $currentVersion;
+    $supportedVersions = $slug === APP_COURSE ? [1, $currentVersion] : [$currentVersion];
+    if (!in_array($curriculumVersion, $supportedVersions, true)) {
+        $curriculumVersion = $currentVersion;
     }
-    $keys = course_answer_key();
+    $keys = course_answer_key($slug);
     $state = ['curriculumVersion' => $curriculumVersion, 'modules' => [], 'ready' => []];
     $inputModules = isset($input['modules']) && is_array($input['modules']) ? $input['modules'] : [];
     foreach ($keys as $module => $answers) {
@@ -380,9 +431,9 @@ function clean_course_state(array $input, int $curriculumVersion = COURSE_CURRIC
     return $state;
 }
 
-function course_is_complete(array $state): bool
+function course_is_complete(array $state, string $slug = APP_COURSE): bool
 {
-    foreach (array_keys(course_answer_key()) as $module) {
+    foreach (array_keys(course_answer_key($slug)) as $module) {
         if (empty($state['modules'][$module]['complete'])) return false;
     }
     foreach (['gear', 'condition', 'question'] as $key) {
@@ -400,20 +451,20 @@ function load_progress(int $userId, string $slug = APP_COURSE): array
     if (!is_array($rawState)) $rawState = [];
     $curriculumVersion = isset($rawState['curriculumVersion'])
         ? (int)$rawState['curriculumVersion']
-        : ($row && $row['completion_code'] ? 1 : COURSE_CURRICULUM_VERSION);
-    $state = clean_course_state($rawState, $curriculumVersion);
+        : ($row && $row['completion_code'] ? 1 : course_curriculum_version($slug));
+    $state = clean_course_state($rawState, $curriculumVersion, $slug);
     $learnerStmt = db()->prepare('SELECT learner_id FROM users WHERE id = ?');
     $learnerStmt->execute([$userId]);
     $state['completion'] = $row && $row['completion_code'] ? [
         'learnerId' => (string)($learnerStmt->fetchColumn() ?: ''),
         'issuedAt' => $row['completed_at'],
         'code' => $row['completion_code'],
-        'curriculumVersion' => $curriculumVersion,
+        'curriculumVersion' => $state['curriculumVersion'],
     ] : null;
     return $state;
 }
 
-function save_progress(int $userId, array $input, bool $issueCompletion = false): array
+function save_progress(int $userId, array $input, bool $issueCompletion = false, string $slug = APP_COURSE): array
 {
     $pdo = db();
     // 読んで書くまでを1つの書き込みトランザクションにする。別のタブや端末から
@@ -421,7 +472,7 @@ function save_progress(int $userId, array $input, bool $issueCompletion = false)
     $ownTransaction = !$pdo->inTransaction();
     if ($ownTransaction) $pdo->beginTransaction();
     try {
-        $state = write_progress_row($pdo, $userId, $input, $issueCompletion);
+        $state = write_progress_row($pdo, $userId, $input, $issueCompletion, $slug);
         if ($ownTransaction) $pdo->commit();
     } catch (Throwable $e) {
         if ($ownTransaction && $pdo->inTransaction()) $pdo->rollBack();
@@ -430,23 +481,25 @@ function save_progress(int $userId, array $input, bool $issueCompletion = false)
     return $state;
 }
 
-function write_progress_row(PDO $pdo, int $userId, array $input, bool $issueCompletion): array
+function write_progress_row(PDO $pdo, int $userId, array $input, bool $issueCompletion, string $slug = APP_COURSE): array
 {
+    $definition = course_definition($slug);
+    if (!$definition) throw new InvalidArgumentException('Unsupported course.');
     $existing = $pdo->prepare('SELECT state_json, completion_code, completed_at FROM course_progress WHERE user_id = ? AND course_slug = ?');
-    $existing->execute([$userId, APP_COURSE]);
+    $existing->execute([$userId, $slug]);
     $row = $existing->fetch();
     $code = $row['completion_code'] ?? null;
     $completedAt = $row['completed_at'] ?? null;
     $existingState = $row ? json_decode((string)$row['state_json'], true) : null;
     $curriculumVersion = $code
         ? (int)(is_array($existingState) && isset($existingState['curriculumVersion']) ? $existingState['curriculumVersion'] : 1)
-        : COURSE_CURRICULUM_VERSION;
-    $state = clean_course_state($input, $curriculumVersion);
-    if ($issueCompletion && course_is_complete($state) && !$code) {
+        : course_curriculum_version($slug);
+    $state = clean_course_state($input, $curriculumVersion, $slug);
+    if ($issueCompletion && course_is_complete($state, $slug) && !$code) {
         $date = (new DateTimeImmutable('now', new DateTimeZone('Asia/Tokyo')))->format('Ymd');
-        $code = 'AOW-' . $date . '-' . strtoupper(substr(bin2hex(random_bytes(4)), 0, 8));
+        $code = $definition['completion_prefix'] . '-' . $date . '-' . strtoupper(substr(bin2hex(random_bytes(4)), 0, 8));
         $completedAt = now_iso();
-        $state['curriculumVersion'] = COURSE_CURRICULUM_VERSION;
+        $state['curriculumVersion'] = course_curriculum_version($slug);
     }
     $json = json_encode($state, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
     // XserverのSQLite 3.7系でも動作する構文を使う。
@@ -454,8 +507,8 @@ function write_progress_row(PDO $pdo, int $userId, array $input, bool $issueComp
     $stmt = $pdo->prepare('INSERT OR REPLACE INTO course_progress
         (user_id, course_slug, state_json, completion_code, completed_at, updated_at)
         VALUES (?, ?, ?, ?, ?, ?)');
-    $stmt->execute([$userId, APP_COURSE, $json, $code, $completedAt, now_iso()]);
-    return load_progress($userId);
+    $stmt->execute([$userId, $slug, $json, $code, $completedAt, now_iso()]);
+    return load_progress($userId, $slug);
 }
 
 function portal_head(string $title): void
@@ -463,7 +516,7 @@ function portal_head(string $title): void
     security_headers();
     echo '<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">';
     echo '<meta name="robots" content="noindex,nofollow,noarchive"><meta name="theme-color" content="#12324a">';
-    echo '<title>' . h($title) . ' | 三浦 海の学校</title><link rel="stylesheet" href="portal.css"><link rel="stylesheet" href="admin-preview.css"><script src="portal.js" defer></script></head><body>';
+    echo '<title>' . h($title) . ' | 三浦 海の学校</title><link rel="stylesheet" href="portal.css"><link rel="stylesheet" href="admin-preview.css?v=' . (string)filemtime(__DIR__ . '/admin-preview.css') . '"><script src="portal.js" defer></script></head><body>';
 }
 
 function portal_end(): void

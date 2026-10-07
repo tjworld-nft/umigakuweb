@@ -45,8 +45,9 @@ portal_head('マイコース');
         if (!empty($module['complete'])) $completedModules++;
         if (isset($module['answers']) && is_array($module['answers'])) $answeredQuestions += count($module['answers']);
       }
-      $moduleCount = count(course_answer_key());
-      $percent = $record && $record['completion_code'] ? 100 : min(100, (int)round(($completedModules / $moduleCount) * 100));
+      $definition = course_definition((string)$course['slug']);
+      $moduleCount = $definition ? count($definition['module_labels']) : 0;
+      $percent = $record && $record['completion_code'] ? 100 : ($moduleCount ? min(100, (int)round(($completedModules / $moduleCount) * 100)) : 0);
       // レッスンを1つも終えていなくても、1問でも答えていれば「続き」がある。
       $started = $percent > 0 || $answeredQuestions > 0;
     ?>
@@ -55,7 +56,7 @@ portal_head('マイコース');
       <h2><?= h((string)$course['title']) ?></h2><p><?= h((string)$course['description']) ?></p>
       <?php if ($enrolled): ?><div class="progress-bar"><i style="width:<?= $percent ?>%"></i></div><?php endif; ?>
       <div class="course-card__footer">
-        <?php if ($enrolled && $course['slug'] === 'aow'): ?><b><?= $record && $record['completion_code'] ? '修了' : ($percent . '%完了' . ($percent === 0 && $answeredQuestions ? '（' . $answeredQuestions . '問 回答済み）' : '')) ?></b><a href="course.php?course=aow"><?= $started ? '続きから' : '学習開始' ?> →</a>
+        <?php if ($enrolled && $definition && (int)$course['active']): ?><b><?= $record && $record['completion_code'] ? h((string)$definition['completion_label']) : ($percent . '%完了' . ($percent === 0 && $answeredQuestions ? '（' . $answeredQuestions . '問 回答済み）' : '')) ?></b><a href="course.php?course=<?= h((string)$course['slug']) ?>"><?= $started ? '続きから' : '学習開始' ?> →</a>
         <?php elseif ($enrolled): ?><b>教材準備中</b>
         <?php else: ?><b><?= (int)$course['active'] ? '追加コードで開放' : '準備中' ?></b><?php endif; ?>
       </div>

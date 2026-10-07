@@ -76,18 +76,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 $courses = $pdo->query('SELECT * FROM courses ORDER BY sort_order')->fetchAll();
 $users = $pdo->query('SELECT u.id, u.learner_id, u.status, u.created_at, u.last_login_at,
-    GROUP_CONCAT(e.course_slug) AS courses,
-    MAX(CASE WHEN p.course_slug = "aow" THEN p.completed_at END) AS aow_completed,
-    MAX(CASE WHEN p.course_slug = "aow" THEN p.state_json END) AS aow_state,
-    MAX(CASE WHEN p.course_slug = "aow" THEN p.updated_at END) AS aow_updated
+    GROUP_CONCAT(DISTINCT e.course_slug) AS courses
     FROM users u LEFT JOIN enrollments e ON e.user_id = u.id
-    LEFT JOIN course_progress p ON p.user_id = u.id
     GROUP BY u.id ORDER BY u.id DESC')->fetchAll();
-$moduleLabels = ['ppb' => 'PPB', 'navigation' => 'ナビ', 'naturalist' => '観察', 'deep' => 'ディープ', 'boat' => 'ボート'];
+$progressByUser = [];
+foreach ($pdo->query('SELECT * FROM course_progress')->fetchAll() as $progress) {
+    $progressByUser[(int)$progress['user_id']][(string)$progress['course_slug']] = $progress;
+}
+$courseTitles = array_column($courses, 'title', 'slug');
 $invites = $pdo->query('SELECT * FROM invite_codes ORDER BY id DESC LIMIT 30')->fetchAll();
 portal_head('講座管理');
 ?>
-<header class="portal-header"><div class="shell"><a class="brand" href="admin.php">三浦 海の学校｜講座管理</a><div class="header-actions"><a href="course.php?course=aow">AOW教材をすべて確認</a><a href="admin.php?logout=1">管理画面をログアウト</a></div></div></header>
+<header class="portal-header"><div class="shell"><a class="brand" href="admin.php">三浦 海の学校｜講座管理</a><div class="header-actions"><a href="course.php?course=aow">AOW教材</a><a href="course.php?course=night">ナイトSP教材</a><a href="admin.php?logout=1">管理画面をログアウト</a></div></div></header>
 <main class="dashboard shell">
   <div class="dashboard-top"><div><p class="eyebrow">LEARNING ADMIN</p><h1>匿名受講アカウント管理</h1><p class="lead">個人情報を保存せず、受講者IDと講座権限だけを管理します。</p></div></div>
   <?php if ($generated): ?><div class="generated-code">今回発行した初回登録コード（この画面でのみ表示）<b><?= h($generated) ?></b></div><?php endif; ?>
@@ -100,29 +100,41 @@ portal_head('講座管理');
   <?php if ($error): ?><p class="alert" style="margin:0 0 20px"><?= h($error) ?></p><?php endif; ?>
   <section class="student-url-card" aria-labelledby="student-url-title"><div><p class="eyebrow">SEND TO STUDENTS</p><h2 id="student-url-title">お客様へ送る受講生サイト</h2><p>初回登録コードと一緒に、このURLをお客様へ送ってください。</p></div><div class="student-url-actions"><label for="studentSiteUrl">受講生サイトURL</label><div><input id="studentSiteUrl" type="text" value="https://miura-diving.com/aow-learning/" readonly><button type="button" data-copy-target="studentSiteUrl" data-copy-message="受講生サイトのURLをコピーしました。お客様へのメッセージに貼り付けられます。">URLをコピー</button><a href="https://miura-diving.com/aow-learning/" target="_blank" rel="noopener">サイトを開く ↗</a></div><p data-copy-status aria-live="polite"></p></div></section>
   <section class="admin-preview-card"><div><p class="eyebrow">CONTENT PREVIEW</p><h2>AOW教材の全内容を確認</h2><p>PPB・ナビゲーション・ナチュラリスト・ディープ・ボート、全41問、修了画面まで管理者専用プレビューで確認できます。操作は受講者記録へ保存されません。</p></div><a href="course.php?course=aow">教材を開く →</a></section>
+  <section class="admin-preview-card"><div><p class="eyebrow">NIGHT DIVER / CONTENT PREVIEW</p><h2>ナイトダイバーSPの事前学習</h2><p>計画・ライト・合図・ナビゲーション・トラブル・環境の6レッスン、全30問。完了は「事前学習完了（インストラクター確認待ち）」として記録します。担当インストラクターは現行SPインストラクター・ガイドと公式教材に照合し、必要な知識開発とレビューを確認してください。この教材だけで正式な学科修了やSP認定は成立しません。プレビューの操作は受講者記録へ保存されません。</p></div><a href="course.php?course=night">ナイトSP教材を開く →</a></section>
   <div class="admin-grid">
     <section class="panel"><h2>初回登録コードを発行</h2><form method="post"><input type="hidden" name="csrf" value="<?= h(csrf_token()) ?>"><input type="hidden" name="action" value="create_invite"><div class="check-options">
       <?php foreach ($courses as $course): ?><label><input type="checkbox" name="courses[]" value="<?= h((string)$course['slug']) ?>" <?= (int)$course['active'] ? '' : 'disabled' ?>> <?= h((string)$course['title']) ?><?= (int)$course['active'] ? '' : '（準備中）' ?></label><?php endforeach; ?>
       </div><div class="field"><label for="valid_days">有効日数</label><input id="valid_days" name="valid_days" type="number" min="1" max="365" value="30"></div><button class="primary" type="submit">1回限りのコードを発行</button></form></section>
     <section class="panel"><h2>発行済みコード</h2><table><thead><tr><th>表示</th><th>講座</th><th>状態</th><th>期限</th></tr></thead><tbody><?php foreach ($invites as $invite): ?><tr><td><?= h((string)$invite['code_hint']) ?></td><td><?= h(implode(', ', json_decode((string)$invite['course_slugs'], true) ?: [])) ?></td><td><?= h((string)$invite['status']) ?></td><td><?= h(jst_short((string)$invite['expires_at'], false)) ?></td></tr><?php endforeach; ?></tbody></table></section>
   </div>
-  <section class="panel" style="margin-top:20px"><h2>受講状況</h2><?php if (!$users): ?><p class="empty">まだ受講者はいません。</p><?php else: ?><table><thead><tr><th>受講者ID</th><th>講座</th><th>AOWの進み方</th><th>最終ログイン</th><th>操作</th></tr></thead><tbody>
+  <section class="panel" style="margin-top:20px"><h2>受講状況</h2><?php if (!$users): ?><p class="empty">まだ受講者はいません。</p><?php else: ?><table><thead><tr><th>受講者ID</th><th>講座</th><th>講座別の進み方</th><th>最終ログイン</th><th>操作</th></tr></thead><tbody>
     <?php foreach ($users as $row):
-      $rowState = $row['aow_state'] ? json_decode((string)$row['aow_state'], true) : null;
-      $rowModules = is_array($rowState) && isset($rowState['modules']) && is_array($rowState['modules']) ? $rowState['modules'] : [];
-      $doneCount = 0;
-      foreach ($moduleLabels as $slug => $_label) if (!empty($rowModules[$slug]['complete'])) $doneCount++;
+      $enrolledSlugs = $row['courses'] ? explode(',', (string)$row['courses']) : [];
     ?><tr>
       <td><b><?= h((string)$row['learner_id']) ?></b><?= $row['status'] === 'active' ? '' : '<span class="row-flag">停止中</span>' ?></td>
-      <td><?= h((string)($row['courses'] ?: '—')) ?></td>
+      <td><?= h(implode('・', array_map(fn($slug) => (string)($courseTitles[$slug] ?? $slug), $enrolledSlugs)) ?: '—') ?></td>
       <td>
-        <?php if ($row['aow_completed']): ?><b>修了 <?= h(jst_short((string)$row['aow_completed'], false)) ?></b>
-        <?php else: ?><b><?= $doneCount ?> / <?= count($moduleLabels) ?> レッスン</b>
-          <span class="lesson-dots" aria-label="<?= h(implode('・', array_map(fn($s, $l) => $l . (empty($rowModules[$s]['complete']) ? '未完了' : '完了'), array_keys($moduleLabels), $moduleLabels))) ?>">
-            <?php foreach ($moduleLabels as $slug => $label): ?><i class="<?= empty($rowModules[$slug]['complete']) ? '' : 'is-done' ?>"><?= h($label) ?></i><?php endforeach; ?>
-          </span>
-          <?php if ($row['aow_updated']): ?><small>最終保存 <?= h(jst_short((string)$row['aow_updated'])) ?></small><?php endif; ?>
-        <?php endif; ?>
+        <?php foreach ($enrolledSlugs as $courseSlug):
+          $definition = course_definition($courseSlug);
+          if (!$definition) continue;
+          $record = $progressByUser[(int)$row['id']][$courseSlug] ?? null;
+          $rowState = $record ? json_decode((string)$record['state_json'], true) : null;
+          $rowModules = is_array($rowState) && isset($rowState['modules']) && is_array($rowState['modules']) ? $rowState['modules'] : [];
+          $moduleLabels = $definition['module_labels'];
+          $doneCount = 0;
+          foreach ($moduleLabels as $moduleSlug => $_label) if (!empty($rowModules[$moduleSlug]['complete'])) $doneCount++;
+        ?>
+        <div class="admin-course-progress"><strong><?= $courseSlug === 'night' ? 'ナイトSP' : 'AOW' ?></strong>
+          <?php if ($record && $record['completion_code']): ?><b><?= h((string)$definition['completion_label']) ?> <?= h(jst_short((string)$record['completed_at'], false)) ?></b><small><?= h((string)$record['completion_code']) ?></small>
+          <?php else: ?><b><?= $doneCount ?> / <?= count($moduleLabels) ?> レッスン</b>
+            <span class="lesson-dots" aria-label="<?= h(implode('・', array_map(fn($s, $l) => $l . (empty($rowModules[$s]['complete']) ? '未完了' : '完了'), array_keys($moduleLabels), $moduleLabels))) ?>">
+              <?php foreach ($moduleLabels as $moduleSlug => $label): ?><i class="<?= empty($rowModules[$moduleSlug]['complete']) ? '' : 'is-done' ?>"><?= h($label) ?></i><?php endforeach; ?>
+            </span>
+            <?php if ($record && $record['updated_at']): ?><small>最終保存 <?= h(jst_short((string)$record['updated_at'])) ?></small><?php endif; ?>
+          <?php endif; ?>
+        </div>
+        <?php endforeach; ?>
+        <?php if (!$enrolledSlugs): ?>—<?php endif; ?>
       </td>
       <td><?= h(jst_short($row['last_login_at'] ? (string)$row['last_login_at'] : null)) ?></td>
       <td><div class="row-actions">

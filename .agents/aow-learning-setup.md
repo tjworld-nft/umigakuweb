@@ -22,3 +22,16 @@
 ## Adding courses later
 
 Add the course to the `courses` seed in `lib.php`, create its protected course route and answer key, then set `active = 1` when its content is ready. Existing users can redeem a newly issued course code from their dashboard.
+
+
+## Night Diver SP (2026-10-07)
+
+- Course slug: `night`; protected route: `/aow-learning/course.php?course=night`.
+- Content: `night.html`, `night.css`; six lessons and 30 original questions.
+- The existing admin can issue a code for Night alone or with AOW. Existing learners redeem a new code from their dashboard.
+- Progress and `NIGHT-YYYYMMDD-XXXXXXXX` learning records are independent of AOW. Schema 4 adds the catalog entry without replacing existing student records.
+- Admin previews do not save student progress. Direct `.html` requests remain forbidden by `.htaccess`.
+- Completion means **shop pre-study completed / instructor confirmation pending**. It does not certify completion of official PADI eLearning, knowledge development, practical dives, or a specialty certification.
+- Before formal course use, the responsible instructor must compare all content with the current Night Diver Specialty Instructor Guide, required official learning materials, Knowledge Review, and current Training Bulletins. The dedicated Night SP guide was not available for full verification.
+- Research scope and limitations: `.agents/night-diver-learning.md`.
+- Regression check: `php .agents/tests/learning-courses.php` (uses and removes a temporary SQLite database; never loads production student data).

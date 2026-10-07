@@ -1,0 +1,38 @@
+# ナイトダイバーSP事前学習 — 調査・運用記録
+
+確認日: 2026-10-07 / Codex。公開予定コードと独自教材のみ。認証情報・生徒情報・公式教材本文は保存しない。
+
+## 実装と運用
+
+既存 `aow-learning/admin.php` へナイトSPのプレビュー・登録コード選択・講座別進捗を追加。同じ匿名IDでAOWとnightを別々に学ぶ。保護URLは `course.php?course=night`。6章30問、各問の即時解説、サーバー保存・再開、全問正解＋最終チェックで学習記録を発行する。PADI公式設問の複製ではなく当店オリジナル。
+
+学習記録は「事前学習完了（インストラクター確認待ち）」のみ。公式eLearningの修了証やPADI認定証ではない。正式知識開発・ナレッジリビュー・実技の評価は担当インストラクターの確認が必要。正式学科を自動認定する機能はない。
+
+## 一次資料と対応
+
+| 章 | 主な一次資料 | 確認・編集方針 |
+|---|---|---|
+| 計画 | [DAN Night Diving](https://dan.org/alert-diver/article/night-diving/)、[DAN Safe Diving Practices](https://world.dan.org/safety-prevention/diver-safety/safe-diving-practices/) | 昼の下見、夜間出入り、海況、出口・灯火故障の代替、深度時間、ガス・帰路・停止の余裕、支援とEAP |
+| 装備 | [DAN Gear Maintenance](https://world.dan.org/safety-prevention/diver-safety/divers-blog/gear-maintenance-protect-your-investment-and-prevent-dive-accidents/)、[DAN Diving in the Dark](https://dan.org/alert-diver/article/diving-in-the-dark/)、[PADI Giant Stride](https://blog.padi.com/how-to-giant-stride/) | 各自主/予備、位置マーカーは補助、密閉・電源・操作・収納、計器・水面器材、入水域を照らして確認 |
+| 合図 | [PADI Night Diving Tips](https://blog.padi.com/night-diving-tips/)、DAN Diving in the Dark | 円/横振りの一般的意味、手を照らす、返答、顔へ直射しない、バディ本人と距離、水面合図は事前合意 |
+| ナビ | DAN Night Diving、[PADI Ascend and Descend Safely](https://blog.padi.com/how-to-ascend-and-descend-safely-in-scuba-diving/) | 基準線・深度/浮力/バディ、往復方位・距離・流れによるずれ、帰路照合、浮上速度・停止・頭上 |
+| 対応 | [DAN Low-Visibility Diving](https://dan.org/alert-diver/article/low-visibility-diving/)、[DAN Buddy Separation Case](https://dan.org/safety-prevention/diver-safety/case-summaries/buddy-separation-during-scientific-diver-training/) | 事前に離別手順を合わせ、約1分以内の短い探索→安全浮上・再集合、必要な減圧義務の維持、早期終了、習得済み緊急スキル |
+| 観察 | [PADI Pros / Green Fins](https://pros-blog.padi.com/how-to-manage-customers-with-cameras/)、[AWARE 10 Tips](https://pros-blog.padi.com/wp-content/uploads/2018/10/PA_10Tips_Poster.pdf)、[PADI Light With Care](https://blog.padi.com/minimize-impact-underwater-as-a-scuba-diver/) | 休む魚を起こさない、照射・距離、触らない/餌をやらない/追わない、浮力と器材、勝手に消灯しない、帰還確認と整備 |
+
+[公式Night Diver概要](https://www.padi.com/courses/night-diver)、[PADI日本語FAQ](https://www.padi.com/ja/help)も確認。公式Night Diver eLearningの日本語対応を確認。公式eLearningとは別のページであることを冒頭と完了記録に表示。
+
+Mac内のPADI Instructor Manual 2026日本語版（Product 79173J、Rev.12/25）のコース概要と一般規準、Night Adventure Diveのページを抽出・目視確認。最低年齢12歳、(Junior) OWD、Night SPは3ダイブ。Night ADでは各自ライト、合図、計器、バディ接触、基準を使った潜降/浮上とナビゲーションが扱われる。ただしADの達成条件をSP全3ダイブへ流用しない。PDF原本・画面はリポジトリへ追加していない。
+
+AOW→SPクレジットは認定名だけでは判断しない。対応するナイトADの知識・実技修了記録を担当者が確認して判断する。[PADI公式AOW Training Record](https://pro-cms.padi.com/sites/default/files/documents/training-hub/660DT_Advanced_Open_Water_Training_Record_v102.pdf)と[公式コースリンク解説](https://blog.padi.com/advanced-open-water-diver/)を確認。
+
+## 未確認・正式運用前の照合
+
+専用の現行Night Diver Specialty Instructor GuideはMac内で未発見。公開検索では旧版や転載サイトのみで、現行公式ガイドとしては採用していない。各ダイブの全達成条件、必要教材、Knowledge Reviewの扱い、SP固有の深度/監督等の完全照合は未完了。ユーザーに保存場所を質問済み。
+
+主ライト故障時に予備を使って終了する方針は、保守的な当店の教材設計として明記している。PADI現行SP規準からの引用・必須規準の断定ではない。離別は一般的な手順を説明し、当日のブリーフィングと習得済みスキルを優先。
+
+## 検証
+
+隔離DB21項目: 新規/既存DB移行、AOW旧版1/現行2の番号と進捗保全、nightの採点と偽完了拒否、講座間保存分離、NIGHT番号の再保存維持、コードの1回使用。ブラウザー18項目: 権限/CSRF、登録→誤答→保存再読込→30問完了→記録復元、旧AOW3章、新規night単独登録、管理プレビュー無保存。375/430/768/1024/1440pxでページの横はみ出しなし、JSエラーなし。教材・PHP正答キー30件一致。独立レビューの入水域確認の追記を反映。
+
+Claude Code読み取りレビューは既存OAuthが期限切れで受領不可（設定は変更していない）。Codex独立担当2名の調査とレビューを受領。これはPADIの監修承認ではない。
