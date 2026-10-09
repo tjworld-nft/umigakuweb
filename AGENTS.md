@@ -247,6 +247,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - **`/diving-point/miyagawa-bay/`**（宮川湾ボートダイビング・カサゴ根とトビ根の手描きマップ・図鑑に載る宮川湾の生き物・料金）も同日に新設。「宮川湾 ダイビング」は日本語のページがほぼ無い検索語。
   license の「その先の講習」は、SP12コースとプロの料金一覧を2枚のカード（→ /specialty/）に縮めた（同じ一覧が2ページにあると検索で食い合うため）。旧アンカー `#sp-title` はカードの枠に残してある。
 - オーナー確認待ち（2026-10-09 Fableのレビュー）：ドライスーツの季節のレンタル総額（フルセット¥5,500にドライが入るか）／各SPの日数・ダイブ数・乗船料の有無／リフレッシュの所要時間・持ち物・古い器材の点検／PADIのReActivateとの関係。決まったらページに足す。
+- **ブログの整理（2026-10-10）**：重複・古い解説記事19本を本体の対応ページへ301（.htaccess の「ブログの重複・古い解説記事を本体の対応ページへ統合」の節）。ブログ側は `src/lib/seoExclusions.ts`（REDIRECTED＝サイトマップ・一覧から除外／NOINDEX＝話題外・受付停止中のSUP/カヤック・準備日など16本に noindex）。あわせて Sanity で71記事の誤りを修正（期限切れの夏割の案内→現行の総額、広告用LP /lp/ へのリンク→/license/・/advanced/、末尾定型文の「SUP」、アクセス時間）。原本の控えは非公開フォルダ（~/.codex/visualizations/2026/10/09/claude-seo/sanity-backup-20261010/）。
 - 旧ページ **`/beginner-diving-guide/` は `/beginner-guide/` へ301**（同じ内容で並び、Googleにも登録されていなかった）。旧URL `aow-course.php`→`/advanced/`、`refresh-dive.php`→`/refresh/`。
 - 外部の店舗情報が古い（2026-10-09 確認・**オーナーにしか直せない**）：Googleマップの店舗カード（店名検索で旧住所が出る）／PADIのショップ検索（2018年更新のまま・旧住所・旧施設・旧料金）／
   神奈川県 Feel SHONAN（旧住所・旧料金・SUP）／PADIブログ「三浦湘南」（旧ドメインへのリンク）。直すと検索での店の認識（地図枠・店名検索）に効く。
