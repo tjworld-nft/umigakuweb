@@ -73,8 +73,6 @@
             background: linear-gradient(rgba(7, 40, 56, .30), rgba(7, 40, 56, .55)), url("../../image/optimized/dive.webp") center/cover no-repeat;
         }
         .hero-inner { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; color: #fff; }
-        .hero .season { display: inline-block; background: var(--yellow); color: var(--text-dark); font-weight: 700; font-size: .8rem; padding: .3rem .9rem; border-radius: 999px; margin-bottom: 1rem; }
-        .hero .season .days { color: #D6336C; font-weight: 900; }
         .hero .kicker { font-size: clamp(.95rem, 3.2vw, 1.2rem); font-weight: 700; text-shadow: 0 1px 8px rgba(0, 0, 0, .45); margin-bottom: .5rem; }
         .hero h1 { font-size: clamp(1.55rem, 6vw, 2.6rem); font-weight: 900; line-height: 1.4; text-shadow: 0 2px 12px rgba(0, 0, 0, .35); margin-bottom: .75rem; }
         .hero h1 .hl { font-style: normal; color: var(--yellow); font-size: 1.22em; letter-spacing: .02em; }
@@ -145,7 +143,7 @@
         .pain-answer { max-width: 640px; margin: 1.5rem auto 0; text-align: center; font-size: 1rem; font-weight: 700; line-height: 1.9; color: var(--teal-dark); }
         .pain-answer em { font-style: normal; color: var(--coral); }
 
-        /* ── お得ボックス ── */
+        /* ── 案内ボックス（バディ割・セット受講） ── */
         .aow-set-tip { max-width: 640px; margin: 2rem auto 0; padding: 1.25rem 1.5rem; background: var(--bg-soft); border: 1px dashed var(--teal); border-radius: var(--radius-md); text-align: left; }
         .aow-set-tip__badge { display: inline-block; background: var(--teal); color: var(--white); font-size: .72rem; font-weight: 700; padding: .2rem .7rem; border-radius: 999px; margin-bottom: .6rem; }
         .aow-set-tip h3 { font-size: 1.05rem; color: var(--text-dark); margin-bottom: .75rem; line-height: 1.6; }
@@ -172,8 +170,6 @@
         .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: .65rem 0; border-bottom: 1px dashed var(--border); font-size: .92rem; }
         .price-row .item small { display: block; font-size: .74rem; color: var(--text-sub); }
         .price-row .yen { font-weight: 700; white-space: nowrap; }
-        .price-row--off .item strong { color: var(--coral); }
-        .price-row--off .yen { color: var(--coral); }
         .price-row--total { border-bottom: none; border-top: 2px solid var(--teal); margin-top: .4rem; padding-top: .9rem; }
         .price-row--total .item { font-weight: 900; font-size: 1rem; }
         .price-row--total .yen { font-size: 1.6rem; font-weight: 900; color: var(--coral); }
@@ -315,24 +311,23 @@
     <!-- ヒーロー -->
     <div class="hero">
         <div class="hero-inner">
-            <span class="season">夏のLINE特典 9/30まで<span data-deadline-days> ・<span class="days"></span></span></span>
             <p class="kicker">Cカードは持っている。次は、自分で潜れる自分に。</p>
             <h1>実技<em class="hl">2日</em>で、<br>アドバンスダイバー。</h1>
             <p class="sub">5ダイブ（3ビーチ＋2ボート）で、浮力・ナビ・ディープが自分のものになる。<br>PADIアドバンスド・オープンウォーターダイバー取得<span style="white-space:nowrap">｜神奈川・三浦</span></p>
             <div class="price-flash">
                 <div class="burst-badge"><small>認定後は</small><span>最大30m</span></div>
-                <div class="label">LINE特典適用時の総額<br>（レンタル器材まで全部込み）</div>
-                <div class="num">¥65,300<small>（税込）通常¥70,800</small></div>
-                <div class="note">9/30までにLINEからのお申込みで器材レンタル1日分（¥5,500）が無料。当日の追加費用はありません。</div>
+                <div class="label">講習の総額<br>（レンタル器材まで全部込み）</div>
+                <div class="num">¥70,800<small>（税込）</small></div>
+                <div class="note">講習費¥59,800＋レンタル器材2日分¥11,000。当日の追加費用はありません。</div>
             </div>
             <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">LINEで空き状況を聞く<small>（相談無料・営業なし）</small></a>
-            <p class="cta-note">友だち追加後、「<strong>アドバンス夏割</strong>」と一言送るだけでOK。<br>特典の適用と空き状況をあわせてご案内します。ブランクがある方のご相談も歓迎です。</p>
+            <p class="cta-note">友だち追加後、ご希望の日程やご質問を一言送るだけでOK。<br>空き状況と日程の組み方をご案内します。ブランクがある方のご相談も歓迎です。</p>
         </div>
     </div>
 
     <div class="relief-bar">
         <ul>
-            <li>ブランク何年でもOK</li>
+            <li>ブランクがあっても相談OK</li>
             <li>OWDはどこで取った方でもOK</li>
             <li>ボート2本の乗船料込み</li>
             <li>おひとり様歓迎</li>
@@ -381,17 +376,12 @@
                         <div class="item">レンタル器材<small>¥5,500/日 × 実技2日分（フル器材）</small></div>
                         <div class="yen">¥11,000</div>
                     </div>
-                    <div class="price-row price-row--off">
-                        <div class="item"><strong>夏のLINE特典（9/30まで）</strong><small>LINEからのお申込みで器材レンタル1日分が無料</small></div>
-                        <div class="yen">−¥5,500</div>
-                    </div>
                     <div class="price-row price-row--total">
                         <div class="item">総額</div>
-                        <div class="yen">¥65,300<small>（税込・通常¥70,800）</small></div>
+                        <div class="yen">¥70,800<small>（税込）</small></div>
                     </div>
                     <div class="price-includes">
-                        <strong>当日の追加費用はありません。</strong>教材費・申請料・<strong>ボート2本の乗船料</strong>まで込みで、「あとから請求」は一切なし。器材の購入も不要です（お持ちの方はレンタル代分お安くなります）。<br>
-                        <small>※特典は2026年9月30日までにLINEで「アドバンス夏割」とお送りのうえお申込みの方が対象。他の割引との併用はできません（認定後のファンダイビングが対象の「つづける割」は併用いただけます）。</small>
+                        <strong>当日の追加費用はありません。</strong>教材費・申請料・<strong>ボート2本の乗船料</strong>まで込みで、「あとから請求」は一切なし。器材の購入も不要です（お持ちの方はレンタル代分お安くなります）。
                     </div>
                 </div>
             </div>
@@ -405,20 +395,20 @@
                 <span class="aow-set-tip__badge">お友達紹介「バディ割」</span>
                 <h3>ダイバーのお友達と<em>一緒に受ける</em>のもおすすめです</h3>
                 <ul>
-                    <li>お友達と<strong>2人同時のお申し込みも歓迎</strong>。お二人とも特典（レンタル1日分無料）が適用されます</li>
-                    <li>すでにダイバーのお友達がいる方は、<strong>その方も同じ日に潜れます</strong>。付き添いダイビングが¥6,600引きになります（ビーチは半額の¥6,600／ボート¥13,200・税込）</li>
+                    <li>お友達と<strong>2人同時のお申し込みも歓迎</strong>。お二人とも初めての受講なら、お二人とも器材レンタル1日分（¥5,500）が無料になります（バディ割）</li>
+                    <li>すでにダイバーのお友達がいる方は、<strong>その方の紹介で</strong>あなたは器材レンタル1日分（¥5,500）が無料、お友達は同じ日に潜る付き添いダイビングが¥6,600引き（ビーチは半額の¥6,600／ボート¥13,200・税込）になります</li>
                 </ul>
-                <p class="aow-set-tip__small">※付き添いダイビングの割引は、認定ダイバーの方が対象です（レンタル器材代は別途）。少人数制のため同じ日にご案内できる人数に限りがありますので、日程はLINEでご相談ください。</p>
+                <p class="aow-set-tip__small">※付き添いダイビングの割引は、認定ダイバーの方が対象です（レンタル器材代は別途）。少人数制のため同じ日にご案内できる人数に限りがありますので、日程はLINEでご相談ください。特典を使うときは、お申し込みの際にLINEで「バディ」とお送りください（ご紹介の場合は紹介者のお名前も。お申し込み後のさかのぼり適用はできません）。くわしい条件は<a href="https://miura-diving.com/buddy/">お友達紹介のページ</a>をご覧ください。</p>
             </div>
             <div class="aow-set-tip reveal">
                 <span class="aow-set-tip__badge">まだOWDをお持ちでない方へ</span>
-                <h3>OWDから続けて取ると、合計<em>¥16,000</em>おトクです</h3>
+                <h3>OWDとまとめて申し込むと、講習費が<em>¥5,000</em>安くなります</h3>
                 <ul>
-                    <li>セット受講で講習費が<strong>−¥5,000</strong>（OWD ¥53,900＋AOW ¥59,800 → セット¥108,700）</li>
-                    <li>レンタル1日分無料の特典が<strong>OWD分・AOW分の2回</strong>適用されて<strong>−¥11,000</strong></li>
-                    <li>セット総額は<strong>¥119,700</strong>（税込・通常¥135,700）</li>
+                    <li>まとめて申し込むと講習費が<strong>−¥5,000</strong>（OWD ¥53,900＋AOW ¥59,800 → セット¥108,700）</li>
+                    <li>レンタル器材は実技4日分で<strong>¥22,000</strong>（¥5,500/日 × OWD2日＋AOW2日）</li>
+                    <li>セット総額は<strong>¥130,700</strong>（税込・別々に受けると¥135,700）</li>
                 </ul>
-                <p class="aow-set-tip__small">※OWD2日＋AOW2日の最短4日間で取得できます（冬も同じです）。進み具合によりOWD3日＋AOW2日（計5日間）になる場合があり、そのときはレンタル代が1日分（¥5,500）増えます。まずはOWDだけ、という進め方ももちろんOKです（<a href="../owd/">OWDのご案内はこちら</a>）。</p>
+                <p class="aow-set-tip__small">※OWD2日＋AOW2日の最短4日間で取得できます（冬も同じです）。進み具合によりOWD3日＋AOW2日（計5日間）になる場合があり、そのときはレンタル代が1日分（¥5,500）増えます。アドバンスの分は期限なしで後日に繰り越せます。まずはOWDだけ、という進め方ももちろんOKです（<a href="../owd/">OWDのご案内はこちら</a>）。</p>
             </div>
             <div class="padi-band reveal">
                 <img src="../../image/optimized/padi-5star-idc.webp" alt="PADI 5スター インストラクター・ディベロップメント・ダイブリゾート認定" width="88" height="88" loading="lazy">
@@ -508,11 +498,11 @@
                     <tr><th>次のステップ</th><td class="ng">—</td><td class="ok">レスキュー／各スペシャルティへ</td></tr>
                 </tbody>
             </table>
-            <p class="compare-note">※AOWの認定深度は最大30mです（12〜14歳のジュニア アドバンスは深度の制限が異なります）。実際に潜る深さは、当日の海況・ポイント・経験本数に応じて安全側で判断します。</p>
+            <p class="compare-note">※AOWの認定深度は最大30mです（12〜14歳のジュニア アドバンスは最大21mです）。実際に潜る深さは、当日の海況・ポイント・経験本数に応じて安全側で判断します。</p>
             <div class="navi-bubble">
                 <img class="navi-bubble__avatar" src="../../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
                 <div class="navi-bubble__balloon">
-                    海外リゾートのツアーは「アドバンス以上」の条件がついているものが本当に多いです。旅行の予定がある方は、行く前に取っておくと選べるメニューが変わりますよ🐠
+                    海外リゾートのツアーには「アドバンス以上」の条件がついているものもあります。旅行の予定がある方は、行く前に取っておくと選べるメニューが広がりますよ🐠
                 </div>
             </div>
         </div>
@@ -529,7 +519,7 @@
                     <div class="reason-card__body">
                         <span class="num">REASON 01</span>
                         <h3>コースディレクターが直接指導</h3>
-                        <p>インストラクターを育てる立場のPADIコースディレクターから直接学べる、神奈川でも数少ないスクールです。「なぜそうするのか」まで説明します。</p>
+                        <p>インストラクターを育てる立場のPADIコースディレクターから、直接学べます。「なぜそうするのか」まで説明します。</p>
                     </div>
                 </div>
                 <div class="reason-card reveal">
@@ -537,7 +527,7 @@
                     <div class="reason-card__body">
                         <span class="num">REASON 02</span>
                         <h3>ブランクありでも、慣らしから</h3>
-                        <p>「何年も潜っていない」方が一番多いくらいです。少人数制なので、器材の組み立てや耳抜きの確認から、焦らずスタートできます。</p>
+                        <p>しばらく潜っていない方も歓迎です。インストラクター1名につき最大4名の少人数制なので、器材の組み立てや耳抜きの確認から、焦らずスタートできます。</p>
                     </div>
                 </div>
                 <div class="reason-card reveal">
@@ -620,17 +610,15 @@
     <section>
         <div class="container">
             <span class="sec-label">Voice</span>
-            <h2 class="sec-title">アドバンスまで進んだ方の声</h2>
+            <h2 class="sec-title">受講・参加された方の声</h2>
             <div class="voices">
                 <div class="voice-card reveal">
-                    <div class="stars">★★★★★</div>
-                    <p>一人で参加しましたが、すぐに打ち解けられました。品川から1時間で着くのでアクセスも楽。OWD取得後すぐにAOWも受講し、30mの世界を楽しんでいます。</p>
-                    <div class="who">中村さん（20代男性）・横浜市在住 / OWD＋AOW取得</div>
+                    <p>10年ぶりのダイビングでしたが、丁寧なブリーフィングで安心して潜れました。三浦の海は想像以上にきれいで、また来たいです！</p>
+                    <div class="who">T.Hさん（40代男性）・ファンダイビング</div>
                 </div>
                 <div class="voice-card reveal">
-                    <div class="stars">★★★★★</div>
                     <p>60歳を過ぎてからの挑戦でしたが、自分のペースに合わせてもらえて楽しめました。今ではファンダイビングにも通っています。</p>
-                    <div class="who">山田さん（60代男性）・川崎市在住 / OWD＋AOW取得</div>
+                    <div class="who">60代男性・オープンウォーター講習</div>
                 </div>
             </div>
             <p class="voice-photos-note reveal">実際の講習・海洋実習のようす</p>
@@ -649,8 +637,12 @@
             <h2 class="sec-title">よくあるご質問</h2>
             <div class="faq">
                 <details>
+                    <summary>冬でもアドバンスを受けられますか？</summary>
+                    <p>受けられます。三浦では10月中旬〜6月中旬はドライスーツで潜っています（当店の運用・年によって前後します）。ドライスーツがはじめての方は、選べる3本にドライスーツを入れる方法もあります。冬は透明度が上がる季節で、くわしくは<a href="https://miura-diving.com/winter-diving/">秋冬のダイビング</a>をご覧ください。</p>
+                </details>
+                <details>
                     <summary>何年もブランクがあります。いきなりアドバンスで大丈夫ですか？</summary>
-                    <p>大丈夫です。実際、ブランクのある方からのお申し込みが多いコースです。1本目を慣らしに使い、器材の組み立て・耳抜き・浮力の確認から始めます。ブランクの年数と、いま不安なことをLINEでお知らせいただければ、そこに合わせて5本の組み方を決めます。</p>
+                    <p>受けられます。1本目を慣らしに使い、器材の組み立て・耳抜き・浮力の確認から始めます。ブランクが長い方や不安が大きい方には、先にリフレッシュダイビング（¥19,800・レンタル器材別）をおすすめすることもあります。ブランクの年数と、いま不安なことをLINEでお知らせいただければ、そこに合わせて5本の組み方を決めます。</p>
                 </details>
                 <details>
                     <summary>他店・他団体でOWDを取ったのですが受けられますか？</summary>
@@ -658,19 +650,19 @@
                 </details>
                 <details>
                     <summary>ログ本数が少ない（数本しかない）のですが、条件はありますか？</summary>
-                    <p>PADIオープンウォーターダイバー（または相当）の認定があれば、本数の条件はありません。OWD認定の直後に続けて受講される方も多いです。少人数制なので、本数が少ない方でも置いていかれる心配はありません。</p>
+                    <p>PADIオープンウォーターダイバー（または相当）の認定があれば、本数の条件はありません。OWD認定の直後に続けて受講することもできます。少人数制なので、本数が少ない方もご自分のペースで進められます。</p>
                 </details>
                 <details>
                     <summary>本当に表示の総額以外かかりませんか？</summary>
-                    <p>はい。講習費¥59,800に教材・5ダイブ（3ビーチ＋2ボート）の実習費・<strong>ボートの乗船料</strong>・申請料・保険まで含まれ、あとはレンタル器材¥5,500×実技日数のみ（通常総額¥70,800）。さらに9/30までのLINE特典でレンタル1日分が無料になり、実技2日なら総額¥65,300です。器材をお持ちの方は、その分だけお安くなります。</p>
+                    <p>はい。講習費¥59,800に教材・5ダイブ（3ビーチ＋2ボート）の実習費・<strong>ボートの乗船料</strong>・申請料・保険まで含まれ、あとはレンタル器材¥5,500×実技日数のみで、実技2日なら総額¥70,800です。器材をお持ちの方は、その分だけお安くなります。</p>
                 </details>
                 <details>
                     <summary>年齢制限はありますか？</summary>
-                    <p>12歳から受講できます。12〜14歳の方は「ジュニア アドバンスドオープンウォーターダイバー」としての認定になり、深度の制限が異なります。上限はなく、60代・70代の方も受講されています。</p>
+                    <p>12歳から受講できます。12〜14歳の方は「ジュニア アドバンスドオープンウォーターダイバー」としての認定になり、潜れる深さは最大21mです。年齢の上限はありません。受講前に健康状態の質問票に答えていただき、「はい」がつく項目がある場合は医師の同意が必要です。</p>
                 </details>
                 <details>
                     <summary>2日連続で行けません。日を分けられますか？</summary>
-                    <p>分けられます。週末ごとに1日ずつでもOKです。ご希望の日程をLINEでお知らせください。少人数制のため、土日は早めに埋まります。</p>
+                    <p>分けられます。週末ごとに1日ずつでもOKです。少人数制のため、ご希望の日程はお早めにLINEでお知らせください。</p>
                 </details>
                 <details>
                     <summary>天候や海が荒れたときはどうなりますか？</summary>
@@ -692,9 +684,9 @@
     <section class="final-cta">
         <div class="container">
             <h2>「ついていくダイビング」を、<br>今年で終わりにしませんか。</h2>
-            <p>少人数制のため、各日にご案内できる人数はわずかです。<br>8〜9月の土日から埋まっていきます。9/30までのLINE特典（レンタル1日分無料）も、このボタンから。</p>
+            <p>少人数制のため、各日にご案内できる人数はわずかです。<br>日程が決まっていなくても大丈夫。まずはLINEで空き状況をお気軽にどうぞ。</p>
             <ul class="cta-topics">
-                <li>「アドバンス夏割」で特典適用</li>
+                <li>5本の内容の相談</li>
                 <li>空き状況の確認</li>
                 <li>ブランクの相談</li>
             </ul>
@@ -725,23 +717,6 @@
         } else {
             document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
         }
-    </script>
-    <script>
-        /* 締切までの残り日数（日本時間の日付基準・9/30が最終日） */
-        (function () {
-            var wraps = document.querySelectorAll('[data-deadline-days]');
-            if (!wraps.length) return;
-            var n = new Date();
-            var jst = new Date(n.getTime() + n.getTimezoneOffset() * 60000 + 9 * 3600000);
-            var today = Date.UTC(jst.getFullYear(), jst.getMonth(), jst.getDate());
-            var days = Math.round((Date.UTC(2026, 8, 30) - today) / 86400000);
-            wraps.forEach(function (w) {
-                if (days < 0) { w.hidden = true; return; }
-                var slot = w.querySelector('.days');
-                if (!slot) return;
-                slot.textContent = days === 0 ? '本日まで' : 'あと' + days + '日';
-            });
-        })();
     </script>
     <script>
         document.querySelectorAll('a[data-cv="line"]').forEach(function(a){
