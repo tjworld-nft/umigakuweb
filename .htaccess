@@ -37,6 +37,10 @@ RewriteRule ^logbook\.miura-diving\.com(?:/(.*))?$ https://logbook.miura-diving.
 # Make /blog unaffected by WP rules (if any)
 RewriteRule ^blog($|/) - [L]
 
+# 2026-10-09 旧・初心者ガイド（/beginner-guide/ と同じ内容で並び、Googleにも登録されていなかった）を新しいガイドへ統合
+RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
+RewriteRule ^beginner-diving-guide(/.*)?$ https://miura-diving.com/beginner-guide/ [R=301,L]
+
 # Canonical redirects to new clean URLs - using RewriteRule to avoid conflicts
 RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
 RewriteRule ^index\.html$ / [R=301,L]
@@ -66,9 +70,9 @@ RewriteRule ^diving-license\.php$ /license/ [R=301,L]
 RewriteRule ^fun-diving\.php$ /fun-diving/ [R=301,L]
 RewriteRule ^marine-activity\.php$ /marine-activity/ [R=301,L]
 RewriteRule ^owd-lp\.php$ /license/ [R=301,L]
-RewriteRule ^aow-course\.php$ /license/ [R=301,L]
+RewriteRule ^aow-course\.php$ /advanced/ [R=301,L]
 RewriteRule ^dsd\.php$ /license/ [R=301,L]
-RewriteRule ^refresh-dive\.php$ /fun-diving/ [R=301,L]
+RewriteRule ^refresh-dive\.php$ /refresh/ [R=301,L]
 RewriteRule ^front-page\.php$ / [R=301,L]
 RewriteRule ^page-home-test\.php$ / [R=301,L]
 RewriteRule ^preview\.html$ / [R=301,L]
@@ -123,9 +127,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^games/puzzle/?$ games/puzzle/index.html [L]
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^beginner-diving-guide/?$ beginner-diving-guide/index.html [L]
 
 SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
 SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode

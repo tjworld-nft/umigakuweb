@@ -1,0 +1,17 @@
+[
+  {
+    "@type": "Service",
+    "@id": "https://miura-diving.com/refresh/#service",
+    "name": "リフレッシュダイビング（ブランクダイバー向け・城ヶ島）",
+    "serviceType": "スクーバダイビングのスキル復習（リフレッシュ）",
+    "description": "半年以上潜っていないブランクダイバー向けのプログラム。神奈川県三浦市・城ヶ島の遠浅のビーチで、器材の組み立てと点検、基本スキル（レギュレーターのリカバリー、マスクの水抜き、浮力の調整など）を浅場で確かめてから、海を1本潜ります。インストラクター1名につき最大4名の少人数制。",
+    "url": "https://miura-diving.com/refresh/",
+    "provider": {"@type": "SportsActivityLocation", "@id": "https://miura-diving.com/#school", "name": "三浦 海の学校", "url": "https://miura-diving.com/"},
+    "areaServed": {"@type": "AdministrativeArea", "name": "神奈川県"},
+    "audience": {"@type": "PeopleAudience", "audienceType": "Cカード（ダイビングライセンス）を持ち、しばらく潜っていないダイバー"},
+    "offers": [
+      {"@type": "Offer", "name": "リフレッシュダイビング（スキルの復習＋1ダイブ）", "price": "19800", "priceCurrency": "JPY", "description": "ガイド・タンク・ウエイト・施設使用料・保険込み・レンタル器材別（税込）", "url": "https://miura-diving.com/refresh/#price"},
+      {"@type": "Offer", "name": "レンタル器材フルセット（1日）", "price": "5500", "priceCurrency": "JPY"}
+    ]
+  }
+]

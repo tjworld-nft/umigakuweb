@@ -1,7 +1,8 @@
 # 撮影写真（~/Desktop/日付/）→ サイト用WebP。EXIFの回転はPILで反映（cwebpは回転を落とすため使わない）
 import os
 from PIL import Image, ImageOps, ImageEnhance
-SRC = os.path.expanduser('~/Desktop')
+# 2026-10-02 にデスクトップ整理で日付フォルダが 01_写真・動画/2026-09/ へ移った
+SRC = os.path.expanduser('~/Desktop/01_写真・動画/2026-09')
 OUT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', 'image', 'sub'))
 # name: (source, widths, crop box as fractions (l,t,r,b) or None, enhance)
 JOBS = {
@@ -35,6 +36,13 @@ JOBS = {
   'beach-surface':  ('20260908/P9088189.JPG', (960,), None, False),
   'kajinohama-card':('20260924/P9248333.JPG', (960,), (0, .22, 1, 1), False),   # 写真カード用：人物が上寄りになるよう空を切る
   'boat-divers':    ('20260913/P9138220.JPG', (960,), None, True),
+  # 2026-10-09 新設ページのヒーロー（アドバンス／リフレッシュ／スペシャルティ）
+  'advanced-hero':  ('20260906/aowcompas2.JPG', (800, 1600), None, True),
+  'refresh-hero':   ('20260912/P9128200.JPG', (800, 1600), None, True),
+  'specialty-hero': ('20260916/P9168268.JPG', (800, 1600), None, True),
+  # 宮川湾のポイントページ（9/13 宮川湾ボートの撮影分）
+  'miyagawa-hero':  ('20260913/P9138255.JPG', (800, 1600), None, True),
+  'miyagawa-seahorse': ('20260913/P9138230.JPG', (960,), None, True),
 }
 import sys
 if len(sys.argv) > 1: JOBS = {k: v for k, v in JOBS.items() if k in sys.argv[1:]}

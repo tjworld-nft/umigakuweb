@@ -165,9 +165,9 @@
       "sources": [],
       "cta_replace": {
         "from": "../../lp/aow/",
-        "to": "../../license/#courses",
+        "to": "../../advanced/",
         "text_from": "AOW講習を見る",
-        "text_to": "AOW講習（開講コース一覧）を見る"
+        "text_to": "アドバンス講習（AOW）を見る"
       }
     },
     {

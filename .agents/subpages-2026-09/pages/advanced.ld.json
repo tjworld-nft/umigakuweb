@@ -1,0 +1,51 @@
+[
+  {
+    "@type": "Course",
+    "@id": "https://miura-diving.com/advanced/#aow-course",
+    "name": "PADIアドバンスド・オープンウォーター・ダイバー講習（アドバンス・AOW）",
+    "description": "オープンウォーターの次のステップ。神奈川県三浦市の城ヶ島・宮川湾で、2日間・5ダイブ（3ビーチ＋2ボート・乗船料込み）のアドベンチャー・ダイブを行い、ディープと水中ナビゲーションを実際の海で身につけます。認定後は最大30m（12〜14歳のジュニアは21m）まで潜れます。インストラクター1名につき最大4名。他店・他団体で取得した方、ブランクのある方も歓迎。",
+    "url": "https://miura-diving.com/advanced/",
+    "inLanguage": "ja",
+    "provider": {
+      "@type": "SportsActivityLocation",
+      "@id": "https://miura-diving.com/#school",
+      "name": "三浦 海の学校",
+      "url": "https://miura-diving.com/"
+    },
+    "educationalCredentialAwarded": "PADIアドバンスド・オープンウォーター・ダイバー認定",
+    "coursePrerequisites": "PADIオープンウォーター・ダイバー（または同等の認定）・12歳以上。健康状態の質問票で「はい」がある場合は医師の同意が必要",
+    "teaches": [
+      "ディープ・ダイブ（必須）",
+      "水中ナビゲーション（必須）"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "70800",
+      "priceCurrency": "JPY",
+      "category": "Paid",
+      "availability": "https://schema.org/InStock",
+      "url": "https://miura-diving.com/advanced/#price",
+      "description": "総額（講習費¥59,800＋レンタル器材2日分¥11,000・税込・ボート2本の乗船料込み）"
+    },
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Onsite",
+      "courseWorkload": "P2D",
+      "location": {
+        "@type": "Place",
+        "name": "城ヶ島・宮川湾（神奈川県三浦市）",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "三浦市",
+          "addressRegion": "神奈川県",
+          "addressCountry": "JP"
+        }
+      },
+      "instructor": {
+        "@type": "Person",
+        "@id": "https://miura-diving.com/instructor/#person",
+        "name": "吉田 哲司"
+      }
+    }
+  }
+]
