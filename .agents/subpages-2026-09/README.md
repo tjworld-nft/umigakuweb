@@ -1,7 +1,7 @@
 # 下層ページの組み立て一式（2026-09-27 リニューアル時）
 
 2026-09-27 に下層ページ15本（license / fun-diving / trial-diving / marine-activity / beginner-guide / instructor / contact / sea-life /
-diving-point/jogashima-kajinohama / tokusho / privacy-policy / 地域ページ4本）を作り直したときの道具と原稿。**デプロイ対象外**（`.agents/`）。
+diving-point/jogashima-kajinohama / tokusho / privacy-policy / 地域ページ4本）を作り直したときの道具と原稿。2026-10-09 に advanced（AOW）・refresh・specialty の3本を同じ作りで追加。**デプロイ対象外**（`.agents/`）。
 
 - `pages/<名前>.html` … 本文の断片（先頭に META JSON）。`pages/<名前>.ld.json` … そのページ固有の構造化データ。
 - `tools/build.py` … 断片にヘッダー・フッター・相談帯・構造化データ（WebPage / BreadcrumbList / FAQPage は自動）を付けて各 `index.html` を書き出す。

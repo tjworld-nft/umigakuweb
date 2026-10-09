@@ -13,7 +13,9 @@ Allow: /yokohama-diving-license/
 Allow: /tokyo-diving-license/
 Allow: /yokosuka-diving/
 Allow: /beginner-guide/
-Allow: /beginner-diving-guide/
+Allow: /advanced/
+Allow: /refresh/
+Allow: /specialty/
 
 # 管理・技術ファイルの除外
 Disallow: /wp-admin/
