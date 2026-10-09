@@ -1130,15 +1130,15 @@ a:hover { color: var(--coral); }
     white-space: nowrap;
   }
   .mobile-cta-bar .cta-line {
-    background: #06C755;
+    background: #00873C; /* 白文字で4.5:1以上（#06C755だと約2:1で読みにくい） */
     color: #fff;
-    box-shadow: 0 4px 14px rgba(6,199,85,.3);
+    box-shadow: 0 4px 14px rgba(0,135,60,.3);
   }
   .mobile-cta-bar .cta-line:active { transform: scale(.97); }
   .mobile-cta-bar .cta-form {
-    background: linear-gradient(135deg, var(--coral), #FF8E7A);
+    background: #D12F6A; /* 下層ページの --coral-ink と同じ。白文字で4.5:1以上 */
     color: #fff;
-    box-shadow: 0 4px 14px rgba(255,107,157,.25);
+    box-shadow: 0 4px 14px rgba(209,47,106,.25);
   }
   .mobile-cta-bar .cta-form:active { transform: scale(.97); }
 

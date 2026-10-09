@@ -168,6 +168,12 @@
         thead th { font-size: .78rem; color: var(--ice); font-weight: 700; }
         td.sea { color: var(--cyan); font-family: var(--ff-num); font-weight: 700; }
         td.air { font-family: var(--ff-num); }
+        /* スマホでは横スクロールさせず、見出しを折り返して画面幅に収める */
+        @media (max-width: 640px) {
+            table { min-width: 0; font-size: .84rem; }
+            th, td { padding: .5rem .35rem; }
+            thead th { white-space: normal; line-height: 1.4; vertical-align: bottom; }
+        }
         tr.hot td { background: rgba(111, 233, 247, .06); }
         .note { margin-top: 1.2rem; font-size: .84rem; color: var(--sub); border-left: 3px solid var(--cyan); padding: .2rem 0 .2rem .9rem; }
 
