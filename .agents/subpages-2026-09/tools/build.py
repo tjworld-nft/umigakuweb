@@ -14,7 +14,7 @@ BASE = 'https://miura-diving.com'
 LINE = 'https://lin.ee/kK3d5p2'
 PAGE_CSS_V = '2026100901'
 PAGE_JS_V = '2026092801'
-STYLE_V = '20260905'
+STYLE_V = '20261009'
 MODIFIED = '2026-09-27'  # 断片の META に modified があればそちらを使う
 
 SPRITE = '''  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
