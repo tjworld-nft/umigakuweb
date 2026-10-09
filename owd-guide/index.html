@@ -277,7 +277,7 @@ section { position: relative; }
   position: relative;
 }
 .hero-schedule::before {
-  content: "3 days";
+  content: "2 days";
   position: absolute;
   top: -11px; right: 18px;
   background: var(--coral);
@@ -299,7 +299,7 @@ section { position: relative; }
 }
 .hero-schedule-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 .hero-schedule-card {
@@ -337,6 +337,12 @@ section { position: relative; }
   color: var(--muted);
   letter-spacing: 0.15em;
   margin-top: 2px;
+}
+.hero-schedule-note {
+  margin-top: 12px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink-2);
 }
 
 .hero-cta {
@@ -1475,7 +1481,7 @@ section { position: relative; }
 /* Responsive */
 @media (min-width: 600px) {
   .bring-list { grid-template-columns: repeat(4, 1fr); }
-  .hero-schedule-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-schedule-grid { grid-template-columns: repeat(2, 1fr); }
   .install-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
@@ -1522,23 +1528,20 @@ section { position: relative; }
       受講までの準備、当日の流れをご案内します。
     </p>
 
-    <!-- 3-Day Course Structure -->
+    <!-- 2-Day Course Structure -->
     <div class="hero-schedule">
-      <div class="hero-schedule-label">Course Structure · 3 Days</div>
+      <div class="hero-schedule-label">Course Structure · 2 Days</div>
       <div class="hero-schedule-grid">
         <div class="hero-schedule-card">
           <div class="hero-schedule-num">Day 01</div>
-          <div class="hero-schedule-date">プール<small>POOL</small></div>
+          <div class="hero-schedule-date"><span style="white-space:nowrap">プール →</span><span style="white-space:nowrap">海洋①</span><small>POOL +&nbsp;OCEAN&nbsp;1</small></div>
         </div>
         <div class="hero-schedule-card">
           <div class="hero-schedule-num">Day 02</div>
-          <div class="hero-schedule-date">海洋①<small>OCEAN 1</small></div>
-        </div>
-        <div class="hero-schedule-card">
-          <div class="hero-schedule-num">Day 03</div>
           <div class="hero-schedule-date">海洋②<small>OCEAN 2</small></div>
         </div>
       </div>
+      <p class="hero-schedule-note">※ 進み具合によっては、3日目をご案内することもあります。</p>
     </div>
 
     <div class="hero-cta">
@@ -1794,7 +1797,7 @@ section { position: relative; }
         講習の流れ
         <span class="serif">— From Preparation to Certification.</span>
       </h2>
-      <p class="lede">事前準備から3日間の講習、認定までの流れです。</p>
+      <p class="lede">事前準備から2日間の講習、認定までの流れです（進み具合によっては3日目をご案内することもあります）。</p>
     </div>
 
     <div class="flow-list">
@@ -1804,17 +1807,12 @@ section { position: relative; }
         <p>3種類の必要書類を事前に記入。あわせてPADI eラーニングを必ず修了させておきます。</p>
       </div>
       <div class="flow-item done reveal reveal-d2">
-        <div class="flow-step">Day 1 · プール講習</div>
-        <h3>9:00 集合・受付</h3>
-        <p>受付で書類をご提出いただき、ウェルカムレクチャー。器材の使い方を学んだあと、プールで基本スキルを練習します。</p>
+        <div class="flow-step">Day 1 · プール講習＋海洋実習①</div>
+        <h3>9:00 集合。プールで練習してから、はじめての海へ</h3>
+        <p>受付で書類をご提出いただき、ウェルカムレクチャー。器材の使い方を学んだら、プールで基本スキルを練習します。続いて三浦の海に出て、練習したスキルを実際の海で確かめます。インストラクターが常にサポートします。</p>
       </div>
       <div class="flow-item reveal reveal-d3">
-        <div class="flow-step">Day 2 · 海洋実習①</div>
-        <h3>はじめての海でのダイビング</h3>
-        <p>三浦の海に出て、限定水域で学んだスキルを実際の海で確認。インストラクターが常にサポートします。</p>
-      </div>
-      <div class="flow-item reveal reveal-d1">
-        <div class="flow-step">Day 3 · 海洋実習②</div>
+        <div class="flow-step">Day 2 · 海洋実習②</div>
         <h3>残りのスキル課題と海中ツアー</h3>
         <p>残りのスキル課題を順にクリアしながら、海中の景色や生き物も楽しめるダイブを行います。</p>
       </div>
@@ -1972,7 +1970,7 @@ section { position: relative; }
           <span class="faq-q-toggle">+</span>
         </button>
         <div class="faq-a"><div class="faq-a-inner">
-          OWDコースは<strong>基本3日間</strong>の構成です。Day 1がプール講習、Day 2・Day 3が海洋実習となります。eラーニングで学科を事前に修了していただくのが前提です。
+          OWDコースは<strong>実技2日間</strong>が基本です。Day 1はプールで基本スキルを練習してから海へ（海洋実習①）、Day 2は海洋実習②です。進み具合によっては3日目をご案内することもあります（講習費は増えず、レンタル器材代が1日分¥5,500だけ加わります）。eラーニングで学科を事前に修了していただくのが前提です。
         </div></div>
       </div>
       <div class="faq-item">
