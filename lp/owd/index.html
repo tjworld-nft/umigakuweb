@@ -71,8 +71,6 @@
             background: linear-gradient(rgba(13, 59, 76, .28), rgba(13, 59, 76, .5)), url("../../image/optimized/fun-diving-hero.webp") center/cover no-repeat;
         }
         .hero-inner { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; color: #fff; }
-        .hero .season { display: inline-block; background: var(--yellow); color: var(--text-dark); font-weight: 700; font-size: .8rem; padding: .3rem .9rem; border-radius: 999px; margin-bottom: 1rem; }
-        .hero .season .days { color: #D6336C; font-weight: 900; }
         .hero .kicker { font-size: clamp(.95rem, 3.2vw, 1.2rem); font-weight: 700; text-shadow: 0 1px 8px rgba(0, 0, 0, .45); margin-bottom: .5rem; }
         .hero h1 { font-size: clamp(1.55rem, 6vw, 2.6rem); font-weight: 900; line-height: 1.4; text-shadow: 0 2px 12px rgba(0, 0, 0, .35); margin-bottom: .75rem; }
         .hero h1 .hl { font-style: normal; color: var(--yellow); font-size: 1.22em; letter-spacing: .02em; }
@@ -158,8 +156,6 @@
         .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: .65rem 0; border-bottom: 1px dashed var(--border); font-size: .92rem; }
         .price-row .item small { display: block; font-size: .74rem; color: var(--text-sub); }
         .price-row .yen { font-weight: 700; white-space: nowrap; }
-        .price-row--off .item strong { color: var(--coral); }
-        .price-row--off .yen { color: var(--coral); }
         .price-row--total { border-bottom: none; border-top: 2px solid var(--teal); margin-top: .4rem; padding-top: .9rem; }
         .price-row--total .item { font-weight: 900; font-size: 1rem; }
         .price-row--total .yen { font-size: 1.6rem; font-weight: 900; color: var(--coral); }
@@ -292,24 +288,23 @@
     <!-- ヒーロー -->
     <div class="hero">
         <div class="hero-inner">
-            <span class="season">夏のLINE特典 9/30まで<span data-deadline-days> ・<span class="days"></span></span></span>
-            <p class="kicker">この夏、海の中で呼吸しよう。</p>
+            <p class="kicker">今度の休み、海の中で呼吸しよう。</p>
             <h1>実技<em class="hl">最短2日</em>で、<br>ダイビングライセンス。</h1>
             <p class="sub">学科はスマホで事前学習だから、海に集中できる。<br>PADIオープンウォーターダイバー取得<span style="white-space:nowrap">｜神奈川・三浦</span></p>
             <div class="price-flash">
                 <div class="burst-badge"><small>学科は</small><span>自宅OK</span></div>
-                <div class="label">LINE特典適用時の総額<br>（レンタル器材まで全部込み）</div>
-                <div class="num">¥59,400<small>（税込）通常¥64,900</small></div>
-                <div class="note">9/30までにLINEからのお申込みで器材レンタル1日分（¥5,500）が無料。当日の追加費用はありません。</div>
+                <div class="label">実技2日の総額<br>（レンタル器材まで全部込み）</div>
+                <div class="num">¥64,900<small>（税込）</small></div>
+                <div class="note">講習費¥53,900＋レンタル器材2日分¥11,000。当日の追加費用はありません。</div>
             </div>
             <a class="btn-line" href="https://lin.ee/kK3d5p2" data-cv="line">LINEで空き状況を聞く<small>（相談無料・営業なし）</small></a>
-            <p class="cta-note">友だち追加後、「<strong>夏割</strong>」と一言送るだけでOK。<br>特典の適用と空き状況をあわせてご案内します。迷っている段階のご相談も歓迎です。</p>
+            <p class="cta-note">友だち追加後、ご希望の時期を一言送るだけでOK。<br>空き状況をご案内します。迷っている段階のご相談も歓迎です。</p>
         </div>
     </div>
 
     <div class="relief-bar">
         <ul>
-            <li>泳げなくてもOK</li>
+            <li>泳ぎに自信がなくてもOK</li>
             <li>10歳から参加可</li>
             <li>おひとり様歓迎</li>
             <li>三崎口駅から無料送迎</li>
@@ -319,9 +314,9 @@
     <!-- 導入 -->
     <section>
         <div class="container">
-            <span class="sec-label">Summer Debut</span>
-            <h2 class="sec-title">ライセンスを取れば、<br>夏の海は<em>「眺める場所」から「潜る場所」</em>に変わる</h2>
-            <img class="lp-illust" src="../../image/optimized/owd-lp-summer-debut.webp" alt="夏の三浦の海へ誘うクラゲ女子のイラスト" width="900" height="502" loading="lazy">
+            <span class="sec-label">Diver Debut</span>
+            <h2 class="sec-title">ライセンスを取れば、<br>海は<em>「眺める場所」から「潜る場所」</em>に変わる</h2>
+            <img class="lp-illust" src="../../image/optimized/owd-lp-summer-debut.webp" alt="三浦の海へ誘うクラゲ女子のイラスト" width="900" height="502" loading="lazy">
             <div class="navi-bubble">
                 <img class="navi-bubble__avatar" src="../../image/optimized/kurage-navi.webp" alt="案内役のクラゲちゃん" width="56" height="56" loading="lazy">
                 <div class="navi-bubble__balloon">
@@ -349,17 +344,12 @@
                         <div class="item">レンタル器材<small>¥5,500/日 × 実技2日分（フル器材）</small></div>
                         <div class="yen">¥11,000</div>
                     </div>
-                    <div class="price-row price-row--off">
-                        <div class="item"><strong>夏のLINE特典（9/30まで）</strong><small>LINEからのお申込みで器材レンタル1日分が無料</small></div>
-                        <div class="yen">−¥5,500</div>
-                    </div>
                     <div class="price-row price-row--total">
                         <div class="item">総額</div>
-                        <div class="yen">¥59,400<small>（税込・通常¥64,900）</small></div>
+                        <div class="yen">¥64,900<small>（税込）</small></div>
                     </div>
                     <div class="price-includes">
-                        <strong>当日の追加費用はありません。</strong>教材費・申請料・施設利用料などの「あとから請求」は一切なし。器材の購入も不要です（お持ちの方はレンタル代分お安くなります）。<br>
-                        <small>※特典は2026年9月30日までにLINEで「夏割」とお送りのうえお申込みの方が対象。他の割引との併用はできません（認定後のファンダイビングが対象の「つづける割」は併用いただけます）。</small>
+                        <strong>当日の追加費用はありません。</strong>教材費・申請料・施設利用料などの「あとから請求」は一切なし。器材の購入も不要です（お持ちの方はレンタル代分お安くなります）。
                     </div>
                 </div>
             </div>
@@ -373,18 +363,18 @@
                 <span class="aow-set-tip__badge">ひとりでも、友達とでも</span>
                 <h3>おひとりでのご参加が一番多いですが、<em>お友達と一緒</em>でも大丈夫です</h3>
                 <ul>
-                    <li>お友達と<strong>2人同時のお申し込みも歓迎</strong>。お二人とも特典（レンタル1日分無料）が適用されます</li>
-                    <li>すでにダイバーのお友達がいる方は、<strong>その方も一緒に潜れます</strong>。付き添いダイビングが¥6,600引きになります（ビーチは半額の¥6,600／ボート¥13,200・税込）</li>
+                    <li>お友達と<strong>2人同時のお申し込みも歓迎</strong>。お二人とも初めての受講なら、お二人とも器材レンタル1日分（¥5,500）が無料になります（バディ割）</li>
+                    <li>すでにダイバーのお友達がいる方は、<strong>その方の紹介で</strong>あなたは器材レンタル1日分（¥5,500）が無料、お友達は一緒に潜る付き添いダイビングが¥6,600引き（ビーチなら半額）になります</li>
                 </ul>
-                <p class="aow-set-tip__small">※付き添いダイビングの割引は、認定ダイバーの方が対象です（レンタル器材代は別途）。少人数制のため同じ日にご案内できる人数に限りがありますので、日程はLINEでご相談ください。</p>
+                <p class="aow-set-tip__small">※付き添いダイビングの割引は、認定ダイバーの方が対象です（レンタル器材代は別途）。少人数制のため同じ日にご案内できる人数に限りがありますので、日程はLINEでご相談ください。特典を使うときは、お申し込みの際にLINEで「バディ」とお送りください（ご紹介の場合は紹介者のお名前も。お申し込み後のさかのぼり適用はできません）。くわしい条件は<a href="https://miura-diving.com/buddy/">お友達紹介のページ</a>をご覧ください。</p>
             </div>
             <div class="aow-set-tip reveal">
                 <span class="aow-set-tip__badge">ちなみに</span>
-                <h3>AOW（アドバンス）まで考えている方は、一緒に取ると<em>合計¥16,000</em>おトクです</h3>
+                <h3>AOW（アドバンス）まで考えている方は、まとめて申し込むと<em>講習費が¥5,000引き</em>になります</h3>
                 <ul>
-                    <li>セット受講で講習費が<strong>−¥5,000</strong>（OWD ¥53,900＋AOW ¥59,800 → セット¥108,700）</li>
-                    <li>レンタル1日分無料の特典が<strong>OWD分・AOW分の2回</strong>適用されて<strong>−¥11,000</strong></li>
-                    <li>セット総額は<strong>¥119,700</strong>（税込・通常¥135,700）</li>
+                    <li>まとめて申し込むと講習費が<strong>−¥5,000</strong>（OWD ¥53,900＋AOW ¥59,800 → セット¥108,700）</li>
+                    <li>レンタル器材は<strong>実技4日分</strong>（¥5,500×4日＝¥22,000）</li>
+                    <li>セット総額は<strong>¥130,700</strong>（税込・別々に受講すると¥135,700）</li>
                 </ul>
                 <p class="aow-set-tip__small">※OWD2日＋AOW2日の最短4日間で取得できます（冬も同じです）。進み具合によりOWD3日＋AOW2日（計5日間）になる場合があり、そのときはレンタル代が1日分（¥5,500）増えます。もちろんOWDだけの受講もOK。AOWはあとから受講することもできます。</p>
             </div>
@@ -422,7 +412,7 @@
                     <div class="reason-card__body">
                         <span class="num">REASON 01</span>
                         <h3>コースディレクターが直接指導</h3>
-                        <p>インストラクターを育てる立場のPADIコースディレクターから直接学べる、神奈川でも数少ないスクールです。</p>
+                        <p>インストラクターを育てる立場のPADIコースディレクターから、直接学べます。</p>
                     </div>
                 </div>
                 <div class="reason-card reveal">
@@ -490,7 +480,7 @@
                     <tr><th>2日目</th><td>午前: 海洋実習③④</td><td>午後: スキル確認・ログ付け・認定手続き</td></tr>
                 </tbody>
             </table>
-            <p class="schedule-note">※あくまで目安です。海況やお一人おひとりの進み具合に合わせて調整します（3日間に分けてもOK）。</p>
+            <p class="schedule-note">※あくまで目安です。海況やお一人おひとりの進み具合に合わせて調整します（人によっては3日目も。その場合もレンタル代¥5,500が加わるだけです）。</p>
         </div>
     </section>
 
@@ -536,7 +526,7 @@
                 <div class="info">
                     <span class="role">PADIコースディレクター / 代表インストラクター</span>
                     <h3>吉田 哲司</h3>
-                    <p>インストラクターを育成するコースディレクターとして、三浦の海で講習を中心に活動。「泳げない」「体力に自信がない」方こそ、基本から一つずつ。あなたのペースで必ず潜れるようになります。</p>
+                    <p>インストラクターを育成するコースディレクターとして、三浦の海で講習を中心に活動。「泳げない」「体力に自信がない」方こそ、基本から一つずつ。あなたのペースに合わせて進めます。</p>
                 </div>
             </div>
             <div class="padi-band reveal">
@@ -553,19 +543,12 @@
             <h2 class="sec-title">受講者の声</h2>
             <div class="voices">
                 <div class="voice-card reveal">
-                    <div class="stars">★★★★★</div>
-                    <p>泳ぎが苦手で不安でしたが、基本から一つずつ教えてもらい、海でも落ち着いて潜れました。少人数なので質問もしやすく、講習があっという間でした。</p>
-                    <div class="who">20代女性・OWD取得</div>
+                    <p>泳ぎに自信がなく、最初は水中で呼吸するのも緊張しました。急がずに何度も説明してもらえたので、最後は落ち着いて海を楽しめました。</p>
+                    <div class="who">Y.Sさん（20代女性）・オープンウォーター講習</div>
                 </div>
                 <div class="voice-card reveal">
-                    <div class="stars">★★★★★</div>
                     <p>60歳を過ぎてからの挑戦でしたが、自分のペースに合わせてもらえて楽しめました。今ではファンダイビングにも通っています。</p>
-                    <div class="who">60代男性・OWD取得</div>
-                </div>
-                <div class="voice-card reveal">
-                    <div class="stars">★★★★★</div>
-                    <p>一人で参加しましたが、すぐに打ち解けられました。品川から1時間で着くのでアクセスも楽。OWD取得後すぐにAOWも受講しました。</p>
-                    <div class="who">30代男性・OWD/AOW取得</div>
+                    <div class="who">60代男性・オープンウォーター講習</div>
                 </div>
             </div>
             <p class="voice-photos-note reveal">実際の講習・海洋実習のようす</p>
@@ -584,8 +567,8 @@
             <h2 class="sec-title">よくあるご質問</h2>
             <div class="faq">
                 <details>
-                    <summary>泳げないのですが、大丈夫ですか？</summary>
-                    <p>はい、大丈夫です。ダイビングは水泳と違い、器材で呼吸と浮力をコントロールします。プールで基礎からゆっくり練習するので、水が苦手な方でも安心です。</p>
+                    <summary>泳ぎに自信がないのですが、大丈夫ですか？</summary>
+                    <p>ダイビングは水泳と違い、器材で呼吸と浮力をコントロールします。海に出る前にプールで基礎からゆっくり練習し、不安なスキルは繰り返し確認して、無理に先へは進めません。なお、講習の中で泳ぎと水面に浮く力の確認があります。不安な方はLINEでご相談ください。</p>
                 </details>
                 <details>
                     <summary>何日で取得できますか？</summary>
@@ -593,11 +576,11 @@
                 </details>
                 <details>
                     <summary>年齢制限はありますか？</summary>
-                    <p>10歳から参加できます。上限はなく、60代・70代で取得される方も多数いらっしゃいます。</p>
+                    <p>10歳から参加できます。年齢の上限はなく、60代・70代の方も受講されています。受講前に健康状態の質問票に答えていただき、「はい」がつく項目がある場合は医師の同意が必要です。</p>
                 </details>
                 <details>
                     <summary>本当に表示の総額以外かかりませんか？</summary>
-                    <p>はい。講習費¥53,900に教材・申請料・保険まで含まれ、あとはレンタル器材¥5,500×実技日数のみ（通常総額¥64,900）。さらに9/30までのLINE特典でレンタル1日分が無料になり、実技2日なら総額¥59,400です。実技が3日になった場合もレンタル代1日分が増えるだけで、講習費の追加はありません。水着・タオル・日焼け止めだけご持参ください。</p>
+                    <p>はい。講習費¥53,900に教材・申請料・保険まで含まれ、あとはレンタル器材¥5,500×実技日数のみで、実技2日なら総額¥64,900です。実技が3日になった場合もレンタル代1日分が増えるだけで、講習費の追加はありません。水着・タオル・日焼け止めだけご持参ください。</p>
                 </details>
                 <details>
                     <summary>高い器材を買わされたりしませんか？</summary>
@@ -622,10 +605,10 @@
     <!-- 最終CTA -->
     <section class="final-cta">
         <div class="container">
-            <h2>今年の夏を、<br>「海に潜れる自分」で過ごそう。</h2>
-            <p>少人数制のため、各日にご案内できる人数はわずかです。<br>8〜9月は土日から埋まっていきます。9/30までのLINE特典（レンタル1日分無料）も、このボタンから。</p>
+            <h2>これからの休日を、<br>「海に潜れる自分」で過ごそう。</h2>
+            <p>少人数制のため、各日にご案内できる人数はわずかです。<br>時期が決まっていなくても大丈夫。まずはLINEで空き状況をお気軽にどうぞ。</p>
             <ul class="cta-topics">
-                <li>「夏割」で特典適用</li>
+                <li>総額・日程の相談</li>
                 <li>空き状況の確認</li>
                 <li>自分でも取れるか相談</li>
             </ul>
@@ -656,23 +639,6 @@
         } else {
             document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
         }
-    </script>
-    <script>
-        /* 締切までの残り日数（日本時間の日付基準・9/30が最終日） */
-        (function () {
-            var wraps = document.querySelectorAll('[data-deadline-days]');
-            if (!wraps.length) return;
-            var n = new Date();
-            var jst = new Date(n.getTime() + n.getTimezoneOffset() * 60000 + 9 * 3600000);
-            var today = Date.UTC(jst.getFullYear(), jst.getMonth(), jst.getDate());
-            var days = Math.round((Date.UTC(2026, 8, 30) - today) / 86400000);
-            wraps.forEach(function (w) {
-                if (days < 0) { w.hidden = true; return; }
-                var slot = w.querySelector('.days');
-                if (!slot) return;
-                slot.textContent = days === 0 ? '本日まで' : 'あと' + days + '日';
-            });
-        })();
     </script>
     <script>
         document.querySelectorAll('a[data-cv="line"]').forEach(function(a){
