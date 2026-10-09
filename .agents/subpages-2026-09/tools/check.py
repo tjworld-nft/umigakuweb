@@ -58,6 +58,10 @@ def check(name):
     # 禁止語
     for w in FORBID:
         if w in src: ng.append(f'禁止語/誤り: {w}')
+    # ライセンス講習の練習はプール（1日目の午前）。「浅場で練習」は体験ダイビングの話なので、ライセンス系のページにだけ禁止（2026-10-09）
+    if path in ('license/', 'tokyo-diving-license/', 'yokohama-diving-license/', 'kanagawa-diving-license/'):
+        for w in ('足の着く穏やかな場所で', '浅いところで練習'):
+            if w in src: ng.append(f'ライセンスの練習場所はプール: {w}')
     if '080-4350-0412' in src and path not in PHONE_OK: ng.append('電話番号は contact/tokusho 以外に出さない')
     # h1
     if p.h1 != 1: ng.append(f'h1 が {p.h1} 個')

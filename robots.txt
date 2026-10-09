@@ -36,6 +36,7 @@ Disallow: /3d-maze-simple-backup.html
 # サイトマップの場所
 Sitemap: https://miura-diving.com/sitemap.xml
 Sitemap: https://miura-diving.com/ai-sitemap.xml
+Sitemap: https://miura-diving.com/blog/sitemap.xml
 
 # AI検索エンジン向けサイト概要（LLM向けサマリー）
 # https://miura-diving.com/llms.txt
