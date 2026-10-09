@@ -22,9 +22,10 @@
       "@type": "Offer",
       "price": "70800",
       "priceCurrency": "JPY",
-      "category": "総額（講習費¥59,800＋レンタル器材2日分¥11,000・税込・ボート2本の乗船料込み）",
+      "category": "Paid",
       "availability": "https://schema.org/InStock",
-      "url": "https://miura-diving.com/advanced/#price"
+      "url": "https://miura-diving.com/advanced/#price",
+      "description": "総額（講習費¥59,800＋レンタル器材2日分¥11,000・税込・ボート2本の乗船料込み）"
     },
     "hasCourseInstance": {
       "@type": "CourseInstance",

@@ -24,7 +24,7 @@
 - メーカーの「国内No.1」という自称は書かない。**「国産」ともまとめて言わない**（NEO DRY FD・DISCOVERY DRY は海外生産モデルとメーカーが明記）。定価は既製サイズの価格で、採寸オーダーは全モデル +¥27,500（税込）。
 
 ## 導線（2026-10-01）
-- トップ `#autumn-winter` の `.wf-mydry`、fun-diving の秋冬の節、license のSP一覧の注記（いずれも `data-expires="2027-01-01"`）、winter-diving の「自分のドライスーツを作りたい方へ」（期限表記なしのリンク）、llms.txt「期間限定の特典」、sitemap.xml、ai-sitemap.xml。
+- トップ `#autumn-winter` の `.wf-mydry`、fun-diving の秋冬の節、license のSP一覧の注記・specialty のSP一覧の注記（いずれも `data-expires="2027-01-01"`）、winter-diving の「自分のドライスーツを作りたい方へ」（期限表記なしのリンク）、llms.txt「期間限定の特典」、sitemap.xml、ai-sitemap.xml。
 - フッターには入れていない（2か月の企画なので）。LINE配信はまだ（HPを先に出して反応を見てから・10月中旬が目安）。
 
 ## 終わったら（1/1 以降）

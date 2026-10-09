@@ -58,6 +58,7 @@
 - [予約・お問い合わせ](https://miura-diving.com/contact/): LINEに送る文面を選べるボタンと、フォームでの予約・問い合わせ（24時間受付・通常1営業日以内に返信）
 - [インストラクター紹介](https://miura-diving.com/instructor/): 代表 吉田哲司（PADIコースディレクター）の経歴・教えるときに決めていること・著書
 - [城ヶ島・梶の浜ビーチ](https://miura-diving.com/diving-point/jogashima-kajinohama/): ビーチダイビング・講習で使うポイントのマップと注意点
+- [宮川湾ボートダイビング](https://miura-diving.com/diving-point/miyagawa-bay/): ボートダイビングのメインポイント。港から船で約5分・最大水深約18m・流れが少なく生き物がゆたか。カサゴ根（水深約4〜18m）・トビ根（約8〜18m）の手描きマップ、図鑑に載せている宮川湾の生き物（タツノオトシゴ・ガラスハゼ・オトヒメエビ・ボブサンウミウシなど）、季節の見どころ、ボート2本¥19,800（乗船料込み）
 - [横須賀からのダイビング案内](https://miura-diving.com/yokosuka-diving/)
 - [横浜からのライセンス取得案内](https://miura-diving.com/yokohama-diving-license/)
 - [神奈川でダイビングライセンスを取るときの選び方](https://miura-diving.com/kanagawa-diving-license/)

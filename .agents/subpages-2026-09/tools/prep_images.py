@@ -40,6 +40,9 @@ JOBS = {
   'advanced-hero':  ('20260906/aowcompas2.JPG', (800, 1600), None, True),
   'refresh-hero':   ('20260912/P9128200.JPG', (800, 1600), None, True),
   'specialty-hero': ('20260916/P9168268.JPG', (800, 1600), None, True),
+  # 宮川湾のポイントページ（9/13 宮川湾ボートの撮影分）
+  'miyagawa-hero':  ('20260913/P9138255.JPG', (800, 1600), None, True),
+  'miyagawa-seahorse': ('20260913/P9138230.JPG', (960,), None, True),
 }
 import sys
 if len(sys.argv) > 1: JOBS = {k: v for k, v in JOBS.items() if k in sys.argv[1:]}

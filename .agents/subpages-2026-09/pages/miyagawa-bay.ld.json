@@ -1,0 +1,18 @@
+[
+  {
+    "@type": "TouristAttraction",
+    "@id": "https://miura-diving.com/diving-point/miyagawa-bay/#place",
+    "name": "宮川湾（ボートダイビングポイント）",
+    "alternateName": ["宮川湾 カサゴ根", "宮川湾 トビ根", "宮川湾ボートダイビング"],
+    "description": "神奈川県三浦市・宮川湾のボートダイビングポイント。港から船で約5分、最大水深約18m、流れが少なく生き物がゆたか。代表的な根はカサゴ根（水深約4〜18m）とトビ根（水深約8〜18m）。三浦 海の学校のボートダイビングとアドバンス講習で利用する。",
+    "url": "https://miura-diving.com/diving-point/miyagawa-bay/",
+    "image": "https://miura-diving.com/image/sub/miyagawa-hero-1600.webp",
+    "hasMap": [
+      {"@type": "Map", "mapType": "https://schema.org/VenueMap", "url": "https://miura-diving.com/image/miyagawa-kasagone-map.webp", "name": "宮川湾 カサゴ根のポイントマップ"},
+      {"@type": "Map", "mapType": "https://schema.org/VenueMap", "url": "https://miura-diving.com/image/miyagawa-tobine-map.webp", "name": "宮川湾 トビ根のポイントマップ"}
+    ],
+    "touristType": ["スクーバダイビング", "ボートダイビング", "アドバンス講習"],
+    "address": {"@type": "PostalAddress", "addressLocality": "三浦市", "addressRegion": "神奈川県", "addressCountry": "JP"},
+    "subjectOf": {"@id": "https://miura-diving.com/diving-point/miyagawa-bay/#webpage"}
+  }
+]

@@ -12,7 +12,7 @@
           "@type": "Course",
           "name": "PADI 中性浮力（PPB）・スペシャルティ講習",
           "description": "ウエイトの量を見直し、呼吸で浮き沈みを細かく整える練習。止まりたい深さで止まれるようになり、空気が長もちし、砂も巻き上げにくくなります。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#ppb",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -24,8 +24,9 @@
             "@type": "Offer",
             "price": "27500",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -36,7 +37,7 @@
           "@type": "Course",
           "name": "PADI ドライスーツ・スペシャルティ講習",
           "description": "体をぬらさない、中に空気の層をもつスーツの仕組みと、空気の入れ方・抜き方、浮力の管理、困ったときの対処を学びます。三浦では10月中旬〜6月中旬はドライスーツで潜っています。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#drysuit",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -48,8 +49,9 @@
             "@type": "Offer",
             "price": "27500",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -60,7 +62,7 @@
           "@type": "Course",
           "name": "PADI ボートダイバー・スペシャルティ講習",
           "description": "船の上での器材の置き方と動き方、エントリーとエキジット、船上のルール。宮川湾や城ヶ島のボートポイントへ、落ち着いて行けるようになります。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#boat",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -72,8 +74,9 @@
             "@type": "Offer",
             "price": "36300",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -84,7 +87,7 @@
           "@type": "Course",
           "name": "PADI ディープダイバー・スペシャルティ講習",
           "description": "18mより深い場所を潜るための計画、空気の管理、深さで起きる体の変化と安全な浮上。PADIのディープダイバーの認定後は、最大40mまで潜れるようになります。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#deep",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -96,8 +99,9 @@
             "@type": "Offer",
             "price": "55000",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -108,7 +112,7 @@
           "@type": "Course",
           "name": "PADI 水中ナビゲーション・スペシャルティ講習",
           "description": "コンパスの使い方、キックの回数で距離をはかる方法、地形を手がかりに進む方法。ガイドに頼らず、自分で方向を決めて戻ってこられるようになります。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#navigation",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -120,8 +124,9 @@
             "@type": "Offer",
             "price": "36300",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -132,7 +137,7 @@
           "@type": "Course",
           "name": "PADI ナイトダイバー・スペシャルティ講習",
           "description": "ライトの使い方と合図、暗い海での潜降・浮上、はぐれないための決めごと。夜にだけ動き出す生き物を探しに行けるようになります。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#night",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -144,8 +149,9 @@
             "@type": "Offer",
             "price": "44000",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -156,7 +162,7 @@
           "@type": "Course",
           "name": "PADI 魚の見分け方・スペシャルティ講習",
           "description": "体の形やひれ、模様から魚のグループを見分けるコツと、図鑑の引き方。ログ付けがぐっと楽しくなります。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#fish-id",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -168,8 +174,9 @@
             "@type": "Offer",
             "price": "27500",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -180,7 +187,7 @@
           "@type": "Course",
           "name": "PADI 水中ナチュラリスト・スペシャルティ講習",
           "description": "海の生き物どうしのつながりと、生き物に触れずに観察するコツ。三浦の海を、生き物の暮らしから見られるようになります。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#naturalist",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -192,8 +199,9 @@
             "@type": "Offer",
             "price": "27500",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -204,7 +212,7 @@
           "@type": "Course",
           "name": "PADI デジタルフォト・スペシャルティ講習",
           "description": "水中での光と色、カメラの設定、生き物に近づいて撮るコツ。水中カメラの用意については、ご予約のときにご相談ください。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#photo",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -216,8 +224,9 @@
             "@type": "Offer",
             "price": "33000",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -228,7 +237,7 @@
           "@type": "Course",
           "name": "PADI サーチ＆リカバリー・スペシャルティ講習",
           "description": "決まった形で水中を探す方法と、見つけた物を安全に引き上げる方法。チームで動く計画の立て方も身につきます。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#search-recovery",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -240,8 +249,9 @@
             "@type": "Offer",
             "price": "44000",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -252,7 +262,7 @@
           "@type": "Course",
           "name": "PADI ドリフトダイバー・スペシャルティ講習",
           "description": "流れのある海で、流れに乗って潜るための計画と合図、浮上のしかた、ボートとの連携を学びます。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#drift",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -264,8 +274,9 @@
             "@type": "Offer",
             "price": "36300",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       },
@@ -276,7 +287,7 @@
           "@type": "Course",
           "name": "PADI エンリッチド・エア（ナイトロックス）・スペシャルティ講習",
           "description": "酸素の割合を高めた空気の仕組み、タンクの中身の確かめ方、潜れる深さの決め方。海洋2ダイブ付きは¥45,100です。取ったあとは、城ヶ島のビーチ・ボートで、通常のダイビング料金＋1本¥1,500でエンリッチド・エアのタンクを使えます。",
-          "url": "https://miura-diving.com/specialty/#list",
+          "url": "https://miura-diving.com/specialty/#nitrox",
           "inLanguage": "ja",
           "provider": {
             "@type": "SportsActivityLocation",
@@ -288,8 +299,9 @@
             "@type": "Offer",
             "price": "23650",
             "priceCurrency": "JPY",
-            "category": "講習料金（税込・レンタル器材別）",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "description": "講習料金（税込・レンタル器材別）",
+            "category": "Paid"
           }
         }
       }
