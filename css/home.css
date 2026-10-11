@@ -164,6 +164,8 @@
   .home .hero-buttons .btn-line,
   .home .hero-buttons .btn--ghost { width: min(100%, 340px); min-height: 56px; }
   .hero-play { margin-top: .9rem; font-size: .9rem; }
+  /* 中身が画面より高いとき、先頭の帯（マイドライ割）が固定ヘッダーの下に潜っていたのを直す（2026-10-11） */
+  .home .hero-content { padding-top: 4.3rem; }
   .hero-play .ring { width: 42px; height: 42px; }
 }
 @media (min-width: 900px) {
@@ -223,6 +225,15 @@
 .dive-head .h-label { color: #CFF3FF; }
 .dive-head h2 { color: #fff; font-size: clamp(1.7rem, 4.8vw, 2.8rem); font-weight: 700; line-height: 1.35; margin-bottom: .8rem; text-shadow: 0 2px 16px rgba(0, 20, 32, .35); }
 .dive-head p { font-size: clamp(.95rem, 2.3vw, 1.06rem); line-height: 1.95; color: rgba(255, 255, 255, .94); text-shadow: 0 1px 6px rgba(0, 20, 32, .45); }
+/* サイトのオープニング（js/opening.js）を音ありでもう一度見るボタン */
+.op-replay {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; margin-top: .7rem; padding: .3rem .6rem;
+  background: none; border: 0; cursor: pointer; font: inherit; font-size: .9rem; font-weight: 700; letter-spacing: .03em;
+  color: #CFF3FF; text-decoration: underline; text-underline-offset: .28em; text-shadow: 0 1px 6px rgba(0, 20, 32, .45);
+}
+.op-replay svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
+.op-replay small { font-family: var(--ff-accent); font-weight: 600; opacity: .85; text-decoration: none; }
+.op-replay:hover { color: #fff; }
 
 .film { max-width: 1040px; margin: 0 auto; padding: 0 1.25rem; }
 .film-stage {

@@ -9,6 +9,7 @@ DirectoryIndex index.html
 
 # 字幕（トップのPV・2026-09-27）。nginx/Apache の既定の型表に無いことがあるので明示する
 AddType text/vtt .vtt
+AddType audio/mp4 .m4a
 
 # RewriteEngine On
 RewriteEngine On
