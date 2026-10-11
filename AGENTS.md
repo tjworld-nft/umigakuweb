@@ -515,6 +515,8 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - トップのヒーロー画像 `image/optimized/home-hero-soft-diving.webp` は差し替えない。
 - 公開ページは静的HTML。現役PHPは `contact/send_mail.php` のみ（WPテーマ系phpは配信されない残骸）。
 - LINEリンクは lin.ee/kK3d5p2 と lin.ee/Y3nB18U どちらも同一アカウントに着地するので混在OK。
+- **姉妹サイトへのリンク（2026-10-11）**: フッター最下部の著作権行の下に「運営：AquaBit LAB」（→ https://aquabit-lab.com/ ）を1行。共通フッターの49ページ＋独自フッターの `buddy/` `tsuzukeru/` `winter-diving/` に入れてある（広告LP `lp/`・`owd-guide/`・`staff/`・`aow-learning/`・ゲーム類には入れない）。CSSを足さずインライン指定なので `style.css?v=` は上げなくてよい。下層ページは `.agents/subpages-2026-09/tools/build.py` の `footer()` が正、トップ・まんが・アプリ案内ページは各HTMLに直接。**新しいページを作るときも同じ行を入れる。**
+  代表のポートフォリオ https://www.tj-web3.com/ は `instructor/` のプロフィール文末の1行だけ（トップや他ページには置かない＝予約の導線を外へ逃がさない）。構造化データはトップと `instructor/` の Person に `sameAs`、トップの `#org` に `parentOrganization`（AquaBit LAB）。`rel` は自分のサイトなので `noopener` のみ（`noreferrer`/`nofollow` を付けない）。このサイトではAI事業の宣伝文は書かない（リンクの名前だけ）。
 
 
 ## 海学公式アプリの案内（2026-09-30公開）

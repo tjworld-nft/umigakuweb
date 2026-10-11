@@ -8,6 +8,9 @@
     "description": "三浦 海の学校 代表。1997年にオーストラリアでプロダイバーの資格を取得。以来、初心者の講習からプロの養成まで、ダイビング講習を中心に活動。PADIコースディレクター（インストラクターを育てることができるPADIのプロ資格の最高位）。三浦の海は約14年。ダイビング関連の書籍など12冊以上を出版。",
     "image": "https://miura-diving.com/image/optimized/instructor.webp",
     "url": "https://miura-diving.com/instructor/",
+    "sameAs": [
+      "https://www.tj-web3.com/"
+    ],
     "mainEntityOfPage": {
       "@id": "https://miura-diving.com/instructor/#webpage"
     },
