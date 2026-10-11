@@ -3,16 +3,15 @@
    --------------------------------------------------------------------------
    深い海から水面へ上がり、顔を出すと、そこがサイト（三浦の海の写真）。
 
-   ・2つの版がある。どちらも映像は等速（早回しは目が回るのでやめた・2026-10-11）。
-       full … はじめての人（と、1週間あいた人）に。約6秒。「未知の世界は、／すぐそこに。」
-       rise … 2回目からの人に。水面に出るところだけ、約2秒。「おかえりなさい。」
+   ・来るたびに1回、約6秒。映像は等速（早回しは目が回るのでやめた）。文字は「未知の世界は、／すぐそこに。」
+     2回目からの人向けの短い版（約2秒）も一度作ったが、いらないと決めて外した（2026-10-11 吉田さん）。
    ・映像は video/opening/（絵＝gpt-image-2.5、動き＝MiniMax H3 Max Turbo、音＝ElevenLabs）。
      実写ではなくイメージ映像なので、画面の隅に「イメージ映像」と出す。
    ・水面の線、流れ落ちる水の膜、レンズに残る水滴は WebGL でその場で描く。
      線より上は透明で、下にある本物のページがそのまま見える（写真は1ピクセルも作り変えない）。
-   ・出す／出さない／どちらの版かは index.html の <head> の小さなスクリプトが決める（html に class="op"）。
+   ・出す／出さないは index.html の <head> の小さなスクリプトが決める（html に class="op"）。
      このファイルが読めなくても、<head> の CSS が5秒で自分から消える。
-   ・音は自動では出せない（ブラウザの決まり）。full には「音を出す」ボタンがあり、押した人にだけ鳴らす。
+   ・音は自動では出せない（ブラウザの決まり）。「音を出す」ボタンがあり、押した人にだけ鳴らす。
      あとからもう一度見るのは [data-opening="sound"] のボタン（最初から音あり）。
    ・映像・音・静止画を差し替えたら下の VER と <head> の ?v= を上げる（サーバーが7日キャッシュする）。
    ========================================================================== */
@@ -42,19 +41,12 @@
   function lineEase(x) { x = clamp(x, 0, 1); return x * (1.25 - 0.25 * x); }
   function portrait() { return W.innerHeight >= W.innerWidth; }
 
-  /* 版ごとの素材と進行表（秒）。tl＝動画のとき／stl＝動画を再生できない端末（静止画2枚で同じ流れ）
+  /* 素材と進行表（秒）。tl＝動画のとき／stl＝動画を再生できない端末（静止画2枚で同じ流れ）
      copyOut 文字が去る／glow 水面に近づいて白む／wipe 水面の線が降りる／end 水滴が消えて片づく */
-  var KINDS = {
-    full: {
-      video: '-long', still: ['0', '1'], lines: ['未知の世界は、', 'すぐそこに。'], stagger: 65, second: 1050,
-      tl:  { copyOut: 2.55, glow: [4.70, 5.45], wipe: [5.30, 6.15], peak: 3.70, peakW: 1.00, end: 7.20 },
-      stl: { copyOut: 2.20, glow: [2.30, 2.90], wipe: [2.80, 3.60], peak: 2.10, peakW: 0.70, end: 4.50, mix: [1.30, 2.70], zoom: 1.9 }
-    },
-    rise: {
-      video: '-rise', still: ['2', '1'], lines: ['おかえりなさい。'], stagger: 45, second: 0,
-      tl:  { copyOut: 0.85, glow: [0.25, 0.80], wipe: [0.85, 1.65], peak: 0.50, peakW: 0.60, end: 2.60 },
-      stl: { copyOut: 0.80, glow: [0.20, 0.70], wipe: [0.80, 1.55], peak: 0.45, peakW: 0.45, end: 2.45, mix: [0.15, 0.80], zoom: 0.5 }
-    }
+  var K = {
+    video: '-long', still: ['0', '1'], lines: ['未知の世界は、', 'すぐそこに。'], stagger: 65, second: 1050,
+    tl:  { copyOut: 2.55, glow: [4.70, 5.45], wipe: [5.30, 6.15], peak: 3.70, peakW: 1.00, end: 7.20 },
+    stl: { copyOut: 2.20, glow: [2.30, 2.90], wipe: [2.80, 3.60], peak: 2.10, peakW: 0.70, end: 4.50, mix: [1.30, 2.70], zoom: 1.9 }
   };
 
   var PILL = 'position:absolute;display:inline-flex;align-items:center;gap:.5em;padding:.75em 1.15em;color:#fff;' +
@@ -261,18 +253,15 @@
 
   /* --------------------------------------------------------------------------
      本体。opts.auto＝サイトを開いたとき（無音で始まる）／opts.sound＝ボタンから（最初から音あり）
-     opts.kind＝'full'（約6秒）か 'rise'（約2秒）
      -------------------------------------------------------------------------- */
   function start(opts) {
     if (running) return;
     running = true;
     opts = opts || {};
     var pre = opts.pre || null;
-    var kind = KINDS[opts.kind] ? opts.kind : 'full';
-    var K = KINDS[kind];
     var orient = (pre && pre.o) || (portrait() ? 'p' : 'l');
     var tl = null;                     /* 走り出すときに進行表から写す（スキップで書き換えるため） */
-    var t0 = 0, lastMs = 0, stalled = 0, raf = 0;
+    var t0 = 0, goAt = 0, lastMs = 0, stalled = 0, raf = 0;
     var ended = false, revealed = false, opened = false, skipped = false, stillTried = false, swallowUntil = 0;
     var useAudioClock = false, wantSound = false, timers = [];
     var video = null, audio = opts.audio || null, stills = null, G = null;
@@ -319,9 +308,9 @@
     root.appendChild(canvas);
     root.appendChild(copy);
     root.appendChild(note);
-    /* 音を出すボタン：自動で始まった約6秒の版にだけ（ボタンから見るときは最初から鳴っている） */
+    /* 音を出すボタン：サイトを開いて自動で始まったときにだけ（ボタンから見るときは最初から鳴っている） */
     var sndBtn = null;
-    if (opts.auto && kind === 'full') {
+    if (opts.auto) {
       sndBtn = D.createElement('button');
       sndBtn.type = 'button';
       sndBtn.className = 'op-snd';
@@ -347,7 +336,7 @@
       W.removeEventListener('resize', resize);
       D.removeEventListener('visibilitychange', onVis);
       function gone() {
-        H.classList.remove('op', 'op-bye', 'op-run', 'op-rise');
+        H.classList.remove('op', 'op-bye', 'op-run');
         if (root.parentNode) root.parentNode.removeChild(root);
         try { if (video) { video.pause(); video.removeAttribute('src'); video.load(); } } catch (e) { /* noop */ }
         try { if (G) G.dispose(); } catch (e) { /* noop */ }
@@ -423,7 +412,9 @@
       if (!tl || typeof W.__opT === 'number') { finish(true); return; }   /* まだ映像が始まっていない／確認用に止めている */
       var t = clock();
       if (t < tl.wipe[0]) {
-        if (useAudioClock) { useAudioClock = false; t0 = now() - t * 1000; }
+        /* ここから先は映像を待たない（時計を実時間で進める）。映像が止まっていても、水面の線は0.45秒で降りきる */
+        useAudioClock = false;
+        t0 = now() - t * 1000;
         tl.copyOut = Math.min(tl.copyOut, t);
         tl.glow = [t - 0.2, t + 0.12];
         tl.wipe = [t, t + 0.45];
@@ -500,7 +491,7 @@
       }
 
       var frozen = typeof W.__opT === 'number';
-      if (video && !frozen && !useAudioClock && !video.ended) {
+      if (video && !frozen && !useAudioClock && !skipped && !video.ended) {
         if (video.paused || video.readyState < 3) {
           /* 読み込みが追いつかず映像が止まった：時計も止めて待つ（水面の線だけ先に降りないように）。2.5秒待っても動かなければやめる */
           t0 += dt;
@@ -511,6 +502,9 @@
         }
       }
       var t = clock();
+      /* 映像が実時間についてこられない（回線が遅くて止まりがち・端末が重くてスローになる）：
+         1.2秒ぶん遅れたら、そこから水面を割って早めにサイトを出す。長々と引き延ばさない */
+      if (!frozen && !useAudioClock && !skipped && (ms - goAt) / 1000 - t > 1.2) { dbg('lag'); skip(false); }
 
       if (frozen && video && Math.abs(video.currentTime - t) > 0.004) {
         try { video.pause(); video.currentTime = Math.min(t, (video.duration || 99) - 0.02); } catch (e) { /* noop */ }
@@ -572,7 +566,7 @@
       tl = {};
       for (var k in table) tl[k] = Array.isArray(table[k]) ? table[k].slice() : table[k];
       G.gl.uniform2f(G.U.uTexRes, texW, texH);
-      t0 = now();
+      t0 = goAt = now();
       loop();
     }
 
@@ -647,7 +641,7 @@
 
     /* ---- 走り出し ---- */
     /* 見張り：描画が進まない環境（画面は表に出ているのに描画だけ止められる場合がある）でも、かならず時間で片づける */
-    later(function () { finish(true); }, opts.auto ? (kind === 'full' ? 13500 : 8500) : 16500);
+    if (typeof W.__opT !== 'number') later(function () { finish(true); }, opts.auto ? 13500 : 16500);   /* 確認用に時刻を止めているときは見張らない */
 
     try { G = makeGL(canvas); } catch (e) { G = null; }
     if (!G) { finish(true); return; }
@@ -705,7 +699,7 @@
       if (p && p.then) p.then(function () { if (!audio._started) { audio.pause(); } }).catch(function () { /* 鳴らせない端末は無音で流す */ });
     } catch (err) { audio = null; }
     lastAudio = audio;
-    start({ sound: true, audio: audio, kind: 'full' });
+    start({ sound: true, audio: audio });
     if (b.blur) b.blur();
   });
 
@@ -715,17 +709,14 @@
   var pre = W.__op;
   if (pre && !pre.dead && H.classList.contains('op')) {
     pre.go = 1;                 /* <head> の見張り（1.5秒で引っ込める）を止める */
-    try {
-      var t = Date.now();
-      if (pre.k) localStorage.setItem(pre.k, JSON.stringify({ v: pre.ver, t: t, f: pre.kind === 'full' ? t : (pre.f || 0) }));
-    } catch (e) { /* noop */ }
+    try { if (pre.k) localStorage.setItem(pre.k, String(Date.now())); } catch (e) { /* noop */ }   /* 見た時刻（30分以内は出さない） */
     if (D.visibilityState === 'hidden') {
       /* 裏のタブで開かれた（描画もタイマーも止められる）。出さずに、<head> が敷いた海の色だけ外す */
-      H.classList.remove('op', 'op-run', 'op-rise');
+      H.classList.remove('op', 'op-run');
       try { W.dispatchEvent(new Event('umigaku:opening-end')); } catch (e) { /* noop */ }
     } else {
       (function wait() {
-        if (D.body) start({ auto: true, pre: pre, kind: pre.kind }); else setTimeout(wait, 16);
+        if (D.body) start({ auto: true, pre: pre }); else setTimeout(wait, 16);
       })();
     }
   }
