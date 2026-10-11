@@ -127,6 +127,7 @@
 .sec--soft .gear-dive__card { border-color: transparent; }
 .gear-dive__photo { margin: 0; border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--bg-soft); }
 .gear-dive__photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+#item-small .gear-dive__photo img { object-position: 50% 28%; }   /* 低い枠でも、名入りのストラップカバーとスノーケルの先が入るように、上に寄せる */
 .gear-dive__card :is(h3, p, li, th, td, caption, small) { overflow-wrap: anywhere; }   /* 長い語が、狭い画面でカードからはみ出さないように */
 .gear-dive__body { min-width: 0; }
 .gear-dive__body h3 { font-size: clamp(1.16rem, 2.4vw, 1.36rem); line-height: 1.5; color: var(--ink); margin: 0 0 .6rem; }
@@ -380,9 +381,11 @@
 }
 
 /* ================================================================
-   相談の帯（共通の部品）の「キャンセルは前日17時まで無料」を、このページでは出さない。
-   ダイビングの予約の話だが、器材の「ご注文の確定後は、キャンセル・返品ができません」と同じページに
-   主語なしで並ぶと、逆に読めるため。※ 応急の処置。HTML には文が残る。
-   本来は build.py の ask() に上書きの口を足して、文を「ダイビングのご予約は…」に替える（build.py を直せるとき）。
+   相談の帯の4つ目（文は META の ask.cancel「ダイビングのご予約は、前日17時までキャンセル無料」）。
+   ほかのページより長いので、1行に入らない幅では、読点のあとで2行に折り、
+   アイコンを文の左に付けたまま、かたまりごと中央に置く。
+   （page.css の .ask-info span は、中の span も横並びの箱にするので、ここで文の箱に戻す）
    ================================================================ */
-.sub .ask-info > span:nth-child(4) { display: none; }
+.sub .ask-info .gear-ask-cancel { display: block; }
+.sub .ask-info .gear-ask-cancel .nw { display: inline-block; white-space: nowrap; }
+@media (max-width: 419px) { .sub .ask-info .gear-ask-cancel { width: min-content; text-align: left; } }
