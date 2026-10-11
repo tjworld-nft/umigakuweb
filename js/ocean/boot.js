@@ -102,6 +102,16 @@
     }
   }
 
-  if (document.readyState === 'complete') afterLoad();
-  else window.addEventListener('load', afterLoad, { once: true });
+  /* オープニング（js/opening.js）が流れている間は待つ。水の起動は重く、同時に走らせると
+     映像と水面の線がカクつく。終わりの合図が来なくても8秒で起動する。 */
+  function afterOpening() {
+    if (!/(^|\s)op-run(\s|$)/.test(document.documentElement.className)) { afterLoad(); return; }
+    var done = false;
+    function go() { if (done) return; done = true; afterLoad(); }
+    window.addEventListener('umigaku:opening-end', go, { once: true });
+    setTimeout(go, 8000);
+  }
+
+  if (document.readyState === 'complete') afterOpening();
+  else window.addEventListener('load', afterOpening, { once: true });
 })();

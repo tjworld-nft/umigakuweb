@@ -38,7 +38,39 @@
   <!-- 最初の表示に要るものを先に。写真はヒーローのLCP候補 -->
   <link rel="preload" as="image" href="image/optimized/home-hero-soft-diving.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css?v=20261009">
-  <link rel="stylesheet" href="css/home.css?v=2026093003">
+  <link rel="stylesheet" href="css/home.css?v=2026101101">
+
+  <!-- オープニング「水面へ」（はじめて来た人にだけ・約2秒・押せばすぐ消える）。
+       ここでは「出すかどうか」を決めて、最初の描画から海の色を敷くだけ。本体は js/opening.js。
+       出さない条件：7日以内に見た／動きを減らす設定／省データ・2G／ページ途中へのリンク／サイト内の移動・戻る／裏のタブ／検索エンジンの巡回。
+       ?opening=off で常に無し、?opening=1 で必ず出す（確認用）。本体が読めなくても、下の CSS が5秒で自分から消える。
+       絵や動きを作り替えて「もう一度みんなに見せたい」ときは V を変える。自動で出すのをやめるときは ON を 0 に（?opening=1 では出る）。 -->
+  <style>
+    html.op::before{content:"";position:fixed;inset:0;z-index:2147483000;background:#052a45 url(data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACQBQCdASoSACAAPsFWoUunpSMhsBgIAPAYCWgAnTNaP/gTGXDfJhXroqVLQa4pPt+uHOrYAAD+3Wpwljxofy+/OyaU8uywy+AP8WhItbLH/jhQxRt6YKczvd48bMC6ueQjA733Z1oa5QTQNgxpZ2wZWZ2kU80ZhUlDVtZum8fyH+CtH0Zir7YzmqXhXRpAAAA=) center/cover no-repeat;animation:op-safe .5s 5s forwards}
+    @media (orientation:landscape){html.op::before{background-image:url(data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAQBQCdASogABIAPsFOoEqnpCMhsAgA8BgJZAC7ABjqZ2rN/2yLqCZOrQGgYDuHCCwAAP7vS3cnAK2n0JN/LAdBs9fB3caatgnT9ql9DNRmM87SnQNZhw+FsxKjc8DfAEbbUGDjJYNx4YZOr2y5g50OfnR3AT6BQZAAAA==)}}
+    @keyframes op-safe{to{opacity:0;visibility:hidden}}
+  </style>
+  <script>
+  (function(){try{
+    var ON=1,K='umigaku.op',V='2026a',q=location.search,m=window.matchMedia;
+    if(!/[?&]opening=1/.test(q)){
+      if(!ON||/[?&]opening=off/.test(q)||location.hash)return;
+      if(!m||m('(prefers-reduced-motion: reduce)').matches)return;
+      if(/bot|crawl|spider|slurp|preview/i.test(navigator.userAgent))return;
+      var c=navigator.connection;if(c&&(c.saveData||/(^|-)2g$/.test(c.effectiveType||'')))return;
+      if(document.visibilityState!=='visible')return;
+      var n=performance.getEntriesByType('navigation')[0];if(n&&n.type==='back_forward')return;
+      if(document.referrer.indexOf(location.origin+'/')===0)return;
+      var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.v===V&&Date.now()-s.t<6048e5)return;
+    }
+    document.documentElement.className+=' op op-run';
+    var o=m('(orientation: portrait)').matches?'p':'l';
+    var im=new Image();im.fetchPriority='high';im.src='image/opening/opening-2026-'+o+'0.webp?v=1';
+    window.__op={o:o,k:K,ver:V,i:im,t:performance.now(),v:fetch('video/opening/opening-2026-'+o+'.mp4?v=1').then(function(r){if(!r.ok)throw 0;return r.blob()})};
+    window.__op.v.catch(function(){});
+  }catch(e){}})();
+  </script>
+  <script src="js/opening.js?v=2026101101" async></script>
 
   <!-- Webフォントは表示を止めない（display=optional：間に合わなければ端末の丸ゴシックで描き、
        文字の組み替え＝レイアウトのずれを起こさない。2回目以降はキャッシュ済みのZen Maruで出る） -->
@@ -310,6 +342,10 @@
         <span class="h-label">Brand Film <small>プロモーション映像</small></span>
         <h2 id="film-title">98秒で、三浦の海へ潜る。</h2>
         <p>ひと粒の光が、波になり、海になる。<br class="sp-only">はじめての人も、ライセンスを取りたい人も、ブランクがある人も、潜る場所を探している人も。</p>
+        <!-- サイトを開いたときのオープニング（js/opening.js）を、音ありでもう一度。押した人にだけ流れる -->
+        <button type="button" class="op-replay" data-opening="sound">
+          <svg aria-hidden="true"><use href="#i-sound-on"/></svg>オープニングを音ありで見る<small>7秒</small>
+        </button>
       </div>
 
       <div class="film">
@@ -1142,7 +1178,7 @@
   <!-- ⚠ js/ocean/* はサーバが7日キャッシュする（max-age=604800）。
        ocean-src を作り直したら、必ずこの ?v= を上げること。
        この番号は boot.js が ocean.min.js の取得にもそのまま引き継ぐので、直すのはここ1か所。 -->
-  <script src="js/ocean/boot.js?v=20260904" defer></script>
+  <script src="js/ocean/boot.js?v=20261011" defer></script>
 
 </body>
 
