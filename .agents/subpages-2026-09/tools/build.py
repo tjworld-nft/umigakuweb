@@ -63,6 +63,7 @@ FOOTER_NAV = [
     ('リフレッシュダイビング', '/refresh/'),
     ('スノーケリング', '/marine-activity/'),
     ('秋冬のダイビング', '/winter-diving/'),
+    ('ダイビング器材（選び方と相談）', '/gear/'),
     ('海の生き物図鑑', '/sea-life/'),
     ('インストラクター紹介', '/instructor/'),
     ('ブログ', '/blog/'),
@@ -188,6 +189,9 @@ def ask(m):
     msg_attr = f' data-line-msg="{esc(msg)}"' if msg else ''
     hint = (f'<p class="hint">ボタンを押すと<q>{esc(msg)}</q>がコピーされます。LINEに貼り付けて送るだけ。</p>' if msg else '')
     form = '/contact/?from=' + m['from'] + (('&amp;category=' + a['cat']) if a.get('cat') else '')
+    # 帯の2つの固定の文は、META の ask.lineNote / ask.cancel で、ページごとに上書きできる（HTML可。省略すれば下の既定の文）
+    line_note = a.get('lineNote', '友だち追加して、ひと言送るだけ。<br>「空いている日を知りたい」などでOKです。')
+    cancel = a.get('cancel', 'キャンセルは前日17時まで無料')
     return f'''
     <!-- ============================================================
          CONTACT — いちばん深いところ（予約・相談）
@@ -202,7 +206,7 @@ def ask(m):
           <div class="ask-card ask-card--line">
             <div>
               <h3>LINEで相談・予約</h3>
-              <p>友だち追加して、ひと言送るだけ。<br>「空いている日を知りたい」などでOKです。</p>
+              <p>{line_note}</p>
               <a class="btn-line" href="{LINE}" target="_blank" rel="noopener noreferrer"{msg_attr}><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで友だち追加</a>
               {hint}
             </div>
@@ -222,7 +226,7 @@ def ask(m):
           <span><svg aria-hidden="true"><use href="#i-clock"/></svg>営業時間 9:00〜16:00（不定休）</span>
           <span><svg aria-hidden="true"><use href="#i-train"/></svg>京急三崎口駅から無料送迎（要予約）</span>
           <span><svg aria-hidden="true"><use href="#i-pin"/></svg>開催場所・集合場所はご予約時にご案内</span>
-          <span><svg aria-hidden="true"><use href="#i-cal"/></svg>キャンセルは前日17時まで無料</span>
+          <span><svg aria-hidden="true"><use href="#i-cal"/></svg>{cancel}</span>
         </p>
       </div>
     </section>
@@ -276,6 +280,7 @@ def footer(m):
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 三浦 海の学校 All rights reserved.｜神奈川県三浦市・三浦半島のダイビングスクール</p>
+        <p style="margin-top:.4rem;color:rgba(255,255,255,.72)">運営：<a href="https://aquabit-lab.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">AquaBit LAB</a></p>
       </div>
     </div>
   </footer>

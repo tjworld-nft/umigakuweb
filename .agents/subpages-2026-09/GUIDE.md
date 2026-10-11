@@ -24,7 +24,7 @@
    - `title`（32〜40字目安。「主な検索語｜差別化の数字や場所｜三浦 海の学校」）、`desc`（100〜130字。料金・場所・誰向けを入れる）、`ogTitle`、`ogDesc`、`og`（/image/og-<name>.jpg。無ければ私＝親が作るので、パスだけ書く）、`ogAlt`
    - `hero`（ヒーロー写真の 800w/1600w。無い写真は srcset を使わず単体で src だけにし、hero キーは省略可）
    - `crumbs`（[["表示名", "/path/"]]）、`about`（ページ固有の構造化データの @id。無ければ省略）
-   - `ask`（相談帯の title / lead / msg（LINEで送る文面・コピーされる）/ cat（フォームの種別。contact/index.html の option の value と完全一致させる：体験ダイビング／OWDライセンス／AOWライセンス／ファンダイビング／リフレッシュ／マリンアクティビティ／書籍・講座／その他））
+   - `ask`（相談帯の title / lead / msg（LINEで送る文面・コピーされる）/ cat（フォームの種別。contact/index.html の option の value と完全一致させる：体験ダイビング／OWDライセンス／AOWライセンス／ファンダイビング／リフレッシュ／マリンアクティビティ／書籍・講座／その他）。任意で `lineNote`（LINEの箱の説明文・HTML可）と `cancel`（下の帯の4つ目の文・HTML可）を書くと、その2つの固定の文だけ差し替わる。省略すれば今までの文のまま＝2026-10-11・/gear/ が使用）
    - `noAsk: true` で相談帯を出さない（法的ページ用）
 3. 本文の骨組みは見本どおり：`<main id="main">` → `.ph`（ヒーロー・パンくず・h1）→ `.facts`（4つの数字）→（期間限定があれば `.camp` data-expires="2026-10-01"）→ `.lnav`（目次・data-depth は「このページの水深」の最大m。体験=12、スノーケリング=5 など内容に合う数字）→ `.sec` の並び（白 / `.sec--soft` を交互）→ FAQ（`<details class="faq-item"><summary>質問</summary><div class="faq-answer">答え</div></details>` の形。**この形でないと構造化データに入らない**）→ `.about`（検索向けの読み物・元ページの末尾の説明文を活かす）。`</main>` は build.py が閉じるので書かない。
 4. `pages/<name>.ld.json` に、そのページ固有の構造化データ（Service / Course / Person など）を配列で。WebPage・BreadcrumbList・FAQPage は自動なので書かない。料金は税込の数字の文字列。

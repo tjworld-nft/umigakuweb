@@ -14,10 +14,23 @@ PRICES = {
     22000, 16500, 29700, 34100, 30800, 7150, 18700, 25300,
     13750, 24750,  # マイドライ割（ドライSP半額・OWD受講者の特典の合計）
 }
+# /gear/ のメーカー希望小売価格・公式工賃（FACTS.md「器材の販売」。/gear/ だけで通す＝ほかのページに出たら今までどおり WARN）
+PRICES_GEAR = {
+    17600, 10450, 48400, 8250, 69300, 162800, 164560, 459800, 84700, 224400, 82500, 31900, 73700,
+    110000, 228800, 52800, 248000, 4950, 58080, 19250, 23100,
+    # 講習・レンタルと同じ数字も、/gear/ に出るメーカーの金額はここに書く（PRICES から外しても /gear/ が WARN にならないように）
+    6600, 8800, 11000, 13200, 13750, 18700, 22000, 27500, 29700, 34100, 44000,
+    3000, 500000,  # 価格の帯の物差しの両端（¥3,000〜¥500,000。商品の金額ではない）
+}
 FORBID = ['諸磯', '日本初', '唯一の', 'No.1', 'ナンバーワン', '業界最安', '絶対に安全', '必ず見られ', '数千人', '神奈川県内でも数少ない',
           '品川から約60分', '品川から60分', '品川60分', '横浜から約45分', '横浜から45分', '45分', '約60分', '60〜75分',
           '冬季や習熟度', '冬は3日', '冬は３日', '最短3日', '基本3日間', '実技3日間',
           'AggregateRating', 'font-awesome', 'class="fa ', 'class="fas', 'class="fab', 'wp-content/uploads']
+# /gear/ だけの禁止語（<main> の中と JSON-LD を見る。ヘッダー・フッターは見ない）。オーナーの決定と法令の線（2026-10-11）
+# 「お求めやすい」は入れない（「メーカー希望小売価格より、お求めやすい価格でご案内しています。」をオーナーが選んだ）
+FORBID_GEAR = ['定価', '試着', '試し使い', '海で試せ', 'お得', '元が取れ', '一生もの', '寒くない', 'ご来店', '店頭', '国産', '8メーカー', '海学', '同じ人',
+               '注文を受けません', 'その場では売りません', '帰ってから', 'お受けしていません', '切り出しません', '講習中はすすめません',
+               '8日以内', 'A案', 'B案', '【G', '〔返品〕', '🔒']
 
 
 class P(HTMLParser):
@@ -63,6 +76,11 @@ def check(name):
         for w in ('足の着く穏やかな場所で', '浅いところで練習'):
             if w in src: ng.append(f'ライセンスの練習場所はプール: {w}')
     if '080-4350-0412' in src and path not in PHONE_OK: ng.append('電話番号は contact/tokusho 以外に出さない')
+    if path == 'gear/':
+        m_ = re.search(r'<main.*?</main>', src, re.S)
+        scope = (m_.group(0) if m_ else src) + '\n'.join(p.ld)
+        for w in FORBID_GEAR:
+            if w in scope: ng.append(f'/gear/ に書かない言葉: {w}')
     # h1
     if p.h1 != 1: ng.append(f'h1 が {p.h1} 個')
     # title / description
@@ -102,7 +120,7 @@ def check(name):
     body = re.sub(r'<script.*?</script>', '', src, flags=re.S)
     for m in re.finditer(r'¥\s?([0-9,]{3,})', body):
         v = int(m.group(1).replace(',', ''))
-        if v not in PRICES: warn.append(f'FACTSに無い金額: ¥{m.group(1)}（前後: {body[max(0,m.start()-30):m.end()+10]!r}）')
+        if v not in PRICES and not (path == 'gear/' and v in PRICES_GEAR): warn.append(f'FACTSに無い金額: ¥{m.group(1)}（前後: {body[max(0,m.start()-30):m.end()+10]!r}）')
     # 絵文字（本文のアイコン代わり）
     main = re.search(r'<main.*?</main>', src, re.S)
     if main and re.search(r'[\U0001F300-\U0001FAFF]', main.group(0)): warn.append('本文に絵文字がある')
