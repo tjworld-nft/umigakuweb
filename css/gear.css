@@ -1,0 +1,388 @@
+@charset "UTF-8";
+/* ==========================================================================
+   三浦 海の学校 — /gear/（ダイビング器材）専用の部品
+   このページだけが読む（pages/gear.html の extraHead。style.css → page.css → このファイルの順）。
+   page.css は変えない。色・角丸・影・文字の大きさは page.css / style.css の値にそろえてある。JSは無い。
+   部品: .gear-dive（水深の線と5つの場面）／.gear-models（モデルの例）／.gear-range（価格の幅の帯）
+        ／.gear-fig（番号つきの図）／.gear-must（条件の箱）／.gear-talk（やりとりの見本）／.gear-ph-note
+   ========================================================================== */
+
+/* ================================================================
+   ヒーローのボタンの下の1行
+   ================================================================ */
+.gear-ph-note {
+  margin: .7rem 0 0; font-size: .8rem; line-height: 1.7;
+  color: rgba(255, 255, 255, .88); text-shadow: 0 1px 10px rgba(0, 0, 0, .45);
+}
+
+/* ================================================================
+   ヒーロー（このページだけ）：写真の船べりが明るい黄緑で、ちょうど文字の下に来る。
+   page.css の重ね色（文字の帯で 8〜12%）では白い字が読みにくいので、一段暗くする。
+   スマホは、並んだタンクが見出しの後ろに来る位置に（--pos はインラインなので、img に直接書く）。
+   h1 の小さい行は、スマホで 13px を下回らないように。
+   ================================================================ */
+.sub .ph::before {
+  background:
+    linear-gradient(180deg, rgba(4, 38, 58, .66) 0%, rgba(4, 38, 58, .40) 26%, rgba(4, 38, 58, .48) 52%, rgba(4, 38, 58, .88) 100%),
+    linear-gradient(90deg, rgba(4, 38, 58, .66) 0%, rgba(4, 38, 58, .30) 55%, rgba(4, 38, 58, .10) 80%);
+}
+@media (max-width: 767px) { .sub .ph__bg img { object-position: 14% 60%; } }
+.sub .ph h1 small { font-size: max(.42em, .8125rem); }
+
+/* ================================================================
+   画面下の固定ボタンを、このページだけ出さない
+   （build.py が全ページに出す帯は「空きを聞く／予約フォーム」で、器材相談の文面にならないため）
+   ================================================================ */
+.sub .mobile-cta-bar { display: none !important; }
+@media (max-width: 768px) { body.sub:has(.mobile-cta-bar) { padding-bottom: 0; } }
+
+/* ================================================================
+   .gear-must — 条件の箱（本文と同じ大きさで読ませる注記。.note の小さい字にしない）
+   白い節では淡い青、淡い節（.sec--soft）では白。カードの中は --line（箱にしない）
+   ================================================================ */
+.gear-must {
+  max-width: 860px; padding: .9rem 1.1rem; border-left: 3px solid var(--ink); border-radius: 14px;
+  background: var(--bg-soft); font-size: .95rem; line-height: 1.9; color: var(--text-dark);
+}
+.sec--soft .gear-must { background: #fff; }
+.gear-must > p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+.gear-must > p + p { margin-top: .5rem; }
+.gear-must b, .gear-must strong { color: var(--ink); }
+.gear-must a { color: var(--teal-ink); text-decoration: underline; text-underline-offset: 3px; }
+.gear-must a:hover { color: var(--coral-ink); }
+.gear-must.gear-must--line {
+  max-width: none; padding: .8rem 0 0; border-left: 0; border-top: 1px solid var(--border); border-radius: 0;
+  background: none; font-size: .93rem; line-height: 1.85;
+}
+
+/* ================================================================
+   .gear-jump — 5つの場面へ飛ぶ札（#items の頭。見た目は page.css の .areas）
+   ================================================================ */
+.gear-jump { margin: 1rem 0 0; }
+.gear-jump a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* ================================================================
+   .gear-dive — 水深の線と5つの場面（#items）
+   左の線は、水面の青緑から下へ行くほど濃い紺。場面ごとに丸い印と札（「水面で｜0m」）。
+   900px以上: 印と札は左の列で追従（読んでいるあいだ、いまの場面が見える）。
+   899px以下: 線は左端に細く、札はカードの上。
+   ================================================================ */
+.gear-dive {
+  --gd-bg: #fff;                 /* 節の地の色（印のまわりを線から抜く） */
+  --gd-rail: 3px;                /* 線の太さ */
+  --gd-dot: 14px;                /* 丸い印 */
+  --gd-gap: 14px;                /* 線とカードのあいだ */
+  --gd-pad: calc(var(--gd-dot) / 2 + var(--gd-rail) / 2 + var(--gd-gap));
+  list-style: none; position: relative; margin: clamp(1.6rem, 4vw, 2.4rem) 0 0; padding: 0 0 2rem;
+  display: grid; gap: clamp(1.7rem, 4vw, 2.6rem);
+}
+.sec--soft .gear-dive { --gd-bg: var(--bg-soft); }
+.gear-dive::before {             /* 水深の線 */
+  content: ""; position: absolute; left: calc((var(--gd-dot) - var(--gd-rail)) / 2); top: 1.05rem; bottom: 6px;
+  width: var(--gd-rail); border-radius: 999px;
+  background: linear-gradient(180deg, #4ECDC4 0%, #2BB3BD 12%, #0F849E 32%, #095574 60%, #063A57 84%, #04263A 100%);
+}
+.gear-dive::after {              /* 線の終点 */
+  content: ""; position: absolute; left: calc((var(--gd-dot) - 11px) / 2); bottom: 0;
+  width: 11px; height: 11px; border-radius: 50%; background: var(--abyss);
+}
+
+.gear-dive__scene { position: relative; min-width: 0; padding-left: var(--gd-pad); --gd-c: #22B5AC; }
+.gear-dive__scene:nth-child(2) { --gd-c: #1A979B; }
+.gear-dive__scene:nth-child(3) { --gd-c: #137887; }
+.gear-dive__scene:nth-child(4) { --gd-c: #0B5970; }
+.gear-dive__scene:nth-child(n+5) { --gd-c: #063A57; }
+@supports (color: color-mix(in srgb, #000 calc(1 * 25%), #fff)) {
+  /* style="--d:0〜4" があれば、その深さの色に（無ければ上の並び順の色のまま） */
+  .gear-dive__scene[style*="--d"] { --gd-c: color-mix(in srgb, #063A57 calc(var(--d) * 25%), #22B5AC); }
+}
+
+/* 場面の札と丸い印 */
+.gear-dive__mark {
+  position: relative; display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .65rem;
+  margin: 0 0 .65rem; padding: .38rem .95rem; border-radius: 999px; background: #fff;
+  box-shadow: 0 4px 18px rgba(6, 58, 87, .05); line-height: 1.5;
+}
+.gear-dive__mark b { font-size: .98rem; font-weight: 700; color: var(--ink); white-space: nowrap; }
+.gear-dive__mark span {
+  padding-left: .65rem; border-left: 1px solid #C9DBE3; white-space: nowrap;
+  font-family: var(--ff-accent); font-size: .8rem; font-weight: 700; letter-spacing: .04em; color: var(--deep-2);
+}
+.gear-dive__mark::before {       /* 線の上の丸い印 */
+  content: ""; position: absolute; left: calc(-1 * var(--gd-pad)); top: 50%; box-sizing: border-box;
+  width: var(--gd-dot); height: var(--gd-dot); margin-top: calc(var(--gd-dot) / -2); border-radius: 50%;
+  background: #fff; border: 4px solid var(--gd-c); box-shadow: 0 0 0 4px var(--gd-bg);
+}
+.gear-dive__mark::after {        /* 印と札をつなぐ短い線 */
+  content: ""; position: absolute; right: 100%; top: 50%; margin-top: -1px;
+  width: calc(var(--gd-pad) - var(--gd-dot) + 1px); height: 2px; background: var(--gd-c);
+}
+
+/* 場面のカード（.card と同じ白・角丸22px・影） */
+.gear-dive__card {
+  min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.15rem;
+  background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 1.1rem 1rem 1.25rem;
+  box-shadow: 0 4px 18px rgba(6, 58, 87, .05); color: var(--text-dark);
+}
+.sec--soft .gear-dive__card { border-color: transparent; }
+.gear-dive__photo { margin: 0; border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--bg-soft); }
+.gear-dive__photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.gear-dive__card :is(h3, p, li, th, td, caption, small) { overflow-wrap: anywhere; }   /* 長い語が、狭い画面でカードからはみ出さないように */
+.gear-dive__body { min-width: 0; }
+.gear-dive__body h3 { font-size: clamp(1.16rem, 2.4vw, 1.36rem); line-height: 1.5; color: var(--ink); margin: 0 0 .6rem; }
+.gear-dive__body h3 small { display: block; margin-top: .25rem; font-size: .78rem; font-weight: 700; line-height: 1.6; color: var(--text-sub); }
+.gear-dive__body > p { font-size: .95rem; line-height: 1.9; color: var(--text-dark); }
+.gear-dive__body > p b { color: var(--ink); }
+.gear-dive__body > * + p { margin-top: .85rem; }
+.gear-dive__body .checks { margin: .9rem 0 0; }
+.gear-dive__buy { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem; padding-top: 1.15rem; border-top: 1px solid var(--border); }
+.gear-dive__buy > * { min-width: 0; margin-top: 0; margin-bottom: 0; }
+.gear-dive__buy > p:not([class]) { font-size: .93rem; line-height: 1.8; }
+
+/* 場面の中の価格の表：金額の列の幅をそろえる（＝帯の長さが5つの表で同じになる） */
+.gear-dive .tbl caption { font-size: .86rem; line-height: 1.65; }
+.gear-dive .tbl td.num { width: 17.5rem; }
+/* メーカー希望小売価格は紺。コーラルは「海の学校に払う金額」（ほかのページの料金）のためにとっておく */
+.gear-dive .tbl td.num.hl, #after .tbl td.num.hl { color: var(--ink); }
+
+@media (max-width: 639px) {
+  .gear-dive__photo { aspect-ratio: 2 / 1; }   /* スマホは写真を低く（ページの長さを抑える） */
+  /* カードを線の上に重ねて、幅いっぱいに（線はカードのあいだにだけ見える。中の折り返しが減る） */
+  .gear-dive__scene { padding-left: 0; }
+  .gear-dive__mark { margin-left: var(--gd-pad); }
+  .gear-dive__card { position: relative; z-index: 1; }
+}
+@media (min-width: 640px) {
+  .gear-dive__card { padding: 1.4rem 1.35rem 1.5rem; gap: 1.3rem; }
+}
+@media (min-width: 640px) and (max-width: 899px) {
+  .gear-dive__photo { aspect-ratio: 16 / 9; }   /* 1列で幅が広いあいだは、写真を低めに */
+}
+@media (min-width: 900px) {
+  .gear-dive {
+    --gd-rail: 4px; --gd-dot: 22px; --gd-gap: 23px;   /* 印の右に14pxのつなぎ線 */
+    --gd-col: 186px;             /* 左の列（印＋札） */
+  }
+  .gear-dive::before { top: 2rem; }
+  .gear-dive__scene { padding-left: 0; display: grid; grid-template-columns: var(--gd-col) minmax(0, 1fr); align-items: start; }
+  .gear-dive__mark {
+    position: sticky; top: calc(var(--hdr) + var(--lnav-h) + 16px); z-index: 1;
+    flex-direction: column; flex-wrap: nowrap; align-items: flex-start; gap: .05rem;
+    margin: 0 1.1rem 0 var(--gd-pad); padding: .6rem .85rem .65rem; border-radius: 14px; min-height: 4rem; justify-content: center;
+  }
+  .gear-dive__mark b { font-size: 1rem; }
+  .gear-dive__mark span { padding-left: 0; border-left: 0; }
+  .gear-dive__mark::before { border-width: 5px; }
+  .gear-dive__mark::after { margin-top: -1.5px; height: 3px; }
+  .gear-dive__card { grid-template-columns: minmax(0, 42fr) minmax(0, 58fr); gap: 1.5rem 1.8rem; align-items: start; padding: 1.6rem; }
+  .gear-dive__buy { grid-column: 1 / -1; }
+}
+
+/* スマホ：表を縦に積む（種類 → 金額 → 帯）。金額の列が狭くなって、種類の字が1文字ずつ折れるのを防ぐ */
+@media (max-width: 639px) {
+  .gear-dive .tbl { display: block; min-width: 0; }
+  .gear-dive .tbl caption { display: block; padding: .85rem .9rem .7rem; }
+  .gear-dive .tbl thead { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+  .gear-dive .tbl tbody, .gear-dive .tbl tr { display: block; }
+  .gear-dive .tbl tbody th { display: block; padding: .75rem .9rem .2rem; }
+  .gear-dive .tbl td.num { display: block; width: auto; border-top: 0; padding: 0 .9rem .85rem; text-align: left; font-size: 1rem; }
+}
+
+/* ================================================================
+   .gear-range — 価格の幅の帯（飾り。金額の文字が正本）
+   全部の表で同じ物差し（¥3,000〜¥500,000 の対数）。--a が左端、--b が右端。
+   色も物差しに沿って変わる（左＝青緑、右＝紺）。
+   ================================================================ */
+.gear-range {
+  display: block; position: relative; height: 6px; min-width: 120px; margin-top: 6px;
+  border-radius: 999px; background: var(--border); overflow: hidden;
+}
+.gear-range::after {   /* 目盛り：¥1万（23.5%）と ¥10万（68.5%）。全部の表で同じ位置にそろう */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+    transparent calc(23.5% - 1px), #fff 0 calc(23.5% + 1px),
+    transparent 0 calc(68.5% - 1px), #fff 0 calc(68.5% + 1px), transparent 0);
+}
+.gear-range::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, #19A99B 0%, #0F849E 45%, #095574 72%, #063A57 100%);
+  clip-path: inset(0 min(calc(100% - var(--b, 100%)), calc(100% - var(--a, 0%) - 6px)) 0 var(--a, 0%) round 999px);
+}
+
+/* ================================================================
+   .gear-models — モデルの例（メーカー公式の製品写真。金額は書かない＝表が正本）
+   白い正方形の札＋下に「メーカー名／モデル名」。1枚 最大150px。
+   スマホは3枚ぶんの幅で、はみ出すぶんは横スクロール。
+   ================================================================ */
+.gear-models { min-width: 0; }
+.gear-models__cap { margin: 0 0 .5rem; font-size: .78rem; font-weight: 700; letter-spacing: .08em; color: var(--text-sub); }
+.gear-models ul { list-style: none; margin: 0; padding: 0; display: flex; gap: .75rem; }
+.gear-models li { flex: 0 1 150px; min-width: 0; display: flex; flex-direction: column; gap: .4rem; }
+.gear-models img {
+  display: block; box-sizing: border-box; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain;
+  background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: .35rem;
+}
+.gear-models li > span {
+  display: block; text-align: center; font-size: .8rem; font-weight: 700; line-height: 1.45; color: var(--ink);
+  word-break: normal; line-break: strict; overflow-wrap: anywhere; text-wrap: balance;   /* カタカナの長いモデル名を、きりのいい所で2行に */
+}
+.gear-models li small { display: block; font-size: .75rem; font-weight: 700; letter-spacing: .03em; color: var(--text-sub); }
+@media (max-width: 639px) {
+  .gear-models ul { gap: .6rem; }
+  .gear-models li { flex: 0 0 calc((100% - 1.2rem) / 3); max-width: 150px; }
+  /* 4枚以上（場面3の6枚）：横スクロールにしない。3列×2段（上の段がレギュレーター、下の段がBCD） */
+  .gear-models ul:has(li:nth-child(4)) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem .6rem; }
+  .gear-models ul:has(li:nth-child(4)) li { max-width: none; }
+  /* 1枚だけ（場面2・5）：写真を左、名前を右に */
+  .gear-models li:only-child { flex: 1 1 auto; max-width: none; flex-direction: row; align-items: center; gap: .85rem; }
+  .gear-models li:only-child img { flex: 0 0 84px; width: 84px; }
+  .gear-models li:only-child > span { text-align: left; }
+}
+@media (max-width: 360px) {
+  .gear-models ul { gap: .45rem; }
+  .gear-models li { flex-basis: calc((100% - .9rem) / 3); }
+  .gear-models li > span { font-size: .75rem; }
+  .gear-models li small { font-size: .69rem; letter-spacing: 0; }
+}
+
+/* ================================================================
+   .gear-fig — 番号つきの図と凡例（#with。図は飾りで、凡例が本体。図の点は押せない）
+   絵柄と番号の丸は /mydry/ の「合うとは、この5か所」と同じ
+   ================================================================ */
+.gear-fig { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: clamp(1.2rem, 3vw, 2.2rem); align-items: center; }
+.gear-fig__art { margin: 0; padding: 1rem; border-radius: 22px; background: var(--bg-soft); }
+.sec--soft .gear-fig__art { background: #fff; }
+.gear-fig__art svg { display: block; width: 100%; max-width: 360px; height: auto; margin: 0 auto; }
+.gear-fig__list { list-style: none; margin: 0; padding: 0; counter-reset: gf; display: grid; gap: .6rem; }
+.gear-fig__list li {
+  counter-increment: gf; position: relative; min-height: 1.75rem; padding-left: 2.45rem;
+  font-size: .93rem; line-height: 1.75; color: var(--text-dark);
+}
+.gear-fig__list li::before {
+  content: counter(gf); position: absolute; left: 0; top: -.03rem; box-sizing: border-box;
+  width: 1.75rem; height: 1.75rem; border-radius: 50%; background: #fff; border: 2px solid var(--coral-ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-accent); font-size: .86rem; font-weight: 700; line-height: 1; color: var(--coral-ink);
+}
+.gear-fig__list b { color: var(--ink); }
+@media (max-width: 767px) {
+  .gear-fig { grid-template-columns: minmax(0, 1fr); }
+  .gear-fig__art { padding: .6rem 1rem; }
+  .gear-fig__art svg { max-width: 200px; }
+  .gear-fig__list { gap: .45rem; }
+}
+
+/* ================================================================
+   .gear-talk — やりとりの見本（#flow）
+   「あなた」は右・薄い緑（.linechips と同じ色）、「海の学校」は左・白。
+   色だけで区別しない（吹き出しの上に話し手の名前）
+   ================================================================ */
+.gear-talk { margin: 2rem 0 0; max-width: 520px; }
+.gear-talk figcaption { margin-bottom: .9rem; font-size: .95rem; font-weight: 700; line-height: 1.6; color: var(--ink); }
+.gear-talk figcaption small { display: block; margin-top: .1rem; font-size: .8rem; font-weight: 500; line-height: 1.7; color: var(--text-sub); }
+.gear-talk__log { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: .7rem; }
+.gear-talk__msg {
+  position: relative; justify-self: start; box-sizing: border-box; max-width: 86%; margin-top: 1.45rem;
+  padding: .7rem .95rem; border: 1px solid var(--border); border-radius: 6px 18px 18px 18px; background: #fff;
+  font-size: .9rem; line-height: 1.8; color: var(--text-dark);
+}
+.gear-talk__msg p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+.gear-talk__msg--you { justify-self: end; border-color: #BFE5CC; border-radius: 18px 6px 18px 18px; background: #F2FBF5; }
+.gear-talk__who {
+  position: absolute; left: .15rem; bottom: 100%; margin-bottom: .2rem; white-space: nowrap;
+  font-size: .75rem; font-weight: 700; line-height: 1.4; letter-spacing: .04em; color: var(--text-sub);
+}
+.gear-talk__msg--you .gear-talk__who { left: auto; right: .15rem; color: var(--line-hover); }
+.gear-talk__msg--doc p { font-weight: 700; color: var(--ink); }
+.gear-talk__msg--doc ul { list-style: none; margin: .25rem 0 .1rem; padding: 0; display: grid; gap: .1rem; }
+.gear-talk__msg--doc ul li { position: relative; padding-left: 1.05rem; }
+.gear-talk__msg--doc ul li::before { content: ""; position: absolute; left: .15rem; top: .72em; width: .4rem; height: .4rem; border-radius: 50%; background: var(--teal-ink); opacity: .7; }
+.gear-talk__gap {
+  display: flex; align-items: center; gap: .8rem; margin-top: .55rem;
+  font-size: .78rem; font-weight: 700; letter-spacing: .06em; color: var(--text-sub);
+}
+.gear-talk__gap::before, .gear-talk__gap::after { content: ""; flex: 1; height: 1px; background: #C9DBE3; }
+@media (max-width: 560px) {
+  .gear-talk { max-width: none; }
+  .gear-talk__log { gap: .45rem; }
+  .gear-talk__msg { margin-top: 1.3rem; padding: .6rem .85rem; line-height: 1.7; }
+  .gear-talk__msg--doc ul { display: flex; flex-wrap: wrap; gap: .1rem .9rem; }
+}
+
+/* ================================================================
+   このページだけの調整（page.css の部品を、ここで上書きする。page.css は変えない）
+   ================================================================ */
+/* 長い文字リンクが2行に折れたとき、矢印が右端に離れないように */
+.sub main .link-arrow { display: inline; }
+.sub main .link-arrow::after { display: inline-block; margin-left: .35rem; }
+
+/* 幅のせまいスマホ（〜360px）：ヒーローのボタンの字が1字だけ折れないように／代表の紹介の本文の列を広く */
+@media (max-width: 360px) {
+  .ph__cta .btn-line { padding-left: 1.1rem; padding-right: 1.1rem; }
+  .byline { grid-template-columns: 56px minmax(0, 1fr); gap: .85rem; padding: 1rem; }
+  .byline img { width: 56px; height: 56px; }
+}
+
+/* 返品の表（#price・.gear-terms）：スマホは 品物 → 条件 の縦積みに（左の列が細くなって、字が1〜2文字ずつ折れるのを防ぐ） */
+@media (max-width: 639px) {
+  .tbl.gear-terms { display: block; }
+  .tbl.gear-terms thead { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+  .tbl.gear-terms tbody, .tbl.gear-terms tr, .tbl.gear-terms tbody th, .tbl.gear-terms td { display: block; }
+  .tbl.gear-terms tbody th { padding-bottom: .35rem; }
+  .tbl.gear-terms td { border-top: 0; padding-top: 0; }
+}
+
+/* 工賃の表（#after・.tbl--stack）：スマホの積み方を「時期（広め）｜工賃」の2列に */
+@media (max-width: 640px) {
+  #after .tbl--stack tr { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: .2rem .9rem; }
+}
+
+/* ================================================================
+   読みやすさ・押しやすさ（このページだけ）
+   ================================================================ */
+/* .spec の説明文：このページは 20〜45字の文が入るので、11.8px → 13px */
+#when .spec small, #makers .spec small { font-size: .8125rem; line-height: 1.6; }
+#when .spec small a { color: var(--teal-ink); text-decoration: underline; text-underline-offset: 3px; }
+#with .promise .n { font-size: .75rem; }
+/* PC：段階の6枚は 3＋3 に（4＋2 で下の段の右が空くのを防ぐ） */
+@media (min-width: 960px) { #when .spec { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* 場面から「GULL」などを押して #makers に着いたとき、どれに着いたかの印 */
+.spec li:target { outline: 2px solid var(--teal-ink); outline-offset: 2px; }
+/* 押せる高さを 44px に：場面ごとのLINEの札／節の終わりの矢印リンク */
+.sub main .linechips a { min-height: 44px; padding-top: .55rem; padding-bottom: .55rem; }
+.sub main .sec-foot > .link-arrow { padding-block: .5rem; }
+#when .sec-foot, #makers .sec-foot { row-gap: 0; }
+
+/* スマホの長さを抑える（文は変えずに、あいだを詰める） */
+@media (min-width: 640px) and (max-width: 899px) { .split__media img { aspect-ratio: 16 / 9; } }
+@media (max-width: 639px) {
+  .split__media img { aspect-ratio: 3 / 2; }
+  #flow .steps { gap: .8rem; }
+  #flow .step__body { padding: .9rem 1.05rem; }
+}
+@media (max-width: 639px) {
+  .sub .sec { padding-top: 2.8rem; padding-bottom: 2.8rem; }   /* 節のあいだ（page.css は 3.4rem） */
+  .sub .sec--tight { padding-top: 2rem; }
+  #with .promise { padding: 1.05rem 1.1rem; }
+}
+/* 取り扱い8社：名前と種類だけの短い札。種類の字を少し小さく（2列・3列のとき、語の途中で折れないように）。スマホの1列は詰める */
+#makers .spec span { font-size: .88rem; line-height: 1.55; }
+@media (max-width: 420px) {
+  #makers .spec { gap: .4rem; }
+  #makers .spec li { padding: .6rem 1rem; }
+}
+
+/* PC：場面の写真を、本文の高さまで伸ばす（写真の下が白く空くのを防ぐ） */
+@media (min-width: 900px) {
+  .gear-dive__photo { position: relative; align-self: stretch; aspect-ratio: auto; min-height: 240px; }
+  .gear-dive__photo img { position: absolute; inset: 0; }
+  #item-reg .gear-dive__photo img { object-position: 18% 50%; }   /* 縦長になると2人とも切れるので、左の人に寄せる */
+}
+
+/* ================================================================
+   相談の帯（共通の部品）の「キャンセルは前日17時まで無料」を、このページでは出さない。
+   ダイビングの予約の話だが、器材の「ご注文の確定後は、キャンセル・返品ができません」と同じページに
+   主語なしで並ぶと、逆に読めるため。※ 応急の処置。HTML には文が残る。
+   本来は build.py の ask() に上書きの口を足して、文を「ダイビングのご予約は…」に替える（build.py を直せるとき）。
+   ================================================================ */
+.sub .ask-info > span:nth-child(4) { display: none; }

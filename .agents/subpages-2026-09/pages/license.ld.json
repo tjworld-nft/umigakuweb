@@ -19,9 +19,9 @@
       "price": "64900",
       "priceCurrency": "JPY",
       "category": "Paid",
+      "description": "総額（講習費¥53,900＋レンタル器材2日分¥11,000・税込）",
       "availability": "https://schema.org/InStock",
-      "url": "https://miura-diving.com/license/#price",
-      "description": "総額（講習費¥53,900＋レンタル器材2日分¥11,000・税込）"
+      "url": "https://miura-diving.com/license/#price"
     },
     "hasCourseInstance": {
       "@type": "CourseInstance",
@@ -60,9 +60,9 @@
       "price": "70800",
       "priceCurrency": "JPY",
       "category": "Paid",
+      "description": "総額（講習費¥59,800＋レンタル器材2日分¥11,000・税込）",
       "availability": "https://schema.org/InStock",
-      "url": "https://miura-diving.com/advanced/#price",
-      "description": "総額（講習費¥59,800＋レンタル器材2日分¥11,000・税込）"
+      "url": "https://miura-diving.com/advanced/#price"
     },
     "hasCourseInstance": {
       "@type": "CourseInstance",

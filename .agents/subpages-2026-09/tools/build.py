@@ -63,6 +63,7 @@ FOOTER_NAV = [
     ('リフレッシュダイビング', '/refresh/'),
     ('スノーケリング', '/marine-activity/'),
     ('秋冬のダイビング', '/winter-diving/'),
+    ('ダイビング器材（選び方と相談）', '/gear/'),
     ('海の生き物図鑑', '/sea-life/'),
     ('インストラクター紹介', '/instructor/'),
     ('ブログ', '/blog/'),

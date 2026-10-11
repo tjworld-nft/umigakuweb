@@ -1,0 +1,22 @@
+[
+  {
+    "@type": "Service",
+    "@id": "https://miura-diving.com/gear/#service",
+    "name": "ダイビング器材の選び方の相談と販売",
+    "serviceType": "ダイビング器材の購入相談・販売・オーバーホールと修理の受付",
+    "description": "三浦 海の学校は、GULL、MOBBY'S、ワールドダイブ、アクアラング、TUSA、Bism、ガーミン、村上商事の正規取扱店です。講習もファンダイビングもレンタル器材（フルセット1日5,500円・税込）でできます。自分の器材を選ぶときは、代表のインストラクターが潜り方と、器材が体に合うかどうかを見て一緒に選び、届いた器材の初回のセッティングと使い方、オーバーホール・修理の受付までおこないます。お見積もりは公式LINEまたはメールで（無料）。",
+    "url": "https://miura-diving.com/gear/",
+    "areaServed": {"@type": "AdministrativeArea", "name": "神奈川県"},
+    "provider": {"@type": "SportsActivityLocation", "@id": "https://miura-diving.com/#school", "name": "三浦 海の学校", "url": "https://miura-diving.com/"},
+    "brand": [
+      {"@type": "Brand", "name": "GULL"},
+      {"@type": "Brand", "name": "MOBBY'S"},
+      {"@type": "Brand", "name": "World Dive"},
+      {"@type": "Brand", "name": "AQUALUNG"},
+      {"@type": "Brand", "name": "TUSA"},
+      {"@type": "Brand", "name": "Bism"},
+      {"@type": "Brand", "name": "Garmin"},
+      {"@type": "Brand", "name": "TOVATEC"}
+    ]
+  }
+]
