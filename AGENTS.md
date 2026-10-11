@@ -295,8 +295,9 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   **価格の見直しは年3回**（1月末＝TUSA／3月＝GULL・MOBBY'S・ワールドダイブ／9月＝MOBBY'S・村上商事）。直す場所：場面ごとの価格の行・折りたたみ「価格の幅について」・FAQ・`FACTS.md`「器材の販売」・`check.py` の `PRICES_GEAR`。
 - **製品写真** `image/gear/p-*.webp`（800×800・白い台紙・16点。場面1はマスク・スノーケル〈カナール ステイブル〉・フィン、場面2はウェット〈DISCOVERY FD〉とドライ〈NEO DRY FD〉＝オーナーの指定）は各メーカー・輸入元の公式サイトから保存（2026-10-11。オーナーの了承「メーカーさんのサイトから画像はとってもいい」）。
   ⚠ メーカー各社の了承は取っていない（無断転載禁止を明記している社がある）。`#items` の最後の出どころの注記を消さない・指摘があれば外す。MOBBY'S DISCOVERY FD はフルスーツの着用写真。
-- 実写：ヒーローは `gear-hero-c-*`（船の上の器材・人が写らない）。🔴 **お客さまの顔が写る未確認の写真は、リポジトリに置かない**（公開リポジトリ）。ヒーローの候補A（10/9・GULLのスーツの男性）・B は
-  `~/.codex/worktrees/umigaku-gear/pending-photos/` にある（オーナー経由で本人の了承が取れたら差し替える）。alt に場所の名前を書かない。OGPは `python3 tools/og.py gear`。
+- 実写：ヒーローは **`gear-hero-a-*`**（2026-10-09 撮影・GULLのウェットスーツで器材を身につけた男性。**オーナーが掲載を了承**＝2026-10-11「写真使っていいよ」）。OGP も同じ写真（`python3 tools/og.py gear`）。
+  切り取り位置は PC が `--pos: 20% 40%`、スマホと 768〜1099px は `gear.css` で img に直接（45%／46%）。前の案 `gear-hero-c-*`（船の上の器材）もファイルは残してある。
+  🔴 **お客さまの顔が写る写真は、オーナーの了承が出たものだけリポジトリに置く**（公開リポジトリ）。未確認の候補（hero-b・fig-front・reg-ok・dry）は `~/.codex/worktrees/umigaku-gear/pending-photos/` にある。alt に場所の名前を書かない。
 - 画面下の固定ボタン（`.mobile-cta-bar`）は、このページだけ `gear.css` で消している。相談の帯の2つの固定の文は META の `ask` の `cancel`／`lineNote` で上書きできる（`build.py` の `ask()`。既定は従来の文）。
 - 導線：**フッターに常設**（build.py の `FOOTER_NAV`＋手書きの29ファイル）。スマホメニューとPCナビには入れない。本文リンクは fun-diving（`#rental` と持ち込みのFAQ）・specialty `#pro`・
   advanced と license の料金の注記・beginner-guide の持ち物・mydry・winter-diving・トップ `.courses-note`。リンクの言葉は「購入」でなく「選び方と相談」。trial-diving・marine-activity・lp/・buddy には張らない。
