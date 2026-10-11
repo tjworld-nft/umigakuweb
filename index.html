@@ -40,9 +40,9 @@
   <link rel="stylesheet" href="css/style.css?v=20261009">
   <link rel="stylesheet" href="css/home.css?v=2026101101">
 
-  <!-- オープニング「水面へ」（はじめて来た人にだけ・約2秒・押せばすぐ消える）。
+  <!-- オープニング「水面へ」（来るたびに1回・約2秒・押せばすぐ消える）。
        ここでは「出すかどうか」を決めて、最初の描画から海の色を敷くだけ。本体は js/opening.js。
-       出さない条件：7日以内に見た／動きを減らす設定／省データ・2G／ページ途中へのリンク／サイト内の移動・戻る／裏のタブ／検索エンジンの巡回。
+       出さない条件：30分以内に見た（＝同じ訪問の続き。18e5ミリ秒）／動きを減らす設定／省データ・2G／ページ途中へのリンク／サイト内の移動・戻る／裏のタブ／検索エンジンの巡回。
        ?opening=off で常に無し、?opening=1 で必ず出す（確認用）。本体が読めなくても、下の CSS が5秒で自分から消える。
        絵や動きを作り替えて「もう一度みんなに見せたい」ときは V を変える。自動で出すのをやめるときは ON を 0 に（?opening=1 では出る）。 -->
   <style>
@@ -61,7 +61,7 @@
       if(document.visibilityState!=='visible')return;
       var n=performance.getEntriesByType('navigation')[0];if(n&&n.type==='back_forward')return;
       if(document.referrer.indexOf(location.origin+'/')===0)return;
-      var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.v===V&&Date.now()-s.t<6048e5)return;
+      var s=JSON.parse(localStorage.getItem(K)||'null');if(s&&s.v===V&&Date.now()-s.t<18e5)return;
     }
     document.documentElement.className+=' op op-run';
     var o=m('(orientation: portrait)').matches?'p':'l';
