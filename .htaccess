@@ -78,6 +78,11 @@ RewriteRule ^blog/miura-diving-beginner-blank/?$ https://miura-diving.com/refres
 RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
 RewriteRule ^blog/miura-diving-points-guide-2026-04-05/?$ https://miura-diving.com/fun-diving/ [R=301,L]
 
+# 2026-10-12 ブログの旧タグページ（/blog/tags/…・12枚）は廃止。どれもほぼ全記事を並べた同じ中身だったので、
+# 6つのカテゴリ（/blog/category/…）に置き換えた。古いURLは一覧へ送る。
+RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
+RewriteRule ^blog/tags(/.*)?$ https://miura-diving.com/blog/ [R=301,L]
+
 # Make /blog unaffected by WP rules (if any)
 RewriteRule ^blog($|/) - [L]
 
