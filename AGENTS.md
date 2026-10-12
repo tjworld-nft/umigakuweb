@@ -267,8 +267,9 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   自分の器材なら講習費のみ。**料金を変えたらラジオの data 属性・下の料金表・FAQ・構造化データ（license.ld の Course の Offer）を一緒に直す。**
 - 旧アンカーは残してある：`license/#courses`（まんが第3話のCTA・AOWの節の直前）・`license/#sp-title`・`fun-diving/#plans`・`beginner-guide/#difference` ほか。
 - 予約フォーム（`contact/`）：種別はラジオ（value は send_mail.php に渡る値。**変えない**：体験ダイビング／OWDライセンス／AOWライセンス／ファンダイビング／リフレッシュ／マリンアクティビティ／書籍・講座／その他）。
-  `?from=` `?category=` `?date=` の事前入力と、成功・エラーの表示は `js/contact.js`。`name="csrf_token" id="csrfToken" value=""` の並びは contact/index.php が置換するので変えない。
-  🔴 **ローカルで send_mail.php を POST して試さない**（2026-09-27、php -S で試したら Mac の postfix に本物の通知メールが2通積まれた）。
+  `?from=` `?category=` `?date=` の事前入力と、成功・エラーの表示は `js/contact.js`。2026-10-13から `send_mail.php?action=token` でセッション付き使い切りトークンを取得し、JSONで送信（エラー時も入力を保持）。`csrf_token` の項目名は維持。`contact/index.php` は現在の `/contact/` へ転送。
+  🔴 **ローカルで send_mail.php を HTTP POST して試さない**（2026-09-27、php -S で試したら Mac の postfix に本物の通知メールが2通積まれた）。回帰検証は `.agents/tests/test_contact.py` のPHP CLIハーネスを使う（偽sendmailを強制し、本物のMTAやHTTPサーバーを使わない）。
+  - **迷惑投稿対策**: `contact/contact-guard.php` がIP・メール・本文の制限、予約種別/日付/人数を含む重複抑止、原子的な保存を担当。`contact-handler.php` は旧入口を塞ぐためのファイルとして残す（GETは現フォームへ、POSTは410・メール送信なし）。自動返信に自由入力の本文は転載しない（第三者への迷惑メール中継を防ぐ）。JS更新時は原稿METAと公開HTMLの contact.js の版を上げる。
 - 写真：`image/sub/`（2026年9月に撮った実写をPILでWebP化・EXIFの回転を反映済み）。ページごとのOGPは `image/og-<ページ>.jpg`（写真＋見出し・PILで作成）。
   **場所の写真は吉田さん確認済みのものだけ**（2026-09-27）：城ヶ島・梶の浜ビーチ＝`trial-hero-*`・`surface-blue-960`・`kajinohama-card-960`（元 P9248333・白い灯台の堤防）と `beach-surface-960`（P9088189・同じ堤防）／城ヶ島ボート＝`boat-tank-960`（P9108194）／宮川湾＝9/13撮影分（`fun-hero-*`・`descent-rope-960`・`boat-divers-960`）。
   `image/optimized/miura-hero2.webp`（岩場の写真）は**梶の浜ではない**ので、城ヶ島・梶の浜のラベルで使わない。ファンダイビングの「潜る場所」には梶の浜・カサゴ根・トビ根の3枚のポイントマップを並べている。

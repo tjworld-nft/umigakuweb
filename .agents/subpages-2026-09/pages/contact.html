@@ -15,7 +15,7 @@
   "ogAlt": "水中でピースサインをするダイバーと「まずは、LINEで聞いてみる。」の文字",
   "hero": {"800": "/image/sub/contact-hero-800.webp", "1600": "/image/sub/contact-hero-1600.webp"},
   "crumbs": [["予約・お問い合わせ", "/contact/"]],
-  "extraScripts": "  <script src=\"/js/contact.js?v=2026092801\" defer></script>"
+  "extraScripts": "  <script src=\"/js/contact.js?v=2026101301\" defer></script>"
 }
 META-->
   <main id="main">
@@ -99,7 +99,7 @@ META-->
         </div>
 
         <form class="cform" id="contactForm" action="/contact/send_mail.php" method="POST">
-          <!-- CSRF対策トークン（index.php 経由のときに埋め込まれる。この属性の並びを変えないこと） -->
+          <!-- 送信確認トークン（js/contact.js がサーバーから取得。この属性の並びは維持する） -->
           <input type="hidden" name="csrf_token" id="csrfToken" value="">
           <!-- 流入元（?from= を引き継ぐ・広告やページごとの効果測定用） -->
           <input type="hidden" name="ref" id="refSource" value="">
@@ -149,19 +149,19 @@ META-->
             <div class="cform__row">
               <div class="field">
                 <label for="name">お名前 <span class="req">必須</span></label>
-                <input type="text" id="name" name="name" placeholder="例：三浦 花子" autocomplete="name" required>
+                <input type="text" id="name" name="name" maxlength="100" placeholder="例：三浦 花子" autocomplete="name" required>
               </div>
               <div class="field">
                 <label for="kana">フリガナ <span class="opt">任意</span></label>
-                <input type="text" id="kana" name="kana" placeholder="例：ミウラ ハナコ">
+                <input type="text" id="kana" name="kana" maxlength="100" placeholder="例：ミウラ ハナコ">
               </div>
               <div class="field">
                 <label for="email">メールアドレス <span class="req">必須</span></label>
-                <input type="email" id="email" name="email" placeholder="example@mail.com" autocomplete="email" inputmode="email" required>
+                <input type="email" id="email" name="email" maxlength="200" placeholder="example@mail.com" autocomplete="email" inputmode="email" required>
               </div>
               <div class="field">
                 <label for="phone">電話番号 <span class="opt">任意</span></label>
-                <input type="tel" id="phone" name="phone" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel">
+                <input type="tel" id="phone" name="phone" maxlength="40" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel">
               </div>
             </div>
           </fieldset>
@@ -170,14 +170,16 @@ META-->
             <legend><span class="cform__no">4</span>お問い合わせ内容<span class="req">必須</span></legend>
             <div class="field">
               <label for="message" class="sr-only">お問い合わせ内容</label>
-              <textarea id="message" name="message" required placeholder="例：10月の土曜日に、はじめてのライセンス講習を受けたいです。泳ぎに自信がないのですが大丈夫でしょうか。三崎口駅からの送迎もお願いしたいです。"></textarea>
+              <textarea id="message" name="message" maxlength="5000" required placeholder="例：10月の土曜日に、はじめてのライセンス講習を受けたいです。泳ぎに自信がないのですが大丈夫でしょうか。三崎口駅からの送迎もお願いしたいです。"></textarea>
               <p class="hint">ダイビングの経験（本数・最後に潜った時期）や、不安なこともあわせて書いていただくと、ご案内がスムーズです。</p>
             </div>
           </fieldset>
 
           <div class="cform__submit">
             <button type="submit" class="btn-ink"><svg class="fa-svg" aria-hidden="true"><use href="#i-mail"/></svg>この内容で送信する</button>
-            <p class="cform__note">送信いただいた個人情報は、お問い合わせへの対応のためだけに使います（<a href="/privacy-policy/">プライバシーポリシー</a>）。</p>
+            <p class="cform__note">送信いただいた情報は、お問い合わせへの対応と不正送信の防止に使います（<a href="/privacy-policy/">プライバシーポリシー</a>）。</p>
+            <p class="cform__note">迷惑メール対策のため、送信にはJavaScriptとCookieを使用します。送信できない場合は、<a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer">LINE</a>または<a href="mailto:info@miura-diving.com">メール</a>でご連絡ください。</p>
+            <noscript><p class="cform-msg cform-msg--err">JavaScriptが無効になっています。<a href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer">LINE</a>または<a href="mailto:info@miura-diving.com">info@miura-diving.com</a>へ直接お問い合わせください。</p></noscript>
           </div>
         </form>
       </div>
