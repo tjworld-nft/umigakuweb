@@ -52,6 +52,7 @@
 - **受付終了の表示（data-from）**：/fuyu-skill/ には `data-from="2027-01-01"` の要素が2つ（ヒーローと条件の節の「新しい受付は2026年12月31日で終わりました」）と、それを出す小さなインラインスクリプト（断片の末尾・data-expires の逆）がある。1/1 の作り替えのときに、この2つとスクリプトも整理する。
 - /mydry/ の併用の文は「2026年11月1日以降に受けはじめたものは冬スキル割の5つに数えます」（10月に受けた半額ドライは数えない）。
 - **2027-01-01（マイドライ割の片づけと同じPR・予約タスクで 0:05 にマージ）**：外からの導線（トップ `#fuyuskill-campaign`、/specialty/ の帯・注記・FAQの1文、/advanced/・/license/・/fun-diving/・/winter-diving/ の行）を HTML と pages/ から削除。/fuyu-skill/ を「受付終了・参加中の方の条件」に作り替える（はじめ方・募集の文を外し、条件・期限・6つ目・差額・FAQの一部を残す。JSが外す要素〈見出し上の帯の日付・数字の帯の4つ目など〉もHTMLから消す＝読み込み時のずれを残さない）。META の desc・ogDesc と、`fuyu-skill.ld.json` の Offer の description・validThrough も「受付終了・参加中の方の条件」に直す（JSでは消えない）。OGP画像の「12月31日までにはじめる方」は `tools/og.py` の JOBS の文を変えて `python3 tools/og.py fuyu-skill` で作り直す。llms.txt の行を「受付終了・参加中の方の条件」に。
+  - **/fuyu-skill/ の #manga 節**（まんが2ページ・最後のコマが「まずはラインで相談してね」の勧誘。2026-10-15 の v4 で追加）を外すか、参加中の方向けに残すかを決める。外すなら、ヒーローの「まんがで見る ↓」ボタン（`href="#manga"`）も一緒に直す（目次 `.lnav` には入れていない）。組み方の節（#ways）・ヒーローのリードの勧誘の文も同じときに見直す。
 - **2027-07-01**：「6つ目は平日に（9月30日まで）」の表示を確かめる（7〜9月は平日のみ）。
 - **2027-10-01**：/buddy/・/mydry/（条件・FAQの画面とJSON-LD）・/tsuzukeru/ の併用の1文を HTML からも削除。winter-diving・buddy・tsuzukeru のインラインスクリプトも、ほかに使っていなければ外す。
 - **2027-11-01**：/fuyu-skill/ を削除して /specialty/ へ301（.htaccess）。特定商取引法に基づく表記（`pages/tokusho.html` → `python3 tools/build.py tokusho`）の「申込有効期限」の※から「例：冬スキル割」のリンクを外す。sitemap・ai-sitemap・llms.txt から削除。`image/fuyu-skill/`・`image/og-fuyu-skill.jpg`・FACTS.md の節・check.py の PRICES の冬スキル割の行・og.py の JOBS を削除。台帳を閉じる。
