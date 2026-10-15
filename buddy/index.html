@@ -453,7 +453,7 @@
                 </ul>
                 <h3>共通</h3>
                 <ul>
-                    <li>他の割引・キャンペーンとの併用はできません。ただし<a href="https://miura-diving.com/tsuzukeru/">つづける割</a>（次回のファンダイビングが¥800引き）は併用いただけます。</li>
+                    <li>他の割引・キャンペーンとの併用はできません。ただし<a href="https://miura-diving.com/tsuzukeru/">つづける割</a>（次回のファンダイビングが¥800引き）は併用いただけます。<span data-expires="2027-10-01"><a href="https://miura-diving.com/fuyu-skill/">冬スキル割</a>（スペシャルティ講習が対象）も、対象の講習が違うので一緒に使えます。</span></li>
                     <li>特典の現金でのお支払い・他のサービスへの振り替えはできません。</li>
                     <li>海況・天候により、日程の変更や中止をご相談させていただくことがあります。安全を最優先に判断します。</li>
                     <li>キャンセル規定は<a href="https://miura-diving.com/tokusho/">特定商取引法に基づく表記</a>をご確認ください。</li>
@@ -616,6 +616,18 @@
                         .catch(() => { /* ユーザーが共有をキャンセルしたときは何もしない */ });
                 });
             }
+        })();
+    </script>
+    <script>
+        /* 期限つきの表示：data-expires="YYYY-MM-DD" の要素は、日本時間でその日になったら外す（下層ページの js/page.js と同じ決まり）。
+           期限が来たら、HTML からも削除すること */
+        (function () {
+            var n = new Date(), t = new Date(n.getTime() + n.getTimezoneOffset() * 60000 + 9 * 3600000);
+            var p = function (x) { return (x < 10 ? '0' : '') + x; };
+            var today = t.getFullYear() + '-' + p(t.getMonth() + 1) + '-' + p(t.getDate());
+            Array.prototype.forEach.call(document.querySelectorAll('[data-expires]'), function (el) {
+                if (today >= el.getAttribute('data-expires') && el.parentNode) el.parentNode.removeChild(el);
+            });
         })();
     </script>
 </body>

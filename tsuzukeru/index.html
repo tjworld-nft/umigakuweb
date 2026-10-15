@@ -380,6 +380,7 @@
                 <ul>
                     <li>2026年8月1日から始まる<a href="https://miura-diving.com/buddy/">バディ割</a>（お友達紹介で付き添いダイビングが¥6,600引き）と重ねて使えます。</li>
                     <li>ただし、¥800引き自体は1回のダイビングにつき1つまでです。何度も重ねがけはできません。</li>
+                    <li data-expires="2027-10-01"><a href="https://miura-diving.com/fuyu-skill/">冬スキル割</a>（スペシャルティ講習が対象）とも一緒に使えます。</li>
                 </ul>
                 <h3>4. 日程が変わったときはご相談ください</h3>
                 <ul>
@@ -510,6 +511,18 @@
         } else {
             document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
         }
+    </script>
+    <script>
+        /* 期限つきの表示：data-expires="YYYY-MM-DD" の要素は、日本時間でその日になったら外す（下層ページの js/page.js と同じ決まり）。
+           期限が来たら、HTML からも削除すること */
+        (function () {
+            var n = new Date(), t = new Date(n.getTime() + n.getTimezoneOffset() * 60000 + 9 * 3600000);
+            var p = function (x) { return (x < 10 ? '0' : '') + x; };
+            var today = t.getFullYear() + '-' + p(t.getMonth() + 1) + '-' + p(t.getDate());
+            Array.prototype.forEach.call(document.querySelectorAll('[data-expires]'), function (el) {
+                if (today >= el.getAttribute('data-expires') && el.parentNode) el.parentNode.removeChild(el);
+            });
+        })();
     </script>
 </body>
 
