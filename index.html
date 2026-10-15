@@ -461,6 +461,24 @@
         </div>
       </div>
 
+      <!-- 冬スキル割（2026/11〜・はじめるのは12/31まで）。2027/1/1になるとJSが自動で外す。
+           期間が終わったら、この div を HTML からも削除する（ナビとヒーローのピルはマイドライ割のまま）。
+           3連休の行（data-expires="2026-11-24"）は、11/8に開催の有無に合わせて書き換える。
+           組み方・金額・条件はページ（/fuyu-skill/）に置き、ここは特典の一文と入口だけにする -->
+      <div id="fuyuskill-campaign" class="sc" data-expires="2027-01-01">
+        <div class="sc-head">
+          <span class="sc-label">Winter Skill Campaign</span>
+          <h2>冬スキル割、<span class="sc-hl">はじめるのは12月31日まで</span></h2>
+          <p class="sc-lead">2026年11月から、スペシャルティを5つ受けたら、<strong>6つ目の講習料から最大¥27,500引き</strong>（税込・¥27,500のコースは無料・<span style="display:inline-block">レンタル器材は別）。</span><br class="sp-only">お支払いは1つずつ。休みにまとめても、<span style="display:inline-block">月に1コースずつでも。</span></p>
+          <p class="sc-count" data-deadline-days="2026-12-31">1つ目の期限は、<span class="days">12月31日まで</span></p>
+        </div>
+        <p class="sc-note" data-expires="2026-11-24"><strong>11/21〜23の3連休で5つ</strong>（12歳から・2名から開催・海況で中止した日は振り替え・お申し込みは11/7 17時まで）</p>
+        <div class="sc-cta sg-cta" style="justify-content:center">
+          <a class="wf-more" href="/fuyu-skill/#ways">組み方と金額を見る <span aria-hidden="true">→</span></a>
+          <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-line-msg="冬スキル割について相談したいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで相談する</a>
+        </div>
+      </div>
+
       <!-- 20秒の紹介映像「SEA GLASS」（常設）。カードでは文字なし・無音のループを見えている間だけ流し、
            押すとシアターで音あり版。サイトで流すのは最後の誘導が「このサイトから、公式LINEへ」の版だけ -->
       <div id="sea-glass" class="wf wf--sg">
