@@ -468,6 +468,35 @@
           "url": "https://www.mobby.co.jp/products_cat/drysuits/"
         }
       ]
+    },
+    {
+      "slug": "fuyu-skill",
+      "ep": 24,
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "short": "冬は、ひとつずつ上手くなる。",
+      "title": "ダイビングのスペシャルティ講習をまんがで｜冬はひとつずつ上手くなる｜三浦 海の学校",
+      "description": "冬は潜るのをお休み？ 三浦の冬の海はよく見える日が増え、ドライスーツの季節。ひとつのテーマを深く学ぶスペシャルティは、最初のライセンスから受けられるコースが多く、受けるたびにできることが増えます。冬に合うコースと受け方、冬スキル割を全12ページで。",
+      "related": [
+        "mydry-wari",
+        "winter-drysuit",
+        "aow",
+        "drysuit-prep"
+      ],
+      "sources": [
+        {
+          "name": "三浦 海の学校「冬スキル割」（特典の条件・期限・組み方）",
+          "url": "https://miura-diving.com/fuyu-skill/"
+        },
+        {
+          "name": "三浦 海の学校「スペシャルティ講習」（コースと料金・受講の条件）",
+          "url": "https://miura-diving.com/specialty/"
+        },
+        {
+          "name": "三浦 海の学校「秋冬のダイビング」（冬の海・ドライスーツの季節）",
+          "url": "https://miura-diving.com/winter-diving/"
+        }
+      ]
     }
   ]
 }

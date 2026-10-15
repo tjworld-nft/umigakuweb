@@ -399,7 +399,8 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 896 / 1200;
+  /* 画像の実寸の比率を優先する（第22話から 1024x1536 の2:3。固定比だと縦につぶれる） */
+  aspect-ratio: auto 896 / 1200;
 }
 .mr-page__no {
   position: absolute;
