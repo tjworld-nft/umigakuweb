@@ -81,12 +81,13 @@ META-->
           <span class="h-label">Manga <small>まんがで見る</small></span>
           <h2 id="manga-title" class="h-title">まずは、<span class="nw">まんがで。</span></h2>
         </div>
-        <div class="grid grid--2" style="max-width:900px;margin:0 auto;align-items:start">
-          <figure style="margin:0">
+        <!-- 日本のまんがは右から読むので、横に並ぶ幅では1ページ目を右に置く（direction:rtl）。HTMLの順番とスマホの縦の並びは1→2のまま -->
+        <div class="grid grid--2" style="max-width:900px;margin:0 auto;align-items:start;direction:rtl">
+          <figure style="margin:0;direction:ltr">
             <img src="/image/fuyu-skill/manga-p01.webp" width="800" height="1200" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 10px 28px rgba(6,58,87,.12)"
               alt="まんが1ページ目。冬の晴れた浜辺に、ドライスーツを着たクララ。「寒くなったら、ダイビングはおしまい？」という問いに「ううん、冬はひとつずつ上手くなる季節」。人差し指を立てて「冬の海は青くて、よく見えるんだ」「おすすめはスペシャルティ」「ひとつのことを深く学ぶ講習」。図を指さして「これが冬スキル割」。図は、チェックの付いた丸が5つ、矢印の先に星の金メダルで、「5つ受けたら」「6つ目は値引き」と書いてある。">
           </figure>
-          <figure style="margin:0">
+          <figure style="margin:0;direction:ltr">
             <img src="/image/fuyu-skill/manga-p02.webp" width="800" height="1200" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 10px 28px rgba(6,58,87,.12)"
               alt="まんが2ページ目。カレンダーを指さし、指を3本立てたクララが「5つは、休みの3日でまとめても」「月に1つずつでもいいんだよ」。ドライスーツで腰まで海に入り、胸のボタンを押しながら「ドライスーツが初めてなら、その講習から」「それも5つのひとつに数えるよ」。スマホを持って手を振り「日にちは、希望を聞いて決めるんだ」「まずはラインで相談してね」。">
           </figure>
