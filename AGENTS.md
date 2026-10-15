@@ -55,6 +55,12 @@
 - ⚠ **1/1以降**: 上の `data-expires` 要素をHTMLと `pages/` から消し、`llms.txt` の行を消し、`/mydry/` を終了表示か常設のドライスーツ案内に直す。
 - 画像 `image/mydry/`（2026-01-26の映像「海の季節は、終わらない。」の素材から切り出し）・OGP `image/og-mydry.jpg`。LINE配信は未（HPを先に出す方針）。
 
+## 進行中: スペシャルティの特典「冬スキル割」（2026-11-01〜・はじめるのは12/31まで）
+
+- 特典ページ **`fuyu-skill/index.html`**（https://miura-diving.com/fuyu-skill/ ・2026-10-15公開・PR #156）。組み立て元は `.agents/subpages-2026-09/pages/fuyu-skill.html`（`python3 tools/build.py fuyu-skill` → `tools/check.py fuyu-skill`）。
+- **条件・書かないこと・終了後の片づけの正は `.agents/fuyu-skill-campaign.md`**（deploy対象外）。内容：2026-11-01以降に受けたスペシャルティを5つ（認定まで・2027/6/30まで）で、6つ目の講習料から最大¥27,500引き（税込）。アドバンス講習・ドリフト・EFRは入らない（11コース）。日程はリクエスト制・1名から。印は公式LINEのショップカード。
+- トップの導線（2026-10-15）：ヒーローの `.hero-campaigns` の2つ目の札（スマホは短い文 `.pill-short`）・ナビのピル（PCは1460px以上だけ。そのときマイドライ割の日付を隠してナビの間隔を詰める）・スマホのメニュー・水の帯の中の枠 `#fuyuskill-campaign`（絵つきカード `.sc-feature`）。すべて `data-expires="2027-01-01"`。**1/1以降はHTMLからも削除**（マイドライ割と同じ）。
+
 ## 進行中: 継続特典「つづける割」（2026-08-01開始）
 
 - 特典ページ **`tsuzukeru/index.html`**（https://miura-diving.com/tsuzukeru/ ）。デザインは `buddy/index.html` と同じトークン（Zen Maru Gothic・teal/coral・float CTA）。
