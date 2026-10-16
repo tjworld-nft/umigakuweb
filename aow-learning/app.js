@@ -18,6 +18,9 @@
     }
   }
   const courseSlug = courseConfig.slug;
+  const guidedStudy = courseSlug === "dpv";
+  const changedCompletedModules = new Set();
+  let loadingFailed = false;
   const curriculumVersion = Number(courseConfig.curriculumVersion);
   const apiUrl = "api.php?course=" + encodeURIComponent(courseSlug);
   const modules = courseConfig.modules;
@@ -41,6 +44,13 @@
 
   const issueCompletionButton = document.getElementById("issueCompletion");
   const syncStatus = createSyncStatus();
+  // #chapter付きURLでも、通信エラーからの再試行は必ず再取得する。
+  if (guidedStudy) document.addEventListener("click", (event) => {
+    if (loadingFailed && event.target.closest(".dpv-start, #nextLesson, [data-sync-action]")) {
+      event.preventDefault();
+      location.reload();
+    }
+  });
 
   /* ---------- 進捗の入れ物 ---------- */
 
@@ -233,11 +243,16 @@
     question.addEventListener("change", (event) => {
       if (!event.target.matches("input[type=radio]")) return;
       moduleState(module).answers[qid] = event.target.value;
-      if (event.target.value !== question.dataset.answer) moduleState(module).complete = false;
+      if (event.target.value !== question.dataset.answer) {
+        if (guidedStudy && moduleState(module).complete) changedCompletedModules.add(module);
+        moduleState(module).complete = false;
+      }
       stateRevision += 1;
       showFeedback(question, event.target.value);
       renderProgress();
       saveSoon();
+      // 解説が固定バーの裏に隠れないよう、回答時だけ見える位置へ寄せる。
+      if (guidedStudy) question.querySelector("[data-feedback]").scrollIntoView({ block: "nearest", behavior: "auto" });
     });
   });
 
@@ -290,8 +305,11 @@
           updateCompleteButton(module);
           return;
         }
+        changedCompletedModules.delete(module);
         const next = modules[modules.indexOf(module) + 1];
-        document.getElementById(next || "finish").scrollIntoView({ behavior: "smooth" });
+        const target = document.getElementById(next || "finish");
+        target.scrollIntoView({ behavior: guidedStudy && matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+        if (guidedStudy) target.querySelector("h2")?.focus({ preventScroll: true });
       } catch (error) {
         moduleState(module).complete = false;
         stateRevision += 1;
@@ -383,7 +401,7 @@
       const additional = legacyCompletion && !required.includes(name);
       document.querySelectorAll(`[data-card="${name}"], [data-nav="${name}"]`).forEach((el) => el.classList.toggle("is-done", done));
       document.querySelectorAll(`[data-module="${name}"] input[type="radio"]`).forEach((input) => {
-        input.disabled = lockedByCompletion;
+        input.disabled = lockedByCompletion || (guidedStudy && !loaded);
       });
       const answered = Object.keys(moduleState(name).answers).length;
       const status = document.querySelector(`[data-status="${name}"]`);
@@ -392,7 +410,7 @@
       if (button) {
         const remaining = remainingQuestions(name);
         // 押せない理由を書いておく。何も言わずに灰色のままだと、詰まったように見える。
-        button.textContent = done
+        if (!guidedStudy) button.textContent = done
           ? `${labels[name]} 完了 ✓`
           : remaining
             ? `${labels[name]}を完了する（正解あと${remaining}問）`
@@ -428,6 +446,59 @@
         ? "5科目すべての知識確認が完了しました。最終チェック後に、サーバーで修了記録を発行してください。"
         : "5レッスンを完了すると、修了画面を発行できます。";
     renderCompletion(completed, required);
+    if (guidedStudy) renderGuidedStudy(completed);
+  }
+
+  // DPVは長い7章構成。回答の途中へ戻り、今いる章を見失わないための補助。
+  // 保存や達成判定は上の共通処理に集約し、既存講座の挙動は変更しない。
+  function renderGuidedStudy(completed) {
+    const nextName = modules.find((name) => !state.completion && !moduleState(name).complete);
+    let href = state.completion ? "#completionProof" : "#finish";
+    let label = state.completion ? "完了画面を見る" : "最終チェックへ";
+    if (nextName) {
+      const article = document.getElementById(nextName);
+      const answers = moduleState(nextName).answers;
+      const hasAnswers = Object.keys(answers).length > 0;
+      const nextQuestion = [...article.querySelectorAll(".question")].find((q) => answers[q.dataset.question] !== q.dataset.answer);
+      href = hasAnswers ? (nextQuestion ? "#" + nextQuestion.id : "#" + nextName + "-complete") : "#" + nextName;
+      label = hasAnswers ? `第${modules.indexOf(nextName) + 1}章の続きへ` : `${String(modules.indexOf(nextName) + 1).padStart(2, "0")} から学ぶ`;
+    }
+    if (!loaded) {
+      href = loadingFailed ? location.href : "#main";
+      label = loadingFailed ? "再読み込みする" : "進捗を確認中";
+    }
+    document.querySelectorAll(".dpv-start, #nextLesson").forEach((link) => {
+      link.href = href;
+      link.textContent = label;
+    });
+    document.getElementById("progressMessage").textContent = state.completion ? "事前学習が完了しました" : completed === modules.length ? "全章完了。最終チェックへ進みましょう" : `全7章のうち ${completed}章完了。途中でも保存されます`;
+    document.getElementById("finish-title").textContent = state.completion ? "事前学習が完了しました。" : "最後に、実習への準備を確認。";
+    document.getElementById("finishText").textContent = state.completion ? "下の学習記録を講師に提示し、実物での確認と実習へ進みましょう。" : completed === modules.length ? "3つの確認にチェックを入れて、学習記録を発行してください。" : `学習記録の発行まで、あと${modules.length - completed}章です。各章の5問に正解し、章の完了ボタンを押してください。`;
+    const checklist = document.getElementById("dayChecklist");
+    checklist.hidden = false;
+    checklist.querySelectorAll("input").forEach((input) => { input.disabled = !loaded || completed !== modules.length || Boolean(state.completion); });
+    if (!loaded) {
+      document.getElementById("progressNumber").textContent = "—";
+      document.getElementById("mobileProgress").textContent = loadingFailed ? "通信を確認してください" : "進捗を読み込み中";
+      document.getElementById("progressMessage").textContent = loadingFailed ? "前回の記録は変更していません。再読み込みしてください。" : "保存した進捗を確認しています。";
+    }
+    modules.forEach((name, index) => {
+      const record = moduleState(name);
+      const done = Boolean(state.completion) || record.complete;
+      const remaining = remainingQuestions(name);
+      const article = document.getElementById(name);
+      const button = article.querySelector("[data-complete]");
+      let buttonLabel = done ? `第${index + 1}章 完了 ✓` : remaining ? `第${index + 1}章を完了する（正解あと${remaining}問）` : `第${index + 1}章を完了して次へ`;
+      const status = article.querySelector("[data-lesson-status]");
+      let statusMessage = done ? (state.completion ? "学習記録を発行済みです。解説を読み返せます。" : "この章は完了しています。誤答に変えると再確認になります。") : `${changedCompletedModules.has(name) ? "回答を変更したため、この章の完了を取り消しました。" : ""}5問中 ${5 - remaining}問正解。${remaining ? "解説を読みながら進めましょう。" : "章の完了ボタンを押して進みましょう。"}`;
+      if (!loaded) {
+        buttonLabel = loadingFailed ? "進捗を読み込めていません。再読み込みしてください" : "進捗を読み込んでいます…";
+        statusMessage = loadingFailed ? "通信を確認して、画面下の「再読み込みする」を押してください。前回の回答はまだ表示できていません。" : "保存した回答を読み込んでいます。";
+      }
+      if (button.textContent !== buttonLabel) button.textContent = buttonLabel;
+      // 無関係な章のライブ領域は更新せず、解説の読み上げを邪魔しない。
+      if (status.textContent !== statusMessage) status.textContent = statusMessage;
+    });
   }
 
   /* ---------- レッスンタブ ---------- */
@@ -441,6 +512,33 @@
     lessonNav.addEventListener("scroll", markScrollEnd, { passive: true });
     window.addEventListener("resize", markScrollEnd);
     markScrollEnd();
+  }
+
+  if (guidedStudy && lessonNav) {
+    const articles = modules.map((name) => document.getElementById(name));
+    let queued = false;
+    let current = null;
+    const markCurrent = () => {
+      queued = false;
+      const threshold = lessonNav.getBoundingClientRect().height + 40;
+      let active = null;
+      articles.forEach((article) => {
+        const rect = article.getBoundingClientRect();
+        if (rect.top <= threshold && rect.bottom > threshold) active = article.id;
+      });
+      if (active === current) return;
+      current = active;
+      lessonNav.querySelectorAll("[data-nav]").forEach((link) => {
+        if (link.dataset.nav === active) {
+          link.setAttribute("aria-current", "location");
+          if (lessonNav.scrollWidth > lessonNav.clientWidth) lessonNav.scrollTo({ left: link.offsetLeft - (lessonNav.clientWidth - link.offsetWidth) / 2, behavior: "auto" });
+        } else link.removeAttribute("aria-current");
+      });
+    };
+    const scheduleMark = () => { if (!queued) { queued = true; requestAnimationFrame(markCurrent); } };
+    window.addEventListener("scroll", scheduleMark, { passive: true });
+    window.addEventListener("resize", scheduleMark);
+    markCurrent();
   }
 
   /* ---------- 起動 ---------- */
@@ -469,6 +567,7 @@
       learnerId = payload.learnerId || learnerId;
     } catch (_) {
       setSyncStatus("error", "進捗を読み込めませんでした。通信を確認してください。", { label: "再読み込み", href: location.href });
+      if (guidedStudy) { loadingFailed = true; renderProgress(); }
       return;
     }
     loaded = true;
