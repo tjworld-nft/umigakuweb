@@ -16,7 +16,8 @@
         {"@type": "Offer", "name": "ビーチダイビング（4ダイブ）", "price": "24200", "priceCurrency": "JPY"},
         {"@type": "Offer", "name": "ボートダイビング（2ダイブ・宮川湾／城ヶ島）", "price": "19800", "priceCurrency": "JPY", "description": "ガイド・タンク・ウエイト・乗船料・施設使用料・保険込み"},
         {"@type": "Offer", "name": "ボートダイビング（3ダイブ）", "price": "28600", "priceCurrency": "JPY"},
-        {"@type": "Offer", "name": "ボート2ダイブ＋ビーチ1ダイブ", "price": "25300", "priceCurrency": "JPY"},
+        {"@type": "Offer", "name": "ボート2ダイブ＋ビーチ1ダイブ", "price": "26400", "priceCurrency": "JPY"},
+        {"@type": "Offer", "name": "ボート2ダイブ＋ビーチ2ダイブ（1日4ダイブ）", "price": "33000", "priceCurrency": "JPY"},
         {"@type": "Offer", "name": "リフレッシュダイビング（スキルの復習＋1ダイブ）", "price": "19800", "priceCurrency": "JPY"},
         {"@type": "Offer", "name": "レンタル器材フルセット（1日）", "price": "5500", "priceCurrency": "JPY"}
       ]
