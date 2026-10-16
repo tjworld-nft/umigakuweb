@@ -4,7 +4,7 @@ declare(strict_types=1);
 const APP_COURSE = 'aow';
 const COURSE_CURRICULUM_VERSION = 2;
 // テーブル定義や講座カタログを変えたら +1 する。教材版(COURSE_CURRICULUM_VERSION)とは別物。
-const SCHEMA_VERSION = 5;
+const SCHEMA_VERSION = 6;
 
 function app_config(): array
 {
@@ -171,6 +171,7 @@ function migrate(PDO $pdo): void
     $seed->execute(['boat', 'Boat Diver SP（準備中）', 'AOWの1ダイブより先へ進む全2ダイブのスペシャルティ', 30, 0]);
     $seed->execute(['night', 'ナイトダイバーSP 事前学習', '夜の計画・ライト・合図・ナビゲーション・トラブル・環境を学ぶ全30問', 40, 1]);
     $seed->execute(['dry', 'ドライスーツダイバーSP 事前学習', 'スーツ・準備・浮力・基本操作・トラブル・手入れを学ぶ全30問', 50, 1]);
+    $seed->execute(['dpv', '水中スクーター（DPV）SP 事前学習', 'DPVの基本・Subnado Plus・準備・計画・操作・対応・手入れを学ぶ全35問', 60, 1]);
 
     // 既存DBの講座名も更新する。教材版とDBスキーマ版は混同しない。
     $catalog = $pdo->prepare('UPDATE courses SET title = ?, description = ?, sort_order = ?, active = ? WHERE slug = ?');
@@ -180,6 +181,7 @@ function migrate(PDO $pdo): void
     $catalog->execute(['ナイトダイバーSP 事前学習', '夜の計画・ライト・合図・ナビゲーション・トラブル・環境を学ぶ全30問', 40, 1, 'night']);
     // 既存DBに準備中のdry行があっても、受講権限・進捗を残して有効化する。
     $catalog->execute(['ドライスーツダイバーSP 事前学習', 'スーツ・準備・浮力・基本操作・トラブル・手入れを学ぶ全30問', 50, 1, 'dry']);
+    $catalog->execute(['水中スクーター（DPV）SP 事前学習', 'DPVの基本・Subnado Plus・準備・計画・操作・対応・手入れを学ぶ全35問', 60, 1, 'dpv']);
 
     $pdo->exec('PRAGMA user_version = ' . SCHEMA_VERSION);
 }
@@ -372,6 +374,14 @@ function course_definition(string $slug): ?array
             'completion_label' => '事前学習完了（インストラクター確認待ち）',
             'module_labels' => ['suit' => 'スーツ', 'prepare' => '準備', 'buoyancy' => '浮力', 'skills' => '基本操作', 'problems' => 'トラブル', 'care' => '手入れ'],
         ],
+        'dpv' => [
+            'file' => 'dpv.html', 'label' => 'DPV DIVER / PRE-STUDY',
+            'styles' => ['styles.css', 'dpv.css'], 'short_title' => 'DPV SP', 'instructor_review' => true,
+            'legacy_modules' => [],
+            'curriculum_version' => 1, 'completion_prefix' => 'DPV',
+            'completion_label' => '事前学習完了（インストラクター確認待ち）',
+            'module_labels' => ['basics' => 'DPVを知る', 'subnado' => 'Subnado Plus', 'prepare' => '入水前の準備', 'plan' => '帰れる計画', 'ride' => '水中での操作', 'trouble' => 'トラブル対応', 'care' => '手入れと運搬'],
+        ],
     ];
     return $definitions[$slug] ?? null;
 }
@@ -410,6 +420,17 @@ function course_available(string $slug): bool
 
 function course_answer_key(string $slug = APP_COURSE): array
 {
+    if ($slug === 'dpv') {
+        return [
+            'basics' => ['basics1'=>'b','basics2'=>'a','basics3'=>'c','basics4'=>'b','basics5'=>'a'],
+            'subnado' => ['subnado1'=>'b','subnado2'=>'a','subnado3'=>'c','subnado4'=>'b','subnado5'=>'a'],
+            'prepare' => ['prepare1'=>'b','prepare2'=>'a','prepare3'=>'c','prepare4'=>'b','prepare5'=>'a'],
+            'plan' => ['plan1'=>'b','plan2'=>'a','plan3'=>'c','plan4'=>'b','plan5'=>'a'],
+            'ride' => ['ride1'=>'b','ride2'=>'a','ride3'=>'c','ride4'=>'b','ride5'=>'a'],
+            'trouble' => ['trouble1'=>'b','trouble2'=>'a','trouble3'=>'c','trouble4'=>'b','trouble5'=>'a'],
+            'care' => ['care1'=>'b','care2'=>'a','care3'=>'c','care4'=>'b','care5'=>'a'],
+        ];
+    }
     if ($slug === 'dry') {
         return [
             'suit' => ['suit1'=>'b','suit2'=>'a','suit3'=>'c','suit4'=>'b','suit5'=>'a'],
