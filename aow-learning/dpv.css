@@ -51,3 +51,47 @@ html:has(.dpv-course){scroll-behavior:auto}
 .dpv-course .mobile-progress b{font-size:14px}
 .dpv-course .mobile-progress a{padding:10px 18px;background:var(--sea);color:#fff;text-decoration:none;font-size:14px;font-weight:800}
 @media print{.dpv-course{padding-bottom:0}}
+
+/* Photography and illustrated learning cues. */
+.dpv-product-hero{margin:0 0 18px;border-radius:12px;overflow:hidden;background:#fff;color:#103b4b}
+.dpv-product-hero img{display:block;width:100%;height:auto}
+.dpv-product-hero figcaption{padding:0 20px 18px;line-height:1.5}
+.dpv-product-hero figcaption span,.dpv-product-hero figcaption small{display:block;font-size:11px;color:#48616a}
+.dpv-product-hero figcaption b{display:block;font-size:22px;margin:3px 0 5px}
+.dpv-equipment,.dpv-scene,.dpv-route-figure{margin:0 0 38px;border:1px solid #cbd9d3;border-radius:10px;overflow:hidden;background:#fff}
+.dpv-equipment{padding:26px}
+.dpv-equipment h3,.dpv-scene h3,.dpv-route-figure h3{font-size:clamp(21px,2.5vw,27px);line-height:1.5;margin:0 0 16px}
+.dpv-equipment-main img{display:block;max-width:100%;width:620px;height:auto;margin:0 auto}
+.dpv-equipment-parts{display:grid;grid-template-columns:1fr 1fr;gap:18px;border-top:1px solid #dce5df;padding-top:20px}
+.dpv-equipment-parts figure{margin:0;display:grid;grid-template-columns:100px 1fr;align-items:center;gap:14px}
+.dpv-equipment-parts img{display:block;width:100%;height:auto;border-radius:6px}
+.dpv-equipment-parts b,.dpv-equipment-parts span{display:block}
+.dpv-equipment-parts b{font-size:15px;line-height:1.6}.dpv-equipment-parts span{font-size:13px;color:var(--muted);margin-top:5px}
+.dpv-visual-credit{font-size:12px;line-height:1.8;color:var(--muted);margin:20px 0 0}.dpv-visual-credit a{color:var(--sea);text-underline-offset:3px}
+.dpv-scene>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.dpv-scene>figcaption{padding:24px 28px}.dpv-image-label{display:block;color:var(--muted);font-size:11px;letter-spacing:.04em;margin-bottom:8px}
+.dpv-scene figcaption>p{font-size:14px;color:var(--muted);line-height:1.8;margin:16px 0 0}
+.dpv-visual-points{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.dpv-visual-points li{font-size:14px;background:#e5f1ed;border-radius:4px;padding:7px 12px;color:#103b4b;font-weight:700}
+.dpv-care-steps{display:grid;grid-template-columns:repeat(3,1fr);list-style:none;gap:14px;margin:0;padding:0;counter-reset:care}
+.dpv-care-steps li{border-top:2px solid #8eb5a7;padding-top:12px;counter-increment:care}
+.dpv-care-steps b{display:block;font-size:16px}.dpv-care-steps b:before{content:counter(care,decimal-leading-zero) ' ';font-size:12px;color:#136f73;margin-right:6px}
+.dpv-care-steps span{display:block;font-size:13px;color:var(--muted);margin-top:5px}
+.dpv-route-figure{background:#f2f7f2}.dpv-route-heading{padding:24px 28px 0}.dpv-route-figure svg{display:block;width:100%;height:auto}
+.dpv-route-figure figcaption{font-size:14px;line-height:1.8;color:var(--muted);padding:18px 28px 24px}
+@media(min-width:1001px){.dpv-hero-side{width:370px;flex-basis:370px}}
+@media(max-width:820px){.dpv-hero-side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:18px}.dpv-product-hero{margin:0}.dpv-hero .hero__progress{display:block}.dpv-hero .progress-ring{margin:0 0 12px}.dpv-equipment-parts figure{grid-template-columns:80px 1fr}}
+@media(max-width:520px){.dpv-hero-side{grid-template-columns:1fr;gap:14px;margin-top:22px}.dpv-product-hero{display:grid;grid-template-columns:46% 1fr;align-items:center}.dpv-product-hero figcaption{padding:14px 12px 14px 0}.dpv-product-hero figcaption b{font-size:20px}.dpv-product-hero figcaption small{font-size:10px}.dpv-hero .hero__progress{display:flex}.dpv-hero .progress-ring{margin:0}.dpv-equipment{padding:20px 16px}.dpv-equipment-parts{gap:16px;grid-template-columns:1fr}.dpv-equipment-parts figure{grid-template-columns:90px 1fr}.dpv-scene>figcaption{padding:20px 18px}.dpv-visual-points{gap:6px}.dpv-visual-points li{font-size:13px;padding:6px 10px}.dpv-care-steps{grid-template-columns:1fr;gap:10px}.dpv-care-steps li{display:grid;grid-template-columns:95px 1fr;align-items:baseline;gap:8px}.dpv-care-steps span{margin:0}.dpv-route-heading{padding:20px 18px 0}.dpv-route-figure figcaption{padding:16px 18px 20px}.dpv-route-figure svg{min-height:190px}}
+
+.dpv-route-figure .dpv-route-mobile{display:none}.dpv-route-figure figcaption b{display:block;color:#103b4b;margin-bottom:6px}
+@media(max-width:520px){.dpv-route-figure .dpv-route-desktop{display:none}.dpv-route-figure .dpv-route-mobile{display:block;min-height:0}.dpv-care-steps li{grid-template-columns:100px 1fr}}
+
+/* Opus 5.5 and Fable visual review refinements. */
+.dpv-scene{position:relative}.dpv-generated-badge{position:absolute;top:12px;left:12px;z-index:1;padding:5px 9px;background:#103b4bf2;color:#fff;font-size:12px;line-height:1.5;border-radius:4px}
+.dpv-scene h3,.dpv-route-figure h3{text-wrap:balance}.dpv-image-note{border-top:1px solid #dce5df;padding-top:14px}.dpv-image-note a{color:var(--sea);text-underline-offset:3px}
+.dpv-visual-points li{background:transparent;padding:3px 0;display:flex;gap:6px}.dpv-visual-points li:before{content:'✓';color:var(--sea)}.dpv-visual-points{column-gap:16px}
+.dpv-equipment-find{font-size:14px;line-height:1.9;padding:16px;background:#edf5f0;border-radius:5px}.dpv-equipment-find b,.dpv-equipment-find span{display:block}.dpv-equipment-find span{margin-top:7px;color:var(--muted)}
+.dpv-memory-board{padding:28px;background:#e9f3ef;border:1px solid #bcd7cb;border-radius:8px;margin:0 0 38px}.dpv-memory-board h3{font-size:clamp(22px,2.7vw,28px);line-height:1.5;margin:0 0 20px}.dpv-role-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dpv-role-grid>div{background:#fff;padding:20px;border-radius:5px}.dpv-role-grid span{display:block;font-size:13px;color:var(--muted)}.dpv-role-grid b{display:block;font-size:22px;margin-top:5px}.dpv-role-grid p{font-size:14px;margin:8px 0 0}.dpv-board-note{font-size:14px;margin:18px 0 0;color:var(--muted)}
+.dpv-memory-board--trouble{background:#fcf5e9;border-color:#dcc9aa}.dpv-response-steps{display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none;margin:0;padding:0;counter-reset:response}.dpv-response-steps li{counter-increment:response;background:#fff;padding:18px 18px 18px 52px;position:relative;border-radius:5px}.dpv-response-steps li:before{content:counter(response,decimal-leading-zero);position:absolute;left:16px;top:20px;font-weight:800;font-size:13px;color:#8c5d23}.dpv-response-steps b{display:block;font-size:17px}.dpv-response-steps span{display:block;font-size:13px;color:var(--muted);margin-top:5px}
+@media(min-width:521px){.dpv-scene h3 br{display:none}}
+@media(max-width:520px){.dpv-scene h3{font-size:21px}.dpv-equipment-parts figure{grid-template-columns:120px 1fr}.dpv-generated-badge{top:10px;left:10px;font-size:11px}.dpv-memory-board{padding:22px 18px}.dpv-role-grid,.dpv-response-steps{grid-template-columns:1fr}.dpv-role-grid>div{padding:18px}.dpv-response-steps li{padding-top:14px;padding-bottom:14px}.dpv-response-steps li:before{top:16px}}
