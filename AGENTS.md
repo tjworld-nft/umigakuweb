@@ -557,7 +557,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - 開催地は城ヶ島・宮川湾。体験ダイビング正価は¥19,800（税込）。
 - **OWDの実技は冬も2日が基本**。1日目は午前にプール・午後に海洋実習、2日目は海洋実習（冬も夏も同じ。2026-10-09 吉田さん決定）。ライセンス講習の練習場所を「足の着く穏やかな場所／浅場」と書かない（それは体験ダイビング）。人によっては3日目をご案内する（レンタル器材1日¥5,500だけ追加・講習費の追加なし）。「冬は3日」「基本3日間」「最短3日」とは書かない（下層ページの check.py が弾く）。同日、`owd-guide/`（申込者向けの手引き）を2日構成に・`lp/owd` `lp/aow`・license FAQ・llms.txt・まんが第7話（要約・P8の注記・動画の該当コマ）・ブログ9記事（Sanity・日数の文だけ差し替え／2025年の3記事は冒頭に「当時の内容」の追記）を直した。第7話P8の吹き出しと語りの「いまの季節なら4日」は、冬も4日なので事実として正しく、そのまま。
 - トップのヒーロー画像 `image/optimized/home-hero-soft-diving.webp` は差し替えない。
-- 公開ページは静的HTML。現役PHPは `contact/send_mail.php` のみ（WPテーマ系phpは配信されない残骸）。
+- 案内ページは静的HTML。PHPは問い合わせフォーム（`contact/`・旧入口の `contact-handler.php`）や受講者学習サイト（`aow-learning/`）などでも使用しているため、一括削除・一括停止しない。旧WordPress本体 `/wp/` は2026-10-22に公開領域外へ退避し、未使用の旧テーマPHP11本をリポジトリから削除した。`aow-course.php` から `/advanced/` への既存301は保持する。WordPressを再配置しない。サブドメインのアプリ・ログブックと本番専用設定・データは保持する。
 - LINEリンクは lin.ee/kK3d5p2 と lin.ee/Y3nB18U どちらも同一アカウントに着地するので混在OK。
 - **姉妹サイトへのリンク（2026-10-11）**: フッター最下部の著作権行の下に「運営：AquaBit LAB」（→ https://aquabit-lab.com/ ）を1行。共通フッターの49ページ＋独自フッターの `buddy/` `tsuzukeru/` `winter-diving/` に入れてある（広告LP `lp/`・`owd-guide/`・`staff/`・`aow-learning/`・ゲーム類には入れない）。CSSを足さずインライン指定なので `style.css?v=` は上げなくてよい。下層ページは `.agents/subpages-2026-09/tools/build.py` の `footer()` が正、トップ・まんが・アプリ案内ページは各HTMLに直接。**新しいページを作るときも同じ行を入れる。**
   代表のポートフォリオ https://www.tj-web3.com/ は `instructor/` のプロフィール文末の1行だけ（トップや他ページには置かない＝予約の導線を外へ逃がさない）。構造化データはトップと `instructor/` の Person に `sameAs`、トップの `#org` に `parentOrganization`（AquaBit LAB）。`rel` は自分のサイトなので `noopener` のみ（`noreferrer`/`nofollow` を付けない）。このサイトではAI事業の宣伝文は書かない（リンクの名前だけ）。
