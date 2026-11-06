@@ -1,0 +1,30 @@
+[
+  {
+    "@type": "Dataset",
+    "@id": "https://miura-diving.com/sea-conditions/#dataset",
+    "name": "三浦・城ヶ島の水温と気温 月別の目安（相模湾の海面水温と三浦の気温の平年値）",
+    "description": "気象庁「沿岸域の海面水温情報」相模湾（海域番号306）の日別平年値（1991〜2020年）を月ごとに平均した海面水温と、気象庁アメダス三浦の月別平年値（平均・最高・最低気温）。最高気温が海面水温を下まわる期間（10月5日ごろ〜4月1日ごろ）も計算。あわせて、三浦 海の学校が2026年に三浦で潜った日の水温と透明度の記録（43日分）を掲載。気象庁のデータを三浦 海の学校が加工して作成。",
+    "url": "https://miura-diving.com/sea-conditions/",
+    "inLanguage": "ja",
+    "keywords": ["三浦 水温", "城ヶ島 水温", "相模湾 海面水温", "三浦 透明度", "ダイビング 水温 月別"],
+    "creator": {"@id": "https://miura-diving.com/#org"},
+    "isBasedOn": [
+      "https://www.data.jma.go.jp/kaiyou/data/db/kaikyo/series/engan/engan306.html",
+      "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=46&block_no=0392&year=&month=&day=&view=",
+      "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_d.php?prec_no=46&block_no=0392&year=&month=1&day=&view="
+    ],
+    "citation": [
+      "気象庁ホームページ「沿岸域の海面水温情報（相模湾）」 https://www.data.jma.go.jp/kaiyou/data/db/kaikyo/series/engan/engan306.html を加工して作成",
+      "気象庁ホームページ「過去の気象データ検索（三浦 平年値）」 https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=46&block_no=0392 を加工して作成",
+      "気象庁ホームページ「過去の気象データ検索（三浦 日ごとの平年値）」 https://www.data.jma.go.jp/stats/etrn/view/nml_amd_d.php?prec_no=46&block_no=0392 を加工して作成"
+    ],
+    "temporalCoverage": "1991/2020",
+    "spatialCoverage": {"@type": "Place", "name": "相模湾・神奈川県三浦市（城ヶ島・宮川湾）", "geo": {"@type": "GeoCoordinates", "latitude": 35.13, "longitude": 139.62}},
+    "variableMeasured": [
+      {"@type": "PropertyValue", "name": "海面水温（平年値・月平均）", "unitText": "℃"},
+      {"@type": "PropertyValue", "name": "気温（平年値・平均／最高／最低）", "unitText": "℃"},
+      {"@type": "PropertyValue", "name": "ダイビングの日の水温と透明度（三浦 海の学校の記録）", "unitText": "℃・m"}
+    ],
+    "dateModified": "2026-11-07"
+  }
+]
