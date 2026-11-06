@@ -1,0 +1,705 @@
+[
+  {
+    "@type": "DefinedTermSet",
+    "@id": "https://miura-diving.com/glossary/#terms",
+    "name": "ダイビング用語集（はじめての人のための69語）",
+    "description": "三浦 海の学校がまとめた、ダイビングの講習の前に知っておくと楽になる言葉の用語集。申し込む前・講習・器材・海と潜り方・体と安全・もっと潜りたい人の6つの場面に分けて説明しています。",
+    "url": "https://miura-diving.com/glossary/",
+    "inLanguage": "ja",
+    "publisher": {
+      "@id": "https://miura-diving.com/#org"
+    },
+    "hasDefinedTerm": [
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#trial-diving",
+        "name": "体験ダイビング",
+        "description": "体験ダイビングとは、Cカードがなくても、インストラクターがそばについて海に潜れるプログラムのこと。三浦 海の学校では10歳から参加でき、城ヶ島の穏やかな浅場で練習してから海へ入ります。",
+        "url": "https://miura-diving.com/glossary/#trial-diving",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#c-card",
+        "name": "Cカード",
+        "description": "Cカードとは、ダイビングの講習を終えた人に、指導団体が出す「認定証」のこと。国の免許ではなく、有効期限もありません。",
+        "url": "https://miura-diving.com/glossary/#c-card",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#diving-license",
+        "name": "ダイビングライセンス",
+        "description": "ダイビングライセンスとは、Cカードのふだんの呼び方のこと。「ライセンスを取る」は、ふつうオープンウォーターのCカードを取ることです。",
+        "url": "https://miura-diving.com/glossary/#diving-license",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#open-water",
+        "name": "オープンウォーター（OWD）",
+        "description": "オープンウォーター・ダイバーとは、はじめて取るCカードのこと。PADIでは、バディと一緒に最大18mまで潜れます。三浦 海の学校では、学科はeラーニング、実技は2日（1日目は午前にプール・午後に海、2日目は海）が基本です。",
+        "url": "https://miura-diving.com/glossary/#open-water",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#junior",
+        "name": "ジュニア・オープンウォーター",
+        "description": "ジュニア・オープンウォーターとは、10〜14歳で取るオープンウォーターのこと。PADIでは、10〜11歳は最大12mで、親・保護者かPADIのプロと一緒に。12〜14歳は最大18mで、Cカードを持つ大人と一緒に潜ります。15歳になれば、講習をやり直さずに大人のカードへ切り替えられます。",
+        "url": "https://miura-diving.com/glossary/#junior",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#padi",
+        "name": "PADI（パディ）・指導団体",
+        "description": "指導団体とは、講習の内容とCカードの決まりを作っている団体のこと。PADIはその1つで、1966年にでき、186の国と地域で講習が行われています。三浦 海の学校の講習はPADIのコースです。",
+        "url": "https://miura-diving.com/glossary/#padi",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#elearning",
+        "name": "eラーニング",
+        "description": "eラーニングとは、講習の学科を、スマホやパソコンで自分のペースで学ぶしくみのこと。オープンウォーターでは、PADIの目安で5〜10時間です。",
+        "url": "https://miura-diving.com/glossary/#elearning",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#medical",
+        "name": "健康の質問票（メディカル）",
+        "description": "健康の質問票とは、申し込みのときに答える、体のことの質問の紙のこと。持病や服薬などの質問に「はい」がつくと、潜る前に医師の同意が必要になります。心配なことは、申し込む前にLINEで相談してください。",
+        "url": "https://miura-diving.com/glossary/#medical",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#instructor",
+        "name": "インストラクター",
+        "description": "インストラクターとは、ダイビングの講習を教えられる資格を持つプロのこと。三浦 海の学校では、インストラクター1名につき最大4名の少人数で潜ります。",
+        "url": "https://miura-diving.com/glossary/#instructor",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#fun-diving",
+        "name": "ファンダイビング",
+        "description": "ファンダイビングとは、Cカードを持っている人が、ガイドと一緒に楽しみで潜ること。講習ではないのでテストはなく、経験本数の決まりもありません。",
+        "url": "https://miura-diving.com/glossary/#fun-diving",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#refresh",
+        "name": "リフレッシュダイビング",
+        "description": "リフレッシュダイビングとは、しばらく潜っていない人が、器材の使い方と基本のスキルを確かめてから潜るプログラムのこと。PADIは、6か月以上潜っていない人に復習をすすめています。",
+        "url": "https://miura-diving.com/glossary/#refresh",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#confined-water",
+        "name": "限定水域",
+        "description": "限定水域とは、プールや流れのない浅瀬のように、穏やかで条件の整った水のこと。三浦 海の学校のライセンス講習では、1日目の午前にプールで練習します。",
+        "url": "https://miura-diving.com/glossary/#confined-water",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#open-water-dive",
+        "name": "海洋実習",
+        "description": "海洋実習とは、海で行う講習のダイビングのこと。限定水域で練習したスキルを、波や流れのある本物の海でもう一度行います。PADIのオープンウォーターでは4本以上です。",
+        "url": "https://miura-diving.com/glossary/#open-water-dive",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#neutral-buoyancy",
+        "name": "中性浮力",
+        "description": "中性浮力とは、水の中で浮きも沈みもしない、ちょうどの状態のこと。BCDの空気の量と、吸う・吐く息の深さで整えます。上手になると海の底をこすらず、生き物にも近づきやすくなります。",
+        "url": "https://miura-diving.com/glossary/#neutral-buoyancy",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#equalizing",
+        "name": "耳抜き",
+        "description": "耳抜きとは、潜っていくときに耳の奥へかかる水の圧力を、鼻をつまんで軽く息を送るなどして、内と外でそろえること。痛くなる前に、早めに何度も行うのがコツです。痛いときは無理に続けず、少し上がってやり直し、インストラクターに合図します。",
+        "url": "https://miura-diving.com/glossary/#equalizing",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#mask-clear",
+        "name": "マスククリア",
+        "description": "マスククリアとは、マスクの中に入った水を、鼻から息を出して外へ押し出すスキルのこと。講習で練習します。水が入っても出せると分かるだけで、気持ちが楽になります。",
+        "url": "https://miura-diving.com/glossary/#mask-clear",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#regulator-recovery",
+        "name": "レギュレーターリカバリー",
+        "description": "レギュレーターリカバリーとは、口から外れたレギュレーターを手で探して、口に戻すスキルのこと。くわえ直したら、まず軽く息を吐いて中の水を出してから吸います。",
+        "url": "https://miura-diving.com/glossary/#regulator-recovery",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#buddy",
+        "name": "バディ",
+        "description": "バディとは、一緒に潜って、おたがいを見守る相手のこと。ダイビングは2人1組で潜るのが基本です。一人で申し込んでも、当日はインストラクターがそばにつきます。",
+        "url": "https://miura-diving.com/glossary/#buddy",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#buddy-check",
+        "name": "バディチェック",
+        "description": "バディチェックとは、潜る前にバディ同士で、BCDの空気・ベルトや留め具・空気の出方などを確かめ合うこと。",
+        "url": "https://miura-diving.com/glossary/#buddy-check",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#hand-signals",
+        "name": "ハンドシグナル",
+        "description": "ハンドシグナルとは、水の中で話す代わりに使う、手の合図のこと。「OK」「上がる」「空気が少ない」「耳が痛い」などを講習で覚えます。",
+        "url": "https://miura-diving.com/glossary/#hand-signals",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#air-share",
+        "name": "エアシェア",
+        "description": "エアシェアとは、空気が足りなくなったバディに予備のレギュレーター（オクトパス）を渡し、空気を分け合いながら一緒に浮上する練習のこと。使わずに済むように、潜っている間は残圧をこまめに見ます。",
+        "url": "https://miura-diving.com/glossary/#air-share",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#descent",
+        "name": "潜降（せんこう）",
+        "description": "潜降とは、水面から下へ潜っていくこと。BCDの空気を少しずつ抜き、耳抜きをしながらゆっくり降ります。",
+        "url": "https://miura-diving.com/glossary/#descent",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#ascent",
+        "name": "浮上",
+        "description": "浮上とは、水の中から水面へ上がっていくこと。ゆっくり上がることがいちばん大事で、PADIは1分間に18mより速く上がらないことをすすめています。途中で安全停止をします。",
+        "url": "https://miura-diving.com/glossary/#ascent",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#briefing",
+        "name": "ブリーフィング",
+        "description": "ブリーフィングとは、潜る前に、その日の海の様子・潜る順番・合図・上がる目安などを説明する時間のこと。",
+        "url": "https://miura-diving.com/glossary/#briefing",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#log",
+        "name": "ログ（ログブック）",
+        "description": "ログとは、潜ったあとに深さ・時間・水温・見た生き物などを書き残す記録のこと。書き込む手帳やアプリをログブックといい、潜った回数（経験本数）の証にもなります。",
+        "url": "https://miura-diving.com/glossary/#log",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#full-set",
+        "name": "レンタルのフルセット",
+        "description": "フルセットとは、潜るのに必要な器材を一式まとめて借りること。三浦 海の学校では1日¥5,500で、ダイブコンピューターは入っていません。",
+        "url": "https://miura-diving.com/glossary/#full-set",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#heavy-light-gear",
+        "name": "重器材・軽器材",
+        "description": "重器材とは、レギュレーターやBCDのような大きな器材のこと。軽器材とは、マスク・スノーケル・フィン・ブーツのような身の回りの器材のことです。",
+        "url": "https://miura-diving.com/glossary/#heavy-light-gear",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#mask",
+        "name": "マスク",
+        "description": "マスクとは、目と鼻をおおう、水中でものを見るためのガラスのめがねのこと。顔の形に合うかどうかが大事です。",
+        "url": "https://miura-diving.com/glossary/#mask",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#snorkel",
+        "name": "スノーケル",
+        "description": "スノーケルとは、水面で顔をつけたまま息をするための筒のこと。",
+        "url": "https://miura-diving.com/glossary/#snorkel",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#fins",
+        "name": "フィン",
+        "description": "フィンとは、足につけて水をけり、前に進むための道具のこと。素足ではく形と、ブーツの上から付ける形があります。",
+        "url": "https://miura-diving.com/glossary/#fins",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#boots",
+        "name": "ブーツ",
+        "description": "ブーツとは、フィンの下にはく水中用のくつのこと。岩場を歩くときにも足を守ります。",
+        "url": "https://miura-diving.com/glossary/#boots",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#wetsuit",
+        "name": "ウェットスーツ",
+        "description": "ウェットスーツとは、体と生地の間に入ったわずかな水を体温であたため、冷えを防ぐスーツのこと。三浦 海の学校では、10月初めごろまでウェットスーツで潜っています（当店の運用）。",
+        "url": "https://miura-diving.com/glossary/#wetsuit",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#drysuit",
+        "name": "ドライスーツ",
+        "description": "ドライスーツとは、首と手首で水を止めて、体がぬれないようにするスーツのこと。中に服を着られるので、水温が下がる季節に使います。三浦 海の学校では、10月中旬〜6月中旬ごろがドライスーツの季節です（当店の運用・年により前後します）。",
+        "url": "https://miura-diving.com/glossary/#drysuit",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#bcd",
+        "name": "BCD",
+        "description": "BCDとは、空気を入れたり抜いたりして浮き沈みを調整する、ベストの形の器材のこと。タンクを背中に固定する役目もあります。英語の「浮力を調整する道具」の頭文字で、BCとも呼びます。",
+        "url": "https://miura-diving.com/glossary/#bcd",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#inflator",
+        "name": "インフレーター",
+        "description": "インフレーターとは、BCDに空気を入れるボタンと、空気を出すボタンが付いた、肩から下がるホースのこと。",
+        "url": "https://miura-diving.com/glossary/#inflator",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#regulator",
+        "name": "レギュレーター",
+        "description": "レギュレーターとは、タンクの高い圧力の空気を、吸いやすい圧力に下げて口まで届ける器材のこと。口にくわえる部分を「セカンドステージ」といいます。",
+        "url": "https://miura-diving.com/glossary/#regulator",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#octopus",
+        "name": "オクトパス",
+        "description": "オクトパスとは、予備のレギュレーターのこと。自分のレギュレーターが使えないときや、バディに空気を分けるときに使います。",
+        "url": "https://miura-diving.com/glossary/#octopus",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#spg",
+        "name": "残圧計",
+        "description": "残圧計とは、タンクに残っている空気の量を、圧力の数字で示すメーターのこと。単位は「気圧（bar）」です。",
+        "url": "https://miura-diving.com/glossary/#spg",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#dive-computer",
+        "name": "ダイブコンピューター",
+        "description": "ダイブコンピューターとは、深さと潜っている時間を記録し、その深さにあとどれくらいいられるかを計算してくれる、腕時計の形の器材のこと。講習やファンダイビングでは、インストラクターが深さと時間を管理します。",
+        "url": "https://miura-diving.com/glossary/#dive-computer",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#tank",
+        "name": "タンク",
+        "description": "タンクとは、空気をぎゅっと詰めた金属の入れ物のこと。三浦 海の学校のファンダイビングの料金には、タンクとウエイトが入っています。",
+        "url": "https://miura-diving.com/glossary/#tank",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#weight",
+        "name": "ウエイト",
+        "description": "ウエイトとは、体やスーツが浮こうとする力を打ち消すための、鉛のおもりのこと。重すぎても軽すぎても、浮き沈みの調整がむずかしくなります。",
+        "url": "https://miura-diving.com/glossary/#weight",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#beach-dive",
+        "name": "ビーチダイビング",
+        "description": "ビーチダイビングとは、岸から歩いて海に入るダイビングのこと。船に乗らないので、はじめての人も始めやすい潜り方です。三浦 海の学校では、城ヶ島の梶の浜ビーチなどで潜ります。",
+        "url": "https://miura-diving.com/glossary/#beach-dive",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#boat-dive",
+        "name": "ボートダイビング",
+        "description": "ボートダイビングとは、船でポイントまで行き、船から海に入るダイビングのこと。岸からは行けない場所に潜れます。三浦 海の学校では、城ヶ島と宮川湾でボートダイビングをしています。",
+        "url": "https://miura-diving.com/glossary/#boat-dive",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#dive-site",
+        "name": "ポイント",
+        "description": "ポイントとは、ダイビングで潜る場所のこと。ポイントごとに深さや地形、生き物がちがいます。",
+        "url": "https://miura-diving.com/glossary/#dive-site",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#ne",
+        "name": "根（ね）",
+        "description": "根とは、海の底から盛り上がった岩のかたまりのこと。魚が集まりやすく、ポイントの名前にもよく使われます。宮川湾には「カサゴ根」「トビ根」というポイントがあります。",
+        "url": "https://miura-diving.com/glossary/#ne",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#entry",
+        "name": "エントリー・エキジット",
+        "description": "エントリーとは海に入ること、エキジットとは海から上がることです。",
+        "url": "https://miura-diving.com/glossary/#entry",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#giant-stride",
+        "name": "ジャイアントストライド",
+        "description": "ジャイアントストライドとは、船の上から大きく一歩ふみ出すようにして海に入る方法のこと。マスクとレギュレーターを手でおさえて入ります。",
+        "url": "https://miura-diving.com/glossary/#giant-stride",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#back-roll",
+        "name": "バックロールエントリー",
+        "description": "バックロールエントリーとは、船のふちに座り、うしろ向きに倒れるようにして海に入る方法のこと。小さめの船でよく使います。",
+        "url": "https://miura-diving.com/glossary/#back-roll",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#visibility",
+        "name": "透明度",
+        "description": "透明度とは、水の中でどれくらい先まで見えるかを、メートルで表したもの。三浦では、冬に遠くまで見える日が増えます（当店の感覚）。",
+        "url": "https://miura-diving.com/glossary/#visibility",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#water-temp",
+        "name": "水温",
+        "description": "水温とは、海の水の温度のこと。気温より変わり方がゆっくりで、気象庁の平年値では、三浦の近くの海は10月はじめから4月はじめごろまで、日中の最高気温より水温の方が高くなります。",
+        "url": "https://miura-diving.com/glossary/#water-temp",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#swell",
+        "name": "うねり",
+        "description": "うねりとは、遠くの風や台風でできた波が、長い距離を伝わってくるもののこと。その場の風が弱くても、うねりが大きいと海が荒れて、潜れない日があります。",
+        "url": "https://miura-diving.com/glossary/#swell",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#current",
+        "name": "流れ（カレント）",
+        "description": "流れとは、海の水が動いていること。流れがあるときは、ロープを伝って潜ったり、ブリーフィングで決めた向きに進んだりします。",
+        "url": "https://miura-diving.com/glossary/#current",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#max-depth",
+        "name": "水深・最大深度",
+        "description": "水深とは、水面からの深さのこと。最大深度とは、その日にいちばん深く潜った深さ、またはCカードごとに決まった深さの上限のことです。PADIの目安は、オープンウォーターが18m、アドバンスが30mです。",
+        "url": "https://miura-diving.com/glossary/#max-depth",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#safety-stop",
+        "name": "安全停止",
+        "description": "安全停止とは、浮上の途中に水深5mあたりで3分間とどまること。体の中の窒素を少しずつ外へ出し、急な浮上を防ぐための習慣で、PADIもふだんのダイビングで行うことをすすめています。",
+        "url": "https://miura-diving.com/glossary/#safety-stop",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#air-pressure",
+        "name": "残圧",
+        "description": "残圧とは、タンクに残っている空気の圧力のこと。残圧計で見ます。浮上をはじめる残圧はブリーフィングで決め、50気圧がよく使われる目安です。",
+        "url": "https://miura-diving.com/glossary/#air-pressure",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#no-decompression",
+        "name": "無減圧潜水",
+        "description": "無減圧潜水とは、その深さにいてよい時間の上限を守り、浮上の途中で長く止まらなくてよい範囲で潜ること。レジャーのダイビングはこの範囲で潜ります。深いほど、いられる時間は短くなります。",
+        "url": "https://miura-diving.com/glossary/#no-decompression",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#decompression-sickness",
+        "name": "減圧症",
+        "description": "減圧症とは、潜っている間に体に溶けこんだ窒素が、浮上して周りの圧力が下がるときに泡になり、体の不調を起こすもののこと。関節や筋肉の痛み、しびれ、強い疲れなどが出ることがあります。潜ったあとにいつもとちがう体調があれば、すぐにインストラクターに伝えてください。",
+        "url": "https://miura-diving.com/glossary/#decompression-sickness",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#lung-overexpansion",
+        "name": "息を止めない（肺の過膨張）",
+        "description": "浮上するときに息を止めていると、肺の中の空気がふくらみ、肺を傷つけるおそれがあります。これを肺の過膨張といい、だからダイビングでいちばん大事な決まりは「息を止めない」です。",
+        "url": "https://miura-diving.com/glossary/#lung-overexpansion",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#squeeze",
+        "name": "スクイズ（圧外傷）",
+        "description": "スクイズとは、水の圧力で耳の奥やマスクの中などの空気のすき間が押され、痛くなること。耳抜きや、鼻からマスクに息を入れることで防ぎます。痛いときは無理をせず、インストラクターに合図します。",
+        "url": "https://miura-diving.com/glossary/#squeeze",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#flying-after-diving",
+        "name": "ダイビングのあとの飛行機",
+        "description": "ダイビングのあとは、飛行機に乗るまで時間をあけます。高い所では周りの気圧が下がり、減圧症のおそれが高まるためです。旅行の予定がある方は、予約のときに教えてください。",
+        "url": "https://miura-diving.com/glossary/#flying-after-diving",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#advanced",
+        "name": "アドバンス（AOW）",
+        "description": "アドバンスとは、オープンウォーターの次の講習のこと。深い所に潜るディープと、水中で方角を知るナビゲーションを含む5ダイブで、最大30mまで潜れるようになります。三浦 海の学校では2日で行います。",
+        "url": "https://miura-diving.com/glossary/#advanced",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#specialty",
+        "name": "スペシャルティ",
+        "description": "スペシャルティとは、ドライスーツ・中性浮力・ナイトなど、テーマを1つにしぼって学ぶ講習のこと。",
+        "url": "https://miura-diving.com/glossary/#specialty",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#night-dive",
+        "name": "ナイトダイビング",
+        "description": "ナイトダイビングとは、日が沈んだあとに、ライトを持って潜るダイビングのこと。昼とはちがう、夜に動く生き物に会えます。",
+        "url": "https://miura-diving.com/glossary/#night-dive",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#enriched-air",
+        "name": "エンリッチド・エア",
+        "description": "エンリッチド・エアとは、ふつうの空気より酸素を多く、窒素を少なくした空気のこと。同じ深さでも長くいられるようになります。使うには専用のスペシャルティ講習が必要で、三浦 海の学校では城ヶ島のビーチ・ボートで、資格のある方にタンク1本¥1,500で用意しています。",
+        "url": "https://miura-diving.com/glossary/#enriched-air",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#rescue",
+        "name": "レスキュー・ダイバー",
+        "description": "レスキュー・ダイバーとは、自分やバディのトラブルを防ぎ、困ったときに助ける方法を学ぶ講習のこと。アドバンスと、応急手当の講習（EFR）を受けてから進みます。",
+        "url": "https://miura-diving.com/glossary/#rescue",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#divemaster",
+        "name": "ダイブマスター",
+        "description": "ダイブマスターとは、PADIのプロの入り口になる資格のこと。18歳以上で、40本以上の経験があることなどが受けはじめる条件です。",
+        "url": "https://miura-diving.com/glossary/#divemaster",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#blank-diver",
+        "name": "ブランクダイバー",
+        "description": "ブランクダイバーとは、しばらく潜っていないダイバーのこと。Cカードに期限はないので、何年あいても資格はそのままです。久しぶりのときは、リフレッシュダイビングから始めると落ち着いて戻れます。",
+        "url": "https://miura-diving.com/glossary/#blank-diver",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#overhaul",
+        "name": "オーバーホール",
+        "description": "オーバーホールとは、自分の器材をメーカーで分解して、点検や部品の交換をすること。レギュレーターやBCDは、1年か100本を目安にしているメーカーがあります。",
+        "url": "https://miura-diving.com/glossary/#overhaul",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://miura-diving.com/glossary/#sea-life",
+        "name": "海の生き物の名前",
+        "description": "ウミウシ・カエルアンコウ・ミノカサゴなど、潜ると生き物の名前をたくさん聞きます。三浦の海で撮った写真で、名前と見つけ方をまとめています。",
+        "url": "https://miura-diving.com/glossary/#sea-life",
+        "inDefinedTermSet": {
+          "@id": "https://miura-diving.com/glossary/#terms"
+        }
+      }
+    ]
+  }
+]

@@ -315,9 +315,11 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
   - PADI の一般の決まり（年齢・深さ・受講条件・カードの再発行など）は、**PADI 公式で確かめてから**書く。料金・日数など店の事実は `FACTS.md` のまま。**PADI のロゴ・公式の図版・教材の文は使わない**。「PADI 5スター」「IDCセンター」は新しいページに書かない。
   - コースの料金・条件を変えたら、`/padi/` の階段の図と `/c-card/` の一覧の、その段の1行も直す。
 - **データのページ `/sea-conditions/`（2026-11-07 新設）**：「三浦の海は、何度？」。気象庁の相模湾（海域306）の海面水温とアメダス三浦の気温の平年値（1991〜2020年）を月別の表とグラフ（SVG）にし、店が潜った日の水温・透明度の記録（ブログに書いた数字）を点で重ねている。原稿は `pages/sea-conditions.html`＋`sea-conditions.ld.json`（Dataset）、見た目は `css/sea-conditions.css`。**表とグラフは手で直さない**：数字の部品はリポジトリの外の道具（`.agents/seo/data/sea-conditions/` の `make_parts.py` → `fill.py`）が作る。店の記録を足すときは `shop-log.csv` に1行足して作り直す。水温は「相模湾の海域の平均で、城ヶ島の実測ではない」と必ず書く。ウェット／ドライの時期・冬12℃くらい・透明度20〜25mは当店の運用と感覚、と書き分ける（`/winter-diving/` と同じ）。季節の運用（ドライの時期）や料金を変えたら、このページも直す。
+- **用語集 `/glossary/`（2026-11-07 新設）**：69語を6つの場面（申し込む前・講習・器材・海と潜り方・体と安全・続ける人）に分け、各語は `<dt id>` で `/glossary/#<id>` へ直接リンクできる。原稿 `pages/glossary.html`＋`glossary.ld.json`（DefinedTermSet）、`css/glossary.css`。PADI の数字（安全停止 5m/3分など）は PADI 公式で確かめた範囲だけ。体の話は症状と「インストラクターに言う」まで（治療や断言を書かない）。語を足すときも1語3文まで・リンクは1本。
+- **図鑑の1種1ページ `/sea-life/<id>/`（2026-11-07 新設・89種）**：`sea-life/creatures.json` から `tools/build_sealife.py` が作る（写真は `image/fish/web/*.webp` 幅1200）。**事実は json だけ**（説明・大きさ・季節を手で足さない）。題名は spot に宮川湾を含む種だけ「三浦・宮川湾」、ほかは「三浦の海」（旧拠点の写真が混じるので城ヶ島とは書かない）。「名前が出てくる記事」はブログを `tools/sealife_blog.py` で集める（本文の控えは git の外 `.agents/seo/data/sealife/blog-cache.json`、リポジトリには `sealife-mentions.json`＝URL・題名・日付だけ）。生き物を足したら（`add-creature` スキル）`build_sealife.py` を回し、`sitemap.xml` に1行足す。一覧 `/sea-life/` の JS の下に静的な89種のリンクがある（JS を直すときも残す）。
 - **フッターの2つの行**（全ページ共通・インライン指定なので `style.css?v=` は上げなくてよい）：
   - 「エリア・ポイントから探す」（東京・横浜・神奈川・横須賀・梶の浜・宮川湾）＝ `build.py` の `FOOTER_AREA`
-  - 「ダイビングの基礎知識」（`/padi/`・`/c-card/`・`/sea-conditions/`。知識のページを足したらここにも足す）＝ `build.py` の `FOOTER_KNOW`
+  - 「ダイビングの基礎知識」（`/padi/`・`/c-card/`・`/sea-conditions/`・`/glossary/`。知識のページを足したらここにも足す）＝ `build.py` の `FOOTER_KNOW`
   - 下層ページは `build.py` の `footer()` が正。トップ・まんが・アプリ案内などの手書きフッターにも同じ行がある（独自フッターの `buddy/` `tsuzukeru/` `winter-diving/` は1行の文の形）。**新しいページを作るときも2行とも入れる。** 広告LP `lp/`・`owd-guide/`・`staff/`・`aow-learning/`・ゲーム類には入れない。
 - **疑問の言い方をそのまま見出しに**し、直後の1〜2文で答える（Google の要約とAI検索に拾われやすい形）。FAQ を直したら、同じページの FAQPage の構造化データも同じ文にする。
 - **`.htaccess` の決まり（2026-11-06）**：

@@ -36,6 +36,7 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="/css/style.css?v=20261009">
   <link rel="stylesheet" href="/css/page.css?v=2026100901">
+  <link rel="stylesheet" href="/css/sea-life.css?v=20261107">
 
   <!-- Webフォントは表示を止めない（display=optional：間に合わなければ端末の丸ゴシックで描き、文字のずれを起こさない） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -406,6 +407,7 @@
         var currentSearch = '';
         var galleryIndex = 0;
         var galleryPhotos = [];
+        var NO_PAGE = ["murasakiisoginchaku"]; // sealife:nopage（1種1ページを作っていない種。build_sealife.py の EXCLUDE が書き換える）
 
         function renderStars(n) {
             return '<span class="creature-rarity">' + '★'.repeat(n) + '☆'.repeat(5 - n) + '</span>';
@@ -514,6 +516,7 @@
                     '<div class="modal-section"><h4>生態</h4><p>' + c.description + '</p></div>' +
                     '<div class="modal-section tip-box"><h4>💡 見つけ方のコツ</h4><p>' + c.beginner_tips + '</p></div>' +
                     '<div class="modal-section log-box"><h4>📓 ログ付けポイント</h4><p>' + c.log_point + '</p></div>' +
+                    (NO_PAGE.indexOf(c.id) === -1 ? '<a class="modal-more" href="/sea-life/' + c.id + '/">' + c.name_ja + 'のページをくわしく見る →</a>' : '') +
                 '</div>';
             document.getElementById('modal').classList.add('open');
             document.body.style.overflow = 'hidden';
@@ -642,6 +645,138 @@
       </div>
     </section>
 
+    <!-- sealife:index:start（build_sealife.py が書き換える。手で直さない） -->
+    <section id="sealife-index" class="sec sec--tight sl-index" aria-labelledby="sealife-index-title">
+      <div class="h-wrap">
+        <div class="sec-head">
+          <span class="h-label">Index <small>名前の一覧</small></span>
+          <h2 id="sealife-index-title" class="h-title">名前の一覧から探す<span class="nw">（88種）</span></h2>
+          <p class="h-lead">分類を開くと名前が並びます。1種ずつ、写真・大きさ・季節・見つけ方のコツをまとめたページがあります。</p>
+        </div>
+        <div class="sl-index__grid">
+        <details class="sl-index__group">
+          <summary><h3>ウミウシ（28種）</h3></summary>
+          <ul>
+            <li><a href="/sea-life/ao-umiushi/">アオウミウシ</a></li>
+            <li><a href="/sea-life/sarasa-umiushi/">サラサウミウシ</a></li>
+            <li><a href="/sea-life/shiro-umiushi/">シロウミウシ</a></li>
+            <li><a href="/sea-life/shirayuki-umiushi/">シラユキウミウシ</a></li>
+            <li><a href="/sea-life/komon-umiushi/">コモンウミウシ</a></li>
+            <li><a href="/sea-life/hiramirumidorigai/">ヒラミルミドリガイ</a></li>
+            <li><a href="/sea-life/konohamidorigai/">コノハミドリガイ</a></li>
+            <li><a href="/sea-life/kuroheriamefurashi/">クロヘリアメフラシ</a></li>
+            <li><a href="/sea-life/samejimaotomeumiushi/">サメジマオトメウミウシ</a></li>
+            <li><a href="/sea-life/bobusanumiushi/">ボブサンウミウシ</a></li>
+            <li><a href="/sea-life/sesujiminoumiushi/">セスジミノウミウシ</a></li>
+            <li><a href="/sea-life/sakishimaminoumiushi/">サキシマミノウミウシ</a></li>
+            <li><a href="/sea-life/hanaotomeumiushi/">ハナオトメウミウシ</a></li>
+            <li><a href="/sea-life/tentouumiushi/">テントウウミウシ</a></li>
+            <li><a href="/sea-life/koibo-umiushi/">コイボウミウシ</a></li>
+            <li><a href="/sea-life/yubinouhanagasa-umiushi/">ユビノウハナガサウミウシ</a></li>
+            <li><a href="/sea-life/jiboga-umiushi/">ジボガウミウシ</a></li>
+            <li><a href="/sea-life/arimo-umiushi/">アリモウミウシ</a></li>
+            <li><a href="/sea-life/hiro-umiushi/">ヒロウミウシ</a></li>
+            <li><a href="/sea-life/mukademino-umiushi/">ムカデミノウミウシ</a></li>
+            <li><a href="/sea-life/midoriamamo-umiushi/">ミドリアマモウミウシ</a></li>
+            <li><a href="/sea-life/ebisu-umiushi/">エビスウミウシ</a></li>
+            <li><a href="/sea-life/nishikitsubamegai/">ニシキツバメガイ</a></li>
+            <li><a href="/sea-life/kuromo-umiushi/">クロモウミウシ</a></li>
+            <li><a href="/sea-life/hanamidorigai/">ハナミドリガイ</a></li>
+            <li><a href="/sea-life/setoiroumiushi/">セトイロウミウシ</a></li>
+            <li><a href="/sea-life/miyako-umiushi/">ミヤコウミウシ</a></li>
+            <li><a href="/sea-life/gomafubirodoumiushi/">ゴマフビロードウミウシ</a></li>
+          </ul>
+        </details>
+        <details class="sl-index__group">
+          <summary><h3>魚類（49種）</h3></summary>
+          <ul>
+            <li><a href="/sea-life/hirataei/">ヒラタエイ</a></li>
+            <li><a href="/sea-life/tatunoitoko/">タツノイトコ</a></li>
+            <li><a href="/sea-life/tatsunootoshigo/">タツノオトシゴ</a></li>
+            <li><a href="/sea-life/kiankou/">キアンコウ</a></li>
+            <li><a href="/sea-life/houbou/">ホウボウ</a></li>
+            <li><a href="/sea-life/minokasago/">ミノカサゴ</a></li>
+            <li><a href="/sea-life/utsubo/">ウツボ</a></li>
+            <li><a href="/sea-life/tsubameuoyg/">ツバメウオ（幼魚）</a></li>
+            <li><a href="/sea-life/tunodashi/">ツノダシ</a></li>
+            <li><a href="/sea-life/akaei/">アカエイ</a></li>
+            <li><a href="/sea-life/takanohadai/">タカノハダイ</a></li>
+            <li><a href="/sea-life/murehatatatedai/">ムレハタタテダイ</a></li>
+            <li><a href="/sea-life/kingyohanadai/">キンギョハナダイ</a></li>
+            <li><a href="/sea-life/semihoubou/">セミホウボウ</a></li>
+            <li><a href="/sea-life/tsubakuroei/">ツバクロエイ</a></li>
+            <li><a href="/sea-life/hanaanago/">ハナアナゴ</a></li>
+            <li><a href="/sea-life/korodaiyg/">コロダイ（幼魚）</a></li>
+            <li><a href="/sea-life/ishidai/">イシダイ</a></li>
+            <li><a href="/sea-life/nokogiriyouji/">ノコギリヨウジ</a></li>
+            <li><a href="/sea-life/hotateumihebi/">ホタテウミヘビ</a></li>
+            <li><a href="/sea-life/aosahagiyg/">アオサハギ（幼魚）</a></li>
+            <li><a href="/sea-life/gonzui/">ゴンズイ</a></li>
+            <li><a href="/sea-life/suzumedai/">スズメダイ</a></li>
+            <li><a href="/sea-life/kagokakidai/">カゴカキダイ</a></li>
+            <li><a href="/sea-life/hanahaze/">ハナハゼ</a></li>
+            <li><a href="/sea-life/shimaushinoshita/">シマウシノシタ</a></li>
+            <li><a href="/sea-life/nijiginpo/">ニジギンポ</a></li>
+            <li><a href="/sea-life/umisuzume/">ウミスズメ</a></li>
+            <li><a href="/sea-life/budai/">ブダイ</a></li>
+            <li><a href="/sea-life/mebaru/">メバル</a></li>
+            <li><a href="/sea-life/datehaze/">ダテハゼ</a></li>
+            <li><a href="/sea-life/mitsuboshikurosuzumedai/">ミツボシクロスズメダイ（幼魚）</a></li>
+            <li><a href="/sea-life/migimagi/">ミギマキ</a></li>
+            <li><a href="/sea-life/garasuhaze/">ガラスハゼ</a></li>
+            <li><a href="/sea-life/kokeginpo/">コケギンポ</a></li>
+            <li><a href="/sea-life/nagasakisuzumedai/">ナガサキスズメダイ</a></li>
+            <li><a href="/sea-life/koganeaji/">コガネアジ</a></li>
+            <li><a href="/sea-life/otomehaze/">オトメハゼ</a></li>
+            <li><a href="/sea-life/hoshihaze/">ホシハゼ</a></li>
+            <li><a href="/sea-life/kaeruankou/">カエルアンコウ</a></li>
+            <li><a href="/sea-life/kurohoshiishimochi/">クロホシイシモチ</a></li>
+            <li><a href="/sea-life/oniokoze/">オニオコゼ</a></li>
+            <li><a href="/sea-life/kawahagi/">カワハギ</a></li>
+            <li><a href="/sea-life/hirame/">ヒラメ</a></li>
+            <li><a href="/sea-life/kuroishimochi/">クロイシモチ</a></li>
+            <li><a href="/sea-life/minamiginpo/">ミナミギンポ</a></li>
+            <li><a href="/sea-life/kamisoriuo/">カミソリウオ</a></li>
+            <li><a href="/sea-life/nekozame/">ネコザメ</a></li>
+            <li><a href="/sea-life/aoyagara/">アオヤガラ</a></li>
+          </ul>
+        </details>
+        <details class="sl-index__group">
+          <summary><h3>クラゲ（1種）</h3></summary>
+          <ul>
+            <li><a href="/sea-life/yuureikurage/">ユウレイクラゲ</a></li>
+          </ul>
+        </details>
+        <details class="sl-index__group">
+          <summary><h3>甲殻類（5種）</h3></summary>
+          <ul>
+            <li><a href="/sea-life/otohimeebi/">オトヒメエビ</a></li>
+            <li><a href="/sea-life/iboisobanagani/">イボイソバナガニ</a></li>
+            <li><a href="/sea-life/akahoshikakureebi/">アカホシカクレエビ</a></li>
+            <li><a href="/sea-life/monhanashako/">モンハナシャコ</a></li>
+            <li><a href="/sea-life/zebragani/">ゼブラガニ</a></li>
+          </ul>
+        </details>
+        <details class="sl-index__group">
+          <summary><h3>貝類（2種）</h3></summary>
+          <ul>
+            <li><a href="/sea-life/ibobekkoutamagai/">イボベッコウタマガイ</a></li>
+            <li><a href="/sea-life/hosotenrokukebori/">ホソテンロクケボリ</a></li>
+          </ul>
+        </details>
+        <details class="sl-index__group">
+          <summary><h3>軟体動物（3種）</h3></summary>
+          <ul>
+            <li><a href="/sea-life/aoriika-tamago/">アオリイカの卵</a></li>
+            <li><a href="/sea-life/torafukebori/">トラフケボリ</a></li>
+            <li><a href="/sea-life/amefurashi/">アメフラシ</a></li>
+          </ul>
+        </details>
+        </div>
+      </div>
+    </section>
+    <!-- sealife:index:end -->
+
     <!-- ============================================================
          CONTACT — いちばん深いところ（予約・相談）
          ============================================================ -->
@@ -756,6 +891,7 @@
         <a href="/padi/" style="display:inline-block;margin:0 .55em;color:inherit;text-decoration:underline;text-underline-offset:2px">PADIとは（コースの順番）</a>
         <a href="/c-card/" style="display:inline-block;margin:0 .55em;color:inherit;text-decoration:underline;text-underline-offset:2px">Cカード（ダイビングライセンス）とは</a>
         <a href="/sea-conditions/" style="display:inline-block;margin:0 .55em;color:inherit;text-decoration:underline;text-underline-offset:2px">三浦の海の水温（月別）</a>
+        <a href="/glossary/" style="display:inline-block;margin:0 .55em;color:inherit;text-decoration:underline;text-underline-offset:2px">ダイビング用語集</a>
       </nav>
       <div class="footer-bottom">
         <p>&copy; 2026 三浦 海の学校 All rights reserved.｜神奈川県三浦市・三浦半島のダイビングスクール</p>
