@@ -11,7 +11,7 @@
 
     <url>
         <loc>https://miura-diving.com/license/</loc>
-        <lastmod>2026-10-15</lastmod>
+        <lastmod>2026-11-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -25,7 +25,7 @@
 
     <url>
         <loc>https://miura-diving.com/beginner-guide/</loc>
-        <lastmod>2026-10-11</lastmod>
+        <lastmod>2026-11-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -46,7 +46,7 @@
 
     <url>
         <loc>https://miura-diving.com/advanced/</loc>
-        <lastmod>2026-10-15</lastmod>
+        <lastmod>2026-11-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -60,9 +60,30 @@
 
     <url>
         <loc>https://miura-diving.com/specialty/</loc>
-        <lastmod>2026-11-06</lastmod>
+        <lastmod>2026-11-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://miura-diving.com/padi/</loc>
+        <lastmod>2026-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://miura-diving.com/c-card/</loc>
+        <lastmod>2026-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://miura-diving.com/sea-conditions/</loc>
+        <lastmod>2026-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>

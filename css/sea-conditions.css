@@ -1,0 +1,110 @@
+/* /sea-conditions/ だけの見た目（2026-11-07）。部品は css/page.css、ここは表・グラフ・着るものの帯だけ */
+
+/* 12か月の表：数字の下の小さな補足、スマホでは「ひとこと」を横いっぱいに */
+.sc-tbl .num small, .sc-tbl-log .num small, .sc-tbl thead small { display: block; font-family: var(--ff-body); font-weight: 500; font-size: .75rem; color: var(--text-sub); white-space: normal; }
+.sc-tbl td small { display: block; font-size: .78rem; color: var(--text-sub); font-weight: 500; }
+.sc-tbl td { font-size: .9rem; }
+.sc-tbl .num { font-size: 1rem; }
+.sc-tbl tbody th, .sc-tbl-log tbody th { white-space: nowrap; }
+.sc-dim { color: var(--text-sub); font-size: .85rem; }
+
+/* グラフ */
+.sc-figure { margin: 0; background: #fff; border-radius: 22px; padding: 1.1rem 1.1rem .9rem; }
+.sc-legend { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; padding: 0; margin: 0 0 .7rem; font-size: .8rem; font-weight: 700; color: var(--ink); }
+.sc-legend li { display: inline-flex; align-items: center; gap: .4rem; }
+.sc-k { display: inline-block; width: 22px; height: 4px; border-radius: 2px; flex: none; }
+.sc-k--sea { background: #0E7C9B; height: 5px; }
+.sc-k--max { background: #C2610F; }
+.sc-k--mean { background: repeating-linear-gradient(90deg, #C2610F 0 4px, transparent 4px 8px); height: 2px; }
+.sc-k--band { background: rgba(242, 166, 90, .35); height: 12px; border-radius: 3px; }
+.sc-k--dot { width: 10px; height: 10px; border-radius: 50%; background: #D12F6A; }
+.sc-k--sw { width: 18px; height: 12px; border-radius: 3px; background: repeating-linear-gradient(135deg, #2B7A8C 0 4px, #E9A93F 4px 8px); }
+.sc-chart { display: block; width: 100%; height: auto; }
+.sc-chart--sp { display: none; }
+@media (max-width: 640px) { .sc-chart--pc { display: none; } .sc-chart--sp { display: block; max-width: 420px; margin: 0 auto; } }
+.sc-c-axis { font: 700 13px var(--ff-body, sans-serif); fill: #44606E; }
+.sc-c-span { font: 700 13px var(--ff-body, sans-serif); fill: #0F6C82; }
+.sc-c-note { font: 700 13px var(--ff-body, sans-serif); fill: #0B4F63; paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
+.sc-figure figcaption { margin-top: .6rem; }
+
+/* 着るものの帯 */
+.sc-wear { background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 1.1rem 1.1rem .9rem; }
+.sc-wear__bar { display: flex; height: 52px; border-radius: 14px; overflow: hidden; }
+.sc-wear__seg { display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: .92rem; white-space: nowrap; overflow: hidden; }
+.sc-wear__seg--dry { background: #2B7A8C; }
+.sc-wear__seg--wet { background: #E9A93F; color: #3A2A06; }
+.sc-wear__seg--sw { background: repeating-linear-gradient(135deg, #2B7A8C 0 5px, #E9A93F 5px 10px); }
+.sc-wear__months { list-style: none; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); padding: 0; margin: .35rem 0 0; font-size: .8rem; font-weight: 700; color: var(--text-sub); }
+.sc-wear__months li { text-align: left; padding-left: 2px; border-left: 1px solid var(--border); }
+.sc-wear__key { display: flex; align-items: center; gap: .45rem; margin-top: .6rem; font-size: .8rem; color: var(--text-sub); }
+@media (max-width: 480px) { .sc-wear__seg { font-size: .8rem; } .sc-wear__months { font-size: .75rem; } }
+
+/* 途中の小さな案内（2つまで） */
+.sc-next { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin-top: 1.6rem; }
+.sc-next__item { display: block; min-height: 44px; padding: 1rem 1.2rem; border-radius: 18px; background: var(--bg-soft); text-decoration: none; color: var(--ink); border: 1px solid transparent; transition: border-color var(--ease), transform var(--ease); }
+.sc-next__item:hover { border-color: #BFE6E2; transform: translateY(-2px); }
+.sc-next__item b { display: block; font-size: .78rem; color: var(--teal-ink); letter-spacing: .04em; }
+.sc-next__item span { display: block; font-weight: 700; font-size: 1rem; line-height: 1.5; margin-top: .15rem; }
+.sc-next__item span::after { content: " →"; color: var(--teal-ink); }
+@media (max-width: 560px) { .sc-next { grid-template-columns: minmax(0, 1fr); } }
+
+/* 夏と冬の写真 */
+.sc-photo { margin: 0; border-radius: 20px; overflow: hidden; background: #fff; }
+.sc-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.sc-photo figcaption { padding: .7rem 1rem .8rem; font-size: .85rem; color: var(--text-sub); }
+.sc-photo figcaption b { color: var(--ink); margin-right: .5rem; font-size: 1rem; }
+
+/* 記録の一覧（折りたたみ） */
+.sc-list { margin-top: 1.2rem; background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: .2rem 1.1rem; }
+.sc-list summary { cursor: pointer; font-weight: 700; color: var(--teal-ink); padding: .9rem 0; min-height: 44px; }
+.sc-list ul { list-style: none; padding: 0 0 .6rem; margin: 0; columns: 2; column-gap: 1.6rem; }
+.sc-list li { font-size: .88rem; line-height: 1.6; padding: .35rem 0; border-top: 1px solid var(--border); break-inside: avoid; }
+.sc-list li a { font-weight: 700; }
+.sc-list .note { padding-bottom: .9rem; }
+@media (max-width: 640px) { .sc-list ul { columns: 1; } }
+
+
+/* 凡例の追加（白抜きの丸・縦線・水色の帯） */
+.sc-k--ring { width: 10px; height: 10px; border-radius: 50%; background: #fff; border: 2px solid #D12F6A; }
+.sc-k--bar { width: 4px; height: 14px; border-radius: 2px; background: #D12F6A; }
+.sc-k--warm { width: 16px; height: 12px; border-radius: 3px; background: #E3F4F8; border: 1px solid #B9E0EA; }
+
+/* 月別の表：スマホでも1行1か月の細い一覧（ヘッダーは1回・ひとことは省く） */
+.sc-tbl, .sc-tbl-log { min-width: 0; }
+@media (max-width: 640px) {
+  .sc-tbl th, .sc-tbl td, .sc-tbl-log th, .sc-tbl-log td { padding: .55rem .5rem; }
+  .sc-tbl thead th, .sc-tbl-log thead th { font-size: .75rem; white-space: normal; line-height: 1.4; }
+  .sc-tbl .sc-wide { display: none; }
+  .sc-tbl td, .sc-tbl .num, .sc-tbl-log .num { font-size: .95rem; }
+  .sc-tbl tbody th, .sc-tbl-log tbody th { font-size: .95rem; }
+  .sc-tbl caption, .sc-tbl-log caption { padding: .8rem .6rem .3rem; font-size: .9rem; }
+}
+
+/* スノーケリング・体験への入口 */
+.sc-more { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .5rem; font-size: .95rem; line-height: 1.7; color: var(--text-sub); }
+.sc-more a { font-weight: 700; display: inline-block; padding: .3rem 0; }
+
+/* このページだけ：小さい文字を12px以上に、目次とパンくずの押せる所を広く */
+.sub main .h-label { font-size: .75rem; }
+.sub main .card .tag { font-size: .75rem; }
+.sub main .crumbs a { display: inline-block; padding: .45rem 0; }
+.sub .lnav__list a { min-height: 44px; display: inline-flex; align-items: center; }
+@media (max-width: 640px) { .ph__cta .btn-ink { width: 100%; min-height: 56px; justify-content: center; font-size: 1.04rem; } }
+
+/* スマホで縦に長くしない（2026-11-07 UXの直し） */
+@media (max-width: 640px) {
+  .sc-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+  .sc-photo figcaption { padding: .5rem .6rem .6rem; font-size: .75rem; line-height: 1.5; }
+  .sc-photo figcaption b { display: block; margin: 0; }
+  .sc-when { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+  .sc-when .card, .sc-wearcards .card { padding: 1rem .9rem; }
+  .sc-when .card h3 { font-size: 1rem; }
+  .sc-when .card p, .sc-wearcards .card p { font-size: .85rem; line-height: 1.7; }
+  .sc-wearcards { gap: .6rem; }
+  .sc-reads { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+  .sc-reads .card { padding: 1rem .8rem; }
+  .sc-reads .card__img { margin: -1rem -.8rem .7rem; aspect-ratio: 16 / 9; }
+  .sc-reads .card p { display: none; }
+  .sc-reads .card h3 { font-size: .95rem; }
+  .sc-reads .card .go { font-size: .8rem; padding-top: .5rem; }
+}
