@@ -7,6 +7,18 @@ DirectoryIndex index.html
   Require all denied
 </Files>
 
+# 2026-11-06 セキュリティ点検：サーバーに残った記録・控え・設定・データベース・圧縮ファイルを外から読めなくする。
+# 公開ページはこれらの種類のファイルを使っていない（参照が無いことを確認してから入れた）。
+# サブドメイン（logbook・app）の公開フォルダにも同じ決まりがかかる。種類を足すときは、使っているページが無いか先に確かめること。
+<FilesMatch "\.(log|sql|sqlite|sqlite3|db|bak|old|orig|swp|ini|inc|sh|py|md|yml|yaml|zip|tar|tgz|7z|rar)(-wal|-shm|-journal)?$">
+  Require all denied
+</FilesMatch>
+
+# 使っていない旧API。PHPのエラー表示でサーバー内の場所が見えるので止める（どのページからも呼ばれていない）。
+<Files "latest-blog.php">
+  Require all denied
+</Files>
+
 # 字幕（トップのPV・2026-09-27）。nginx/Apache の既定の型表に無いことがあるので明示する
 AddType text/vtt .vtt
 AddType audio/mp4 .m4a
