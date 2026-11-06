@@ -2,7 +2,7 @@
   {
     "@type": "Service",
     "@id": "https://miura-diving.com/fun-diving/#service",
-    "name": "ファンダイビング・リフレッシュダイビング（城ヶ島・宮川湾）",
+    "name": "ファンダイビング（城ヶ島ビーチ・宮川湾ボート）",
     "serviceType": "スクーバダイビングのガイドサービス",
     "description": "Cカードをお持ちの方のガイド付きダイビング。城ヶ島のビーチ、宮川湾（カサゴ根・トビ根）と城ヶ島のボートポイントで、インストラクター1名につき最大4名の少人数制。ブランクのある方にはスキルの復習つきのリフレッシュダイビング。",
     "provider": {"@type": "SportsActivityLocation", "@id": "https://miura-diving.com/#school", "name": "三浦 海の学校", "url": "https://miura-diving.com/"},
