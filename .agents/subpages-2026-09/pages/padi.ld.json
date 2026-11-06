@@ -1,0 +1,47 @@
+[
+  {
+    "@type": "Organization",
+    "@id": "https://miura-diving.com/padi/#padi",
+    "name": "PADI（Professional Association of Diving Instructors）",
+    "alternateName": "パディ",
+    "url": "https://www.padi.com/",
+    "foundingDate": "1966",
+    "sameAs": ["https://www.padi.co.jp/"]
+  },
+  {
+    "@type": "Article",
+    "@id": "https://miura-diving.com/padi/#article",
+    "headline": "PADIとは？コースの順番とランクを図で解説",
+    "description": "PADI（パディ）とは何か。体験ダイビングからオープンウォーター、アドバンス、レスキュー、マスター・スクーバ・ダイバー、プロ（ダイブマスター・インストラクター・コースディレクター）までの順番と、年齢・深さの条件。",
+    "inLanguage": "ja",
+    "url": "https://miura-diving.com/padi/",
+    "image": "https://miura-diving.com/image/og-padi.jpg",
+    "dateModified": "2026-11-07",
+    "datePublished": "2026-11-07",
+    "about": {"@id": "https://miura-diving.com/padi/#padi"},
+    "mainEntityOfPage": {"@id": "https://miura-diving.com/padi/#webpage"},
+    "author": {"@id": "https://miura-diving.com/instructor/#person"},
+    "reviewedBy": {"@id": "https://miura-diving.com/instructor/#person"},
+    "publisher": {"@id": "https://miura-diving.com/#org"},
+    "citation": [
+      "https://www.padi.co.jp/scuba-diving/about-padi/",
+      "https://www.padi.co.jp/scuba-diving/about-padi/why-padi/",
+      "https://www.padi.co.jp/scuba-diving/padi-courses/course-catalog/junior/"
+    ]
+  },
+  {
+    "@type": "ItemList",
+    "@id": "https://miura-diving.com/padi/#ladder",
+    "name": "PADIのコースの順番（三浦 海の学校で受けられるもの）",
+    "itemListOrder": "https://schema.org/ItemListOrderAscending",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "体験ダイビング（Discover Scuba Diving）", "url": "https://miura-diving.com/trial-diving/"},
+      {"@type": "ListItem", "position": 2, "name": "オープン・ウォーター・ダイバー", "url": "https://miura-diving.com/license/"},
+      {"@type": "ListItem", "position": 3, "name": "アドヴァンスド・オープン・ウォーター・ダイバー", "url": "https://miura-diving.com/advanced/"},
+      {"@type": "ListItem", "position": 4, "name": "レスキュー・ダイバー", "url": "https://miura-diving.com/specialty/#rescue"},
+      {"@type": "ListItem", "position": 5, "name": "マスター・スクーバ・ダイバー", "url": "https://miura-diving.com/specialty/#msd"},
+      {"@type": "ListItem", "position": 6, "name": "ダイブマスター", "url": "https://miura-diving.com/specialty/#pro"},
+      {"@type": "ListItem", "position": 7, "name": "インストラクター開発コース（IDC）", "url": "https://miura-diving.com/specialty/#pro"}
+    ]
+  }
+]

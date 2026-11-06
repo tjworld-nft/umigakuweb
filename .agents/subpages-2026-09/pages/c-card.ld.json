@@ -1,0 +1,32 @@
+[
+  {
+    "@type": "Article",
+    "@id": "https://miura-diving.com/c-card/#article",
+    "headline": "Cカード（ダイビングライセンス）とは？種類・有効期限・再発行・履歴書の書き方",
+    "description": "Cカード（ダイビングライセンス）は、講習を終えた人に指導団体が出す認定証で、国の免許ではありません。PADIのカードに有効期限はなく更新も不要。種類（ランク）と潜れる深さ、何歳から取れるか、なくしたときの再発行、履歴書の書き方をまとめました。",
+    "url": "https://miura-diving.com/c-card/",
+    "mainEntityOfPage": {"@id": "https://miura-diving.com/c-card/#webpage"},
+    "inLanguage": "ja",
+    "image": [
+      "https://miura-diving.com/image/og-c-card.jpg",
+      "https://miura-diving.com/image/sub/ccard-hero-1600.webp"
+    ],
+    "datePublished": "2026-11-07",
+    "dateModified": "2026-11-07",
+    "author": {
+      "@type": "Person",
+      "@id": "https://miura-diving.com/instructor/#person",
+      "name": "吉田 哲司",
+      "jobTitle": "PADIコースディレクター / 代表インストラクター",
+      "url": "https://miura-diving.com/instructor/"
+    },
+    "reviewedBy": {"@id": "https://miura-diving.com/instructor/#person"},
+    "publisher": {"@id": "https://miura-diving.com/#org"},
+    "about": [
+      {"@type": "Thing", "name": "Cカード（スクーバダイビングの認定証）"},
+      {"@type": "Thing", "name": "ダイビングライセンス"},
+      {"@type": "Thing", "name": "PADI オープン・ウォーター・ダイバー"}
+    ],
+    "keywords": "Cカード とは, ダイビングライセンス とは, ダイビングライセンス 種類, ダイビングライセンス 有効期限, Cカード 再発行, eカード, ダイビングライセンス 履歴書, ダイビングライセンス 何歳から"
+  }
+]
