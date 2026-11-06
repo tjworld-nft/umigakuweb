@@ -74,6 +74,15 @@ FOOTER_NAV = [
     ('特定商取引法に基づく表記', '/tokusho/'),
     ('プライバシーポリシー', '/privacy-policy/'),
 ]
+# フッターの「エリア・ポイントから探す」（入口ページへの内部リンク・2026-11 SEO第1弾）。手書きフッターのページにも同じ行がある
+FOOTER_AREA = [
+    ('東京からダイビングライセンス', '/tokyo-diving-license/'),
+    ('横浜からダイビングライセンス', '/yokohama-diving-license/'),
+    ('神奈川でダイビングライセンス', '/kanagawa-diving-license/'),
+    ('横須賀からダイビング', '/yokosuka-diving/'),
+    ('城ヶ島・梶の浜ビーチ', '/diving-point/jogashima-kajinohama/'),
+    ('宮川湾ボートダイビング', '/diving-point/miyagawa-bay/'),
+]
 
 AI_Q = ('%E4%B8%89%E6%B5%A6%20%E6%B5%B7%E3%81%AE%E5%AD%A6%E6%A0%A1%EF%BC%88%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E4%B8%89%E6%B5%A6%E5%B8%82%E3%81%AE%E3%83%80%E3%82%A4%E3%83%93%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%AF%E3%83%BC%E3%83%AB%E3%80%81https%3A%2F%2Fmiura-diving.com%2F%20%EF%BC%89%E3%81%8C%E8%87%AA%E5%88%86%E3%81%AB%E5%90%88%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E7%9B%B8%E8%AB%87%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%E3%81%BE%E3%81%9A%20https%3A%2F%2Fmiura-diving.com%2Fllms.txt%20%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E3%81%9D%E3%81%AE%E3%81%86%E3%81%88%E3%81%A7%E3%80%81%E7%A7%81%E3%81%AE%E7%8A%B6%E6%B3%81%E3%82%84%E4%B8%8D%E5%AE%89%EF%BC%88%E6%B3%B3%E3%81%92%E3%81%AA%E3%81%84%E3%83%BB%E4%B8%80%E4%BA%BA%E5%8F%82%E5%8A%A0%E3%83%BB%E5%B9%B4%E9%BD%A2%E3%83%BB%E3%83%96%E3%83%A9%E3%83%B3%E3%82%AF%E3%83%BB%E4%BD%93%E5%8A%9B%E3%81%AE%E5%BF%83%E9%85%8D%E3%81%AA%E3%81%A9%EF%BC%89%E3%82%92%E8%81%9E%E3%81%84%E3%81%A6%E3%81%8B%E3%82%89%E3%80%81%E5%90%88%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E7%8E%87%E7%9B%B4%E3%81%AB%E7%AD%94%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%96%99%E9%87%91%E3%82%84%E7%89%B9%E5%85%B8%E3%81%AE%E6%9C%9F%E9%99%90%E3%81%AF%E3%82%B5%E3%82%A4%E3%83%88%E8%A8%98%E8%BC%89%E3%81%AE%E6%9C%80%E6%96%B0%E6%83%85%E5%A0%B1%E3%82%92%E5%84%AA%E5%85%88%E3%81%97%E3%80%81%E4%B8%8D%E7%A2%BA%E3%81%8B%E3%81%AA%E3%81%93%E3%81%A8%E3%81%AF%E6%96%AD%E5%AE%9A%E3%81%9B%E3%81%9A%E3%80%81%E4%BA%88%E7%B4%84%E3%82%84%E6%9C%80%E6%96%B0%E7%A2%BA%E8%AA%8D%E3%81%AF%E5%85%AC%E5%BC%8FLINE%EF%BC%88https%3A%2F%2Flin.ee%2FkK3d5p2%EF%BC%89%E3%82%92%E6%A1%88%E5%86%85%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82')
 
@@ -235,6 +244,8 @@ def ask(m):
 
 def footer(m):
     nav = '\n'.join(f'          <a href="{h}">{l}</a>' for l, h in FOOTER_NAV)
+    area_a = 'display:inline-block;margin:0 .55em;color:inherit;text-decoration:underline;text-underline-offset:2px'
+    area = '\n'.join(f'        <a href="{h}" style="{area_a}">{l}</a>' for l, h in FOOTER_AREA)
     return f'''
   <footer class="site-footer" role="contentinfo">
     <div class="container">
@@ -253,7 +264,7 @@ def footer(m):
           <div class="footer-social-icons">
             <a href="https://www.instagram.com/tj_official_umigaku/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
             <a href="https://www.facebook.com/miuraumigaku/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
-            <a href="https://x.com/miura_diving" target="_blank" rel="noopener noreferrer" aria-label="X"><svg aria-hidden="true"><use href="#i-x"/></svg></a>
+            <a href="https://x.com/mumigaku" target="_blank" rel="noopener noreferrer" aria-label="X"><svg aria-hidden="true"><use href="#i-x"/></svg></a>
           </div>
         </div>
       </div>
@@ -278,6 +289,10 @@ def footer(m):
         </div>
         <p class="ai-consult-caveat">※回答はAIによる案内です。最新の料金・空き状況・ご予約は<a href="{LINE}" target="_blank" rel="noopener noreferrer">公式LINE</a>でご確認ください。</p>
       </div>
+      <nav class="footer-area" aria-label="エリア・ポイントから探す" style="margin:2rem auto 0;max-width:980px;text-align:center;font-size:.85rem;line-height:1.9;color:rgba(255,255,255,.78)">
+        <p style="margin:0 0 .25rem;color:#fff;font-weight:700">エリア・ポイントから探す</p>
+{area}
+      </nav>
       <div class="footer-bottom">
         <p>&copy; 2026 三浦 海の学校 All rights reserved.｜神奈川県三浦市・三浦半島のダイビングスクール</p>
         <p style="margin-top:.4rem;color:rgba(255,255,255,.72)">運営：<a href="https://aquabit-lab.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">AquaBit LAB</a></p>

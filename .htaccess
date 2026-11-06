@@ -32,6 +32,14 @@ DirectoryIndex index.html
   Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
+# 2026-11 SEO第1弾：サーバーにだけ残っている古いページ（受付停止のSUP・カヤック案内、旧検定、ライセンスの試作）を検索に出さない。
+# ファイルは消さず、止めもしない（見た目と動きはそのまま。検索エンジンへの「載せないで」の合図だけ）。
+<If "%{REQUEST_URI} =~ m#^/(page-other-activities\.php|kentei_old/|license/license-[^/]*-preview\.html)#">
+  <IfModule mod_headers.c>
+    Header always set X-Robots-Tag "noindex, follow"
+  </IfModule>
+</If>
+
 # 字幕（トップのPV・2026-09-27）。nginx/Apache の既定の型表に無いことがあるので明示する
 AddType text/vtt .vtt
 AddType audio/mp4 .m4a
@@ -128,6 +136,15 @@ RewriteRule ^fun-diving/index\.html$ /fun-diving/ [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/+marine-activity/index\.html[\s?] [NC]
 RewriteRule ^marine-activity/index\.html$ /marine-activity/ [R=301,L]
+
+# 2026-11 SEO第1弾：本体ドメインでは 1回の301で今のページへ（以前は /contact→/contact/ の2段、/privacy は存在しないファイルへ内部転送して404）。
+# サブドメインは下の従来の規則のまま（ホスト条件は外さない）。
+RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
+RewriteCond %{THE_REQUEST} \s/+contact\.html[\s?] [NC]
+RewriteRule ^contact\.html$ /contact/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
+RewriteRule ^privacy(\.html|/)?$ /privacy-policy/ [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/+contact\.html[\s?] [NC]
 RewriteRule ^contact\.html$ /contact [R=301,L]

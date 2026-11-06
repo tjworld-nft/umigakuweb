@@ -24,14 +24,8 @@ Disallow: /wp-includes/
 Disallow: /wp-content/plugins/
 Disallow: /wp-content/themes/
 
-# プレビュー・テストファイルの除外
-Disallow: /license-preview.html
-Disallow: /owd-lp-underwater-test.html
-Disallow: /diving-game-lp.html
-Disallow: /books-slider-test.html
-Disallow: /maze-3d-test.html
-Disallow: /3d-maze-final.html
-Disallow: /3d-maze-simple-backup.html
+# プレビュー・テスト用のページは robots.txt で止めず、ページ側の noindex で検索から外す
+# （ここで Disallow すると Google が noindex を読めなくなるため・2026-11 SEO第1弾）
 
 # サイトマップの場所
 Sitemap: https://miura-diving.com/sitemap.xml
