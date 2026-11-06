@@ -358,7 +358,7 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 ## デプロイ方法
 
 - **通常時**: mainへpushすると `.github/workflows/deploy.yml` がFTPで自動反映。
-- **凍結中の手動デプロイ**: FTPS（ホスト `sv8718.xserver.jp`・メインFTPアカウント `yokosukatj`・パスワードは「サーバーパスワード」でユーザーが把握）。Python ftplib(FTP_TLS) でアップ・削除とも実績あり。アップ先は `/miura-diving.com/public_html/`。
+- **凍結中の手動デプロイ**: FTPS（接続先とアカウントはローカルの `~/.config/miura-deploy/netrc` を参照。リポジトリはpublicなのでホスト名・アカウント名・パスワードをここに書かない）。Python ftplib(FTP_TLS) でアップ・削除とも実績あり。アップ先は `/miura-diving.com/public_html/`。
 - 反映前に必ずコンフリクトマーカー（`<<<<<<<`）を検索すること。
 - 手動デプロイした変更も**必ずローカルでgitコミット**して本番とリポジトリの同期を保つこと。
 - 🔴 **`logbook.miura-diving.com/` ディレクトリをリポジトリから削除してはいけない**。サブドメイン logbook.miura-diving.com（Blue Logbook PWA）のドキュメントルートで、本番にはFTP手動アップロードのPWA一式（リポジトリ未管理）が置いてある。リポジトリ内の中身は `.htaccess` 1枚だけなので、それを消すとgit上ディレクトリごと消え、FTP-Deploy-Actionが本番ディレクトリを**中身ごと再帰削除**する（=ログブック全損）。どうしても消す場合は同じコミットで deploy.yml の exclude に `**/logbook.miura-diving.com/**` を追加してから。

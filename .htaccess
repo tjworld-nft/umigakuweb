@@ -19,9 +19,23 @@ DirectoryIndex index.html
   Require all denied
 </Files>
 
+# 2026-11-06 セキュリティ用のヘッダー（見た目と機能は変えない）。
+# - HSTS：次からは必ず https でつなぐ（サブドメインには広げない＝includeSubDomains を付けない）。
+# - nosniff：ファイルの種類を勝手に読み替えさせない。
+# - X-Frame-Options：他のサイトの枠の中にこのサイトを埋め込ませない（自分のサイト内は可）。
+# - Referrer-Policy：外のサイトへは、どのページから来たかを渡さず、サイトの名前だけ渡す。
+#   学習サイト（aow-learning）は、もっと厳しい値を aow-learning/.htaccess で付け直している。
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
 # 字幕（トップのPV・2026-09-27）。nginx/Apache の既定の型表に無いことがあるので明示する
 AddType text/vtt .vtt
 AddType audio/mp4 .m4a
+AddType application/manifest+json .webmanifest
 
 # RewriteEngine On
 RewriteEngine On

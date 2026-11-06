@@ -19,3 +19,13 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 <FilesMatch "\.(sqlite|sqlite3|db|bak|sql)(-wal|-shm|-journal)?$">
   Require all denied
 </FilesMatch>
+
+# 関数の定義だけのファイル。ページから読み込むもので、直接開く必要はない。
+<Files "lib.php">
+  Require all denied
+</Files>
+
+# 学習サイトは、外へ「どこから来たか」を一切渡さない（PHP が付けている値と同じ。親の .htaccess の値で薄まらないように）。
+<IfModule mod_headers.c>
+  Header set Referrer-Policy "same-origin"
+</IfModule>
