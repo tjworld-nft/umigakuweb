@@ -1,0 +1,965 @@
+{
+ "note": "build_sealife.py が書く。種ごとにブログで名前が出てくる記事（本文は ~/Documents/海学HP.php/.agents/seo/data/sealife/blog-cache.json・git の外）。",
+ "posts_checked": 86,
+ "species": {
+  "ao-umiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-beach-autumn-sealife-2026-11-06/",
+    "title": "秋の三浦、ビーチダイビングの生き物｜9月末から11月、タコとイソギンチャク畑",
+    "date": "2026-11-06",
+    "matched": "アオウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certified-next-day-2026-09-09/",
+    "title": "中止の翌日に認定ダイブ｜神奈川・三浦の城ヶ島でPADIオープンウォーター講習",
+    "date": "2026-09-09",
+    "matched": "アオウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-enriched-air-weight-check-2026-09-02/",
+    "title": "適正ウェイトの決め方｜三浦・城ヶ島でエンリッチドエア3ダイビング",
+    "date": "2026-09-02",
+    "matched": "アオウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-pool-ocean-training-2026-08-29/",
+    "title": "曇り空の三浦でオープンウォーター講習1日目｜プールから海、ホバリング",
+    "date": "2026-08-29",
+    "matched": "アオウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-logbook-app-2026-08-29/",
+    "title": "ダイビングのログブックに何を書く？三浦のスクールが作った記録アプリの話",
+    "date": "2026-08-29",
+    "matched": "アオウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-umiushi-season-2026-05-06/",
+    "title": "5月の三浦はウミウシが豊作｜10年以上前の顔ぶれが戻ってきた海の記録",
+    "date": "2026-05-05",
+    "matched": "アオウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-nekozame-spring-diving-2026/",
+    "title": "巨大ネコザメと春のウミウシ4種｜新しいBCDを慣らす3月末の三浦ダイビング",
+    "date": "2026-03-27",
+    "matched": "アオウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-23/",
+    "title": "ダンゴウオを探して小雨の三浦へ｜ウミウシ5種とヒラタエイに会えた3月の海",
+    "date": "2026-03-23",
+    "matched": "アオウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-21/",
+    "title": "春濁りの三浦で会えたウミウシ4種｜3月下旬のビーチダイビングの記録",
+    "date": "2026-03-22",
+    "matched": "アオウミウシ"
+   }
+  ],
+  "sarasa-umiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-umiushi-season-2026-05-06/",
+    "title": "5月の三浦はウミウシが豊作｜10年以上前の顔ぶれが戻ってきた海の記録",
+    "date": "2026-05-05",
+    "matched": "サラサウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-ray-nudibranch-2026-04-14/",
+    "title": "4月の三浦ダイビング｜迷子のアカエイと、ゴマフビロードウミウシに会えた日",
+    "date": "2026-04-14",
+    "matched": "サラサウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-report-20250409/",
+    "title": "水深2mでネコザメに会えた春の三浦ダイビング｜ウミウシも豊作の4月の海",
+    "date": "2026-04-10",
+    "matched": "サラサウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/diving-license-kanagawa-miura-umiushi-2026-04-04/",
+    "title": "雨の日のダイビングライセンス認定ダイブ｜4月の三浦で会えたウミウシ5種",
+    "date": "2026-04-04",
+    "matched": "サラサウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-23/",
+    "title": "ダンゴウオを探して小雨の三浦へ｜ウミウシ5種とヒラタエイに会えた3月の海",
+    "date": "2026-03-23",
+    "matched": "サラサウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-21/",
+    "title": "春濁りの三浦で会えたウミウシ4種｜3月下旬のビーチダイビングの記録",
+    "date": "2026-03-22",
+    "matched": "サラサウミウシ"
+   }
+  ],
+  "shiro-umiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-beach-autumn-sealife-2026-11-06/",
+    "title": "秋の三浦、ビーチダイビングの生き物｜9月末から11月、タコとイソギンチャク畑",
+    "date": "2026-11-06",
+    "matched": "シロウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-umiushi-season-2026-05-06/",
+    "title": "5月の三浦はウミウシが豊作｜10年以上前の顔ぶれが戻ってきた海の記録",
+    "date": "2026-05-05",
+    "matched": "シロウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-ray-nudibranch-2026-04-14/",
+    "title": "4月の三浦ダイビング｜迷子のアカエイと、ゴマフビロードウミウシに会えた日",
+    "date": "2026-04-14",
+    "matched": "シロウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-report-20250409/",
+    "title": "水深2mでネコザメに会えた春の三浦ダイビング｜ウミウシも豊作の4月の海",
+    "date": "2026-04-10",
+    "matched": "シロウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/diving-license-kanagawa-miura-umiushi-2026-04-04/",
+    "title": "雨の日のダイビングライセンス認定ダイブ｜4月の三浦で会えたウミウシ5種",
+    "date": "2026-04-04",
+    "matched": "シロウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-nekozame-spring-diving-2026/",
+    "title": "巨大ネコザメと春のウミウシ4種｜新しいBCDを慣らす3月末の三浦ダイビング",
+    "date": "2026-03-27",
+    "matched": "シロウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-21/",
+    "title": "春濁りの三浦で会えたウミウシ4種｜3月下旬のビーチダイビングの記録",
+    "date": "2026-03-22",
+    "matched": "シロウミウシ"
+   }
+  ],
+  "shirayuki-umiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-ray-nudibranch-2026-04-14/",
+    "title": "4月の三浦ダイビング｜迷子のアカエイと、ゴマフビロードウミウシに会えた日",
+    "date": "2026-04-14",
+    "matched": "シラユキウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/diving-license-kanagawa-miura-umiushi-2026-04-04/",
+    "title": "雨の日のダイビングライセンス認定ダイブ｜4月の三浦で会えたウミウシ5種",
+    "date": "2026-04-04",
+    "matched": "シラユキウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-23/",
+    "title": "ダンゴウオを探して小雨の三浦へ｜ウミウシ5種とヒラタエイに会えた3月の海",
+    "date": "2026-03-23",
+    "matched": "シラユキウミウシ"
+   }
+  ],
+  "komon-umiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-boat-or-beach-2026-11-06/",
+    "title": "アドバンス講習の海はボートかビーチか｜宮川湾に行けた日と城ヶ島に変えた日",
+    "date": "2026-11-06",
+    "matched": "コモンウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-enriched-air-weight-check-2026-09-02/",
+    "title": "適正ウェイトの決め方｜三浦・城ヶ島でエンリッチドエア3ダイビング",
+    "date": "2026-09-02",
+    "matched": "コモンウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-ray-nudibranch-2026-04-14/",
+    "title": "4月の三浦ダイビング｜迷子のアカエイと、ゴマフビロードウミウシに会えた日",
+    "date": "2026-04-14",
+    "matched": "コモンウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-report-20250409/",
+    "title": "水深2mでネコザメに会えた春の三浦ダイビング｜ウミウシも豊作の4月の海",
+    "date": "2026-04-10",
+    "matched": "コモンウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-nekozame-spring-diving-2026/",
+    "title": "巨大ネコザメと春のウミウシ4種｜新しいBCDを慣らす3月末の三浦ダイビング",
+    "date": "2026-03-27",
+    "matched": "コモンウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-21/",
+    "title": "春濁りの三浦で会えたウミウシ4種｜3月下旬のビーチダイビングの記録",
+    "date": "2026-03-22",
+    "matched": "コモンウミウシ"
+   }
+  ],
+  "hiramirumidorigai": [
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-report-20250409/",
+    "title": "水深2mでネコザメに会えた春の三浦ダイビング｜ウミウシも豊作の4月の海",
+    "date": "2026-04-10",
+    "matched": "ヒラミルミドリガイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-nekozame-spring-diving-2026/",
+    "title": "巨大ネコザメと春のウミウシ4種｜新しいBCDを慣らす3月末の三浦ダイビング",
+    "date": "2026-03-27",
+    "matched": "ヒラミルミドリガイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-23/",
+    "title": "ダンゴウオを探して小雨の三浦へ｜ウミウシ5種とヒラタエイに会えた3月の海",
+    "date": "2026-03-23",
+    "matched": "ヒラミルミドリガイ"
+   }
+  ],
+  "konohamidorigai": [
+   {
+    "url": "https://miura-diving.com/blog/miura-4beach-experience-dives-2026-09-16/",
+    "title": "1日4本のビーチダイビングは4つの違う海｜三浦で経験本数を積む雨の日",
+    "date": "2026-09-16",
+    "matched": "コノハミドリガイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-snorkeling-university-class-2026-09-01/",
+    "title": "三浦・荒井浜で大学のスノーケリング授業｜泳ぎが苦手でも海を楽しめる理由",
+    "date": "2026-09-01",
+    "matched": "コノハミドリガイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-report-20250409/",
+    "title": "水深2mでネコザメに会えた春の三浦ダイビング｜ウミウシも豊作の4月の海",
+    "date": "2026-04-10",
+    "matched": "コノハミドリガイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/diving-license-kanagawa-miura-umiushi-2026-04-04/",
+    "title": "雨の日のダイビングライセンス認定ダイブ｜4月の三浦で会えたウミウシ5種",
+    "date": "2026-04-04",
+    "matched": "コノハミドリガイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-23/",
+    "title": "ダンゴウオを探して小雨の三浦へ｜ウミウシ5種とヒラタエイに会えた3月の海",
+    "date": "2026-03-23",
+    "matched": "コノハミドリガイ"
+   }
+  ],
+  "kuroheriamefurashi": [],
+  "hirataei": [
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-ray-nudibranch-2026-04-14/",
+    "title": "4月の三浦ダイビング｜迷子のアカエイと、ゴマフビロードウミウシに会えた日",
+    "date": "2026-04-14",
+    "matched": "ヒラタエイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-23/",
+    "title": "ダンゴウオを探して小雨の三浦へ｜ウミウシ5種とヒラタエイに会えた3月の海",
+    "date": "2026-03-23",
+    "matched": "ヒラタエイ"
+   }
+  ],
+  "tatunoitoko": [],
+  "tatsunootoshigo": [
+   {
+    "url": "https://miura-diving.com/blog/miyagawa-boat-jogashima-beach-4dives-2026-11-06/",
+    "title": "宮川湾で2ボート、車で10分の城ヶ島で2ビーチ｜三浦で1日4本の組み方",
+    "date": "2026-11-06",
+    "matched": "タツノオトシゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-deep-boat-2026-09-05/",
+    "title": "宮川湾でアドバンス講習のディープとボート｜経験本数が少なくても早すぎない",
+    "date": "2026-09-05",
+    "matched": "タツノオトシゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-miyagawa-2boat-ishigaki-training-2026-08-21/",
+    "title": "石垣島の旅行前に三浦でスキル練習｜宮川湾2ボートダイビングで会えた生き物",
+    "date": "2026-08-21",
+    "matched": "タツノオトシゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-boat-certification-2026-08-15/",
+    "title": "宮川湾のボートでアドバンス講習修了｜深場の光と浮力、水中ライトの話",
+    "date": "2026-08-15",
+    "matched": "タツノオトシゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-chatgpt-typhoon-2026-08-06/",
+    "title": "ChatGPTに勧められて三浦へ｜台風明けのオープンウォーター講習1日目",
+    "date": "2026-08-06",
+    "matched": "タツノオトシゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/2026-03-16/",
+    "title": "春濁りの三浦でタツノオトシゴとムカデミノウミウシ｜3月中旬の水温と透明度",
+    "date": "2026-03-16",
+    "matched": "タツノオトシゴ"
+   }
+  ],
+  "yuureikurage": [],
+  "kiankou": [],
+  "houbou": [],
+  "samejimaotomeumiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-day1-trial-diving-2026-08-10/",
+    "title": "アドバンス講習1日目と体験ダイビング｜三浦でコンパスナビと浮力の練習",
+    "date": "2026-08-10",
+    "matched": "サメジマオトメウミウシ"
+   }
+  ],
+  "otohimeebi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-boat-certification-2026-08-15/",
+    "title": "宮川湾のボートでアドバンス講習修了｜深場の光と浮力、水中ライトの話",
+    "date": "2026-08-15",
+    "matched": "オトヒメエビ"
+   }
+  ],
+  "ibobekkoutamagai": [],
+  "minokasago": [
+   {
+    "url": "https://miura-diving.com/blog/miyagawa-boat-jogashima-beach-4dives-2026-11-06/",
+    "title": "宮川湾で2ボート、車で10分の城ヶ島で2ビーチ｜三浦で1日4本の組み方",
+    "date": "2026-11-06",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certification-october-2026-11-06/",
+    "title": "城ヶ島でオープンウォーター講習｜10月前半、2日目の海で認定が3組続いた",
+    "date": "2026-11-06",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-boat-or-beach-2026-11-06/",
+    "title": "アドバンス講習の海はボートかビーチか｜宮川湾に行けた日と城ヶ島に変えた日",
+    "date": "2026-11-06",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-4beach-experience-dives-2026-09-16/",
+    "title": "1日4本のビーチダイビングは4つの違う海｜三浦で経験本数を積む雨の日",
+    "date": "2026-09-16",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-swim-fin-2026-09-12/",
+    "title": "三浦のPADIオープンウォーター講習｜泳いでいた人はフィンが上手い？",
+    "date": "2026-09-12",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-aow-rain-bcd-2026-09-06/",
+    "title": "三浦のPADI講習、大雨でも海の中は水温24度｜BCDの空気が抜けないときのコツ",
+    "date": "2026-09-06",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certification-buoyancy-2026-08-30/",
+    "title": "浮力は深さで変わる｜水温23度の三浦でオープンウォーター認定ダイブ",
+    "date": "2026-08-30",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-pool-ocean-training-2026-08-29/",
+    "title": "曇り空の三浦でオープンウォーター講習1日目｜プールから海、ホバリング",
+    "date": "2026-08-29",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-jogashima-fun-trial-2026-08-22/",
+    "title": "三浦・城ヶ島でファンダイビングと体験ダイビング｜水温25度・透明度8mの一日",
+    "date": "2026-08-22",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-refresh-fun-3dives-2026-08-19/",
+    "title": "3年ぶりのリフレッシュと月1ダイバー｜城ヶ島で3本潜った8月の記録",
+    "date": "2026-08-18",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-fun-diving-oval-squid-2026-08-17/",
+    "title": "アオリイカの卵と親イカに会えた城ヶ島｜8月のファンダイビングの記録",
+    "date": "2026-08-17",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-boat-certification-2026-08-15/",
+    "title": "宮川湾のボートでアドバンス講習修了｜深場の光と浮力、水中ライトの話",
+    "date": "2026-08-15",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-day1-trial-diving-2026-08-10/",
+    "title": "アドバンス講習1日目と体験ダイビング｜三浦でコンパスナビと浮力の練習",
+    "date": "2026-08-10",
+    "matched": "ミノカサゴ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-aow-lionfish-2026-08-07/",
+    "title": "うねりの入った城ヶ島でOWD講習とアドバンス講習｜砂地のミノカサゴ",
+    "date": "2026-08-07",
+    "matched": "ミノカサゴ"
+   }
+  ],
+  "bobusanumiushi": [],
+  "utsubo": [
+   {
+    "url": "https://miura-diving.com/blog/miura-snorkeling-university-class-2026-09-01/",
+    "title": "三浦・荒井浜で大学のスノーケリング授業｜泳ぎが苦手でも海を楽しめる理由",
+    "date": "2026-09-01",
+    "matched": "ウツボ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-certification-dive-2026-08-02/",
+    "title": "三浦でアドバンス認定ダイブ｜水面27度・水底19度、8月のサーモクライン",
+    "date": "2026-08-02",
+    "matched": "ウツボ"
+   }
+  ],
+  "tsubameuoyg": [
+   {
+    "url": "https://miura-diving.com/blog/miura-beach-autumn-sealife-2026-11-06/",
+    "title": "秋の三浦、ビーチダイビングの生き物｜9月末から11月、タコとイソギンチャク畑",
+    "date": "2026-11-06",
+    "matched": "ツバメウオ"
+   }
+  ],
+  "tunodashi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-swim-fin-2026-09-12/",
+    "title": "三浦のPADIオープンウォーター講習｜泳いでいた人はフィンが上手い？",
+    "date": "2026-09-12",
+    "matched": "ツノダシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certified-next-day-2026-09-09/",
+    "title": "中止の翌日に認定ダイブ｜神奈川・三浦の城ヶ島でPADIオープンウォーター講習",
+    "date": "2026-09-09",
+    "matched": "ツノダシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-equalizing-aow-2026-09-04/",
+    "title": "耳抜きはゆっくり少しずつ｜水温24度の三浦でオープンウォーター講習",
+    "date": "2026-09-04",
+    "matched": "ツノダシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-day1-trial-diving-2026-08-10/",
+    "title": "アドバンス講習1日目と体験ダイビング｜三浦でコンパスナビと浮力の練習",
+    "date": "2026-08-10",
+    "matched": "ツノダシ"
+   }
+  ],
+  "akaei": [
+   {
+    "url": "https://miura-diving.com/blog/miura-jogashima-fun-trial-2026-08-22/",
+    "title": "三浦・城ヶ島でファンダイビングと体験ダイビング｜水温25度・透明度8mの一日",
+    "date": "2026-08-22",
+    "matched": "アカエイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-fun-diving-action-camera-2026-08-11/",
+    "title": "アクションカメラで三浦の海を撮る｜城ヶ島ファンダイビングの楽しみ方",
+    "date": "2026-08-11",
+    "matched": "アカエイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-chatgpt-typhoon-2026-08-06/",
+    "title": "ChatGPTに勧められて三浦へ｜台風明けのオープンウォーター講習1日目",
+    "date": "2026-08-06",
+    "matched": "アカエイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-umiushi-season-2026-05-06/",
+    "title": "5月の三浦はウミウシが豊作｜10年以上前の顔ぶれが戻ってきた海の記録",
+    "date": "2026-05-05",
+    "matched": "アカエイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-ray-nudibranch-2026-04-14/",
+    "title": "4月の三浦ダイビング｜迷子のアカエイと、ゴマフビロードウミウシに会えた日",
+    "date": "2026-04-14",
+    "matched": "アカエイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/drysuit-course-fundive-repeaters-20250824/",
+    "title": "真夏にドライスーツ講習を受ける理由｜三浦の8月、陸は汗だく水中は快適",
+    "date": "2025-08-24",
+    "matched": "アカエイ"
+   }
+  ],
+  "takanohadai": [],
+  "murehatatatedai": [
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-swim-fin-2026-09-12/",
+    "title": "三浦のPADIオープンウォーター講習｜泳いでいた人はフィンが上手い？",
+    "date": "2026-09-12",
+    "matched": "ムレハタタテダイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certified-next-day-2026-09-09/",
+    "title": "中止の翌日に認定ダイブ｜神奈川・三浦の城ヶ島でPADIオープンウォーター講習",
+    "date": "2026-09-09",
+    "matched": "ムレハタタテダイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-equalizing-aow-2026-09-04/",
+    "title": "耳抜きはゆっくり少しずつ｜水温24度の三浦でオープンウォーター講習",
+    "date": "2026-09-04",
+    "matched": "ムレハタタテダイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-day1-trial-diving-2026-08-10/",
+    "title": "アドバンス講習1日目と体験ダイビング｜三浦でコンパスナビと浮力の練習",
+    "date": "2026-08-10",
+    "matched": "ムレハタタテダイ"
+   }
+  ],
+  "hosotenrokukebori": [
+   {
+    "url": "https://miura-diving.com/blog/miura-enriched-air-weight-check-2026-09-02/",
+    "title": "適正ウェイトの決め方｜三浦・城ヶ島でエンリッチドエア3ダイビング",
+    "date": "2026-09-02",
+    "matched": "ホソテンロクケボリ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-refresh-diving-ika-hatchout/",
+    "title": "リフレッシュダイビングの日にアオリイカの孵化を見た｜三浦の7月の海",
+    "date": "2025-07-21",
+    "matched": "ホソテンロクケボリ"
+   }
+  ],
+  "sesujiminoumiushi": [],
+  "kingyohanadai": [],
+  "semihoubou": [],
+  "tsubakuroei": [],
+  "hanaanago": [
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-report-20250409/",
+    "title": "水深2mでネコザメに会えた春の三浦ダイビング｜ウミウシも豊作の4月の海",
+    "date": "2026-04-10",
+    "matched": "ハナアナゴ"
+   }
+  ],
+  "korodaiyg": [
+   {
+    "url": "https://miura-diving.com/blog/miura-junior-open-water-family-2026-11-06/",
+    "title": "子どもは10歳からジュニアオープンウォーター｜三浦・城ヶ島で親子2組の講習",
+    "date": "2026-11-06",
+    "matched": "コロダイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-fun-diving-action-camera-2026-08-11/",
+    "title": "アクションカメラで三浦の海を撮る｜城ヶ島ファンダイビングの楽しみ方",
+    "date": "2026-08-11",
+    "matched": "コロダイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certification-buoyancy-2026-08-09/",
+    "title": "浮力コントロールが変わった最後の1本｜城ヶ島でオープンウォーター認定",
+    "date": "2026-08-09",
+    "matched": "コロダイ"
+   }
+  ],
+  "ishidai": [
+   {
+    "url": "https://miura-diving.com/blog/miyagawa-boat-jogashima-beach-4dives-2026-11-06/",
+    "title": "宮川湾で2ボート、車で10分の城ヶ島で2ビーチ｜三浦で1日4本の組み方",
+    "date": "2026-11-06",
+    "matched": "イシダイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-boat-or-beach-2026-11-06/",
+    "title": "アドバンス講習の海はボートかビーチか｜宮川湾に行けた日と城ヶ島に変えた日",
+    "date": "2026-11-06",
+    "matched": "イシダイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-jogashima-fun-trial-2026-08-22/",
+    "title": "三浦・城ヶ島でファンダイビングと体験ダイビング｜水温25度・透明度8mの一日",
+    "date": "2026-08-22",
+    "matched": "イシダイ"
+   }
+  ],
+  "nokogiriyouji": [],
+  "hotateumihebi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-enriched-air-weight-check-2026-09-02/",
+    "title": "適正ウェイトの決め方｜三浦・城ヶ島でエンリッチドエア3ダイビング",
+    "date": "2026-09-02",
+    "matched": "ホタテウミヘビ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-pool-ocean-training-2026-08-29/",
+    "title": "曇り空の三浦でオープンウォーター講習1日目｜プールから海、ホバリング",
+    "date": "2026-08-29",
+    "matched": "ホタテウミヘビ"
+   }
+  ],
+  "sakishimaminoumiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-boat-certification-2026-08-15/",
+    "title": "宮川湾のボートでアドバンス講習修了｜深場の光と浮力、水中ライトの話",
+    "date": "2026-08-15",
+    "matched": "サキシマミノウミウシ"
+   }
+  ],
+  "iboisobanagani": [],
+  "akahoshikakureebi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-beach-autumn-sealife-2026-11-06/",
+    "title": "秋の三浦、ビーチダイビングの生き物｜9月末から11月、タコとイソギンチャク畑",
+    "date": "2026-11-06",
+    "matched": "アカホシカクレエビ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-deep-boat-2026-09-05/",
+    "title": "宮川湾でアドバンス講習のディープとボート｜経験本数が少なくても早すぎない",
+    "date": "2026-09-05",
+    "matched": "アカホシカクレエビ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-boat-ikada-aow-deep-2026-08-27/",
+    "title": "筏から潜る三浦のボートダイビング｜水深20m超、透明度15mのアドバンス講習",
+    "date": "2026-08-27",
+    "matched": "アカホシカクレエビ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-boat-certification-2026-08-15/",
+    "title": "宮川湾のボートでアドバンス講習修了｜深場の光と浮力、水中ライトの話",
+    "date": "2026-08-15",
+    "matched": "アカホシカクレエビ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-certification-dive-2026-08-02/",
+    "title": "三浦でアドバンス認定ダイブ｜水面27度・水底19度、8月のサーモクライン",
+    "date": "2026-08-02",
+    "matched": "アカホシカクレエビ"
+   }
+  ],
+  "monhanashako": [],
+  "zebragani": [],
+  "aosahagiyg": [],
+  "hanaotomeumiushi": [],
+  "tentouumiushi": [],
+  "koibo-umiushi": [],
+  "yubinouhanagasa-umiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-4beach-experience-dives-2026-09-16/",
+    "title": "1日4本のビーチダイビングは4つの違う海｜三浦で経験本数を積む雨の日",
+    "date": "2026-09-16",
+    "matched": "ユビノウハナガサウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-aow-rain-bcd-2026-09-06/",
+    "title": "三浦のPADI講習、大雨でも海の中は水温24度｜BCDの空気が抜けないときのコツ",
+    "date": "2026-09-06",
+    "matched": "ユビノウハナガサウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-enriched-air-weight-check-2026-09-02/",
+    "title": "適正ウェイトの決め方｜三浦・城ヶ島でエンリッチドエア3ダイビング",
+    "date": "2026-09-02",
+    "matched": "ユビノウハナガサウミウシ"
+   }
+  ],
+  "jiboga-umiushi": [],
+  "arimo-umiushi": [],
+  "hiro-umiushi": [],
+  "mukademino-umiushi": [
+   {
+    "url": "https://miura-diving.com/blog/2026-03-16/",
+    "title": "春濁りの三浦でタツノオトシゴとムカデミノウミウシ｜3月中旬の水温と透明度",
+    "date": "2026-03-16",
+    "matched": "ムカデミノウミウシ"
+   }
+  ],
+  "midoriamamo-umiushi": [],
+  "ebisu-umiushi": [],
+  "nishikitsubamegai": [],
+  "kuromo-umiushi": [],
+  "hanamidorigai": [],
+  "setoiroumiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-2026-03-29/",
+    "title": "3月末の三浦ビーチダイビング｜ダンゴウオ探しとセトイロウミウシ、春のアメフラシ",
+    "date": "2026-03-29",
+    "matched": "セトイロウミウシ"
+   }
+  ],
+  "miyako-umiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-report-20250409/",
+    "title": "水深2mでネコザメに会えた春の三浦ダイビング｜ウミウシも豊作の4月の海",
+    "date": "2026-04-10",
+    "matched": "ミヤコウミウシ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/diving-license-kanagawa-miura-umiushi-2026-04-04/",
+    "title": "雨の日のダイビングライセンス認定ダイブ｜4月の三浦で会えたウミウシ5種",
+    "date": "2026-04-04",
+    "matched": "ミヤコウミウシ"
+   }
+  ],
+  "gonzui": [],
+  "suzumedai": [
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-certification-dive-2026-08-02/",
+    "title": "三浦でアドバンス認定ダイブ｜水面27度・水底19度、8月のサーモクライン",
+    "date": "2026-08-02",
+    "matched": "スズメダイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-snorkeling-experience-20250727/",
+    "title": "おじいちゃんと10歳の孫で三浦スノーケリング体験｜器材3点と当日の流れ",
+    "date": "2025-07-27",
+    "matched": "スズメダイ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-owd-report-20250712/",
+    "title": "友達の付き添いでファンダイビング｜三浦のライセンス講習1日目の記録",
+    "date": "2025-07-12",
+    "matched": "スズメダイ"
+   }
+  ],
+  "kagokakidai": [],
+  "hanahaze": [
+   {
+    "url": "https://miura-diving.com/blog/miura-snorkeling-experience-20250727/",
+    "title": "おじいちゃんと10歳の孫で三浦スノーケリング体験｜器材3点と当日の流れ",
+    "date": "2025-07-27",
+    "matched": "ハナハゼ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-owd-report-20250712/",
+    "title": "友達の付き添いでファンダイビング｜三浦のライセンス講習1日目の記録",
+    "date": "2025-07-12",
+    "matched": "ハナハゼ"
+   }
+  ],
+  "shimaushinoshita": [],
+  "nijiginpo": [
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certification-october-2026-11-06/",
+    "title": "城ヶ島でオープンウォーター講習｜10月前半、2日目の海で認定が3組続いた",
+    "date": "2026-11-06",
+    "matched": "ニジギンポ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-beach-autumn-sealife-2026-11-06/",
+    "title": "秋の三浦、ビーチダイビングの生き物｜9月末から11月、タコとイソギンチャク畑",
+    "date": "2026-11-06",
+    "matched": "ニジギンポ"
+   }
+  ],
+  "umisuzume": [],
+  "budai": [],
+  "mebaru": [
+   {
+    "url": "https://miura-diving.com/blog/miura-boat-buoyancy-practice-2026-08-20/",
+    "title": "浮力コントロールだけを練習する日｜宮川湾ボートで自由潜降とホバリング",
+    "date": "2026-08-20",
+    "matched": "メバル"
+   }
+  ],
+  "datehaze": [],
+  "mitsuboshikurosuzumedai": [],
+  "migimagi": [],
+  "garasuhaze": [
+   {
+    "url": "https://miura-diving.com/blog/miura-boat-ikada-aow-deep-2026-08-27/",
+    "title": "筏から潜る三浦のボートダイビング｜水深20m超、透明度15mのアドバンス講習",
+    "date": "2026-08-27",
+    "matched": "ガラスハゼ"
+   }
+  ],
+  "kokeginpo": [
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certification-october-2026-11-06/",
+    "title": "城ヶ島でオープンウォーター講習｜10月前半、2日目の海で認定が3組続いた",
+    "date": "2026-11-06",
+    "matched": "コケギンポ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-4beach-experience-dives-2026-09-16/",
+    "title": "1日4本のビーチダイビングは4つの違う海｜三浦で経験本数を積む雨の日",
+    "date": "2026-09-16",
+    "matched": "コケギンポ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certified-next-day-2026-09-09/",
+    "title": "中止の翌日に認定ダイブ｜神奈川・三浦の城ヶ島でPADIオープンウォーター講習",
+    "date": "2026-09-09",
+    "matched": "コケギンポ"
+   }
+  ],
+  "nagasakisuzumedai": [],
+  "koganeaji": [],
+  "otomehaze": [],
+  "hoshihaze": [],
+  "kaeruankou": [
+   {
+    "url": "https://miura-diving.com/blog/miyagawa-boat-jogashima-beach-4dives-2026-11-06/",
+    "title": "宮川湾で2ボート、車で10分の城ヶ島で2ビーチ｜三浦で1日4本の組み方",
+    "date": "2026-11-06",
+    "matched": "カエルアンコウ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certification-october-2026-11-06/",
+    "title": "城ヶ島でオープンウォーター講習｜10月前半、2日目の海で認定が3組続いた",
+    "date": "2026-11-06",
+    "matched": "カエルアンコウ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-junior-open-water-family-2026-11-06/",
+    "title": "子どもは10歳からジュニアオープンウォーター｜三浦・城ヶ島で親子2組の講習",
+    "date": "2026-11-06",
+    "matched": "カエルアンコウ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-beach-autumn-sealife-2026-11-06/",
+    "title": "秋の三浦、ビーチダイビングの生き物｜9月末から11月、タコとイソギンチャク畑",
+    "date": "2026-11-06",
+    "matched": "カエルアンコウ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/jogashima-drysuit-night-specialty-2026-11-06/",
+    "title": "城ヶ島でドライスーツ講習、夜はナイトダイビング｜1日に2つのスペシャルティ",
+    "date": "2026-11-06",
+    "matched": "カエルアンコウ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-deep-boat-2026-09-05/",
+    "title": "宮川湾でアドバンス講習のディープとボート｜経験本数が少なくても早すぎない",
+    "date": "2026-09-05",
+    "matched": "カエルアンコウ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-tsuzukeru-wari-2026-07-30/",
+    "title": "ダイビングが続かないのは意志の問題じゃない｜三浦の特典「つづける割」",
+    "date": "2026-07-30",
+    "matched": "カエルアンコウ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-buddy-discount-2026-08-01/",
+    "title": "友達を誘うとふたりとも得をする｜三浦のお友達紹介「バディ割」の中身",
+    "date": "2026-07-29",
+    "matched": "カエルアンコウ"
+   }
+  ],
+  "kurohoshiishimochi": [],
+  "oniokoze": [],
+  "kawahagi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-aow-boat-or-beach-2026-11-06/",
+    "title": "アドバンス講習の海はボートかビーチか｜宮川湾に行けた日と城ヶ島に変えた日",
+    "date": "2026-11-06",
+    "matched": "カワハギ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-swim-fin-2026-09-12/",
+    "title": "三浦のPADIオープンウォーター講習｜泳いでいた人はフィンが上手い？",
+    "date": "2026-09-12",
+    "matched": "カワハギ"
+   }
+  ],
+  "hirame": [
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certification-buoyancy-2026-08-30/",
+    "title": "浮力は深さで変わる｜水温23度の三浦でオープンウォーター認定ダイブ",
+    "date": "2026-08-30",
+    "matched": "ヒラメ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-boat-ikada-aow-deep-2026-08-27/",
+    "title": "筏から潜る三浦のボートダイビング｜水深20m超、透明度15mのアドバンス講習",
+    "date": "2026-08-27",
+    "matched": "ヒラメ"
+   }
+  ],
+  "kuroishimochi": [],
+  "minamiginpo": [],
+  "kamisoriuo": [],
+  "aoriika-tamago": [
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-certification-buoyancy-2026-08-30/",
+    "title": "浮力は深さで変わる｜水温23度の三浦でオープンウォーター認定ダイブ",
+    "date": "2026-08-30",
+    "matched": "アオリイカの卵"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-fun-diving-oval-squid-2026-08-17/",
+    "title": "アオリイカの卵と親イカに会えた城ヶ島｜8月のファンダイビングの記録",
+    "date": "2026-08-17",
+    "matched": "アオリイカの卵"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-refresh-diving-ika-hatchout/",
+    "title": "リフレッシュダイビングの日にアオリイカの孵化を見た｜三浦の7月の海",
+    "date": "2025-07-21",
+    "matched": "アオリイカの卵"
+   }
+  ],
+  "torafukebori": [
+   {
+    "url": "https://miura-diving.com/blog/2026-03-16/",
+    "title": "春濁りの三浦でタツノオトシゴとムカデミノウミウシ｜3月中旬の水温と透明度",
+    "date": "2026-03-16",
+    "matched": "トラフケボリ"
+   }
+  ],
+  "nekozame": [
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-umiushi-season-2026-05-06/",
+    "title": "5月の三浦はウミウシが豊作｜10年以上前の顔ぶれが戻ってきた海の記録",
+    "date": "2026-05-05",
+    "matched": "ネコザメ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-report-20250409/",
+    "title": "水深2mでネコザメに会えた春の三浦ダイビング｜ウミウシも豊作の4月の海",
+    "date": "2026-04-10",
+    "matched": "ネコザメ"
+   },
+   {
+    "url": "https://miura-diving.com/blog/miura-nekozame-spring-diving-2026/",
+    "title": "巨大ネコザメと春のウミウシ4種｜新しいBCDを慣らす3月末の三浦ダイビング",
+    "date": "2026-03-27",
+    "matched": "ネコザメ"
+   }
+  ],
+  "aoyagara": [
+   {
+    "url": "https://miura-diving.com/blog/miura-owd-chatgpt-typhoon-2026-08-06/",
+    "title": "ChatGPTに勧められて三浦へ｜台風明けのオープンウォーター講習1日目",
+    "date": "2026-08-06",
+    "matched": "アオヤガラ"
+   }
+  ],
+  "amefurashi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-2026-03-29/",
+    "title": "3月末の三浦ビーチダイビング｜ダンゴウオ探しとセトイロウミウシ、春のアメフラシ",
+    "date": "2026-03-29",
+    "matched": "アメフラシ"
+   }
+  ],
+  "gomafubirodoumiushi": [
+   {
+    "url": "https://miura-diving.com/blog/miura-diving-ray-nudibranch-2026-04-14/",
+    "title": "4月の三浦ダイビング｜迷子のアカエイと、ゴマフビロードウミウシに会えた日",
+    "date": "2026-04-14",
+    "matched": "ゴマフビロードウミウシ"
+   }
+  ]
+ }
+}
