@@ -66,6 +66,7 @@ RewriteRule ^(.*)$ https://miura-diving.com/$1 [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
 RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 
 # 本体ドメイン経由でサブドメインdocrootに直アクセスされたら本来のサブドメインへ戻す。
