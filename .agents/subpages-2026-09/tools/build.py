@@ -108,6 +108,8 @@ def head(m):
         preload = (f'  <link rel="preload" as="image" href="{hero["800"]}" imagesrcset="{hero["800"]} 800w, {hero["1600"]} 1600w" '
                    f'imagesizes="100vw" fetchpriority="high">\n')
     robots = m.get('robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1')
+    # 404 ページのように、どの URL でも出るページは canonical を付けない（META の noCanonical）
+    canonical = '' if m.get('noCanonical') else f'  <link rel="canonical" href="{url}">\n'
     return f'''<!DOCTYPE html>
 <html lang="ja">
 
@@ -118,8 +120,7 @@ def head(m):
   <title>{esc(m['title'])}</title>
   <meta name="description" content="{esc(m['desc'])}">
   <meta name="robots" content="{robots}">
-  <link rel="canonical" href="{url}">
-  <meta name="theme-color" content="#0F849E">
+{canonical}  <meta name="theme-color" content="#0F849E">
   <meta name="geo.region" content="JP-14">
   <meta name="geo.placename" content="三浦市">
 

@@ -40,6 +40,11 @@ DirectoryIndex index.html
   </IfModule>
 </If>
 
+# 2026-11-09 独自の404ページ（本体ドメインだけ。理由は RewriteRule ^404 の上の説明）
+<If "%{HTTP_HOST} =~ /^(www\.)?miura-diving\.com$/i">
+  ErrorDocument 404 /404/index.html
+</If>
+
 # 字幕（トップのPV・2026-09-27）。nginx/Apache の既定の型表に無いことがあるので明示する
 AddType text/vtt .vtt
 AddType audio/mp4 .m4a
@@ -61,6 +66,7 @@ RewriteRule ^(.*)$ https://miura-diving.com/$1 [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
 RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 
 # 本体ドメイン経由でサブドメインdocrootに直アクセスされたら本来のサブドメインへ戻す。
@@ -68,6 +74,16 @@ RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 # 別オリジンでログブックが開くとlocalStorageが空に見える事故の防止も兼ねる。
 RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
 RewriteRule ^logbook\.miura-diving\.com(?:/(.*))?$ https://logbook.miura-diving.com/$1 [R=302,L]
+
+# 2026-11-09 SEO：独自の404ページ（/404/index.html・noindex・組み立て元は .agents/subpages-2026-09/pages/404.html）。
+# - 本体ドメインのときだけ効かせる（下の <If>）。logbook・app のサブドメインの公開フォルダには /404/ が無いので、
+#   効かせると「エラーページも見つからない」二重の404になる。サブドメインは今までどおりサーバーの既定の404のまま。
+# - ブログ（/blog/）には独自の404が無いので、ブログの無いURLもこのページになる（ステータスは404のまま）。
+# - /404/ を直接開いたときも 200 にしない（ソフト404の防止）。ErrorDocument からの内部の呼び出し（REDIRECT_STATUS あり）は通す。
+# - ErrorDocument は 404/index.html を直接指す（ディレクトリの index 探しを挟まない）。
+RewriteCond %{HTTP_HOST} ^(www\.)?miura-diving\.com$ [NC]
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^404(/(index\.html)?)?$ - [R=404,L]
 
 # 2026-10-10 ブログの重複・古い解説記事を本体の対応ページへ統合（301）。
 # 現場レポートは対象外。旧拠点や期限切れの料金・夏割が本文に残る記事、本体ページと同じ検索意図の記事だけ。
