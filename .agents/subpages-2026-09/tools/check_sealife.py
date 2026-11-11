@@ -184,8 +184,8 @@ def check_page(c, titles, descs, ng, warn, stats, all_c):
     for k in ('name_ja', 'name_sci', 'description', 'beginner_tips', 'log_point', 'size', 'depth', 'spot'):
         if c[k] not in plain:
             ng.append(f'{cid}: {k} がページに無い')
-    if f'/contact/?from=sea-life-{cid}' not in s:
-        ng.append(f'{cid}: フォームの from が sea-life-<id> でない')
+    if '/contact/?from=sea-life-page' not in s:
+        ng.append(f'{cid}: フォームの from が sea-life-page でない')
     if s.count('<li><a href="https://miura-diving.com/blog/') and s.find('<details class="sl-blog-more"') == -1 and s.count('<li><a href="https://miura-diving.com/blog/') > 3:
         ng.append(f'{cid}: ブログの記事が4本以上むき出し')
     main = re.search(r'<main id="main">(.*?)</main>', s, flags=re.S).group(1)

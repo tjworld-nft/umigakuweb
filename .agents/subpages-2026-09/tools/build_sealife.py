@@ -129,16 +129,40 @@ def short_desc(s, n=130):
     return cut[:k + 1] if k >= 60 else cut[:n - 1] + '…'
 
 
-def related(c, all_c):
-    """同じ分類から最大6種（json の並びで近い順）。4種に満たなければ、同じ見られる所の生き物で埋める。"""
+def _fill_of(c, all_c, n_same):
     idx = {x['id']: i for i, x in enumerate(all_c)}
     me = idx[c['id']]
-    same = sorted((x for x in all_c if x['category'] == c['category'] and x['id'] != c['id']),
-                  key=lambda x: (x.get('family') != c.get('family'), abs(idx[x['id']] - me), idx[x['id']]))[:6]
-    fill = []
-    if len(same) < 4:
-        fill = sorted((x for x in all_c if x['category'] != c['category'] and x['spot'] == c['spot']),
-                      key=lambda x: (abs(idx[x['id']] - me), idx[x['id']]))[:6 - len(same)]
+    if n_same >= 4:
+        return []
+    return sorted((x for x in all_c if x['category'] != c['category'] and x['spot'] == c['spot']),
+                  key=lambda x: (abs(idx[x['id']] - me), idx[x['id']]))[:6 - n_same]
+
+
+def related(c, all_c):
+    """同じ分類の中で輪になるように選ぶ（json の並びで前後3種ずつ・最大6種）。
+    どのページも同じ分類の中から同じ数だけ張られる（2026-11-12：張られ方の片寄りをなくす）。
+    同じ分類が4種に満たなければ、同じ見られる所の生き物で埋める。"""
+    idx = {x['id']: i for i, x in enumerate(all_c)}
+    me = idx[c['id']]
+    group = [x for x in all_c if x['category'] == c['category']]
+    n = len(group)
+    pos = next(i for i, x in enumerate(group) if x['id'] == c['id'])
+    same = []
+    if n - 1 <= 6:
+        same = [group[(pos + k) % n] for k in range(1, n)]
+    else:
+        for k in (1, -1, 2, -2, 3, -3):
+            same.append(group[(pos + k) % n])
+    fill = _fill_of(c, all_c, len(same))
+    # 小さな分類の種から張られたら、こちらからも張り返す（小さな分類の種が張られずに浮かないように）
+    have = {x['id'] for x in same + fill} | {c['id']}
+    for x in all_c:
+        if x['id'] in have or x['category'] == c['category']:
+            continue
+        n_x = sum(1 for y in all_c if y['category'] == x['category']) - 1
+        if any(y['id'] == c['id'] for y in _fill_of(x, all_c, min(n_x, 6))):
+            fill.append(x)
+            have.add(x['id'])
     return same, fill
 
 
@@ -193,7 +217,7 @@ def build_one(c, all_c, posts):
     ld = json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False, indent=2)
 
     m = {
-        'path': path, 'title': title, 'desc': desc, 'from': f'sea-life-{cid}', 'og': hero['src'],
+        'path': path, 'title': title, 'desc': desc, 'from': 'sea-life-page', 'og': hero['src'],
         'ogAlt': hero['alt'], 'ogTitle': f'{name}｜三浦の海の生き物図鑑',
         'ogType': 'article',
         '_ld': '\n'.join('  ' + l for l in ld.split('\n')),
