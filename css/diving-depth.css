@@ -1,0 +1,77 @@
+/* /diving-depth/ だけの見た目（page.css の部品で足りない所だけ）2026-11-14 */
+
+/* 深さの物差し：図＋要点3つ。PCは横並び、スマホは縦 */
+.dp-board { display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: 1.6rem; align-items: start; }
+.dp-fig { margin: 0; background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 1rem .8rem .9rem; }
+.dp-ruler { display: block; width: 100%; height: auto; font-family: var(--ff-body); }
+.dp-ruler .dp-h { font-size: 14px; font-weight: 700; fill: var(--ink); }
+.dp-ruler .dp-s { font-size: 12px; fill: #4A6573; }
+.dp-ruler .dp-n { font-size: 13px; font-weight: 700; fill: var(--ink); font-family: var(--ff-accent); }
+.dp-ruler .dp-p { font-size: 14px; font-weight: 700; fill: #0F766E; }
+.dp-ruler .dp-l { font-size: 14px; font-weight: 700; }
+.dp-ruler .dp-l2 { font-size: 13px; font-weight: 700; }
+.dp-fig figcaption { font-size: .8rem; line-height: 1.7; color: var(--text-sub); margin-top: .6rem; padding: 0 .3rem; }
+.dp-keys { display: grid; gap: .9rem; }
+.dp-key { background: #fff; border: 1px solid var(--border); border-left: 5px solid var(--teal-ink); border-radius: 16px; padding: 1rem 1.15rem; }
+.dp-key h3 { font-size: 1.08rem; font-weight: 700; color: var(--ink); margin-bottom: .35rem; line-height: 1.45; }
+.dp-key p { font-size: .95rem; line-height: 1.8; }
+
+/* 体と空気：6つのカード（写真カードを1枚まぜる） */
+.dp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.dp-card { position: relative; margin: 0; background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 1.1rem 1.15rem 1.15rem; }
+.dp-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--ink); line-height: 1.45; margin: 0 0 .45rem 2.3rem; min-height: 1.9rem; }
+.dp-card p { font-size: .95rem; line-height: 1.8; }
+.dp-card__no { position: absolute; left: 1.05rem; top: 1.05rem; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--teal-ink); color: #fff; font-family: var(--ff-accent); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-size: .9rem; }
+.dp-card--photo { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.dp-card--photo img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.dp-card--photo figcaption { padding: .85rem 1.1rem 1rem; font-size: .9rem; line-height: 1.75; }
+.dp-card--photo figcaption b { display: block; color: var(--ink); font-size: 1.02rem; margin-bottom: .2rem; }
+.dp-mini { width: 100%; border-collapse: collapse; margin-top: .7rem; font-size: .9rem; }
+.dp-mini caption { text-align: left; font-size: .8rem; color: var(--text-sub); padding-bottom: .3rem; }
+.dp-mini th, .dp-mini td { padding: .35rem .5rem; border-top: 1px solid var(--border); text-align: left; }
+.dp-mini td { font-family: var(--ff-accent); font-weight: 700; color: var(--coral-ink); text-align: right; }
+
+/* ダイブコンピューターの写真＋説明 */
+.dp-pc { margin-top: 1.6rem; }
+.dp-pc__t { font-size: 1.2rem; font-weight: 700; color: var(--ink); line-height: 1.5; margin-bottom: .5rem; }
+
+/* 資格の表：深さを強く */
+.dp-tbl td b { font-family: var(--ff-accent); color: var(--coral-ink); font-size: 1.05rem; }
+
+/* 宮川湾の地図は縦長なので高さをおさえる */
+.dp-map img { width: 100%; height: auto; max-height: 560px; object-fit: contain; background: #F4F9FB; border-radius: 18px; }
+
+/* 次に読む：6枚（PC 3列） */
+.dp-reads { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* ページの途中の小さな案内（padi.css と同じ形） */
+.mid-cta { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem; margin-top: 1.6rem; background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 1.1rem 1.2rem; }
+.mid-cta p { flex: 1 1 260px; font-size: 1.02rem; line-height: 1.75; color: var(--ink); font-weight: 700; }
+.mid-cta p small { display: block; font-weight: 500; color: var(--text-sub); font-size: .82rem; }
+.mid-cta__btns { display: flex; flex-wrap: wrap; gap: .6rem; }
+.mid-cta__btns a { min-height: 48px; }
+
+@media (max-width: 999px) {
+  .dp-board { grid-template-columns: 1fr; }
+  .dp-fig { max-width: 560px; margin: 0 auto; width: 100%; }
+  .dp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dp-reads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .dp-fig { padding: .7rem .15rem .8rem; border-radius: 18px; }
+  .dp-fig figcaption { padding: 0 .6rem; }
+  /* 図はスマホで約0.93倍に縮むので、小さい文字を大きめに指定して12px以上に */
+  .dp-ruler .dp-s { font-size: 13.5px; }
+  .dp-ruler .dp-l2 { font-size: 14px; }
+  .dp-ruler .dp-n { font-size: 14px; }
+  .dp-grid { grid-template-columns: 1fr; }
+  .dp-reads { grid-template-columns: 1fr; }
+  .mid-cta__btns, .mid-cta__btns a { width: 100%; justify-content: center; }
+  /* 資格の表：スマホは「深さ｜年齢・条件」の2列＋三浦 海の学校を下の段に */
+  .dp-tbl.tbl--stack tr { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: .45rem .8rem; }
+  .dp-tbl.tbl--stack td:last-child { grid-column: 1 / -1; border-top: 1px dashed var(--border); padding-top: .45rem; }
+  .dp-tbl.tbl--stack td::before { font-size: .75rem; }
+}
+
+/* 図の文字は線の上でも読めるよう、白いふちを付ける */
+.dp-ruler text { paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
