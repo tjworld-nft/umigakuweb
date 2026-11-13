@@ -1,0 +1,29 @@
+[
+  {
+    "@type": "Article",
+    "@id": "https://miura-diving.com/diving-depth/#article",
+    "headline": "ダイビングは何メートルまで潜れる？深さで変わる水圧・色・空気",
+    "description": "趣味のダイビングで潜れる深さは、PADIの資格によって最大18m・30m・40m。水深10mで約2気圧になり、空気の減り方・浮力・見える色も深さで変わることを、縦の物差しの図で説明します。",
+    "inLanguage": "ja",
+    "url": "https://miura-diving.com/diving-depth/",
+    "image": "https://miura-diving.com/image/og-diving-depth.jpg",
+    "dateModified": "2026-11-14",
+    "datePublished": "2026-11-14",
+    "mainEntityOfPage": {"@id": "https://miura-diving.com/diving-depth/#webpage"},
+    "author": {"@id": "https://miura-diving.com/instructor/#person"},
+    "reviewedBy": {"@id": "https://miura-diving.com/instructor/#person"},
+    "publisher": {"@id": "https://miura-diving.com/#org"},
+    "about": [
+      {"@type": "Thing", "name": "スキューバダイビングの深さ"},
+      {"@type": "Thing", "name": "水圧"}
+    ],
+    "citation": [
+      "https://www.padi.com/courses/open-water-diver",
+      "https://www.padi.com/courses/advanced-open-water",
+      "https://www.padi.com/courses/deep-diver",
+      "https://www.padi.co.jp/scuba-diving/padi-courses/course-catalog/junior/",
+      "https://www.padi.co.jp/scuba-diving/padi-courses/course-catalog/discover-scuba-diving/",
+      "https://blog.padi.com/the-golden-rules-of-scuba-diving/"
+    ]
+  }
+]

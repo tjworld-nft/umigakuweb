@@ -81,6 +81,13 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://miura-diving.com/diving-depth/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- お友達紹介キャンペーン -->
   <url>
     <loc>https://miura-diving.com/buddy/</loc>
