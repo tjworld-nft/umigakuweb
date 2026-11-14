@@ -658,3 +658,66 @@ body.mv-open { overflow: hidden; }
   max-width: 720px;
   margin: 0 auto 1.6rem;
 }
+
+/* ============================================================
+   2026-11 お客様目線の点検
+   ・各話：ヘッダーのすぐ下から、まんがを読めるように
+   ・薄くて読みにくかった文字を、読める濃さと大きさに
+   ・一覧：スマホの紹介文は3行まで／はじめての方向けの3話
+   ============================================================ */
+/* 見た目の順だけを入れ替える（HTMLの順は「要約→まんが」のまま＝検索と読み上げは要約が先）。
+   まんが → 期間の注記 → 読み終わったあとの案内 → 動画版 → 要約 → 監修 → つづけて読む */
+.container:has(> .mr-pages) { display: flex; flex-direction: column; }
+.container:has(> .mr-pages) > * { order: 6; }
+.container:has(> .mr-pages) > .mr-hint { order: 1; }
+.container:has(> .mr-pages) > .mr-pages { order: 2; }
+.container:has(> .mr-pages) > .mr-note { order: 3; }
+.container:has(> .mr-pages) > .mr-shots { order: 3; }
+.container:has(> .mr-pages) > .mr-end { order: 4; }
+.container:has(> .mr-pages) > .mr-video { order: 5; }
+.container:has(> .mr-pages) > .mr-summary { order: 6; margin-top: clamp(2rem, 5vw, 3rem); margin-bottom: 0; width: 100%; }
+.container:has(> .mr-pages) > .mr-credit { order: 7; }
+.container:has(> .mr-pages) > .mr-more { order: 8; }
+.container:has(> .mr-pages) > .mr-hint { margin-top: .2rem; }
+
+/* 文字の濃さと大きさ */
+.manga-card__meta, .mr-hint, .mr-video__cap, .mr-credit, .mr-more__card span { color: var(--text-sub); }
+.mr-hint, .mr-video__cap, .mr-credit, .mr-note { font-size: .8rem; }
+.manga-card__meta, .mr-more__card span { font-size: .78rem; }
+.manga-card__no, .mr-page__no, .manga-card__tag, .mr-head__no, .manga-hero__label { font-size: .75rem; }
+.manga-card__tag { color: #0F766E; }
+.manga-card__tag--coral { color: #B8245A; }
+.manga-card__tag--sky { color: #156985; }
+.manga-card__go { color: #D12F6A; }
+.manga-hero__stat span { font-size: .78rem; color: rgba(255, 255, 255, .88); }
+.mr-meta { font-size: .8rem; color: rgba(255, 255, 255, .9); }
+.mr-credit a, .mr-more__lead a { color: #0F766E; }
+@media (max-width: 560px) {
+  .manga-card__msg { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+}
+
+/* 一覧：はじめての方は、この3話から */
+.mh-start {
+  max-width: 880px; margin: 0 auto clamp(2rem, 5vw, 3rem);
+  background: var(--white); border: 1px solid var(--paper-line); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm); padding: clamp(1.1rem, 3vw, 1.7rem);
+}
+.mh-start__title { font-size: clamp(1.05rem, 3.2vw, 1.25rem); font-weight: 900; color: var(--ink); text-align: center; margin: 0 0 .35rem; line-height: 1.5; }
+.mh-start__lead { text-align: center; font-size: .84rem; line-height: 1.8; color: var(--text-sub); margin: 0 0 1.1rem; }
+.mh-start__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.65rem, 2.4vw, 1.3rem); }
+.mh-start__grid a { display: block; text-decoration: none; color: inherit; }
+.mh-start__grid img {
+  display: block; width: 100%; height: auto; aspect-ratio: 896 / 1080; object-fit: cover; object-position: top center;
+  border-radius: 10px; border: 1px solid var(--paper-line); background: var(--white);
+  box-shadow: 0 6px 18px rgba(27, 42, 51, .12); transition: transform var(--ease), box-shadow var(--ease);
+}
+.mh-start__grid a:hover img, .mh-start__grid a:focus-visible img { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(27, 42, 51, .18); }
+.mh-start__no {
+  display: inline-block; margin-top: .65rem; font-family: var(--ff-accent); font-size: .75rem; font-weight: 700; letter-spacing: .04em;
+  color: var(--white); background: var(--ink); border-radius: 999px; padding: .14rem .65rem; line-height: 1.6;
+}
+.mh-start__grid b { display: block; margin-top: .3rem; font-size: clamp(.8rem, 2.6vw, .98rem); font-weight: 800; line-height: 1.5; color: var(--ink); }
+.mh-start__grid small { display: block; margin-top: .2rem; font-size: .75rem; line-height: 1.5; color: var(--text-sub); }
+@media (min-width: 700px) {
+  .mh-start__grid { max-width: 640px; margin: 0 auto; }
+}

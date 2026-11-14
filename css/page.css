@@ -819,10 +819,39 @@ a.place:hover { color: #fff; }
 .fold > summary small { font-size: .78rem; font-weight: 700; color: var(--text-sub); }
 .fold__body { padding: 0 1.2rem 1.2rem; }
 .fold__body > :first-child { margin-top: 0; }
-/* よくある質問の答えの下の「この続きをLINEで聞く」（js/main.js が足す） */
-.faq-ask { display: inline-flex; align-items: center; gap: .45rem; margin-top: .9rem; padding: .5rem .95rem; min-height: 44px; border-radius: 999px; border: 1.5px solid #9AD3AE; background: #F3FBF5; color: var(--line) !important; font-size: .86rem; font-weight: 700; line-height: 1.3; text-decoration: none !important; }
-.faq-ask:hover { background: #E4F6E9; color: var(--line-hover) !important; }
-.faq-ask svg { width: 1.15rem; height: 1.15rem; fill: var(--line-brand); flex: none; }
+/* （よくある質問の答えの下の「この続きを、LINEで聞く」は css/style.css に置いた。トップでも使うため） */
+/* 本文の途中の「次の一歩」の中の、フォームへの小さなリンク */
+.next-step .link-arrow { font-size: .9rem; min-height: 44px; }
+/* カードの見出しの中のリンク（目的のカードから、各コースの説明へ） */
+.card h3 a:not([class]) { color: inherit; text-decoration: underline; text-decoration-color: rgba(15, 118, 110, .55); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.card h3 a:not([class]):hover { color: var(--teal-ink); }
+/* 時刻の表（3列のまま見せる：すること／午前／午後） */
+@media (max-width: 640px) {
+  .tbl-wrap:has(.tbl--times) { min-width: 0; }
+  .tbl--times { font-size: .84rem; table-layout: fixed; }
+  .tbl--times th, .tbl--times td { padding: .6rem .45rem; }
+  .tbl--times thead th:first-child { width: 40%; }
+  .tbl--times .num { font-size: .8rem; white-space: normal; }
+}
+/* 相談帯の下の4つの情報：スマホでは左そろえ（2行になっても、アイコンと文がずれない） */
+@media (max-width: 640px) {
+  .ask-info { display: grid; justify-content: center; gap: .45rem; }
+  .ask-info > span { max-width: 100%; align-items: flex-start; text-align: left; line-height: 1.6; }
+  .ask-info svg { flex: none; margin-top: .3em; }
+}
+/* 数字のカードが3つのとき：2列になる幅では、最後の1つを横いっぱいに（1つだけ左に残さない） */
+@media (max-width: 420px) {
+  .kpis > .kpi:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+/* ステップの中のチェック（地域ページの「5つのチェック」など）：答えを1つずつ、箱に分ける */
+.step__body .checks { margin-top: .7rem; gap: .45rem; }
+.step__body .checks li { background: var(--bg-soft); border-radius: 12px; padding: .7rem .8rem .7rem 2.35rem; }
+.step__body .checks li::before { left: .75rem; top: .95rem; }
+.sec--soft .step__body .checks li { background: var(--bg-soft); }
+@media (max-width: 480px) { .step__body { padding: 1rem .95rem; } }
+/* 1文字だけの折り返しを減らす */
+.sub :is(legend, .perk b, .deal h3, .next-step p, .fold > summary) { word-break: auto-phrase; text-wrap: balance; }
+
 
 /* ================================================================
    動きを減らす設定・印刷

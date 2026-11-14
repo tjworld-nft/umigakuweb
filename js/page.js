@@ -41,6 +41,7 @@
   /* ==========================================================================
      1. 期限つきの表示（夏割など）
         data-expires="YYYY-MM-DD" … その日（日本時間）になったら外す
+        data-eta-days="N" … きょうからN日あとを「◯月上旬ごろ」の形で入れる
         data-deadline="YYYY-MM-DD" の中の .days に「あと◯日」を入れる
      ========================================================================== */
   (function expire() {
@@ -55,6 +56,15 @@
       var slot = $('.days', w);
       if (days < 0) { w.hidden = true; return; }
       if (slot) slot.textContent = days === 0 ? '本日まで' : 'あと' + days + '日';
+    });
+    /* data-eta-days="21" … きょう（日本時間）からその日数あとを「◯月上旬ごろ」の形で入れる（納期の目安など）。
+       JSが無いときは、HTMLに書いてある文（「約3週間後」など）がそのまま出る */
+    $$('[data-eta-days]').forEach(function (el) {
+      var n = parseInt(el.getAttribute('data-eta-days'), 10);
+      if (!(n > 0)) return;
+      var d = new Date(t.getFullYear(), t.getMonth(), t.getDate() + n);
+      var day = d.getDate();
+      el.textContent = (d.getMonth() + 1) + '月' + (day <= 10 ? '上旬' : day <= 20 ? '中旬' : '下旬') + 'ごろ';
     });
   })();
 
@@ -106,6 +116,8 @@
     if (!target) return;
     e.preventDefault();
     e.stopPropagation();
+    /* たたんである所（details）の中へ飛ぶときは、先にひらく */
+    for (var d = target.closest('details:not([open])'); d; d = d.parentElement ? d.parentElement.closest('details:not([open])') : null) d.open = true;
     measure();
     target.scrollIntoView({ behavior: REDUCE ? 'auto' : 'smooth', block: 'start' });
     if (history.replaceState) history.replaceState(null, '', '#' + id);

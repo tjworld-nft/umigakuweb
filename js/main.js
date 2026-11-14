@@ -75,6 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
       try { target = document.querySelector(id); } catch (err) { return; }
       if (target) {
         e.preventDefault();
+        /* たたんである所（details）の中へ飛ぶときは、先にひらく */
+        for (let d = target.closest('details:not([open])'); d; d = d.parentElement ? d.parentElement.closest('details:not([open])') : null) d.open = true;
         const offset = header ? header.offsetHeight : 0;
         const top = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: REDUCE ? 'auto' : 'smooth' });
@@ -126,6 +128,8 @@ document.addEventListener('DOMContentLoaded', function () {
   function askTrigger(a) {
     if (!a || a.getAttribute('data-ask') === 'off') return false;
     if (a.hasAttribute('data-ask')) return true;
+    /* ヘッダーの「予約・相談」（行き先がページ最後の相談帯のもの）。ひらけなければ、今までどおり相談帯へ進む */
+    if (a.classList.contains('nav-cta') && a.getAttribute('href') === '#contact') return true;
     /* 下の3つは、行き先がLINEのボタンだけ（アプリ案内ページの下部バーはApp Storeへのリンク） */
     if (!/^https:\/\/(lin\.ee|line\.me)\//.test(a.getAttribute('href') || '')) return false;
     if (a.closest('.mobile-cta-bar') && a.classList.contains('cta-line')) return true;
@@ -156,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
     else if (ASK_RE.test(own)) ctx.msg = own;
     else if (ASK_RE.test(page)) ctx.msg = page;
     if (!ctx.from) ctx.from = (window.location.pathname.replace(/^\/|\/$/g, '').split('/')[0] || 'home');
-    var where = a.closest('.mobile-cta-bar') ? 'bar' : a.closest('.mobile-nav') ? 'nav'
+    var where = a.closest('.mobile-cta-bar') ? 'bar' : a.closest('.mobile-nav, .site-header') ? 'nav'
       : a.closest('.cond-action') ? 'cond' : a.closest('.ph, .hero') ? 'hero' : 'btn';
     ctx.from += '-' + where;
     return ctx;
@@ -204,12 +208,39 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ==========================================================================
+     よくある質問 — 答えをひらいたら、その下に「この続きを、LINEで聞く」を1つ足す。
+     押すと、その質問を書いた文面をコピーしてLINEをひらく（コピーは page.js / home.js の
+     data-line-msg の仕組み。どちらも無いページでは、LINEがそのままひらく）。
+     ========================================================================== */
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d || !d.open || !d.matches || !d.matches('details.faq-item') || d.querySelector('.faq-ask')) return;
+    var ans = d.querySelector('.faq-answer');
+    var sum = d.querySelector('summary');
+    if (!ans || !sum) return;
+    var q = (sum.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!q) return;
+    var a = document.createElement('a');
+    a.className = 'faq-ask';
+    a.href = 'https://lin.ee/kK3d5p2';
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.setAttribute('data-line-msg', '「' + q + '」について、もう少しくわしく聞きたいです。');
+    a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.5 4.8 3.8 6.2-.2.9-.7 2.3-1.6 3.4 1.9-.2 3.7-1 5-2 .9.2 1.8.4 2.8.4 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>この続きを、LINEで聞く';
+    var p = document.createElement('p');
+    p.className = 'faq-ask-row';
+    p.appendChild(a);
+    ans.appendChild(p);
+  }, true);
+
+  /* ==========================================================================
      水の輪 — ボタンやカードを押したところから、水面の輪がひろがる
      ========================================================================== */
   if (!REDUCE) {
     var RING = '.btn-line, .btn, .btn-ink, .btn-deep, .btn-glass, .cta-line, .cta-form, .nav-cta, .ask-form-btn, ' +
       '.course, .finder-tab, .perk, .sc-card, .sc-feature, .hero-campaign-pill, .film-stage, .hero-play, .wf-more, ' +
-      '.uask__btn, .uask-chip, .uask-date, .cond-card, .lnav__list a, .chips-pick label, .mr-nav a, .manga-card';
+      '.uask__btn, .uask-chip, .uask-date, .cond-card, .lnav__list a, .chips-pick label, .mr-nav a, .manga-card, ' +
+      '.faq-ask, .next-step a, .mr-end__btns a, .mr-more__card, .mh-start a';
     document.addEventListener('pointerdown', function (e) {
       if (e.button) return;
       var t = e.target.closest && e.target.closest(RING);

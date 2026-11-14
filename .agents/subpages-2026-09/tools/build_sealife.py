@@ -28,7 +28,7 @@ SITE = B.SITE
 BASE = B.BASE
 LINE = B.LINE
 MODIFIED = '2026-11-07'
-SL_CSS_V = '20261107'
+SL_CSS_V = '20261114'
 FISH = os.path.join(SITE, 'image', 'fish')
 WEB = os.path.join(FISH, 'web')
 MENTIONS = os.path.join(HERE, 'sealife-mentions.json')  # 種ごとの照合結果だけ（本文なし・リポジトリに入れてよい）
@@ -239,6 +239,11 @@ def build_one(c, all_c, posts):
     out += B.header('sea-life', '#contact').replace('{FROM}', m['from'])
 
     seasons = '・'.join(c['season'])
+    # めずらしさ（creatures.json の rarity：1＝よく見る 〜 5＝めったに会えない。一覧のカードの星と同じ）
+    r = c.get('rarity')
+    rarity_row = (f'<tr><th scope="row">めずらしさ</th><td><span role="img" aria-label="5段階の{r}" style="color:#C98A00;letter-spacing:-1px">'
+                  f'{"★" * r}{"☆" * (5 - r)}</span> <small>三浦の海での目安（★が多いほど、会える機会が少ない）</small></td></tr>'
+                  if isinstance(r, int) and 1 <= r <= 5 else '')
     fam_row = f'<tr><th scope="row">科</th><td>{esc(c["family"])}</td></tr>' if c.get('family') else ''
     en_row = (f'<tr><th scope="row">英名</th><td>{esc(c["name_en"])}</td></tr>'
               if show_en else '')
@@ -286,7 +291,6 @@ def build_one(c, all_c, posts):
         <div class="sl-about{' sl-about--photos' if len(photos) > 1 else ''}">
 {photos_block}          <div class="sl-facts">
             <h2 id="about-title" class="h-title">{esc(name)}の<span class="nw">図鑑の記録</span></h2>
-            <p class="sl-desc">{esc(c['description'])}</p>
             <table class="tbl tbl--compact sl-tbl">
               <caption class="sr-only">{esc(name)}の分類・大きさ・水深・季節・見られる所</caption>
               <tbody>
@@ -297,6 +301,7 @@ def build_one(c, all_c, posts):
                 <tr><th scope="row">大きさ</th><td>{esc(c['size'])}</td></tr>
                 <tr><th scope="row">水深</th><td>{esc(c['depth'])}</td></tr>
                 <tr><th scope="row">季節</th><td>{esc(seasons)}</td></tr>
+                {rarity_row}
                 <tr><th scope="row">見られる所</th><td>{esc(c['spot'])}</td></tr>
               </tbody>
             </table>
