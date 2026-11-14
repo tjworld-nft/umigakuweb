@@ -2,7 +2,7 @@
 
 /* ヒーロー：写真の右にダイバー。文字は左。最初の画面に h1・案内・6つの飛び先 */
 .gl-ph { min-height: clamp(520px, 78svh, 720px); padding-bottom: clamp(3.5rem, 7vw, 5rem); }
-.gl-ph h1 small { font-size: .46em; }
+.gl-ph h1 small { font-size: max(.46em, .75rem); }
 .gl-lead { margin-bottom: 1.2rem; }
 .gl-jump { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem; max-width: 560px; }
 .gl-jump a {

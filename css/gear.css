@@ -266,7 +266,7 @@
 }
 @media (max-width: 360px) {
   .gear-models li > span { font-size: .75rem; }
-  .gear-models li small { font-size: .69rem; letter-spacing: 0; }
+  .gear-models li small { font-size: .75rem; letter-spacing: 0; }
   .gear-models li:only-child img { flex-basis: 112px; width: 112px; }
 }
 

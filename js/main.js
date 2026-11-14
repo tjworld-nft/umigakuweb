@@ -7,7 +7,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  var ASSET_V = '20261114';
+  var ASSET_V = '2026111402';
   var REDUCE = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ==========================================================================

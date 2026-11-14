@@ -56,7 +56,7 @@
 .manga-hero__label {
   display: inline-block;
   font-family: var(--ff-accent);
-  font-size: .72rem;
+  font-size: .75rem;
   letter-spacing: .18em;
   font-weight: 700;
   background: rgba(255,255,255,.16);
@@ -96,7 +96,7 @@
   color: var(--yellow);
 }
 .manga-hero__stat span {
-  font-size: .74rem;
+  font-size: .75rem;
   color: rgba(255,255,255,.75);
 }
 
@@ -178,7 +178,7 @@
   top: 0;
   left: 0;
   font-family: var(--ff-accent);
-  font-size: .68rem;
+  font-size: .75rem;
   font-weight: 700;
   letter-spacing: .06em;
   color: var(--white);
@@ -189,7 +189,7 @@
 .manga-card__body { min-width: 0; }
 .manga-card__tag {
   display: inline-block;
-  font-size: .7rem;
+  font-size: .75rem;
   font-weight: 700;
   color: var(--teal-dark);
   background: var(--bg-soft);
@@ -227,7 +227,7 @@
   display: flex;
   gap: .9rem;
   flex-wrap: wrap;
-  font-size: .74rem;
+  font-size: .75rem;
   color: var(--text-light);
   margin-bottom: .9rem;
 }
@@ -295,7 +295,7 @@
 .mr-head__no {
   display: inline-block;
   font-family: var(--ff-accent);
-  font-size: .7rem;
+  font-size: .75rem;
   letter-spacing: .16em;
   font-weight: 700;
   background: rgba(255,255,255,.16);
@@ -407,7 +407,7 @@
   right: .55rem;
   bottom: .55rem;
   font-family: var(--ff-accent);
-  font-size: .68rem;
+  font-size: .75rem;
   font-weight: 700;
   color: var(--white);
   background: rgba(27,42,51,.62);
@@ -494,7 +494,7 @@
   border: 1px solid var(--paper-line);
 }
 .mr-more__card b { display: block; font-size: .85rem; font-weight: 800; color: var(--ink); line-height: 1.5; margin-bottom: .2rem; }
-.mr-more__card span { font-size: .72rem; color: var(--text-light); }
+.mr-more__card span { font-size: .75rem; color: var(--text-light); }
 
 /* ============================================================
    拡大ビューア
@@ -573,7 +573,7 @@
   top: calc(.9rem + env(safe-area-inset-top));
   left: 50%;
   transform: translateX(-50%);
-  font-size: .72rem;
+  font-size: .75rem;
   color: rgba(255,255,255,.62);
   pointer-events: none;
   transition: opacity .4s;
@@ -613,7 +613,7 @@ body.mv-open { overflow: hidden; }
   box-shadow: 0 10px 30px rgba(13, 26, 33, .25);
 }
 .mr-video__cap {
-  font-size: .74rem;
+  font-size: .75rem;
   color: var(--text-light);
   margin-top: .7rem;
 }
