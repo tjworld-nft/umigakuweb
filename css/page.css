@@ -162,6 +162,8 @@ html:not(.js) .reveal { opacity: 1; transform: none; }
 .crumbs li + li::before { content: "›"; margin-right: .5rem; opacity: .7; }
 .crumbs a { color: rgba(255, 255, 255, .9); text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .45); text-underline-offset: 3px; }
 .crumbs a:hover { color: #fff; }
+/* パンくずのリンクは、見た目はそのままで、指で押せる範囲だけ広げる */
+.crumbs a { display: inline-block; padding: .55rem .3rem; margin: -.55rem -.3rem; }
 .crumbs [aria-current] { font-weight: 700; color: #fff; }
 .ph__eyebrow {
   display: inline-flex; flex-wrap: wrap; gap: .2rem .6rem; align-items: center;
