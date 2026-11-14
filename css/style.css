@@ -1378,3 +1378,54 @@ body.is-ocean .hero-bubble { display: none; }
 @media (max-width: 640px) {
   .manga-links { padding: 1rem 1rem .9rem; }
 }
+
+/* ================================================================
+   FLOW — ページをまたぐ動きと、押したときの手ごたえ（2026-11）
+   ・対応していないブラウザでは何も起きない（今までどおり）。
+   ・「動きを減らす」設定の人には出さない。
+   ================================================================ */
+
+/* ---------- ページからページへ：前のページが水面へ遠ざかり、次のページが下から上がってくる ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+.site-header { view-transition-name: site-header; }
+::view-transition { background: #EAF4F8; }
+::view-transition-old(root) { animation: vt-old .24s cubic-bezier(.4, 0, 1, 1) both; }
+::view-transition-new(root) { animation: vt-new .46s cubic-bezier(.16, .84, .3, 1) both; }
+::view-transition-group(site-header) { animation-duration: .3s; }
+@keyframes vt-old { to { opacity: 0; transform: translateY(-12px); } }
+@keyframes vt-new { from { opacity: 0; transform: translateY(20px); } }
+
+/* ---------- 水の輪：ボタンやカードを押した所から、水面の輪がひろがる（js/main.js が置く） ---------- */
+.tap-ring {
+  position: fixed; z-index: 4000; left: 0; top: 0;
+  width: 132px; height: 132px; margin: -66px 0 0 -66px;
+  border-radius: 50%; pointer-events: none;
+  border: 1.5px solid rgba(255, 255, 255, .9);
+  box-shadow: 0 0 0 1px rgba(15, 132, 158, .32), inset 0 0 16px rgba(255, 255, 255, .28);
+  transform: scale(.1); opacity: .95;
+  animation: tap-ring .68s cubic-bezier(.2, .7, .3, 1) forwards;
+}
+.tap-ring::after {
+  content: ""; position: absolute; inset: 22%; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .7);
+  box-shadow: 0 0 0 1px rgba(15, 132, 158, .2);
+  opacity: 0; animation: tap-ring-in .68s cubic-bezier(.2, .7, .3, 1) .09s forwards;
+}
+@keyframes tap-ring { to { transform: scale(1); opacity: 0; } }
+@keyframes tap-ring-in { 0% { opacity: .9; transform: scale(.4); } 100% { opacity: 0; transform: scale(1.05); } }
+@media (prefers-reduced-motion: reduce) { .tap-ring { display: none; } }
+@media print { .tap-ring { display: none; } }
+
+/* ---------- フッター：小さなリンクを、指で押しやすく ---------- */
+.footer-area a, .footer-know a { padding: .5rem .15rem; }
+@media (hover: none) and (pointer: coarse) {
+  .footer-nav a { padding: .5rem 0; }
+}
+
+/* ---------- スマホ：下部バーのぶんの余白は、白ではなくフッターの色でとる ---------- */
+@media (max-width: 768px) {
+  body:has(.mobile-cta-bar):has(.site-footer) { padding-bottom: 0; }
+  body:has(.mobile-cta-bar) .site-footer { padding-bottom: calc(64px + 1rem + env(safe-area-inset-bottom)); }
+}

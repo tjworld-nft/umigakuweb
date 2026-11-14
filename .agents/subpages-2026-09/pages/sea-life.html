@@ -276,6 +276,7 @@ META-->
         var currentSearch = '';
         var galleryIndex = 0;
         var galleryPhotos = [];
+        var NO_PAGE = ["murasakiisoginchaku"]; // sealife:nopage（1種1ページを作っていない種。build_sealife.py の EXCLUDE が書き換える）
 
         function renderStars(n) {
             return '<span class="creature-rarity">' + '★'.repeat(n) + '☆'.repeat(5 - n) + '</span>';
@@ -384,6 +385,7 @@ META-->
                     '<div class="modal-section"><h4>生態</h4><p>' + c.description + '</p></div>' +
                     '<div class="modal-section tip-box"><h4>💡 見つけ方のコツ</h4><p>' + c.beginner_tips + '</p></div>' +
                     '<div class="modal-section log-box"><h4>📓 ログ付けポイント</h4><p>' + c.log_point + '</p></div>' +
+                    (NO_PAGE.indexOf(c.id) === -1 ? '<a class="modal-more" href="/sea-life/' + c.id + '/">' + c.name_ja + 'のページをくわしく見る →</a>' : '') +
                 '</div>';
             document.getElementById('modal').classList.add('open');
             document.body.style.overflow = 'hidden';

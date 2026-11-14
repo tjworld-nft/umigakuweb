@@ -48,6 +48,40 @@
   })();
 
   /* ==========================================================================
+     1.5 特典の枠（マイドライ割・冬スキル割）：スマホでは、題・期限・入口だけを見せて
+         中身はたたんでおく（はじめての人が、コース選びまで早く着けるように）。
+         ヒーローの札やメニューから来たとき（#mydry-campaign など）は、開いてから見せる。
+         パソコンでは、いままでどおり全部見せる（CSS がスマホ幅のときだけたたむ）。
+     ========================================================================== */
+  (function fold() {
+    var blocks = $$('.sc').filter(function (b) { return $('.sc-more', b) && $('.sc-toggle', b); });
+    if (!blocks.length) return;
+    function set(b, open) {
+      b.classList.toggle('is-open', open);
+      var t = $('.sc-toggle', b);
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      $('.sc-toggle__t', t).textContent = open ? 'たたむ' : t.getAttribute('data-label');
+    }
+    blocks.forEach(function (b) {
+      b.classList.add('is-foldable');
+      var t = $('.sc-toggle', b);
+      t.setAttribute('data-label', $('.sc-toggle__t', t).textContent);
+      t.addEventListener('click', function () { set(b, !b.classList.contains('is-open')); });
+    });
+    function openByHash(hash) {
+      if (!hash || hash.length < 2) return;
+      var el = null;
+      try { el = document.querySelector(hash); } catch (e) { return; }
+      if (el && el.classList.contains('is-foldable')) set(el, true);
+    }
+    openByHash(window.location.hash);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (a) openByHash(a.getAttribute('href'));
+    }, true);
+  })();
+
+  /* ==========================================================================
      2. トースト（「コピーしました」）
      ========================================================================== */
   var toastEl = $('.toast');
@@ -558,7 +592,10 @@
       $('[data-cond-label]', action).textContent = label;
       var line = $('.btn-line', action);
       line.setAttribute('data-line-msg', btn.getAttribute('data-day') + 'に参加したいです。空きはありますか？');
-      $('[data-cond-form]', action).href = '/contact/?from=home-condition&date=' + iso;
+      /* 押すと相談シート（js/ask.js）が、この日を入れた状態でひらく。コースと人数をえらんで送れる */
+      line.setAttribute('data-ask', '');
+      line.setAttribute('data-ask-date', iso);
+      $('[data-cond-form]', action).href = '/contact/?from=home-condition&date=' + iso + '#form';
       action.hidden = false;
     }
 

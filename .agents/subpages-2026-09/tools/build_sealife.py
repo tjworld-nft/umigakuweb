@@ -54,6 +54,10 @@ def make_webp(file):
     """原寸JPG → 幅1200のWebP。すでにあって元より新しければ作らない。大きさ(w,h)を返す。"""
     src = os.path.join(FISH, file)
     dst = os.path.join(WEB, web_name(file))
+    # 元の写真（原寸JPG）を持たない軽い作業コピーでは、すでにある WebP をそのまま使う
+    if os.path.exists(dst) and not os.path.exists(src):
+        with Image.open(dst) as im:
+            return im.size
     if not (os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src)):
         os.makedirs(WEB, exist_ok=True)
         im = ImageOps.exif_transpose(Image.open(src)).convert('RGB')

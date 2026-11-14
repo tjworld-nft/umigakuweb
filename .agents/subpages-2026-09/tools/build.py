@@ -12,9 +12,10 @@ PAGES = os.path.join(os.path.dirname(HERE), 'pages')
 SITE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 BASE = 'https://miura-diving.com'
 LINE = 'https://lin.ee/kK3d5p2'
-PAGE_CSS_V = '2026100901'
+PAGE_CSS_V = '2026111401'
 PAGE_JS_V = '2026092801'
-STYLE_V = '20261009'
+STYLE_V = '20261114'
+MAIN_JS_V = '20261114'  # js/main.js（全ページ共通）。直したら、ここと main.js の中の ASSET_V、手書きのページの ?v= も上げる
 MODIFIED = '2026-09-27'  # 断片の META に modified があればそちらを使う
 
 SPRITE = '''  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -193,7 +194,7 @@ def header(cur, cta='#contact'):
 {chr(10).join(mo)}
       <div class="mobile-nav-cta">
         <a href="{LINE}" class="btn-line" target="_blank" rel="noopener noreferrer"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで空きを聞く</a>
-        <a href="/contact/?from={{FROM}}-nav" class="btn btn--coral">予約・お問い合わせフォーム</a>
+        <a href="/contact/?from={{FROM}}-nav#form" class="btn btn--coral">予約・お問い合わせフォーム</a>
       </div>
     </div>
   </div>
@@ -207,7 +208,7 @@ def ask(m):
     msg = a.get('msg', '')
     msg_attr = f' data-line-msg="{esc(msg)}"' if msg else ''
     hint = (f'<p class="hint">ボタンを押すと<q>{esc(msg)}</q>がコピーされます。LINEに貼り付けて送るだけ。</p>' if msg else '')
-    form = '/contact/?from=' + m['from'] + (('&amp;category=' + a['cat']) if a.get('cat') else '')
+    form = '/contact/?from=' + m['from'] + (('&amp;category=' + a['cat']) if a.get('cat') else '') + '#form'
     # 帯の2つの固定の文は、META の ask.lineNote / ask.cancel で、ページごとに上書きできる（HTML可。省略すれば下の既定の文）
     line_note = a.get('lineNote', '友だち追加して、ひと言送るだけ。<br>「空いている日を知りたい」などでOKです。')
     cancel = a.get('cancel', 'キャンセルは前日17時まで無料')
@@ -250,6 +251,12 @@ def ask(m):
       </div>
     </section>
 '''
+
+
+def bar_form(m):
+    # スマホ下部バーの「予約フォーム」：種別を入れた状態で、フォームの所へ直接
+    cat = (m.get('ask') or {}).get('cat')
+    return '/contact/?from=' + m['from'] + '-bar' + (('&amp;category=' + cat) if cat else '') + '#form'
 
 
 def footer(m):
@@ -317,11 +324,11 @@ def footer(m):
 
   <div class="mobile-cta-bar" role="navigation" aria-label="予約・お問い合わせ">
     <a class="cta-line" href="{LINE}" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-line"/></svg>LINEで空きを聞く</a>
-    <a class="cta-form" href="{m.get('barForm') or '/contact/?from=' + m['from'] + '-bar'}"><svg aria-hidden="true"><use href="#i-mail"/></svg>予約フォーム</a>
+    <a class="cta-form" href="{m.get('barForm') or bar_form(m)}"><svg aria-hidden="true"><use href="#i-mail"/></svg>予約フォーム</a>
   </div>
   <div class="toast" role="status" aria-live="polite"></div>
 
-  <script src="/js/main.js" defer></script>
+  <script src="/js/main.js?v={MAIN_JS_V}" defer></script>
   <script src="/js/page.js?v={PAGE_JS_V}" defer></script>
 {m.get('extraScripts', '')}
 </body>
