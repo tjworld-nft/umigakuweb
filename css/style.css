@@ -1398,23 +1398,27 @@ body.is-ocean .hero-bubble { display: none; }
 @keyframes vt-new { from { opacity: 0; transform: translateY(20px); } }
 
 /* ---------- 水の輪：ボタンやカードを押した所から、水面の輪がひろがる（js/main.js が置く） ---------- */
+/* 輪は「白→水色→青緑」の帯。暗い写真の上では白と水色が、白い面の上では青緑が見える */
 .tap-ring {
   position: fixed; z-index: 4000; left: 0; top: 0;
-  width: 132px; height: 132px; margin: -66px 0 0 -66px;
+  width: 148px; height: 148px; margin: -74px 0 0 -74px;
   border-radius: 50%; pointer-events: none;
-  border: 1.5px solid rgba(255, 255, 255, .9);
-  box-shadow: 0 0 0 1px rgba(15, 132, 158, .32), inset 0 0 16px rgba(255, 255, 255, .28);
-  transform: scale(.1); opacity: .95;
-  animation: tap-ring .68s cubic-bezier(.2, .7, .3, 1) forwards;
+  background: radial-gradient(circle closest-side,
+    rgba(255, 255, 255, 0) 72%, rgba(255, 255, 255, .62) 79%, rgba(111, 233, 247, .66) 85%,
+    rgba(15, 132, 158, .46) 91%, rgba(15, 132, 158, 0) 99%);
+  transform: scale(.14); opacity: 0;
+  animation: tap-ring .72s cubic-bezier(.16, .7, .3, 1) forwards;
 }
 .tap-ring::after {
-  content: ""; position: absolute; inset: 22%; border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, .7);
-  box-shadow: 0 0 0 1px rgba(15, 132, 158, .2);
-  opacity: 0; animation: tap-ring-in .68s cubic-bezier(.2, .7, .3, 1) .09s forwards;
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle closest-side,
+    rgba(255, 255, 255, 0) 76%, rgba(255, 255, 255, .5) 82%, rgba(111, 233, 247, .48) 88%,
+    rgba(15, 132, 158, .3) 93%, rgba(15, 132, 158, 0) 99%);
+  transform: scale(.3); opacity: 0;
+  animation: tap-ring-in .72s cubic-bezier(.16, .7, .3, 1) .12s forwards;
 }
-@keyframes tap-ring { to { transform: scale(1); opacity: 0; } }
-@keyframes tap-ring-in { 0% { opacity: .9; transform: scale(.4); } 100% { opacity: 0; transform: scale(1.05); } }
+@keyframes tap-ring { 0% { transform: scale(.14); opacity: 0; } 14% { opacity: 1; } 60% { opacity: .75; } 100% { transform: scale(1); opacity: 0; } }
+@keyframes tap-ring-in { 0% { transform: scale(.3); opacity: 0; } 20% { opacity: .9; } 100% { transform: scale(.62); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .tap-ring { display: none; } }
 @media print { .tap-ring { display: none; } }
 

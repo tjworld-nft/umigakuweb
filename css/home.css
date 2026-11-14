@@ -573,11 +573,13 @@
 @media (max-width: 899px) {
   .sea-grid { grid-template-columns: 1fr; gap: 0; }
   /* 映像は上に貼りつき、文章がその下を流れる */
-  .sea-media { top: 46px; margin: 0 -1.25rem; padding: .8rem 1.25rem 1.4rem; background: linear-gradient(180deg, #fff 0%, #fff 82%, rgba(255, 255, 255, 0) 100%); }
+  /* 白い下地は、ボタンと出典の行の下まで不透明に（下を流れる文章が、出典の文字と重ならないように）。その下だけぼかす */
+  .sea-media { top: 46px; margin: 0 -1.25rem; padding: .8rem 1.25rem 2.1rem; background: linear-gradient(180deg, #fff 0%, #fff calc(100% - 1.5rem), rgba(255, 255, 255, 0) 100%); }
   .sea-screen { border-radius: 16px; }
   .sea-tools { margin-top: .5rem; }
   .sea-credit { font-size: .64rem; }
-  .sea-step { min-height: 70svh; padding: 2rem 0; }
+  /* 左の目印の線と文字が重ならないように、スマホでも左に余白をとる */
+  .sea-step { min-height: 70svh; padding: 2rem 0 2rem 1.1rem; }
   .sea-step:first-child { min-height: 60svh; }
 }
 /* 映像を動かさない環境では、章ごとの静止画を本文に並べる */
