@@ -12,10 +12,10 @@ PAGES = os.path.join(os.path.dirname(HERE), 'pages')
 SITE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 BASE = 'https://miura-diving.com'
 LINE = 'https://lin.ee/kK3d5p2'
-PAGE_CSS_V = '2026111401'
+PAGE_CSS_V = '2026111402'
 PAGE_JS_V = '2026111401'
-STYLE_V = '20261114'
-MAIN_JS_V = '20261114'  # js/main.js（全ページ共通）。直したら、ここと main.js の中の ASSET_V、手書きのページの ?v= も上げる
+STYLE_V = '2026111402'
+MAIN_JS_V = '2026111402'  # js/main.js（全ページ共通）。直したら、ここと main.js の中の ASSET_V、手書きのページの ?v= も上げる
 MODIFIED = '2026-09-27'  # 断片の META に modified があればそちらを使う
 
 SPRITE = '''  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">

@@ -31,7 +31,19 @@
 - ヘッダーの「予約・相談」とメニューの中のLINE／フォームのボタンの見た目は style.css に共通で持つ（まんが・Blue Logbook・海学アプリのページも同じ型）。
   `.btn--coral` は白い文字が読める濃さ（#D12F6A）に直した。フッターの小さなリンクは指で押しやすい高さに。スマホ下部バーのぶんの余白は、白ではなくフッターの色でとる。
 - ⚠ **番号**：`js/main.js?v=` を上げたら、main.js の中の `ASSET_V`（ask.js の番号）、`build.py` の `MAIN_JS_V`、手書きのページ（トップ・まんが25・Blue Logbook・海学アプリ3・秋冬）の `main.js?v=` も上げる。
-  `build.py` の番号は `PAGE_CSS_V`・`PAGE_JS_V`・`STYLE_V`・`MAIN_JS_V` の4つ。manga-publish スキルの `sync_episodes.py` は `STYLE_VER`・`CSS_VER`（manga.css）を 20261114 にしてある。
+  `build.py` の番号は `PAGE_CSS_V`・`PAGE_JS_V`・`STYLE_V`・`MAIN_JS_V` の4つ。manga-publish スキルの `sync_episodes.py` は `STYLE_VER`・`CSS_VER`（manga.css）を 2026111402 にしてある。
+  同じ日の2回目（文字の大きさの仕上げ）で、style.css・main.js・ask.js・page.css・home.css・gear.css・glossary.css・manga.css は **2026111402**（page.js は 2026111401 のまま）。
+  **本体で `js/ask.js` の番号（`ASSET_V`）を上げたら、ブログの `src/layouts/BaseLayout.astro` の `V` も同じ番号に**（ブログは本体の ask.js を借りている）。
+
+### 文字の大きさの下限（2026-11-14・同日の仕上げ）
+
+- **画面に出る文字は 12px（`.75rem`）以上**。公開ページ48本を 320〜1440px の10通りの幅で計測し、12px未満の文字を0にした
+  （英字の小見出し `.h-label`・ボタンの添え書き・図鑑カードのタグ・表のラベル・写真のクレジット・相談シートの中 ほか）。
+  新しく部品を足すときも `.75rem` より小さくしない。`em` で小さくするときは `font-size: max(.42em, .75rem)` のように下限をつける（ヒーローの副題がこの形）。
+- `/owd-guide/`（申込者向けの手引き）は英字の小さなラベルが多いので、12px に上げたぶん字間（letter-spacing）をつめて、元の幅と折り返しを保ってある。
+- 長いカタカナの名前のリンク（`.link-arrow`）は `overflow-wrap: anywhere`（梶の浜ページが幅768pxで25pxはみ出していたのを解消）。
+  図鑑カードの名前は `text-wrap: balance`（「ヒラミルミドリガ／イ」のような1文字だけの行をなくす）。
+- 計測の道具は作業用フォルダにあり、リポジトリには入れていない（やり方：ページを開いて、見えている文字の `font-size` を数える）。
 
 ### 下層ページの新しい部品（`css/page.css`）
 

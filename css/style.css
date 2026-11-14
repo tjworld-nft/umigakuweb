@@ -501,7 +501,7 @@ a:hover { color: var(--coral); }
   flex-direction: column;
   align-items: center;
   color: var(--white);
-  font-size: .7rem;
+  font-size: .75rem;
   font-weight: 500;
   letter-spacing: .15em;
   opacity: .7;
@@ -663,7 +663,7 @@ a:hover { color: var(--coral); }
   top: 12px; left: 12px;
   background: var(--coral);
   color: var(--white);
-  font-size: .7rem;
+  font-size: .75rem;
   font-weight: 700;
   padding: .3rem .8rem;
   border-radius: 50px;
@@ -1237,7 +1237,7 @@ body.is-ocean .hero-bubble { display: none; }
 .home-manga__ep {
   display: block;
   font-family: var(--ff-accent);
-  font-size: .64rem;
+  font-size: .75rem;
   letter-spacing: .1em;
   color: var(--yellow);
   margin-bottom: .2rem;
@@ -1251,7 +1251,7 @@ body.is-ocean .hero-bubble { display: none; }
 }
 .home-manga__card span.t {
   display: block;
-  font-size: .72rem;
+  font-size: .75rem;
   line-height: 1.7;
   color: rgba(255,255,255,.78);
 }
@@ -1294,7 +1294,7 @@ body.is-ocean .hero-bubble { display: none; }
 }
 .manga-teaser__tag {
   display: inline-block;
-  font-size: .68rem;
+  font-size: .75rem;
   font-weight: 700;
   color: var(--teal-dark);
   background: var(--bg-soft);
@@ -1332,7 +1332,7 @@ body.is-ocean .hero-bubble { display: none; }
 }
 .manga-links__title::before {
   content: "まんが";
-  font-size: .68rem;
+  font-size: .75rem;
   font-weight: 700;
   color: var(--coral);
   border: 1px solid var(--coral);
@@ -1368,7 +1368,7 @@ body.is-ocean .hero-bubble { display: none; }
   border: 1px solid var(--border);
 }
 .manga-links__list b { display: block; font-size: .84rem; font-weight: 800; line-height: 1.45; color: var(--text-dark); }
-.manga-links__list small { display: block; font-size: .74rem; color: var(--text-sub); line-height: 1.5; margin-top: .1rem; }
+.manga-links__list small { display: block; font-size: .75rem; color: var(--text-sub); line-height: 1.5; margin-top: .1rem; }
 .manga-links__all {
   display: inline-block;
   margin-top: .8rem;

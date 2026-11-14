@@ -34,8 +34,8 @@
   <meta name="twitter:image" content="https://miura-diving.com/image/og-sea-life.jpg">
 
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="stylesheet" href="/css/style.css?v=20261114">
-  <link rel="stylesheet" href="/css/page.css?v=2026111401">
+  <link rel="stylesheet" href="/css/style.css?v=2026111402">
+  <link rel="stylesheet" href="/css/page.css?v=2026111402">
   <link rel="stylesheet" href="/css/sea-life.css?v=20261114">
 
   <!-- Webフォントは表示を止めない（display=optional：間に合わなければ端末の丸ゴシックで描き、文字のずれを起こさない） -->
@@ -231,12 +231,12 @@
         .creature-card-img {
             width:100%; aspect-ratio:1/1; object-fit:cover; display:block;
         }
-        .creature-card-body { padding:.75rem 1rem 1rem; }
-        .creature-card-body h3 { font-size:.95rem; font-weight:700; margin-bottom:.15rem; }
-        .creature-card-body .sci-name { font-size:.7rem; color:var(--text-sub); font-style:italic; margin-bottom:.4rem; }
+        .creature-card-body { padding:.75rem .85rem 1rem; }
+        .creature-card-body h3 { font-size:.95rem; font-weight:700; margin-bottom:.15rem; letter-spacing:0; text-wrap:balance; }
+        .creature-card-body .sci-name { font-size:.75rem; color:var(--text-sub); font-style:italic; margin-bottom:.4rem; }
         .creature-card-meta { display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; }
         .creature-tag {
-            font-size:.65rem; padding:.15rem .5rem; border-radius:50px;
+            font-size:.75rem; padding:.15rem .5rem; border-radius:50px;
             background:var(--bg-soft); color:var(--teal-ink); font-weight:700;
         }
         .creature-rarity { font-size:.78rem; color:#C98A00; letter-spacing:-1px; }
@@ -304,7 +304,7 @@
         .modal-thumbs img.active { border-color:var(--teal); }
         .modal-thumbs img:hover { border-color:var(--teal-light); }
         .modal-photo-credit {
-            font-size:.7rem; color:var(--text-light); text-align:right; padding:.25rem 1rem .5rem;
+            font-size:.75rem; color:var(--text-light); text-align:right; padding:.25rem 1rem .5rem;
             background:var(--bg-cream);
         }
         .modal-body { padding:1.5rem 2rem 2rem; }
@@ -315,7 +315,7 @@
         .modal-info-item {
             background:var(--bg-soft); border-radius:var(--radius-sm); padding:.6rem .75rem; text-align:center;
         }
-        .modal-info-item .label { font-size:.65rem; color:var(--text-light); margin-bottom:.15rem; }
+        .modal-info-item .label { font-size:.75rem; color:var(--text-light); margin-bottom:.15rem; }
         .modal-info-item .value { font-size:.8rem; font-weight:700; color:var(--text-dark); }
         .modal-section { margin-bottom:1rem; }
         .modal-section h4 {
@@ -326,7 +326,7 @@
         .modal-credit { font-size:.75rem; color:var(--text-light); text-align:right; margin-top:.75rem; }
         .modal-season { display:flex; gap:.35rem; flex-wrap:wrap; }
         .modal-season span {
-            font-size:.7rem; padding:.2rem .6rem; border-radius:50px;
+            font-size:.75rem; padding:.2rem .6rem; border-radius:50px;
             background:var(--bg-soft); color:var(--text-sub);
         }
         .modal-season span.current { background:var(--teal-light); color:var(--teal-dark); font-weight:600; }
@@ -436,7 +436,7 @@
             div.className = 'creature-card';
             div.dataset.category = c.category;
             var photoCount = c.photos ? c.photos.length : 0;
-            var badge = photoCount > 1 ? '<span style="position:absolute;top:.5rem;right:.5rem;background:rgba(0,0,0,.6);color:#fff;font-size:.65rem;padding:.15rem .45rem;border-radius:50px;">📷 ' + photoCount + '</span>' : '';
+            var badge = photoCount > 1 ? '<span style="position:absolute;top:.5rem;right:.5rem;background:rgba(0,0,0,.6);color:#fff;font-size:.75rem;padding:.15rem .45rem;border-radius:50px;">📷 ' + photoCount + '</span>' : '';
             div.innerHTML =
                 '<div style="position:relative;">' +
                     '<img class="creature-card-img" src="' + thumbBase + webpName(photo) + '" alt="' + c.name_ja + '" loading="lazy" decoding="async" width="480" height="480">' +
@@ -910,7 +910,7 @@
   </div>
   <div class="toast" role="status" aria-live="polite"></div>
 
-  <script src="/js/main.js?v=20261114" defer></script>
+  <script src="/js/main.js?v=2026111402" defer></script>
   <script src="/js/page.js?v=2026111401" defer></script>
 
 </body>
