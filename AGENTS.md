@@ -38,10 +38,18 @@
 - ページ内リンクの先がたたんだ `<details>` の中なら、ひらいてから移動する（main.js と page.js の両方に入れてある。page.js が先に止めるため）。
 - ヘッダーの「予約・相談」とメニューの中のLINE／フォームのボタンの見た目は style.css に共通で持つ（まんが・Blue Logbook・海学アプリのページも同じ型）。
   `.btn--coral` は白い文字が読める濃さ（#D12F6A）に直した。フッターの小さなリンクは指で押しやすい高さに。スマホ下部バーのぶんの余白は、白ではなくフッターの色でとる。
+- **スマホのメニューの「×」（2026-11-15）**：メニューを開いている間だけ、ヘッダーをメニューの上に出す（`css/style.css` の `body:not(.ua-page) .site-header:has(.hamburger.is-open)`。
+  重なり順 1100・帯は透明・ロゴは隠す・帯はメニューを押すじゃまをしない・× の線は濃い色）。前は、× が白いメニューの面の下に隠れて、見えも押せもしなかった
+  （ヘッダー 1000 ＜ メニュー 1050。暗い所を押せば閉じた）。`:has()` の無い古いブラウザでは今までどおり。
+  海学アプリの案内（`.ua-page`）は `css/umigaku-app.css` に自分の決まり（濃い緑の帯）があるので外してある。ブログ（`src/styles/blog.css` の `.nav-open .site-header`）も同じ決まり。
+  🔴 `.site-header` は `transition: all` なので、重なり順（z-index）もゆっくり動く。開いた状態の決まりに `transition: none` を入れてある（外すと × が遅れて出る）。
+  確認用のブラウザの画面が裏にあると transition が進まず、色や重なり順の計算結果が古いまま出る。動きのある所は iPhone のシミュレータで確かめる。
 - ⚠ **番号**：`js/main.js?v=` を上げたら、main.js の中の `ASSET_V`（ask.js の番号）、`build.py` の `MAIN_JS_V`、手書きのページ（トップ・まんが25・Blue Logbook・海学アプリ3・秋冬）の `main.js?v=` も上げる。
   `build.py` の番号は `PAGE_CSS_V`・`PAGE_JS_V`・`STYLE_V`・`MAIN_JS_V` の4つ。manga-publish スキルの `sync_episodes.py` は `STYLE_VER`・`CSS_VER`（manga.css）を 2026111402 にしてある。
   同じ日の2回目（文字の大きさの仕上げ）で、style.css・main.js・ask.js・page.css・home.css・gear.css・glossary.css・manga.css は **2026111402**（page.js は 2026111401 のまま）。
   同じ日の3回目（iPhone で相談シートが開かない不具合の直し）で、**main.js と ask.js だけ 2026111403**（`MAIN_JS_V`・`ASSET_V`・全ページの `main.js?v=`・ブログの `V`）。ほかは 2026111402 のまま。
+  2026-11-15（スマホのメニューの「×」の直し）で、**style.css だけ 2026111501**（全ページの `style.css?v=`・`build.py` の `STYLE_V`・manga-publish の `sync_episodes.py` の `STYLE_VER`）。
+  main.js・ask.js は 2026111403、page.css・home.css・gear.css・glossary.css・manga.css（`CSS_VER`）は 2026111402 のまま。
   **本体で `js/ask.js` の番号（`ASSET_V`）を上げたら、ブログの `src/layouts/BaseLayout.astro` の `V` も同じ番号に**（ブログは本体の ask.js を借りている）。
 
 ### 文字の大きさの下限（2026-11-14・同日の仕上げ）
