@@ -91,7 +91,7 @@
   <!-- お友達紹介キャンペーン -->
   <url>
     <loc>https://miura-diving.com/buddy/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -698,7 +698,7 @@
   <!-- まんが（一覧＋各話・新しい順。manga/episodes.json から sync_episodes.py が生成） -->
   <url>
     <loc>https://miura-diving.com/manga/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -758,7 +758,7 @@
   </url>
   <url>
     <loc>https://miura-diving.com/manga/autumn-tropical/</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -788,13 +788,13 @@
   </url>
   <url>
     <loc>https://miura-diving.com/manga/gear-rental/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://miura-diving.com/manga/this-years-sea/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -806,7 +806,7 @@
   </url>
   <url>
     <loc>https://miura-diving.com/manga/owd-aow-set/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -830,7 +830,7 @@
   </url>
   <url>
     <loc>https://miura-diving.com/manga/aow/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -842,7 +842,7 @@
   </url>
   <url>
     <loc>https://miura-diving.com/manga/diving-license/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -850,7 +850,7 @@
   <!-- ダイビングポイント: 城ヶ島 梶の浜ビーチ -->
   <url>
     <loc>https://miura-diving.com/diving-point/jogashima-kajinohama/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
