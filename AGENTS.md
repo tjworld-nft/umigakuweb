@@ -20,6 +20,14 @@
 - `ask.js` は押す前に読み込みはじめる（触れたとき／手が空いたとき。通信の節約中は押してから）。読めなければリンク先へそのまま進む。`<dialog>` が無い古いブラウザも同じ。
 - 文面・コース・人数の値は `js/ask.js` の先頭（`COURSES`・`PEOPLE`）。**フォームの種別と人数の値は `send_mail.php` に渡る値と同じにすること**（変えない）。
 - `js/contact.js`：`?people=` `?msg=` も受けとる。種別・日・人数から「お問い合わせ内容」の下書きを入れる（手で書きかえたら上書きしない）。
+- 🔴 **iPhone の Safari で、シートが画面の上へはみ出して使えなかった（2026-11-14 の昼に公開→同日夜に直した）**。
+  原因：開く瞬間（シートがまだ画面の下にある間）に、Safari がフォーカスした物を見せようとして **`<dialog>` そのものを下へスクロール**させ、動きが終わっても戻さない
+  （`overflow:hidden` の箱は、指では動かなくてもプログラムからはスクロールできる。Chrome では起きない）。
+  直し：外わく `.uask` とシート `.uask__sheet` は **`overflow:hidden;overflow:clip`**（clip はスクロールできない箱）。古い Safari のために `settle()` が動いたら 0 に戻す。
+  あわせて、ページ側の「`[tabindex]:focus-visible` に枠線と角10px」（page.css・home.css）がシートに効いて、開いた直後にオレンジの線が出ていたのを止めた
+  （`.uask.uask …:focus-visible` の決まり。ページ側の決まりより強く書く）。
+  **動きのある部品を足したら、必ず iPhone のシミュレータの Safari で開いて確かめる**（`xcrun simctl openurl <端末> http://127.0.0.1:<ポート>/…`。Chrome のスマホ表示では見つからない）。
+  ⚠ 画面の数値を一定間隔で読む確認用のコードを入れると、この不具合は起きなくなる（読むたびに位置が直るため）。確かめるときは、何も足さないページで。
 
 ### 全ページ共通の動き（`css/style.css` の末尾「FLOW」と `js/main.js`）
 
@@ -33,6 +41,7 @@
 - ⚠ **番号**：`js/main.js?v=` を上げたら、main.js の中の `ASSET_V`（ask.js の番号）、`build.py` の `MAIN_JS_V`、手書きのページ（トップ・まんが25・Blue Logbook・海学アプリ3・秋冬）の `main.js?v=` も上げる。
   `build.py` の番号は `PAGE_CSS_V`・`PAGE_JS_V`・`STYLE_V`・`MAIN_JS_V` の4つ。manga-publish スキルの `sync_episodes.py` は `STYLE_VER`・`CSS_VER`（manga.css）を 2026111402 にしてある。
   同じ日の2回目（文字の大きさの仕上げ）で、style.css・main.js・ask.js・page.css・home.css・gear.css・glossary.css・manga.css は **2026111402**（page.js は 2026111401 のまま）。
+  同じ日の3回目（iPhone で相談シートが開かない不具合の直し）で、**main.js と ask.js だけ 2026111403**（`MAIN_JS_V`・`ASSET_V`・全ページの `main.js?v=`・ブログの `V`）。ほかは 2026111402 のまま。
   **本体で `js/ask.js` の番号（`ASSET_V`）を上げたら、ブログの `src/layouts/BaseLayout.astro` の `V` も同じ番号に**（ブログは本体の ask.js を借りている）。
 
 ### 文字の大きさの下限（2026-11-14・同日の仕上げ）
