@@ -37,8 +37,8 @@
 
   <!-- 最初の表示に要るものを先に。写真はヒーローのLCP候補 -->
   <link rel="preload" as="image" href="image/optimized/home-hero-soft-diving.webp" fetchpriority="high">
-  <link rel="stylesheet" href="css/style.css?v=20261009">
-  <link rel="stylesheet" href="css/home.css?v=2026101501">
+  <link rel="stylesheet" href="css/style.css?v=20261114">
+  <link rel="stylesheet" href="css/home.css?v=2026111401">
 
   <!-- オープニング「水面へ」（来るたびに1回・約6秒・押せばすぐ消える）。
        ここでは「出すかどうか」を決めて、最初の描画から海の絵を敷き、動画を取りに行くだけ。本体は js/opening.js。
@@ -293,7 +293,7 @@
       <a href="#fuyuskill-campaign" class="nav-campaign nav-campaign--fuyu" data-expires="2027-01-01">冬スキル割 11月から</a>
       <div class="mobile-nav-cta">
         <a href="https://lin.ee/kK3d5p2" class="btn-line" target="_blank" rel="noopener noreferrer"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで空きを聞く</a>
-        <a href="/contact/?from=home-nav" class="btn btn--coral">予約・お問い合わせフォーム</a>
+        <a href="/contact/?from=home-nav#form" class="btn btn--coral">予約・お問い合わせフォーム</a>
       </div>
     </div>
   </div>
@@ -429,6 +429,12 @@
           <p class="sc-lead">ドライスーツを作ると、<strong>ドライスーツ・ダイバーSP講習が半額</strong>。<br class="sp-only">届いた自分の一着で、着方と浮力の取り方から練習できます。</p>
           <p class="sc-count" data-deadline-days="2026-12-31">ご注文の受付は<span class="days">12月31日まで</span></p>
         </div>
+        <!-- スマホでは、題・期限・入口だけを見せて、中身はたたんでおく（js/home.js。ヒーローの札やメニューから来たときは開く） -->
+        <div class="sc-fold">
+          <button type="button" class="sc-toggle" aria-expanded="false" aria-controls="mydry-more"><span class="sc-toggle__t">内容を見る</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <a class="sc-jump" href="/mydry/">くわしいページへ <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="sc-more" id="mydry-more">
         <div class="sc-grid">
           <a class="sc-card" href="/mydry/">
             <span class="sc-card__tag">Cカードをお持ちの方</span>
@@ -468,6 +474,7 @@
           <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-line-msg="マイドライ割の見積もりを知りたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで見積もりを聞く</a>
           <p class="sc-cta__note">友だち追加後、「<strong>マイドライ割</strong>」と一言送るだけでOKです。見積もりだけでも大丈夫です。</p>
         </div>
+        </div>
       </div>
 
       <!-- 冬スキル割（2026/11〜・はじめるのは12/31まで）。2027/1/1になるとJSが自動で外す。
@@ -481,6 +488,11 @@
           <p class="sc-lead">2026年11月から、スペシャルティを5つ受けたら、<strong>6つ目の講習料から最大¥27,500引き</strong>（税込・¥27,500のコースは無料・<span style="display:inline-block">レンタル器材は別）。</span><br class="sp-only">お支払いは1つずつ。休みにまとめても、<span style="display:inline-block">月に1コースずつでも。</span></p>
           <p class="sc-count" data-deadline-days="2026-12-31">1つ目の期限は、<span class="days">12月31日まで</span></p>
         </div>
+        <div class="sc-fold">
+          <button type="button" class="sc-toggle" aria-expanded="false" aria-controls="fuyuskill-more"><span class="sc-toggle__t">内容を見る</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <a class="sc-jump" href="/fuyu-skill/">くわしいページへ <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="sc-more" id="fuyuskill-more">
         <a class="sc-feature" href="/fuyu-skill/">
           <img class="sc-feature__img" src="image/fuyu-skill/season-01.webp" alt="ドライスーツで冬の三浦の海を泳ぐクラゲ帽子の女の子のイラスト" width="800" height="600" loading="lazy" decoding="async">
           <span class="sc-feature__body">
@@ -498,6 +510,7 @@
         <div class="sc-cta sg-cta" style="justify-content:center">
           <a class="wf-more" href="/fuyu-skill/#ways">組み方と金額を見る <span aria-hidden="true">→</span></a>
           <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-line-msg="冬スキル割について相談したいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで相談する</a>
+        </div>
         </div>
       </div>
 
@@ -973,7 +986,7 @@
         <div class="cond-action" hidden>
           <p data-cond-label></p>
           <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-line-msg=""><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>この日の空きを聞く</a>
-          <a class="alt" href="/contact/?from=home-condition" data-cond-form>フォームで予約相談 →</a>
+          <a class="alt" href="/contact/?from=home-condition#form" data-cond-form>フォームで予約相談 →</a>
         </div>
         <p class="cond-note">※判定はあくまで目安です。実際の開催は、当日の海況をスタッフが確認して判断します。</p>
         <p class="cond-note" style="margin-top:.4rem">月ごとの水温・透明度・着るものの目安は、<a href="https://miura-diving.com/sea-conditions/">三浦の海は、何度？（月別の水温）</a>へ。</p>
@@ -1058,7 +1071,7 @@
           <div class="ask-card ask-card--form reveal" data-delay="1">
             <h3>フォームで問い合わせ</h3>
             <p>24時間受付。通常1営業日以内にご返信します。希望日やコースもそのまま書けます。</p>
-            <a class="ask-form-btn" href="/contact/?from=home"><svg class="fa-svg" aria-hidden="true"><use href="#i-mail"/></svg>予約・お問い合わせフォーム</a>
+            <a class="ask-form-btn" href="/contact/?from=home#form"><svg class="fa-svg" aria-hidden="true"><use href="#i-mail"/></svg>予約・お問い合わせフォーム</a>
           </div>
         </div>
 
@@ -1240,11 +1253,11 @@
   <!-- スマホ下部の固定ボタン（ヒーローを過ぎると出る） -->
   <div class="mobile-cta-bar" role="navigation" aria-label="予約・お問い合わせ">
     <a class="cta-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-line"/></svg>LINEで空きを聞く</a>
-    <a class="cta-form" href="/contact/?from=home-bar"><svg aria-hidden="true"><use href="#i-mail"/></svg>予約フォーム</a>
+    <a class="cta-form" href="/contact/?from=home-bar#form"><svg aria-hidden="true"><use href="#i-mail"/></svg>予約フォーム</a>
   </div>
 
-  <script src="js/main.js" defer></script>
-  <script src="js/home.js?v=2026100101" defer></script>
+  <script src="js/main.js?v=20261114" defer></script>
+  <script src="js/home.js?v=2026111401" defer></script>
   <!-- サイト全体に敷く水。端末を見て、描ける環境にだけ本体を取りに行く -->
   <!-- ⚠ js/ocean/* はサーバが7日キャッシュする（max-age=604800）。
        ocean-src を作り直したら、必ずこの ?v= を上げること。

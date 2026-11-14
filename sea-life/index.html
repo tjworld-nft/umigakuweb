@@ -34,9 +34,9 @@
   <meta name="twitter:image" content="https://miura-diving.com/image/og-sea-life.jpg">
 
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="stylesheet" href="/css/style.css?v=20261009">
-  <link rel="stylesheet" href="/css/page.css?v=2026100901">
-  <link rel="stylesheet" href="/css/sea-life.css?v=20261107">
+  <link rel="stylesheet" href="/css/style.css?v=20261114">
+  <link rel="stylesheet" href="/css/page.css?v=2026111401">
+  <link rel="stylesheet" href="/css/sea-life.css?v=20261114">
 
   <!-- Webフォントは表示を止めない（display=optional：間に合わなければ端末の丸ゴシックで描き、文字のずれを起こさない） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -147,7 +147,7 @@
       <a href="/contact/">予約・お問い合わせ</a>
       <div class="mobile-nav-cta">
         <a href="https://lin.ee/kK3d5p2" class="btn-line" target="_blank" rel="noopener noreferrer"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで空きを聞く</a>
-        <a href="/contact/?from=sealife-nav" class="btn btn--coral">予約・お問い合わせフォーム</a>
+        <a href="/contact/?from=sealife-nav#form" class="btn btn--coral">予約・お問い合わせフォーム</a>
       </div>
     </div>
   </div>
@@ -239,7 +239,9 @@
             font-size:.65rem; padding:.15rem .5rem; border-radius:50px;
             background:var(--bg-soft); color:var(--teal-ink); font-weight:700;
         }
-        .creature-rarity { font-size:.7rem; color:var(--yellow); letter-spacing:-1px; }
+        .creature-rarity { font-size:.78rem; color:#C98A00; letter-spacing:-1px; }
+        .creature-legend { text-align:center; font-size:.8rem; color:var(--text-sub); margin:-.9rem 0 1.5rem; }
+        .creature-legend b { color:#C98A00; letter-spacing:-1px; font-weight:400; }
 
         /* Search */
         .search-bar {
@@ -382,6 +384,7 @@
 
         <p class="creature-count" id="creatureCount"></p>
         <p style="text-align:center; font-size:.8rem; color:var(--text-sub); margin-bottom:1.5rem;">※ 掲載する生き物は、ダイビングで出会うたびに少しずつ増やしていきます。お楽しみに！</p>
+        <p class="creature-legend"><b>★</b>は、三浦の海でのめずらしさの目安です（<b>★</b>＝よく見る 〜 <b>★★★★★</b>＝めったに会えない）。</p>
 
         <!-- Grid -->
         <div class="creature-grid" id="creatureGrid"></div>
@@ -410,7 +413,7 @@
         var NO_PAGE = ["murasakiisoginchaku"]; // sealife:nopage（1種1ページを作っていない種。build_sealife.py の EXCLUDE が書き換える）
 
         function renderStars(n) {
-            return '<span class="creature-rarity">' + '★'.repeat(n) + '☆'.repeat(5 - n) + '</span>';
+            return '<span class="creature-rarity" role="img" aria-label="めずらしさ ' + n + '／5">' + '★'.repeat(n) + '☆'.repeat(5 - n) + '</span>';
         }
 
         function webpName(file) {
@@ -784,15 +787,15 @@
       <div class="h-wrap">
         <span class="h-label">Contact <small>予約・相談</small></span>
         <h2 id="ask-title">この生き物たちに、<span class="nw">会いに行こう。</span></h2>
-        <p class="h-lead">三浦 海の学校のファンダイビングで、実際に水中生物を観察できます。空き日程や、見てみたい生き物のことも、LINEで気軽にどうぞ。</p>
+        <p class="h-lead">Cカードをお持ちの方はファンダイビングで、まだの方は体験ダイビングから。空き日程や、見てみたい生き物のことも、LINEで気軽にどうぞ。</p>
 
         <div class="ask-grid">
           <div class="ask-card ask-card--line">
             <div>
               <h3>LINEで相談・予約</h3>
               <p>友だち追加して、ひと言送るだけ。<br>「空いている日を知りたい」などでOKです。</p>
-              <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-line-msg="図鑑を見ました。ファンダイビングの空き日程を知りたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで友だち追加</a>
-              <p class="hint">ボタンを押すと<q>図鑑を見ました。ファンダイビングの空き日程を知りたいです。</q>がコピーされます。LINEに貼り付けて送るだけ。</p>
+              <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-line-msg="図鑑を見ました。ダイビングの空き日程を知りたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで友だち追加</a>
+              <p class="hint">ボタンを押すと<q>図鑑を見ました。ダイビングの空き日程を知りたいです。</q>がコピーされます。LINEに貼り付けて送るだけ。</p>
             </div>
             <div class="ask-qr">
               <img src="/image/optimized/line-qr.webp" alt="三浦 海の学校 公式LINEの友だち追加QRコード" width="124" height="124" loading="lazy" decoding="async">
@@ -802,7 +805,7 @@
           <div class="ask-card ask-card--form">
             <h3>フォームで問い合わせ</h3>
             <p>24時間受付。通常1営業日以内にご返信します。希望日やコースもそのまま書けます。</p>
-            <a class="ask-form-btn" href="/contact/?from=sealife&amp;category=ファンダイビング"><svg class="fa-svg" aria-hidden="true"><use href="#i-mail"/></svg>予約・お問い合わせフォーム</a>
+            <a class="ask-form-btn" href="/contact/?from=sealife&amp;category=ファンダイビング#form"><svg class="fa-svg" aria-hidden="true"><use href="#i-mail"/></svg>予約・お問い合わせフォーム</a>
           </div>
         </div>
 
@@ -903,12 +906,12 @@
 
   <div class="mobile-cta-bar" role="navigation" aria-label="予約・お問い合わせ">
     <a class="cta-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-line"/></svg>LINEで空きを聞く</a>
-    <a class="cta-form" href="/contact/?from=sealife-bar"><svg aria-hidden="true"><use href="#i-mail"/></svg>予約フォーム</a>
+    <a class="cta-form" href="/contact/?from=sealife-bar&amp;category=ファンダイビング#form"><svg aria-hidden="true"><use href="#i-mail"/></svg>予約フォーム</a>
   </div>
   <div class="toast" role="status" aria-live="polite"></div>
 
-  <script src="/js/main.js" defer></script>
-  <script src="/js/page.js?v=2026092801" defer></script>
+  <script src="/js/main.js?v=20261114" defer></script>
+  <script src="/js/page.js?v=2026111401" defer></script>
 
 </body>
 

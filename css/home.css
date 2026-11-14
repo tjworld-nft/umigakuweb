@@ -342,6 +342,30 @@
 .sc-cta__note { display: inline-block; max-width: 620px; font-size: .82rem; margin-top: .9rem; line-height: 1.8; color: var(--text-sub); background: rgba(255, 255, 255, .96); border-radius: var(--radius-md); padding: .7rem 1.1rem; }
 .sc-cta__note strong { color: var(--ink); background: #FFE66D; border-radius: 5px; padding: .05rem .3rem; }
 
+/* ---- 特典の枠をスマホでたたむ（js/home.js が .is-foldable を付ける。JSが無ければ全部見える） ---- */
+.sc-fold { display: none; }
+.sc-toggle {
+  display: inline-flex; align-items: center; gap: .45rem; min-height: 46px; padding: .55rem 1.2rem;
+  border: 0; border-radius: 999px; background: #fff; color: var(--deep-3); cursor: pointer;
+  font: inherit; font-size: .92rem; font-weight: 700; line-height: 1.3; box-shadow: 0 8px 22px rgba(3, 32, 50, .3);
+}
+.sc-toggle svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s ease; }
+.sc.is-open .sc-toggle svg { transform: rotate(180deg); }
+.sc-jump {
+  display: inline-flex; align-items: center; gap: .35rem; min-height: 46px; padding: .55rem 1.1rem;
+  border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, .7); background: rgba(8, 34, 45, .3);
+  color: #fff; font-size: .92rem; font-weight: 700; line-height: 1.3; text-decoration: none;
+}
+.sc-jump:hover { color: #fff; background: rgba(8, 34, 45, .5); }
+@media (max-width: 720px) {
+  .sc.is-foldable .sc-fold { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
+  .sc.is-foldable .sc-head { margin-bottom: 1rem; }
+  .sc.is-foldable:not(.is-open) .sc-more { display: none; }
+  .sc.is-foldable.is-open .sc-more { margin-top: 1.3rem; animation: sc-open .4s cubic-bezier(.2, .8, .3, 1) both; }
+}
+@keyframes sc-open { from { opacity: 0; transform: translateY(-10px); } }
+@media (prefers-reduced-motion: reduce) { .sc.is-foldable.is-open .sc-more { animation: none; } }
+
 /* ---- 秋冬（帯の中・常設。夏のLINE特典が外れたあとの、この帯の季節の枠）
         映像の本体ページは /winter-diving/ ---- */
 .wf { max-width: 1080px; margin: clamp(2.8rem, 6vw, 4rem) auto 0; padding: 0 1.25rem; }
@@ -549,11 +573,13 @@
 @media (max-width: 899px) {
   .sea-grid { grid-template-columns: 1fr; gap: 0; }
   /* 映像は上に貼りつき、文章がその下を流れる */
-  .sea-media { top: 46px; margin: 0 -1.25rem; padding: .8rem 1.25rem 1.4rem; background: linear-gradient(180deg, #fff 0%, #fff 82%, rgba(255, 255, 255, 0) 100%); }
+  /* 白い下地は、ボタンと出典の行の下まで不透明に（下を流れる文章が、出典の文字と重ならないように）。その下だけぼかす */
+  .sea-media { top: 46px; margin: 0 -1.25rem; padding: .8rem 1.25rem 2.1rem; background: linear-gradient(180deg, #fff 0%, #fff calc(100% - 1.5rem), rgba(255, 255, 255, 0) 100%); }
   .sea-screen { border-radius: 16px; }
   .sea-tools { margin-top: .5rem; }
   .sea-credit { font-size: .64rem; }
-  .sea-step { min-height: 70svh; padding: 2rem 0; }
+  /* 左の目印の線と文字が重ならないように、スマホでも左に余白をとる */
+  .sea-step { min-height: 70svh; padding: 2rem 0 2rem 1.1rem; }
   .sea-step:first-child { min-height: 60svh; }
 }
 /* 映像を動かさない環境では、章ごとの静止画を本文に並べる */

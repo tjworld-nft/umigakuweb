@@ -2,6 +2,8 @@
    三浦 海の学校 — 予約・お問い合わせフォーム（contact/）
    ・?from= … 流入元を hidden の ref に（英数字・ハイフン・下線のみ・32字まで）
    ・?category=体験ダイビング&date=2026-10-04 … 種別と希望日を事前入力
+   ・?people=2名&msg=… … 人数と内容も事前入力（相談シート js/ask.js から来たとき）
+   ・種別・希望日・人数をえらぶと、内容の欄に下書きを入れる（自分で書いた文には触らない）
    ・送信前にサーバー発行のトークンを取得。入力内容を保ったままエラーを表示する。
    項目名 name/kana/email/phone/category/date/people/message/ref は変えない。
    ========================================================================== */
@@ -31,6 +33,70 @@
     var d = params.get('date') || '';
     if (/^\d{4}-\d{2}-\d{2}$/.test(d)) date.value = d;
   }
+
+  /* 人数と内容の事前入力（相談シートから） */
+  var people = document.getElementById('people');
+  var pv = params.get('people') || '';
+  if (people && pv) {
+    for (var k = 0; k < people.options.length; k++) {
+      if (people.options[k].value === pv) { people.value = pv; break; }
+    }
+  }
+  var msgField = document.getElementById('message');
+  var pm = (params.get('msg') || '').replace(/\r\n?/g, '\n').slice(0, 600);
+  if (msgField && pm && !msgField.value) msgField.value = pm;
+  if (pm && form.firstElementChild) {
+    var pre = document.createElement('p');
+    pre.className = 'cform__pre';
+    pre.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.4-5.4 1.4 1.4-6.8 6.8z"/></svg>' +
+      '<span>えらんだ内容を入れてあります。<span class="nw">お名前とメールアドレスを入れて、</span><span class="nw">送信してください。</span></span>';
+    var firstGroup = form.querySelector('.cform__group');
+    if (firstGroup) form.insertBefore(pre, firstGroup);
+  }
+
+  /* 内容の下書き：種別・希望日・人数から、送る文を作っておく。
+     入れるのは、欄が空のときと、前に入れた下書きのままのときだけ。 */
+  var DRAFT = {
+    '体験ダイビング': '体験ダイビングの空き日程を知りたいです。',
+    'OWDライセンス': 'ライセンス講習（オープンウォーター）の日程を相談したいです。',
+    'AOWライセンス': 'アドバンス・スペシャルティ講習の日程を相談したいです。',
+    'ファンダイビング': 'ファンダイビングの空き日程を知りたいです。',
+    'リフレッシュ': 'しばらく潜っていないので、リフレッシュダイビングを相談したいです。',
+    'マリンアクティビティ': 'スノーケリングの空き日程を知りたいです。'
+  };
+  var WD = ['日', '月', '火', '水', '木', '金', '土'];
+  var lastDraft = '';
+  var draftHint = document.getElementById('draftHint');
+  function draft() {
+    if (!msgField) return;
+    var cur = msgField.value;
+    if (cur && cur !== lastDraft) return;
+    var c = form.querySelector('input[name="category"]:checked');
+    var base = c && DRAFT[c.value];
+    if (!base) {
+      if (lastDraft && cur === lastDraft) msgField.value = '';
+      lastDraft = '';
+      if (draftHint) draftHint.hidden = true;
+      return;
+    }
+    var tail = '', dv = date && date.value, pp = people && people.value, dt = '';
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dv || '')) {
+      var q = dv.split('-'), dd = new Date(+q[0], +q[1] - 1, +q[2]);
+      dt = (dd.getMonth() + 1) + '/' + dd.getDate() + '(' + WD[dd.getDay()] + ')';
+    }
+    if (dt && pp) tail = '希望日は' + dt + '、人数は' + pp + 'です。';
+    else if (dt) tail = '希望日は' + dt + 'です。';
+    else if (pp) tail = '人数は' + pp + 'です。';
+    msgField.value = lastDraft = base + tail;
+    if (draftHint) draftHint.hidden = false;
+  }
+  form.addEventListener('change', function (e) {
+    var t = e.target;
+    if (t && (t.name === 'category' || t.id === 'date' || t.id === 'people')) draft();
+  });
+  if (msgField) msgField.addEventListener('input', function () { if (draftHint && msgField.value !== lastDraft) draftHint.hidden = true; });
+  form.addEventListener('reset', function () { lastDraft = ''; if (draftHint) draftHint.hidden = true; });
+  if (cat && !pm) draft();
 
   var errorBox = document.getElementById('formError');
   var successBox = document.getElementById('formSuccess');

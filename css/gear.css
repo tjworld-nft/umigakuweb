@@ -35,6 +35,8 @@
    ================================================================ */
 .sub .mobile-cta-bar { display: none !important; }
 @media (max-width: 768px) { body.sub:has(.mobile-cta-bar) { padding-bottom: 0; } }
+/* 下部バーを出さないので、フッターの下の「バーのぶんの余白」も要らない（css/style.css の決まりを打ち消す） */
+@media (max-width: 768px) { body.sub:has(.mobile-cta-bar) .site-footer { padding-bottom: 2rem; } }
 
 /* ================================================================
    .gear-illust — 絵の枠（Image 2.5 で作った 960×640 の絵。角丸22px・影はカードと同じ）

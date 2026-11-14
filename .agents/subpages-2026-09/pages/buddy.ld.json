@@ -1,0 +1,28 @@
+[
+  {
+    "@type": "Offer",
+    "@id": "https://miura-diving.com/buddy/#offer",
+    "name": "お友達紹介「バディ割」",
+    "description": "認定ダイバーの方が紹介したお友達が、三浦 海の学校でオープンウォーター（OWD）またはアドバンス（AOW）の講習を受けると、紹介した方は付き添いダイビングが6,600円引き（ビーチダイビング2ダイブは13,200円が半額の6,600円、ボートダイビング2ダイブは19,800円が13,200円・税込・レンタル器材代は別）、受講するお友達は器材レンタル1日分（5,500円）が無料。お友達の総額は、OWDが59,400円（通常64,900円）、AOWが65,300円（通常70,800円）、OWD＋AOWセットが119,700円（税込）。申し込みのときに、LINEで「バディ」と紹介者の名前を伝える。紹介人数の上限なし（ご紹介1名につき1回・同じ日に使えるのは1回まで・残りは紹介日から1年間有効）。他の割引・キャンペーンとの併用は不可（つづける割は併用可）。2026年8月1日から実施。",
+    "url": "https://miura-diving.com/buddy/",
+    "validFrom": "2026-08-01",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "ダイビングライセンス講習（オープンウォーター・アドバンス）と、紹介した方の付き添いダイビング",
+      "description": "受講するお友達はPADIオープンウォーター・ダイバー講習またはアドバンスド・オープンウォーター・ダイバー講習、紹介した認定ダイバーの方はビーチまたはボートの付き添いダイビング。開催は神奈川県三浦市の城ヶ島・宮川湾。",
+      "url": "https://miura-diving.com/license/",
+      "provider": {
+        "@type": "SportsActivityLocation",
+        "@id": "https://miura-diving.com/#school",
+        "name": "三浦 海の学校",
+        "url": "https://miura-diving.com/"
+      }
+    },
+    "seller": {
+      "@type": "SportsActivityLocation",
+      "@id": "https://miura-diving.com/#school",
+      "name": "三浦 海の学校",
+      "url": "https://miura-diving.com/"
+    }
+  }
+]

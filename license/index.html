@@ -35,8 +35,8 @@
 
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" as="image" href="/image/sub/license-hero-800.webp" imagesrcset="/image/sub/license-hero-800.webp 800w, /image/sub/license-hero-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
-  <link rel="stylesheet" href="/css/style.css?v=20261009">
-  <link rel="stylesheet" href="/css/page.css?v=2026100901">
+  <link rel="stylesheet" href="/css/style.css?v=20261114">
+  <link rel="stylesheet" href="/css/page.css?v=2026111401">
 
   <!-- Webフォントは表示を止めない（display=optional：間に合わなければ端末の丸ゴシックで描き、文字のずれを起こさない） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +62,7 @@
         "breadcrumb": {
           "@id": "https://miura-diving.com/license/#breadcrumb"
         },
-        "dateModified": "2026-11-07",
+        "dateModified": "2026-11-14",
         "primaryImageOfPage": {
           "@type": "ImageObject",
           "url": "https://miura-diving.com/image/og-license.jpg"
@@ -345,7 +345,7 @@
       <a href="/contact/">予約・お問い合わせ</a>
       <div class="mobile-nav-cta">
         <a href="https://lin.ee/kK3d5p2" class="btn-line" target="_blank" rel="noopener noreferrer"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで空きを聞く</a>
-        <a href="/contact/?from=license-nav" class="btn btn--coral">予約・お問い合わせフォーム</a>
+        <a href="/contact/?from=license-nav#form" class="btn btn--coral">予約・お問い合わせフォーム</a>
       </div>
     </div>
   </div>
@@ -435,7 +435,7 @@
             <fieldset class="seg seg--2">
               <legend>器材</legend>
               <label><input type="radio" name="est-gear" value="rent" checked><span>ぜんぶレンタル<small>フルセット1日¥5,500</small></span></label>
-              <label><input type="radio" name="est-gear" value="own"><span>自分の器材がある<small>レンタル代はかかりません</small></span></label>
+              <label><input type="radio" name="est-gear" value="own"><span>自分の器材がある<small>レンタル代なし</small></span></label>
             </fieldset>
 
             <div class="est__inc">
@@ -477,7 +477,10 @@
             </tbody>
           </table>
         </div>
-        <div class="tbl-wrap mt-2">
+        <details class="fold">
+          <summary>総額¥64,900に、入っているもの・別にかかるもの</summary>
+          <div class="fold__body">
+        <div class="tbl-wrap">
           <table class="tbl tbl--compact" id="price-inc">
             <caption>オープンウォーター総額¥64,900に入っているもの</caption>
             <thead>
@@ -495,8 +498,11 @@
           </table>
         </div>
         <p class="note mt-1">※ 自分の器材をお持ちの方は、講習費だけで受講できます。マスクやフィンなどの単品レンタルもあります（各¥550〜）。<br>
-          ※ 総額は実技2日の場合です。海況や進み具合で日数が増えるときは、レンタル器材が1日¥5,500加わります。京急三崎口駅から開催地までの送迎は無料です（要予約）。<br>
+          ※ 京急三崎口駅から開催地までの送迎は無料です（要予約）。<br>
           ※ 講習に買うものはありません。続けたくなったら、<a href="/gear/">ダイビング器材のご案内</a>を。</p>
+          </div>
+        </details>
+        <p class="note mt-1">※ 総額は実技2日の場合です。海況や進み具合で日数が増えるときは、レンタル器材が1日¥5,500加わります。</p>
       </div>
     </section>
 
@@ -777,7 +783,7 @@
             <span class="go">プロコースを見る</span>
           </a>
         </div>
-        <p class="note mt-1" data-expires="2027-01-01">冬スキル割：2026年11月からスペシャルティを5つ受けると、6つ目の講習料から最大¥27,500引き（税込・¥27,500のコースは無料・レンタル器材は別）。対象はドリフトを除く11コースで、そのうち9コースはオープンウォーターのままで受けられます（アドバンス講習は数えません）。日程はご希望の日で、1名から。12月31日までに1つ目を受ける方が対象です。くわしくは<a href="/fuyu-skill/">冬スキル割</a>へ。</p>
+        <p class="note mt-1" data-expires="2027-01-01">冬スキル割：スペシャルティ（ドリフトを除く11コース）を5つ受けると、6つ目の講習料から最大¥27,500引き（税込）。12月31日までに1つ目を受ける方が対象です。くわしくは<a href="/fuyu-skill/">冬スキル割</a>へ。</p>
         <p class="note mt-1" data-expires="2027-01-01">ドライスーツSPは、12月31日までにドライスーツをご注文の方は半額（¥13,750）です。オープンウォーター講習を受ける方は、講習のレンタル器材代も無料に。くわしくは<a href="/mydry/">マイドライ割</a>へ。</p>
         <p class="note mt-1">※ 料金はすべて税込です。レンタル器材が必要な方は、別途1日¥5,500かかります。<br>※ エンリッチド・エアSPを取ると、城ヶ島でのビーチ・ボートダイビングでエンリッチド・エアのタンクを使えます（通常のダイビング料金＋1本¥1,500）。</p>
       </div>
@@ -968,7 +974,7 @@
           <div class="ask-card ask-card--form">
             <h3>フォームで問い合わせ</h3>
             <p>24時間受付。通常1営業日以内にご返信します。希望日やコースもそのまま書けます。</p>
-            <a class="ask-form-btn" href="/contact/?from=license&amp;category=OWDライセンス"><svg class="fa-svg" aria-hidden="true"><use href="#i-mail"/></svg>予約・お問い合わせフォーム</a>
+            <a class="ask-form-btn" href="/contact/?from=license&amp;category=OWDライセンス#form"><svg class="fa-svg" aria-hidden="true"><use href="#i-mail"/></svg>予約・お問い合わせフォーム</a>
           </div>
         </div>
 
@@ -1069,12 +1075,12 @@
 
   <div class="mobile-cta-bar" role="navigation" aria-label="予約・お問い合わせ">
     <a class="cta-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-line"/></svg>LINEで空きを聞く</a>
-    <a class="cta-form" href="/contact/?from=license-bar"><svg aria-hidden="true"><use href="#i-mail"/></svg>予約フォーム</a>
+    <a class="cta-form" href="/contact/?from=license-bar&amp;category=OWDライセンス#form"><svg aria-hidden="true"><use href="#i-mail"/></svg>予約フォーム</a>
   </div>
   <div class="toast" role="status" aria-live="polite"></div>
 
-  <script src="/js/main.js" defer></script>
-  <script src="/js/page.js?v=2026092801" defer></script>
+  <script src="/js/main.js?v=20261114" defer></script>
+  <script src="/js/page.js?v=2026111401" defer></script>
 
 </body>
 

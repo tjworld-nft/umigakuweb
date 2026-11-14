@@ -13,8 +13,8 @@
   "crumbs": [["海の生き物図鑑", "/sea-life/"]],
   "ask": {
     "title": "この生き物たちに、<span class=\"nw\">会いに行こう。</span>",
-    "lead": "三浦 海の学校のファンダイビングで、実際に水中生物を観察できます。空き日程や、見てみたい生き物のことも、LINEで気軽にどうぞ。",
-    "msg": "図鑑を見ました。ファンダイビングの空き日程を知りたいです。",
+    "lead": "Cカードをお持ちの方はファンダイビングで、まだの方は体験ダイビングから。空き日程や、見てみたい生き物のことも、LINEで気軽にどうぞ。",
+    "msg": "図鑑を見ました。ダイビングの空き日程を知りたいです。",
     "cat": "ファンダイビング"
   }
 }
@@ -108,7 +108,9 @@ META-->
             font-size:.65rem; padding:.15rem .5rem; border-radius:50px;
             background:var(--bg-soft); color:var(--teal-ink); font-weight:700;
         }
-        .creature-rarity { font-size:.7rem; color:var(--yellow); letter-spacing:-1px; }
+        .creature-rarity { font-size:.78rem; color:#C98A00; letter-spacing:-1px; }
+        .creature-legend { text-align:center; font-size:.8rem; color:var(--text-sub); margin:-.9rem 0 1.5rem; }
+        .creature-legend b { color:#C98A00; letter-spacing:-1px; font-weight:400; }
 
         /* Search */
         .search-bar {
@@ -251,6 +253,7 @@ META-->
 
         <p class="creature-count" id="creatureCount"></p>
         <p style="text-align:center; font-size:.8rem; color:var(--text-sub); margin-bottom:1.5rem;">※ 掲載する生き物は、ダイビングで出会うたびに少しずつ増やしていきます。お楽しみに！</p>
+        <p class="creature-legend"><b>★</b>は、三浦の海でのめずらしさの目安です（<b>★</b>＝よく見る 〜 <b>★★★★★</b>＝めったに会えない）。</p>
 
         <!-- Grid -->
         <div class="creature-grid" id="creatureGrid"></div>
@@ -276,9 +279,10 @@ META-->
         var currentSearch = '';
         var galleryIndex = 0;
         var galleryPhotos = [];
+        var NO_PAGE = ["murasakiisoginchaku"]; // sealife:nopage（1種1ページを作っていない種。build_sealife.py の EXCLUDE が書き換える）
 
         function renderStars(n) {
-            return '<span class="creature-rarity">' + '★'.repeat(n) + '☆'.repeat(5 - n) + '</span>';
+            return '<span class="creature-rarity" role="img" aria-label="めずらしさ ' + n + '／5">' + '★'.repeat(n) + '☆'.repeat(5 - n) + '</span>';
         }
 
         function webpName(file) {
@@ -384,6 +388,7 @@ META-->
                     '<div class="modal-section"><h4>生態</h4><p>' + c.description + '</p></div>' +
                     '<div class="modal-section tip-box"><h4>💡 見つけ方のコツ</h4><p>' + c.beginner_tips + '</p></div>' +
                     '<div class="modal-section log-box"><h4>📓 ログ付けポイント</h4><p>' + c.log_point + '</p></div>' +
+                    (NO_PAGE.indexOf(c.id) === -1 ? '<a class="modal-more" href="/sea-life/' + c.id + '/">' + c.name_ja + 'のページをくわしく見る →</a>' : '') +
                 '</div>';
             document.getElementById('modal').classList.add('open');
             document.body.style.overflow = 'hidden';

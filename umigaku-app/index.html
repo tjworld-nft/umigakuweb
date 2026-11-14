@@ -70,7 +70,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Montserrat:wght@600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Montserrat:wght@600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Montserrat:wght@600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css?v=20261009">
+  <link rel="stylesheet" href="../css/style.css?v=20261114">
   <link rel="stylesheet" href="../css/umigaku-app.css?v=2026093003">
 </head>
 <body class="ua-page">
@@ -88,7 +88,7 @@
         <a href="../sea-life/">海の生き物図鑑</a>
         <a href="../manga/">まんが</a>
         <a href="https://miura-diving.com/blog/">ブログ</a>
-        <a href="../contact/" class="btn btn--coral" style="padding:.6rem 1.4rem; font-size:.85rem;">予約・相談</a>
+        <a href="/contact/?from=umigaku-app-nav#form" class="nav-cta" data-ask>予約・相談</a>
       </nav>
       <button class="hamburger" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -105,7 +105,10 @@
       <a href="../manga/">まんがで読むダイビング</a>
       <a href="../instructor/">インストラクター紹介</a>
       <a href="https://miura-diving.com/blog/">ブログ</a>
-      <div class="mobile-nav-cta"><a href="../contact/" class="btn btn--coral">予約・お問い合わせ</a></div>
+      <div class="mobile-nav-cta">
+        <a href="https://lin.ee/kK3d5p2" class="btn-line" target="_blank" rel="noopener noreferrer">LINEで空きを聞く</a>
+        <a href="/contact/?from=umigaku-app-nav#form" class="btn btn--coral">予約・お問い合わせフォーム</a>
+      </div>
     </div>
   </div>
 
@@ -344,7 +347,7 @@
     <a class="cta-form" href="#install"><svg class="fa-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1Zm0 0v15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>入れ方を見る</span></a>
   </div>
 
-  <script src="../js/main.js" defer></script>
+  <script src="../js/main.js?v=20261114" defer></script>
   <script>
     // 共通のスクロール処理より先に、スキップリンクのフォーカスを本文へ渡す。
     document.querySelector('.ua-skip').addEventListener('click', function (event) {

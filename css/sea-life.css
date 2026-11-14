@@ -14,14 +14,11 @@
 .sl-head__body { display: grid; gap: .9rem; padding-top: 1rem; padding-bottom: .6rem; }
 .sl-head__photo { margin: 0; border-radius: 18px; overflow: hidden; background: var(--bg-soft); }
 .sl-head__photo img { display: block; width: 100%; height: auto; }
-.sl-head__lead {
-  margin: 0; font-size: 1rem; line-height: 1.75; color: var(--text-dark);
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
+/* 説明文はここに全文を出す（2026-11：下の「図鑑の記録」と同じ文が2回出ていたのを、ここ1か所に） */
+.sl-head__lead { margin: 0; font-size: 1rem; line-height: 1.85; color: var(--text-dark); }
 .sl-head__go { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--teal-ink); text-decoration: none; }
 @media (min-width: 860px) {
   .sl-head__body { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem; align-items: center; padding-top: 1.8rem; }
-  .sl-head__lead { -webkit-line-clamp: 4; }
 }
 
 /* 写真＋図鑑の記録 */
