@@ -66,12 +66,13 @@
   /* ---------- 見た目 ---------- */
   var STYLE = [
     '.uask{--ink:#0B2A3A;--teal:#0F766E;--line:#00873C;--line-h:#00722F;--coral:#D12F6A;--soft:#F0F7FA;--bd:#D9E6EC;',
-    'position:fixed;inset:0;margin:0;padding:0;border:0;width:100%;max-width:none;height:100%;max-height:none;background:transparent;color:var(--ink);overflow:hidden;',
+    /* overflow は clip（スクロールできない箱）。hidden だと、iPhone の Safari が開く瞬間にこの箱をスクロールさせてしまう（下の settle() の説明） */
+    'position:fixed;inset:0;margin:0;padding:0;border:0;width:100%;max-width:none;height:100%;max-height:none;background:transparent;color:var(--ink);overflow:hidden;overflow:clip;',
     'font-family:var(--ff-body,"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif);-webkit-tap-highlight-color:transparent}',
     '.uask::backdrop{background:rgba(4,38,58,.56);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}',
     '.uask[open]{display:flex;align-items:flex-end;justify-content:center}',
-    '.uask__sheet{position:relative;display:flex;flex-direction:column;width:100%;max-width:560px;max-height:min(94dvh,860px);background:#fff;border-radius:26px 26px 0 0;',
-    'box-shadow:0 -18px 60px rgba(4,38,58,.35);overflow:hidden;transform:translateY(var(--drag,0px));will-change:transform}',
+    '.uask__sheet{position:relative;display:flex;flex-direction:column;width:100%;min-width:0;max-width:560px;max-height:min(94dvh,860px);background:#fff;border-radius:26px 26px 0 0;',
+    'box-shadow:0 -18px 60px rgba(4,38,58,.35);overflow:hidden;overflow:clip;transform:translateY(var(--drag,0px));will-change:transform}',
     '.uask[open] .uask__sheet{animation:uask-up .46s cubic-bezier(.2,.85,.25,1) both}',
     '.uask[open]::backdrop{animation:uask-fade .3s ease both}',
     '.uask.is-closing .uask__sheet{animation:uask-down .26s cubic-bezier(.5,0,.8,.4) both}',
@@ -92,8 +93,14 @@
     '.uask__close{position:absolute;right:.55rem;top:.75rem;width:46px;height:46px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:1.5rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:manipulation}',
     '.uask__close:hover{background:rgba(255,255,255,.26)}',
     '.uask [hidden]{display:none!important}',
-    '.uask__sheet:focus{outline:none}',
+    '.uask__sheet:focus,.uask__done:focus{outline:none}',
     '.uask__btn:focus-visible,.uask__close:focus-visible,.uask__link:focus-visible,.uask__picked button:focus-visible{outline:3px solid #FFB020;outline-offset:3px}',
+    /* ページ側の決まり（page.css・home.css の「[tabindex]:focus-visible に枠線と角10px」）が、シートの中に効かないようにする。
+       シートと「コピーしました」の面は、開いたときにフォーカスを置く場所なので、枠線は出さない。丸いボタンは丸いまま */
+    '.uask.uask .uask__sheet:focus-visible{outline:0;border-radius:26px 26px 0 0}',
+    '.uask.uask .uask__done:focus-visible{outline:0;border-radius:0}',
+    '.uask.uask .uask__close:focus-visible{border-radius:50%}',
+    '.uask.uask .uask__btn:focus-visible{border-radius:999px}',
     '.uask__cols{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}',
     /* 本文 */
     '.uask__body{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:.4rem 1.2rem 1rem}',
@@ -173,6 +180,7 @@
     '@media (min-width:860px) and (hover:hover){',
     '.uask[open]{align-items:center}',
     '.uask__sheet{max-width:920px;border-radius:26px;max-height:min(90dvh,820px)}',
+    '.uask.uask .uask__sheet:focus-visible{border-radius:26px}',
     '.uask[open] .uask__sheet{animation:uask-in .36s cubic-bezier(.2,.85,.25,1) both}',
     '.uask.is-closing .uask__sheet{animation:uask-out .2s ease both}',
     '@keyframes uask-in{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}',
@@ -402,6 +410,23 @@
     })();
 
     window.addEventListener('pagehide', function () { if (dlg.open) { dlg.classList.remove('is-closing'); dlg.close(); unlock(); } });
+
+    /* 外わくとシートは、スクロールしてはいけない箱。動いたら、すぐ 0 に戻す（settle() の説明） */
+    dlg.addEventListener('scroll', settle, { passive: true });
+    $('.uask__sheet').addEventListener('scroll', settle, { passive: true });
+    $('.uask__sheet').addEventListener('animationend', settle);
+  }
+
+  /* iPhone の Safari は、開く瞬間（シートがまだ画面の下にある間）に、フォーカスした物を見せようとして
+     <dialog> そのものを下へスクロールさせ、動きが終わっても戻さない。すると、シートが画面の上へはみ出して、
+     下のふちしか見えなくなる（2026-11-14 に本番で起きた）。
+     いまの Safari では CSS の overflow:clip でスクロールそのものができない。ここは、clip を知らない古い Safari のための戻し。 */
+  function settle() {
+    if (!dlg) return;
+    if (dlg.scrollTop) dlg.scrollTop = 0;
+    if (dlg.scrollLeft) dlg.scrollLeft = 0;
+    var s = $('.uask__sheet');
+    if (s) { if (s.scrollTop) s.scrollTop = 0; if (s.scrollLeft) s.scrollLeft = 0; }
   }
 
   function setDay(v) {
@@ -549,10 +574,14 @@
     $('.uask__sheet').style.setProperty('--drag', '0px');
     render(false);
     lock();
+    var px = window.pageXOffset, py = window.pageYOffset;
     dlg.showModal();
     var body = $('.uask__body'); if (body) body.scrollTop = 0;
     /* 開いた直後は、閉じるボタンではなくシートそのものに（スマホでキーボードを出さない） */
     try { $('.uask__sheet').setAttribute('tabindex', '-1'); $('.uask__sheet').focus({ preventScroll: true }); } catch (e) {}
+    /* 開くときのフォーカスで、外わくやうしろのページが動いていたら戻す（settle() の説明） */
+    settle();
+    if (window.pageXOffset !== px || window.pageYOffset !== py) window.scrollTo(px, py);
     return true;
   }
 
