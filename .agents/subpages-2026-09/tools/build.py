@@ -14,7 +14,7 @@ BASE = 'https://miura-diving.com'
 LINE = 'https://lin.ee/kK3d5p2'
 PAGE_CSS_V = '2026111402'
 PAGE_JS_V = '2026111401'
-STYLE_V = '2026111402'
+STYLE_V = '2026111501'
 MAIN_JS_V = '2026111403'  # js/main.js（全ページ共通）。直したら、ここと main.js の中の ASSET_V、手書きのページの ?v= も上げる
 MODIFIED = '2026-09-27'  # 断片の META に modified があればそちらを使う
 
