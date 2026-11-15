@@ -702,7 +702,15 @@
 .more-card--app .row { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; }
 .more-card--app .row img { height: 42px; width: auto; }
 .more-card--app .row a:not(:first-child) { color: #fff; font-weight: 700; font-size: .86rem; text-decoration: underline; text-underline-offset: 3px; }
-.more-card--books { background: var(--bg-soft); grid-template-columns: 1fr; }
+.more-card--books { background: var(--bg-soft); grid-template-columns: 1fr; grid-column: 1 / -1; }
+@media (min-width: 900px) {
+  /* アプリが2枚並ぶので、本の枠は横いっぱい：左に文、右に本 */
+  .more-card--books { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); grid-template-areas: "txt books" "all books"; column-gap: 1.6rem; }
+  .more-card--books > div:first-child { grid-area: txt; align-self: end; }
+  .more-card--books .books { grid-area: books; }
+  .more-card--books .all { grid-area: all; align-self: start; }
+}
+.more-card--app h2 .nw { display: inline-block; }
 .more-card--books h2 { font-size: 1.05rem; line-height: 1.5; color: var(--ink); }
 .more-card--books p { font-size: .82rem; line-height: 1.7; color: var(--text-sub); }
 .books { display: grid; grid-template-columns: repeat(4, 1fr); gap: .55rem; }
