@@ -25,11 +25,13 @@ DirectoryIndex index.html
 # - X-Frame-Options：他のサイトの枠の中にこのサイトを埋め込ませない（自分のサイト内は可）。
 # - Referrer-Policy：外のサイトへは、どのページから来たかを渡さず、サイトの名前だけ渡す。
 #   学習サイト（aow-learning）は、もっと厳しい値を aow-learning/.htaccess で付け直している。
+# - Permissions-Policy：カメラ・マイク・支払い・USB は使わせない。位置情報は自分のサイトだけ（logbook が使う）。
 <IfModule mod_headers.c>
   Header always set Strict-Transport-Security "max-age=31536000"
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(self), payment=(), usb=()"
 </IfModule>
 
 # 2026-11 SEO第1弾：サーバーにだけ残っている古いページ（受付停止のSUP・カヤック案内、旧検定、ライセンスの試作）を検索に出さない。
