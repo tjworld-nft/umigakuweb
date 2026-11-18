@@ -130,7 +130,6 @@ $from_name_encoded = mb_encode_mimeheader($SITE_NAME, 'ISO-2022-JP', 'B');
 
 $headers  = "From: {$from_name_encoded} <{$FROM_EMAIL}>\r\n";
 $headers .= "Reply-To: {$email}\r\n";
-$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
 // ===== メール送信 =====
 $result = mb_send_mail($TO_EMAIL, $subject, $body, $headers);
