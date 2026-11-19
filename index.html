@@ -340,15 +340,8 @@
         el.parentNode.removeChild(el);
       })();
       </script>
-      <!-- 冬の特典ふたつ。2027/1/1になるとJSが自動で外す（終わったらHTMLからも削除） -->
-      <div class="hero-campaigns" data-expires="2027-01-01">
-        <a href="#mydry-campaign" class="hero-campaign-pill">
-          <span class="flag">マイドライ割</span><span class="nw">ドライスーツを作ると</span><span class="nw">SP講習が半額</span><span class="nw">12/31まで<span data-deadline-days="2026-12-31">（<span class="days">期間限定</span>）</span></span>
-        </a>
-        <a href="#fuyuskill-campaign" class="hero-campaign-pill hero-campaign-pill--fuyu">
-          <span class="flag">冬スキル割</span><span class="nw pill-long">スペシャルティ5つで</span><span class="nw pill-long">6つ目の講習料が最大¥27,500引き</span><span class="nw pill-long">11月から</span><span class="nw pill-short">SP5つで、6つ目が最大¥27,500引き</span>
-        </a>
-      </div>
+      <!-- マイドライ割・冬スキル割の札は、2026-11-19 にここから外した（吉田さん「ごちゃごちゃしてきた。下にあるからここはいらない」）。
+           特典の枠は、下の水の帯 #mydry-campaign・#fuyuskill-campaign と、メニューの札に残っている。ここに札を足すときは、年末年始の1行と合わせて2つまでにする -->
       <p class="hero-eyebrow"><span class="nw">神奈川・三浦半島</span><span class="sep" aria-hidden="true">｜</span><span class="nw">城ヶ島・宮川湾のダイビングスクール</span></p>
       <h1 id="hero-title"><span class="ln">泳げなくても、</span><span class="ln">ひとりでも。</span><br><span class="ln">三浦の海で、</span><span class="ln">ダイビングを。</span></h1>
       <p class="hero-sub">体験ダイビングからPADIライセンス、ブランク明けまで。インストラクター1名につき最大4名の少人数で、あなたのペースに合わせます。</p>
@@ -381,7 +374,7 @@
     </section>
 
     <!-- 海の回数券（2026-11-19〜・常設）。新しい目玉なので、最初の画面のすぐ下に、券の形の帯で置く（吉田さんの希望）。
-         ヒーローの札には足さない（小さいスマホで LINE のボタンが最初の画面から出てしまうため）。
+         ヒーロー（最初の画面）には足さない（小さいスマホで LINE のボタンが最初の画面から出てしまうため）。
          値段・券の種類・払い方を変えたら、ここ・#courses の .course__deal と .perk--kaisuken も直す（正本 .agents/kaisuken-campaign.md） -->
     <section id="kaisuken-band" class="kband" aria-labelledby="kband-title">
       <a class="kband__ticket" href="https://miura-diving.com/kaisuken/">
@@ -472,7 +465,7 @@
       </div>
 
       <!-- マイドライ割（2026/10/1〜12/31の注文）。2027/1/1になるとJSが自動で外す。
-           期間が終わったら、この div・ナビのピル2つ・ヒーローのピルを HTML からも削除する -->
+           期間が終わったら、この div・ナビのピル2つを HTML からも削除する（ヒーローの札は 2026-11-19 に外した） -->
       <div id="mydry-campaign" class="sc" data-expires="2027-01-01">
         <div class="sc-head">
           <span class="sc-label">My Dry Campaign</span>
@@ -480,7 +473,7 @@
           <p class="sc-lead">ドライスーツを作ると、<strong>ドライスーツ・ダイバーSP講習が半額</strong>。<br class="sp-only">届いた自分の一着で、着方と浮力の取り方から練習できます。</p>
           <p class="sc-count" data-deadline-days="2026-12-31">ご注文の受付は<span class="days">12月31日まで</span></p>
         </div>
-        <!-- スマホでは、題・期限・入口だけを見せて、中身はたたんでおく（js/home.js。ヒーローの札やメニューから来たときは開く） -->
+        <!-- スマホでは、題・期限・入口だけを見せて、中身はたたんでおく（js/home.js。メニューの札から来たときは開く） -->
         <div class="sc-fold">
           <button type="button" class="sc-toggle" aria-expanded="false" aria-controls="mydry-more"><span class="sc-toggle__t">内容を見る</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
           <a class="sc-jump" href="/mydry/">くわしいページへ <span aria-hidden="true">→</span></a>
@@ -529,7 +522,7 @@
       </div>
 
       <!-- 冬スキル割（2026/11〜・はじめるのは12/31まで）。2027/1/1になるとJSが自動で外す。
-           期間が終わったら、この div・ナビのピル2つ（PCとスマホのメニュー）・ヒーローの .hero-campaigns の中の札を HTML からも削除する。
+           期間が終わったら、この div・ナビのピル2つ（PCとスマホのメニュー）を HTML からも削除する（ヒーローの札は 2026-11-19 に外した）。
            日程はリクエスト制（決まった開催日は書かない）。
            組み方・金額・条件はページ（/fuyu-skill/）に置き、ここは特典の一文と入口だけにする -->
       <div id="fuyuskill-campaign" class="sc" data-expires="2027-01-01">
