@@ -27,17 +27,17 @@
   <meta property="og:image" content="https://miura-diving.com/image/og-kaisuken.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="城ヶ島・梶の浜ビーチの青い水面に浮かぶダイバーと「次の海を、先に持っておく。」の文字">
+  <meta property="og:image:alt" content="明るい海の中で、金色の回数券3枚をかかげるクララのイラストと「次の海を、先に持っておく。」の文字">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="次の海を、先に持っておく。海の回数券｜三浦 海の学校">
   <meta name="twitter:description" content="城ヶ島のビーチ2本が、1回¥12,000から。3回・6回・12回の回数券。期限は買った日から1年、月に何回でも使えます。">
   <meta name="twitter:image" content="https://miura-diving.com/image/og-kaisuken.jpg">
 
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="preload" as="image" href="/image/sub/trial-hero-800.webp" imagesrcset="/image/sub/trial-hero-800.webp 800w, /image/sub/trial-hero-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" href="/image/kaisuken/hero-sea-800.webp" imagesrcset="/image/kaisuken/hero-sea-800.webp 800w, /image/kaisuken/hero-sea-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="/css/style.css?v=2026111501">
   <link rel="stylesheet" href="/css/page.css?v=2026111402">
-  <link rel="stylesheet" href="/css/kaisuken.css?v=2026111901">
+  <link rel="stylesheet" href="/css/kaisuken.css?v=2026111903">
   <!-- Webフォントは表示を止めない（display=optional：間に合わなければ端末の丸ゴシックで描き、文字のずれを起こさない） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -315,15 +315,20 @@
     </svg>
 
     <!-- ============================================================
-         HERO（写真は城ヶ島・梶の浜ビーチの水面。体験ダイビングのページと同じ、場所を確認済みの実写）
+         HERO（2026-11-19 に、吉田さんの希望「もっと明るく・なければAIで」で、写真をやめて絵にした。
+         うしろ＝明るい海の中の絵（hero-sea）、手前＝金色の回数券3枚をかかげるクララの切り抜き（hero-clara）。どちらも gpt-image-2.5 で作った絵で、実写ではない。
+         クララは別の <img>（.ph__chara）なので、パソコンは右に大きく、スマホは見出しの右に小さく置ける。置き方と膜の色は css/kaisuken.css の .ph--kv。
+         作り直しの道具とプロンプトは ~/Movies/umigaku-kaisuken-hero-20261119/（README）。クララにマスク・レギュレーターを着けない。南の海の生き物を描かない。）
          決まりの正本は .agents/kaisuken-campaign.md。値段・決まり・言い方は、そこに合わせる。
          文字を増やさない：見えている本文は 2,000〜2,500字まで（FAQ の答えと折りたたみを除く）。
          ============================================================ -->
-    <section class="ph" aria-labelledby="page-title" style="--pos: 62% 46%">
+    <section class="ph ph--kv" aria-labelledby="page-title">
       <picture class="ph__bg">
-        <img src="/image/sub/trial-hero-1600.webp" srcset="/image/sub/trial-hero-800.webp 800w, /image/sub/trial-hero-1600.webp 1600w" sizes="100vw"
-          alt="城ヶ島・梶の浜ビーチの青い水面に浮かんで、こちらを見ているダイバー" width="1600" height="1200" fetchpriority="high" decoding="async">
+        <img src="/image/kaisuken/hero-sea-1600.webp" srcset="/image/kaisuken/hero-sea-800.webp 800w, /image/kaisuken/hero-sea-1600.webp 1600w" sizes="(max-width: 767px) 240vw, 100vw"
+          alt="日の光が差しこむ、明るい海の中（イラスト）" width="1600" height="1067" fetchpriority="high" decoding="async">
       </picture>
+      <img class="ph__chara" src="/image/kaisuken/hero-clara-1080.webp" srcset="/image/kaisuken/hero-clara-540.webp 317w, /image/kaisuken/hero-clara-1080.webp 633w" sizes="(max-width: 767px) 100px, (max-width: 1099px) 220px, 310px"
+        alt="金色の回数券を3枚かかげて、笑顔で泳ぐ案内役のクララ（イラスト）" width="633" height="1080" decoding="async">
       <div class="ph__inner">
         <nav class="crumbs" aria-label="パンくずリスト">
           <ol><li><a href="/">ホーム</a></li><li><a href="/fun-diving/">ファンダイビング</a></li><li aria-current="page">海の回数券</li></ol>
