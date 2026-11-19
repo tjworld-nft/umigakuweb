@@ -38,7 +38,7 @@
   <!-- 最初の表示に要るものを先に。写真はヒーローのLCP候補 -->
   <link rel="preload" as="image" href="image/optimized/home-hero-soft-diving.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css?v=2026111501">
-  <link rel="stylesheet" href="css/home.css?v=2026111902">
+  <link rel="stylesheet" href="css/home.css?v=2026111903">
 
   <!-- オープニング「水面へ」（来るたびに1回・約6秒・押せばすぐ消える）。
        ここでは「出すかどうか」を決めて、最初の描画から海の絵を敷き、動画を取りに行くだけ。本体は js/opening.js。
@@ -293,6 +293,7 @@
       <a href="https://miura-diving.com/manga/">まんがで読むダイビング</a>
       <a href="https://miura-diving.com/instructor/">インストラクター紹介</a>
       <a href="https://miura-diving.com/blog/">ブログ</a>
+      <a href="https://miura-diving.com/kaisuken/" class="nav-campaign nav-campaign--kaisuken">海の回数券（ファンダイビング）</a>
       <a href="#mydry-campaign" class="nav-campaign" data-expires="2027-01-01">マイドライ割 12/31まで</a>
       <a href="#fuyuskill-campaign" class="nav-campaign nav-campaign--fuyu" data-expires="2027-01-01">冬スキル割 11月から</a>
       <div class="mobile-nav-cta">
@@ -377,6 +378,28 @@
         <li class="proof__item"><span class="proof__num">最大4<em>名</em></span><span class="proof__txt">インストラクター1名あたり。<br><b>一人参加</b>の方も多いです</span></li>
         <li class="proof__item"><span class="proof__num">約70<em>分</em></span><span class="proof__txt">品川から京急で三崎口へ。<br>駅から<b>無料送迎</b>（要予約）</span></li>
       </ul>
+    </section>
+
+    <!-- 海の回数券（2026-11-19〜・常設）。新しい目玉なので、最初の画面のすぐ下に、券の形の帯で置く（吉田さんの希望）。
+         ヒーローの札には足さない（小さいスマホで LINE のボタンが最初の画面から出てしまうため）。
+         値段・券の種類・払い方を変えたら、ここ・#courses の .course__deal と .perk--kaisuken も直す（正本 .agents/kaisuken-campaign.md） -->
+    <section id="kaisuken-band" class="kband" aria-labelledby="kband-title">
+      <a class="kband__ticket" href="https://miura-diving.com/kaisuken/">
+        <div class="kband__main">
+          <p class="kband__flag"><span>新しく始めました</span>ファンダイビングの回数券</p>
+          <h2 class="kband__title" id="kband-title"><span class="nw">次の海を、</span><span class="nw">先に持っておく。</span></h2>
+          <p class="kband__lead"><span class="nw">「海の回数券」は、</span><span class="nw">ファンダイビング</span><span class="nw">（城ヶ島のビーチ2本）を、</span><span class="nw">先にまとめて買う券です。</span><span class="nw">Cカードをお持ちの方向け。</span><span class="nw">期限は買った日から1年で、</span><span class="nw">月に何回でも使えます。</span></p>
+        </div>
+        <div class="kband__stub">
+          <ul class="kband__prices" role="list">
+            <li><b>3回券</b><span>¥36,000</span></li>
+            <li><b>6回券</b><span>¥69,000</span></li>
+            <li><b>12回券</b><span>¥138,000</span></li>
+          </ul>
+          <p class="kband__note">税込。通常は1回 ¥13,200。お支払いは、カード・振込・現金から。</p>
+          <span class="kband__go">海の回数券を見る</span>
+        </div>
+      </a>
     </section>
 
     <!-- ============================================================
@@ -823,10 +846,10 @@
         </div>
 
         <div class="perks">
-          <a class="perk perk--tsuzukeru reveal" href="https://miura-diving.com/tsuzukeru/">
-            <span class="big">¥800<small>次回が引き</small></span>
-            <b>つづける割</b>
-            <span>潜った当日に次回の日付を決めると、次回のファンダイビングが¥800引き。</span>
+          <a class="perk perk--kaisuken reveal" href="https://miura-diving.com/kaisuken/">
+            <span class="big">3回<small>¥36,000〜</small></span>
+            <b>海の回数券</b>
+            <span>ファンダイビング（ビーチ2本）を、先にまとめて買う券。<span class="nw">3回・6回・12回の3種類で、</span><span class="nw">1回あたり ¥12,000〜。</span></span>
           </a>
           <a class="perk perk--buddy reveal" data-delay="1" href="https://miura-diving.com/buddy/">
             <span class="big">2人<small>ともおトク</small></span>

@@ -122,6 +122,7 @@
 }
 .home .mobile-nav-panel .nav-campaign { color: var(--coral-ink); font-weight: 700; }
 .home .mobile-nav-panel .nav-campaign--fuyu { color: var(--sky-ink); }
+.home .mobile-nav-panel .nav-campaign--kaisuken { color: var(--teal-ink); }
 .home .mobile-nav-cta { display: grid; gap: .6rem; }
 .home .mobile-nav-cta .btn-line { width: 100%; }
 
@@ -216,6 +217,47 @@
   .proof__num { font-size: 1.45rem; }
   .proof__txt { margin-top: 0; font-size: .8rem; line-height: 1.6; overflow-wrap: anywhere; }
   .proof__txt br { display: none; }
+}
+
+/* ================================================================
+   KBAND — 海の回数券（最初の画面のすぐ下・券の形の帯。2026-11-19〜・常設）
+   ================================================================ */
+.kband { position: relative; z-index: 3; padding: 1.5rem 1.25rem 0; }
+.kband__ticket {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  max-width: 1080px; margin: 0 auto; color: var(--ink); text-decoration: none;
+  background: linear-gradient(135deg, #FFF8D6 0%, #FFEFA6 55%, #FFE27A 100%);
+  border-radius: 24px; box-shadow: 0 18px 44px rgba(6, 58, 87, .14), 0 2px 8px rgba(6, 58, 87, .06);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+.kband__ticket:hover { transform: translateY(-3px); color: var(--ink); box-shadow: 0 24px 54px rgba(6, 58, 87, .2), 0 2px 8px rgba(6, 58, 87, .08); }
+.kband__main { padding: 1.6rem 1.8rem 1.6rem 2rem; }
+.kband__flag { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; font-size: .8rem; font-weight: 700; color: var(--teal-ink); margin-bottom: .55rem; }
+.kband__flag span { background: var(--coral-ink); color: #fff; border-radius: 50px; padding: .12rem .7rem; font-size: .75rem; }
+.kband__title { font-size: clamp(1.45rem, 3.4vw, 2.1rem); font-weight: 700; line-height: 1.4; color: var(--ink); margin-bottom: .5rem; }
+.kband__title .nw, .kband__lead .nw { display: inline-block; }
+.kband__lead { font-size: .9rem; line-height: 1.8; color: var(--ink); }
+.kband__stub { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 1.4rem 1.8rem 1.5rem; border-left: 2px dashed rgba(11, 42, 58, .32); }
+/* 切り取り線の両はしの丸い切り欠き（ページの地の白でぬく） */
+.kband__stub::before, .kband__stub::after { content: ""; position: absolute; left: -14px; width: 26px; height: 26px; border-radius: 50%; background: #fff; }
+.kband__stub::before { top: -13px; }
+.kband__stub::after { bottom: -13px; }
+.kband__prices { list-style: none; padding: 0; margin: 0 0 .6rem; }
+.kband__prices li { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: .32rem 0; border-bottom: 1px solid rgba(11, 42, 58, .16); }
+.kband__prices b { font-size: .95rem; }
+.kband__prices span { font-family: var(--ff-accent); font-weight: 700; font-size: 1.25rem; letter-spacing: .01em; }
+.kband__note { font-size: .78rem; line-height: 1.7; color: var(--ink); margin-bottom: .8rem; }
+.kband__go { align-self: flex-start; background: var(--ink); color: #fff; font-weight: 700; font-size: .9rem; border-radius: 50px; padding: .55rem 1.25rem; }
+.kband__go::after { content: " →"; }
+@media (max-width: 759px) {
+  .kband { padding-top: 1.1rem; }
+  .kband__ticket { grid-template-columns: 1fr; }
+  .kband__main { padding: 1.3rem 1.25rem 1.1rem; }
+  .kband__stub { border-left: 0; border-top: 2px dashed rgba(11, 42, 58, .32); padding: 1.05rem 1.25rem 1.3rem; }
+  .kband__stub::before, .kband__stub::after { top: -14px; bottom: auto; }
+  .kband__stub::before { left: -13px; }
+  .kband__stub::after { left: auto; right: -13px; }
+  .kband__go { align-self: stretch; text-align: center; }
 }
 
 /* ================================================================
@@ -652,12 +694,13 @@ a.course__deal:hover { background: #FFE98A; color: var(--ink); }
   transition: transform var(--ease);
 }
 .perk:hover { transform: translateY(-3px); color: #fff; }
-.perk--tsuzukeru { background: linear-gradient(135deg, #0F766E, #1A7898); }
+.perk--tsuzukeru, .perk--kaisuken { background: linear-gradient(135deg, #0F766E, #1A7898); }
 .perk--buddy { background: linear-gradient(135deg, #B8245A, #D12F6A 60%, #E0457A); }
 .perk .big { grid-row: span 2; font-family: var(--ff-accent); font-weight: 700; font-size: 1.7rem; line-height: 1; background: rgba(255, 255, 255, .16); border-radius: 16px; padding: .8rem .75rem; text-align: center; min-width: 5.5rem; }
 .perk .big small { display: block; font-family: var(--ff-body); font-size: .75rem; margin-top: .35rem; letter-spacing: .04em; }
 .perk b { font-size: 1.02rem; line-height: 1.5; }
 .perk span { font-size: .84rem; line-height: 1.7; opacity: .95; }
+.perk span .nw { display: inline-block; opacity: 1; }
 @media (max-width: 959px) {
   .course-grid { grid-template-columns: repeat(2, 1fr); }
   .courses-note { grid-template-columns: 1fr; }
