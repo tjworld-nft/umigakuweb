@@ -134,6 +134,26 @@ $headers .= "Reply-To: {$email}\r\n";
 // ===== メール送信 =====
 $result = mb_send_mail($TO_EMAIL, $subject, $body, $headers);
 
+// ===== お休み（年末年始など）のときの返信の目安 =====
+// 時刻は日本時間。from（最後の営業日の夕方）から until（明けの朝）までのあいだ、返信の目安の文を入れかえる。
+// 希望日がお休みの日（closed_from〜closed_to）なら、自動返信にひとこと足す。
+// 日付は js/ask.js の CLOSED と、トップ（index.html）のお知らせ1行と同じ。過ぎた行は片づけのときに消す。
+$closed_periods = [
+    ['from' => '2026-12-27 17:00', 'until' => '2027-01-04 09:00',
+     'closed_from' => '2026-12-28', 'closed_to' => '2027-01-03',
+     'reply' => "12/28(月)〜1/3(日)は年末年始のお休みをいただいています。\nお返事は1/4(月)から順にお送りします。少しお待たせします。",
+     'short' => '12/28(月)〜1/3(日)は年末年始のお休みをいただいています。お返事は1/4(月)から順にお送りします。',
+     'day'   => 'ご希望日は年末年始のお休み（12/28〜1/3）にあたります。前後の日程をご案内します。'],
+];
+$now_jst = (new DateTime('now', new DateTimeZone('Asia/Tokyo')))->format('Y-m-d H:i');
+$reply_line = '通常1営業日以内にご返信いたします。';
+$reply_short = '通常1営業日以内にご返信します。';
+$day_note = '';
+foreach ($closed_periods as $cp) {
+    if ($now_jst >= $cp['from'] && $now_jst < $cp['until']) { $reply_line = $cp['reply']; $reply_short = $cp['short']; }
+    if ($date !== '' && $date >= $cp['closed_from'] && $date <= $cp['closed_to']) { $day_note = "\n※ " . $cp['day']; }
+}
+
 // ===== 自動返信メール（お客様向け） =====
 if ($result) {
     $auto_reply_subject = "【三浦 海の学校】お問い合わせを受け付けました";
@@ -144,11 +164,11 @@ if ($result) {
 誠にありがとうございます。
 
 以下の内容でお問い合わせを受け付けました。
-通常1営業日以内にご返信いたします。
+{$reply_line}
 
 ────────────────────────────
 【お問い合わせ種別】 {$category}
-【ご希望日】 {$date}
+【ご希望日】 {$date}{$day_note}
 【参加人数】 {$people}
 
 内容を確認のうえ、担当者からご連絡いたします。
@@ -174,4 +194,4 @@ if (!$result) {
     contact_release($reservation);
     respond(500, false, 'メールの送信に失敗しました。入力内容を控えて、LINEまたはinfo@miura-diving.comへお問い合わせください。');
 }
-respond(200, true, 'お問い合わせを受け付けました。通常1営業日以内にご返信します。');
+respond(200, true, 'お問い合わせを受け付けました。' . $reply_short);

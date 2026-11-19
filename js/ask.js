@@ -52,16 +52,62 @@
     return md(sat) + '・' + (sun.getMonth() === sat.getMonth() ? sun.getDate() : md(sun));
   }
 
+  /* ---------- お休み（年末年始など）----------
+     ここに書いた期間は、「今週末」「来週末」の候補から外し、日にちを選んだときも止める。
+     showFrom の日からお休みの前日までは before を、お休みの間は during を、シートの上に1行出す。
+     お休みが明けたら何も出ない（過ぎた行は残っていても害はないが、片づけのときに消す）。 */
+  var CLOSED = [
+    { from: '2026-12-28', to: '2027-01-03', showFrom: '2026-11-19',
+      before: '年末年始：12/28(月)〜1/3(日)はお休みです。年内は12/27(日)まで、新年は1/4(月)から。',
+      during: 'ただいまお休み中です（1/3まで）。送っていただいた分は、1/4(月)から順にお返事します。',
+      pick: 'この日はお休みです。年内は12/27(日)まで、新年は1/4(月)からえらべます。',
+      tail: '（お休み中に送っています。お返事は1/4からで大丈夫です）',
+      /* 休みの週末の代わりに出す、お休み明けの週末（3連休なら、そのことも） */
+      next: { iso: '2027-01-09', label: '新年さいしょの週末', sub: '1/9〜11(月・祝)', text: '1/9(土)〜11(月・祝)' },
+      weekday: { sub: '1/4(月)〜', text: '1/4(月)からの平日' } }
+  ];
+  function closedOn(s) {
+    for (var i = 0; i < CLOSED.length; i++) if (s >= CLOSED[i].from && s <= CLOSED[i].to) return CLOSED[i];
+    return null;
+  }
+  function weekendClosed(sat) { return closedOn(iso(sat)) || closedOn(iso(addDays(sat, 1))); }
+
   var today = jstToday();
   var dow = today.getDay();
   var toSat = (6 - dow + 7) % 7; if (toSat === 0) toSat = 7;          /* 今日が土曜なら、次の土曜 */
-  var sat1 = addDays(today, toSat), sat2 = addDays(sat1, 7);
+  var sat1 = addDays(today, toSat), skip1 = false, skip2 = false;
+  while (weekendClosed(sat1)) { sat1 = addDays(sat1, 7); skip1 = true; }
+  var sat2 = addDays(sat1, 7);
+  while (weekendClosed(sat2)) { sat2 = addDays(sat2, 7); skip2 = true; }
   var weekday = dow >= 1 && dow <= 5;
+  /* 候補の週末が「お休み明けの週末」（CLOSED の next）なら、その呼び名と日にち（3連休ならそれも）を使う。
+     休みの週末を飛ばしてきて、next が無いときは「お休み明けの週末」と呼ぶ */
+  function weekendChip(k, sat, skipped, plainLabel) {
+    for (var i = 0; i < CLOSED.length; i++) {
+      var n = CLOSED[i].next;
+      if (n && n.iso === iso(sat)) return { k: k, label: n.label, sub: n.sub, text: n.text, iso: n.iso };
+    }
+    return { k: k, label: skipped ? 'お休み明けの週末' : plainLabel, sub: weekendShort(sat), text: weekendText(sat), iso: iso(sat) };
+  }
+  /* いまがお休みの中なら、その期間（なければ null） */
+  var NOW_CLOSED = closedOn(iso(today));
   var DATES = [
-    { k: 'w1', label: weekday ? '今週末' : '次の週末',   sub: weekendShort(sat1), text: weekendText(sat1), iso: iso(sat1) },
-    { k: 'w2', label: weekday ? '来週末' : 'その次の週末', sub: weekendShort(sat2), text: weekendText(sat2), iso: iso(sat2) },
-    { k: 'wd', label: '平日',       sub: '月〜金', text: '平日', iso: '' }
+    weekendChip('w1', sat1, skip1, weekday ? '今週末' : '次の週末'),
+    weekendChip('w2', sat2, skip2, (weekday && !skip1) ? '来週末' : 'その次の週末'),
+    (NOW_CLOSED && NOW_CLOSED.weekday)
+      ? { k: 'wd', label: '平日', sub: NOW_CLOSED.weekday.sub, text: NOW_CLOSED.weekday.text, iso: '' }
+      : { k: 'wd', label: '平日', sub: '月〜金', text: '平日', iso: '' }
   ];
+  /* シートの上に出す知らせ（なければ空） */
+  var NOTICE = (function () {
+    var t = iso(today);
+    for (var i = 0; i < CLOSED.length; i++) {
+      var c = CLOSED[i];
+      if (t >= c.from && t <= c.to) return c.during;
+      if (t >= c.showFrom && t < c.from) return c.before;
+    }
+    return '';
+  })();
 
   /* ---------- 見た目 ---------- */
   var STYLE = [
@@ -135,6 +181,10 @@
     '.uask__picked svg{flex:none;width:1.25rem;height:1.25rem;fill:var(--teal)}',
     '.uask__picked button{margin-left:auto;flex:none;border:0;background:none;padding:.5rem .2rem;font:inherit;font-size:.82rem;font-weight:700;color:var(--teal);text-decoration:underline;text-underline-offset:3px;cursor:pointer}',
     /* ひとこと */
+    /* お休みの知らせ（年末年始など） */
+    '.uask__notice{display:flex;gap:.55rem;align-items:flex-start;margin:.95rem 0 0;padding:.7rem .85rem;border-radius:14px;background:#FFF6DC;border:1px solid #F2D58A;font-size:.86rem;line-height:1.65;font-weight:700;color:#5A4300}',
+    '.uask__notice svg{flex:none;width:1.1rem;height:1.1rem;margin-top:.15rem;fill:#B07800}',
+    '.uask__closed{margin:.5rem 0 0;font-size:.82rem;line-height:1.6;font-weight:700;color:#A3341F}',
     '.uask__note{margin-top:1rem}',
     '.uask__note label{display:flex;align-items:center;gap:.5rem;font-size:.86rem;font-weight:700;color:#3F5866;margin-bottom:.35rem}',
     '.uask__note label small{font-size:.75rem;color:#5B7280;background:var(--soft);border-radius:999px;padding:.15rem .6rem}',
@@ -267,6 +317,7 @@
           '</div>' +
           '<div class="uask__cols">' +
             '<div class="uask__body">' +
+              (NOTICE ? '<p class="uask__notice">' + ICON_CAL + '<span>' + esc(NOTICE) + '</span></p>' : '') +
               '<fieldset class="uask__q" data-uask-course>' +
                 '<legend><b>1</b>どのコースですか？</legend>' +
                 '<div class="uask__picked" data-uask-picked hidden>' + ICON_OK + '<span data-uask-picked-label></span><button type="button" data-uask-change>変える</button></div>' +
@@ -279,6 +330,7 @@
                   '<label class="uask-date" data-uask-pick>' + ICON_CAL + '<span data-uask-pick-label>日にちを選ぶ</span><input type="date" name="uask-day" aria-label="希望日を選ぶ"></label>' +
                   '<label class="uask-chip"><input type="checkbox" name="uask-date" value="none"><span style="align-items:center;text-align:center">まだ未定</span></label>' +
                 '</div>' +
+                '<p class="uask__closed" data-uask-closed role="status" hidden></p>' +
               '</fieldset>' +
               '<fieldset class="uask__q">' +
                 '<legend><b>3</b>何名ですか？</legend>' +
@@ -337,7 +389,10 @@
         }
       }
       if (t.name === 'uask-day') {
-        setDay(t.value);
+        var cl = t.value ? closedOn(t.value) : null, w = $('[data-uask-closed]');
+        if (cl) { w.textContent = cl.pick; w.hidden = false; t.value = ''; }
+        else { w.hidden = true; w.textContent = ''; }
+        setDay(cl ? '' : t.value);
         if (t.value) { var n2 = $('input[name="uask-date"][value="none"]'); if (n2) n2.checked = false; }
       }
       render(true);
@@ -488,7 +543,9 @@
     else if (d.text) tail = '希望日は' + d.text + 'です。';
     else if (p) tail = '人数は' + p + 'です。';
     var note = ($('#uask-note').value || '').replace(/\s+/g, ' ').trim();
-    return base + tail + (note ? '\n' + note : '');
+    /* お休み中に作った文面には、返事が明けてからでよいことを1行足す */
+    var off = (NOW_CLOSED && NOW_CLOSED.tail) ? '\n' + NOW_CLOSED.tail : '';
+    return base + tail + (note ? '\n' + note : '') + off;
   }
 
   function render(pop) {
@@ -565,7 +622,8 @@
     $('#uask-note').value = '';
     $('input[name="uask-day"]').min = iso(jstToday());
     /* 海況カードから来たときは、その日を入れておく */
-    setDay(/^\d{4}-\d{2}-\d{2}$/.test(ctx.day || '') ? ctx.day : '');
+    setDay(/^\d{4}-\d{2}-\d{2}$/.test(ctx.day || '') && !closedOn(ctx.day) ? ctx.day : '');
+    var cw = $('[data-uask-closed]'); if (cw) { cw.hidden = true; cw.textContent = ''; }
     if (c) { var ci = $('input[name="uask-course"][value="' + c.k + '"]'); if (ci) ci.checked = true; }
     collapseCourse(!!c);
     state.title = ctx.title || '';
