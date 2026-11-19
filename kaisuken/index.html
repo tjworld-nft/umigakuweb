@@ -103,7 +103,7 @@
         "@id": "https://miura-diving.com/kaisuken/#service",
         "name": "海の回数券（ファンダイビングの回数券）",
         "serviceType": "スクーバダイビングのガイドサービス（回数券）",
-        "description": "三浦 海の学校のファンダイビング（城ヶ島のビーチ2本）を、先にまとめて買う回数券。3回券36,000円（1回あたり12,000円）、6回券69,000円（1回あたり11,500円）、12回券138,000円（1回あたり11,500円・追加ダイブ無料券4枚つき）。通常の値段は1回13,200円（いずれも税込）。券1枚でビーチ2本（ガイド・タンク・施設使用料・保険こみ）。レンタル器材は別（フルセット1日5,500円）。Cカードをお持ちの方が対象。期限は買った日から1年で、残りがあるうちに次の券を買うと、残りの期限も新しい券の期限まで延びる。月に何回でも使えるが、1日に使えるのは1枚。3本目・4本目は追加ダイブ（1本5,500円）。ボートの日とリフレッシュの日は、券1枚をビーチ2本ぶん（13,200円）として使い、差額を当日支払う（宮川湾のボート2本は6,600円、城ヶ島のボート2本は10,100円、リフレッシュダイビングは6,600円）。使えるのは買った本人だけ。券を使う回は、つづける割・バディ割などほかの割引と一緒に使えない。途中でやめる時は、使った回数を通常の値段で計算し直し、残りがあれば返金する。",
+        "description": "三浦 海の学校のファンダイビング（城ヶ島のビーチ2本）を、先にまとめて買う回数券。3回券36,000円（1回あたり12,000円）、6回券69,000円（1回あたり11,500円）、12回券138,000円（1回あたり11,500円・追加ダイブ無料券4枚つき）。通常の値段は1回13,200円（いずれも税込）。券1枚でビーチ2本（ガイド・タンク・ウエイト・施設使用料・保険こみ）。レンタル器材は別（フルセット1日5,500円）。Cカードをお持ちの方が対象。期限は買った日から1年で、残りがあるうちに次の券を買うと、残りの期限も新しい券の期限まで延びる。月に何回でも使えるが、1日に使えるのは1枚。3本目・4本目は追加ダイブ（1本5,500円）。ボートの日とリフレッシュの日は、券1枚をビーチ2本ぶん（13,200円）として使い、差額を当日支払う（宮川湾のボート2本は6,600円、城ヶ島のボート2本は10,100円、リフレッシュダイビングは6,600円）。使えるのは買った本人だけ。券を使う回は、つづける割・バディ割などほかの割引と一緒に使えない。途中でやめる時は、使った回数を通常の値段で計算し直し、残りがあれば返金する。",
         "url": "https://miura-diving.com/kaisuken/",
         "provider": {
           "@type": "SportsActivityLocation",
@@ -375,7 +375,7 @@
     <!-- ============================================================
          TICKETS — 3つの券（紙の券の形は css/kaisuken.css が描く。画像は使っていない）
          値段を変えたら：ここ・#choose・#days・FAQ・.about・kaisuken.ld.json・tools/check.py（KAISUKEN_…）を一緒に。
-         カードの決済リンク（Stripe）ができたら、「STRIPE:3」「STRIPE:6」「STRIPE:12」の目印（コメント）の所にボタンを足す（#tickets と #buy の2か所）。
+         カードの決済リンク（Stripe・2026-11-19 作成）は、目印「STRIPE:3」「STRIPE:6」「STRIPE:12」の近くの data-stripe のリンク（#tickets と #buy の2か所）。リンクを作り直したら6か所とも直す。
          ============================================================ -->
     <section id="tickets" class="sec" aria-labelledby="tickets-title">
       <div class="h-wrap">
@@ -400,6 +400,7 @@
               </dl>
               <!-- STRIPE:3 -->
               <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-ticket="3" data-line-msg="海の回数券（3回券）を買いたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>3回券を申し込む</a>
+              <a class="kt__card" href="https://buy.stripe.com/8x214n6T3bkG40Q3EL18c01" target="_blank" rel="noopener noreferrer" data-stripe="3"><svg aria-hidden="true"><use href="#k-card"/></svg>カードで買う<small>（決済ページへ）</small></a>
             </div>
           </li>
           <li class="kt kt--6" id="ticket-6">
@@ -416,6 +417,7 @@
               </dl>
               <!-- STRIPE:6 -->
               <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-ticket="6" data-line-msg="海の回数券（6回券）を買いたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>6回券を申し込む</a>
+              <a class="kt__card" href="https://buy.stripe.com/00w7sL2CNbkG7d2b7d18c02" target="_blank" rel="noopener noreferrer" data-stripe="6"><svg aria-hidden="true"><use href="#k-card"/></svg>カードで買う<small>（決済ページへ）</small></a>
             </div>
           </li>
           <li class="kt kt--12" id="ticket-12">
@@ -433,6 +435,7 @@
               </dl>
               <!-- STRIPE:12 -->
               <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-ticket="12" data-line-msg="海の回数券（12回券）を買いたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>12回券を申し込む</a>
+              <a class="kt__card" href="https://buy.stripe.com/14AfZhdhr88u68Y5MT18c03" target="_blank" rel="noopener noreferrer" data-stripe="12"><svg aria-hidden="true"><use href="#k-card"/></svg>カードで買う<small>（決済ページへ）</small></a>
             </div>
           </li>
         </ul>
@@ -632,8 +635,8 @@
     </section>
 
     <!-- ============================================================
-         BUY — 買い方（カード／振込／現金。いまは、どれも公式LINEから）
-         Stripe の決済リンクができたら、「STRIPE:n」の目印（コメント）の所に「カードで買う」のボタンを足す。
+         BUY — 買い方（カード／振込／現金。カードはページから直接、振込と現金は公式LINEから）
+         カードのボタン（.kb__cards・data-stripe）は Stripe の決済リンク。作り直したら #tickets の3つも直す。
          ============================================================ -->
     <section id="buy" class="sec sec--soft" aria-labelledby="buy-title">
       <div class="h-wrap">
@@ -643,7 +646,7 @@
           <p class="h-lead"><span class="nw">券をえらんで、</span><span class="nw">公式LINEに送るだけ。</span><span class="nw">お支払いは、</span><span class="nw">3つから選べます。</span></p>
         </div>
         <ul class="kp" role="list">
-          <li><svg aria-hidden="true"><use href="#k-card"/></svg><div><b>クレジットカード</b><span><span class="nw">決済ページのリンクを、</span><span class="nw">LINEでお送りします。</span></span></div></li>
+          <li><svg aria-hidden="true"><use href="#k-card"/></svg><div><b>クレジットカード</b><span><span class="nw">下の「カードで買う」から、</span><span class="nw">決済ページへ。</span></span></div></li>
           <li><svg aria-hidden="true"><use href="#k-bank"/></svg><div><b>銀行振込</b><span><span class="nw">振込先を、</span><span class="nw">LINEでお知らせします。</span></span></div></li>
           <li><svg aria-hidden="true"><use href="#k-cash"/></svg><div><b>現金</b><span><span class="nw">潜りに来た日に、</span><span class="nw">その場で。</span></span></div></li>
         </ul>
@@ -660,6 +663,13 @@
             <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-ticket="12" data-line-msg="海の回数券（12回券）を買いたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span><span>12回券<small>¥138,000</small></span></a>
           </div>
           <p class="kb__foot"><a class="link-arrow" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-ask="fun">先に、潜る日の空きを聞く</a></p>
+          <p class="kb__lead kb__lead--card"><svg aria-hidden="true"><use href="#k-card"/></svg>カードで、いま買う</p>
+          <div class="kb__cards">
+            <a class="kb__card" href="https://buy.stripe.com/8x214n6T3bkG40Q3EL18c01" target="_blank" rel="noopener noreferrer" data-stripe="3"><span>3回券<small>¥36,000</small></span></a>
+            <a class="kb__card" href="https://buy.stripe.com/00w7sL2CNbkG7d2b7d18c02" target="_blank" rel="noopener noreferrer" data-stripe="6"><span>6回券<small>¥69,000</small></span></a>
+            <a class="kb__card" href="https://buy.stripe.com/14AfZhdhr88u68Y5MT18c03" target="_blank" rel="noopener noreferrer" data-stripe="12"><span>12回券<small>¥138,000</small></span></a>
+          </div>
+          <p class="note kb__cardnote"><span class="nw">決済ページ（Stripe）が開きます。</span><span class="nw">お店の名前は「AquaBit LAB」</span><span class="nw">（三浦 海の学校を運営する屋号）と出ます。</span><span class="nw">払ったあと、</span><span class="nw">公式LINEに</span><span class="nw">「回数券を買いました」と</span><span class="nw">ひと言どうぞ。</span></p>
         </div>
       </div>
     </section>

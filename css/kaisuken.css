@@ -129,6 +129,14 @@
 .kt__per div:first-child dt { color: var(--ink); font-size: .9rem; }
 .kt__per div:first-child dd { font-size: 1.7rem; color: var(--kt); }
 .kt .btn-line { width: 100%; min-height: 54px; padding: .85rem 1rem; font-size: .96rem; }
+/* カードで買う（Stripe の決済ページへ）。主役は LINE のボタン、こちらは下の小さいリンク */
+.kt__card {
+  display: flex; align-items: center; justify-content: center; gap: .4rem; min-height: 44px; margin: .5rem 0 0;
+  font-size: .9rem; font-weight: 700; line-height: 1.4; color: var(--teal-ink); text-decoration: underline; text-underline-offset: 3px;
+}
+.kt__card svg { width: 18px; height: 18px; flex: none; }
+.kt__card small { font-size: .78rem; font-weight: 500; color: var(--text-sub); }
+.kt__card:hover { color: var(--ink); }
 
 .kt-note { max-width: 760px; margin: 1.7rem auto 0; text-align: center; }
 
@@ -278,7 +286,7 @@
 .kfold-h { margin: 1.4rem 0 .6rem; font-size: 1rem; line-height: 1.5; color: var(--ink); }
 
 /* ================================================================
-   .kb — 券ごとの申し込みボタン（#buy）。カードの決済リンクができたら、ここと券（.kt）に足す
+   .kb — 券ごとの申し込みボタン（#buy）。上＝LINE、下＝カード（Stripe の決済リンク .kb__cards）
    ================================================================ */
 .kb {
   max-width: 860px; margin: 1.6rem 0 0; padding: 1.4rem 1.3rem 1.1rem; border-radius: 24px;
@@ -290,4 +298,15 @@
 .kb__btns .btn-line small { font-family: var(--ff-accent); font-size: .8rem; letter-spacing: .02em; }
 .kb__foot { margin: .7rem 0 0; }
 .kb__foot .link-arrow { min-height: 44px; }
-@media (max-width: 699px) { .kb__btns { grid-template-columns: minmax(0, 1fr); } }
+.kb__lead--card { display: flex; align-items: center; gap: .45rem; margin: 1.3rem 0 .8rem; padding-top: 1.2rem; border-top: 1px dashed rgba(11, 42, 58, .2); }
+.kb__lead--card svg { width: 20px; height: 20px; flex: none; color: var(--teal-ink); }
+.kb__cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; }
+.kb__card {
+  display: flex; align-items: center; justify-content: center; min-height: 56px; padding: .6rem .9rem; border-radius: 999px;
+  border: 2px solid var(--teal-ink); background: #fff; color: var(--teal-ink); font-weight: 700; font-size: 1rem; line-height: 1.3; text-decoration: none;
+}
+.kb__card span { display: inline-flex; align-items: baseline; gap: .5rem; }
+.kb__card small { font-family: var(--ff-accent); font-size: .82rem; letter-spacing: .02em; }
+.kb__card:hover { background: var(--teal-ink); color: #fff; }
+.kb__cardnote { margin: .8rem 0 0; }
+@media (max-width: 699px) { .kb__btns, .kb__cards { grid-template-columns: minmax(0, 1fr); } }
