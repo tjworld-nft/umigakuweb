@@ -38,7 +38,7 @@
   <!-- 最初の表示に要るものを先に。写真はヒーローのLCP候補 -->
   <link rel="preload" as="image" href="image/optimized/home-hero-soft-diving.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css?v=2026111501">
-  <link rel="stylesheet" href="css/home.css?v=2026111901">
+  <link rel="stylesheet" href="css/home.css?v=2026111902">
 
   <!-- オープニング「水面へ」（来るたびに1回・約6秒・押せばすぐ消える）。
        ここでは「出すかどうか」を決めて、最初の描画から海の絵を敷き、動画を取りに行くだけ。本体は js/opening.js。
@@ -794,14 +794,17 @@
             <ul class="course__meta"><li>半年以上ブランクの方に</li></ul>
             <span class="course__go">リフレッシュを見る</span>
           </a>
-          <a class="course reveal" data-delay="1" href="https://miura-diving.com/fun-diving/">
+          <!-- このカードだけ、中にリンクが2つ（カード全体＝ファンダイビング／黄色の行＝海の回数券）。a の中に a は置けないので、
+               外わくは div にして、見出しのリンクをカード全体に広げている（css/home.css の .course--links） -->
+          <div class="course course--links reveal" data-delay="1">
             <span class="course__tag">Cカードをお持ちの方</span>
-            <h3>ファンダイビング<small>城ヶ島・宮川湾</small></h3>
+            <h3><a class="course__main" href="https://miura-diving.com/fun-diving/">ファンダイビング<small>城ヶ島・宮川湾</small></a></h3>
             <p class="course__price"><span class="from">ビーチ2本</span>¥13,200</p>
             <p class="course__price2">ボート2本 ¥19,800〜（城ヶ島は¥23,300）</p>
             <p class="course__inc">ガイド・タンク・ウエイト・施設使用料・保険込み。レンタル器材別。</p>
-            <span class="course__go">プランと料金を見る</span>
-          </a>
+            <a class="course__deal" href="https://miura-diving.com/kaisuken/">回数券なら 1回 ¥12,000〜</a>
+            <span class="course__go" aria-hidden="true">プランと料金を見る</span>
+          </div>
           <a class="course reveal" data-delay="2" href="https://miura-diving.com/marine-activity/">
             <span class="course__tag">ダイビング以外</span>
             <h3>スノーケリング<small>親子でも、はじめてでも</small></h3>

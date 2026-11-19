@@ -1,0 +1,457 @@
+<!--META
+{
+  "path": "kaisuken/",
+  "current": "kaisuken",
+  "from": "kaisuken",
+  "title": "海の回数券｜ファンダイビングが1回¥12,000から・期限1年｜三浦 海の学校",
+  "desc": "三浦 海の学校の「海の回数券」。城ヶ島のビーチ2本のファンダイビングを、先にまとめて買う券です。3回券¥36,000（1回¥12,000）、6回券¥69,000・12回券¥138,000（1回¥11,500）。期限は買った日から1年、月に何回でも使えます。",
+  "modified": "2026-11-19",
+  "ogTitle": "次の海を、先に持っておく。海の回数券｜三浦 海の学校",
+  "ogDesc": "城ヶ島のビーチ2本が、1回¥12,000から。3回・6回・12回の回数券。期限は買った日から1年、月に何回でも使えます。",
+  "og": "/image/og-kaisuken.jpg",
+  "ogAlt": "城ヶ島・梶の浜ビーチの青い水面に浮かぶダイバーと「次の海を、先に持っておく。」の文字",
+  "hero": {"800": "/image/sub/trial-hero-800.webp", "1600": "/image/sub/trial-hero-1600.webp"},
+  "crumbs": [["ファンダイビング", "/fun-diving/"], ["海の回数券", "/kaisuken/"]],
+  "about": "https://miura-diving.com/kaisuken/#service",
+  "extraHead": "  <link rel=\"stylesheet\" href=\"/css/kaisuken.css?v=2026111901\">",
+  "ask": {
+    "title": "<span class=\"nw\">どの券がいいか、</span><span class=\"nw\">迷ったら</span><span class=\"nw\">聞いてください。</span>",
+    "lead": "<span class=\"nw\">「年に何回くらい</span><span class=\"nw\">潜れそうか」を</span><span class=\"nw\">教えてください。</span><span class=\"nw\">合う券をお返事します。</span>",
+    "msg": "海の回数券のページを見ました。どの券がいいか相談したいです。",
+    "cat": "ファンダイビング",
+    "lineNote": "友だち追加して、ひと言送るだけ。<br><span class=\"nw\">「回数券のことを聞きたい」</span><span class=\"nw\">でOKです。</span>"
+  }
+}
+META-->
+  <main id="main">
+
+    <!-- このページだけの小さな絵（線のアイコン）。Font Awesome は使わない -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <symbol id="k-wave" viewBox="0 0 24 24"><path d="M2 9c2.2 0 2.8-2 5-2s2.8 2 5 2 2.8-2 5-2 2.8 2 5 2M2 15c2.2 0 2.8-2 5-2s2.8 2 5 2 2.8-2 5-2 2.8 2 5 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="k-plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5v9M7.5 12h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="k-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 20.5c.8-4 3.7-6 7.5-6s6.7 2 7.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="k-apart" viewBox="0 0 24 24"><rect x="2.5" y="7" width="7.5" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="7" width="7.5" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4v16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 3"/></symbol>
+      <symbol id="k-back" viewBox="0 0 24 24"><path d="M8 5 4 9l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h10a6 6 0 0 1 0 12h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="k-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 10h19M6.5 15h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="k-bank" viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5M4.5 10v8M9.5 10v8M14.5 10v8M19.5 10v8M3 20h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="k-cash" viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="19" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 10v4M18 10v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    </svg>
+
+    <!-- ============================================================
+         HERO（写真は城ヶ島・梶の浜ビーチの水面。体験ダイビングのページと同じ、場所を確認済みの実写）
+         決まりの正本は .agents/kaisuken-campaign.md。値段・決まり・言い方は、そこに合わせる。
+         文字を増やさない：見えている本文は 2,000〜2,500字まで（FAQ の答えと折りたたみを除く）。
+         ============================================================ -->
+    <section class="ph" aria-labelledby="page-title" style="--pos: 62% 46%">
+      <picture class="ph__bg">
+        <img src="/image/sub/trial-hero-1600.webp" srcset="/image/sub/trial-hero-800.webp 800w, /image/sub/trial-hero-1600.webp 1600w" sizes="100vw"
+          alt="城ヶ島・梶の浜ビーチの青い水面に浮かんで、こちらを見ているダイバー" width="1600" height="1200" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="ph__inner">
+        <nav class="crumbs" aria-label="パンくずリスト">
+          <ol><li><a href="/">ホーム</a></li><li><a href="/fun-diving/">ファンダイビング</a></li><li aria-current="page">海の回数券</li></ol>
+        </nav>
+        <p class="ph__eyebrow"><span>Cカードをお持ちの方へ</span><span aria-hidden="true">｜</span><span>ファンダイビングの回数券</span></p>
+        <h1 id="page-title"><span class="ln">次の海を、</span><br><span class="ln">先に持っておく。</span><small><span class="nw">海の回数券｜</span><span class="nw">ビーチ2本が、</span><span class="nw">1回 ¥12,000 から</span></small></h1>
+        <p class="ph__lead"><span class="nw">ライセンスを取ったのに、</span><span class="nw">気づいたら1年。</span><span class="nw">そうなる前に、</span><span class="nw">次に潜るぶんを</span><span class="nw">先に持っておく券です。</span></p>
+        <div class="ph__cta">
+          <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-line-msg="海の回数券のページを見ました。くわしく聞きたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>LINEで回数券のことを聞く</a>
+          <a class="btn-glass" href="#tickets">3つの券を見る ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts" aria-label="海の回数券の要点">
+      <ul class="facts__card" role="list">
+        <li><span class="facts__num"><span class="pre">1回</span>¥12,000〜</span><span class="facts__txt">ビーチ2本ぶん<br><b><span class="nw">通常は1回</span><span class="nw">¥13,200</span></b></span></li>
+        <li><span class="facts__num">3・6・12<em>回</em></span><span class="facts__txt">券は3つ<br><b><span class="nw">潜りたい回数で</span><span class="nw">えらぶ</span></b></span></li>
+        <li><span class="facts__num"><span class="pre">期限</span>1<em>年</em></span><span class="facts__txt">買った日から<br><b><span class="nw">買い足すと</span><span class="nw">延びる</span></b></span></li>
+        <li><span class="facts__num"><span class="pre">月に</span>何回<em>でも</em></span><span class="facts__txt">使う日は自由<br><b><span class="nw">1日に使えるのは</span><span class="nw">1枚</span></b></span></li>
+      </ul>
+    </section>
+
+    <nav class="lnav" aria-label="このページの目次" data-depth="18">
+      <div class="lnav__in">
+        <ul class="lnav__list">
+          <li><a href="#tickets">3つの券</a></li>
+          <li><a href="#choose">えらび方</a></li>
+          <li><a href="#how">使い方</a></li>
+          <li><a href="#days">ボートの日</a></li>
+          <li><a href="#rules">決まり</a></li>
+          <li><a href="#buy">買い方</a></li>
+          <li><a href="#faq">よくある質問</a></li>
+          <li><a href="#contact">予約・相談</a></li>
+        </ul>
+        <span class="lnav__depth" aria-hidden="true">このページの水深 <b>0.0m</b></span>
+      </div>
+      <i class="lnav__bar" aria-hidden="true"></i>
+    </nav>
+
+    <!-- ============================================================
+         TICKETS — 3つの券（紙の券の形は css/kaisuken.css が描く。画像は使っていない）
+         値段を変えたら：ここ・#choose・#days・FAQ・.about・kaisuken.ld.json・tools/check.py（KAISUKEN_…）を一緒に。
+         カードの決済リンク（Stripe・2026-11-19 作成）は、目印「STRIPE:3」「STRIPE:6」「STRIPE:12」の近くの data-stripe のリンク（#tickets と #buy の2か所）。リンクを作り直したら6か所とも直す。
+         ============================================================ -->
+    <section id="tickets" class="sec" aria-labelledby="tickets-title">
+      <div class="h-wrap">
+        <div class="sec-head">
+          <span class="h-label">Tickets <small>3つの券</small></span>
+          <h2 id="tickets-title" class="h-title"><span class="nw">券は、3つ。</span><span class="nw">1枚で、ビーチ2本。</span></h2>
+          <p class="h-lead"><span class="nw">中身は、</span><span class="nw">通常のビーチ2本</span><span class="nw">（1回 ¥13,200）と</span><span class="nw">同じです。</span><span class="nw">ガイド・タンク・</span><span class="nw">ウエイト・</span><span class="nw">施設使用料・</span><span class="nw">保険こみ。</span></p>
+        </div>
+
+        <ul class="kt-list" role="list">
+          <li class="kt kt--3" id="ticket-3">
+            <div class="kt__main">
+              <p class="kt__brand"><svg aria-hidden="true"><use href="#k-wave"/></svg>海の回数券</p>
+              <h3 class="kt__name"><b>3</b>回券</h3>
+              <ol class="kt__dots" aria-hidden="true"><li></li><li></li><li></li></ol>
+              <p class="kt__price">¥36,000<small>税込</small></p>
+            </div>
+            <div class="kt__stub">
+              <dl class="kt__per">
+                <div><dt>1回あたり</dt><dd>¥12,000</dd></div>
+                <div><dt>通常の値段との差</dt><dd>−¥3,600</dd></div>
+              </dl>
+              <!-- STRIPE:3 -->
+              <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-ticket="3" data-line-msg="海の回数券（3回券）を買いたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>3回券を申し込む</a>
+              <a class="kt__card" href="https://buy.stripe.com/8x214n6T3bkG40Q3EL18c01" target="_blank" rel="noopener noreferrer" data-stripe="3"><svg aria-hidden="true"><use href="#k-card"/></svg>カードで買う<small>（決済ページへ）</small></a>
+            </div>
+          </li>
+          <li class="kt kt--6" id="ticket-6">
+            <div class="kt__main">
+              <p class="kt__brand"><svg aria-hidden="true"><use href="#k-wave"/></svg>海の回数券</p>
+              <h3 class="kt__name"><b>6</b>回券</h3>
+              <ol class="kt__dots" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+              <p class="kt__price">¥69,000<small>税込</small></p>
+            </div>
+            <div class="kt__stub">
+              <dl class="kt__per">
+                <div><dt>1回あたり</dt><dd>¥11,500</dd></div>
+                <div><dt>通常の値段との差</dt><dd>−¥10,200</dd></div>
+              </dl>
+              <!-- STRIPE:6 -->
+              <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-ticket="6" data-line-msg="海の回数券（6回券）を買いたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>6回券を申し込む</a>
+              <a class="kt__card" href="https://buy.stripe.com/00w7sL2CNbkG7d2b7d18c02" target="_blank" rel="noopener noreferrer" data-stripe="6"><svg aria-hidden="true"><use href="#k-card"/></svg>カードで買う<small>（決済ページへ）</small></a>
+            </div>
+          </li>
+          <li class="kt kt--12" id="ticket-12">
+            <div class="kt__main">
+              <p class="kt__brand"><svg aria-hidden="true"><use href="#k-wave"/></svg>海の回数券</p>
+              <h3 class="kt__name"><b>12</b>回券</h3>
+              <ol class="kt__dots" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+              <p class="kt__bonus"><span class="kt__minis" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><span class="nw">追加ダイブ無料券 <b>4枚</b>つき</span> <small>（¥22,000ぶん）</small></span></p>
+              <p class="kt__price">¥138,000<small>税込</small></p>
+            </div>
+            <div class="kt__stub">
+              <dl class="kt__per">
+                <div><dt>1回あたり</dt><dd>¥11,500</dd></div>
+                <div><dt>通常の値段との差</dt><dd>−¥20,400</dd></div>
+              </dl>
+              <!-- STRIPE:12 -->
+              <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-ticket="12" data-line-msg="海の回数券（12回券）を買いたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span>12回券を申し込む</a>
+              <a class="kt__card" href="https://buy.stripe.com/14AfZhdhr88u68Y5MT18c03" target="_blank" rel="noopener noreferrer" data-stripe="12"><svg aria-hidden="true"><use href="#k-card"/></svg>カードで買う<small>（決済ページへ）</small></a>
+            </div>
+          </li>
+        </ul>
+        <p class="note kt-note"><span class="nw">すべて税込です。</span><span class="nw">レンタル器材は別</span><span class="nw">（フルセット1日 ¥5,500）。</span><span class="nw">通常の値段は、</span><span class="nw">ビーチ2本 ¥13,200・</span><span class="nw">追加ダイブ1本 ¥5,500 です。</span></p>
+        <p class="note kt-note kt-note--also"><span class="nw">ほかのお店で取ったCカードでも買えます。</span><span class="nw">しばらく潜っていない方は、</span><span class="nw">1回目を<a href="/refresh/">リフレッシュダイビング</a>に</span><span class="nw">（券1枚＋差額 ¥6,600）。</span></p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CHOOSE — どれを選ぶ？（1年のマス目に、潜る月をぬった図）
+         ============================================================ -->
+    <section id="choose" class="sec sec--soft" aria-labelledby="choose-title">
+      <div class="h-wrap">
+        <div class="sec-head">
+          <span class="h-label">Which one <small>えらび方</small></span>
+          <h2 id="choose-title" class="h-title"><span class="nw">どれを選ぶ？</span><span class="nw">1年に、</span><span class="nw">何回潜りたいか。</span></h2>
+        </div>
+        <ul class="kc" role="list">
+          <li>
+            <a class="kc__row kc__row--3" href="#ticket-3">
+              <span class="kc__q">年に<b>3回</b>くらい</span>
+              <span class="kc__year" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span>
+              <span class="kc__a"><b>3回券</b></span>
+            </a>
+          </li>
+          <li>
+            <a class="kc__row kc__row--6" href="#ticket-6">
+              <span class="kc__q"><b>2か月に1回</b></span>
+              <span class="kc__year" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i></span>
+              <span class="kc__a"><b>6回券</b></span>
+            </a>
+          </li>
+          <li>
+            <a class="kc__row kc__row--12" href="#ticket-12">
+              <span class="kc__q"><b>毎月</b>潜りたい</span>
+              <span class="kc__year" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+              <span class="kc__a"><b>12回券</b></span>
+            </a>
+          </li>
+        </ul>
+        <p class="note mt-1"><span class="nw">マスは、買ってからの12か月。</span><span class="nw">色のついた月に</span><span class="nw">潜るイメージです。</span><span class="nw">月に何回でも使えるので、</span><span class="nw">夏にまとめて潜っても</span><span class="nw">大丈夫です。</span></p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         HOW — 使い方（3ステップ）
+         ============================================================ -->
+    <section id="how" class="sec" aria-labelledby="how-title">
+      <div class="h-wrap">
+        <div class="split">
+          <figure class="split__media kchat" role="img" aria-label="公式LINEのやりとりの見本。お客さんが「回数券で、◯日に潜りたいです。」と送り、潜った日に、お店から残りの回数と期限が届く。">
+            <div class="kchat__in" aria-hidden="true">
+              <p class="kchat__head"><svg aria-hidden="true"><use href="#i-line"/></svg>公式LINE</p>
+              <p class="kchat__me"><span class="nw">回数券で、◯日に</span><br><span class="nw">潜りたいです。</span></p>
+              <div class="kchat__shop">
+                <span class="kchat__lab">潜った日に届く</span>
+                <span class="kchat__left">残り <b>5</b>回</span>
+                <span class="kchat__date">期限 ◯月◯日</span>
+              </div>
+            </div>
+          </figure>
+          <div class="split__body">
+            <span class="h-label">How to <small>使い方</small></span>
+            <h2 id="how-title" class="h-title"><span class="nw">使い方は、</span><span class="nw">3ステップ。</span></h2>
+            <ol class="steps steps--noimg">
+              <li class="step">
+                <span class="step__no" aria-hidden="true">01</span>
+                <div class="step__body">
+                  <h3>買う</h3>
+                  <p><span class="nw">公式LINEで申し込むか、</span><span class="nw">カードの決済ページで買います。</span><span class="nw">入金を確かめたら、</span><span class="nw">券のお知らせを</span><span class="nw">LINEで送ります。</span></p>
+                </div>
+              </li>
+              <li class="step">
+                <span class="step__no" aria-hidden="true">02</span>
+                <div class="step__body">
+                  <h3>LINEで<span class="nw">「回数券で」と予約</span></h3>
+                  <p><span class="nw">予約は、</span><span class="nw">これまでどおり</span><span class="nw">公式LINEで。</span><span class="nw">ひと言そえるだけです。</span></p>
+                </div>
+              </li>
+              <li class="step step--goal">
+                <span class="step__no" aria-hidden="true">03</span>
+                <div class="step__body">
+                  <h3>潜る</h3>
+                  <p><span class="nw">潜った日に、</span><span class="nw">残りの回数と期限を</span><span class="nw">LINEでお知らせします。</span></p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DAYS — 1日1枚・3本目と4本目・ボートの日（表1つ）
+         ============================================================ -->
+    <section id="days" class="sec sec--soft" aria-labelledby="days-title">
+      <div class="h-wrap">
+        <div class="sec-head">
+          <span class="h-label">One day, one ticket <small>1日の使い方</small></span>
+          <h2 id="days-title" class="h-title"><span class="nw">1日に使えるのは、</span><span class="nw">1枚。</span><span class="nw">ボートの日は、</span><span class="nw">差額で。</span></h2>
+        </div>
+        <div class="tbl-wrap ktbl-wrap">
+          <table class="tbl tbl--stack ktbl">
+            <caption><span class="nw">券を使う日の、</span><span class="nw">当日のお支払い</span><span class="nw">（税込・レンタル器材は別）</span></caption>
+            <thead>
+              <tr><th scope="col">その日の潜り方</th><th scope="col" class="num">使う券</th><th scope="col" class="num">当日のお支払い</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">ビーチ2本<small>城ヶ島</small></th><td class="num" data-label="使う券">1枚</td><td class="num hl" data-label="当日のお支払い">なし</td></tr>
+              <tr><th scope="row">ビーチ3本<small>3本目は追加ダイブ</small></th><td class="num" data-label="使う券">1枚</td><td class="num hl" data-label="当日のお支払い">¥5,500<small><span class="nw">無料券を使うと、</span><span class="nw">なし</span></small></td></tr>
+              <tr><th scope="row">ビーチ4本<small>3・4本目は追加ダイブ</small></th><td class="num" data-label="使う券">1枚</td><td class="num hl" data-label="当日のお支払い">¥11,000<small><span class="nw">無料券を使うと</span><span class="nw">¥5,500</span></small></td></tr>
+              <tr><th scope="row">ボート2本<small>宮川湾（通常 ¥19,800）</small></th><td class="num" data-label="使う券">1枚</td><td class="num hl" data-label="当日のお支払い">差額 ¥6,600</td></tr>
+              <tr><th scope="row">ボート2本<small>城ヶ島（通常 ¥23,300）</small></th><td class="num" data-label="使う券">1枚</td><td class="num hl" data-label="当日のお支払い">差額 ¥10,100</td></tr>
+              <tr><th scope="row">リフレッシュダイビング<small>通常 ¥19,800</small></th><td class="num" data-label="使う券">1枚</td><td class="num hl" data-label="当日のお支払い">差額 ¥6,600</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note mt-1"><span class="nw">※ 券を2枚使って4本、は</span><span class="nw">できません。</span><span class="nw">3本目・4本目は</span><span class="nw">追加ダイブ（1本 ¥5,500）です。</span><br>
+          <span class="nw">※ 追加ダイブ無料券</span><span class="nw">（12回券に4枚）は、</span><span class="nw">回数券を使う日の、</span><span class="nw">ビーチの3本目に使えます。</span><span class="nw">1日1枚。</span><span class="nw">ボートの追加には</span><span class="nw">使えません。</span></p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RULES — 決まり（図＋5つ。細かい文は折りたたみ）
+         ============================================================ -->
+    <section id="rules" class="sec" aria-labelledby="rules-title">
+      <div class="h-wrap">
+        <div class="sec-head">
+          <span class="h-label">Rules <small>決まり</small></span>
+          <h2 id="rules-title" class="h-title"><span class="nw">おもな決まりは、</span><span class="nw">この5つ。</span></h2>
+        </div>
+
+        <figure class="kline" role="img" aria-label="期限の図。券の期限は、買った日から1年。期限の2か月前に、公式LINEでお知らせ。残りがあるうちに次の券を買うと、残りの期限も新しい券の期限まで延びる。">
+          <div class="kline__in" aria-hidden="true">
+            <div class="kline__row kline__row--a">
+              <span class="kline__lab">いまの券</span>
+              <div class="kline__track">
+                <span class="kline__bar"></span>
+                <span class="kline__ext"></span>
+                <span class="kline__pin kline__pin--start">買った日</span>
+                <span class="kline__pin kline__pin--notice">2か月前に、LINEでお知らせ</span>
+                <span class="kline__pin kline__pin--end">1年</span>
+              </div>
+            </div>
+            <div class="kline__row kline__row--b">
+              <span class="kline__lab">買い足した券</span>
+              <div class="kline__track">
+                <span class="kline__bar"></span>
+                <span class="kline__pin kline__pin--add">買い足した日</span>
+                <span class="kline__pin kline__pin--new">ここまで延びる</span>
+              </div>
+            </div>
+          </div>
+        </figure>
+
+        <ul class="kr" role="list">
+          <li><svg aria-hidden="true"><use href="#i-cal"/></svg><div><b>期限は、<span class="nw">買った日から1年</span></b><span><span class="nw">2か月前に、</span><span class="nw">公式LINEで</span><span class="nw">お知らせします。</span><span class="nw">期限を過ぎると</span><span class="nw">使えません</span><span class="nw">（返金・延長なし）。</span></span></div></li>
+          <li><svg aria-hidden="true"><use href="#k-plus"/></svg><div><b>買い足すと、延びる</b><span><span class="nw">残りがあるうちに</span><span class="nw">次の券を買うと、</span><span class="nw">残りの期限も</span><span class="nw">新しい券の期限まで。</span></span></div></li>
+          <li><svg aria-hidden="true"><use href="#k-person"/></svg><div><b>使えるのは、ご本人だけ</b><span><span class="nw">ゆずる・分けるは</span><span class="nw">できません。</span></span></div></li>
+          <li><svg aria-hidden="true"><use href="#k-apart"/></svg><div><b>ほかの割引とは、別々に</b><span><span class="nw">券を使う回は、</span><span class="nw">つづける割・</span><span class="nw">バディ割などと</span><span class="nw">一緒に使えません。</span></span></div></li>
+          <li><svg aria-hidden="true"><use href="#k-back"/></svg><div><b>やめたい時は、<span class="nw">計算し直して返金</span></b><span><span class="nw">使った回を</span><span class="nw">通常の値段で</span><span class="nw">計算し直し、</span><span class="nw">残りがあれば</span><span class="nw">お返しします。</span></span></div></li>
+        </ul>
+
+        <details class="fold" id="rules-all">
+          <summary>決まりを、くわしく読む</summary>
+          <div class="fold__body">
+            <h3 class="kfold-h">使い方</h3>
+            <ul class="checks">
+              <li>月に何回でも使えます。予約は、これまでどおり公式LINEで（「回数券で」とひと言）。</li>
+              <li>1日に使えるのは1枚です。3本目・4本目は追加ダイブ（1本 ¥5,500）。券を2枚使って4本、はできません。</li>
+              <li>追加ダイブ無料券（12回券だけ・4枚）は、回数券を使う日の、ビーチの3本目に使えます。1日1枚。ボートの追加には使えません。期限は回数券と同じです。</li>
+              <li>ボートの日・リフレッシュの日は、券1枚をビーチ2本ぶん（¥13,200）として使い、差額を当日お支払いください。宮川湾のボート2本は ¥6,600、城ヶ島のボート2本は ¥10,100、リフレッシュダイビングは ¥6,600 です。</li>
+              <li>海況や当店の都合で中止になった日は、券は減りません。</li>
+            </ul>
+            <h3 class="kfold-h">期限</h3>
+            <ul class="checks">
+              <li>期限は、買った日から1年です。期限の2か月前に、公式LINEでお知らせします。</li>
+              <li>残りがあるうちに次の券を買うと、残りの期限も、新しい券の期限まで延びます。</li>
+              <li>期限を過ぎた券は使えません（返金・延長はありません）。けが・病気・転居などのときは、個別にご相談ください。</li>
+            </ul>
+            <h3 class="kfold-h">使える人・使えないもの</h3>
+            <ul class="checks">
+              <li>Cカードをお持ちの方が対象です。ほかのお店・ほかの団体で取った方も買えます。</li>
+              <li>使えるのは、買ったご本人だけです（ゆずる・分けるはできません）。</li>
+              <li>券を使う回は、つづける割・バディ割など、ほかの割引と一緒に使えません。つづける割は、回数券を使わない回に使えます。</li>
+              <li>使えないもの：ライセンス講習・スペシャルティ講習・体験ダイビング・スノーケリング・器材の購入・レンタル器材代。現金には替えられません。</li>
+            </ul>
+            <h3 class="kfold-h">お支払いと返金</h3>
+            <ul class="checks">
+              <li>お支払いは、クレジットカード（Stripe の決済ページ）・銀行振込・現金（潜りに来た日）から選べます。券が使えるようになるのは、入金を確認した時からです。</li>
+              <li>途中でやめたい時は、使った回数を通常の値段（1回 ¥13,200）、使った追加ダイブ無料券を1本 ¥5,500 で計算し直し、残りがあれば返金します（振込手数料はお客様のご負担）。</li>
+              <li>当店の都合で続けられなくなった時は、残りの回数ぶん（買った値段の1回あたり×残り回数）を返金します。</li>
+              <li>同じ内容を<a href="/tokusho/#kaisuken">特定商取引法に基づく表記</a>にも載せています。</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BUY — 買い方（カード／振込／現金。カードはページから直接、振込と現金は公式LINEから）
+         カードのボタン（.kb__cards・data-stripe）は Stripe の決済リンク。作り直したら #tickets の3つも直す。
+         ============================================================ -->
+    <section id="buy" class="sec sec--soft" aria-labelledby="buy-title">
+      <div class="h-wrap">
+        <div class="sec-head">
+          <span class="h-label">How to buy <small>買い方</small></span>
+          <h2 id="buy-title" class="h-title"><span class="nw">買い方は、2つ。</span></h2>
+          <p class="h-lead"><span class="nw">LINEで申し込むか、</span><span class="nw">カードでいま買うか。</span><span class="nw">迷ったら、</span><span class="nw">LINEでひと言どうぞ。</span><span class="nw">お支払いは、</span><span class="nw">カード・銀行振込・現金から</span><span class="nw">選べます。</span></p>
+        </div>
+        <ul class="kp" role="list">
+          <li><svg aria-hidden="true"><use href="#k-card"/></svg><div><b>クレジットカード</b><span><span class="nw">下の「カードで買う」から、</span><span class="nw">決済ページへ。</span></span></div></li>
+          <li><svg aria-hidden="true"><use href="#k-bank"/></svg><div><b>銀行振込</b><span><span class="nw">LINEで申し込むと、</span><span class="nw">振込先をお知らせします。</span></span></div></li>
+          <li><svg aria-hidden="true"><use href="#k-cash"/></svg><div><b>現金</b><span><span class="nw">潜りに来た日に、</span><span class="nw">その場で。</span></span></div></li>
+        </ul>
+        <p class="note mt-1"><span class="nw">券が使えるようになるのは、</span><span class="nw">入金を確認した時からです。</span></p>
+
+        <div class="kb">
+          <p class="kb__lead">LINEで申し込む<small>（振込・現金の方も、こちら）</small></p>
+          <div class="kb__btns kb__btns--one">
+            <a class="btn-line" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-line-msg="海の回数券を買いたいです。"><span class="line-mark"><svg aria-hidden="true"><use href="#i-line"/></svg></span><span>LINEで申し込む<small>券は、LINEで選べます</small></span></a>
+          </div>
+          <p class="kb__foot"><a class="link-arrow" href="https://lin.ee/kK3d5p2" target="_blank" rel="noopener noreferrer" data-ask="fun">先に、潜る日の空きを聞く</a></p>
+          <p class="kb__lead kb__lead--card"><svg aria-hidden="true"><use href="#k-card"/></svg>カードで、いま買う</p>
+          <div class="kb__before">
+            <b>買う前に</b>
+            <ul>
+              <li>Cカードをお持ちの方の券です</li>
+              <li>期限は、買った日から1年（過ぎると使えません・返金や延長はありません）</li>
+              <li>使えるのは、買ったご本人だけ。ほかの割引と一緒には使えません</li>
+              <li>途中でやめる時は、使った回を通常の値段で計算し直して、残りを返金します</li>
+            </ul>
+          </div>
+          <div class="kb__cards">
+            <!-- STRIPE:3 -->
+            <a class="kb__card" href="https://buy.stripe.com/8x214n6T3bkG40Q3EL18c01" target="_blank" rel="noopener noreferrer" data-stripe="3"><span>3回券<small>¥36,000</small></span></a>
+            <!-- STRIPE:6 -->
+            <a class="kb__card" href="https://buy.stripe.com/00w7sL2CNbkG7d2b7d18c02" target="_blank" rel="noopener noreferrer" data-stripe="6"><span>6回券<small>¥69,000</small></span></a>
+            <!-- STRIPE:12 -->
+            <a class="kb__card" href="https://buy.stripe.com/14AfZhdhr88u68Y5MT18c03" target="_blank" rel="noopener noreferrer" data-stripe="12"><span>12回券<small>¥138,000</small></span></a>
+          </div>
+          <p class="note kb__cardnote"><span class="nw">決済ページ（Stripe）が開きます。</span><span class="nw">お店の名前は「AquaBit LAB」</span><span class="nw">（三浦 海の学校を運営する屋号）と出ます。</span><span class="nw">払ったあと、</span><span class="nw">公式LINEに「回数券を買いました」と、</span><span class="nw">払ったときのお名前を</span><span class="nw">送ってください。</span><span class="nw">券の番号と期限を、</span><span class="nw">LINEでお送りします。</span><span class="nw">LINEを使わない方は、</span><span class="nw"><a href="/contact/?from=kaisuken">お問い合わせフォーム</a>からどうぞ。</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAQ（答えは決まりの正本から。直したら、正本と /tokusho/#kaisuken も同じに）
+         ============================================================ -->
+    <section id="faq" class="sec" aria-labelledby="faq-title">
+      <div class="h-wrap">
+        <div class="sec-head h-center">
+          <span class="h-label">FAQ <small>よくある質問</small></span>
+          <h2 id="faq-title" class="h-title"><span class="nw">海の回数券の、</span><span class="nw">よくある質問</span></h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary><span><span class="nw">ほかのお店で取った</span><span class="nw">Cカードでも、</span><span class="nw">買えますか？</span></span></summary>
+            <div class="faq-answer">買えます。Cカードをお持ちの方なら、ほかのお店・ほかの団体で取った方も買えます。しばらく潜っていない方は、1回目を<a href="/refresh/">リフレッシュダイビング</a>にできます（券1枚＋差額 ¥6,600）。</div>
+          </details>
+          <details class="faq-item">
+            <summary><span><span class="nw">1年で使い切れなかったら、</span><span class="nw">どうなりますか？</span></span></summary>
+            <div class="faq-answer">期限は、買った日から1年です。期限の2か月前に、公式LINEでお知らせします。残りがあるうちに次の券を買うと、残りの期限も新しい券の期限まで延びます。期限の前なら、途中でやめて計算し直し、残りがあれば返金できます。期限を過ぎた券は使えません（返金・延長はありません）。けが・病気・転居などのときは、個別にご相談ください。</div>
+          </details>
+          <details class="faq-item">
+            <summary><span><span class="nw">途中でやめたいときは、</span><span class="nw">返金されますか？</span></span></summary>
+            <div class="faq-answer">計算し直して、残りがあれば返金します。使った回数を通常の値段（1回 ¥13,200）、使った追加ダイブ無料券を1本 ¥5,500 で計算し直します（振込手数料はお客様のご負担）。たとえば、6回券（¥69,000）を2回使ってやめる場合は、¥69,000 −（¥13,200×2回）＝ ¥42,600 のお返しです。当店の都合で続けられなくなった時は、残りの回数ぶん（買った値段の1回あたり×残り回数）を返金します。</div>
+          </details>
+          <details class="faq-item">
+            <summary><span><span class="nw">家族や友だちと、</span><span class="nw">分けて使えますか？</span></span></summary>
+            <div class="faq-answer">できません。使えるのは、買ったご本人だけです。ゆずること・分けることはできません。</div>
+          </details>
+          <details class="faq-item">
+            <summary><span><span class="nw">ボートダイビングの日にも、</span><span class="nw">使えますか？</span></span></summary>
+            <div class="faq-answer">使えます。券1枚をビーチ2本ぶん（¥13,200）として使い、差額を当日お支払いください。宮川湾のボート2本（¥19,800）は差額 ¥6,600、城ヶ島のボート2本（¥23,300）は差額 ¥10,100、リフレッシュダイビング（¥19,800）は差額 ¥6,600 です。</div>
+          </details>
+          <details class="faq-item">
+            <summary><span><span class="nw">レンタル器材は、</span><span class="nw">券に入っていますか？</span></span></summary>
+            <div class="faq-answer">入っていません。レンタル器材は別で、フルセット1日 ¥5,500 です。券は、レンタル器材代には使えません。自分の器材で潜る方は、レンタル代はかかりません。</div>
+          </details>
+          <details class="faq-item">
+            <summary><span><span class="nw">つづける割・バディ割と、</span><span class="nw">どれを使えばいいですか？</span></span></summary>
+            <div class="faq-answer">1年のうちに何回か潜るつもりなら、回数券。1回ずつ、潜った日に次の日を決めるなら、<a href="/tsuzukeru/">つづける割</a>（次回 ¥800引き）。お友だちを紹介するなら、<a href="/buddy/">バディ割</a>。券を使う回は、ほかの割引と一緒には使えません。回数券を使わない回には、今までどおり つづける割 が使えます。</div>
+          </details>
+          <details class="faq-item">
+            <summary><span><span class="nw">雨や台風で</span><span class="nw">中止になった日は、</span><span class="nw">券は減りますか？</span></span></summary>
+            <div class="faq-answer">減りません。海況や当店の都合で中止になった日は、券を使ったことになりません。</div>
+          </details>
+          <details class="faq-item">
+            <summary>領収書は出ますか？</summary>
+            <div class="faq-answer">お出しします。お申し込みのときに、公式LINEでお知らせください。</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 検索向けの補足（読み物として・短く） -->
+    <section class="about" aria-labelledby="about-title">
+      <div class="h-wrap">
+        <h2 id="about-title"><span class="nw">神奈川・三浦で、</span><span class="nw">ファンダイビングを</span><span class="nw">続けるための回数券</span></h2>
+        <p>「海の回数券」は、三浦 海の学校（神奈川県三浦市）のファンダイビングを、先にまとめて買う券です。城ヶ島のビーチ2本が、3回券 ¥36,000・6回券 ¥69,000・12回券 ¥138,000（税込・レンタル器材は別）。期限は、買った日から1年です。</p>
+        <p>1回ごとの料金は<a href="/fun-diving/"><span class="nw">ファンダイビング</span></a>、久しぶりの方は<a href="/refresh/"><span class="nw">リフレッシュダイビング</span></a>、潜った日に次回を決める方は<a href="/tsuzukeru/"><span class="nw">つづける割</span></a>のページへ。</p>
+      </div>
+    </section>

@@ -39,6 +39,7 @@ META-->
           <li><a href="#payment">支払方法</a></li>
           <li><a href="#delivery">提供時期</a></li>
           <li><a href="#cancel">キャンセル・日程変更</a></li>
+          <li><a href="#kaisuken">海の回数券</a></li>
           <li><a href="#goods">器材の販売</a></li>
           <li><a href="#quantity">販売数量・申込期限</a></li>
           <li><a href="#conditions">参加条件</a></li>
@@ -116,6 +117,7 @@ META-->
               </tbody>
             </table>
           </div>
+          <p class="note mt-1" style="font-size:.8rem;line-height:1.8;color:var(--text-sub)">※ ファンダイビングの回数券（3回券・6回券・12回券）の価格と条件は、下の「<a href="#kaisuken">海の回数券</a>」をご覧ください。</p>
 
           <div class="card mt-1">
             <p><strong>注意：</strong>上記は代表的なコースの料金です。スペシャルティ講習・プロコースのコースごとの料金、および最新の料金は<a href="/license/">ライセンス</a>・<a href="/fun-diving/">ファンダイビング</a>・<a href="/trial-diving/">体験ダイビング</a>の各ページに記載しています。城ヶ島のボートで潜る日は、講習・ファンダイビングとも1日につき3,500円（税込）高くなります（アドバンス講習は63,300円）。価格は予告なく変更する場合があります。</p>
@@ -164,7 +166,7 @@ META-->
               </tbody>
             </table>
           </div>
-          <p class="note mt-1" style="font-size:.8rem;line-height:1.8;color:var(--text-sub)">※ 器材の販売のお支払いは、下の「<a href="#goods">器材の販売</a>」をご覧ください。</p>
+          <p class="note mt-1" style="font-size:.8rem;line-height:1.8;color:var(--text-sub)">※ 海の回数券のお支払いは下の「<a href="#kaisuken">海の回数券</a>」、器材の販売のお支払いは下の「<a href="#goods">器材の販売</a>」をご覧ください。</p>
         </div>
 
         <div id="delivery" style="margin-top:3rem">
@@ -205,6 +207,32 @@ META-->
 
           <div class="card mt-1">
             <p><strong>役務（サービス）の性質について：</strong><br>ダイビングの講習・ガイドは役務（サービス）の提供であり、返品・交換の規定はございません。キャンセルと中途解約は上記のとおりです。</p>
+          </div>
+
+          <!-- 海の回数券（/kaisuken/）。値段・決まりの正本は .agents/kaisuken-campaign.md。直すときは、ページ（pages/kaisuken.html）と一緒に -->
+          <h3 id="kaisuken" class="h-title" style="font-size:1.08rem;margin:1.6rem 0 .6rem">海の回数券（ファンダイビングの回数券）</h3>
+          <div class="tbl-wrap">
+            <table class="tbl tbl--compact tbl--stack" style="table-layout:fixed;overflow-wrap:anywhere">
+              <colgroup><col><col style="width:14em"></colgroup>
+              <tbody>
+                <tr><th scope="row">3回券<small>ビーチ2本×3回（1回あたり 12,000円）</small></th><td class="num hl" data-label="料金">36,000円（税込）</td></tr>
+                <tr><th scope="row">6回券<small>ビーチ2本×6回（1回あたり 11,500円）</small></th><td class="num hl" data-label="料金">69,000円（税込）</td></tr>
+                <tr><th scope="row">12回券<small>ビーチ2本×12回（1回あたり 11,500円）・追加ダイブ無料券4枚つき</small></th><td class="num hl" data-label="料金">138,000円（税込）</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card mt-1">
+            <ul style="list-style:disc;padding-left:1.4em;display:grid;gap:.4rem">
+              <li><strong>内容：</strong>券1枚で、城ヶ島のビーチダイビング2本（ガイド・タンク・ウエイト・施設使用料・保険こみ。通常の2ビーチダイビング 13,200円と同じ内容）。Cカード（ダイビングライセンス）をお持ちの方が対象です。レンタル器材は別です（フルセット1日5,500円）。</li>
+              <li><strong>お申し込み：</strong>公式LINE・お問い合わせフォーム、または<a href="/kaisuken/#buy">海の回数券のページ</a>のクレジットカードの決済ページ（Stripe）からお申し込みください。</li>
+              <li><strong>お支払いの方法と時期：</strong>クレジットカード（Stripe の決済ページ）・銀行振込・現金（潜りに来た日）。お申し込みのあと、券を使う前にお支払いいただきます（前払い）。</li>
+              <li><strong>使える時期：</strong>ご入金を確認した時から使えます。期限は、買った日から1年です。残りがあるうちに次の券を買うと、残りの期限も新しい券の期限まで延びます。期限の2か月前に、公式LINEでお知らせします。期限を過ぎた券は使えません（返金・延長はありません。けが・病気・転居などのときは、個別にご相談ください）。</li>
+              <li><strong>使い方：</strong>ご予約は公式LINEで承ります。月に何回でも使えますが、1日に使えるのは1枚です（3本目・4本目は追加ダイブ 1本5,500円）。ボートの日・リフレッシュの日は、券1枚をビーチ2本ぶん（13,200円）として使い、差額を当日お支払いいただきます（宮川湾のボート2本 6,600円／城ヶ島のボート2本 10,100円／リフレッシュダイビング 6,600円）。追加ダイブ無料券（12回券に4枚）は、回数券を使う日の、ビーチの3本目に使えます（1日1枚。ボートの追加には使えません。期限は回数券と同じ）。海況や当店の都合で中止になった日は、券は減りません。</li>
+              <li><strong>使える方・使えないもの：</strong>使えるのは、買ったご本人だけです（ゆずる・分けるはできません）。券を使う回は、つづける割・バディ割など、ほかの割引と一緒に使えません。ライセンス講習・スペシャルティ講習・体験ダイビング・スノーケリング・器材の購入・レンタル器材代には使えません。現金には替えられません。</li>
+              <li><strong>途中でやめる場合の返金：</strong>使った回数を通常の値段（1回13,200円）、使った追加ダイブ無料券を1本5,500円で計算し直し、残りがあれば返金します（振込手数料はお客様のご負担）。</li>
+              <li><strong>当店の都合で続けられなくなった場合：</strong>残りの回数ぶん（買った値段の1回あたり×残り回数）を返金します。</li>
+            </ul>
+            <p style="margin-top:.8rem">券のえらび方と使い方は、<a href="/kaisuken/">海の回数券</a>のページにまとめています。</p>
           </div>
 
           <h3 id="goods" class="h-title" style="font-size:1.08rem;margin:1.6rem 0 .6rem">器材の販売</h3>
@@ -312,6 +340,6 @@ META-->
           <a class="link-arrow" href="/privacy-policy/">プライバシーポリシー</a>
           <a class="link-arrow" href="#main">トップへ戻る</a>
         </p>
-        <p class="note mt-2">最終更新日：2026年10月15日</p>
+        <p class="note mt-2">最終更新日：2026年11月19日</p>
       </div>
     </section>
