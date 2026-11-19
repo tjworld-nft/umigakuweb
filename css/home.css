@@ -628,6 +628,18 @@
 .course__meta { list-style: none; margin: 0 0 1rem; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
 .course__meta li { font-size: .76rem; font-weight: 700; color: var(--ink); background: #F5F8FA; border-radius: 8px; padding: .2rem .55rem; }
 .course__deal { font-size: .8rem; font-weight: 700; color: var(--ink); background: #FFF6CC; border-radius: 10px; padding: .45rem .7rem; margin-bottom: .9rem; }
+/* カードの中にリンクが2つあるとき（ファンダイビング＝プランと料金／黄色の行＝海の回数券）。
+   外わくは div。見出しのリンク（.course__main）をカード全体に広げ、黄色の行だけその上に出す */
+.course--links .course__main { color: inherit; text-decoration: none; }
+.course--links .course__main::after { content: ""; position: absolute; inset: 0; border-radius: 24px; }
+.course--links .course__main:focus-visible { outline: none; }
+.course--links:has(.course__main:focus-visible) { outline: 3px solid #FFB020; outline-offset: 3px; }
+a.course__deal {
+  position: relative; z-index: 1; align-self: flex-start; display: inline-flex; align-items: center; gap: .35rem; min-height: 44px;
+  text-decoration: none; transition: background var(--ease), color var(--ease);
+}
+a.course__deal::after { content: "→"; }
+a.course__deal:hover { background: #FFE98A; color: var(--ink); }
 .course__go { margin-top: auto; font-weight: 700; font-size: .9rem; color: var(--teal-ink); }
 .course__go::after { content: " →"; }
 .courses-note { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }

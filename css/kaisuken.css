@@ -1,0 +1,293 @@
+@charset "UTF-8";
+/* ==========================================================================
+   三浦 海の学校 — /kaisuken/（海の回数券）専用の部品
+   このページだけが読む（pages/kaisuken.html の extraHead。style.css → page.css → このファイルの順）。
+   page.css・style.css は変えない。色・角丸・影・文字の大きさは page.css / style.css の値にそろえてある。JSは無い。
+   画像は使わず、券・図はCSSだけで描く。文字は 12px（.75rem）より小さくしない。
+   部品: .kt（紙の券：色の帯・回数ぶんの丸い印・切り取り線・ぎざぎざの下端）／.kc（どれを選ぶ？ 1年のマス目）
+        ／.kchat（LINEのやりとりの見本）／.ktbl（当日のお支払いの表の添え書き）／.kline（期限の図）
+        ／.kr（決まり5つ）／.kp（お支払い3つ）／.kb（券ごとの申し込みボタン）
+   券の色: 3回券＝--sky-ink／6回券＝--teal-ink／12回券＝--coral-ink（どれも白地で 4.5:1 以上）
+   ========================================================================== */
+
+/* ヒーローの副題（券の名前と値段）。スマホでも読める大きさに。
+   写真のダイバーが画面のまん中にいるので、PC・タブレットでは副題を2行に折り、見出しを少し小さくして、顔に文字をかけない
+   （写真は大きくしない＝顔を大きく見せない） */
+.sub .ph h1 small { font-size: max(.42em, .9rem); line-height: 1.6; max-width: 17em; }
+@media (min-width: 768px) and (max-width: 1199px) {
+  .sub .ph h1 { font-size: clamp(2rem, 4.4vw, 2.7rem); }
+  .sub .ph h1 small { font-size: 1rem; }
+  .sub .ph__lead { max-width: 21em; }
+}
+/* スマホ：文字が画面の幅いっぱいに並ぶので、写真は左側（堤防と空と水面）だけを見せる。ダイバーの顔に文字を重ねない。
+   写真の枠を横に 240% に広げて左にそろえると、どの幅でも、ダイバーは画面の右の外に出る */
+@media (max-width: 767px) {
+  .sub .ph__bg { right: auto; width: 240%; }
+  .sub .ph__bg img { object-position: 0 46%; }
+}
+
+/* ================================================================
+   .kt — 紙の券
+   上＝券の本体（.kt__main）、下＝半券（.kt__stub）。あいだが切り取り線（左右の丸い切り欠き＋点線）。
+   半券の下端はぎざぎざ（mask の conic-gradient）。影は親の drop-shadow（切り欠きの形のまま落ちる）。
+   ================================================================ */
+.kt-list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem 1.2rem; align-items: stretch;
+}
+.kt {
+  --kt: var(--sky-ink); --kt-tint: #E1F0F5; --kt-paper: #FFFEF9; --kt-notch: 12px;
+  position: relative; display: flex; flex-direction: column; min-width: 0;
+  filter: drop-shadow(0 14px 24px rgba(6, 58, 87, .13)) drop-shadow(0 2px 5px rgba(6, 58, 87, .08));
+  transition: transform var(--ease);
+}
+.kt--6 { --kt: var(--teal-ink); --kt-tint: #DFF2EE; }
+.kt--12 { --kt: var(--coral-ink); --kt-tint: #FDE7EE; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .kt:hover { transform: translateY(-4px) rotate(-.5deg); }
+}
+
+.kt__main {
+  position: relative; flex: 1 1 auto; display: flex; flex-direction: column;
+  background: var(--kt-paper); border-top: 10px solid var(--kt); border-radius: 20px 20px 0 0;
+  padding: 1.15rem 1.3rem 1.3rem;
+  -webkit-mask:
+    radial-gradient(circle at 0 100%, #0000 var(--kt-notch), #000 calc(var(--kt-notch) + .6px)) 0 0 / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 100%, #0000 var(--kt-notch), #000 calc(var(--kt-notch) + .6px)) 100% 0 / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle at 0 100%, #0000 var(--kt-notch), #000 calc(var(--kt-notch) + .6px)) 0 0 / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 100%, #0000 var(--kt-notch), #000 calc(var(--kt-notch) + .6px)) 100% 0 / 51% 100% no-repeat;
+}
+.kt__stub {
+  position: relative; background: var(--kt-paper); padding: 1.2rem 1.3rem 1.8rem;
+  -webkit-mask:
+    radial-gradient(circle at 0 0, #0000 var(--kt-notch), #000 calc(var(--kt-notch) + .6px)) 0 0 / 51% 60% no-repeat,
+    radial-gradient(circle at 100% 0, #0000 var(--kt-notch), #000 calc(var(--kt-notch) + .6px)) 100% 0 / 51% 60% no-repeat,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% 100% / 16px 41% repeat-x;
+  mask:
+    radial-gradient(circle at 0 0, #0000 var(--kt-notch), #000 calc(var(--kt-notch) + .6px)) 0 0 / 51% 60% no-repeat,
+    radial-gradient(circle at 100% 0, #0000 var(--kt-notch), #000 calc(var(--kt-notch) + .6px)) 100% 0 / 51% 60% no-repeat,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% 100% / 16px 41% repeat-x;
+}
+/* 切り取り線（点線） */
+.kt__stub::before {
+  content: ""; position: absolute; top: -1px; left: calc(var(--kt-notch) + 8px); right: calc(var(--kt-notch) + 8px);
+  border-top: 2px dashed rgba(11, 42, 58, .26);
+}
+
+/* 券の地の模様（波）。3回券・6回券の、印と値段のあいだの余白に、うすく（12回券は、印とおまけの札で埋まるので出さない） */
+.kt__main > * { position: relative; z-index: 1; }
+.kt__main::after {
+  content: ""; position: absolute; z-index: 0; right: 1.1rem; bottom: 4.4rem; width: 58%; aspect-ratio: 5 / 2;
+  background: var(--kt); opacity: .09; pointer-events: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 60'%3E%3Cpath d='M5 14c11.700 0 11.700-9 23.300-9s11.700 9 23.300 9 11.700-9 23.400-9 11.700 9 23.300 9 11.700-9 23.400-9 11.600 9 23.300 9M5 32c11.700 0 11.700-9 23.300-9s11.700 9 23.300 9 11.700-9 23.400-9 11.700 9 23.300 9 11.700-9 23.400-9 11.600 9 23.300 9M5 50c11.700 0 11.700-9 23.300-9s11.700 9 23.300 9 11.700-9 23.400-9 11.700 9 23.300 9 11.700-9 23.400-9 11.600 9 23.300 9' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 60'%3E%3Cpath d='M5 14c11.700 0 11.700-9 23.300-9s11.700 9 23.300 9 11.700-9 23.400-9 11.700 9 23.300 9 11.700-9 23.400-9 11.600 9 23.300 9M5 32c11.700 0 11.700-9 23.300-9s11.700 9 23.300 9 11.700-9 23.400-9 11.700 9 23.300 9 11.700-9 23.400-9 11.600 9 23.300 9M5 50c11.700 0 11.700-9 23.300-9s11.700 9 23.300 9 11.700-9 23.400-9 11.700 9 23.300 9 11.700-9 23.400-9 11.600 9 23.300 9' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.kt--12 .kt__main::after { display: none; }
+@media (max-width: 699px) { .kt__main::after { display: none; } }
+
+.kt__brand {
+  display: flex; align-items: center; gap: .4rem; margin: 0 0 .55rem;
+  font-size: .75rem; font-weight: 700; letter-spacing: .16em; line-height: 1.4; color: var(--kt);
+}
+.kt__brand svg { width: 1.3rem; height: 1.3rem; flex: none; }
+.kt__name { display: flex; align-items: baseline; gap: .2rem; margin: 0; font-size: 1.3rem; font-weight: 700; line-height: 1; color: var(--ink); }
+.kt__name b { font-family: var(--ff-accent); font-size: 3.5rem; line-height: .95; letter-spacing: -.02em; color: var(--kt); }
+
+/* 回数ぶんの丸い印（数字は CSS の counter。読み上げには出さない＝HTML側で aria-hidden） */
+.kt__dots {
+  list-style: none; counter-reset: kt; margin: 1rem 0 0; padding: 0; max-width: 19rem;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .4rem;
+}
+.kt__dots li {
+  counter-increment: kt; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center;
+  background: var(--kt-tint); border: 1.5px dashed var(--kt);
+}
+.kt__dots li::before { content: counter(kt); font-family: var(--ff-accent); font-size: .75rem; font-weight: 700; line-height: 1; color: var(--kt); }
+
+/* 12回券のおまけ（追加ダイブ無料券 4枚） */
+.kt__bonus {
+  display: flex; align-items: center; gap: .6rem; margin: .85rem 0 0; padding: .5rem .75rem; border-radius: 12px;
+  background: var(--kt-tint); color: var(--ink); font-size: .84rem; font-weight: 700; line-height: 1.5;
+}
+.kt__bonus b { font-family: var(--ff-accent); font-size: 1.15em; color: var(--kt); }
+.kt__bonus small { display: inline-block; font-size: .78rem; font-weight: 700; color: var(--text-sub); }
+.kt__minis { display: inline-flex; gap: 3px; flex: none; }
+.kt__minis i { position: relative; width: 13px; height: 20px; border-radius: 3px; background: var(--kt); }
+.kt__minis i::after { content: ""; position: absolute; left: 2px; right: 2px; top: 62%; border-top: 1.5px dashed #fff; }
+
+.kt__price {
+  margin: auto 0 0; padding-top: 1.1rem; font-family: var(--ff-accent); font-weight: 700;
+  font-size: clamp(1.9rem, 3vw, 2.3rem); line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums;
+}
+.kt__price small { margin-left: .35rem; font-family: var(--ff-body); font-size: .8rem; font-weight: 700; color: var(--text-sub); }
+
+.kt__per { margin: 0 0 1rem; display: grid; gap: .35rem; }
+.kt__per div { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem; }
+.kt__per dt { font-size: .82rem; font-weight: 700; line-height: 1.5; color: var(--text-sub); }
+.kt__per dd { margin: 0; font-family: var(--ff-accent); font-size: 1.02rem; font-weight: 700; line-height: 1.2; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.kt__per div:first-child dt { color: var(--ink); font-size: .9rem; }
+.kt__per div:first-child dd { font-size: 1.7rem; color: var(--kt); }
+.kt .btn-line { width: 100%; min-height: 54px; padding: .85rem 1rem; font-size: .96rem; }
+
+.kt-note { max-width: 760px; margin: 1.7rem auto 0; text-align: center; }
+
+@media (max-width: 699px) {
+  .kt-list { grid-template-columns: minmax(0, 440px); justify-content: center; gap: 1.5rem; }
+  .kt-note { text-align: left; }
+}
+@media (max-width: 359px) {   /* 幅のせまいスマホ：おまけの札は縦に／ヒーローのボタンの文字を1行に */
+  .kt__bonus { flex-direction: column; align-items: flex-start; gap: .35rem; }
+  .sub .ph__cta .btn-line { font-size: .95rem; padding-left: 1rem; padding-right: 1rem; }
+}
+@media (min-width: 700px) and (max-width: 899px) {
+  .kt__main { padding: 1rem 1rem 1.15rem; }
+  .kt__stub { padding: 1.1rem 1rem 1.7rem; }
+  .kt__name b { font-size: 3rem; }
+  .kt__bonus { flex-direction: column; align-items: flex-start; gap: .35rem; }
+  .kt .btn-line { padding: .8rem .6rem; font-size: .9rem; gap: .4rem; }
+}
+
+/* ================================================================
+   .kc — どれを選ぶ？（1年＝12マス。色のついたマスが、潜る月）
+   ================================================================ */
+.kc { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.kc__row {
+  --kt: var(--sky-ink);
+  display: grid; grid-template-areas: "q" "year" "a"; gap: .95rem; height: 100%;
+  padding: 1.35rem 1.3rem 1.25rem; border-radius: 22px; background: #fff; color: var(--ink); text-decoration: none;
+  box-shadow: 0 4px 18px rgba(6, 58, 87, .05); transition: transform var(--ease), box-shadow var(--ease);
+}
+.kc__row--6 { --kt: var(--teal-ink); }
+.kc__row--12 { --kt: var(--coral-ink); }
+.kc__row:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(6, 58, 87, .12); color: var(--ink); }
+.kc__q { grid-area: q; font-size: 1.02rem; font-weight: 700; line-height: 1.4; color: var(--ink); }
+.kc__q b { font-size: 1.5rem; color: var(--kt); }
+.kc__year { grid-area: year; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 3px; }
+.kc__year i { position: relative; aspect-ratio: 1 / 1.3; border-radius: 5px; background: #E9F0F4; }
+.kc__year i.on { background: var(--kt); }
+.kc__year i.on::after { content: ""; position: absolute; left: 50%; top: 50%; width: 42%; aspect-ratio: 1; border-radius: 50%; background: rgba(255, 255, 255, .9); transform: translate(-50%, -50%); }
+.kc__a { grid-area: a; display: flex; align-items: center; gap: .6rem; }
+.kc__a::before { content: "→"; font-weight: 700; font-size: 1.2rem; line-height: 1; color: var(--kt); }
+.kc__a b { display: inline-block; padding: .3rem 1rem; border-radius: 10px; background: var(--kt); color: #fff; font-size: 1.15rem; line-height: 1.4; }
+@media (max-width: 767px) {
+  .kc { grid-template-columns: minmax(0, 1fr); gap: .7rem; }
+  .kc__row { grid-template-areas: "q a" "year year"; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .75rem .8rem; padding: 1.05rem 1.1rem 1.15rem; }
+  .kc__year i { aspect-ratio: 1 / 1.05; }
+}
+
+/* ================================================================
+   .kchat — 公式LINEのやりとりの見本（図）。文字は少なく、券のお知らせの形を見せる
+   ================================================================ */
+.kchat { margin: 0; }
+@media (max-width: 899px) { .kchat { order: 2; } }   /* 1列のときは、見出しと3ステップが先・図はあと */
+.kchat__in {
+  position: relative; display: grid; gap: 1.2rem; max-width: 430px; margin: 0 auto;
+  padding: 2rem 1.4rem 2.1rem; border-radius: 30px;
+  background: linear-gradient(165deg, var(--deep-1) 0%, var(--deep-2) 55%, var(--deep-3) 100%);
+  box-shadow: 0 26px 60px rgba(6, 58, 87, .18);
+}
+.kchat__head {
+  display: flex; align-items: center; gap: .45rem; margin: -.6rem 0 0; font-size: .84rem; font-weight: 700; letter-spacing: .06em; color: rgba(255, 255, 255, .92);
+}
+.kchat__head svg { width: 1.25rem; height: 1.25rem; fill: #fff; flex: none; }
+.kchat__me {
+  justify-self: end; max-width: 82%; margin: 0; padding: .75rem 1.05rem; border-radius: 20px 20px 5px 20px;
+  background: var(--line); color: #fff; font-size: 1rem; font-weight: 700; line-height: 1.6;
+}
+.kchat .kchat__me { white-space: nowrap; text-wrap: nowrap; }   /* page.css の p { text-wrap: pretty } より強く（Safari が吹き出しを細く折るため） */
+.kchat__shop {
+  justify-self: start; display: grid; gap: .1rem; min-width: 62%; padding: .95rem 1.2rem 1rem;
+  border-radius: 20px 20px 20px 5px; background: #FFFEF9; border-left: 8px solid var(--teal-ink);
+}
+.kchat__lab { font-size: .75rem; font-weight: 700; letter-spacing: .08em; color: var(--text-sub); }
+.kchat__left { font-size: 1.05rem; font-weight: 700; line-height: 1.2; color: var(--ink); }
+.kchat__left b { margin: 0 .1em; font-family: var(--ff-accent); font-size: 2.4rem; line-height: 1.1; color: var(--teal-ink); }
+.kchat__date { font-size: .9rem; font-weight: 700; color: var(--text-sub); }
+
+/* ================================================================
+   .ktbl — 当日のお支払いの表（page.css の .tbl--stack）の、値の下の添え書き
+   ================================================================ */
+.ktbl-wrap { max-width: 900px; }
+.ktbl-wrap + .note { max-width: 900px; }
+.ktbl td small {
+  display: block; margin-top: .1rem; font-family: var(--ff-body); font-size: .78rem; font-weight: 500;
+  line-height: 1.5; color: var(--text-sub); white-space: normal;
+}
+
+/* ================================================================
+   .kline — 期限の図（1目盛り＝1か月・全体で21か月）
+   上の帯＝いまの券（買った日〜1年。10か月めにLINEでお知らせ）。しまの部分＝買い足して延びたぶん。
+   下の帯＝買い足した券（9か月めに買った例。そこから1年）。
+   ================================================================ */
+.kline { margin: 0 0 1.4rem; padding: 1.3rem 1.5rem 1.2rem; border-radius: 22px; background: var(--bg-soft); }
+.kline__in { display: grid; gap: .6rem; max-width: 880px; margin: 0 auto; }
+.kline__row { display: grid; grid-template-columns: 6.6em minmax(0, 1fr); gap: 1rem; align-items: center; }
+.kline__lab { font-size: .84rem; font-weight: 700; line-height: 1.4; color: var(--ink); }
+.kline__track { position: relative; height: 18px; margin: 2rem 0; border-radius: 999px; background: #DCE8EE; }
+.kline__bar { position: absolute; top: 0; bottom: 0; border-radius: 999px; }
+.kline__row--a .kline__bar { left: 0; width: 57.14%; background: var(--sky-ink); }
+.kline__ext {
+  position: absolute; top: 0; bottom: 0; left: 57.14%; right: 0; border-radius: 0 999px 999px 0;
+  background: repeating-linear-gradient(115deg, rgba(26, 120, 152, .6) 0 6px, rgba(26, 120, 152, .2) 6px 12px);
+}
+.kline__row--a .kline__bar { border-radius: 999px 0 0 999px; }
+.kline__row--b .kline__bar { left: 42.86%; right: 0; background: var(--teal-ink); }
+.kline__pin { position: absolute; font-size: .78rem; font-weight: 700; line-height: 1.3; white-space: nowrap; color: var(--ink); }
+.kline__pin::before { content: ""; position: absolute; width: 2px; height: 9px; background: currentColor; }
+.kline__pin--start { left: 0; top: calc(100% + 12px); }
+.kline__pin--start::before { left: 6px; top: -11px; }
+.kline__pin--notice { left: 47.62%; bottom: calc(100% + 12px); transform: translateX(-50%); color: var(--coral-ink); }
+.kline__pin--notice::before { left: 50%; bottom: -11px; margin-left: -1px; }
+.kline__pin--end { left: 57.14%; top: calc(100% + 12px); transform: translateX(-50%); }
+.kline__pin--end::before { left: 50%; top: -11px; margin-left: -1px; }
+.kline__pin--add { left: 42.86%; top: calc(100% + 12px); transform: translateX(-50%); }
+.kline__pin--add::before { left: 50%; top: -11px; margin-left: -1px; }
+.kline__pin--new { right: 0; top: calc(100% + 12px); color: var(--teal-ink); }
+.kline__pin--new::before { right: 6px; top: -11px; }
+.kline__row--b .kline__track { margin-top: .4rem; }
+@media (max-width: 640px) {
+  .kline { padding: 1.1rem 1.1rem 1rem; }
+  .kline__row { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .kline__row--a .kline__track { margin-top: 2.1rem; }
+  .kline__row--b .kline__track { margin-top: .7rem; }
+}
+
+/* ================================================================
+   .kr — 決まり5つ／.kp — お支払い3つ（絵つきの小さな札）
+   ================================================================ */
+.kr, .kp { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; }
+.kr { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.kp { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 860px; }
+.kr li, .kp li {
+  display: grid; gap: .75rem; align-content: start; padding: 1.2rem 1.1rem; border-radius: 20px;
+  background: #fff; border: 1px solid var(--border);
+}
+.sec--soft .kr li, .sec--soft .kp li { border-color: transparent; }
+.kr svg, .kp svg {
+  box-sizing: content-box; width: 1.5rem; height: 1.5rem; padding: .55rem; border-radius: 14px;
+  background: var(--bg-soft); color: var(--teal-ink); fill: currentColor;
+}
+.kr b, .kp b { display: block; font-size: .98rem; line-height: 1.5; color: var(--ink); }
+.kr div > span, .kp div > span { display: block; margin-top: .3rem; font-size: .84rem; line-height: 1.75; color: var(--text-sub); }
+@media (max-width: 1023px) { .kr { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 699px) {
+  .kr, .kp { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+  .kr li, .kp li { grid-template-columns: auto minmax(0, 1fr); gap: .9rem; align-items: start; padding: 1rem; }
+}
+.kfold-h { margin: 1.4rem 0 .6rem; font-size: 1rem; line-height: 1.5; color: var(--ink); }
+
+/* ================================================================
+   .kb — 券ごとの申し込みボタン（#buy）。カードの決済リンクができたら、ここと券（.kt）に足す
+   ================================================================ */
+.kb {
+  max-width: 860px; margin: 1.6rem 0 0; padding: 1.4rem 1.3rem 1.1rem; border-radius: 24px;
+  background: #fff; box-shadow: 0 4px 18px rgba(6, 58, 87, .05);
+}
+.kb__lead { margin: 0 0 .9rem; font-size: 1rem; font-weight: 700; line-height: 1.5; color: var(--ink); }
+.kb__btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; }
+.kb__btns .btn-line { min-height: 62px; padding: .7rem .9rem; font-size: 1.02rem; text-align: left; }
+.kb__btns .btn-line small { font-family: var(--ff-accent); font-size: .8rem; letter-spacing: .02em; }
+.kb__foot { margin: .7rem 0 0; }
+.kb__foot .link-arrow { min-height: 44px; }
+@media (max-width: 699px) { .kb__btns { grid-template-columns: minmax(0, 1fr); } }

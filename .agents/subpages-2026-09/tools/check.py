@@ -16,6 +16,8 @@ PRICES = {
     3500, 23300, 28800, 32100, 37600, 29900, 36500, 22500, 16700, 74300, 134200, 63300,  # 城ヶ島のボート＝宮川湾＋¥3,500（2026-11-19）・レンタル込み・つづける割・バディ割
     13750, 24750,  # マイドライ割（ドライSP半額・OWD受講者の特典の合計）
     133650, 150150, 161150, 143000, 170500, 215600, 166650, 17600,  # 冬スキル割（組み方の例の講習料・合計と、6つ目の差額）
+    # 海の回数券（2026-11・正本 .agents/kaisuken-campaign.md）：券の値段／1回あたり／通常（1回¥13,200）との差／城ヶ島のボートの差額／返金の計算の例（6回券を2回使った残り）
+    36000, 69000, 138000, 12000, 11500, 3600, 10200, 20400, 10100, 42600,
 }
 # /gear/ のメーカー希望小売価格・公式工賃（FACTS.md「器材の販売」。/gear/ だけで通す＝ほかのページに出たら今までどおり WARN）
 PRICES_GEAR = {
@@ -34,6 +36,62 @@ FORBID = ['諸磯', '日本初', '唯一の', 'No.1', 'ナンバーワン', '業
 FORBID_GEAR = ['定価', '試着', '試し使い', '海で試せ', 'お得', '元が取れ', '一生もの', '寒くない', 'ご来店', '店頭', '国産', '8メーカー', '海学', '同じ人',
                '注文を受けません', 'その場では売りません', '帰ってから', 'お受けしていません', '切り出しません', '講習中はすすめません',
                '8日以内', 'A案', 'B案', '【G', '〔返品〕', '🔒']
+
+
+# 海の回数券（/kaisuken/）。決まりの正本は .agents/kaisuken-campaign.md。値段を変えたら、正本 → ここ → ページの順に直す
+KAISUKEN_MUST = ['¥36,000', '¥69,000', '¥138,000', '¥12,000', '¥11,500', '¥13,200', '¥5,500']  # /kaisuken/ の <main> に、全部出ていること
+KAISUKEN_TICKETS = {'3': 36000, '6': 69000, '12': 138000}  # 「N回券」のすぐあとに出る値段と、JSON-LD の Offer の price
+KAISUKEN_PER = {'3': 12000, '6': 11500, '12': 11500}        # 券の札（#ticket-N）の「1回あたり」
+# 言い方の決まり（正本の5）。「お得」は見出しに書かない。ほかは <main> と JSON-LD のどこにも書かない
+FORBID_KAISUKEN_HEAD = ['お得']
+FORBID_KAISUKEN = ['最安', '業界初', '人気No.1', '必ず上達', '貯金', '積立', 'チャージ', 'いつでも全額返金', 'サブスク', '会員']
+
+
+def strip_tags(x):
+    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', x)))
+
+
+def check_kaisuken(path, src, lds, ng):
+    """回数券の値段の検査。/kaisuken/ は全部の値段と言い方、ほかのページは「N回券」のすぐあとの値段だけを見る。"""
+    m_ = re.search(r'<main.*?</main>', src, re.S)
+    main = m_.group(0) if m_ else src
+    text = strip_tags(re.sub(r'<(script|style)\b.*?</\1>', '', src, flags=re.S))
+    # 「3回券 ¥36,000」「6回券（¥69,000）」「12回券 138,000円」… 券の名前のすぐあとの値段が、正本と同じか（どのページでも）
+    for m in re.finditer(r'(?<![0-9])(3|6|12)回券[^0-9¥]{0,12}¥?\s?([0-9]{1,3}(?:,[0-9]{3})+)', text):
+        v = int(m.group(2).replace(',', ''))
+        if v != KAISUKEN_TICKETS[m.group(1)]:
+            ng.append(f'回数券の値段が正本と違う: {m.group(0)!r}（{m.group(1)}回券は ¥{KAISUKEN_TICKETS[m.group(1)]:,}）')
+    if path != 'kaisuken/':
+        if '回数券' in main and '/kaisuken/' not in main: ng.append('回数券の話があるのに /kaisuken/ へのリンクがない')
+        return
+    for w in KAISUKEN_MUST:
+        if w not in main: ng.append(f'/kaisuken/ に値段が出ていない: {w}')
+    for n, per in KAISUKEN_PER.items():
+        card = re.search(r'id="ticket-%s".*?</li>\s*(?=<li class="kt|</ul>)' % n, main, re.S)
+        ct = strip_tags(card.group(0)) if card else ''
+        if f'¥{KAISUKEN_TICKETS[n]:,}' not in ct: ng.append(f'券の札 #ticket-{n} に ¥{KAISUKEN_TICKETS[n]:,} がない')
+        if f'¥{per:,}' not in ct: ng.append(f'券の札 #ticket-{n} の「1回あたり」が ¥{per:,} でない')
+        if f'data-ticket="{n}"' not in main: ng.append(f'申し込みボタンの data-ticket="{n}" がない')
+        if f'<!-- STRIPE:{n} -->' not in main: ng.append(f'決済リンクの目印 <!-- STRIPE:{n} --> がない')
+    offers = {}
+    def walk(o):
+        if isinstance(o, dict):
+            if o.get('@type') == 'Offer' and 'price' in o: offers[o.get('name', '')] = str(o['price'])
+            for v in o.values(): walk(v)
+        elif isinstance(o, list):
+            for v in o: walk(v)
+    for j in lds:
+        try: walk(json.loads(j))
+        except Exception: pass
+    for n, price in KAISUKEN_TICKETS.items():
+        got = [v for k, v in offers.items() if re.search(r'(?<![0-9])%s回券' % n, k)]
+        if got != [str(price)]: ng.append(f'JSON-LD の Offer（{n}回券）の price が {price} でない: {got}')
+    heads = ' '.join(re.findall(r'<(?:title|h1|h2|h3|summary)\b[^>]*>(.*?)</(?:title|h1|h2|h3|summary)>', src, re.S))
+    for w in FORBID_KAISUKEN_HEAD:
+        if w in strip_tags(heads): ng.append(f'/kaisuken/ の見出しに書かない言葉: {w}')
+    scope = main + '\n'.join(lds)
+    for w in FORBID_KAISUKEN:
+        if w in scope: ng.append(f'/kaisuken/ に書かない言葉: {w}')
 
 
 class P(HTMLParser):
@@ -67,6 +125,7 @@ class P(HTMLParser):
 
 def check(name):
     path = name if name.endswith('/') else name + '/'
+    if name in ('home', '.'): path = ''   # トップ（手書きの index.html）。回数券の値段など、一部の検査だけ当てにする
     f = os.path.join(SITE, path, 'index.html')
     src = open(f, encoding='utf-8').read()
     ng, warn = [], []
@@ -84,6 +143,8 @@ def check(name):
         scope = (m_.group(0) if m_ else src) + '\n'.join(p.ld)
         for w in FORBID_GEAR:
             if w in scope: ng.append(f'/gear/ に書かない言葉: {w}')
+    # 海の回数券（値段は正本どおりか）。/kaisuken/ と、回数券の話が出るページ
+    if path == 'kaisuken/' or '回数券' in src: check_kaisuken(path, src, p.ld, ng)
     # h1
     if p.h1 != 1: ng.append(f'h1 が {p.h1} 個')
     # title / description

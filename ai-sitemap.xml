@@ -4,7 +4,7 @@
     <!-- AI検索エンジン向け最優先ページ -->
     <url>
         <loc>https://miura-diving.com/</loc>
-        <lastmod>2026-11-14</lastmod>
+        <lastmod>2026-11-19</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -39,7 +39,7 @@
 
     <url>
         <loc>https://miura-diving.com/fun-diving/</loc>
-        <lastmod>2026-11-14</lastmod>
+        <lastmod>2026-11-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -117,6 +117,13 @@
     <url>
         <loc>https://miura-diving.com/gear/</loc>
         <lastmod>2026-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://miura-diving.com/kaisuken/</loc>
+        <lastmod>2026-11-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

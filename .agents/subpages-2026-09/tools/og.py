@@ -10,7 +10,8 @@ W8 = F + 'ヒラギノ角ゴシック W8.ttc'
 W6 = F + 'ヒラギノ角ゴシック W6.ttc'
 W4 = F + 'ヒラギノ角ゴシック W4.ttc'
 
-# key: (背景, 焦点x(0-1), 焦点y, ラベル, 見出し行, 補足)
+# key: (背景, 焦点x(0-1), 焦点y, ラベル, 見出し行, 補足[, 拡大])
+# 拡大（省略可・1より大）：写真を少し大きくしてから切り抜く。被写体がまん中にいて文字と重なるとき、焦点xを小さくして右へ寄せる
 JOBS = {
     'license': ('image/sub/license-hero-1600.webp', .55, .45, 'PADI Cカード取得講習｜城ヶ島・宮川湾',
                 ['神奈川・三浦で、', 'ダイビングライセンスを取る。'], 'オープンウォーター 総額¥64,900（レンタル器材込み）・実技は最短2日'),
@@ -60,14 +61,16 @@ JOBS = {
              ['PADIとは？', 'コースの順番を、1枚の図で。'], '体験からプロまで・年齢と深さの条件｜PADIコースディレクターの講習'),
     'glossary': ('image/sub/miyagawa-hero-1600.webp', .72, .45, 'はじめての人のための69語｜図つき',
                  ['講習の前に知っておく、', 'ダイビング用語集。'], '中性浮力・耳抜き・残圧・安全停止・BCD・ドライスーツ…場面の順にやさしく'),
+    'kaisuken': ('image/sub/trial-hero-1600.webp', .0, .5, 'ファンダイビングの回数券｜期限1年',
+                 ['次の海を、', '先に持っておく。'], '海の回数券：ビーチ2本が、1回 ¥12,000 から', 1.18),
     'diving-depth': ('image/sub/fun-hero-1600.webp', .55, .4, '深さの基礎知識｜水圧・色・空気',
                      ['ダイビングは、', '何メートルまで潜れる？'], '18m・30m・40m｜深さで変わることを1枚の図で'),
 }
 
 
-def cover(im, w, h, fx, fy):
+def cover(im, w, h, fx, fy, zoom=1):
     iw, ih = im.size
-    s = max(w / iw, h / ih)
+    s = max(w / iw, h / ih) * zoom
     im = im.resize((int(iw * s + .5), int(ih * s + .5)), Image.LANCZOS)
     iw, ih = im.size
     x = int(min(max(0, fx * iw - w / 2), iw - w)); y = int(min(max(0, fy * ih - h / 2), ih - h))
@@ -75,9 +78,10 @@ def cover(im, w, h, fx, fy):
 
 
 def make(key):
-    src, fx, fy, label, lines, sub = JOBS[key]
+    src, fx, fy, label, lines, sub, *rest = JOBS[key]
+    zoom = rest[0] if rest else 1
     W, H = 1200, 630
-    im = cover(ImageOps.exif_transpose(Image.open(os.path.join(SITE, src))).convert('RGB'), W, H, fx, fy)
+    im = cover(ImageOps.exif_transpose(Image.open(os.path.join(SITE, src))).convert('RGB'), W, H, fx, fy, zoom)
     # 左から暗く（文字の下地）
     grad = Image.new('L', (W, H))
     gd = ImageDraw.Draw(grad)
