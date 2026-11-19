@@ -309,4 +309,12 @@
 .kb__card small { font-family: var(--ff-accent); font-size: .82rem; letter-spacing: .02em; }
 .kb__card:hover { background: var(--teal-ink); color: #fff; }
 .kb__cardnote { margin: .8rem 0 0; }
-@media (max-width: 699px) { .kb__btns, .kb__cards { grid-template-columns: minmax(0, 1fr); } }
+.kb__lead small { font-size: .82rem; font-weight: 500; color: var(--text-sub); }
+.kb__btns--one { grid-template-columns: minmax(0, 420px); }
+.kb__btns--one .btn-line small { display: block; font-family: inherit; font-size: .8rem; font-weight: 500; letter-spacing: 0; opacity: .92; }
+.kb__before { margin: 0 0 .9rem; padding: .9rem 1rem; border-radius: 14px; background: #EEF6F5; }
+.kb__before b { display: block; margin: 0 0 .35rem; font-size: .9rem; color: var(--ink); }
+.kb__before ul { margin: 0; padding-left: 1.2em; list-style: disc; display: grid; gap: .2rem; }
+.kb__before li { font-size: .86rem; line-height: 1.6; color: var(--ink); }
+.kt-note--also { margin-top: .6rem; }
+@media (max-width: 699px) { .kb__btns, .kb__btns--one, .kb__cards { grid-template-columns: minmax(0, 1fr); } }
