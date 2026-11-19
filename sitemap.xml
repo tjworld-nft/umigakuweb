@@ -35,7 +35,7 @@
   <!-- ライセンスページ -->
   <url>
     <loc>https://miura-diving.com/license/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -55,7 +55,7 @@
   </url>
   <url>
     <loc>https://miura-diving.com/specialty/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -63,7 +63,7 @@
   <!-- 知識の柱ページ（2026-11-07） -->
   <url>
     <loc>https://miura-diving.com/padi/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -83,7 +83,7 @@
 
   <url>
     <loc>https://miura-diving.com/diving-depth/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -111,7 +111,7 @@
   </url>
   <url>
     <loc>https://miura-diving.com/fuyu-skill/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -856,7 +856,7 @@
   </url>
   <url>
     <loc>https://miura-diving.com/diving-point/miyagawa-bay/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -902,7 +902,7 @@
   <!-- 神奈川エリア案内（ライセンス取得の選び方） -->
   <url>
     <loc>https://miura-diving.com/kanagawa-diving-license/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -918,7 +918,7 @@
   <!-- ダイビング初心者ガイド（ピラーページ） -->
   <url>
     <loc>https://miura-diving.com/beginner-guide/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
