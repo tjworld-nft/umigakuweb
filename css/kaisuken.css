@@ -19,11 +19,41 @@
   .sub .ph h1 small { font-size: 1rem; }
   .sub .ph__lead { max-width: 21em; }
 }
-/* スマホ：文字が画面の幅いっぱいに並ぶので、写真は左側（堤防と空と水面）だけを見せる。ダイバーの顔に文字を重ねない。
-   写真の枠を横に 240% に広げて左にそろえると、どの幅でも、ダイバーは画面の右の外に出る */
+/* 絵のヒーロー（2026-11-19〜）：うしろ＝明るい海の中の絵、手前＝回数券をかかげるクララ（.ph__chara）。
+   共通の暗い膜（page.css の .ph::before）を、海の色の うすい膜に替えている。
+   白い文字は、上（ヘッダーのうしろ）と左（見出しのうしろ）の膜と、文字の影で読めるようにしている（膜をこれより うすくしない）。 */
+.sub .ph--kv { background: #1479c4; }
+.sub .ph--kv::before {
+  background:
+    linear-gradient(180deg, rgba(4, 62, 120, .88) 0%, rgba(4, 62, 120, .74) 8.5%, rgba(4, 62, 120, 0) 25%, rgba(4, 62, 120, 0) 64%, rgba(4, 58, 108, .50) 100%),
+    linear-gradient(90deg, rgba(5, 84, 158, .76) 0%, rgba(5, 84, 158, .68) 34%, rgba(5, 84, 158, .50) 56%, rgba(5, 84, 158, 0) 78%);
+}
+.sub .ph--kv h1, .sub .ph--kv .ph__lead, .sub .ph--kv .crumbs { text-shadow: 0 2px 14px rgba(3, 52, 98, .55), 0 1px 3px rgba(3, 52, 98, .5); }
+.sub .ph--kv .ph__bg img { object-position: 50% 30%; }
+/* クララ：パソコンは右に大きく。数字のカード（.facts）にかからない高さに置く。ゆっくり浮き沈みする */
+.sub .ph__chara {
+  position: absolute; z-index: -1; pointer-events: none; user-select: none;
+  right: max(3.5vw, calc((100vw - 1240px) / 2 + 1.5rem)); bottom: clamp(6.6rem, 12vw, 8.8rem);
+  height: min(66%, 540px); width: auto;
+  filter: drop-shadow(0 20px 26px rgba(2, 52, 96, .34));
+  animation: kv-float 5.5s ease-in-out infinite alternate;
+}
+@keyframes kv-float { from { transform: translateY(-7px) rotate(-1.6deg); } to { transform: translateY(9px) rotate(1.4deg); } }
+@media (prefers-reduced-motion: reduce) { .sub .ph__chara { animation: none; } }
+@media (max-width: 1099px) {
+  .sub .ph__chara { right: 2.5vw; height: min(46%, 380px); bottom: clamp(6rem, 13vw, 8rem); }
+}
+/* スマホ：文字が画面の幅いっぱいに並ぶので、海の絵は左がわ（ひらけた水）を見せて、クララは見出しの右の空いた所に小さく置く */
 @media (max-width: 767px) {
-  .sub .ph__bg { right: auto; width: 240%; }
-  .sub .ph__bg img { object-position: 0 46%; }
+  .sub .ph--kv .ph__bg img { object-position: 5% 30%; }
+  .sub .ph--kv::before {
+    background: linear-gradient(180deg, rgba(4, 62, 120, .86) 0%, rgba(4, 66, 128, .64) 11%, rgba(5, 84, 158, .55) 26%, rgba(5, 84, 158, .55) 72%, rgba(4, 58, 108, .60) 100%);
+  }
+  .sub .ph__chara {
+    right: 4px; bottom: auto; top: calc(var(--hdr) + 6.5rem);
+    height: clamp(124px, 40vw, 164px);
+    filter: drop-shadow(0 10px 14px rgba(2, 52, 96, .32));
+  }
 }
 
 /* ================================================================
