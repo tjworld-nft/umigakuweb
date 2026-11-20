@@ -1,0 +1,46 @@
+/* /tokyo-bay/ だけの見た目（page.css の部品で足りない所だけ）2026-11-21 */
+
+/* 断面図 */
+.tb-fig { margin: 0 auto; max-width: 760px; background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 1rem .8rem .9rem; }
+.tb-cut { display: block; width: 100%; height: auto; font-family: var(--ff-body); border-radius: 12px; }
+.tb-cut .tb-k { font-size: 14px; font-weight: 700; fill: var(--ink); }
+.tb-cut .tb-n { font-size: 15px; font-weight: 700; fill: #fff; font-family: var(--ff-accent); paint-order: stroke; stroke: rgba(6, 40, 60, .55); stroke-width: 3px; }
+.tb-cut .tb-g { font-size: 14px; font-weight: 700; fill: #fff; }
+.tb-cut .tb-gs { font-size: 14px; fill: #F3E7D6; }
+.tb-cut .tb-r { font-size: 14px; font-weight: 700; fill: #FFD2D3; }
+.tb-cut .tb-sw { font-size: 14px; fill: #DFF3F8; }
+.tb-cut .tb-rd { font-size: 14px; font-weight: 700; fill: #B3122A; }
+.tb-cut .tb-sk { font-size: 14px; font-weight: 700; fill: #183D52; }
+.tb-cut .tb-tick line { stroke: rgba(255, 255, 255, .45); stroke-width: 1; stroke-dasharray: 2 3; }
+.tb-fig figcaption { font-size: .8rem; line-height: 1.7; color: var(--text-sub); margin-top: .6rem; padding: 0 .3rem; }
+
+/* 見出し直後の短い答え */
+.tb-ans { font-size: 1.12rem; font-weight: 700; color: var(--ink); line-height: 1.65; margin-bottom: .6rem; }
+
+/* 動画の1コマ・地図 */
+.tb-shot, .tb-map { margin: 0; }
+.tb-shot img, .tb-map img, .split__media.tb-shot img, .split__media.tb-map img { display: block; width: 100%; height: auto; border-radius: 18px; aspect-ratio: auto; object-fit: contain; }
+.tb-shot figcaption, .tb-map figcaption { font-size: .78rem; line-height: 1.6; color: var(--text-sub); margin-top: .45rem; }
+
+/* 相模湾：地図＋1コマと要点 */
+.tb-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.6rem; align-items: start; }
+.tb-side { display: grid; gap: 1rem; }
+
+/* 動画カード：縦長の画像も上を見せる */
+.tb-videos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.tb-videos .card__img img { object-position: 50% 20%; }
+.tb-reads { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+
+.split__media.tb-teacher img { aspect-ratio: 1; width: 100%; max-width: 360px; height: auto; border-radius: 22px; display: block; margin: 0 auto; }
+
+@media (max-width: 999px) {
+  .tb-videos, .tb-reads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .split__media.tb-teacher img { max-width: 220px; }
+  .tb-videos, .tb-reads { grid-template-columns: 1fr; }
+  .tb-pair { grid-template-columns: 1fr; }
+  .tb-fig { padding: .7rem .4rem .8rem; }
+  .tb-ans { font-size: 1.05rem; }
+}

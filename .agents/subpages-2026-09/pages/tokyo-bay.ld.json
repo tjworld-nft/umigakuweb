@@ -1,0 +1,32 @@
+[
+  {
+    "@type": "Article",
+    "@id": "https://miura-diving.com/tokyo-bay/#article",
+    "headline": "東京湾の深さは？水を抜くと見える、出口の谷と相模湾",
+    "description": "東京湾の内側は平均約15〜20mと浅く、川崎沖で約23m。湾の出口の東京海底谷は約800m、となりの相模湾は平均約480m・いちばん深い所で約1,600m。海底地形データ GMRT から作った断面図と地図で説明します。",
+    "inLanguage": "ja",
+    "url": "https://miura-diving.com/tokyo-bay/",
+    "image": "https://miura-diving.com/image/og-tokyo-bay.jpg",
+    "datePublished": "2026-11-21",
+    "dateModified": "2026-11-21",
+    "mainEntityOfPage": {"@id": "https://miura-diving.com/tokyo-bay/#webpage"},
+    "author": {"@id": "https://miura-diving.com/instructor/#person"},
+    "publisher": {"@id": "https://miura-diving.com/#org"},
+    "about": [
+      {"@type": "Place", "name": "東京湾"},
+      {"@type": "Place", "name": "相模湾"},
+      {"@type": "Place", "name": "東京海底谷"}
+    ],
+    "citation": [
+      "Ryan, W. B. F., et al. (2009). Global Multi-Resolution Topography synthesis. Geochemistry, Geophysics, Geosystems. CC BY 4.0",
+      "国土地理院（地理院タイル・明治期の低湿地）",
+      "国土交通省 関東地方整備局「東京湾の水際線」"
+    ],
+    "mentions": [
+      {"@type": "CreativeWork", "name": "東京湾の水を、ぜんぶ抜いたら？", "url": "https://youtube.com/shorts/tvtarrC2Ido"},
+      {"@type": "CreativeWork", "name": "2万年前、東京湾は、陸だった。", "url": "https://youtube.com/shorts/4JGAqqrMcVA"},
+      {"@type": "CreativeWork", "name": "東京湾の埋め立てを、ぜんぶ消したら？", "url": "https://youtube.com/shorts/Zvf86E0jtEs"},
+      {"@type": "CreativeWork", "name": "横浜の海と、湘南の海。", "url": "https://youtube.com/shorts/AVGOcEnpCiw"}
+    ]
+  }
+]
