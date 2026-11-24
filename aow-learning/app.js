@@ -18,7 +18,8 @@
     }
   }
   const courseSlug = courseConfig.slug;
-  const guidedStudy = courseSlug === "dpv";
+  // DPVとナチュラリストは、章ごとに読んで5問に答える「ガイド付き」の型。
+  const guidedStudy = courseSlug === "dpv" || courseSlug === "naturalist";
   const changedCompletedModules = new Set();
   let loadingFailed = false;
   const curriculumVersion = Number(courseConfig.curriculumVersion);
@@ -449,7 +450,7 @@
     if (guidedStudy) renderGuidedStudy(completed);
   }
 
-  // DPVは長い7章構成。回答の途中へ戻り、今いる章を見失わないための補助。
+  // DPV（7章）・ナチュラリスト（8章）のような長い構成で、回答の途中へ戻り、今いる章を見失わないための補助。
   // 保存や達成判定は上の共通処理に集約し、既存講座の挙動は変更しない。
   function renderGuidedStudy(completed) {
     const nextName = modules.find((name) => !state.completion && !moduleState(name).complete);
@@ -471,7 +472,7 @@
       link.href = href;
       link.textContent = label;
     });
-    document.getElementById("progressMessage").textContent = state.completion ? "事前学習が完了しました" : completed === modules.length ? "全章完了。最終チェックへ進みましょう" : `全7章のうち ${completed}章完了。途中でも保存されます`;
+    document.getElementById("progressMessage").textContent = state.completion ? "事前学習が完了しました" : completed === modules.length ? "全章完了。最終チェックへ進みましょう" : `全${modules.length}章のうち ${completed}章完了。途中でも保存されます`;
     document.getElementById("finish-title").textContent = state.completion ? "事前学習が完了しました。" : "最後に、実習への準備を確認。";
     document.getElementById("finishText").textContent = state.completion ? "下の学習記録を講師に提示し、実物での確認と実習へ進みましょう。" : completed === modules.length ? "3つの確認にチェックを入れて、学習記録を発行してください。" : `学習記録の発行まで、あと${modules.length - completed}章です。各章の5問に正解し、章の完了ボタンを押してください。`;
     const checklist = document.getElementById("dayChecklist");

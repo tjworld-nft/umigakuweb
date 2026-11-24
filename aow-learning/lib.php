@@ -4,7 +4,7 @@ declare(strict_types=1);
 const APP_COURSE = 'aow';
 const COURSE_CURRICULUM_VERSION = 2;
 // テーブル定義や講座カタログを変えたら +1 する。教材版(COURSE_CURRICULUM_VERSION)とは別物。
-const SCHEMA_VERSION = 6;
+const SCHEMA_VERSION = 7;
 
 function app_config(): array
 {
@@ -172,6 +172,7 @@ function migrate(PDO $pdo): void
     $seed->execute(['night', 'ナイトダイバーSP 事前学習', '夜の計画・ライト・合図・ナビゲーション・トラブル・環境を学ぶ全30問', 40, 1]);
     $seed->execute(['dry', 'ドライスーツダイバーSP 事前学習', 'スーツ・準備・浮力・基本操作・トラブル・手入れを学ぶ全30問', 50, 1]);
     $seed->execute(['dpv', '水中スクーター（DPV）SP 事前学習', 'DPVの基本・Subnado Plus・準備・計画・操作・対応・手入れを学ぶ全35問', 60, 1]);
+    $seed->execute(['naturalist', 'ナチュラリストSP 事前学習', '生態系・共生・分類・海の生き物・誤解・関わり方・守る潜り方を学ぶ全40問', 70, 1]);
 
     // 既存DBの講座名も更新する。教材版とDBスキーマ版は混同しない。
     $catalog = $pdo->prepare('UPDATE courses SET title = ?, description = ?, sort_order = ?, active = ? WHERE slug = ?');
@@ -182,6 +183,7 @@ function migrate(PDO $pdo): void
     // 既存DBに準備中のdry行があっても、受講権限・進捗を残して有効化する。
     $catalog->execute(['ドライスーツダイバーSP 事前学習', 'スーツ・準備・浮力・基本操作・トラブル・手入れを学ぶ全30問', 50, 1, 'dry']);
     $catalog->execute(['水中スクーター（DPV）SP 事前学習', 'DPVの基本・Subnado Plus・準備・計画・操作・対応・手入れを学ぶ全35問', 60, 1, 'dpv']);
+    $catalog->execute(['ナチュラリストSP 事前学習', '生態系・共生・分類・海の生き物・誤解・関わり方・守る潜り方を学ぶ全40問', 70, 1, 'naturalist']);
 
     $pdo->exec('PRAGMA user_version = ' . SCHEMA_VERSION);
 }
@@ -382,6 +384,15 @@ function course_definition(string $slug): ?array
             'completion_label' => '事前学習完了（インストラクター確認待ち）',
             'module_labels' => ['basics' => 'DPVを知る', 'subnado' => 'Subnado Plus', 'prepare' => '入水前の準備', 'plan' => '帰れる計画', 'ride' => '水中での操作', 'trouble' => 'トラブル対応', 'care' => '手入れと運搬'],
         ],
+        'naturalist' => [
+            'file' => 'naturalist.html', 'label' => 'UNDERWATER NATURALIST / PRE-STUDY',
+            // 章立て・保存・進捗表示はDPVと同じ「ガイド付き」の型。見た目の土台は dpv.css を共用する。
+            'styles' => ['styles.css', 'dpv.css', 'naturalist.css'], 'short_title' => 'ナチュラリストSP', 'instructor_review' => true,
+            'legacy_modules' => [],
+            'curriculum_version' => 1, 'completion_prefix' => 'NAT',
+            'completion_label' => '事前学習完了（インストラクター確認待ち）',
+            'module_labels' => ['ecosystem' => '海という生態系', 'relations' => '食べる・食べられる・共生', 'names' => '名前と分類', 'invertebrates' => '海の植物と背骨のない動物', 'vertebrates' => '背骨のある動物', 'myths' => '「危険」と誤解', 'interact' => '人と生きものの関わり方', 'protect' => '守る潜り方とその先へ'],
+        ],
     ];
     return $definitions[$slug] ?? null;
 }
@@ -420,6 +431,18 @@ function course_available(string $slug): bool
 
 function course_answer_key(string $slug = APP_COURSE): array
 {
+    if ($slug === 'naturalist') {
+        return [
+            'ecosystem' => ['ecosystem1'=>'a','ecosystem2'=>'b','ecosystem3'=>'c','ecosystem4'=>'a','ecosystem5'=>'b'],
+            'relations' => ['relations1'=>'b','relations2'=>'a','relations3'=>'c','relations4'=>'b','relations5'=>'a'],
+            'names' => ['names1'=>'c','names2'=>'b','names3'=>'a','names4'=>'c','names5'=>'c'],
+            'invertebrates' => ['invertebrates1'=>'b','invertebrates2'=>'a','invertebrates3'=>'b','invertebrates4'=>'c','invertebrates5'=>'a'],
+            'vertebrates' => ['vertebrates1'=>'a','vertebrates2'=>'b','vertebrates3'=>'c','vertebrates4'=>'a','vertebrates5'=>'b'],
+            'myths' => ['myths1'=>'a','myths2'=>'c','myths3'=>'b','myths4'=>'a','myths5'=>'c'],
+            'interact' => ['interact1'=>'b','interact2'=>'c','interact3'=>'a','interact4'=>'a','interact5'=>'c'],
+            'protect' => ['protect1'=>'c','protect2'=>'a','protect3'=>'b','protect4'=>'c','protect5'=>'b'],
+        ];
+    }
     if ($slug === 'dpv') {
         return [
             'basics' => ['basics1'=>'b','basics2'=>'a','basics3'=>'c','basics4'=>'b','basics5'=>'a'],
