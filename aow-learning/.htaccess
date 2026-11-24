@@ -28,4 +28,6 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # 学習サイトは、外へ「どこから来たか」を一切渡さない（PHP が付けている値と同じ。親の .htaccess の値で薄まらないように）。
 <IfModule mod_headers.c>
   Header set Referrer-Policy "same-origin"
+  # 学習サイトは位置情報もカメラも使わない（親の値は位置情報を自分のサイトに許すので、ここで禁止側にそろえる）。
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
 </IfModule>
