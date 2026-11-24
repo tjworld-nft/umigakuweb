@@ -704,6 +704,13 @@ cd ocean-src && npm install && npm run build   # → ../js/ocean/ocean.min.js
 - `ai-sitemap.xml` のまんが各話も sync が `<!-- manga:episodes:start/end -->` の間に生成する。
 - robots.txt の AI クローラ節に ClaudeBot / Claude-User / Claude-SearchBot / OAI-SearchBot / Google-Extended を追加（2026-08-19）。
 
+## 受講者の事前学習サイト `aow-learning/`（AOW・ナイト・ドライ・DPV・ナチュラリスト）
+
+- 登録コードで受講権限を付けるログイン制の学習サイト（PHP＋SQLite）。管理画面 `aow-learning/admin.php` から登録コードを発行する。講座の HTML は直接開けない（`.htaccess`）。
+- 講座を足す・直す手順と各講座の正本は `.agents/aow-learning-setup.md`。ナチュラリストSP（2026-11-24・8章40問）は `.agents/naturalist-diver-learning.md`。
+- 完了の記録は「事前学習完了（インストラクター確認待ち）」で、PADIの認定や公式の学科修了ではない。この書き方を変えない。
+- 正解は `lib.php` の `course_answer_key()` が正。講座の文と問題を直したら、ビルドの道具（`.agents/build-*.py`）で HTML を作り直し、`php .agents/tests/learning-courses.php` を通す。
+
 ## 実装済みコンポーネント
 
 - 下層ページの部品は `css/page.css`（上の「下層ページ」の節）。旧 `.navi-bubble`（クラゲの吹き出し）と `.flow-illust` / `.guide-illust` は2026-09-27のリニューアルで使わなくなった（イラスト自体は `.steps` の画像として使っている）。

@@ -44,3 +44,21 @@ Add the course to the `courses` seed in `lib.php`, create its protected course r
 - This records shop pre-study completion, pending instructor review. Verify the current Dry Suit Specialty Instructor Guide, official learning materials and Knowledge Review before using it as formal knowledge development. It does not issue PADI certification.
 - Research evidence stays in `.agents/dry-diver-learning.md`. Student pages have no reference link lists, as requested.
 - Regression: `php .agents/tests/learning-courses.php` runs 49 checks in a disposable isolated database.
+
+
+## DPV / Subnado Plus SP pre-study (2026-10-16)
+
+- `dpv` is a protected course at `course.php?course=dpv`, with seven lessons and 35 original questions.
+- Schema 6 adds the active course without changing existing accounts, permissions, or AOW/night/dry records. Enrollment still requires its own invite code.
+- Admin previews and course-code issuance use the existing interface; `DPV-` records remain independent. Completion is shop pre-study, pending instructor review.
+- Editable content: `.agents/dpv-learning-content.json`; generate with `python3 .agents/build-dpv.py`. Research, model review details and validation: `.agents/dpv-diver-learning.md`.
+  (These DPV source files were not committed to this repository; they are kept in the Codex worktree `~/.codex/worktrees/dpv-learning/海学HP.php/.agents/` on this Mac.)
+- DPV-only guided interface resumes at unresolved questions, marks the visible chapter, keeps feedback above the bottom bar, and blocks answers if initial progress loading fails.
+- Regression suite now has 79 checks. An additional 46 isolated HTTP checks and browser completion/reload/failure checks passed.
+
+## Underwater Naturalist SP pre-study (2026-11-24)
+
+- `naturalist` is a protected course at `course.php?course=naturalist`, with eight lessons and 40 original questions, using the same guided interface as DPV (`guidedStudy` in `app.js`; shared `dpv.css` plus `naturalist.css`).
+- Schema 7 adds the active course without changing existing accounts, permissions, or AOW/night/dry/DPV records. Enrollment still requires its own invite code. Completion records use `NAT-` and stay "pending instructor review".
+- Editable content: `.agents/naturalist-learning-content.json`; generate with `python3 .agents/build-naturalist.py` (it stops if the answers differ from `course_answer_key()` in `lib.php`). Photos: `aow-learning/assets/naturalist/` (tool `.agents/naturalist-tools/make_photos.py`). Sources, review and open items: `.agents/naturalist-diver-learning.md`.
+- Regression suite now has 101 checks.
