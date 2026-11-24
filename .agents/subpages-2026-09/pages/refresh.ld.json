@@ -10,7 +10,7 @@
     "areaServed": {"@type": "AdministrativeArea", "name": "神奈川県"},
     "audience": {"@type": "PeopleAudience", "audienceType": "Cカード（ダイビングライセンス）を持ち、しばらく潜っていないダイバー"},
     "offers": [
-      {"@type": "Offer", "name": "リフレッシュダイビング（スキルの復習＋1ダイブ）", "price": "19800", "priceCurrency": "JPY", "description": "ガイド・タンク・ウエイト・施設使用料・保険込み・レンタル器材別（税込）", "url": "https://miura-diving.com/refresh/#price"},
+      {"@type": "Offer", "name": "リフレッシュダイビング（スキルの復習＋1ダイブ）", "price": "19800", "priceCurrency": "JPY", "description": "ガイド・タンク・ウエイト・施設使用料込み・レンタル器材別（税込）", "url": "https://miura-diving.com/refresh/#price"},
       {"@type": "Offer", "name": "レンタル器材フルセット（1日）", "price": "5500", "priceCurrency": "JPY"}
     ]
   }
