@@ -1,0 +1,26 @@
+[
+  {
+    "@type": "Article",
+    "@id": "https://miura-diving.com/flying-after-diving/#article",
+    "headline": "ダイビングのあと、飛行機は何時間あける？12時間・18時間の目安",
+    "description": "DANの指針では、減圧停止のいらないダイビング1本なら最低12時間、1日に何本も・何日も続けて潜ったら最低18時間、減圧停止をしたらそれよりずっと長くあけて飛行機に乗ります。機内の気圧、山や峠への移動、潜る前の飛行機、ダイブコンピューターの表示のことも図で説明します。",
+    "inLanguage": "ja",
+    "url": "https://miura-diving.com/flying-after-diving/",
+    "image": "https://miura-diving.com/image/og-flying-after-diving.jpg",
+    "dateModified": "2026-11-28",
+    "datePublished": "2026-11-28",
+    "mainEntityOfPage": {"@id": "https://miura-diving.com/flying-after-diving/#webpage"},
+    "author": {"@id": "https://miura-diving.com/instructor/#person"},
+    "publisher": {"@id": "https://miura-diving.com/#org"},
+    "about": [
+      {"@type": "Thing", "name": "ダイビング後の飛行機搭乗"},
+      {"@type": "Thing", "name": "減圧症"}
+    ],
+    "citation": [
+      "https://dan.org/health-medicine/health-resources/diseases-conditions/flying-after-diving/",
+      "https://dan.org/health-medicine/health-resource/health-safety-guidelines/guidelines-for-flying-after-diving/",
+      "https://dan.org/health-medicine/health-resource/smart-guides/know-before-you-go-how-to-plan-your-dive-trip/tips-for-health-and-safety/",
+      "https://blog.daneurope.org/en_US/blog/altitude-and-diving/"
+    ]
+  }
+]

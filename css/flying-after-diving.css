@@ -1,0 +1,66 @@
+/* /flying-after-diving/ だけの見た目（page.css の部品で足りない所だけ）2026-11-28 */
+
+/* 時計の図（何時間あけるか）：図＋要点。PCは横並び、スマホは縦 */
+.fa-board { display: grid; grid-template-columns: minmax(0, 560px) minmax(0, 1fr); gap: 1.6rem; align-items: start; }
+.fa-fig { margin: 0; background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 1rem .8rem .9rem; }
+.fad-svg { display: block; width: 100%; height: auto; font-family: var(--ff-body); }
+.fad-svg .fa-h { font-size: 15px; font-weight: 700; fill: var(--ink); }
+.fad-svg .fa-s { font-size: 13px; fill: #4A6573; }
+.fad-svg .fa-n { font-size: 13px; font-weight: 700; fill: var(--ink); font-family: var(--ff-accent); }
+.fad-svg .fa-b { font-size: 15px; font-weight: 700; fill: #fff; }
+.fad-svg .fa-k { font-size: 14px; font-weight: 700; fill: #D12F6A; }
+.fad-svg text { paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
+.fad-svg .fa-b { stroke: none; }
+.fa-fig figcaption { font-size: .8rem; line-height: 1.7; color: var(--text-sub); margin-top: .6rem; padding: 0 .3rem; }
+.fa-keys { display: grid; gap: .9rem; }
+.fa-key { background: #fff; border: 1px solid var(--border); border-left: 5px solid var(--teal-ink); border-radius: 16px; padding: 1rem 1.15rem; }
+.fa-key h3 { font-size: 1.08rem; font-weight: 700; color: var(--ink); margin-bottom: .35rem; line-height: 1.45; }
+.fa-key p { font-size: .95rem; line-height: 1.8; }
+.fa-key b { color: var(--coral-ink); font-family: var(--ff-accent); }
+
+/* 旅行の例（午前2本→夜の便は？） */
+.fa-ex { margin-top: 1.4rem; background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 1.1rem 1.2rem; }
+.fa-ex h3 { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: .6rem; line-height: 1.45; }
+.fa-ex ol { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.fa-ex li { display: grid; grid-template-columns: 6.2rem 1fr; gap: .6rem; align-items: baseline; font-size: .95rem; line-height: 1.7; padding: .45rem 0; border-top: 1px dashed var(--border); }
+.fa-ex li:first-child { border-top: 0; }
+.fa-ex li b { font-family: var(--ff-accent); color: var(--teal-ink); font-size: 1.02rem; }
+.fa-ex .fa-ng b { color: #8A9AA3; }
+.fa-ex .fa-ok b { color: var(--coral-ink); }
+
+/* 気圧の小さな図とカード */
+.fa-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.fa-card { position: relative; margin: 0; background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 1.1rem 1.15rem 1.15rem; }
+.fa-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--ink); line-height: 1.45; margin: 0 0 .45rem 2.3rem; min-height: 1.9rem; }
+.fa-card p { font-size: .95rem; line-height: 1.8; }
+.fa-card__no { position: absolute; left: 1.05rem; top: 1.05rem; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--teal-ink); color: #fff; font-family: var(--ff-accent); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-size: .9rem; }
+.fa-press { margin: 1.4rem auto 0; max-width: 620px; background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: .9rem .8rem .8rem; }
+.fa-press figcaption { font-size: .8rem; line-height: 1.7; color: var(--text-sub); margin-top: .5rem; padding: 0 .3rem; }
+
+/* ページの途中の小さな案内（diving-depth.css と同じ形） */
+.mid-cta { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem; margin-top: 1.6rem; background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 1.1rem 1.2rem; }
+.mid-cta p { flex: 1 1 260px; font-size: 1.02rem; line-height: 1.75; color: var(--ink); font-weight: 700; }
+.mid-cta p small { display: block; font-weight: 500; color: var(--text-sub); font-size: .82rem; }
+.mid-cta__btns { display: flex; flex-wrap: wrap; gap: .6rem; }
+.mid-cta__btns a { min-height: 48px; }
+
+.fa-reads { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+@media (max-width: 999px) {
+  .fa-board { grid-template-columns: 1fr; }
+  .fa-fig { max-width: 600px; margin: 0 auto; width: 100%; }
+  .fa-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fa-reads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .fa-fig { padding: .7rem .2rem .8rem; border-radius: 18px; }
+  .fa-fig figcaption { padding: 0 .6rem; }
+  .fa-grid { grid-template-columns: 1fr; }
+  .fa-reads { grid-template-columns: 1fr; }
+  .fa-ex li { grid-template-columns: 5.2rem 1fr; }
+  .mid-cta__btns, .mid-cta__btns a { width: 100%; justify-content: center; }
+}
+
+/* 体調がおかしいときの写真＋説明 */
+.fa-photo { margin-top: 1.6rem; }
+.fa-pc__t { font-size: 1.15rem; font-weight: 700; color: var(--ink); line-height: 1.55; margin-bottom: .5rem; }
